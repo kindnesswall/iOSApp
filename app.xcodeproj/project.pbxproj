@@ -12,6 +12,10 @@
 		0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8661F8C1A920084CDF1 /* Main.storyboard */; };
 		0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8691F8C1A920084CDF1 /* Assets.xcassets */; };
 		0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0507C86B1F8C1A920084CDF1 /* LaunchScreen.storyboard */; };
+		056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FBB581F9135EA0023C9CF /* HomeViewController.swift */; };
+		056FBB5B1F9135EA0023C9CF /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056FBB591F9135EA0023C9CF /* HomeViewController.xib */; };
+		056FBB5E1F913AD70023C9CF /* MyWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FBB5C1F913AD70023C9CF /* MyWallViewController.swift */; };
+		056FBB5F1F913AD70023C9CF /* MyWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056FBB5D1F913AD70023C9CF /* MyWallViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		0507C8691F8C1A920084CDF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0507C86C1F8C1A920084CDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0507C86E1F8C1A920084CDF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		056FBB581F9135EA0023C9CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = app/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		056FBB591F9135EA0023C9CF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = app/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
+		056FBB5C1F913AD70023C9CF /* MyWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWallViewController.swift; sourceTree = "<group>"; };
+		056FBB5D1F913AD70023C9CF /* MyWallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWallViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +62,16 @@
 		0507C8611F8C1A920084CDF1 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				0507C8691F8C1A920084CDF1 /* Assets.xcassets */,
+				0507C86E1F8C1A920084CDF1 /* Info.plist */,
 				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
+				056FBB581F9135EA0023C9CF /* HomeViewController.swift */,
+				056FBB591F9135EA0023C9CF /* HomeViewController.xib */,
 				0507C8641F8C1A920084CDF1 /* ViewController.swift */,
 				0507C8661F8C1A920084CDF1 /* Main.storyboard */,
-				0507C8691F8C1A920084CDF1 /* Assets.xcassets */,
 				0507C86B1F8C1A920084CDF1 /* LaunchScreen.storyboard */,
-				0507C86E1F8C1A920084CDF1 /* Info.plist */,
+				056FBB5C1F913AD70023C9CF /* MyWallViewController.swift */,
+				056FBB5D1F913AD70023C9CF /* MyWallViewController.xib */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -124,8 +136,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */,
+				056FBB5F1F913AD70023C9CF /* MyWallViewController.xib in Resources */,
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
+				056FBB5B1F9135EA0023C9CF /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +152,8 @@
 			files = (
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
 				0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */,
+				056FBB5E1F913AD70023C9CF /* MyWallViewController.swift in Sources */,
+				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
