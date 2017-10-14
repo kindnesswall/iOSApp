@@ -15,4 +15,8 @@ class APIURLs {
     static var BookmarkGift : String {
         return self.BASE_URL + self.API_VERSION + "BookmarkGift"
     }
+    
+    static var Gift : String {
+        return self.BASE_URL + self.API_VERSION + "Gift/"
+    }
 }

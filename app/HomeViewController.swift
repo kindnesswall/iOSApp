@@ -16,6 +16,16 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func deleteGift(giftId: String) {
+        let mainURL: String = APIURLs.Gift
+
+        APIRequest.Request(url: mainURL, token: "", httpMethod: .delete, complitionHandler: { (data, response, error) in
+            
+            APIRequest.logReply(data: data)
+            
+        })
+    }
+    
     func isUserPassCorrect(username:String, password:String) {
         let mainURL: String = APIURLs.BookmarkGift
         

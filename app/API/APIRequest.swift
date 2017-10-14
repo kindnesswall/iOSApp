@@ -10,6 +10,29 @@ import Foundation
 import UIKit
 //import Toaster
 
+enum EnumHttpMethods:String {
+    
+    case post
+    case get
+    case put
+    case delete
+    
+    var value:String {
+        switch self {
+        case .post:
+            return "POST"
+        case .get:
+            return "GET"
+        case .put:
+            return "PUT"
+        case .delete:
+            return "DELETE"
+        default:
+            return "GET"
+        }
+    }
+}
+
 class APIRequest {
     
     //MARK: - json request
@@ -18,10 +41,33 @@ class APIRequest {
     public static func setRequestHeader(request:URLRequest)->URLRequest
     {
         var returnRequest=request
-//        returnRequest.setValue("", forHTTPHeaderField: "username")
-//        returnRequest.setValue("", forHTTPHeaderField: "password")
+        returnRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return returnRequest
 
+    }
+    
+    public static func Request(url:String,token:String?,httpMethod:EnumHttpMethods,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
+        
+        let mainURL=URL(string: url)
+        
+        if let mainURL=mainURL {
+            var request = URLRequest(url: mainURL)
+            
+            request.httpMethod = httpMethod.value
+            
+            request=self.setRequestHeader(request: request)
+            
+            if let token=token {
+                request.setValue(token, forHTTPHeaderField: "token")
+            }
+            
+            let config = URLSessionConfiguration.default
+            let session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
+            let task=session.dataTask(with: request, completionHandler: { (data, response, error) in
+                complitionHandler(data, response, error)
+            })
+            task.resume()
+        }
     }
     
     public static func request(url:String,token:String?,inputJson:[String:Any]?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
@@ -133,36 +179,6 @@ class APIRequest {
         
     }
     
-
-    public static func checkResultStatus(json: [String:Any]) -> [String:Any]? {
-        if let status=json["status"] as? String {
-            
-//            if status == APIStatus.error {
-//                
-//                let toast = Toast(text: "Internal Error", duration: Delay.short)
-//                toast.show()
-//                
-//            }else if status == APIStatus.INVALID_TOKEN {
-//                
-//                let toast = Toast(text: "Invalid token", duration: Delay.short)
-//                toast.show()
-//                
-//            }else if status == APIStatus.ACTION_IS_IMPOSSIBLE ||  status == APIStatus.USERNAME_EXIST{
-//                
-//                let toast = Toast(text: "ACTION_IS_IMPOSSIBLE or USERNAME_EXIST", duration: Delay.short)
-//                toast.show()
-//                
-//            }else if status == APIStatus.ACTION_HAS_BEEN_DONE_BEFORE{
-//                
-//                let toast = Toast(text: "ACTION_HAS_BEEN_DONE_BEFORE", duration: Delay.short)
-//                toast.show()
-//                
-//            }
-        }
-        
-        return json
-    }
-    
     public static func getJsonDic(fromData data:Data?)->[String:Any]?{
         
         if let data=data {
@@ -170,11 +186,7 @@ class APIRequest {
             
             json=try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions()) as? [String:Any]
             if let json=json {
-                if let json=json {
-                    
-                    return checkResultStatus(json: json)
-                    
-                }
+                return json
             }
             
         }
@@ -189,10 +201,7 @@ class APIRequest {
             
             json=try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions()) as? [Any]
             if let json=json {
-                
-                if let json=json {
-                    return json
-                }
+                return json
             }
             
         }
