@@ -16,6 +16,23 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func isUserPassCorrect(username:String, password:String) {
+        let mainURL: String = APIURLs.BookmarkGift
+        
+        var jsonDicInput : [String : Any] = ApiInput.isUserPassCorrectInput(username: username, password: password, registeration_id: "", device_id: "")
+        
+        APIRequest.request(url: mainURL, token: nil, inputJson: jsonDicInput) { (data, response, error) in
+            
+            APIRequest.logReply(data: data)
+            
+//            if let reply=APIRequest.readJsonData(data: data, outpuType: ResponseModel<UserAccount>.self) {
+//                if let status=reply.status,status==APIStatus.DONE {
+//                    print("\(reply.result?.token)")
+//                }
+//            }
+        }
+    }
+    
     func submitAction(sender: AnyObject) {
         
         //declare parameter as a dictionary which contains string as key and value combination.
