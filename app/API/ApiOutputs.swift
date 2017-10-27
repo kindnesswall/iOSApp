@@ -38,7 +38,6 @@ class Gift: Codable {
 }
 
 class RequestModel: Codable {
-    
     var giftId:String?
     var gift:String?
     
@@ -68,4 +67,14 @@ class Category: Codable {
     var createDateTime:String?
     var createDate:String?
     var createTime:String?
+}
+
+class RegisterOutput: Codable {
+    var remainingSeconds:String?
+}
+
+class TokenOutput: Codable {
+    var access_token:String?
+    var userName:String?
+    var userId:String?
 }

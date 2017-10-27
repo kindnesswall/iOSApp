@@ -37,16 +37,7 @@ class APIRequest {
     
     //MARK: - json request
     
-    
-    public static func setRequestHeader(request:URLRequest)->URLRequest
-    {
-        var returnRequest=request
-        returnRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        return returnRequest
-
-    }
-    
-    public static func Request(url:String,token:String?,httpMethod:EnumHttpMethods,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
+    public static func Request(url:String,httpMethod:EnumHttpMethods,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
         
         let mainURL=URL(string: url)
         
@@ -57,10 +48,6 @@ class APIRequest {
             
             request=self.setRequestHeader(request: request)
             
-            if let token=token {
-                request.setValue(token, forHTTPHeaderField: "token")
-            }
-            
             let config = URLSessionConfiguration.default
             let session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
             let task=session.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -68,6 +55,19 @@ class APIRequest {
             })
             task.resume()
         }
+    }
+    
+    public static func setRequestHeader(request:URLRequest)->URLRequest
+    {
+        var returnRequest=request
+        returnRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let userDefault = UserDefaults.standard
+        if let token = userDefault.string(forKey: "Authorization") {
+            returnRequest.setValue(token, forHTTPHeaderField: "Authorization")
+        }
+        return returnRequest
+        
     }
     
     public static func request(url:String,token:String?,inputJson:[String:Any]?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){

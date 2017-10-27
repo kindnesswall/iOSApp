@@ -14,12 +14,23 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        register()
+    }
+    
+    func register() {
+        let mainURL: String = APIURLs.register + "09140453424"
+        
+        APIRequest.Request(url: mainURL, httpMethod: .delete, complitionHandler: { (data, response, error) in
+            
+            APIRequest.logReply(data: data)
+            
+        })
     }
     
     func deleteGift(giftId: String) {
         let mainURL: String = APIURLs.Gift
 
-        APIRequest.Request(url: mainURL, token: "", httpMethod: .delete, complitionHandler: { (data, response, error) in
+        APIRequest.Request(url: mainURL, httpMethod: .delete, complitionHandler: { (data, response, error) in
             
             APIRequest.logReply(data: data)
             
@@ -27,7 +38,7 @@ class HomeViewController: UIViewController {
     }
     
     func isUserPassCorrect(username:String, password:String) {
-        let mainURL: String = APIURLs.BookmarkGift
+        let mainURL: String = APIURLs.bookmark
         
         var jsonDicInput : [String : Any] = ApiInput.isUserPassCorrectInput(username: username, password: password, registeration_id: "", device_id: "")
         
