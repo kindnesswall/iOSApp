@@ -18,6 +18,8 @@
 		056FBB5F1F913AD70023C9CF /* MyWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056FBB5D1F913AD70023C9CF /* MyWallViewController.xib */; };
 		056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FBB601F91585C0023C9CF /* APIURLs.swift */; };
 		05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */; };
+		05AE64711FA3553100FCCC28 /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE64701FA3553100FCCC28 /* ApiConstants.swift */; };
+		05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE64721FA93F4800FCCC28 /* ApiMethods.swift */; };
 		05DDD3E01F921DCD006C5E31 /* ApiInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */; };
 		05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E11F921E98006C5E31 /* ResponseModel.swift */; };
 		05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E31F921F19006C5E31 /* APIRequest.swift */; };
@@ -37,6 +39,8 @@
 		056FBB5D1F913AD70023C9CF /* MyWallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWallViewController.xib; sourceTree = "<group>"; };
 		056FBB601F91585C0023C9CF /* APIURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLs.swift; sourceTree = "<group>"; };
 		05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiOutputs.swift; sourceTree = "<group>"; };
+		05AE64701FA3553100FCCC28 /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
+		05AE64721FA93F4800FCCC28 /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
 		05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInput.swift; sourceTree = "<group>"; };
 		05DDD3E11F921E98006C5E31 /* ResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		05DDD3E31F921F19006C5E31 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 				056FBB601F91585C0023C9CF /* APIURLs.swift */,
 				05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */,
 				05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */,
+				05AE64701FA3553100FCCC28 /* ApiConstants.swift */,
+				05AE64721FA93F4800FCCC28 /* ApiMethods.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -175,8 +181,10 @@
 			files = (
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
+				05AE64711FA3553100FCCC28 /* ApiConstants.swift in Sources */,
 				0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */,
 				056FBB5E1F913AD70023C9CF /* MyWallViewController.swift in Sources */,
+				05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */,
 				05DDD3E01F921DCD006C5E31 /* ApiInput.swift in Sources */,
 				05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */,
 				056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */,

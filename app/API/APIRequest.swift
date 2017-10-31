@@ -37,6 +37,45 @@ class APIRequest {
     
     //MARK: - json request
     
+    public static func requestFormUrlEncoded(
+        url:String,
+        formKeyValueInput:[String:String],
+        httpMethod:EnumHttpMethods,
+        completionHandler:@escaping (Data?)->Void){
+        
+        let headers = ["content-type": "application/x-www-form-urlencoded"]
+        
+        let postData = NSMutableData()
+        for (key,value) in formKeyValueInput{
+            postData.append(("&" + key + "=" + value).data(using: String.Encoding.utf8)!)
+        }
+        
+        let request = NSMutableURLRequest(url: NSURL(string: url)! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        request.httpMethod = httpMethod.value
+        request.allHTTPHeaderFields = headers
+        request.httpBody = postData as Data
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            
+            guard error == nil else{
+                print(error)
+                return
+            }
+            
+            completionHandler(data)
+            
+            
+//            let httpResponse = response as? HTTPURLResponse
+//            print(httpResponse)
+            
+        })
+        
+        dataTask.resume()
+    }
+    
     public static func Request(url:String,httpMethod:EnumHttpMethods,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
         
         let mainURL=URL(string: url)
@@ -63,8 +102,8 @@ class APIRequest {
         returnRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let userDefault = UserDefaults.standard
-        if let token = userDefault.string(forKey: "Authorization") {
-            returnRequest.setValue(token, forHTTPHeaderField: "Authorization")
+        if let token = userDefault.string(forKey: ApiConstants.Authorization) {
+            returnRequest.setValue(token, forHTTPHeaderField: ApiConstants.Authorization)
         }
         return returnRequest
         
@@ -133,14 +172,14 @@ class APIRequest {
             task=session?.dataTask(with: request, completionHandler: { (data, response, error) in
                 complitionHandler(data, response, error)
             })
-
+            
             task?.resume()
             
         }
         
     }
-
-
+    
+    
     public static func request(url:String,appendToSessions sessions: inout [Foundation.URLSession?], appendToTasks tasks: inout [URLSessionDataTask?],token:String?,inputJson:[String:Any]?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
         
         let mainURL=URL(string: url)
@@ -169,7 +208,7 @@ class APIRequest {
             let task=session.dataTask(with: request, completionHandler: { (data, response, error) in
                 complitionHandler(data, response, error)
             })
-
+            
             
             sessions.append(session)
             tasks.append(task)
@@ -207,146 +246,11 @@ class APIRequest {
         }
         return nil
     }
-
-    
-    //MARK: - image
-    
-    public static func readImage(url:String,appendToSessions sessions: inout [Foundation.URLSession?], appendToTasks tasks: inout [URLSessionDataTask?],complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
-        
-        let mainURL=URL(string: url)
-        
-        if let mainURL=mainURL {
-            var request = URLRequest(url: mainURL)
-            request.httpMethod="GET"
-            
-            let config = URLSessionConfiguration.default
-            let session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
-            let task=session.dataTask(with: request, completionHandler: complitionHandler)
-            
-            sessions.append(session)
-            tasks.append(task)
-            task.resume()
-            
-        }
-    }
-    
-    public static func readImage(url:String,session:inout Foundation.URLSession?, task: inout URLSessionDataTask?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
-        
-        let mainURL=URL(string: url)
-        
-        if let mainURL=mainURL {
-            var request = URLRequest(url: mainURL)
-            request.httpMethod="GET"
-            
-            
-            let config = URLSessionConfiguration.default
-            session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
-            task=session?.dataTask(with: request, completionHandler: complitionHandler)
-            task?.resume()
-            
-        }
-    }
-    
-    public static func readImage(url:String,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
-        
-        let mainURL=URL(string: url)
-        
-        if let mainURL=mainURL {
-            var request = URLRequest(url: mainURL)
-            request.httpMethod="GET"
-            
-            
-            let config = URLSessionConfiguration.default
-            let session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
-            let task=session.dataTask(with: request, completionHandler: complitionHandler)
-            task.resume()
-            
-        }
-    }
-    
-    public static func getImage(fromData data:Data?)->UIImage? {
-        
-        if let data=data {
-            let image=UIImage(data: data)
-            return image
-        }
-        return nil
-        
-    }
     
     
-    public static func readAndSetImage(url:String,complitionHandler:@escaping(UIImage)->Void) {
-        
-        let mainURL=URL(string: url)
-        
-        if let mainURL=mainURL {
-            var request = URLRequest(url: mainURL)
-            request.httpMethod="GET"
-            
-            
-            let config = URLSessionConfiguration.default
-            let session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
-            let task=session.dataTask(with: request, completionHandler: { (data, response, error) in
-                if let image=APIRequest.getImage(fromData: data) {
-                    complitionHandler(image)
-                }
-            })
-            task.resume()
-            
-        }
-    }
     
-    public static func readAndSetImage(url:String,appendToSessions sessions: inout [Foundation.URLSession?], appendToTasks tasks: inout [URLSessionDataTask?],complitionHandler:@escaping(UIImage)->Void) {
-        
-        let mainURL=URL(string: url)
-        
-        if let mainURL=mainURL {
-            var request = URLRequest(url: mainURL)
-            request.httpMethod="GET"
-            
-            let config = URLSessionConfiguration.default
-            let session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
-            let task=session.dataTask(with: request, completionHandler: { (data, response, error) in
-                if let image=APIRequest.getImage(fromData: data) {
-                    complitionHandler(image)
-                }
-            })
-            
-            sessions.append(session)
-            tasks.append(task)
-            task.resume()
-            
-        }
-    }
-    
-    public static func readAndSetImage(url:String,session:inout Foundation.URLSession?, task: inout URLSessionDataTask?,complitionHandler:@escaping(UIImage)->Void) {
-        
-        let mainURL=URL(string: url)
-        
-        if let mainURL=mainURL {
-            var request = URLRequest(url: mainURL)
-            request.httpMethod="GET"
-            
-            
-            let config = URLSessionConfiguration.default
-            session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
-            task=session?.dataTask(with: request, completionHandler: { (data, response, error) in
-                if let image=APIRequest.getImage(fromData: data) {
-                    complitionHandler(image)
-                }
-            })
-            task?.resume()
-            
-        }
-    }
-
-    
-
-
     
     //MARK: - Upload
-    
- 
     
     public static func uploadImageTask(url:String,session:inout Foundation.URLSession?, task: inout URLSessionDataTask?,delegate:URLSessionDelegate,token:String?,image:UIImage?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
         
@@ -409,28 +313,16 @@ class APIRequest {
         }
         return nil
     }
-
+    
     
     //MARK: - Else
-    
-    public static func stopAndClearSessionsAndTasks(sessions:inout [Foundation.URLSession?], tasks: inout[URLSessionDataTask?]) {
-        for task in tasks {
-            task?.cancel()
-        }
-        for session in sessions {
-            session?.invalidateAndCancel()
-        }
-        
-        tasks=[]
-        sessions=[]
-    }
     
     public static func logReply(data:Data?){
         if let data=data {
             let log=String(data: data, encoding: .utf8)
             if let log=log {
                 print(log)
-
+                
             }
             
         }
