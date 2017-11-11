@@ -96,6 +96,35 @@ class APIRequest {
         }
     }
     
+    public static func request(url:String,inputJson:[String:Any]?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
+        
+        let mainURL=URL(string: url)
+        
+        if let mainURL=mainURL {
+            var request = URLRequest(url: mainURL)
+            request.httpMethod="POST"
+            
+            request=self.setRequestHeader(request: request)
+            
+            if let inputJson=inputJson {
+                
+                let json=try! JSONSerialization.data(withJSONObject: inputJson, options: JSONSerialization.WritingOptions.prettyPrinted)
+                
+                request.httpBody=json
+            }
+            
+            
+            let config = URLSessionConfiguration.default
+            let session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
+            let task=session.dataTask(with: request, completionHandler: { (data, response, error) in
+                complitionHandler(data, response, error)
+            })
+            task.resume()
+            
+        }
+        
+    }
+    
     public static func setRequestHeader(request:URLRequest)->URLRequest
     {
         var returnRequest=request
@@ -166,7 +195,6 @@ class APIRequest {
                 request.httpBody=json
             }
             
-            
             let config = URLSessionConfiguration.default
             session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
             task=session?.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -180,7 +208,13 @@ class APIRequest {
     }
     
     
-    public static func request(url:String,appendToSessions sessions: inout [Foundation.URLSession?], appendToTasks tasks: inout [URLSessionDataTask?],token:String?,inputJson:[String:Any]?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
+    public static func request(
+        url:String,
+        appendToSessions sessions: inout [Foundation.URLSession?],
+        appendToTasks tasks: inout [URLSessionDataTask?],
+        token:String?,
+        inputJson:[String:Any]?,
+        complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
         
         let mainURL=URL(string: url)
         
