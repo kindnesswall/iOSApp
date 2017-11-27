@@ -12,34 +12,48 @@ class HomeViewController: UIViewController {
 
     let userDefault = UserDefaults.standard
     
+    @IBOutlet var tableview: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        ApiMethods.login(username: "09353703108", password: "") { (data) in
-//            APIRequest.logReply(data: data)
-//        }
         
-//        ApiMethods.register(telephone: "09353703108") { (data) in
-//            APIRequest.logReply(data: data)
-//        }
+        tableview.dataSource = self
+        tableview.delegate = self
+        
+        let bundle = Bundle(for: GiftTableViewCell.self)
+        let nib = UINib(nibName: "GiftTableViewCell", bundle: bundle)
+        self.tableview.register(nib, forCellReuseIdentifier: "GiftTableViewCell")
+    }
+    
+}
+
+extension HomeViewController:UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell=tableView.dequeueReusableCell(withIdentifier: "GiftTableViewCell") as! GiftTableViewCell
+        let gift:Gift = Gift()
+        gift.title = "هدیه"
+        gift.createDateTime = "تاریخ"
+        gift.description = "توضیحات بسیار کامل و جامع"
+        
+        cell.filViews(gift: gift)
+        
+        return cell
+    }
+}
+
+extension HomeViewController:UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
     
-//    func isUserPassCorrect(username:String, password:String) {
-//        let mainURL: String = APIURLs.bookmark
-//
-//        var jsonDicInput : [String : Any] = ApiInput.isUserPassCorrectInput(username: username, password: password, registeration_id: "", device_id: "")
-//
-//        APIRequest.request(url: mainURL, token: nil, inputJson: jsonDicInput) { (data, response, error) in
-//
-//            APIRequest.logReply(data: data)
-    
-//            if let reply=APIRequest.readJsonData(data: data, outpuType: ResponseModel<UserAccount>.self) {
-//                if let status=reply.status,status==APIStatus.DONE {
-//                    print("\(reply.result?.token)")
-//                }
-//            }
-//        }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return CGFloat(100)
 //    }
+    
     
 }
