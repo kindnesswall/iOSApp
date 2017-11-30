@@ -11,7 +11,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     let userDefault = UserDefaults.standard
-    
+    var gifts:[Gift] = []
     @IBOutlet var tableview: UITableView!
     
     override func viewDidLoad() {
@@ -26,6 +26,17 @@ class HomeViewController: UIViewController {
         
         ApiMethods.getGifts(cityId: "0", regionId: "0", categoryId: "4", startIndex: 0, searchText: "") { (data) in
             APIRequest.logReply(data: data)
+            
+            if let reply=APIRequest.readJsonData(data: data, outpuType: [Gift].self) {
+//                    if let status=reply.status,status==APIStatus.DONE {
+//                        print("\(reply.result?.token)")
+//                    }
+                
+                print("number of gifts: \(reply.count)")
+                self.gifts.append(contentsOf: reply)
+                self.tableview.reloadData()
+                }
+
         }
     }
     
@@ -33,18 +44,21 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return gifts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell=tableView.dequeueReusableCell(withIdentifier: "GiftTableViewCell") as! GiftTableViewCell
-        let gift:Gift = Gift()
-        gift.title = "هدیه"
-        gift.createDateTime = "تاریخ"
-        gift.description = "توضیحات بسیار کامل و جامع"
         
-        cell.filViews(gift: gift)
+//        let gift:Gift = Gift()
+//        gift.title = "هدیه"
+//        gift.createDateTime = "تاریخ"
+//        gift.description = "توضیحات بسیار کامل و جامع"
+//        gift.giftImages = ["https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Meso2mil-English.JPG/220px-Meso2mil-English.JPG"]
+//
+
+        cell.filViews(gift: gifts[indexPath.row])
         
         return cell
     }

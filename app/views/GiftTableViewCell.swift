@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class GiftTableViewCell: UITableViewCell {
 
@@ -30,5 +31,9 @@ class GiftTableViewCell: UITableViewCell {
         giftTitle.text = gift.title
         giftDate.text = gift.createDateTime
         giftDescription.text = gift.description
+        if let url = gift.giftImages?[0] {
+            giftImage.sd_setImage(with: URL(string: url))
+        }
+
     }
 }

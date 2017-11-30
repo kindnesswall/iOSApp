@@ -12,6 +12,8 @@ class AppInfoOutput: Codable {
     var smsCenter:String?
 }
 
+
+
 class Gift: Codable {
     var requestCount:String?
     var title:String?
