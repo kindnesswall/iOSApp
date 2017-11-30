@@ -20,34 +20,34 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="KGk-i7-Jjw" customClass="GiftTableViewCell" customModule="app" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="368" height="103"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="KGk-i7-Jjw" customClass="GiftTableViewCell" customModule="app" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="368" height="124"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="368" height="102.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="368" height="123.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EOH-Km-dB8">
-                        <rect key="frame" x="266" y="6" width="90" height="90"/>
+                        <rect key="frame" x="246" y="6" width="110" height="110"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="90" id="Zd9-Re-573"/>
-                            <constraint firstAttribute="width" constant="90" id="bkd-Zr-697"/>
+                            <constraint firstAttribute="height" constant="110" id="Zd9-Re-573"/>
+                            <constraint firstAttribute="width" constant="110" id="bkd-Zr-697"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عنوان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZk-Zm-A8l">
-                        <rect key="frame" x="220.5" y="11" width="37.5" height="21.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عنوان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZk-Zm-A8l">
+                        <rect key="frame" x="24" y="11" width="214" height="21.5"/>
                         <fontDescription key="fontDescription" name="IRANSansMobile-Medium" family="IRANSansMobile" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تاریخ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lef-gO-vmM">
-                        <rect key="frame" x="232" y="36.5" width="25.5" height="15.5"/>
+                        <rect key="frame" x="212" y="36.5" width="25.5" height="15.5"/>
                         <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="توضیحات" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8h-J4-KVI">
-                        <rect key="frame" x="207" y="60" width="51" height="16.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="توضیحات" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8h-J4-KVI">
+                        <rect key="frame" x="24" y="60" width="214" height="16.5"/>
                         <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -58,9 +58,11 @@
                     <constraint firstItem="z8h-J4-KVI" firstAttribute="top" secondItem="Lef-gO-vmM" secondAttribute="bottom" constant="8" id="KXh-HP-y1F"/>
                     <constraint firstItem="EOH-Km-dB8" firstAttribute="leading" secondItem="Lef-gO-vmM" secondAttribute="trailing" constant="8" id="O1u-QU-09r"/>
                     <constraint firstAttribute="trailing" secondItem="EOH-Km-dB8" secondAttribute="trailing" constant="12" id="RmY-YH-L90"/>
+                    <constraint firstItem="cZk-Zm-A8l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="Ys2-DH-WWk"/>
                     <constraint firstItem="EOH-Km-dB8" firstAttribute="leading" secondItem="z8h-J4-KVI" secondAttribute="trailing" constant="8" id="cff-wY-W4g"/>
                     <constraint firstItem="Lef-gO-vmM" firstAttribute="top" secondItem="cZk-Zm-A8l" secondAttribute="bottom" constant="4" id="kYw-vW-3Og"/>
                     <constraint firstItem="cZk-Zm-A8l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ktv-1V-lDd"/>
+                    <constraint firstItem="z8h-J4-KVI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="lfV-dt-gPO"/>
                     <constraint firstItem="EOH-Km-dB8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="xzU-Uu-pFc"/>
                 </constraints>
             </tableViewCellContentView>
@@ -71,7 +73,7 @@
                 <outlet property="giftImage" destination="EOH-Km-dB8" id="9hE-UK-ygi"/>
                 <outlet property="giftTitle" destination="cZk-Zm-A8l" id="u4O-p6-tlA"/>
             </connections>
-            <point key="canvasLocation" x="-154" y="-50.5"/>
+            <point key="canvasLocation" x="-154" y="-40"/>
         </tableViewCell>
     </objects>
 </document>
