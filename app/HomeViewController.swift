@@ -66,12 +66,17 @@ extension HomeViewController:UITableViewDataSource{
 
 extension HomeViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     
+        let controller = GiftDetailViewController(nibName: "GiftDetailViewController", bundle: Bundle(for: GiftDetailViewController.self))
+        
+        controller.gift = gifts[indexPath.row]
+        
+        self.navigationController?.pushViewController(controller, animated: true)
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(122)
     }
-    
     
 }
