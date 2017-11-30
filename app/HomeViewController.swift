@@ -23,6 +23,10 @@ class HomeViewController: UIViewController {
         let bundle = Bundle(for: GiftTableViewCell.self)
         let nib = UINib(nibName: "GiftTableViewCell", bundle: bundle)
         self.tableview.register(nib, forCellReuseIdentifier: "GiftTableViewCell")
+        
+        ApiMethods.getGifts(cityId: "0", regionId: "0", categoryId: "4", startIndex: 0, searchText: "") { (data) in
+            APIRequest.logReply(data: data)
+        }
     }
     
 }
@@ -51,9 +55,9 @@ extension HomeViewController:UITableViewDelegate {
         
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return CGFloat(100)
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(100)
+    }
     
     
 }
