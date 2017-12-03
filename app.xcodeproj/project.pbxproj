@@ -14,6 +14,7 @@
 		0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0507C86B1F8C1A920084CDF1 /* LaunchScreen.storyboard */; };
 		05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05335D431FD0D0A800601115 /* GiftDetailViewController.swift */; };
 		05335D461FD0D0A800601115 /* GiftDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05335D441FD0D0A800601115 /* GiftDetailViewController.xib */; };
+		05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05335D481FD0DDA200601115 /* SDWebImageSource.swift */; };
 		054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */; };
 		054B1B4A1FCC29F6007570EF /* GiftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B481FCC29F6007570EF /* GiftTableViewCell.xib */; };
 		054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */; };
@@ -47,6 +48,7 @@
 		0507C86E1F8C1A920084CDF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05335D431FD0D0A800601115 /* GiftDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetailViewController.swift; sourceTree = "<group>"; };
 		05335D441FD0D0A800601115 /* GiftDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftDetailViewController.xib; sourceTree = "<group>"; };
+		05335D481FD0DDA200601115 /* SDWebImageSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDWebImageSource.swift; sourceTree = "<group>"; };
 		054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftTableViewCell.swift; sourceTree = "<group>"; };
 		054B1B481FCC29F6007570EF /* GiftTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftTableViewCell.xib; sourceTree = "<group>"; };
 		054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Light.ttf; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		0507C8611F8C1A920084CDF1 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				05335D471FD0DD7A00601115 /* helper */,
 				05335D421FD0D05C00601115 /* view_controllers */,
 				054B1B581FCC44E3007570EF /* models */,
 				054B1B4B1FCC3B60007570EF /* fonts */,
@@ -129,6 +132,14 @@
 				05335D441FD0D0A800601115 /* GiftDetailViewController.xib */,
 			);
 			path = view_controllers;
+			sourceTree = "<group>";
+		};
+		05335D471FD0DD7A00601115 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				05335D481FD0DDA200601115 /* SDWebImageSource.swift */,
+			);
+			path = helper;
 			sourceTree = "<group>";
 		};
 		054B1B461FCC29B3007570EF /* views */ = {
@@ -326,6 +337,7 @@
 			files = (
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
 				05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */,
+				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
 				05AE64711FA3553100FCCC28 /* ApiConstants.swift in Sources */,
 				054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */,

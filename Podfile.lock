@@ -1,14 +1,19 @@
 PODS:
+  - ImageSlideshow (1.4.1):
+    - ImageSlideshow/Core (= 1.4.1)
+  - ImageSlideshow/Core (1.4.1)
   - SDWebImage (4.2.2):
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
 
 DEPENDENCIES:
+  - ImageSlideshow (~> 1.4)
   - SDWebImage (~> 4.0)
 
 SPEC CHECKSUMS:
+  ImageSlideshow: 1bb0e610e28a71e8936d57265d882f61714a470b
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
 
-PODFILE CHECKSUM: 7d41099b3cdc4683b9f92bbd4192d4063b3f606a
+PODFILE CHECKSUM: ac09b7f8ae874a5ad337bd19970dd3b58a76b28f
 
 COCOAPODS: 1.2.0

@@ -10,5 +10,6 @@ target 'app' do
   # Pods for app
 
 pod 'SDWebImage', '~> 4.0'
+pod 'ImageSlideshow', '~> 1.4'
 
 end
