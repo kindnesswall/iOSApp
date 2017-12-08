@@ -32,6 +32,17 @@
 		05AE64711FA3553100FCCC28 /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE64701FA3553100FCCC28 /* ApiConstants.swift */; };
 		05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE64721FA93F4800FCCC28 /* ApiMethods.swift */; };
 		05BFBBB21FDA5DBF00DBCDDF /* UIFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */; };
+		05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */; };
+		05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */; };
+		05BFBBBA1FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBB61FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib */; };
+		05BFBBBB1FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBB71FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift */; };
+		05BFBBBF1FDA9FCF00DBCDDF /* NavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBBC1FDA9FCE00DBCDDF /* NavigationBarStyle.swift */; };
+		05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBBD1FDA9FCE00DBCDDF /* FlashMessage.swift */; };
+		05BFBBC11FDA9FCF00DBCDDF /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBBE1FDA9FCE00DBCDDF /* DateHelper.swift */; };
+		05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC21FDAA45C00DBCDDF /* Time.swift */; };
+		05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */; };
+		05BFBBC81FDAA4EF00DBCDDF /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */; };
+		05BFBBCA1FDAA53900DBCDDF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC91FDAA53900DBCDDF /* AppFont.swift */; };
 		05DDD3E01F921DCD006C5E31 /* ApiInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */; };
 		05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E11F921E98006C5E31 /* ResponseModel.swift */; };
 		05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E31F921F19006C5E31 /* APIRequest.swift */; };
@@ -67,6 +78,17 @@
 		05AE64701FA3553100FCCC28 /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		05AE64721FA93F4800FCCC28 /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
 		05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFunctions.swift; sourceTree = "<group>"; };
+		05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationEnterPhoneViewController.swift; sourceTree = "<group>"; };
+		05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationEnterVerifyCodeViewController.xib; sourceTree = "<group>"; };
+		05BFBBB61FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationEnterPhoneViewController.xib; sourceTree = "<group>"; };
+		05BFBBB71FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationEnterVerifyCodeViewController.swift; sourceTree = "<group>"; };
+		05BFBBBC1FDA9FCE00DBCDDF /* NavigationBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarStyle.swift; sourceTree = "<group>"; };
+		05BFBBBD1FDA9FCE00DBCDDF /* FlashMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashMessage.swift; sourceTree = "<group>"; };
+		05BFBBBE1FDA9FCE00DBCDDF /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		05BFBBC21FDAA45C00DBCDDF /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
+		05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		05BFBBC91FDAA53900DBCDDF /* AppFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInput.swift; sourceTree = "<group>"; };
 		05DDD3E11F921E98006C5E31 /* ResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		05DDD3E31F921F19006C5E31 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -107,6 +129,7 @@
 		0507C8611F8C1A920084CDF1 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				05BFBBC41FDAA49E00DBCDDF /* app */,
 				05335D471FD0DD7A00601115 /* helper */,
 				05335D421FD0D05C00601115 /* view_controllers */,
 				054B1B581FCC44E3007570EF /* models */,
@@ -130,6 +153,7 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05BFBBB31FDA653400DBCDDF /* login */,
 				05335D431FD0D0A800601115 /* GiftDetailViewController.swift */,
 				05335D441FD0D0A800601115 /* GiftDetailViewController.xib */,
 			);
@@ -139,6 +163,9 @@
 		05335D471FD0DD7A00601115 /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				05BFBBBE1FDA9FCE00DBCDDF /* DateHelper.swift */,
+				05BFBBBD1FDA9FCE00DBCDDF /* FlashMessage.swift */,
+				05BFBBBC1FDA9FCE00DBCDDF /* NavigationBarStyle.swift */,
 				05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */,
 				05335D481FD0DDA200601115 /* SDWebImageSource.swift */,
 			);
@@ -170,8 +197,30 @@
 		054B1B581FCC44E3007570EF /* models */ = {
 			isa = PBXGroup;
 			children = (
+				05BFBBC21FDAA45C00DBCDDF /* Time.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		05BFBBB31FDA653400DBCDDF /* login */ = {
+			isa = PBXGroup;
+			children = (
+				05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */,
+				05BFBBB61FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib */,
+				05BFBBB71FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift */,
+				05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		05BFBBC41FDAA49E00DBCDDF /* app */ = {
+			isa = PBXGroup;
+			children = (
+				05BFBBC91FDAA53900DBCDDF /* AppFont.swift */,
+				05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */,
+				05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */,
+			);
+			path = app;
 			sourceTree = "<group>";
 		};
 		05DDD3DC1F921D03006C5E31 /* API */ = {
@@ -276,6 +325,8 @@
 				054B1B541FCC4101007570EF /* IRANSansMobile_Black.ttf in Resources */,
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
+				05BFBBBA1FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib in Resources */,
+				05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */,
 				054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */,
 				054B1B551FCC4101007570EF /* IRANSansMobile_Medium.ttf in Resources */,
 				056FBB5B1F9135EA0023C9CF /* HomeViewController.xib in Resources */,
@@ -339,19 +390,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				05BFBBB21FDA5DBF00DBCDDF /* UIFunctions.swift in Sources */,
+				05BFBBBF1FDA9FCF00DBCDDF /* NavigationBarStyle.swift in Sources */,
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
 				05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */,
 				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
+				05BFBBC11FDA9FCF00DBCDDF /* DateHelper.swift in Sources */,
+				05BFBBC81FDAA4EF00DBCDDF /* AppColor.swift in Sources */,
+				05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */,
+				05BFBBCA1FDAA53900DBCDDF /* AppFont.swift in Sources */,
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
 				05AE64711FA3553100FCCC28 /* ApiConstants.swift in Sources */,
+				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,
+				05BFBBBB1FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift in Sources */,
 				054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */,
 				0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */,
 				056FBB5E1F913AD70023C9CF /* MyWallViewController.swift in Sources */,
 				05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */,
 				05DDD3E01F921DCD006C5E31 /* ApiInput.swift in Sources */,
 				05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */,
+				05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */,
 				056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */,
 				05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */,
+				05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */,
 				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +492,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -481,6 +542,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

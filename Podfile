@@ -11,5 +11,6 @@ target 'app' do
 
 pod 'SDWebImage', '~> 4.0'
 pod 'ImageSlideshow', '~> 1.4'
+pod 'SwiftMessages'
 
 end

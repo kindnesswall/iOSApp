@@ -5,15 +5,18 @@ PODS:
   - SDWebImage (4.2.2):
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
+  - SwiftMessages (4.1.0)
 
 DEPENDENCIES:
   - ImageSlideshow (~> 1.4)
   - SDWebImage (~> 4.0)
+  - SwiftMessages
 
 SPEC CHECKSUMS:
   ImageSlideshow: 1bb0e610e28a71e8936d57265d882f61714a470b
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
+  SwiftMessages: 1bacc783c8f10bdfdc57c14860cae8a1f1fa6591
 
-PODFILE CHECKSUM: ac09b7f8ae874a5ad337bd19970dd3b58a76b28f
+PODFILE CHECKSUM: 3b18fa9c3f740a59ebf490b831dee81bc182b111
 
 COCOAPODS: 1.2.0

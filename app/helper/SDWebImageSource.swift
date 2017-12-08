@@ -1,11 +1,3 @@
-//
-//  SDWebImageSource.swift
-//  UserShop
-//
-//  Created by Hamed.Gh on 5/17/1396 AP.
-//  Copyright © 1396 aseman. All rights reserved.
-//
-
 import Foundation
 import SDWebImage
 import ImageSlideshow

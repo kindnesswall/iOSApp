@@ -1,10 +1,3 @@
-//
-//  UIFunctions.swift
-//  VOD_Project
-//
-//  Created by AmirHossein on 4/18/17.
-//  Copyright © 2017 Mac. All rights reserved.
-//
 
 import Foundation
 import UIKit
