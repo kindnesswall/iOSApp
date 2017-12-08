@@ -1,10 +1,3 @@
-//
-//  TimeCalculator.swift
-//  iptv
-//
-//  Created by maede on 7/18/17.
-//  Copyright © 2017 aseman. All rights reserved.
-//
 
 import Foundation
 import  UIKit

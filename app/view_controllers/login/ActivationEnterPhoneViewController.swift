@@ -66,7 +66,12 @@ class ActivationEnterPhoneViewController: UIViewController {
         
         self.phoneNumberTextField.backgroundColor=UIColor.clear
         
-        self.phoneNumberTextField.attributedPlaceholder=NSAttributedString(string:"", attributes: [NSAttributedStringKey.font : UIFont(name: "IranSans-Light", size: 13)!,NSAttributedStringKey.foregroundColor: UIColor.gray])
+        let uiFont = UIFont(name: "IRANSansMobile-Medium", size: 13)
+        let attr = [NSAttributedStringKey.font : uiFont!,NSAttributedStringKey.foregroundColor: UIColor.gray]
+        
+        let nsAttr = NSAttributedString(string:"", attributes: attr)
+        
+        self.phoneNumberTextField.attributedPlaceholder = nsAttr
         
         self.registerBtn.backgroundColor=AppColor.tintColor
         

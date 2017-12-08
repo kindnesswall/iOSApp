@@ -35,7 +35,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czN-OU-IcX" userLabel="register Btn">
                             <rect key="frame" x="62" y="293.5" width="250" height="35"/>
-                            <color key="backgroundColor" red="0.2784313725" green="0.52549019610000003" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.47843137254901957" green="0.31372549019607843" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="250" id="Nyk-MW-MDX"/>
                                 <constraint firstAttribute="height" constant="35" id="tPk-6x-9fw"/>
@@ -69,7 +69,7 @@
                         </activityIndicatorView>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="پیغام" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itb-b0-Zz3">
                             <rect key="frame" x="0.0" y="632" width="375" height="35"/>
-                            <color key="backgroundColor" red="0.2784313725" green="0.52549019610000003" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="bHQ-Bs-waa"/>
                             </constraints>

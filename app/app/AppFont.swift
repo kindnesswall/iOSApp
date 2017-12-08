@@ -1,10 +1,3 @@
-//
-//  AppFont.swift
-//  MatchMaking
-//
-//  Created by Amir Hossein on 10/8/17.
-//  Copyright © 2017 aseman. All rights reserved.
-//
 
 import Foundation
 import UIKit

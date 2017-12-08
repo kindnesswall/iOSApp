@@ -43,6 +43,7 @@
 		05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */; };
 		05BFBBC81FDAA4EF00DBCDDF /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */; };
 		05BFBBCA1FDAA53900DBCDDF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC91FDAA53900DBCDDF /* AppFont.swift */; };
+		05BFBBCC1FDB101700DBCDDF /* UIFont+printAllFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */; };
 		05DDD3E01F921DCD006C5E31 /* ApiInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */; };
 		05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E11F921E98006C5E31 /* ResponseModel.swift */; };
 		05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E31F921F19006C5E31 /* APIRequest.swift */; };
@@ -89,6 +90,7 @@
 		05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
 		05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		05BFBBC91FDAA53900DBCDDF /* AppFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+printAllFonts.swift"; sourceTree = "<group>"; };
 		05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInput.swift; sourceTree = "<group>"; };
 		05DDD3E11F921E98006C5E31 /* ResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		05DDD3E31F921F19006C5E31 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		0507C8611F8C1A920084CDF1 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				05BFBBCD1FDB112800DBCDDF /* extenstions */,
 				05BFBBC41FDAA49E00DBCDDF /* app */,
 				05335D471FD0DD7A00601115 /* helper */,
 				05335D421FD0D05C00601115 /* view_controllers */,
@@ -221,6 +224,14 @@
 				05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */,
 			);
 			path = app;
+			sourceTree = "<group>";
+		};
+		05BFBBCD1FDB112800DBCDDF /* extenstions */ = {
+			isa = PBXGroup;
+			children = (
+				05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */,
+			);
+			path = extenstions;
 			sourceTree = "<group>";
 		};
 		05DDD3DC1F921D03006C5E31 /* API */ = {
@@ -408,6 +419,7 @@
 				05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */,
 				05DDD3E01F921DCD006C5E31 /* ApiInput.swift in Sources */,
 				05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */,
+				05BFBBCC1FDB101700DBCDDF /* UIFont+printAllFonts.swift in Sources */,
 				05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */,
 				056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */,
 				05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */,

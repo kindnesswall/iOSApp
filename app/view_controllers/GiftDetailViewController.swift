@@ -27,9 +27,19 @@ class GiftDetailViewController: UIViewController {
     
     @IBOutlet var descriptionlbl: UILabel!
     
+    @IBOutlet var requestBtn: UIButton!
     
     @IBOutlet var slideshow: ImageSlideshow!
     
+    
+    @IBAction func requestBtnClicked(_ sender: Any) {
+        
+        let controller=ActivationEnterPhoneViewController(nibName: "ActivationEnterPhoneViewController", bundle: Bundle(for: ActivationEnterPhoneViewController.self))
+        //            controller.backgroundImage = image
+        let nc = UINavigationController.init(rootViewController: controller)
+        self.tabBarController?.present(nc, animated: true, completion: nil)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

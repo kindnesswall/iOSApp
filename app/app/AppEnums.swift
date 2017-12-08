@@ -1,10 +1,3 @@
-//
-//  AppEnums.swift
-//  iptv
-//
-//  Created by Hamed.Gh on 8/16/1396 AP.
-//  Copyright © 1396 aseman. All rights reserved.
-//
 
 import Foundation
 
