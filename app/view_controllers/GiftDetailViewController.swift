@@ -15,14 +15,37 @@ class GiftDetailViewController: UIViewController {
     var sdWebImageSource:[SDWebImageSource] = []
     var profileImages:[String] = []
 
-    @IBOutlet var giftName: UILabel!
+    @IBOutlet var giftNamelbl: UILabel!
+    
+    @IBOutlet var giftDatelbl: UILabel!
+    
+    @IBOutlet var giftCategory: UILabel!
+    
+    @IBOutlet var giftAddress: UILabel!
+    
+    @IBOutlet var oldOrNewlbl: UILabel!
+    
+    @IBOutlet var descriptionlbl: UILabel!
+    
+    
     @IBOutlet var slideshow: ImageSlideshow!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        giftName.text = gift?.title
+        giftNamelbl.text = gift?.title
+        if let date = gift?.createDateTime {
+        giftDatelbl.text = UIFunctions.CastNumberToPersian(input: date)
+        }
+        giftCategory.text = gift?.category
+        giftAddress.text = gift?.address
+        if let isNew = gift?.isNew, isNew {
+            oldOrNewlbl.text = "نو هست"
+        }else{
+            oldOrNewlbl.text = "دسته دوم هست"
+        }
+        descriptionlbl.text = gift?.description
         
         createSlideShow()
         

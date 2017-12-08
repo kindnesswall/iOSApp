@@ -37,6 +37,7 @@ class Gift: Codable {
     var createDateTime:String?
     var createDate:String?
     var createTime:String?
+    var isNew:Bool?
 }
 
 class RequestModel: Codable {
