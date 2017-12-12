@@ -20,8 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.tabBarController=self.window?.rootViewController as? UITabBarController
         self.tabBarController?.selectedIndex = 1
         
+//        let tab0=self.tabBarController!.viewControllers![0] as! UINavigationController
+//        let controller0=MyWallViewController(nibName: "MyWallViewController", bundle: Bundle(for: MyWallViewController.self))
+//        tab0.pushViewController(controller0, animated: true)
+        
         let tab0=self.tabBarController!.viewControllers![0] as! UINavigationController
-        let controller0=MyWallViewController(nibName: "MyWallViewController", bundle: Bundle(for: MyWallViewController.self))
+        let controller0=RegisterGiftViewController(nibName: "RegisterGiftViewController", bundle: Bundle(for: RegisterGiftViewController.self))
         tab0.pushViewController(controller0, animated: true)
         
         let tab1=self.tabBarController!.viewControllers![1] as! UINavigationController

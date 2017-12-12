@@ -286,7 +286,14 @@ class APIRequest {
     
     //MARK: - Upload
     
-    public static func uploadImageTask(url:String,session:inout Foundation.URLSession?, task: inout URLSessionDataTask?,delegate:URLSessionDelegate,token:String?,image:UIImage?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
+    public static func uploadImageTask(
+        url:String,
+        session:inout Foundation.URLSession?,
+        task: inout URLSessionDataTask?,
+        delegate:URLSessionDelegate,
+        image:UIImage?,
+        complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void)
+    {
         
         task?.cancel()
         session?.invalidateAndCancel()
@@ -297,12 +304,7 @@ class APIRequest {
             var request = URLRequest(url: mainURL)
             request.httpMethod="POST"
             
-            if let token=token {
-                request.setValue(token, forHTTPHeaderField: "token")
-                
-            }
-            
-            
+            request=self.setRequestHeader(request: request)
             
             request.setValue("file.jpg", forHTTPHeaderField: "fileName")
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
