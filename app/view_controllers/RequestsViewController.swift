@@ -10,10 +10,21 @@ import UIKit
 
 class RequestsViewController: UIViewController {
 
+    @IBOutlet var loginView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func loginBtnClicked(_ sender: Any) {
+        
+        let controller=ActivationEnterPhoneViewController(nibName: "ActivationEnterPhoneViewController", bundle: Bundle(for: ActivationEnterPhoneViewController.self))
+        //            controller.backgroundImage = image
+        let nc = UINavigationController.init(rootViewController: controller)
+        self.tabBarController?.present(nc, animated: true, completion: nil)
+        
+    }
+    
     
 }

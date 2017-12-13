@@ -35,9 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let controller1=HomeViewController(nibName: "HomeViewController", bundle: Bundle(for: HomeViewController.self))
         tab1.pushViewController(controller1, animated: true)
         
-        
-        
-    
         return true
     }
 }

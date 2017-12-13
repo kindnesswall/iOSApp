@@ -25,9 +25,7 @@ class RegisterGiftViewController: UIViewController {
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         
-        
         self.present(imagePicker, animated: true, completion: nil)
-        
     }
     
     override func viewDidLoad() {
