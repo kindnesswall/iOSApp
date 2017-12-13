@@ -46,6 +46,8 @@
 		05BFBBCC1FDB101700DBCDDF /* UIFont+printAllFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */; };
 		05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */; };
 		05BFBBD11FE0703500DBCDDF /* RegisterGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */; };
+		05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */; };
+		05BFBBD51FE1C4EE00DBCDDF /* RequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBD31FE1C4EE00DBCDDF /* RequestsViewController.xib */; };
 		05DDD3E01F921DCD006C5E31 /* ApiInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */; };
 		05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E11F921E98006C5E31 /* ResponseModel.swift */; };
 		05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E31F921F19006C5E31 /* APIRequest.swift */; };
@@ -95,6 +97,8 @@
 		05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+printAllFonts.swift"; sourceTree = "<group>"; };
 		05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewController.swift; sourceTree = "<group>"; };
 		05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterGiftViewController.xib; sourceTree = "<group>"; };
+		05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
+		05BFBBD31FE1C4EE00DBCDDF /* RequestsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestsViewController.xib; sourceTree = "<group>"; };
 		05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInput.swift; sourceTree = "<group>"; };
 		05DDD3E11F921E98006C5E31 /* ResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		05DDD3E31F921F19006C5E31 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				05335D441FD0D0A800601115 /* GiftDetailViewController.xib */,
 				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
 				05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */,
+				05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */,
+				05BFBBD31FE1C4EE00DBCDDF /* RequestsViewController.xib */,
 			);
 			path = view_controllers;
 			sourceTree = "<group>";
@@ -345,6 +351,7 @@
 				05BFBBBA1FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib in Resources */,
 				05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */,
 				054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */,
+				05BFBBD51FE1C4EE00DBCDDF /* RequestsViewController.xib in Resources */,
 				054B1B551FCC4101007570EF /* IRANSansMobile_Medium.ttf in Resources */,
 				05BFBBD11FE0703500DBCDDF /* RegisterGiftViewController.xib in Resources */,
 				056FBB5B1F9135EA0023C9CF /* HomeViewController.xib in Resources */,
@@ -411,6 +418,7 @@
 				05BFBBBF1FDA9FCF00DBCDDF /* NavigationBarStyle.swift in Sources */,
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
 				05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */,
+				05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */,
 				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
 				05BFBBC11FDA9FCF00DBCDDF /* DateHelper.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,
