@@ -12,12 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    static let uDStandard = UserDefaults.standard
+    let uDStandard = UserDefaults.standard
+    
     public var tabBarController:UITabBarController?
 
     static func clearUserDefault() {
         let domain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: domain)
-        UserDefaults.standard.synchronize()
+        uDStandard.removePersistentDomain(forName: domain)
+        uDStandard.synchronize()
         
         print("clearUserDefault : ")
         print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
@@ -40,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabs[TabIndex.MyKindnessWall].pushViewController(controller3, animated: true)
             
             self.tabBarController?.viewControllers = tabs
+            self.tabBarController?.selectedIndex = 0
         } else {
             print("There is something wrong with tabbar controller")
         }
@@ -48,12 +52,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        self.tabBarController=self.window?.rootViewController as? UITabBarController
-        self.tabBarController?.selectedIndex = 0
+        showTabbar()
         
-        pushViewControllersIntoTabs()
+        if uDStandard.bool(forKey: AppConstants.WATCHED_INTRO) {
+            showIntro()
+            uDStandard.set(true, forKey: AppConstants.WATCHED_INTRO)
+        }
         
         return true
+    }
+    
+    func showTabbar()  {
+        
+        self.tabBarController=self.window?.rootViewController as? UITabBarController
+        
+        pushViewControllersIntoTabs()
+    }
+    
+    func showIntro() {
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as! IntroViewController
+        self.tabBarController?.present(viewController, animated: true, completion: nil)
+
     }
 }
 

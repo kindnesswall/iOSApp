@@ -13,8 +13,8 @@ class MyKindnessWallViewController: UIViewController {
     @IBOutlet var logoutBtn: UIButton!
     
     @IBAction func logoutBtnClicked(_ sender: Any) {
-        
-        AppDelegate.clearUserDefault()
+        AppDelegate.me().showIntro()
+        //AppDelegate.clearUserDefault()
         
     }
     

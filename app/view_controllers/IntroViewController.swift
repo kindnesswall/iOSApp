@@ -12,17 +12,22 @@ import SwiftyOnboard
 class IntroViewController: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
-    let colors:[UIColor] = [#colorLiteral(red: 0.9980840087, green: 0.3723873496, blue: 0.4952875376, alpha: 1),#colorLiteral(red: 0.2666860223, green: 0.5116362572, blue: 1, alpha: 1),#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)]
+    let colors:[UIColor] = [#colorLiteral(red: 0.9980840087, green: 0.3723873496, blue: 0.4952875376, alpha: 1),#colorLiteral(red: 0.2666860223, green: 0.5116362572, blue: 1, alpha: 1),#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1),#colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)]
     var titleArray: [String] = [
         "فرهنگ دیوار مهربانی",
         "با همکاری دونیت",
         "همیشه رایگان",
         "متن باز"
     ]
-    
+    var subTitleArray2: [String] = [
+    "",
+    "",
+    "",
+    ""
+        ]
     var subTitleArray: [String] = [
         "نیاز داری، بردار. نیاز نداری، بذار :)",
-        "دونِیت یک پلتفرم جذب سرمایه جمعی ایرانی است که در حال حاضر بر روی تامین سرمایه پروژه هایی که تاثیرات اجتماعی دارند، تمرکز کرده است.\n" +
+        "دونِیت یک پلتفرم جذب سرمایه جمعی ایرانی است که در حال حاضر بر روی تامین سرمایه پروژه هایی که تاثیرات اجتماعی دارند، تمرکز کرده است.\n" ,
         "برنامه دیوار مهربانی برای همیشه رایگان خواهد ماند؛ بدون هر گونه تبلیغات.",
         "کدهای برنامه همیشه در دسترس برنامه نویسان خواهد بود."
  ]
@@ -39,10 +44,12 @@ class IntroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         gradient()
         UIApplication.shared.statusBarStyle = .lightContent
         
         swiftyOnboard = SwiftyOnboard(frame: view.frame, style: .light)
+        
         view.addSubview(swiftyOnboard)
         swiftyOnboard.dataSource = self
         swiftyOnboard.delegate = self
@@ -54,13 +61,18 @@ class IntroViewController: UIViewController {
         view.layer.addSublayer(gradiant)
     }
     
-    func handleSkip() {
-        swiftyOnboard?.goToPage(index: 2, animated: true)
+    @objc func handleSkip() {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func handleContinue(sender: UIButton) {
+    @objc func handleContinue(sender: UIButton) {
         let index = sender.tag
-        swiftyOnboard?.goToPage(index: index + 1, animated: true)
+        if index == titleArray.count-1 {
+//            AppDelegate.me().showTabbar()
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            swiftyOnboard?.goToPage(index: index + 1, animated: true)
+        }
     }
 }
 
@@ -68,7 +80,7 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
     
     func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int {
         //Number of pages in the onboarding:
-        return 3
+        return titleArray.count
     }
     
     func swiftyOnboardBackgroundColorFor(_ swiftyOnboard: SwiftyOnboard, atIndex index: Int) -> UIColor? {
@@ -80,11 +92,11 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         let view = SwiftyOnboardPage()
         
         //Set the image on the page:
-        view.imageView.image = UIImage(named: "onboard\(index)")
+        view.imageView.image = UIImage(named: "intro_img_\(index)")
         
         //Set the font and color for the labels:
         view.title.font = AppFont.getBoldFont(size: 22)
-        view.subTitle.font = AppFont.getRegularFont(size: 16)
+        view.subTitle.font = AppFont.getRegularFont(size: 20)
         
         //Set the text in the page:
         view.title.text = titleArray[index]
@@ -102,10 +114,10 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         overlay.continueButton.addTarget(self, action: #selector(handleContinue), for: .touchUpInside)
         
         //Setup for the overlay buttons:
-        overlay.continueButton.titleLabel?.font = UIFont(name: "Lato-Bold", size: 16)
+        overlay.continueButton.titleLabel?.font = AppFont.getBoldFont(size: 16)
         overlay.continueButton.setTitleColor(UIColor.white, for: .normal)
         overlay.skipButton.setTitleColor(UIColor.white, for: .normal)
-        overlay.skipButton.titleLabel?.font = UIFont(name: "Lato-Heavy", size: 16)
+        overlay.skipButton.titleLabel?.font = AppFont.getRegularFont(size: 16)
         
         //Return the overlay view:
         return overlay
@@ -117,12 +129,12 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         print(Int(currentPage))
         overlay.continueButton.tag = Int(position)
         
-        if currentPage == 0.0 || currentPage == 1.0 {
-            overlay.continueButton.setTitle("Continue", for: .normal)
-            overlay.skipButton.setTitle("Skip", for: .normal)
+        if Int(currentPage) < titleArray.count-1 {
+            overlay.continueButton.setTitle("بله", for: .normal)
+            overlay.skipButton.setTitle("بگذر", for: .normal)
             overlay.skipButton.isHidden = false
         } else {
-            overlay.continueButton.setTitle("Get Started!", for: .normal)
+            overlay.continueButton.setTitle("بریم داخل اپلیکیشن!", for: .normal)
             overlay.skipButton.isHidden = true
         }
     }

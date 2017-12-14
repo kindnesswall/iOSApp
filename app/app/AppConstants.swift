@@ -20,6 +20,8 @@ class AppConstants {
     public static let IS_ACTIVE:String = "IS_ACTIVE"
     public static let USERNAME:String = "username"
     
+    public static let WATCHED_INTRO:String = "watched_intro"
+
     public static let LastViewdUpdateVersion:String = "LastViewdUpdateVersion"
     
 }
