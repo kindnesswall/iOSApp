@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C8F52D7076CF93329216571C4420C85F'
-               BlueprintName = 'Pods-app'
+               BlueprintIdentifier = '163C56C969E65B357C708EE69DFA2E5E'
+               BlueprintName = 'SwiftyOnboard'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods-app.framework'>
+               BuildableName = 'SwiftyOnboard.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
