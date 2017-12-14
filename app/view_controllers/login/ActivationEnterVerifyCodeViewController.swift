@@ -68,10 +68,6 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     @IBAction func registerBtnClick(_ sender: Any) {
         
-        guard let requestId:String = self.requestId else{
-            return
-        }
-        
         let activationCode:String = verifyCodeTextField.text!
         
         if activationCode.count <= 0 {
@@ -84,10 +80,6 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
             return
         }
         
-        guard let _=userDefault.string(forKey: AppConstants.USER_TOKEN) else {
-            return
-        }
-        
         guard let mobile = userDefault.string(forKey: AppConstants.PHONE_NUMBER) else {
             FlashMessage.showMessage(body: "شماره تلفن را مجدد وارد کنید", theme: .error)
             return
@@ -97,6 +89,36 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         registerLoading.startAnimating()
         
         ApiMethods.login(mobile: mobile, verificationCode: activationCode) { (data, urlResponse, error) in
+            
+            self.registerBtn.setTitle("ثبت کد فعالسازی", for: [])
+            self.registerLoading.stopAnimating()
+            
+            if let response = urlResponse as? HTTPURLResponse {
+                if response.statusCode < 200 && response.statusCode >= 300 {
+                    return
+                }
+            }
+            guard error == nil else {
+                print("Get error register")
+                return
+            }
+            
+            APIRequest.logReply(data: data)
+
+            if let reply=APIRequest.readJsonData(data: data, outpuType: TokenOutput.self) {
+                
+                if let userId = reply.userId {
+                    self.userDefault.set(userId, forKey: AppConstants.USER_ID)
+                }
+                if let userName = reply.userName {
+                    self.userDefault.set(userName, forKey: AppConstants.USERNAME)
+                }
+                if let token = reply.access_token {
+                    self.userDefault.set(
+                        AppConstants.BEARER + " " + token, forKey: AppConstants.USER_TOKEN)
+                }
+                
+            }
             
             self.dismiss(animated: true, completion: {
                 

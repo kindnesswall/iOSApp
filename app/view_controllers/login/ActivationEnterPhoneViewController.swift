@@ -107,7 +107,13 @@ class ActivationEnterPhoneViewController: UIViewController {
             let controller=ActivationEnterVerifyCodeViewController(nibName: "ActivationEnterVerifyCodeViewController", bundle:
                 Bundle(for: ActivationEnterVerifyCodeViewController.self))
             
-            controller.setCloseComplition(closeComplition: self.closeComplition)
+            controller.setCloseComplition {
+                self.closeComplition?()
+            }
+            controller.setSubmitComplition { (str) in
+                self.submitComplition?(str)
+            }
+            
             if mobile != "" {
                 controller.mobile=mobile
             }

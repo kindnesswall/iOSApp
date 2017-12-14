@@ -51,6 +51,12 @@
 		05BFBBD71FE1D6FE00DBCDDF /* String+isNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */; };
 		05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD81FE24C4D00DBCDDF /* AppConstants.swift */; };
 		05BFBBDB1FE24C6E00DBCDDF /* TabIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBDA1FE24C6E00DBCDDF /* TabIndex.swift */; };
+		05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBDD1FE26A9000DBCDDF /* Gift.swift */; };
+		05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBDF1FE26ADE00DBCDDF /* User.swift */; };
+		05BFBBE21FE26B0500DBCDDF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBE11FE26B0500DBCDDF /* Category.swift */; };
+		05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBE31FE26B4C00DBCDDF /* Request.swift */; };
+		05BFBBE91FE2755E00DBCDDF /* MyKindnessWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBE71FE2755E00DBCDDF /* MyKindnessWallViewController.swift */; };
+		05BFBBEA1FE2755E00DBCDDF /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */; };
 		05DDD3E01F921DCD006C5E31 /* ApiInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */; };
 		05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E11F921E98006C5E31 /* ResponseModel.swift */; };
 		05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E31F921F19006C5E31 /* APIRequest.swift */; };
@@ -105,6 +111,12 @@
 		05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isNumber.swift"; sourceTree = "<group>"; };
 		05BFBBD81FE24C4D00DBCDDF /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		05BFBBDA1FE24C6E00DBCDDF /* TabIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabIndex.swift; sourceTree = "<group>"; };
+		05BFBBDD1FE26A9000DBCDDF /* Gift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gift.swift; sourceTree = "<group>"; };
+		05BFBBDF1FE26ADE00DBCDDF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		05BFBBE11FE26B0500DBCDDF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		05BFBBE31FE26B4C00DBCDDF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		05BFBBE71FE2755E00DBCDDF /* MyKindnessWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKindnessWallViewController.swift; sourceTree = "<group>"; };
+		05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyKindnessWallViewController.xib; sourceTree = "<group>"; };
 		05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInput.swift; sourceTree = "<group>"; };
 		05DDD3E11F921E98006C5E31 /* ResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		05DDD3E31F921F19006C5E31 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -152,7 +164,7 @@
 				054B1B581FCC44E3007570EF /* models */,
 				054B1B4B1FCC3B60007570EF /* fonts */,
 				054B1B461FCC29B3007570EF /* views */,
-				05DDD3DC1F921D03006C5E31 /* API */,
+				05DDD3DC1F921D03006C5E31 /* api */,
 				0507C8691F8C1A920084CDF1 /* Assets.xcassets */,
 				0507C86E1F8C1A920084CDF1 /* Info.plist */,
 				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
@@ -177,6 +189,8 @@
 				05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */,
 				05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */,
 				05BFBBD31FE1C4EE00DBCDDF /* RequestsViewController.xib */,
+				05BFBBE71FE2755E00DBCDDF /* MyKindnessWallViewController.swift */,
+				05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */,
 			);
 			path = view_controllers;
 			sourceTree = "<group>";
@@ -219,6 +233,10 @@
 			isa = PBXGroup;
 			children = (
 				05BFBBC21FDAA45C00DBCDDF /* Time.swift */,
+				05BFBBDD1FE26A9000DBCDDF /* Gift.swift */,
+				05BFBBDF1FE26ADE00DBCDDF /* User.swift */,
+				05BFBBE11FE26B0500DBCDDF /* Category.swift */,
+				05BFBBE31FE26B4C00DBCDDF /* Request.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -255,18 +273,26 @@
 			path = extenstions;
 			sourceTree = "<group>";
 		};
-		05DDD3DC1F921D03006C5E31 /* API */ = {
+		05BFBBDC1FE26A3300DBCDDF /* api_output */ = {
 			isa = PBXGroup;
 			children = (
+				05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */,
+			);
+			path = api_output;
+			sourceTree = "<group>";
+		};
+		05DDD3DC1F921D03006C5E31 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				05BFBBDC1FE26A3300DBCDDF /* api_output */,
 				05DDD3E31F921F19006C5E31 /* APIRequest.swift */,
 				05DDD3E11F921E98006C5E31 /* ResponseModel.swift */,
 				056FBB601F91585C0023C9CF /* APIURLs.swift */,
 				05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */,
-				05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */,
 				05AE64701FA3553100FCCC28 /* ApiConstants.swift */,
 				05AE64721FA93F4800FCCC28 /* ApiMethods.swift */,
 			);
-			path = API;
+			path = api;
 			sourceTree = "<group>";
 		};
 		25DFDC1FF039F0C732878131 /* Frameworks */ = {
@@ -352,6 +378,7 @@
 				054B1B4A1FCC29F6007570EF /* GiftTableViewCell.xib in Resources */,
 				054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */,
 				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
+				05BFBBEA1FE2755E00DBCDDF /* MyKindnessWallViewController.xib in Resources */,
 				056FBB5F1F913AD70023C9CF /* MyWallViewController.xib in Resources */,
 				054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */,
 				054B1B541FCC4101007570EF /* IRANSansMobile_Black.ttf in Resources */,
@@ -427,13 +454,17 @@
 				05BFBBBF1FDA9FCF00DBCDDF /* NavigationBarStyle.swift in Sources */,
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
 				05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */,
+				05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */,
 				05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */,
 				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
+				05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */,
 				05BFBBC11FDA9FCF00DBCDDF /* DateHelper.swift in Sources */,
+				05BFBBE91FE2755E00DBCDDF /* MyKindnessWallViewController.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,
 				05BFBBC81FDAA4EF00DBCDDF /* AppColor.swift in Sources */,
 				05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */,
 				05BFBBCA1FDAA53900DBCDDF /* AppFont.swift in Sources */,
+				05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */,
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
 				05AE64711FA3553100FCCC28 /* ApiConstants.swift in Sources */,
 				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,
@@ -453,6 +484,7 @@
 				05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */,
 				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
 				05BFBBD71FE1D6FE00DBCDDF /* String+isNumber.swift in Sources */,
+				05BFBBE21FE26B0500DBCDDF /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

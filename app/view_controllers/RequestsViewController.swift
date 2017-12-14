@@ -21,6 +21,14 @@ class RequestsViewController: UIViewController {
         
         let controller=ActivationEnterPhoneViewController(nibName: "ActivationEnterPhoneViewController", bundle: Bundle(for: ActivationEnterPhoneViewController.self))
         //            controller.backgroundImage = image
+        
+        controller.setCloseComplition {
+            
+        }
+        controller.setSubmitComplition { (str) in
+            
+        }
+        
         let nc = UINavigationController.init(rootViewController: controller)
         self.tabBarController?.present(nc, animated: true, completion: nil)
         

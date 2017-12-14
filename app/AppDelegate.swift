@@ -14,11 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     public var tabBarController:UITabBarController?
 
+    static func clearUserDefault() {
+        
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         self.tabBarController=self.window?.rootViewController as? UITabBarController
-        self.tabBarController?.selectedIndex = 2
+        self.tabBarController?.selectedIndex = 0
             
         
         let tab0=self.tabBarController!.viewControllers![1] as! UINavigationController
