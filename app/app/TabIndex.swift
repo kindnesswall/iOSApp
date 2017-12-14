@@ -10,10 +10,9 @@ import Foundation
 
 class TabIndex {
     
-    public static let HOME:Int = 4
-    public static let TV:Int = 3
-    public static let VOD_AOD:Int = 2
-    public static let SEARCH:Int = 1
-    public static let ACCOUNT:Int = 0
+    public static let HOME:Int = 3
+    public static let RegisterGift:Int = 2
+    public static let Requests:Int = 1
+    public static let MyKindnessWall:Int = 0
     
 }

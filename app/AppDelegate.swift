@@ -18,24 +18,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func pushViewControllersIntoTabs()  {
+        if var tabs = self.tabBarController?.viewControllers as? [UINavigationController] {
+            
+            // Tab0
+            let controller0=RegisterGiftViewController(nibName: "RegisterGiftViewController", bundle: Bundle(for: RegisterGiftViewController.self))
+            tabs[TabIndex.RegisterGift].pushViewController(controller0, animated: true)
+            
+            let controller1=RequestsViewController(nibName: "RequestsViewController", bundle: Bundle(for: RequestsViewController.self))
+            tabs[TabIndex.Requests].pushViewController(controller1, animated: true)
+            
+            let controller2=HomeViewController(nibName: "HomeViewController", bundle: Bundle(for: HomeViewController.self))
+            tabs[TabIndex.HOME].pushViewController(controller2, animated: true)
+            
+            let controller3=MyKindnessWallViewController(nibName: "MyKindnessWallViewController", bundle: Bundle(for: MyKindnessWallViewController.self))
+            tabs[TabIndex.MyKindnessWall].pushViewController(controller3, animated: true)
+            
+            self.tabBarController?.viewControllers = tabs
+        } else {
+            print("There is something wrong with tabbar controller")
+        }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         self.tabBarController=self.window?.rootViewController as? UITabBarController
         self.tabBarController?.selectedIndex = 0
             
-        
-        let tab0=self.tabBarController!.viewControllers![1] as! UINavigationController
-        let controller0=RegisterGiftViewController(nibName: "RegisterGiftViewController", bundle: Bundle(for: RegisterGiftViewController.self))
-        tab0.pushViewController(controller0, animated: true)
-        
-        let tab2=self.tabBarController!.viewControllers![0] as! UINavigationController
-        let controller2=RequestsViewController(nibName: "RequestsViewController", bundle: Bundle(for: RequestsViewController.self))
-        tab2.pushViewController(controller2, animated: true)
-        
-        let tab1=self.tabBarController!.viewControllers![2] as! UINavigationController
-        let controller1=HomeViewController(nibName: "HomeViewController", bundle: Bundle(for: HomeViewController.self))
-        tab1.pushViewController(controller1, animated: true)
+        pushViewControllersIntoTabs()
         
         return true
     }

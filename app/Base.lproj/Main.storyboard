@@ -19,9 +19,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="dIc-UX-04e" kind="relationship" relationship="viewControllers" id="pXE-MG-S9I"/>
-                        <segue destination="1Dw-OM-lRS" kind="relationship" relationship="viewControllers" id="0Ak-VS-aKv"/>
-                        <segue destination="v24-Mi-6dR" kind="relationship" relationship="viewControllers" id="86g-22-6Ux"/>
+                        <segue destination="LeQ-FY-e8B" kind="relationship" relationship="viewControllers" id="n7c-Dv-N3d"/>
+                        <segue destination="dIc-UX-04e" kind="relationship" relationship="viewControllers" id="fSF-dx-LJT"/>
+                        <segue destination="1Dw-OM-lRS" kind="relationship" relationship="viewControllers" id="h6L-EE-pdY"/>
+                        <segue destination="v24-Mi-6dR" kind="relationship" relationship="viewControllers" id="gUY-sO-bkz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4jz-SM-uRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -57,6 +58,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffh-7M-aeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-436" y="987"/>
+        </scene>
+        <!--دیوار من-->
+        <scene sceneID="WBK-h8-VGF">
+            <objects>
+                <navigationController id="LeQ-FY-e8B" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="دیوار من" id="Giq-yA-iw8"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="amh-7K-A96">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9I0-ke-rmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="495" y="991"/>
         </scene>
         <!--خانه-->
         <scene sceneID="49l-z7-VEd">
