@@ -61,7 +61,8 @@ class RequestsViewController: UIViewController {
             
         }
         controller.setSubmitComplition { (str) in
-            
+            loginView.isHidden = true
+            requestView.isHidden = false
         }
         
         let nc = UINavigationController.init(rootViewController: controller)

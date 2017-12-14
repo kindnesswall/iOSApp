@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */; };
+		05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029EC81FE334C5004D96B1 /* RequestToAGiftViewController.swift */; };
+		05029ECB1FE334C5004D96B1 /* RequestToAGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05029EC91FE334C5004D96B1 /* RequestToAGiftViewController.xib */; };
 		0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0507C8621F8C1A920084CDF1 /* AppDelegate.swift */; };
 		0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0507C8641F8C1A920084CDF1 /* ViewController.swift */; };
 		0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8661F8C1A920084CDF1 /* Main.storyboard */; };
@@ -67,6 +69,8 @@
 /* Begin PBXFileReference section */
 		006A9055ED7D4288198332F6 /* Pods-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.debug.xcconfig"; sourceTree = "<group>"; };
 		05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+getMe.swift"; sourceTree = "<group>"; };
+		05029EC81FE334C5004D96B1 /* RequestToAGiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestToAGiftViewController.swift; sourceTree = "<group>"; };
+		05029EC91FE334C5004D96B1 /* RequestToAGiftViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestToAGiftViewController.xib; sourceTree = "<group>"; };
 		0507C85F1F8C1A920084CDF1 /* app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0507C8621F8C1A920084CDF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0507C8641F8C1A920084CDF1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05029EC71FE33498004D96B1 /* requests */ = {
+			isa = PBXGroup;
+			children = (
+				05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */,
+				05BFBBD31FE1C4EE00DBCDDF /* RequestsViewController.xib */,
+				05029EC81FE334C5004D96B1 /* RequestToAGiftViewController.swift */,
+				05029EC91FE334C5004D96B1 /* RequestToAGiftViewController.xib */,
+			);
+			path = requests;
+			sourceTree = "<group>";
+		};
 		0507C8561F8C1A920084CDF1 = {
 			isa = PBXGroup;
 			children = (
@@ -184,14 +199,13 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05029EC71FE33498004D96B1 /* requests */,
 				05BFBBB31FDA653400DBCDDF /* login */,
 				05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */,
 				05335D431FD0D0A800601115 /* GiftDetailViewController.swift */,
 				05335D441FD0D0A800601115 /* GiftDetailViewController.xib */,
 				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
 				05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */,
-				05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */,
-				05BFBBD31FE1C4EE00DBCDDF /* RequestsViewController.xib */,
 				05BFBBE71FE2755E00DBCDDF /* MyKindnessWallViewController.swift */,
 				05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */,
 			);
@@ -385,6 +399,7 @@
 				056FBB5F1F913AD70023C9CF /* MyWallViewController.xib in Resources */,
 				054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */,
 				054B1B541FCC4101007570EF /* IRANSansMobile_Black.ttf in Resources */,
+				05029ECB1FE334C5004D96B1 /* RequestToAGiftViewController.xib in Resources */,
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
 				05BFBBBA1FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib in Resources */,
@@ -486,6 +501,7 @@
 				05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */,
 				05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */,
+				05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */,
 				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
 				05BFBBD71FE1D6FE00DBCDDF /* String+isNumber.swift in Sources */,
 				05BFBBE21FE26B0500DBCDDF /* Category.swift in Sources */,

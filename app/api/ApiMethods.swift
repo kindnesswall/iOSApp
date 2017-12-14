@@ -41,6 +41,17 @@ class ApiMethods {
         })
     }
     
+    public static func getRecievedRequestList(giftId:String, startIndex:Int, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
+        
+        let mainURL: String =
+            APIURLs.getRecievedRequestList + "/\(giftId)/\(startIndex)/\(startIndex+offset)"
+        
+        APIRequest.Request(url: mainURL, httpMethod: .get, complitionHandler: { (data, response, error) in
+            
+            completionHandler(data, response, error)
+        })
+    }
+    
     public static func register(telephone:String, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
         
         let mainURL: String = APIURLs.register + telephone
