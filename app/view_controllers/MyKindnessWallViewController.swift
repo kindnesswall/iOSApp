@@ -10,6 +10,14 @@ import UIKit
 
 class MyKindnessWallViewController: UIViewController {
 
+    @IBOutlet var logoutBtn: UIButton!
+    
+    @IBAction func logoutBtnClicked(_ sender: Any) {
+        
+        AppDelegate.clearUserDefault()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

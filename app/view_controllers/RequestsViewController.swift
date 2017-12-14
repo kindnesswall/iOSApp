@@ -10,11 +10,24 @@ import UIKit
 
 class RequestsViewController: UIViewController {
 
+    @IBOutlet var requestView: UIView!
     @IBOutlet var loginView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        guard let _ = UserDefaults.standard.string(forKey: AppConstants.USER_TOKEN) else{
+            loginView.isHidden = false
+            requestView.isHidden = true
+            return
+        }
+        
     }
     
     @IBAction func loginBtnClicked(_ sender: Any) {

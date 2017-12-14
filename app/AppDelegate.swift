@@ -15,7 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public var tabBarController:UITabBarController?
 
     static func clearUserDefault() {
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
         
+        print("clearUserDefault : ")
+        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
     }
     
     func pushViewControllersIntoTabs()  {
@@ -45,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.tabBarController=self.window?.rootViewController as? UITabBarController
         self.tabBarController?.selectedIndex = 0
-            
+        
         pushViewControllersIntoTabs()
         
         return true

@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RequestsViewController" customModule="app" customModuleProvider="target">
             <connections>
                 <outlet property="loginView" destination="baN-uC-y3m" id="47z-9V-GlU"/>
+                <outlet property="requestView" destination="BXB-Tl-t87" id="Ra4-vY-3qa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,7 +26,23 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baN-uC-y3m">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXB-Tl-t87" userLabel="RequestView">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="درخواستها" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O74-Tq-o7Q">
+                            <rect key="frame" x="153" y="313" width="68.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="O74-Tq-o7Q" firstAttribute="centerY" secondItem="BXB-Tl-t87" secondAttribute="centerY" id="2g6-ZR-LPB"/>
+                        <constraint firstItem="O74-Tq-o7Q" firstAttribute="centerX" secondItem="BXB-Tl-t87" secondAttribute="centerX" id="xok-uc-IxL"/>
+                    </constraints>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baN-uC-y3m">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="برای مشاهده درخواست ها باید شماره تلفن خودتون رو وارد کنید" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sm-s1-4cP">
@@ -61,9 +78,13 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="baN-uC-y3m" secondAttribute="bottom" id="5QB-PM-TDI"/>
+                <constraint firstItem="BXB-Tl-t87" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Boe-p3-OX0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="baN-uC-y3m" secondAttribute="trailing" id="YsA-60-Hhs"/>
+                <constraint firstItem="BXB-Tl-t87" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="c2v-vs-v7G"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BXB-Tl-t87" secondAttribute="trailing" id="cgP-Th-zAr"/>
                 <constraint firstItem="baN-uC-y3m" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dIm-sw-H6e"/>
                 <constraint firstItem="baN-uC-y3m" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jXd-gB-gBb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="BXB-Tl-t87" secondAttribute="bottom" id="n3Q-ha-QGZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
