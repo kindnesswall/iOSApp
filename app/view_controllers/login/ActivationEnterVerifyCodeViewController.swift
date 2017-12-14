@@ -90,8 +90,10 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         
         ApiMethods.login(mobile: mobile, verificationCode: activationCode) { (data, urlResponse, error) in
             
-            self.registerBtn.setTitle("ثبت کد فعالسازی", for: [])
-            self.registerLoading.stopAnimating()
+            DispatchQueue.main.async {
+                self.registerBtn.setTitle("ثبت کد فعالسازی", for: [])
+                self.registerLoading.stopAnimating()
+            }
             
             if let response = urlResponse as? HTTPURLResponse {
                 if response.statusCode < 200 && response.statusCode >= 300 {
@@ -115,7 +117,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                 }
                 if let token = reply.access_token {
                     self.userDefault.set(
-                        AppConstants.BEARER + " " + token, forKey: AppConstants.USER_TOKEN)
+                        AppConstants.BEARER + " " + token, forKey: AppConstants.Authorization)
                 }
                 
             }

@@ -12,7 +12,6 @@ class AppConstants {
     
     public static let BEARER:String = "bearer"
     
-    public static let USER_TOKEN:String = "USER_TOKEN"
     public static let USER_ID:String = "USER_ID"
 
     public static let PUSH_TOKEN:String = "PUSH_TOKEN"
@@ -23,6 +22,14 @@ class AppConstants {
     public static let WATCHED_INTRO:String = "watched_intro"
 
     public static let LastViewdUpdateVersion:String = "LastViewdUpdateVersion"
+    
+    static let Phone:String = "Phone"
+    static let Authorization:String = "Authorization"
+    static let Username:String = "username"
+    static let Password:String = "password"
+    static let DeviceId:String = "deviceId"
+    static let RegisterationId:String = "registerationId"
+    static let ContentType:String = "content-type"
     
 }
 

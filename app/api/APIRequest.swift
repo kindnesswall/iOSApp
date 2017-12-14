@@ -131,8 +131,8 @@ class APIRequest {
         returnRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let userDefault = UserDefaults.standard
-        if let token = userDefault.string(forKey: ApiConstants.Authorization) {
-            returnRequest.setValue(token, forHTTPHeaderField: ApiConstants.Authorization)
+        if let token = userDefault.string(forKey: AppConstants.Authorization) {
+            returnRequest.setValue(token, forHTTPHeaderField: AppConstants.Authorization)
         }
         return returnRequest
         

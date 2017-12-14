@@ -18,10 +18,10 @@ class ApiMethods {
         let deviceId:String = "352136066349321"
         
         var formKeyValue:[String:String] = [
-            ApiConstants.Username:mobile,
-            ApiConstants.Password:verificationCode,
-            ApiConstants.RegisterationId:regId,
-            ApiConstants.DeviceId:deviceId,
+            AppConstants.Username:mobile,
+            AppConstants.Password:verificationCode,
+            AppConstants.RegisterationId:regId,
+            AppConstants.DeviceId:deviceId,
             "grant_type":"password"]
         
         let url:String = APIURLs.login
@@ -31,12 +31,22 @@ class ApiMethods {
         }
     }
     
+    public static func getRequestsMyGifts(startIndex:Int, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
+        
+        let mainURL: String = APIURLs.getRequestsMyGifts + "/" + "\(startIndex)/\(startIndex+offset)"
+        
+        APIRequest.Request(url: mainURL, httpMethod: .get, complitionHandler: { (data, response, error) in
+            
+            completionHandler(data, response, error)
+        })
+    }
+    
     public static func register(telephone:String, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
         
         let mainURL: String = APIURLs.register + telephone
         
         let userDefaults = UserDefaults.standard
-        userDefaults.set(telephone, forKey: ApiConstants.Phone)
+        userDefaults.set(telephone, forKey: AppConstants.Phone)
         userDefaults.synchronize()
         
         APIRequest.Request(url: mainURL, httpMethod: .post, complitionHandler: { (data, response, error) in
@@ -193,4 +203,6 @@ class ApiMethods {
             completionHandler(data)
         }
     }
+    
+    
 }

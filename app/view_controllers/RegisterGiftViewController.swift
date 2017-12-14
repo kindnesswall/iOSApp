@@ -45,7 +45,7 @@ extension RegisterGiftViewController:UIImagePickerControllerDelegate{
             self.selectedImage.image = selectedImage
         }
         
-        if let token=UserDefaults.standard.string(forKey: AppConstants.USER_TOKEN) {
+        if let token=UserDefaults.standard.string(forKey: AppConstants.Authorization) {
             APIRequest.uploadImageTask(url: APIURLs.Upload, session: &uploadSession, task: &uploadTask,delegate:self, image: selectedImage, complitionHandler: { [weak self] (data, response, error) in
                 
                 print("hey :: ::")
