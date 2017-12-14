@@ -4,12 +4,12 @@ import UIKit
 
 class AppFont {
     static func getRegularFont(size:CGFloat)->UIFont {
-        return UIFont(name: "IranSans", size: size)!
+        return UIFont(name: "IRANSansMobile", size: size)!
     }
     static func getLightFont(size:CGFloat)->UIFont {
-        return UIFont(name: "IranSans-Light", size: size)!
+        return UIFont(name: "IRANSansMobile-Light", size: size)!
     }
     static func getBoldFont(size:CGFloat)->UIFont {
-        return UIFont(name: "IranSans-Bold", size: size)!
+        return UIFont(name: "IRANSansMobile-Bold", size: size)!
     }
 }

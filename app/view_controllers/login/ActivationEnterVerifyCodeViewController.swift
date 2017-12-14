@@ -88,9 +88,23 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
             return
         }
         
+        guard let mobile = userDefault.string(forKey: AppConstants.PHONE_NUMBER) else {
+            FlashMessage.showMessage(body: "شماره تلفن را مجدد وارد کنید", theme: .error)
+            return
+        }
+        
         registerBtn.setTitle("", for: [])
         registerLoading.startAnimating()
         
+        ApiMethods.login(mobile: mobile, verificationCode: activationCode) { (data, urlResponse, error) in
+            
+            self.dismiss(animated: true, completion: {
+                
+                self.submitComplition?("")
+                
+            })
+            
+        }
 //        APIRequest.request(
 //            url: APIURLs.activateUser,
 //            inputJson: ["request_id":requestId,"activation_code":activationCode]
@@ -122,18 +136,40 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     }
     
     @IBAction func sendAgainBtnClick(_ sender: Any) {
-        let username:String = userDefault.string(forKey: AppConstants.USERNAME) ?? ""
         
         self.sendAgainBtn.setTitle("", for: [])
         self.resendLoading.startAnimating()
         
-        var input:[String:String]?
-        if let mobile=self.mobile {
-            input=["username":username,"mobile":mobile]
-        } else {
-            input=["username":username]
+        guard let mobile = userDefault.string(forKey: AppConstants.PHONE_NUMBER) else {
+            FlashMessage.showMessage(body: "شماره تلفن را مجدد وارد کنید", theme: .error)
+            return
         }
         
+        ApiMethods.register(telephone: mobile) { (data, response, error) in
+            
+            self.sendAgainBtn.setTitle("دریافت مجدد کد فعالسازی", for: [])
+            self.resendLoading.stopAnimating()
+            
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode < 200 && response.statusCode >= 300 {
+                    return
+                }
+            }
+            guard error == nil else {
+                print("Get error register")
+                return
+            }
+            
+            let controller=ActivationEnterVerifyCodeViewController(nibName: "ActivationEnterVerifyCodeViewController", bundle:
+                Bundle(for: ActivationEnterVerifyCodeViewController.self))
+            
+            controller.setCloseComplition(closeComplition: self.closeComplition)
+            if mobile != "" {
+                controller.mobile=mobile
+            }
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+        }
         
 //        APIRequest.request(
 //            url: APIURLs.requestActivateUser,
@@ -180,7 +216,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     func customizeUIElements() {
         self.verifyCodeTextField.backgroundColor=UIColor.clear
-        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:"کد فعالسازی", attributes: [NSAttributedStringKey.font : UIFont(name: "IranSans-Light", size: 13)!,NSAttributedStringKey.foregroundColor: UIColor.gray])
+        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:"کد فعالسازی", attributes: [NSAttributedStringKey.font : AppFont.getLightFont(size: 13),NSAttributedStringKey.foregroundColor: UIColor.gray])
         
         self.registerBtn.backgroundColor=AppColor.tintColor
         

@@ -41,7 +41,7 @@ class APIRequest {
         url:String,
         formKeyValueInput:[String:String],
         httpMethod:EnumHttpMethods,
-        completionHandler:@escaping (Data?)->Void){
+        completionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
         
         let headers = ["content-type": "application/x-www-form-urlencoded"]
         
@@ -65,7 +65,7 @@ class APIRequest {
                 return
             }
             
-            completionHandler(data)
+            completionHandler(data, response, error)
             
             
 //            let httpResponse = response as? HTTPURLResponse

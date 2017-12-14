@@ -12,27 +12,26 @@ class ApiMethods {
     
     public static let offset:Int = 15
         
-    public static func login(username:String, password:String, completionHandler:@escaping(Data?)->Void) {
+    public static func login(mobile:String, verificationCode:String, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
         
         let regId:String = "eoFH_ujJBxU:APA91bEEEAv1RpiP4RHzwJLEa9bRFdAi1sTIgFV9GScwfDNcmDucVFkWG0EstL5I5zNVaFqCVT3NMiBUjhtyQEFUM89S9tXf44u0N4LhozYv1KWNcGkyCMeUEmcOYRYEiu5gud18h_A"
         let deviceId:String = "352136066349321"
         
         var formKeyValue:[String:String] = [
-            ApiConstants.Username:username,
-            ApiConstants.Password:password,
+            ApiConstants.Username:mobile,
+            ApiConstants.Password:verificationCode,
             ApiConstants.RegisterationId:regId,
             ApiConstants.DeviceId:deviceId,
             "grant_type":"password"]
         
         let url:String = APIURLs.login
         
-        APIRequest.requestFormUrlEncoded(url: url, formKeyValueInput: formKeyValue, httpMethod: .post) { (data) in
-            completionHandler(data)
+        APIRequest.requestFormUrlEncoded(url: url, formKeyValueInput: formKeyValue, httpMethod: .post) { (data, response, error) in
+            completionHandler(data, response, error)
         }
-        
     }
     
-    public static func register(telephone:String, completionHandler:@escaping(Data?)->Void) {
+    public static func register(telephone:String, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
         
         let mainURL: String = APIURLs.register + telephone
         
@@ -42,11 +41,7 @@ class ApiMethods {
         
         APIRequest.Request(url: mainURL, httpMethod: .post, complitionHandler: { (data, response, error) in
             
-            guard error == nil else {
-                print("Get error register")
-                return
-            }
-            completionHandler(data)
+            completionHandler(data, response, error)
         })
     }
     

@@ -48,6 +48,9 @@
 		05BFBBD11FE0703500DBCDDF /* RegisterGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */; };
 		05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */; };
 		05BFBBD51FE1C4EE00DBCDDF /* RequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBD31FE1C4EE00DBCDDF /* RequestsViewController.xib */; };
+		05BFBBD71FE1D6FE00DBCDDF /* String+isNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */; };
+		05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD81FE24C4D00DBCDDF /* AppConstants.swift */; };
+		05BFBBDB1FE24C6E00DBCDDF /* TabIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBDA1FE24C6E00DBCDDF /* TabIndex.swift */; };
 		05DDD3E01F921DCD006C5E31 /* ApiInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */; };
 		05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E11F921E98006C5E31 /* ResponseModel.swift */; };
 		05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E31F921F19006C5E31 /* APIRequest.swift */; };
@@ -99,6 +102,9 @@
 		05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		05BFBBD31FE1C4EE00DBCDDF /* RequestsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestsViewController.xib; sourceTree = "<group>"; };
+		05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isNumber.swift"; sourceTree = "<group>"; };
+		05BFBBD81FE24C4D00DBCDDF /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		05BFBBDA1FE24C6E00DBCDDF /* TabIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabIndex.swift; sourceTree = "<group>"; };
 		05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInput.swift; sourceTree = "<group>"; };
 		05DDD3E11F921E98006C5E31 /* ResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		05DDD3E31F921F19006C5E31 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -234,6 +240,8 @@
 				05BFBBC91FDAA53900DBCDDF /* AppFont.swift */,
 				05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */,
 				05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */,
+				05BFBBD81FE24C4D00DBCDDF /* AppConstants.swift */,
+				05BFBBDA1FE24C6E00DBCDDF /* TabIndex.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -242,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */,
+				05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */,
 			);
 			path = extenstions;
 			sourceTree = "<group>";
@@ -428,6 +437,7 @@
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
 				05AE64711FA3553100FCCC28 /* ApiConstants.swift in Sources */,
 				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,
+				05BFBBDB1FE24C6E00DBCDDF /* TabIndex.swift in Sources */,
 				05BFBBBB1FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift in Sources */,
 				054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */,
 				0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */,
@@ -440,7 +450,9 @@
 				056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */,
 				05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */,
 				05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */,
+				05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */,
 				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
+				05BFBBD71FE1D6FE00DBCDDF /* String+isNumber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

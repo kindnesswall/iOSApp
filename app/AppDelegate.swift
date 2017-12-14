@@ -19,9 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.tabBarController=self.window?.rootViewController as? UITabBarController
         self.tabBarController?.selectedIndex = 2
-        
-        
-        
+            
         
         let tab0=self.tabBarController!.viewControllers![1] as! UINavigationController
         let controller0=RegisterGiftViewController(nibName: "RegisterGiftViewController", bundle: Bundle(for: RegisterGiftViewController.self))

@@ -33,8 +33,6 @@ class ActivationEnterPhoneViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,21 +76,43 @@ class ActivationEnterPhoneViewController: UIViewController {
     }
     
     @IBAction func registerBtnClick(_ sender: Any) {
-        let username:String = userDefault.string(forKey: AppConstants.USERNAME) ?? ""
-        
         let mobile:String = phoneNumberTextField.text ?? ""
+        if !mobile.starts(with: "09") || mobile.count != 11 || !mobile.isNumber{
+            FlashMessage.showMessage(body: "شماره به درستی وارد نشده است", theme: .error)
+            return
+        }
+        
+        userDefault.set(mobile, forKey: AppConstants.PHONE_NUMBER)
         
         phoneNumberTextField.isUserInteractionEnabled = false
-        
         
         registerBtn.setTitle("", for: [])
         loading.startAnimating()
         
-        var input:[String:String]?
-        if mobile != "" {
-            input=["username":username,"mobile":mobile]
-        } else {
-            input=["username":username]
+        ApiMethods.register(telephone: mobile) { (data, response, error) in
+            
+            self.registerBtn.setTitle("ورود", for: [])
+            self.loading.stopAnimating()
+            
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode < 200 && response.statusCode >= 300 {
+                    return
+                }
+            }
+            guard error == nil else {
+                print("Get error register")
+                return
+            }
+
+            let controller=ActivationEnterVerifyCodeViewController(nibName: "ActivationEnterVerifyCodeViewController", bundle:
+                Bundle(for: ActivationEnterVerifyCodeViewController.self))
+            
+            controller.setCloseComplition(closeComplition: self.closeComplition)
+            if mobile != "" {
+                controller.mobile=mobile
+            }
+            self.navigationController?.pushViewController(controller, animated: true)
+            
         }
         
 //        APIRequest.request(
