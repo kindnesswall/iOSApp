@@ -109,9 +109,9 @@ extension RequestsViewController:UITableViewDataSource{
 extension RequestsViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let controller = GiftDetailViewController(nibName: "GiftDetailViewController", bundle: Bundle(for: GiftDetailViewController.self))
+        let controller = RequestToAGiftViewController(nibName: "RequestToAGiftViewController", bundle: Bundle(for: RequestToAGiftViewController.self))
         
-        controller.gift = gifts[indexPath.row]
+        controller.giftId = gifts[indexPath.row].id!
         
         self.navigationController?.pushViewController(controller, animated: true)
         

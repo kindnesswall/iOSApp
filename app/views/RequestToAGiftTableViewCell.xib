@@ -39,7 +39,7 @@
                                     <action selector="onCallClicked:" destination="-1" eventType="touchUpInside" id="Mbl-3t-OLY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKB-rF-kBH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKB-rF-kBH" customClass="ButtonWithData" customModule="app" customModuleProvider="target">
                                 <rect key="frame" x="56" y="0.0" width="55.5" height="45"/>
                                 <state key="normal" image="ic_message_grey600_36dp"/>
                                 <connections>
@@ -52,6 +52,9 @@
                                     <constraint firstAttribute="width" constant="56" id="KwP-xb-xS9"/>
                                 </constraints>
                                 <state key="normal" image="ic_action_contact"/>
+                                <connections>
+                                    <action selector="onMessageBtnClicked:" destination="-1" eventType="touchUpInside" id="mCE-Bv-Vxe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -124,7 +127,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="acceptRequestBtn" destination="FKO-ZC-tIW" id="l68-eO-V8H"/>
+                <outlet property="callBtn" destination="Kfh-oi-2hd" id="NPg-Z1-aGy"/>
+                <outlet property="messageBtn" destination="UKB-rF-kBH" id="A7I-6a-b5F"/>
                 <outlet property="nameLbl" destination="PyV-k3-SBI" id="bh7-SK-oZ1"/>
+                <outlet property="rejectRequestBtn" destination="CO8-Ze-rBX" id="LoO-IV-uWT"/>
             </connections>
             <point key="canvasLocation" x="18.5" y="144.5"/>
         </tableViewCell>

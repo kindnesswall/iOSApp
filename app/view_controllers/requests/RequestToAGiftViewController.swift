@@ -13,12 +13,21 @@ class RequestToAGiftViewController: UIViewController {
     let userDefault = UserDefaults.standard
     var requests:[Request] = []
     @IBOutlet var tableview: UITableView!
+    var giftId:String = "-1"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableview.dataSource = self
+        tableview.delegate = self
+        
+        let bundle = Bundle(for: RequestToAGiftTableViewCell.self)
+        let nib = UINib(nibName: "RequestToAGiftTableViewCell", bundle: bundle)
+        self.tableview.register(nib, forCellReuseIdentifier: "RequestToAGiftTableViewCell")
+        
+        
         // Do any additional setup after loading the view.
-        ApiMethods.getRecievedRequestList(giftId: "", startIndex: 0) { (data, response, error) in
+        ApiMethods.getRecievedRequestList(giftId: giftId, startIndex: 0) { (data, response, error) in
             
             APIRequest.logReply(data: data)
             if let response = response as? HTTPURLResponse {
@@ -44,20 +53,21 @@ class RequestToAGiftViewController: UIViewController {
     }
     
     @IBAction func onCallClicked(_ sender: ButtonWithData) {
-        
+        print(sender.data)
     }
     
     @IBAction func onMessageBtnClicked(_ sender: ButtonWithData) {
-        
+        print(sender.data)
     }
     
+    
     @IBAction func onAcceptRequestClicked(_ sender: ButtonWithData) {
-        
+        print(sender.data)
         
     }
     
     @IBAction func onRejectRequestBtnClicked(_ sender: ButtonWithData) {
-        
+        print(sender.data)
         
     }
     
@@ -71,7 +81,9 @@ extension RequestToAGiftViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell=tableView.dequeueReusableCell(withIdentifier: "GiftTableViewCell") as! GiftTableViewCell
+        let cell=tableView.dequeueReusableCell(withIdentifier: "RequestToAGiftTableViewCell") as! RequestToAGiftTableViewCell
+        
+        cell.setRow(number: indexPath.row)
         
         //        let gift:Gift = Gift()
         //        gift.title = "هدیه"
@@ -79,7 +91,6 @@ extension RequestToAGiftViewController:UITableViewDataSource{
         //        gift.description = "توضیحات بسیار کامل و جامع"
         //        gift.giftImages = ["https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Meso2mil-English.JPG/220px-Meso2mil-English.JPG"]
         //
-        
 //        cell.filViews(gift: gifts[indexPath.row])
         
         return cell
