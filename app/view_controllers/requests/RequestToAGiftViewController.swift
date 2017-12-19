@@ -10,6 +10,10 @@ import UIKit
 
 class RequestToAGiftViewController: UIViewController {
 
+    let userDefault = UserDefaults.standard
+    var requests:[Request] = []
+    @IBOutlet var tableview: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,8 +37,46 @@ class RequestToAGiftViewController: UIViewController {
                 print(reply.count)
                 
             }
-            
         }
+    }
+}
+
+
+extension RequestToAGiftViewController:UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return requests.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell=tableView.dequeueReusableCell(withIdentifier: "GiftTableViewCell") as! GiftTableViewCell
+        
+        //        let gift:Gift = Gift()
+        //        gift.title = "هدیه"
+        //        gift.createDateTime = "تاریخ"
+        //        gift.description = "توضیحات بسیار کامل و جامع"
+        //        gift.giftImages = ["https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Meso2mil-English.JPG/220px-Meso2mil-English.JPG"]
+        //
+        
+//        cell.filViews(gift: gifts[indexPath.row])
+        
+        return cell
+    }
+}
+
+extension RequestToAGiftViewController:UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        
+//        let controller = GiftDetailViewController(nibName: "GiftDetailViewController", bundle: Bundle(for: GiftDetailViewController.self))
+//        
+//        controller.gift = gifts[indexPath.row]
+//        
+//        self.navigationController?.pushViewController(controller, animated: true)
+//        
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(122)
     }
     
 }
