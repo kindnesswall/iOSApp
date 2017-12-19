@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="loginView" destination="baN-uC-y3m" id="47z-9V-GlU"/>
                 <outlet property="requestView" destination="BXB-Tl-t87" id="Ra4-vY-3qa"/>
+                <outlet property="tableview" destination="2pA-SQ-6cW" id="kqw-Te-oa6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,17 +30,17 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXB-Tl-t87" userLabel="RequestView">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="درخواستها" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O74-Tq-o7Q">
-                            <rect key="frame" x="153" y="313" width="68.5" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2pA-SQ-6cW">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="O74-Tq-o7Q" firstAttribute="centerY" secondItem="BXB-Tl-t87" secondAttribute="centerY" id="2g6-ZR-LPB"/>
-                        <constraint firstItem="O74-Tq-o7Q" firstAttribute="centerX" secondItem="BXB-Tl-t87" secondAttribute="centerX" id="xok-uc-IxL"/>
+                        <constraint firstItem="2pA-SQ-6cW" firstAttribute="top" secondItem="BXB-Tl-t87" secondAttribute="top" id="8CE-ny-3Rp"/>
+                        <constraint firstItem="2pA-SQ-6cW" firstAttribute="leading" secondItem="BXB-Tl-t87" secondAttribute="leading" id="kJB-9p-mND"/>
+                        <constraint firstAttribute="trailing" secondItem="2pA-SQ-6cW" secondAttribute="trailing" id="yYP-yI-T7W"/>
+                        <constraint firstAttribute="bottom" secondItem="2pA-SQ-6cW" secondAttribute="bottom" id="zew-xC-eYO"/>
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baN-uC-y3m">

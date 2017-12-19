@@ -28,8 +28,6 @@
 		054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B511FCC4100007570EF /* IRANSansMobile.ttf */; };
 		056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FBB581F9135EA0023C9CF /* HomeViewController.swift */; };
 		056FBB5B1F9135EA0023C9CF /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056FBB591F9135EA0023C9CF /* HomeViewController.xib */; };
-		056FBB5E1F913AD70023C9CF /* MyWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FBB5C1F913AD70023C9CF /* MyWallViewController.swift */; };
-		056FBB5F1F913AD70023C9CF /* MyWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056FBB5D1F913AD70023C9CF /* MyWallViewController.xib */; };
 		056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FBB601F91585C0023C9CF /* APIURLs.swift */; };
 		05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */; };
 		05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE64721FA93F4800FCCC28 /* ApiMethods.swift */; };
@@ -89,10 +87,8 @@
 		054B1B4F1FCC4100007570EF /* IRANSansMobile_Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Medium.ttf; sourceTree = "<group>"; };
 		054B1B501FCC4100007570EF /* IRANSansMobile_UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_UltraLight.ttf; sourceTree = "<group>"; };
 		054B1B511FCC4100007570EF /* IRANSansMobile.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile.ttf; sourceTree = "<group>"; };
-		056FBB581F9135EA0023C9CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = app/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
-		056FBB591F9135EA0023C9CF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = app/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
-		056FBB5C1F913AD70023C9CF /* MyWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWallViewController.swift; sourceTree = "<group>"; };
-		056FBB5D1F913AD70023C9CF /* MyWallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWallViewController.xib; sourceTree = "<group>"; };
+		056FBB581F9135EA0023C9CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = app/view_controllers/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		056FBB591F9135EA0023C9CF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = app/view_controllers/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
 		056FBB601F91585C0023C9CF /* APIURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLs.swift; sourceTree = "<group>"; };
 		05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiOutputs.swift; sourceTree = "<group>"; };
 		05AE64721FA93F4800FCCC28 /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
@@ -185,13 +181,9 @@
 				0507C8691F8C1A920084CDF1 /* Assets.xcassets */,
 				0507C86E1F8C1A920084CDF1 /* Info.plist */,
 				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
-				056FBB581F9135EA0023C9CF /* HomeViewController.swift */,
-				056FBB591F9135EA0023C9CF /* HomeViewController.xib */,
 				0507C8641F8C1A920084CDF1 /* ViewController.swift */,
 				0507C8661F8C1A920084CDF1 /* Main.storyboard */,
 				0507C86B1F8C1A920084CDF1 /* LaunchScreen.storyboard */,
-				056FBB5C1F913AD70023C9CF /* MyWallViewController.swift */,
-				056FBB5D1F913AD70023C9CF /* MyWallViewController.xib */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -208,6 +200,8 @@
 				05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */,
 				05BFBBE71FE2755E00DBCDDF /* MyKindnessWallViewController.swift */,
 				05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */,
+				056FBB581F9135EA0023C9CF /* HomeViewController.swift */,
+				056FBB591F9135EA0023C9CF /* HomeViewController.xib */,
 			);
 			path = view_controllers;
 			sourceTree = "<group>";
@@ -396,7 +390,6 @@
 				054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */,
 				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
 				05BFBBEA1FE2755E00DBCDDF /* MyKindnessWallViewController.xib in Resources */,
-				056FBB5F1F913AD70023C9CF /* MyWallViewController.xib in Resources */,
 				054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */,
 				054B1B541FCC4101007570EF /* IRANSansMobile_Black.ttf in Resources */,
 				05029ECB1FE334C5004D96B1 /* RequestToAGiftViewController.xib in Resources */,
@@ -490,7 +483,6 @@
 				05BFBBBB1FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift in Sources */,
 				054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */,
 				0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */,
-				056FBB5E1F913AD70023C9CF /* MyWallViewController.swift in Sources */,
 				05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */,
 				05DDD3E01F921DCD006C5E31 /* ApiInput.swift in Sources */,
 				05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */,
