@@ -1,11 +1,3 @@
-//
-//  NavigationBarStyle.swift
-//  LMS
-//
-//  Created by AmirHossein on 5/31/17.
-//  Copyright © 2017 aseman. All rights reserved.
-//
-
 import Foundation
 import UIKit
 

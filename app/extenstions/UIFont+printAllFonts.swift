@@ -1,11 +1,3 @@
-//
-//  UIFont+printAllFonts.swift
-//  app
-//
-//  Created by Hamed.Gh on 12/8/17.
-//  Copyright © 2017 Hamed.Gh. All rights reserved.
-//
-
 import Foundation
 import UIKit
 

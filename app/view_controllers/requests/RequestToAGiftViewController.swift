@@ -42,6 +42,25 @@ class RequestToAGiftViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func onCallClicked(_ sender: ButtonWithData) {
+        
+    }
+    
+    @IBAction func onMessageBtnClicked(_ sender: ButtonWithData) {
+        
+    }
+    
+    @IBAction func onAcceptRequestClicked(_ sender: ButtonWithData) {
+        
+        
+    }
+    
+    @IBAction func onRejectRequestBtnClicked(_ sender: ButtonWithData) {
+        
+        
+    }
+    
 }
 
 

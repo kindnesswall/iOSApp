@@ -1,11 +1,3 @@
-//
-//  ResponseModel.swift
-//  VC
-//
-//  Created by Amir Hossein on 10/11/17.
-//  Copyright © 2017 Aseman. All rights reserved.
-//
-
 import Foundation
 
 class ResponseModel<Model:Codable> : Codable {

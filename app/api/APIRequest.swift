@@ -1,11 +1,3 @@
-//
-//  ReadData.swift
-//  VOD_Project
-//
-//  Created by AmirHossein on 5/2/17.
-//  Copyright © 2017 Mac. All rights reserved.
-//
-
 import Foundation
 import UIKit
 //import Toaster
