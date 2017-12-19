@@ -19,9 +19,13 @@ class RequestsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableview.dataSource = self
+        tableview.delegate = self
+        
         // Do any additional setup after loading the view.
-        
-        
+        let bundle = Bundle(for: GiftTableViewCell.self)
+        let nib = UINib(nibName: "RequestsTableViewCell", bundle: bundle)
+        self.tableview.register(nib, forCellReuseIdentifier: "RequestsTableViewCell")
         
     }
     
@@ -47,6 +51,9 @@ class RequestsViewController: UIViewController {
             }
             
             if let reply=APIRequest.readJsonData(data: data, outpuType: [Gift].self) {
+                
+                self.gifts.append(contentsOf: reply)
+                self.tableview.reloadData()
                 
                 print("count:")
                 print(reply.count)
@@ -84,7 +91,7 @@ extension RequestsViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell=tableView.dequeueReusableCell(withIdentifier: "GiftTableViewCell") as! GiftTableViewCell
+        let cell=tableView.dequeueReusableCell(withIdentifier: "RequestsTableViewCell") as! RequestsTableViewCell
         
         //        let gift:Gift = Gift()
         //        gift.title = "هدیه"
@@ -93,7 +100,7 @@ extension RequestsViewController:UITableViewDataSource{
         //        gift.giftImages = ["https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Meso2mil-English.JPG/220px-Meso2mil-English.JPG"]
         //
         
-        cell.filViews(gift: gifts[indexPath.row])
+        cell.fillUI(gift: gifts[indexPath.row])
         
         return cell
     }

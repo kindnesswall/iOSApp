@@ -10,6 +10,8 @@
 		05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */; };
 		05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029EC81FE334C5004D96B1 /* RequestToAGiftViewController.swift */; };
 		05029ECB1FE334C5004D96B1 /* RequestToAGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05029EC91FE334C5004D96B1 /* RequestToAGiftViewController.xib */; };
+		05029ECE1FE9381E004D96B1 /* RequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029ECC1FE9381E004D96B1 /* RequestsTableViewCell.swift */; };
+		05029ECF1FE9381E004D96B1 /* RequestsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05029ECD1FE9381E004D96B1 /* RequestsTableViewCell.xib */; };
 		0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0507C8621F8C1A920084CDF1 /* AppDelegate.swift */; };
 		0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0507C8641F8C1A920084CDF1 /* ViewController.swift */; };
 		0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8661F8C1A920084CDF1 /* Main.storyboard */; };
@@ -69,6 +71,8 @@
 		05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+getMe.swift"; sourceTree = "<group>"; };
 		05029EC81FE334C5004D96B1 /* RequestToAGiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestToAGiftViewController.swift; sourceTree = "<group>"; };
 		05029EC91FE334C5004D96B1 /* RequestToAGiftViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestToAGiftViewController.xib; sourceTree = "<group>"; };
+		05029ECC1FE9381E004D96B1 /* RequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsTableViewCell.swift; sourceTree = "<group>"; };
+		05029ECD1FE9381E004D96B1 /* RequestsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestsTableViewCell.xib; sourceTree = "<group>"; };
 		0507C85F1F8C1A920084CDF1 /* app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0507C8621F8C1A920084CDF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0507C8641F8C1A920084CDF1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 			children = (
 				054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */,
 				054B1B481FCC29F6007570EF /* GiftTableViewCell.xib */,
+				05029ECC1FE9381E004D96B1 /* RequestsTableViewCell.swift */,
+				05029ECD1FE9381E004D96B1 /* RequestsTableViewCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -387,6 +393,7 @@
 			files = (
 				0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */,
 				054B1B4A1FCC29F6007570EF /* GiftTableViewCell.xib in Resources */,
+				05029ECF1FE9381E004D96B1 /* RequestsTableViewCell.xib in Resources */,
 				054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */,
 				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
 				05BFBBEA1FE2755E00DBCDDF /* MyKindnessWallViewController.xib in Resources */,
@@ -480,6 +487,7 @@
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
 				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,
 				05BFBBDB1FE24C6E00DBCDDF /* TabIndex.swift in Sources */,
+				05029ECE1FE9381E004D96B1 /* RequestsTableViewCell.swift in Sources */,
 				05BFBBBB1FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift in Sources */,
 				054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */,
 				0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */,

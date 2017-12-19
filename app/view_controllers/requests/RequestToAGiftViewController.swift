@@ -33,6 +33,9 @@ class RequestToAGiftViewController: UIViewController {
             
             if let reply=APIRequest.readJsonData(data: data, outpuType: [Request].self) {
                 
+                self.requests.append(contentsOf: reply)
+                self.tableview.reloadData()
+                
                 print("count:")
                 print(reply.count)
                 
