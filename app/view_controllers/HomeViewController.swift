@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
         let nib = UINib(nibName: "GiftTableViewCell", bundle: bundle)
         self.tableview.register(nib, forCellReuseIdentifier: "GiftTableViewCell")
         
-        ApiMethods.getGifts(cityId: "0", regionId: "0", categoryId: "4", startIndex: 0, searchText: "") { (data) in
+        ApiMethods.getGifts(cityId: "0", regionId: "0", categoryId: "0", startIndex: 0, searchText: "") { (data) in
             APIRequest.logReply(data: data)
             
             if let reply=APIRequest.readJsonData(data: data, outpuType: [Gift].self) {

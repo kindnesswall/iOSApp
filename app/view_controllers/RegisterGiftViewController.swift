@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import XLActionController
+import CropViewController
 
 class RegisterGiftViewController: UIViewController {
 
@@ -21,11 +23,31 @@ class RegisterGiftViewController: UIViewController {
     let imagePicker = UIImagePickerController()
 
     @IBAction func uploadBtnClicked(_ sender: Any) {
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
+        let actionController = SkypeActionController()
         
-        self.present(imagePicker, animated: true, completion: nil)
+        actionController.addAction(Action("دوربین", style: .default, handler: { action in
+            
+            self.imagePicker.allowsEditing = false
+            self.imagePicker.sourceType = .camera
+            self.imagePicker.delegate = self
+            
+            self.present(self.imagePicker, animated: true, completion: nil)
+            
+        }))
+        
+        actionController.addAction(Action("گالری تصاویر", style: .default, handler: { action in
+            
+            self.imagePicker.allowsEditing = false
+            self.imagePicker.sourceType = .photoLibrary
+            self.imagePicker.delegate = self
+    
+            self.present(self.imagePicker, animated: true, completion: nil)
+            
+        }))
+        
+        present(actionController, animated: true, completion: nil)
+
+
     }
     
     override func viewDidLoad() {
@@ -36,15 +58,23 @@ class RegisterGiftViewController: UIViewController {
     
 }
 
-extension RegisterGiftViewController:UIImagePickerControllerDelegate{
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+extension RegisterGiftViewController : CropViewControllerDelegate {
+    public func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+//        self.croppedRect = cropRect
+//        self.croppedAngle = angle
+//        updateImageViewWithImage(image, fromCropViewController: cropViewController)
         
-        
-        let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        if let selectedImage=selectedImage {
-            self.selectedImage.image = selectedImage
-        }
-        
+        uploadImage(selectedImage: image)
+    }
+    
+    public func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+//        self.croppedRect = cropRect
+//        self.croppedAngle = angle
+//        updateImageViewWithImage(image, fromCropViewController: cropViewController)
+        uploadImage(selectedImage: image)
+    }
+    
+    func uploadImage(selectedImage: UIImage) {
         if let token=UserDefaults.standard.string(forKey: AppConstants.Authorization) {
             APIRequest.uploadImageTask(url: APIURLs.Upload, session: &uploadSession, task: &uploadTask,delegate:self, image: selectedImage, complitionHandler: { [weak self] (data, response, error) in
                 
@@ -68,20 +98,36 @@ extension RegisterGiftViewController:UIImagePickerControllerDelegate{
                     return
                 }
                 
-//                if let json=APIRequest.getJsonDic(fromData: data) {
-//                    if let status = json["status"] as? String,
-//                        status == APIStatus.DONE,
-//                        let url = json["avatar_url"] as? String{
-//
-//                        FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
-//
-//                        self?.profile.avatar_url = url
-//                        return
-//                    }
-//                }
-//                FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
+                //                if let json=APIRequest.getJsonDic(fromData: data) {
+                //                    if let status = json["status"] as? String,
+                //                        status == APIStatus.DONE,
+                //                        let url = json["avatar_url"] as? String{
+                //
+                //                        FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
+                //
+                //                        self?.profile.avatar_url = url
+                //                        return
+                //                    }
+                //                }
+                //                FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
                 
             })
+        }
+    }
+}
+
+extension RegisterGiftViewController:UIImagePickerControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        
+        let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        if let selectedImage=selectedImage {
+            self.selectedImage.image = selectedImage
+            
+            let cropViewController = CropViewController(image: selectedImage)
+            cropViewController.delegate = self
+            present(cropViewController, animated: true, completion: nil)
+            
         }
         
         self.dismiss(animated: true, completion: nil)

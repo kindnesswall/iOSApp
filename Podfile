@@ -13,5 +13,7 @@ pod 'SDWebImage', '~> 4.0'
 pod 'ImageSlideshow', '~> 1.4'
 pod 'SwiftMessages'
 pod 'SwiftyOnboard'
+pod 'CropViewController'
+pod 'XLActionController/Skype'
 
 end
