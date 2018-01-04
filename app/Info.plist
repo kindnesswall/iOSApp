@@ -57,9 +57,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>Privacy - Camera Usage Description  </key>
-	<string>$(PRODUCT_NAME) camera use</string>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) need to access your camera to take photo</string>
 	<key>Privacy - Photo Library Usage Description </key>
-	<string>$(PRODUCT_NAME) photo use</string>
+	<string>$(PRODUCT_NAME) need to access your photo library to take photo</string>
 </dict>
 </plist>
