@@ -15,7 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let uDStandard = UserDefaults.standard
     let uDStandard = UserDefaults.standard
     
+    var current_time:Time?
+
     public var tabBarController:UITabBarController?
+
+    static let screenWidth = UIScreen.main.bounds.width
 
     static func clearUserDefault() {
         let domain = Bundle.main.bundleIdentifier!

@@ -104,4 +104,15 @@ class APIURLs {
         return self.BASE_URL + self.API_VERSION + "GetAppInfo"
     }
     
+    static var sendMessage : String {
+        return self.BASE_URL + self.API_VERSION + "sendMessage"
+    }
+    
+    static var getChatConversation : String {
+        return self.BASE_URL + self.API_VERSION + "getChatConversation"
+    }
+    
+    static var getChatList : String {
+        return self.BASE_URL + self.API_VERSION + "getChatList"
+    }
 }

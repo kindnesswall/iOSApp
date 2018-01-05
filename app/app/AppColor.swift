@@ -7,4 +7,7 @@ class AppColor {
     
     static let tintColor=UIColor(red: 122.0/255.0, green: 80.0/255.0, blue: 204.0/255.0, alpha:1)
     
+    
+    static let greyBgColor=UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha:1)
+    
 }

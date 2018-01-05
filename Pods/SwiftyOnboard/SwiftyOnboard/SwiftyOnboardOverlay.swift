@@ -19,14 +19,14 @@ open class SwiftyOnboardOverlay: UIView {
     
     open var continueButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("بله", for: .normal)
+        button.setTitle("Continue", for: .normal)
         button.contentHorizontalAlignment = .center
         return button
     }()
     
     open var skipButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("بگذر", for: .normal)
+        button.setTitle("Skip", for: .normal)
         button.contentHorizontalAlignment = .right
         return button
     }()

@@ -31,6 +31,51 @@ class ApiMethods {
         }
     }
     
+    static func getChatConversation(chatId:Int,startIndex:Int, complitionHandler:@escaping (ChatConversationOutput)->Void) {
+        
+        APIRequest.request(
+            url: APIURLs.getChatConversation,
+            inputJson: ["chat_id":chatId, "start_index":startIndex, "last_index":startIndex + offset - 1 ])
+        {(data, response, error) in
+            
+            APIRequest.logReply(data: data)
+            
+//            if let reply=APIRequest.readJsonData(
+//                data: data,
+//                outputType: ChatConversationOutput.self) {
+//                
+//                if let status=reply.status,status==APIStatus.DONE {
+//                    
+//                    complitionHandler(reply)
+//                    
+//                }
+//            }
+        }
+    }
+    
+    static func sendMessage(chatId:Int, messageText:String, complitionHandler:@escaping (Int)->Void){
+        
+        APIRequest.request(
+            url: APIURLs.sendMessage,
+            inputJson: ["chat_id":chatId, "message_text":messageText ])
+        {(data, response, error) in
+            
+            APIRequest.logReply(data: data)
+            
+//            if let reply=APIRequest.readJsonData(
+//                data: data,
+//                outputType: StatusOutput.self) {
+//                
+//                if let status=reply.status {
+//                    
+//                    complitionHandler(status)
+//                    
+//                }
+//            }
+        }
+        
+    }
+    
     public static func getRequestsMyGifts(startIndex:Int, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
         
         let mainURL: String = APIURLs.getRequestsMyGifts + "/" + "\(startIndex)/\(startIndex+offset)"

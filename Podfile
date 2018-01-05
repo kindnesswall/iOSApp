@@ -15,5 +15,7 @@ pod 'SwiftMessages'
 pod 'SwiftyOnboard'
 pod 'CropViewController'
 pod 'XLActionController/Skype'
+pod 'UICircularProgressRing'
+pod 'MGSwipeTableCell'
 
 end

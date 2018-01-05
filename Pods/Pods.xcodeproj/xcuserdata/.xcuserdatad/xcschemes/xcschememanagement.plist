@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MGSwipeTableCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-app.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -45,6 +50,11 @@
 			<false/>
 		</dict>
 		<key>SwiftyOnboard.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UICircularProgressRing.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
