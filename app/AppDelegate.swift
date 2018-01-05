@@ -46,6 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let controller3=MyKindnessWallViewController(nibName: "MyKindnessWallViewController", bundle: Bundle(for: MyKindnessWallViewController.self))
             tabs[TabIndex.MyKindnessWall].pushViewController(controller3, animated: true)
             
+            let controller4=ChatListTableViewController(nibName: "ChatListTableViewController", bundle: Bundle(for: ChatListTableViewController.self))
+            tabs[TabIndex.CHAT].pushViewController(controller4, animated: true)
+            
             self.tabBarController?.viewControllers = tabs
             self.tabBarController?.selectedIndex = 0
         } else {

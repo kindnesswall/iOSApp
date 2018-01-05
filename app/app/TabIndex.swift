@@ -9,7 +9,7 @@
 import Foundation
 
 class TabIndex {
-    
+    public static let CHAT:Int = 4
     public static let HOME:Int = 3
     public static let RegisterGift:Int = 2
     public static let Requests:Int = 1

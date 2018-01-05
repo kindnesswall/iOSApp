@@ -19,21 +19,40 @@ class ChatListTableViewController: UITableViewController {
     var tasks:[URLSessionDataTask?]=[]
     
     func getChatList() {
-        let mainURL: String = APIURLs.getChatList
-
-        let jsonDicInput : [String : Any] = [:]
-
-        APIRequest.request(url: mainURL, inputJson: jsonDicInput) { (data, response, error) in
-
-            APIRequest.logReply(data: data)
-
-            if let reply=APIRequest.readJsonData(data: data, outpuType: ResponseModel<[ChatAbs]>.self) {
-//                if let status=reply.status,status==APIStatus.DONE {
-//                    self.chats = reply.result!
-//                }
-            }
-            self.tableView.reloadData()
+        
+        for item in 0...10 {
+            let chat = ChatAbs()
+            chat.chat_id = item
+            chat.count_unseen = item
+            chat.user_id = item
+            
+            let msg = Message()
+            msg.message_id = item
+            msg.sender_id = item
+            msg.text = "سلام عزیز"
+            msg.time = "1396"
+            
+            chat.last_message = msg
+            
+            self.chats.append(chat)
         }
+        
+        
+//        let mainURL: String = APIURLs.getChatList
+//
+//        let jsonDicInput : [String : Any] = [:]
+//
+//        APIRequest.request(url: mainURL, inputJson: jsonDicInput) { (data, response, error) in
+//
+//            APIRequest.logReply(data: data)
+//
+//            if let reply=APIRequest.readJsonData(data: data, outpuType: ResponseModel<[ChatAbs]>.self) {
+////                if let status=reply.status,status==APIStatus.DONE {
+////                    self.chats = reply.result!
+////                }
+//            }
+//            self.tableView.reloadData()
+//        }
     }
     // MARK: - Table view data source
     

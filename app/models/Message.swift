@@ -8,7 +8,4 @@ class Message:Codable {
     var text:String?
 //    var time:Time?
     var time:String?
-    var voice_url:String?
-    var message_type:String?
-    var profileImageUrl:String?
 }

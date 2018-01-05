@@ -60,29 +60,29 @@ class ChatConversationTableViewCell: UITableViewCell {
             messageLabel.text = ""
         }
         
-        if let url = msg.profileImageUrl {
-            self.profileImage.sd_setImage(with: URL(string: url))
-        }
+//        if let url = msg.profileImageUrl {
+//            self.profileImage.sd_setImage(with: URL(string: url))
+//        }
         
         if let time  = msg.time{
             self.messageDate.text = UIFunctions.CastNumberToPersian(input: time)
         }
         
         
-        guard let type = msg.message_type else{
-            return
-        }
-        
-        switch type {
-        case "text":
+//        guard let type = msg.message_type else{
+//            return
+//        }
+//
+//        switch type {
+//        case "text":
             downloadBtn.isHidden = true
             messageLabel.isHidden = false
             playPauseBtn.isHidden = true
 
-            break
-        default:
-            return
-        }
+//            break
+//        default:
+//            return
+//        }
         
     }
     

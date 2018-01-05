@@ -250,10 +250,7 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
-				05F6AA511FFEEB8D00CDABC2 /* ChatConversationViewController.swift */,
-				05F6AA4F1FFEEB8C00CDABC2 /* ChatConversationViewController.xib */,
-				05F6AA501FFEEB8C00CDABC2 /* ChatListTableViewController.swift */,
-				05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */,
+				05644DD12000203500B7C853 /* chat */,
 				05029EC71FE33498004D96B1 /* requests */,
 				05BFBBB31FDA653400DBCDDF /* login */,
 				05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */,
@@ -330,6 +327,17 @@
 				05644DBF1FFEF44A00B7C853 /* Message.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		05644DD12000203500B7C853 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				05F6AA511FFEEB8D00CDABC2 /* ChatConversationViewController.swift */,
+				05F6AA4F1FFEEB8C00CDABC2 /* ChatConversationViewController.xib */,
+				05F6AA501FFEEB8C00CDABC2 /* ChatListTableViewController.swift */,
+				05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */,
+			);
+			path = chat;
 			sourceTree = "<group>";
 		};
 		05BFBBB31FDA653400DBCDDF /* login */ = {
