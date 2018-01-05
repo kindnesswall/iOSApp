@@ -1,10 +1,3 @@
-//
-//  ChatAbs.swift
-//  VC
-//
-//  Created by maede on 10/16/17.
-//  Copyright © 2017 Aseman. All rights reserved.
-//
 
 import Foundation
 import UIKit

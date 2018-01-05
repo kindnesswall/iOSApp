@@ -1,10 +1,3 @@
-//
-//  Message.swift
-//  app
-//
-//  Created by Hamed.Gh on 1/5/18.
-//  Copyright © 2018 Hamed.Gh. All rights reserved.
-//
 
 import Foundation
 import UIKit
