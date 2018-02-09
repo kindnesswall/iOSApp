@@ -66,12 +66,12 @@ class ChatListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListTableViewCell", for: indexPath) as! ChatListTableViewCell
         
-        cell.leftButtons = [MGSwipeButton(title: "", icon:#imageLiteral(resourceName: "deleteBtn"), backgroundColor: UIColor.red,insets:UIEdgeInsets(top:0 , left: 25, bottom: 0, right: 25),callback:{
-            (sender: MGSwipeTableCell!) -> Bool in
-            self.chats.remove(at: indexPath.row)
-            tableView.reloadData()
-            return true
-        })]
+//        cell.leftButtons = [MGSwipeButton(title: "", icon:#imageLiteral(resourceName: "deleteBtn"), backgroundColor: UIColor.red,insets:UIEdgeInsets(top:0 , left: 25, bottom: 0, right: 25),callback:{
+//            (sender: MGSwipeTableCell!) -> Bool in
+//            self.chats.remove(at: indexPath.row)
+//            tableView.reloadData()
+//            return true
+//        })]
         
         cell.setValue(chat: chats[indexPath.row])
         return cell
