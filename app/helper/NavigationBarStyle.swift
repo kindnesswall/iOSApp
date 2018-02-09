@@ -7,8 +7,9 @@ class NavigationBarStyle {
     //MARK: - Text,Font
     
     public static func setDefaultStyle(navigationC:UINavigationController?) {
-        navigationC?.navigationBar.barTintColor=AppColor.tintColor
-        navigationC?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: AppFont.getBoldFont(size: 17),NSAttributedStringKey.foregroundColor: UIColor.white]
+//        navigationC?.navigationBar.barTintColor=AppColor.tintColor
+        navigationC?.navigationBar.tintColor=AppColor.tintColor
+        navigationC?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: AppFont.getBoldFont(size: 17),NSAttributedStringKey.foregroundColor: AppColor.tintColor]
     }
     
     
