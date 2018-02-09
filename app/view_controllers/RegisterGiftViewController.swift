@@ -65,6 +65,7 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
 //        updateImageViewWithImage(image, fromCropViewController: cropViewController)
         
         uploadImage(selectedImage: image)
+        self.dismiss(animated: true, completion: nil)
     }
     
     public func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
@@ -126,11 +127,14 @@ extension RegisterGiftViewController:UIImagePickerControllerDelegate{
             
             let cropViewController = CropViewController(image: selectedImage)
             cropViewController.delegate = self
+            
+            self.dismiss(animated: true, completion: nil)
             present(cropViewController, animated: true, completion: nil)
             
+        } else {
+            self.dismiss(animated: true, completion: nil)
         }
         
-        self.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

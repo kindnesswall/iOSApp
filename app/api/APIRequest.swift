@@ -125,6 +125,7 @@ class APIRequest {
         let userDefault = UserDefaults.standard
         if let token = userDefault.string(forKey: AppConstants.Authorization) {
             returnRequest.setValue(token, forHTTPHeaderField: AppConstants.Authorization)
+            print("Token: \(token)")
         }
         return returnRequest
         

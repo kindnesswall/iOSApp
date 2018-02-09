@@ -77,6 +77,7 @@ extension HomeViewController:UITableViewDelegate {
         let controller = GiftDetailViewController(nibName: "GiftDetailViewController", bundle: Bundle(for: GiftDetailViewController.self))
         
         controller.gift = gifts[indexPath.row]
+        print("Gift_id: \(controller.gift?.id ?? "")")
         
         self.navigationController?.pushViewController(controller, animated: true)
         
