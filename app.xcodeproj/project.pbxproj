@@ -52,6 +52,7 @@
 		056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FBB601F91585C0023C9CF /* APIURLs.swift */; };
 		05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */; };
 		05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE64721FA93F4800FCCC28 /* ApiMethods.swift */; };
+		05B124CC202DB056007E28CC /* latest.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B124CB202DB056007E28CC /* latest.json */; };
 		05BFBBB21FDA5DBF00DBCDDF /* UIFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */; };
 		05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */; };
 		05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */; };
@@ -138,6 +139,7 @@
 		056FBB601F91585C0023C9CF /* APIURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLs.swift; sourceTree = "<group>"; };
 		05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiOutputs.swift; sourceTree = "<group>"; };
 		05AE64721FA93F4800FCCC28 /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
+		05B124CB202DB056007E28CC /* latest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = latest.json; path = app/latest.json; sourceTree = "<group>"; };
 		05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFunctions.swift; sourceTree = "<group>"; };
 		05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationEnterPhoneViewController.swift; sourceTree = "<group>"; };
 		05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationEnterVerifyCodeViewController.xib; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		0507C8561F8C1A920084CDF1 = {
 			isa = PBXGroup;
 			children = (
+				05B124CB202DB056007E28CC /* latest.json */,
 				0507C8611F8C1A920084CDF1 /* app */,
 				0507C8601F8C1A920084CDF1 /* Products */,
 				482B016E22AF1A4438DA8383 /* Pods */,
@@ -499,6 +502,7 @@
 				05F6AA561FFEEB8D00CDABC2 /* ChatListTableViewController.xib in Resources */,
 				05644DBB1FFEF3A500B7C853 /* OthersChatConversationTableViewCell.xib in Resources */,
 				054B1B551FCC4101007570EF /* IRANSansMobile_Medium.ttf in Resources */,
+				05B124CC202DB056007E28CC /* latest.json in Resources */,
 				05BFBBD11FE0703500DBCDDF /* RegisterGiftViewController.xib in Resources */,
 				056FBB5B1F9135EA0023C9CF /* HomeViewController.xib in Resources */,
 				05335D461FD0D0A800601115 /* GiftDetailViewController.xib in Resources */,
