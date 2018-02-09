@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="IRAN Sans.ttf">
-            <string>IRANSans</string>
+        <array key="IRANSansMobile.ttf">
+            <string>IRANSansMobile</string>
         </array>
         <array key="icomoon.ttf">
             <string>icomoon</string>
@@ -47,7 +47,7 @@
                                         <constraint firstAttribute="width" constant="250" id="NeA-at-3hn"/>
                                     </constraints>
                                     <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" name="IRANSans" family="IRAN Sans" pointSize="14"/>
+                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFM-eI-ce0">
@@ -57,7 +57,7 @@
                                         <constraint firstAttribute="width" constant="250" id="MAx-ab-MWL"/>
                                         <constraint firstAttribute="height" constant="35" id="hwj-hJ-2TJ"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="IRANSans" family="IRAN Sans" pointSize="14"/>
+                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="14"/>
                                     <state key="normal" title="ثبت کد فعالسازی">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
@@ -77,39 +77,19 @@
                                         <constraint firstAttribute="height" constant="35" id="Ipq-gW-p2p"/>
                                         <constraint firstAttribute="width" constant="250" id="XLg-ar-K4r"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="IRANSans" family="IRAN Sans" pointSize="14"/>
+                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="14"/>
                                     <color key="tintColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="دریافت مجدد کد فعالسازی"/>
                                     <connections>
                                         <action selector="sendAgainBtnClick:" destination="-1" eventType="touchUpInside" id="Yfs-cQ-H3j"/>
                                     </connections>
                                 </button>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHA-Wb-wpj">
-                                    <rect key="frame" x="116.5" y="438.5" width="142" height="28"/>
-                                    <fontDescription key="fontDescription" name="IRANSans" family="IRAN Sans" pointSize="13"/>
-                                    <state key="normal" title="اطلاعات ورود را فراموش کردی؟">
-                                        <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <variation key="heightClass=compact-widthClass=compact">
-                                        <fontDescription key="fontDescription" name="IRANSans" family="IRAN Sans" pointSize="10"/>
-                                    </variation>
-                                </button>
-                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="پیغام" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgD-JH-vFn">
-                                    <rect key="frame" x="0.0" y="632" width="375" height="35"/>
-                                    <color key="backgroundColor" red="0.47843137254901957" green="0.31372549019607843" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="O7K-ZB-1jQ"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="IRANSans" family="IRAN Sans" pointSize="12"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ZJy-gl-Sca">
                                     <rect key="frame" x="177.5" y="281" width="20" height="20"/>
                                 </activityIndicatorView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBj-Wu-4Xc">
                                     <rect key="frame" x="20" y="183.5" width="335" height="0.0"/>
-                                    <fontDescription key="fontDescription" name="IRANSans" family="IRAN Sans" pointSize="15"/>
+                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -119,7 +99,7 @@
                                         <constraint firstAttribute="height" constant="35" id="c7R-IS-S3g"/>
                                         <constraint firstAttribute="width" constant="250" id="hYj-79-zfW"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="IRANSans" family="IRAN Sans" pointSize="14"/>
+                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="14"/>
                                     <color key="tintColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="بازگشت"/>
                                     <connections>
@@ -132,7 +112,6 @@
                             </subviews>
                             <constraints>
                                 <constraint firstItem="MsE-fW-TrI" firstAttribute="centerX" secondItem="ZSX-t4-HKo" secondAttribute="centerX" id="0R6-bE-w7H"/>
-                                <constraint firstItem="DgD-JH-vFn" firstAttribute="leading" secondItem="Fio-yB-uMj" secondAttribute="leading" id="2Sp-dg-AXF"/>
                                 <constraint firstItem="aXW-1s-Rev" firstAttribute="centerY" secondItem="Fio-yB-uMj" secondAttribute="centerY" constant="-100" id="Gg0-Qw-Msk">
                                     <variation key="heightClass=compact-widthClass=compact" constant="-20"/>
                                 </constraint>
@@ -141,15 +120,11 @@
                                 <constraint firstItem="ZJy-gl-Sca" firstAttribute="centerY" secondItem="iFM-eI-ce0" secondAttribute="centerY" id="OsG-ub-SA6"/>
                                 <constraint firstItem="iFM-eI-ce0" firstAttribute="centerX" secondItem="Fio-yB-uMj" secondAttribute="centerX" id="S73-GL-FMF"/>
                                 <constraint firstItem="aXW-1s-Rev" firstAttribute="centerX" secondItem="Fio-yB-uMj" secondAttribute="centerX" id="SE5-VU-Xaf"/>
-                                <constraint firstAttribute="bottom" secondItem="DgD-JH-vFn" secondAttribute="bottom" id="Twu-PE-4HD"/>
-                                <constraint firstItem="vHA-Wb-wpj" firstAttribute="centerX" secondItem="Fio-yB-uMj" secondAttribute="centerX" id="XT9-hZ-tx3"/>
                                 <constraint firstItem="ne3-zD-Hcx" firstAttribute="top" secondItem="ZSX-t4-HKo" secondAttribute="bottom" constant="30" id="eap-Zo-4Wt"/>
                                 <constraint firstItem="ZSX-t4-HKo" firstAttribute="centerX" secondItem="Fio-yB-uMj" secondAttribute="centerX" id="fu1-o2-w8H"/>
                                 <constraint firstItem="pBj-Wu-4Xc" firstAttribute="leading" secondItem="Fio-yB-uMj" secondAttribute="leading" constant="20" id="hwn-uA-avI"/>
                                 <constraint firstItem="ne3-zD-Hcx" firstAttribute="centerX" secondItem="Fio-yB-uMj" secondAttribute="centerX" id="hxn-lM-KSl"/>
                                 <constraint firstItem="MsE-fW-TrI" firstAttribute="centerY" secondItem="ZSX-t4-HKo" secondAttribute="centerY" id="kQs-MF-QuQ"/>
-                                <constraint firstAttribute="trailing" secondItem="DgD-JH-vFn" secondAttribute="trailing" id="lA9-9w-mWG"/>
-                                <constraint firstItem="vHA-Wb-wpj" firstAttribute="top" secondItem="ne3-zD-Hcx" secondAttribute="bottom" constant="20" id="pBZ-hx-hsb"/>
                                 <constraint firstItem="iFM-eI-ce0" firstAttribute="top" secondItem="aXW-1s-Rev" secondAttribute="bottom" constant="20" id="pZd-ru-u8U">
                                     <variation key="heightClass=compact-widthClass=compact" constant="10"/>
                                 </constraint>

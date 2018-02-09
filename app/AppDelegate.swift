@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate {
 
     var window: UIWindow?
     static let uDStandard = UserDefaults.standard
@@ -72,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func showTabbar()  {
         
         self.tabBarController=self.window?.rootViewController as? UITabBarController
+        self.tabBarController?.delegate=self
         
         pushViewControllersIntoTabs()
     }
@@ -82,6 +83,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as! IntroViewController
         self.tabBarController?.present(viewController, animated: true, completion: nil)
 
+    }
+    func showLoginVC(){
+        let controller=ActivationEnterPhoneViewController(nibName: "ActivationEnterPhoneViewController", bundle: Bundle(for: ActivationEnterPhoneViewController.self))
+        let nc = UINavigationController.init(rootViewController: controller)
+        self.tabBarController?.present(nc, animated: true, completion: nil)
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if let _=UserDefaults.standard.string(forKey: AppConstants.Authorization) {
+           return true
+        }
+        
+        if let _=(viewController as? UINavigationController)?.topViewController as? RegisterGiftViewController {
+            showLoginVC()
+            return false
+        }
+        
+        return true
+        
+        
     }
 }
 
