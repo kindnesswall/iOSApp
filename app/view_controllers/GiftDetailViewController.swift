@@ -74,6 +74,10 @@ class GiftDetailViewController: UIViewController {
         fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: .white, color: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
+    }
+    
     func createSlideShow() {
         
         guard let images = gift?.giftImages
