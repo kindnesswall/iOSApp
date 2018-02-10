@@ -28,6 +28,9 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
 
     /// If set to true image is initially zoomed in
     open var zoomInInitially = false
+    
+    /// Maximum zoom scale
+    open var maximumScale: CGFloat = 2.0
 
     fileprivate var lastFrame = CGRect.zero
     fileprivate var imageReleased = false
@@ -47,10 +50,11 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
         - parameter image: Input Source to load the image
         - parameter zoomEnabled: holds if it should be possible to zoom-in the image
     */
-    init(image: InputSource, zoomEnabled: Bool, activityIndicator: ActivityIndicatorView? = nil) {
+    init(image: InputSource, zoomEnabled: Bool, activityIndicator: ActivityIndicatorView? = nil, maximumScale: CGFloat = 2.0) {
         self.zoomEnabled = zoomEnabled
         self.image = image
         self.activityIndicator = activityIndicator
+        self.maximumScale = maximumScale
 
         super.init(frame: CGRect.null)
 
@@ -116,7 +120,7 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
     }
 
     /// Request to load Image Source to Image View
-    func loadImage() {
+    public func loadImage() {
         if self.imageView.image == nil && !isLoading {
             isLoading = true
             imageReleased = false
@@ -130,10 +134,15 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
             }
         }
     }
-
+    
     func releaseImage() {
         imageReleased = true
+        cancelPendingLoad()
         self.imageView.image = nil
+    }
+    
+    public func cancelPendingLoad() {
+        image.cancelLoad?(on: imageView)
     }
 
     @objc func retryLoadImage() {
@@ -198,8 +207,7 @@ open class ImageSlideshowItem: UIScrollView, UIScrollViewDelegate {
     }
 
     fileprivate func calculateMaximumScale() -> CGFloat {
-        // maximum scale is fixed to 2.0 for now. This may be overriden to perform a more sophisticated computation
-        return 2.0
+        return maximumScale
     }
 
     fileprivate func setPictoCenter() {

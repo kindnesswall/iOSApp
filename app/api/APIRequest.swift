@@ -88,6 +88,20 @@ class APIRequest {
         }
     }
     
+    public static func setRequestHeader(request:URLRequest)->URLRequest
+    {
+        var returnRequest=request
+        returnRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let userDefault = UserDefaults.standard
+        if let token = userDefault.string(forKey: AppConstants.Authorization) {
+            returnRequest.setValue(token, forHTTPHeaderField: AppConstants.Authorization)
+            print("token: \(token)")
+        }
+        return returnRequest
+        
+    }
+    
     public static func request(url:String,inputJson:[String:Any]?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
         
         let mainURL=URL(string: url)
@@ -117,95 +131,14 @@ class APIRequest {
         
     }
     
-    public static func setRequestHeader(request:URLRequest)->URLRequest
-    {
-        var returnRequest=request
-        returnRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let userDefault = UserDefaults.standard
-        if let token = userDefault.string(forKey: AppConstants.Authorization) {
-            returnRequest.setValue(token, forHTTPHeaderField: AppConstants.Authorization)
-            print("Token: \(token)")
-        }
-        return returnRequest
-        
-    }
     
-    public static func request(url:String,token:String?,inputJson:[String:Any]?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
-        
-        let mainURL=URL(string: url)
-        
-        if let mainURL=mainURL {
-            var request = URLRequest(url: mainURL)
-            request.httpMethod="POST"
-            
-            request=self.setRequestHeader(request: request)
-            
-            if let token=token {
-                request.setValue(token, forHTTPHeaderField: "token")
-                
-            }
-            if let inputJson=inputJson {
-                
-                let json=try! JSONSerialization.data(withJSONObject: inputJson, options: JSONSerialization.WritingOptions.prettyPrinted)
-                
-                request.httpBody=json
-            }
-            
-            
-            let config = URLSessionConfiguration.default
-            let session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
-            let task=session.dataTask(with: request, completionHandler: { (data, response, error) in
-                complitionHandler(data, response, error)
-            })
-            task.resume()
-            
-        }
-        
-    }
     
-    public static func request(url:String,session:inout Foundation.URLSession?, task: inout URLSessionDataTask?,token:String?,inputJson:[String:Any]?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
-        
-        task?.cancel()
-        session?.invalidateAndCancel()
-        
-        let mainURL=URL(string: url)
-        
-        if let mainURL=mainURL {
-            var request = URLRequest(url: mainURL)
-            request.httpMethod="POST"
-            
-            request=self.setRequestHeader(request: request)
-            
-            if let token=token {
-                request.setValue(token, forHTTPHeaderField: "token")
-                
-            }
-            if let inputJson=inputJson {
-                
-                let json=try! JSONSerialization.data(withJSONObject: inputJson, options: JSONSerialization.WritingOptions.prettyPrinted)
-                
-                request.httpBody=json
-            }
-            
-            let config = URLSessionConfiguration.default
-            session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
-            task=session?.dataTask(with: request, completionHandler: { (data, response, error) in
-                complitionHandler(data, response, error)
-            })
-            
-            task?.resume()
-            
-        }
-        
-    }
     
     
     public static func request(
         url:String,
         appendToSessions sessions: inout [Foundation.URLSession?],
         appendToTasks tasks: inout [URLSessionDataTask?],
-        token:String?,
         inputJson:[String:Any]?,
         complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
         
@@ -216,11 +149,6 @@ class APIRequest {
             request.httpMethod="POST"
             
             request=self.setRequestHeader(request: request)
-            
-            if let token=token {
-                request.setValue(token, forHTTPHeaderField: "token")
-                
-            }
             
             if let inputJson=inputJson {
                 
@@ -245,36 +173,19 @@ class APIRequest {
         
     }
     
-    public static func getJsonDic(fromData data:Data?)->[String:Any]?{
-        
-        if let data=data {
-            let json:[String:Any]??
-            
-            json=try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions()) as? [String:Any]
-            if let json=json {
-                return json
-            }
-            
-        }
-        return nil
-    }
-    
-    public static func getJsonArray(fromData data:Data?)->[Any]?{
-        
-        if let data=data {
-            
-            let json:[Any]??
-            
-            json=try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions()) as? [Any]
-            if let json=json {
-                return json
-            }
-            
-        }
-        return nil
-    }
-    
-    
+//    public static func getJsonDic(fromData data:Data?)->[String:Any]?{
+//
+//        if let data=data {
+//            let json:[String:Any]??
+//
+//            json=try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions()) as? [String:Any]
+//            if let json=json {
+//                return json
+//            }
+//
+//        }
+//        return nil
+//    }
     
     
     //MARK: - Upload

@@ -70,8 +70,6 @@ open class ImageSlideshow: UIView {
     /// Current page
     open fileprivate(set) var currentPage: Int = 0 {
         didSet {
-            pageControl.currentPage = currentPage
-
             if oldValue != currentPage {
                 currentPageChanged?(currentPage)
             }
@@ -129,6 +127,13 @@ open class ImageSlideshow: UIView {
             self.reloadScrollView()
         }
     }
+    
+    /// Maximum zoom scale
+    open var maximumScale: CGFloat = 2.0 {
+        didSet {
+            self.reloadScrollView()
+        }
+    }
 
     /// Image change interval, zero stops the auto-scrolling
     open var slideshowInterval = 0.0 {
@@ -156,6 +161,10 @@ open class ImageSlideshow: UIView {
 
     /// Transitioning delegate to manage the transition to full screen controller
     open fileprivate(set) var slideshowTransitioningDelegate: ZoomAnimatedTransitioningDelegate?
+    
+    var primaryVisiblePage: Int {
+        return scrollView.frame.size.width > 0 ? Int(scrollView.contentOffset.x + scrollView.frame.size.width / 2) / Int(scrollView.frame.size.width) : 0
+    }
 
     // MARK: - Life cycle
 
@@ -251,7 +260,7 @@ open class ImageSlideshow: UIView {
 
         var i = 0
         for image in scrollViewImages {
-            let item = ImageSlideshowItem(image: image, zoomEnabled: self.zoomEnabled, activityIndicator: self.activityIndicator?.create())
+            let item = ImageSlideshowItem(image: image, zoomEnabled: self.zoomEnabled, activityIndicator: self.activityIndicator?.create(), maximumScale: maximumScale)
             item.imageView.contentMode = self.contentScaleMode
             slideshowItems.append(item)
             scrollView.addSubview(item)
@@ -355,7 +364,7 @@ open class ImageSlideshow: UIView {
     }
 
     @objc func slideshowTick(_ timer: Timer) {
-        let page = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        let page = scrollView.frame.size.width > 0 ? Int(scrollView.contentOffset.x / scrollView.frame.size.width) : 0
         var nextPage = page + 1
 
         if !circular && page == scrollViewImages.count - 1 {
@@ -377,19 +386,22 @@ open class ImageSlideshow: UIView {
             loadImages(for: page)
         }
         scrollViewPage = page
-
+        currentPage = currentPageForScrollViewPage(page)
+    }
+    
+    fileprivate func currentPageForScrollViewPage(_ page: Int) -> Int {
         if circular {
             if page == 0 {
                 // first page contains the last image
-                currentPage = Int(images.count) - 1
+                return Int(images.count) - 1
             } else if page == scrollViewImages.count - 1 {
                 // last page contains the first image
-                currentPage = 0
+                return 0
             } else {
-                currentPage = page - 1
+                return page - 1
             }
         } else {
-            currentPage = page
+            return page
         }
     }
 
@@ -453,8 +465,7 @@ extension ImageSlideshow: UIScrollViewDelegate {
     }
 
     open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let page = Int(scrollView.contentOffset.x) / Int(scrollView.frame.size.width)
-        setCurrentPageForScrollViewPage(page)
+        setCurrentPageForScrollViewPage(primaryVisiblePage)
         didEndDecelerating?()
     }
 
@@ -468,5 +479,7 @@ extension ImageSlideshow: UIScrollViewDelegate {
                 scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x + regularContentOffset, y: 0)
             }
         }
+
+        pageControl.currentPage = currentPageForScrollViewPage(primaryVisiblePage)
     }
 }
