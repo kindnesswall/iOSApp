@@ -17,11 +17,21 @@ class RegisterGiftViewController: UIViewController {
     @IBOutlet var precentLbl: UILabel!
     @IBOutlet var uploadedImage: UIImageView!
     
+    @IBOutlet weak var categoryBtn: UIButton!
     var uploadSession:Foundation.URLSession?
     var uploadTask:URLSessionDataTask?
     
     let imagePicker = UIImagePickerController()
 
+    @IBAction func categoryBtnClicked(_ sender: Any) {
+        
+        let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
+        controller.option = OptionsListViewController.Option.category
+        controller.completionHandler={ [weak self]
+            (id,name) in self?.categoryBtn.setTitle(name, for: .normal)
+        }
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     @IBAction func uploadBtnClicked(_ sender: Any) {
         let actionController = SkypeActionController()
         
@@ -48,6 +58,12 @@ class RegisterGiftViewController: UIViewController {
         present(actionController, animated: true, completion: nil)
 
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
+        self.navigationItem.title="ثبت هدیه"
+        
     }
     
     override func viewDidLoad() {

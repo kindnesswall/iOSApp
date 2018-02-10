@@ -87,6 +87,12 @@
 		05F6AA541FFEEB8D00CDABC2 /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6AA501FFEEB8C00CDABC2 /* ChatListTableViewController.swift */; };
 		05F6AA551FFEEB8D00CDABC2 /* ChatConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6AA511FFEEB8D00CDABC2 /* ChatConversationViewController.swift */; };
 		05F6AA561FFEEB8D00CDABC2 /* ChatListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */; };
+		60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */; };
+		60AE9C86202DB9B100F246CD /* CategoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C85202DB9B100F246CD /* CategoryListViewModel.swift */; };
+		60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C87202DE87100F246CD /* OptionsListViewController.swift */; };
+		60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C8F202DF97100F246CD /* CategoryOptionsTableViewCell.swift */; };
+		60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */; };
+		60AE9C94202DFB6A00F246CD /* UITableView+RegisterNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C93202DFB6A00F246CD /* UITableView+RegisterNib.swift */; };
 		F7BCA4F8A441C01D89E9B782 /* Pods_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C277763F780436B62AC383 /* Pods_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -175,6 +181,12 @@
 		05F6AA511FFEEB8D00CDABC2 /* ChatConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConversationViewController.swift; sourceTree = "<group>"; };
 		05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatListTableViewController.xib; sourceTree = "<group>"; };
 		34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
+		60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsListViewController.xib; sourceTree = "<group>"; };
+		60AE9C85202DB9B100F246CD /* CategoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewModel.swift; sourceTree = "<group>"; };
+		60AE9C87202DE87100F246CD /* OptionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsListViewController.swift; sourceTree = "<group>"; };
+		60AE9C8F202DF97100F246CD /* CategoryOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOptionsTableViewCell.swift; sourceTree = "<group>"; };
+		60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryOptionsTableViewCell.xib; sourceTree = "<group>"; };
+		60AE9C93202DFB6A00F246CD /* UITableView+RegisterNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterNib.swift"; sourceTree = "<group>"; };
 		A4C277763F780436B62AC383 /* Pods_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -235,10 +247,11 @@
 				05BFBBCD1FDB112800DBCDDF /* extenstions */,
 				05BFBBC41FDAA49E00DBCDDF /* app */,
 				05335D471FD0DD7A00601115 /* helper */,
+				60AE9C82202DB96200F246CD /* view_models */,
 				05335D421FD0D05C00601115 /* view_controllers */,
+				054B1B461FCC29B3007570EF /* views */,
 				054B1B581FCC44E3007570EF /* models */,
 				054B1B4B1FCC3B60007570EF /* fonts */,
-				054B1B461FCC29B3007570EF /* views */,
 				05DDD3DC1F921D03006C5E31 /* api */,
 				0507C8691F8C1A920084CDF1 /* Assets.xcassets */,
 				0507C86E1F8C1A920084CDF1 /* Info.plist */,
@@ -262,6 +275,8 @@
 				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
 				05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */,
 				05BFBBE71FE2755E00DBCDDF /* MyKindnessWallViewController.swift */,
+				60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */,
+				60AE9C87202DE87100F246CD /* OptionsListViewController.swift */,
 				05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */,
 				056FBB581F9135EA0023C9CF /* HomeViewController.swift */,
 				056FBB591F9135EA0023C9CF /* HomeViewController.xib */,
@@ -287,20 +302,8 @@
 		054B1B461FCC29B3007570EF /* views */ = {
 			isa = PBXGroup;
 			children = (
-				05644DCB1FFF06BC00B7C853 /* SectionView.swift */,
-				05644DCC1FFF06BC00B7C853 /* SectionView.xib */,
-				05644DB41FFEF3A500B7C853 /* ChatConversationTableViewCell.swift */,
-				05644DB71FFEF3A500B7C853 /* ChatConversationTableViewCell.xib */,
-				05644DB61FFEF3A500B7C853 /* ChatListTableViewCell.swift */,
-				05644DB31FFEF3A500B7C853 /* ChatListTableViewCell.xib */,
-				05644DB81FFEF3A500B7C853 /* OthersChatConversationTableViewCell.swift */,
-				05644DB51FFEF3A500B7C853 /* OthersChatConversationTableViewCell.xib */,
-				054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */,
-				054B1B481FCC29F6007570EF /* GiftTableViewCell.xib */,
-				05029ECC1FE9381E004D96B1 /* RequestsTableViewCell.swift */,
-				05029ECD1FE9381E004D96B1 /* RequestsTableViewCell.xib */,
-				05029ED01FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift */,
-				05029ED11FE93EC9004D96B1 /* RequestToAGiftTableViewCell.xib */,
+				60AE9C95202E00BB00F246CD /* View */,
+				60AE9C89202DF7AB00F246CD /* TableViewCell */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				05644DC91FFF02A000B7C853 /* UITableView+isCellVisible.swift */,
+				60AE9C93202DFB6A00F246CD /* UITableView+RegisterNib.swift */,
 				05644DC11FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift */,
 				05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */,
 				05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */,
@@ -415,6 +419,44 @@
 				34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		60AE9C82202DB96200F246CD /* view_models */ = {
+			isa = PBXGroup;
+			children = (
+				60AE9C85202DB9B100F246CD /* CategoryListViewModel.swift */,
+			);
+			path = view_models;
+			sourceTree = "<group>";
+		};
+		60AE9C89202DF7AB00F246CD /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				05029ED01FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift */,
+				05029ED11FE93EC9004D96B1 /* RequestToAGiftTableViewCell.xib */,
+				05029ECC1FE9381E004D96B1 /* RequestsTableViewCell.swift */,
+				05029ECD1FE9381E004D96B1 /* RequestsTableViewCell.xib */,
+				054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */,
+				054B1B481FCC29F6007570EF /* GiftTableViewCell.xib */,
+				05644DB81FFEF3A500B7C853 /* OthersChatConversationTableViewCell.swift */,
+				05644DB51FFEF3A500B7C853 /* OthersChatConversationTableViewCell.xib */,
+				05644DB61FFEF3A500B7C853 /* ChatListTableViewCell.swift */,
+				05644DB31FFEF3A500B7C853 /* ChatListTableViewCell.xib */,
+				05644DB41FFEF3A500B7C853 /* ChatConversationTableViewCell.swift */,
+				05644DB71FFEF3A500B7C853 /* ChatConversationTableViewCell.xib */,
+				60AE9C8F202DF97100F246CD /* CategoryOptionsTableViewCell.swift */,
+				60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		60AE9C95202E00BB00F246CD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				05644DCB1FFF06BC00B7C853 /* SectionView.swift */,
+				05644DCC1FFF06BC00B7C853 /* SectionView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,6 +527,7 @@
 				05644DBD1FFEF3A500B7C853 /* ChatConversationTableViewCell.xib in Resources */,
 				05029ECF1FE9381E004D96B1 /* RequestsTableViewCell.xib in Resources */,
 				054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */,
+				60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */,
 				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
 				05BFBBEA1FE2755E00DBCDDF /* MyKindnessWallViewController.xib in Resources */,
 				05029ED31FE93EC9004D96B1 /* RequestToAGiftTableViewCell.xib in Resources */,
@@ -497,6 +540,7 @@
 				05F6AA531FFEEB8D00CDABC2 /* ChatConversationViewController.xib in Resources */,
 				05BFBBBA1FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib in Resources */,
 				05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */,
+				60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */,
 				054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */,
 				05BFBBD51FE1C4EE00DBCDDF /* RequestsViewController.xib in Resources */,
 				05F6AA561FFEEB8D00CDABC2 /* ChatListTableViewController.xib in Resources */,
@@ -566,7 +610,9 @@
 			files = (
 				05BFBBB21FDA5DBF00DBCDDF /* UIFunctions.swift in Sources */,
 				05BFBBBF1FDA9FCF00DBCDDF /* NavigationBarStyle.swift in Sources */,
+				60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */,
 				05029ED61FE9A683004D96B1 /* ButtonWithData.swift in Sources */,
+				60AE9C94202DFB6A00F246CD /* UITableView+RegisterNib.swift in Sources */,
 				05644DBA1FFEF3A500B7C853 /* ChatConversationTableViewCell.swift in Sources */,
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
 				05644DC21FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift in Sources */,
@@ -581,6 +627,7 @@
 				05BFBBC11FDA9FCF00DBCDDF /* DateHelper.swift in Sources */,
 				05BFBBE91FE2755E00DBCDDF /* MyKindnessWallViewController.swift in Sources */,
 				05644DC41FFEF62300B7C853 /* ChatAbs.swift in Sources */,
+				60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,
 				05BFBBC81FDAA4EF00DBCDDF /* AppColor.swift in Sources */,
 				05029ED21FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift in Sources */,
@@ -602,6 +649,7 @@
 				05DDD3E01F921DCD006C5E31 /* ApiInput.swift in Sources */,
 				05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */,
 				05BFBBCC1FDB101700DBCDDF /* UIFont+printAllFonts.swift in Sources */,
+				60AE9C86202DB9B100F246CD /* CategoryListViewModel.swift in Sources */,
 				05BFBBEC1FE29F7C00DBCDDF /* IntroViewController.swift in Sources */,
 				05644DC81FFF01C300B7C853 /* ChatConversationResult.swift in Sources */,
 				05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */,

@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
         ApiMethods.getGifts(cityId: "0", regionId: "0", categoryId: "0", startIndex: 0, searchText: "") { (data) in
             APIRequest.logReply(data: data)
             
-            if let reply=APIRequest.readJsonData(data: data, outpuType: [Gift].self) {
+            if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
 //                    if let status=reply.status,status==APIStatus.DONE {
 //                        print("\(reply.result?.token)")
 //                    }
@@ -43,7 +43,6 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
         self.navigationItem.title="خانه"
-        
     }
     
     

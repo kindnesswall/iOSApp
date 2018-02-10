@@ -11,6 +11,22 @@ import Foundation
 class ApiMethods {
     
     public static let offset:Int = 15
+    
+    
+    
+    
+    public func getCategories(completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
+        
+        var url=APIURLs.getCategories
+        url+="/0/1000/1"
+        
+        APIRequest.requestFormUrlEncoded(url: url, formKeyValueInput: [:], httpMethod: .get) { (data, response, error) in
+            DispatchQueue.main.async {
+                completionHandler(data, response, error)
+            }
+            
+        }
+    }
         
     public static func login(mobile:String, verificationCode:String, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
         

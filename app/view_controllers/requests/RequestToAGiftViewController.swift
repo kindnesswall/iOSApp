@@ -40,7 +40,7 @@ class RequestToAGiftViewController: UIViewController {
                 return
             }
             
-            if let reply=APIRequest.readJsonData(data: data, outpuType: [Request].self) {
+            if let reply=APIRequest.readJsonData(data: data, outputType: [Request].self) {
                 
                 self.requests.append(contentsOf: reply)
                 self.tableview.reloadData()

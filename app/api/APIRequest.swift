@@ -333,11 +333,11 @@ class APIRequest {
     
     //Codable
     
-    public static func readJsonData<JsonType:Codable>(data:Data?,outpuType:JsonType.Type)->JsonType? {
+    public static func readJsonData<JsonType:Codable>(data:Data?,outputType:JsonType.Type)->JsonType? {
         
         if let data=data {
             let decoder = JSONDecoder()
-            let reply = try? decoder.decode(outpuType, from: data)
+            let reply = try? decoder.decode(outputType, from: data)
             return reply
         }
         return nil

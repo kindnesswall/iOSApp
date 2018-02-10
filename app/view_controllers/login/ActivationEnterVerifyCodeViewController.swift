@@ -107,7 +107,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
             
             APIRequest.logReply(data: data)
 
-            if let reply=APIRequest.readJsonData(data: data, outpuType: TokenOutput.self) {
+            if let reply=APIRequest.readJsonData(data: data, outputType: TokenOutput.self) {
                 
                 if let userId = reply.userId {
                     self.userDefault.set(userId, forKey: AppConstants.USER_ID)

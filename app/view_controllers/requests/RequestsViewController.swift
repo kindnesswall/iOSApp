@@ -50,7 +50,7 @@ class RequestsViewController: UIViewController {
                 return
             }
             
-            if let reply=APIRequest.readJsonData(data: data, outpuType: [Gift].self) {
+            if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
                 self.gifts.append(contentsOf: reply)
                 self.tableview.reloadData()
