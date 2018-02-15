@@ -12,14 +12,15 @@ import CropViewController
 
 class RegisterGiftViewController: UIViewController {
 
+    @IBOutlet weak var uploadedImageStack: UIStackView!
+    var uploadedImageViews=[UploadImageView]()
+    
+    
     @IBOutlet var uploadBtn: UIButton!
-    @IBOutlet var selectedImage: UIImageView!
-    @IBOutlet var precentLbl: UILabel!
-    @IBOutlet var uploadedImage: UIImageView!
+
     
     @IBOutlet weak var categoryBtn: UIButton!
-    var uploadSession:Foundation.URLSession?
-    var uploadTask:URLSessionDataTask?
+    
     
     let imagePicker = UIImagePickerController()
 
@@ -74,77 +75,21 @@ class RegisterGiftViewController: UIViewController {
     
 }
 
-extension RegisterGiftViewController : CropViewControllerDelegate {
-    public func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
-//        self.croppedRect = cropRect
-//        self.croppedAngle = angle
-//        updateImageViewWithImage(image, fromCropViewController: cropViewController)
-        
-        uploadImage(selectedImage: image)
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    public func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
-//        self.croppedRect = cropRect
-//        self.croppedAngle = angle
-//        updateImageViewWithImage(image, fromCropViewController: cropViewController)
-        uploadImage(selectedImage: image)
-    }
-    
-    func uploadImage(selectedImage: UIImage) {
-        if let token=UserDefaults.standard.string(forKey: AppConstants.Authorization) {
-            APIRequest.uploadImageTask(url: APIURLs.Upload, session: &uploadSession, task: &uploadTask,delegate:self, image: selectedImage, complitionHandler: { [weak self] (data, response, error) in
-                
-                print("hey :: ::")
-                APIRequest.logReply(data: data)
-                
-                print("error :: ::")
-                if let response = response as? HTTPURLResponse {
-                    print((response).statusCode)
-                    
-                    if response.statusCode >= 200 && response.statusCode <= 300 {
-                        FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
-                    }else{
-                        FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
-                    }
-                }
-                
-                self?.precentLbl.isHidden = true
-                guard error==nil else {
-                    FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
-                    return
-                }
-                
-                //                if let json=APIRequest.getJsonDic(fromData: data) {
-                //                    if let status = json["status"] as? String,
-                //                        status == APIStatus.DONE,
-                //                        let url = json["avatar_url"] as? String{
-                //
-                //                        FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
-                //
-                //                        self?.profile.avatar_url = url
-                //                        return
-                //                    }
-                //                }
-                //                FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
-                
-            })
-        }
-    }
-}
-
 extension RegisterGiftViewController:UIImagePickerControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         
         let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         if let selectedImage=selectedImage {
-            self.selectedImage.image = selectedImage
+            
             
             let cropViewController = CropViewController(image: selectedImage)
             cropViewController.delegate = self
             
+            
             self.dismiss(animated: true, completion: nil)
+            
+            cropViewController.modalTransitionStyle = .coverVertical
             present(cropViewController, animated: true, completion: nil)
             
         } else {
@@ -158,6 +103,97 @@ extension RegisterGiftViewController:UIImagePickerControllerDelegate{
     }
 }
 
+
+extension RegisterGiftViewController : CropViewControllerDelegate {
+    public func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+//        self.croppedRect = cropRect
+//        self.croppedAngle = angle
+//        updateImageViewWithImage(image, fromCropViewController: cropViewController)
+        
+        uploadImage(selectedImage: image)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+//    public func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+////        self.croppedRect = cropRect
+////        self.croppedAngle = angle
+////        updateImageViewWithImage(image, fromCropViewController: cropViewController)
+//        uploadImage(selectedImage: image)
+//    }
+    
+    func uploadImage(selectedImage: UIImage) {
+//        if let token=UserDefaults.standard.string(forKey: AppConstants.Authorization) {
+        
+        let uploadedImageView=NibLoader.loadViewFromNib(name: "UploadImageView", owner: self, nibType: UploadImageView.self) as! UploadImageView
+        uploadedImageView.widthAnchor.constraint(equalToConstant: 100).isActive=true
+        
+        uploadedImageView.imageView.image=selectedImage
+        
+        self.uploadedImageViews.append(uploadedImageView)
+        self.uploadedImageStack.addArrangedSubview(uploadedImageView)
+        
+        APIRequest.uploadImageTask(url: APIURLs.Upload, session: &uploadedImageView.uploadSession, task: &uploadedImageView.uploadTask,delegate:self, image: selectedImage, complitionHandler: { [weak self] (data, response, error) in
+            
+//            print("hey :: ::")
+//            APIRequest.logReply(data: data)
+            
+//            print("error :: ::")
+            if let response = response as? HTTPURLResponse {
+                print((response).statusCode)
+                
+                if response.statusCode >= 200 && response.statusCode <= 300 {
+                    FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
+                }else{
+                    FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
+                }
+            }
+            
+            guard error==nil else {
+                FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
+                return
+            }
+            
+            guard let uploadIndex=self?.findIndexOfUploadedImage(task: uploadedImageView.uploadTask) else {
+                return
+            }
+            
+            self?.uploadedImageViews[uploadIndex].shadowView.isHidden=true
+            self?.uploadedImageViews[uploadIndex].progressLabel.isHidden = true
+            
+            //                if let json=APIRequest.getJsonDic(fromData: data) {
+            //                    if let status = json["status"] as? String,
+            //                        status == APIStatus.DONE,
+            //                        let url = json["avatar_url"] as? String{
+            //
+            //                        FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
+            //
+            //                        self?.profile.avatar_url = url
+            //                        return
+            //                    }
+            //                }
+            //                FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
+            
+        })
+    }
+    
+    func findIndexOfUploadedImage(task:URLSessionTask?)->Int?{
+        
+        guard let task = task else {
+            return nil
+        }
+        
+        for i in 0..<self.uploadedImageViews.count {
+            if self.uploadedImageViews[i].uploadTask==task {
+                return i
+            }
+        }
+        return nil
+        
+    }
+}
+
+
+
 extension RegisterGiftViewController:URLSessionTaskDelegate{
     func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
         print("byte :: \(bytesSent) in : \(totalBytesSent) from : \(totalBytesExpectedToSend)")
@@ -166,13 +202,20 @@ extension RegisterGiftViewController:URLSessionTaskDelegate{
         if percent == 100 {
             percent = 99
         }
-        self.precentLbl.text = "٪" + UIFunctions.CastNumberToPersian(input: percent)
+        
+        guard let uploadIndex=findIndexOfUploadedImage(task: task) else {
+            return
+        }
+        self.uploadedImageViews[uploadIndex].progressLabel.text = "٪" + UIFunctions.CastNumberToPersian(input: percent)
     }
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         
     }
     
 }
+
+
+
 
 extension RegisterGiftViewController:UINavigationControllerDelegate{
     

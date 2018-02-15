@@ -101,7 +101,7 @@ class ChatListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = NibLoader.loadViewFromNib(name: "SectionView", selfInstance: self, nibType: SectionView.self) as! SectionView
+        let view = NibLoader.loadViewFromNib(name: "SectionView", owner: self, nibType: SectionView.self) as! SectionView
         view.setTitle(title: "لیست گفت و گوها")
         return view
     }
