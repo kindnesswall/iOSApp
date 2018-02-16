@@ -87,6 +87,10 @@
 		05F6AA541FFEEB8D00CDABC2 /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6AA501FFEEB8C00CDABC2 /* ChatListTableViewController.swift */; };
 		05F6AA551FFEEB8D00CDABC2 /* ChatConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6AA511FFEEB8D00CDABC2 /* ChatConversationViewController.swift */; };
 		05F6AA561FFEEB8D00CDABC2 /* ChatListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */; };
+		601F83C32036A36500F9118B /* DateStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83C22036A36400F9118B /* DateStatusListViewModel.swift */; };
+		601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83CC2036A50600F9118B /* GenericOptionsTableViewCell.swift */; };
+		601F83CF2036A50600F9118B /* GenericOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 601F83CD2036A50600F9118B /* GenericOptionsTableViewCell.xib */; };
+		601F83D12036A8BE00F9118B /* DateStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D02036A8BE00F9118B /* DateStatus.swift */; };
 		602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */; };
 		602BC8F82034B7CC00ECF6E2 /* UploadImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */; };
 		60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */; };
@@ -183,6 +187,10 @@
 		05F6AA511FFEEB8D00CDABC2 /* ChatConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConversationViewController.swift; sourceTree = "<group>"; };
 		05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatListTableViewController.xib; sourceTree = "<group>"; };
 		34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
+		601F83C22036A36400F9118B /* DateStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStatusListViewModel.swift; sourceTree = "<group>"; };
+		601F83CC2036A50600F9118B /* GenericOptionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericOptionsTableViewCell.swift; sourceTree = "<group>"; };
+		601F83CD2036A50600F9118B /* GenericOptionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericOptionsTableViewCell.xib; sourceTree = "<group>"; };
+		601F83D02036A8BE00F9118B /* DateStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStatus.swift; sourceTree = "<group>"; };
 		602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageView.swift; sourceTree = "<group>"; };
 		602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageView.xib; sourceTree = "<group>"; };
 		60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsListViewController.xib; sourceTree = "<group>"; };
@@ -335,6 +343,7 @@
 				05BFBBE11FE26B0500DBCDDF /* Category.swift */,
 				05BFBBE31FE26B4C00DBCDDF /* Request.swift */,
 				05644DBF1FFEF44A00B7C853 /* Message.swift */,
+				601F83D02036A8BE00F9118B /* DateStatus.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -429,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				60AE9C85202DB9B100F246CD /* CategoryListViewModel.swift */,
+				601F83C22036A36400F9118B /* DateStatusListViewModel.swift */,
 			);
 			path = view_models;
 			sourceTree = "<group>";
@@ -450,6 +460,8 @@
 				05644DB71FFEF3A500B7C853 /* ChatConversationTableViewCell.xib */,
 				60AE9C8F202DF97100F246CD /* CategoryOptionsTableViewCell.swift */,
 				60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */,
+				601F83CC2036A50600F9118B /* GenericOptionsTableViewCell.swift */,
+				601F83CD2036A50600F9118B /* GenericOptionsTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -527,6 +539,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				601F83CF2036A50600F9118B /* GenericOptionsTableViewCell.xib in Resources */,
 				05644DCE1FFF06BD00B7C853 /* SectionView.xib in Resources */,
 				0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */,
 				054B1B4A1FCC29F6007570EF /* GiftTableViewCell.xib in Resources */,
@@ -655,6 +668,7 @@
 				05BFBBE91FE2755E00DBCDDF /* MyKindnessWallViewController.swift in Sources */,
 				05644DC41FFEF62300B7C853 /* ChatAbs.swift in Sources */,
 				60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */,
+				601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,
 				05BFBBC81FDAA4EF00DBCDDF /* AppColor.swift in Sources */,
 				05029ED21FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift in Sources */,
@@ -686,6 +700,7 @@
 				05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */,
 				05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */,
+				601F83C32036A36500F9118B /* DateStatusListViewModel.swift in Sources */,
 				05644DCA1FFF02A100B7C853 /* UITableView+isCellVisible.swift in Sources */,
 				05644DB21FFEEF6D00B7C853 /* InternetLoadingStateIndicator.swift in Sources */,
 				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
@@ -693,6 +708,7 @@
 				05BFBBD71FE1D6FE00DBCDDF /* String+isNumber.swift in Sources */,
 				05BFBBE21FE26B0500DBCDDF /* Category.swift in Sources */,
 				05644DBE1FFEF3A500B7C853 /* OthersChatConversationTableViewCell.swift in Sources */,
+				601F83D12036A8BE00F9118B /* DateStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,9 @@ import CropViewController
 
 class RegisterGiftViewController: UIViewController {
 
+    @IBOutlet weak var titleTextView: UITextField!
+    @IBOutlet weak var contentStackView: UIStackView!
+    @IBOutlet weak var dateStatusBtn: UIButton!
     @IBOutlet weak var uploadedImageStack: UIStackView!
     var uploadedImageViews=[UploadImageView]()
     
@@ -23,6 +26,25 @@ class RegisterGiftViewController: UIViewController {
     
     
     let imagePicker = UIImagePickerController()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let tapGesture=UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction))
+        
+        contentStackView.addGestureRecognizer(tapGesture)
+        
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    @objc func tapGestureAction(){
+        dismissKeyBoard()
+    }
+    
+    func dismissKeyBoard(){
+        self.titleTextView.resignFirstResponder()
+    }
 
     @IBAction func categoryBtnClicked(_ sender: Any) {
         
@@ -33,6 +55,16 @@ class RegisterGiftViewController: UIViewController {
         }
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
+    @IBAction func dateStatusBtnAction(_ sender: Any) {
+        let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
+        controller.option = OptionsListViewController.Option.dateStatus
+        controller.completionHandler={ [weak self]
+            (id,name) in self?.dateStatusBtn.setTitle(name, for: .normal)
+        }
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     @IBAction func uploadBtnClicked(_ sender: Any) {
         let actionController = SkypeActionController()
         
@@ -67,11 +99,7 @@ class RegisterGiftViewController: UIViewController {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+   
     
 }
 
@@ -87,13 +115,15 @@ extension RegisterGiftViewController:UIImagePickerControllerDelegate{
             cropViewController.delegate = self
             
             
-            self.dismiss(animated: true, completion: nil)
+            picker.dismiss(animated: true, completion: nil)
             
-            cropViewController.modalTransitionStyle = .coverVertical
-            present(cropViewController, animated: true, completion: nil)
+            present(cropViewController, animated: false, completion: nil)
+            
+            
+            
             
         } else {
-            self.dismiss(animated: true, completion: nil)
+            picker.dismiss(animated: true, completion: nil)
         }
         
     }
@@ -111,7 +141,7 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
 //        updateImageViewWithImage(image, fromCropViewController: cropViewController)
         
         uploadImage(selectedImage: image)
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
 //    public func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int) {

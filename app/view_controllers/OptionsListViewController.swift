@@ -15,13 +15,14 @@ class OptionsListViewController: UIViewController {
     
     enum Option {
         case category
-        case city
+        case dateStatus
     }
     var option:Option?
     
     var completionHandler:((String?,String?)->Void)?
     
-    var categoryListViewModel=CategoryListViewModel()
+    var categoryListViewModel:CategoryListViewModel?
+    var dateStatusListViewModel:DateStatusListViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +30,13 @@ class OptionsListViewController: UIViewController {
         if let option=option {
             switch option {
             case .category:
+                categoryListViewModel=CategoryListViewModel()
                 tableView.registerNib(type: CategoryOptionsTableViewCell.self, nib: "CategoryOptionsTableViewCell")
-                categoryListViewModel.getCategories(completionHandler: {[weak self] () in self?.tableView.reloadData()})
-            case .city:
-                break
+                categoryListViewModel!.getCategories(completionHandler: {[weak self] () in self?.tableView.reloadData()})
+            case .dateStatus:
+                dateStatusListViewModel=DateStatusListViewModel()
+                tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
+                
                 
             }
         }
@@ -66,9 +70,9 @@ extension OptionsListViewController:UITableViewDataSource {
         }
         switch option {
         case .category:
-            return categoryListViewModel.categories.count
-        default:
-            return 0
+            return categoryListViewModel?.categories.count ?? 0
+        case .dateStatus:
+            return dateStatusListViewModel?.dateStatus.count ?? 0
         }
     }
     
@@ -81,10 +85,12 @@ extension OptionsListViewController:UITableViewDataSource {
         switch option {
         case .category:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryOptionsTableViewCell", for: indexPath) as! CategoryOptionsTableViewCell
-            categoryListViewModel.setCell(cell: cell, indexPath: indexPath)
+            categoryListViewModel?.setCell(cell: cell, indexPath: indexPath)
             return cell
-        default:
-            fatalError()
+        case .dateStatus:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GenericOptionsTableViewCell", for: indexPath) as! GenericOptionsTableViewCell
+            dateStatusListViewModel?.setCell(cell: cell, indexPath: indexPath)
+            return cell
         }
         
         
@@ -101,11 +107,13 @@ extension OptionsListViewController:UITableViewDelegate {
         }
         switch option {
         case .category:
-            let category=categoryListViewModel.returnCellData(indexPath: indexPath)
-            completionHandler?(category.id,category.title)
+            let category=categoryListViewModel?.returnCellData(indexPath: indexPath)
+            completionHandler?(category?.id,category?.title)
             self.navigationController?.popViewController(animated: true)
-        default:
-            fatalError()
+        case .dateStatus:
+            let dateStatus=dateStatusListViewModel?.returnCellData(indexPath: indexPath)
+            completionHandler?(dateStatus?.id,dateStatus?.title)
+            self.navigationController?.popViewController(animated: true)
         }
         
         
