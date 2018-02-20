@@ -12,7 +12,7 @@ class DateStatus {
     var title:String?
     var id:String?
     
-    init(id:String,title:String) {
+    init(id:String?,title:String?) {
         self.id=id
         self.title=title
     }

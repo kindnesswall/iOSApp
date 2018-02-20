@@ -12,6 +12,8 @@ class UploadImageView: UIView {
     
     var uploadSession:Foundation.URLSession?
     var uploadTask:URLSessionDataTask?
+    
+    var imageSrc:String?
 
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var imageView: UIImageView!

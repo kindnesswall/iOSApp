@@ -13,6 +13,12 @@ class CategoryListViewModel: NSObject {
     let apiMethod=ApiMethods()
     
     var categories=[Category]()
+    
+    init(completionHandler:(()->Void)?) {
+        super.init()
+        
+        getCategories(completionHandler: completionHandler)
+    }
 
     func getCategories(completionHandler:(()->Void)?){
         apiMethod.getCategories { (data, response, error) in

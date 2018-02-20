@@ -3,8 +3,8 @@ import UIKit
 
 class AppColor {
     
-    static let tintColor=UIColor(named: "TintColor")
+    static let tintColor=UIColor(named: "TintColor")!
     
-    static let greyBgColor=UIColor(named:"GrayBackgroundColor")
+    static let greyBgColor=UIColor(named:"GrayBackgroundColor")!
     
 }

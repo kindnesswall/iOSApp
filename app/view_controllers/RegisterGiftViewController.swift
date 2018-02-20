@@ -15,14 +15,29 @@ class RegisterGiftViewController: UIViewController {
     @IBOutlet weak var titleTextView: UITextField!
     @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var dateStatusBtn: UIButton!
+    var dateStatus:DateStatus?
+    
+    @IBOutlet weak var price: UITextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
+    
     @IBOutlet weak var uploadedImageStack: UIStackView!
     var uploadedImageViews=[UploadImageView]()
     
+    @IBOutlet weak var placesStackView: UIStackView!
+    var placesLabels=[UILabel]()
+    var places=[Place]()
     
     @IBOutlet var uploadBtn: UIButton!
 
+    @IBAction func submitBtnAction(_ sender: Any) {
+        for uploadedImageView in uploadedImageViews {
+            print("image:\(uploadedImageView.imageSrc ?? "")")
+        }
+    }
     
     @IBOutlet weak var categoryBtn: UIButton!
+    var category:Category?
     
     
     let imagePicker = UIImagePickerController()
@@ -46,14 +61,57 @@ class RegisterGiftViewController: UIViewController {
         self.titleTextView.resignFirstResponder()
     }
 
+    @IBAction func placeBtnAction(_ sender: Any) {
+        self.clearGiftPlaces()
+        let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
+        controller.option = OptionsListViewController.Option.place(0)
+        controller.completionHandler={ [weak self] (id,name) in
+            let place=Place(id: Int(id ?? ""), name: name)
+            self?.addGiftPlace(place: place)
+        }
+        controller.closeHandler={ [weak self] in
+            self?.clearGiftPlaces()
+        }
+        let nc=UINavigationController(rootViewController: controller)
+        self.present(nc, animated: true, completion: nil)
+    }
+    
+    func addGiftPlace(place:Place) {
+        
+        let label=UILabel()
+        label.text=place.name
+        label.backgroundColor=AppColor.greyBgColor
+        label.textColor=UIColor.black
+        label.font=AppFont.getRegularFont(size: 17)
+        label.textAlignment = .center
+        placesLabels.append(label)
+        
+        let width=label.intrinsicContentSize.width + 20
+        label.widthAnchor.constraint(equalToConstant: width).isActive=true
+        
+        placesStackView.addArrangedSubview(label)
+        
+        self.places.append(place)
+    }
+    
+    func clearGiftPlaces(){
+        for placeLabel in placesLabels {
+            placeLabel.removeFromSuperview()
+        }
+        placesLabels=[]
+        places=[]
+    }
+    
     @IBAction func categoryBtnClicked(_ sender: Any) {
         
         let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
         controller.option = OptionsListViewController.Option.category
         controller.completionHandler={ [weak self]
             (id,name) in self?.categoryBtn.setTitle(name, for: .normal)
+            self?.category=Category(id: id, title: name)
         }
-        self.navigationController?.pushViewController(controller, animated: true)
+        let nc=UINavigationController(rootViewController: controller)
+        self.present(nc, animated: true, completion: nil)
     }
     
     @IBAction func dateStatusBtnAction(_ sender: Any) {
@@ -61,8 +119,10 @@ class RegisterGiftViewController: UIViewController {
         controller.option = OptionsListViewController.Option.dateStatus
         controller.completionHandler={ [weak self]
             (id,name) in self?.dateStatusBtn.setTitle(name, for: .normal)
+            self?.dateStatus=DateStatus(id: id, title: name)
         }
-        self.navigationController?.pushViewController(controller, animated: true)
+        let nc=UINavigationController(rootViewController: controller)
+        self.present(nc, animated: true, completion: nil)
     }
     
     @IBAction func uploadBtnClicked(_ sender: Any) {
@@ -164,44 +224,35 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         
         APIRequest.uploadImageTask(url: APIURLs.Upload, session: &uploadedImageView.uploadSession, task: &uploadedImageView.uploadTask,delegate:self, image: selectedImage, complitionHandler: { [weak self] (data, response, error) in
             
-//            print("hey :: ::")
-//            APIRequest.logReply(data: data)
-            
-//            print("error :: ::")
-            if let response = response as? HTTPURLResponse {
-                print((response).statusCode)
-                
-                if response.statusCode >= 200 && response.statusCode <= 300 {
-                    FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
-                }else{
-                    FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
-                }
-            }
-            
-            guard error==nil else {
-                FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
-                return
-            }
-            
-            guard let uploadIndex=self?.findIndexOfUploadedImage(task: uploadedImageView.uploadTask) else {
-                return
-            }
-            
-            self?.uploadedImageViews[uploadIndex].shadowView.isHidden=true
-            self?.uploadedImageViews[uploadIndex].progressLabel.isHidden = true
-            
-            //                if let json=APIRequest.getJsonDic(fromData: data) {
-            //                    if let status = json["status"] as? String,
-            //                        status == APIStatus.DONE,
-            //                        let url = json["avatar_url"] as? String{
+            //            if let response = response as? HTTPURLResponse {
+            //                print((response).statusCode)
             //
-            //                        FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
-            //
-            //                        self?.profile.avatar_url = url
-            //                        return
-            //                    }
+            //                if response.statusCode >= 200 && response.statusCode <= 300 {
+            //                    FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
+            //                }else{
+            //                    FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
             //                }
+            //            }
+            //
+            //            guard error==nil else {
             //                FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
+            //                return
+            //            }
+            
+            if let imageSrc=APIRequest.readJsonData(data: data, outputType: ImageUpload.self)?.imageSrc {
+                
+                guard let uploadIndex=self?.findIndexOfUploadedImage(task: uploadedImageView.uploadTask) else {
+                    return
+                }
+                self?.uploadedImageViews[uploadIndex].shadowView.isHidden=true
+                self?.uploadedImageViews[uploadIndex].progressLabel.isHidden = true
+                self?.uploadedImageViews[uploadIndex].imageSrc=imageSrc
+                
+                FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
+            } else {
+                FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
+            }
+            
             
         })
     }

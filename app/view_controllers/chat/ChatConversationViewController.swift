@@ -33,7 +33,7 @@ class ChatConversationViewController: UIViewController {
         
         NavigationBarStyle.setDefaultStyle(navigationC: self.navigationController)
         
-        NavigationBarStyle.setBackBtn(navigationItem: self.navigationItem, selfInstance: self, backBtnClickedFunction: #selector(self.backBtnClicked), backText: "بازگشت")
+        NavigationBarStyle.setBackBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.backBtnClicked))
         
         NavigationBarStyle.removeDefaultBackBtn(navigationItem: self.navigationItem)
         self.navigationController?.navigationBar.isTranslucent=false

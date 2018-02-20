@@ -255,6 +255,20 @@ class APIRequest {
     }
     
     
+    //Read test Json
+    
+    public static func requestTestJson(name:String,complitionHandler: @escaping(Data?)->Void){
+        
+        if let file = Bundle.main.url(forResource: name, withExtension: "json") {
+            let data = try? Data(contentsOf: file)
+            complitionHandler(data)
+            
+        }else{
+            print("file not found")
+        }
+    }
+    
+    
     //MARK: - Else
     
     public static func logReply(data:Data?){
