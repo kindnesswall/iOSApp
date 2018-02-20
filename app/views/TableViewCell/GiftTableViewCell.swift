@@ -31,7 +31,7 @@ class GiftTableViewCell: UITableViewCell {
         giftTitle.text = gift.title
         giftDate.text = gift.createDateTime
         giftDescription.text = gift.description
-        if let url = gift.giftImages?[0] {
+        if let url = gift.giftImages?.first {
             giftImage.sd_setImage(with: URL(string: url))
         }
 

@@ -102,20 +102,22 @@ class APIRequest {
         
     }
     
-    public static func request(url:String,inputJson:[String:Any]?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
+    public static func request(url:String,httpMethod:EnumHttpMethods = .post,inputJson:[String:Any]?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
         
         let mainURL=URL(string: url)
         
         if let mainURL=mainURL {
             var request = URLRequest(url: mainURL)
-            request.httpMethod="POST"
+            
+            request.httpMethod = httpMethod.value
             
             request=self.setRequestHeader(request: request)
             
             if let inputJson=inputJson {
                 
                 let json=try! JSONSerialization.data(withJSONObject: inputJson, options: JSONSerialization.WritingOptions.prettyPrinted)
-                
+                print("input json:")
+                APIRequest.logReply(data: json)
                 request.httpBody=json
             }
             
@@ -133,10 +135,9 @@ class APIRequest {
     
     
     
-    
-    
     public static func request(
         url:String,
+        httpMethod:EnumHttpMethods = .post,
         appendToSessions sessions: inout [Foundation.URLSession?],
         appendToTasks tasks: inout [URLSessionDataTask?],
         inputJson:[String:Any]?,
@@ -146,14 +147,16 @@ class APIRequest {
         
         if let mainURL=mainURL {
             var request = URLRequest(url: mainURL)
-            request.httpMethod="POST"
+            
+            request.httpMethod = httpMethod.value
             
             request=self.setRequestHeader(request: request)
             
             if let inputJson=inputJson {
                 
                 let json=try! JSONSerialization.data(withJSONObject: inputJson, options: JSONSerialization.WritingOptions.prettyPrinted)
-                
+                print("input json:")
+                APIRequest.logReply(data: json)
                 request.httpBody=json
             }
             

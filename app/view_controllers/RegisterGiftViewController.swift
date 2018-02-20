@@ -17,9 +17,10 @@ class RegisterGiftViewController: UIViewController {
     @IBOutlet weak var dateStatusBtn: UIButton!
     var dateStatus:DateStatus?
     
-    @IBOutlet weak var price: UITextField!
+    @IBOutlet weak var priceTextView: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    @IBOutlet weak var registerBtn: UIButton!
     
     @IBOutlet weak var uploadedImageStack: UIStackView!
     var uploadedImageViews=[UploadImageView]()
@@ -31,9 +32,116 @@ class RegisterGiftViewController: UIViewController {
     @IBOutlet var uploadBtn: UIButton!
 
     @IBAction func submitBtnAction(_ sender: Any) {
-        for uploadedImageView in uploadedImageViews {
-            print("image:\(uploadedImageView.imageSrc ?? "")")
+        
+        
+        guard let title=self.titleTextView.text , title != "" else {
+            FlashMessage.showMessage(body: "لطفا عنوان کالا را وارد نمایید",theme: .warning)
+            return
         }
+        
+        guard let categoryId=Int(self.category?.id ?? "") else {
+            FlashMessage.showMessage(body: "لطفا دسته‌بندی کالا را انتخاب نمایید",theme: .warning)
+            return
+        }
+        
+        var addressObject=getAddress()
+        guard let address=addressObject.address else {
+            FlashMessage.showMessage(body: "لطفا محل کالا را انتخاب نمایید",theme: .warning)
+            return
+        }
+        guard let cityId=addressObject.cityId else {
+            FlashMessage.showMessage(body: "لطفا محل کالا را انتخاب نمایید",theme: .warning)
+            return
+        }
+        
+        let regionId=addressObject.regionId
+        
+        
+        guard let giftDescription=self.descriptionTextView.text , giftDescription != "" else {
+            FlashMessage.showMessage(body: "لطفا توضیحات کالا را وارد نمایید",theme: .warning)
+            return
+        }
+        
+        guard let price=Int(self.priceTextView.text ?? "") else {
+            FlashMessage.showMessage(body: "لطفا قیمت کالا را وارد نمایید",theme: .warning)
+            return
+        }
+        
+        
+        let giftImages=getGiftImages()
+        
+        let input:[String:Any]=["title":title,"address":address,"description":giftDescription,"price":price,"categoryId":categoryId,"cityId":cityId,"regionId":(regionId ?? -1),"giftImages":giftImages]
+    
+        
+        self.registerBtn.isEnabled=false
+        
+        APIRequest.request(url: APIURLs.Gift,httpMethod:.post, inputJson: input) { (data, response, error) in
+            
+            self.registerBtn.isEnabled=true
+            self.clearAllInput()
+            
+            print("Register Reply")
+            APIRequest.logReply(data: data)
+            
+            if let response = response as? HTTPURLResponse {
+                print((response).statusCode)
+                
+                if response.statusCode >= 200 && response.statusCode <= 300 {
+                    FlashMessage.showMessage(body: "ثبت کالا با موفقیت انجام شد",theme: .success)
+                    
+                }
+            }
+            
+        }
+        
+    }
+    
+    func getGiftImages()->[String] {
+        var giftImages=[String]()
+        for uploadedImageView in self.uploadedImageViews {
+            if let src=uploadedImageView.imageSrc {
+                giftImages.append(src)
+            }
+        }
+        return giftImages
+    }
+    
+    func getAddress()->(address:String?,cityId:Int?,regionId:Int?) {
+        guard let cityId=self.places.first?.id , let cityName=self.places.first?.name else {
+            return (nil,nil,nil)
+        }
+        
+        var regionId:Int?
+        if places.count>1 {
+            regionId=places[1].id
+        }
+        
+        var address=cityName
+        for i in 1..<places.count {
+            if let name=places[i].name {
+                address += " " + name
+            }
+        }
+        
+        return(address,cityId,regionId)
+        
+    }
+    
+    func clearAllInput(){
+        
+        self.clearUploadedImages()
+        self.clearGiftPlaces()
+        
+        self.categoryBtn.setTitle("انتخاب", for: .normal)
+        self.category=nil
+        
+        self.dateStatusBtn.setTitle("انتخاب", for: .normal)
+        self.dateStatus=nil
+        
+        self.titleTextView.text=""
+        self.descriptionTextView.text=""
+        self.priceTextView.text=""
+        
     }
     
     @IBOutlet weak var categoryBtn: UIButton!
@@ -106,8 +214,8 @@ class RegisterGiftViewController: UIViewController {
         
         let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
         controller.option = OptionsListViewController.Option.category
-        controller.completionHandler={ [weak self]
-            (id,name) in self?.categoryBtn.setTitle(name, for: .normal)
+        controller.completionHandler={ [weak self] (id,name) in
+            self?.categoryBtn.setTitle(name, for: .normal)
             self?.category=Category(id: id, title: name)
         }
         let nc=UINavigationController(rootViewController: controller)
@@ -117,8 +225,8 @@ class RegisterGiftViewController: UIViewController {
     @IBAction func dateStatusBtnAction(_ sender: Any) {
         let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
         controller.option = OptionsListViewController.Option.dateStatus
-        controller.completionHandler={ [weak self]
-            (id,name) in self?.dateStatusBtn.setTitle(name, for: .normal)
+        controller.completionHandler={ [weak self] (id,name) in
+            self?.dateStatusBtn.setTitle(name, for: .normal)
             self?.dateStatus=DateStatus(id: id, title: name)
         }
         let nc=UINavigationController(rootViewController: controller)
@@ -239,6 +347,8 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
             //                return
             //            }
             
+            APIRequest.logReply(data: data)
+            
             if let imageSrc=APIRequest.readJsonData(data: data, outputType: ImageUpload.self)?.imageSrc {
                 
                 guard let uploadIndex=self?.findIndexOfUploadedImage(task: uploadedImageView.uploadTask) else {
@@ -257,6 +367,7 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         })
     }
     
+    
     func findIndexOfUploadedImage(task:URLSessionTask?)->Int?{
         
         guard let task = task else {
@@ -270,6 +381,13 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         }
         return nil
         
+    }
+    
+    func clearUploadedImages(){
+        for uploadedImageView in self.uploadedImageViews {
+            uploadedImageView.removeFromSuperview()
+        }
+        self.uploadedImageViews=[]
     }
 }
 
