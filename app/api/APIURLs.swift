@@ -10,7 +10,10 @@ import Foundation
 
 class APIURLs {
 //    static let BASE_URL="http://api.kindnesswall.ir/api/"
+    static let UPLOAD_URL="http://api.kindnesswall.ir/api/"
     static let BASE_URL="http://test.kindnesswall.ir/api/"
+    
+    
     static let API_VERSION = "v01/"
     static let ACCOUNT = "Account/"
 
@@ -50,7 +53,7 @@ class APIURLs {
     }
     
     static var Upload : String {
-        return self.BASE_URL + self.API_VERSION + "Upload"
+        return self.UPLOAD_URL + self.API_VERSION + "Upload"
     }
     
     static var getCategories : String {

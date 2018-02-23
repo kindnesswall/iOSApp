@@ -31,6 +31,7 @@ class GiftDetailViewController: UIViewController {
     
     @IBOutlet var slideshow: ImageSlideshow!
     
+    @IBOutlet weak var removeBtn: UIButton!
     
     @IBAction func requestBtnClicked(_ sender: Any) {
         
@@ -42,6 +43,8 @@ class GiftDetailViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUI()
 
         // Do any additional setup after loading the view.
         giftNamelbl.text = gift?.title
@@ -51,9 +54,9 @@ class GiftDetailViewController: UIViewController {
         giftCategory.text = gift?.category
         giftAddress.text = gift?.address
         if let isNew = gift?.isNew, isNew {
-            oldOrNewlbl.text = "نو هست"
+            oldOrNewlbl.text = "نو"
         }else{
-            oldOrNewlbl.text = "دسته دوم هست"
+            oldOrNewlbl.text = "دسته دوم"
         }
         descriptionlbl.text = gift?.description
         
@@ -66,6 +69,18 @@ class GiftDetailViewController: UIViewController {
         ApiMethods.getGift(giftId: id) { (data) in
             
         }
+    }
+    
+    func setUI(){
+        print("for who: \(gift?.forWho ?? -1)")
+        print("my id: \(UserDefaults.standard.string(forKey: AppConstants.USER_ID) ?? "")")
+        
+        NavigationBarStyle.setRightBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.editBtnClicked), text: "ویرایش")
+        
+    }
+    
+    @objc func editBtnClicked(){
+        
     }
     
     @objc func didTap() {

@@ -32,4 +32,5 @@ class Gift: Codable {
     var createDate:String?
     var createTime:String?
     var isNew:Bool?
+    var forWho:Int?
 }
