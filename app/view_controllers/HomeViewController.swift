@@ -14,6 +14,9 @@ class HomeViewController: UIViewController {
     var gifts:[Gift] = []
     @IBOutlet var tableview: UITableView!
     
+    var lazyLoadingCount=10
+    var isLoadingGifts=false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,19 +27,41 @@ class HomeViewController: UIViewController {
         let nib = UINib(nibName: "GiftTableViewCell", bundle: bundle)
         self.tableview.register(nib, forCellReuseIdentifier: "GiftTableViewCell")
         
-        ApiMethods.getGifts(cityId: "0", regionId: "0", categoryId: "0", startIndex: 0, searchText: "") { (data) in
+        getGifts(index:0)
+        
+    }
+    
+    func getGifts(index:Int){
+        
+        
+        if isLoadingGifts {
+            return
+        }
+        isLoadingGifts=true
+        
+        if index==0 {
+            self.gifts=[]
+            self.tableview.reloadData()
+        }
+        
+        ApiMethods.getGifts(cityId: "0", regionId: "0", categoryId: "0", startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { (data) in
             APIRequest.logReply(data: data)
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
-//                    if let status=reply.status,status==APIStatus.DONE {
-//                        print("\(reply.result?.token)")
-//                    }
+                //                    if let status=reply.status,status==APIStatus.DONE {
+                //                        print("\(reply.result?.token)")
+                //                    }
                 
                 print("number of gifts: \(reply.count)")
                 self.gifts.append(contentsOf: reply)
-                self.tableview.reloadData()
+                
+                if reply.count == self.lazyLoadingCount {
+                    self.isLoadingGifts=false
                 }
-
+                
+                self.tableview.reloadData()
+            }
+            
         }
     }
     
@@ -63,8 +88,15 @@ extension HomeViewController:UITableViewDataSource{
 //        gift.description = "توضیحات بسیار کامل و جامع"
 //        gift.giftImages = ["https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Meso2mil-English.JPG/220px-Meso2mil-English.JPG"]
 //
-
+        
         cell.filViews(gift: gifts[indexPath.row])
+        
+        let index=indexPath.row+1
+        if index==self.gifts.count {
+            if !self.isLoadingGifts {
+                getGifts(index: index)
+            }
+        }
         
         return cell
     }

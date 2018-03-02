@@ -159,12 +159,13 @@ class ApiMethods {
         regionId:String?,
         categoryId:String?,
         startIndex:Int,
+        lastIndex:Int,
         searchText:String?,
         completionHandler:@escaping(Data?)->Void) {
         
         let regionId = regionId ?? "0"
         let categoryId = categoryId ?? "0"
-        let lastIndex = startIndex + offset
+//        let lastIndex = startIndex + offset
         let searchText = "/?searchText=" + (searchText ?? "")
         let mainURL: String = APIURLs.Gift + "/" + cityId + "/" + regionId + "/" + categoryId + "/" + "\(startIndex)/" + "\(lastIndex)" + searchText
         
