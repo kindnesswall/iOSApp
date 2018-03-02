@@ -30,6 +30,8 @@ class RequestsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
+        self.navigationItem.title="درخواستهای من"
         
         guard let _ = UserDefaults.standard.string(forKey: AppConstants.Authorization) else{
             loginView.isHidden = false

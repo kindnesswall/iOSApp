@@ -33,6 +33,9 @@ class MyKindnessWallViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
+        self.navigationItem.title="دیوار من"
+        
         setLoginLogoutBtnTitle()
     }
     
