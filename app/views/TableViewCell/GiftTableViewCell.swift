@@ -16,6 +16,8 @@ class GiftTableViewCell: UITableViewCell {
     @IBOutlet var giftDate: UILabel!
     @IBOutlet var giftDescription: UILabel!
     
+    @IBOutlet weak var giftCity: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,6 +33,7 @@ class GiftTableViewCell: UITableViewCell {
         giftTitle.text = gift.title
         giftDate.text = gift.createDateTime
         giftDescription.text = gift.description
+        giftCity.text=gift.address
         if let url = gift.giftImages?.first {
             giftImage.sd_setImage(with: URL(string: url))
         }

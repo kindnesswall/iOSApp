@@ -96,6 +96,8 @@
 		601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D6203C3CD400F9118B /* ImageUpload.swift */; };
 		602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */; };
 		602BC8F82034B7CC00ECF6E2 /* UploadImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */; };
+		6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6092D631204950F700AFDA7B /* MyGiftsViewController.swift */; };
+		6092D634204950F700AFDA7B /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6092D632204950F700AFDA7B /* MyGiftsViewController.xib */; };
 		60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */; };
 		60AE9C86202DB9B100F246CD /* CategoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C85202DB9B100F246CD /* CategoryListViewModel.swift */; };
 		60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C87202DE87100F246CD /* OptionsListViewController.swift */; };
@@ -199,6 +201,8 @@
 		601F83D6203C3CD400F9118B /* ImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUpload.swift; sourceTree = "<group>"; };
 		602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageView.swift; sourceTree = "<group>"; };
 		602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageView.xib; sourceTree = "<group>"; };
+		6092D631204950F700AFDA7B /* MyGiftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGiftsViewController.swift; sourceTree = "<group>"; };
+		6092D632204950F700AFDA7B /* MyGiftsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyGiftsViewController.xib; sourceTree = "<group>"; };
 		60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsListViewController.xib; sourceTree = "<group>"; };
 		60AE9C85202DB9B100F246CD /* CategoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewModel.swift; sourceTree = "<group>"; };
 		60AE9C87202DE87100F246CD /* OptionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsListViewController.swift; sourceTree = "<group>"; };
@@ -293,11 +297,13 @@
 				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
 				05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */,
 				05BFBBE71FE2755E00DBCDDF /* MyKindnessWallViewController.swift */,
+				05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */,
 				60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */,
 				60AE9C87202DE87100F246CD /* OptionsListViewController.swift */,
-				05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */,
 				056FBB581F9135EA0023C9CF /* HomeViewController.swift */,
 				056FBB591F9135EA0023C9CF /* HomeViewController.xib */,
+				6092D631204950F700AFDA7B /* MyGiftsViewController.swift */,
+				6092D632204950F700AFDA7B /* MyGiftsViewController.xib */,
 			);
 			path = view_controllers;
 			sourceTree = "<group>";
@@ -560,6 +566,7 @@
 				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
 				05BFBBEA1FE2755E00DBCDDF /* MyKindnessWallViewController.xib in Resources */,
 				05029ED31FE93EC9004D96B1 /* RequestToAGiftTableViewCell.xib in Resources */,
+				6092D634204950F700AFDA7B /* MyGiftsViewController.xib in Resources */,
 				054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */,
 				05644DB91FFEF3A500B7C853 /* ChatListTableViewCell.xib in Resources */,
 				054B1B541FCC4101007570EF /* IRANSansMobile_Black.ttf in Resources */,
@@ -669,6 +676,7 @@
 				05644DC61FFEFA2E00B7C853 /* DateHandler.swift in Sources */,
 				05644DCD1FFF06BD00B7C853 /* SectionView.swift in Sources */,
 				05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */,
+				6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */,
 				05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */,
 				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
 				05644DBC1FFEF3A500B7C853 /* ChatListTableViewCell.swift in Sources */,
