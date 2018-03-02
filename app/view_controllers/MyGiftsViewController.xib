@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyGiftsViewController" customModule="app" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="DEa-fe-m5I">
+                    <rect key="frame" x="16" y="30" width="343" height="29"/>
+                    <segments>
+                        <segment title="اهدایی"/>
+                        <segment title="ثبت شده"/>
+                    </segments>
+                </segmentedControl>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="122" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ZO-Nc-wGa">
+                    <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="bN7-uN-bSA"/>
+                        <outlet property="delegate" destination="-1" id="yMM-7E-gT3"/>
+                    </connections>
+                </tableView>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="122" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wbd-2k-rXX">
+                    <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="SoH-Kq-YQV"/>
+                        <outlet property="delegate" destination="-1" id="nxZ-Uh-dpO"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="5ZO-Nc-wGa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1Ca-1d-fle"/>
+                <constraint firstItem="DEa-fe-m5I" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="HDi-ya-W2n"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DEa-fe-m5I" secondAttribute="trailing" constant="16" id="HVP-qw-wR4"/>
+                <constraint firstItem="Wbd-2k-rXX" firstAttribute="top" secondItem="DEa-fe-m5I" secondAttribute="bottom" constant="10" id="IVO-Oc-tnC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wbd-2k-rXX" secondAttribute="trailing" id="Ohm-o5-egq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Wbd-2k-rXX" secondAttribute="bottom" id="Q7h-iH-Q8P"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5ZO-Nc-wGa" secondAttribute="bottom" id="bSb-hP-7yq"/>
+                <constraint firstItem="Wbd-2k-rXX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="buI-Hf-elE"/>
+                <constraint firstItem="DEa-fe-m5I" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="ix2-JA-tLl"/>
+                <constraint firstItem="5ZO-Nc-wGa" firstAttribute="top" secondItem="DEa-fe-m5I" secondAttribute="bottom" constant="10" id="r3n-91-MKe"/>
+                <constraint firstAttribute="trailing" secondItem="5ZO-Nc-wGa" secondAttribute="trailing" id="uRR-on-VRJ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="61.5" y="154.5"/>
+        </view>
+    </objects>
+</document>
