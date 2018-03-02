@@ -22,10 +22,7 @@ class RequestsViewController: UIViewController {
         tableview.dataSource = self
         tableview.delegate = self
         
-        // Do any additional setup after loading the view.
-        let bundle = Bundle(for: GiftTableViewCell.self)
-        let nib = UINib(nibName: "RequestsTableViewCell", bundle: bundle)
-        self.tableview.register(nib, forCellReuseIdentifier: "RequestsTableViewCell")
+        self.tableview.register(type: RequestsTableViewCell.self)
         
     }
     
@@ -125,7 +122,7 @@ extension RequestsViewController:UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(122)
+        return CGFloat(46)
     }
     
 }

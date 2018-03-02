@@ -22,7 +22,7 @@ class RequestsTableViewCell: UITableViewCell {
     func fillUI(gift:Gift) {
         giftName.text = gift.title
         
-        numberOfRequestsLbl.text = gift.requestCount
+        numberOfRequestsLbl.text = gift.requestCount?.CastNumberToPersian()
     }
 
 }
