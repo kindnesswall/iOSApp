@@ -19,6 +19,9 @@ class HomeViewController: UIViewController {
     var lazyLoadingCount=10
     var isLoadingGifts=false
     
+    var categoryId="0"
+    var categotyBtn:UIBarButtonItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,12 +39,27 @@ class HomeViewController: UIViewController {
     }
     
     func setNavigationBar(){
-        NavigationBarStyle.setRightBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.filterBtnClicked), text: "همه هدیه‌ها",font:AppFont.getRegularFont(size: 16))
+        categotyBtn=NavigationBarStyle.getNavigationItem(target: self, action: #selector(self.filterBtnClicked), text: "همه هدیه‌ها",font:AppFont.getRegularFont(size: 16))
+        self.navigationItem.rightBarButtonItems=[categotyBtn!]
     }
     
     @objc func filterBtnClicked(){
-        reloadPage()
+        
+        let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
+        controller.option = OptionsListViewController.Option.category
+        controller.completionHandler={ [weak self] (id,name) in
+            
+            self?.categoryId=id ?? "0"
+            self?.categotyBtn?.title=name
+            self?.reloadPage()
+    
+        }
+        let nc=UINavigationController(rootViewController: controller)
+        self.present(nc, animated: true, completion: nil)
+        
     }
+    
+    
     
     func reloadPage(){
         
@@ -62,7 +80,7 @@ class HomeViewController: UIViewController {
             self.tableview.reloadData()
         }
         
-        apiMethods.getGifts(cityId: "0", regionId: "0", categoryId: "0", startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { (data) in
+        apiMethods.getGifts(cityId: "0", regionId: "0", categoryId: self.categoryId, startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { (data) in
             APIRequest.logReply(data: data)
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {

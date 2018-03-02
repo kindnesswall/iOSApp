@@ -59,6 +59,7 @@ class NavigationBarStyle {
         backBtn.action=action
         
         backBtn.setTitleTextAttributes([NSAttributedStringKey.font : UIFont(name: "icomoon", size: 25)!,NSAttributedStringKey.foregroundColor: UIColor.white], for: UIControlState())
+        backBtn.setTitleTextAttributes([NSAttributedStringKey.font : UIFont(name: "icomoon", size: 25)!,NSAttributedStringKey.foregroundColor: UIColor.white], for: .highlighted)
         
         //        titleBackBtn.setTitleTextAttributes([NSFontAttributeName : UIFont(name: "IranSans-Light", size: 15)!,NSForegroundColorAttributeName: UIColor.white], for: UIControlState())
         
@@ -74,37 +75,35 @@ class NavigationBarStyle {
     
     public static func setLeftBtn(navigationItem:UINavigationItem,target:AnyObject,action:Selector?,text:String,font:UIFont=AppFont.getBoldFont(size: 14)){
         
-        let doneBtn=UIBarButtonItem()
+        let btn=NavigationBarStyle.getNavigationItem(target: target, action: action, text: text,font:font)
         
-        
-        doneBtn.target=target
-        doneBtn.action=action
-        
-        doneBtn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: UIControlState())
-        doneBtn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: .highlighted)
-        
-        
-        doneBtn.title=text
-        
-        navigationItem.leftBarButtonItems=[doneBtn]
+        navigationItem.leftBarButtonItems=[btn]
         
     }
     
     public static func setRightBtn(navigationItem:UINavigationItem,target:AnyObject,action:Selector?,text:String,font:UIFont=AppFont.getBoldFont(size: 14)){
         
-        let doneBtn=UIBarButtonItem()
+        let btn=NavigationBarStyle.getNavigationItem(target: target, action: action, text: text,font:font)
+        
+        navigationItem.rightBarButtonItems=[btn]
+        
+    }
+    
+    public static func getNavigationItem(target:AnyObject,action:Selector?,text:String,font:UIFont=AppFont.getBoldFont(size: 14))->UIBarButtonItem{
+        
+        let btn=UIBarButtonItem()
         
         
-        doneBtn.target=target
-        doneBtn.action=action
+        btn.target=target
+        btn.action=action
         
-        doneBtn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: UIControlState())
-        doneBtn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: .highlighted)
+        btn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: UIControlState())
+        btn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: .highlighted)
         
         
-        doneBtn.title=text
+        btn.title=text
         
-        navigationItem.rightBarButtonItems=[doneBtn]
+        return btn
         
     }
     public static func removeDefaultBackBtn(navigationItem:UINavigationItem){
