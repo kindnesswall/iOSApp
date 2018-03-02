@@ -53,6 +53,12 @@
 		05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */; };
 		05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE64721FA93F4800FCCC28 /* ApiMethods.swift */; };
 		05B124CC202DB056007E28CC /* latest.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B124CB202DB056007E28CC /* latest.json */; };
+		05BEA4312049667500147BF5 /* MyKindnessWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA42F2049667400147BF5 /* MyKindnessWallViewController.swift */; };
+		05BEA4322049667500147BF5 /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BEA4302049667400147BF5 /* MyKindnessWallViewController.xib */; };
+		05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43720498EB400147BF5 /* UIView+hide+show.swift */; };
+		05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */; };
+		05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */; };
+		05BEA43E2049919D00147BF5 /* String+numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43D2049919D00147BF5 /* String+numbers.swift */; };
 		05BFBBB21FDA5DBF00DBCDDF /* UIFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */; };
 		05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */; };
 		05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */; };
@@ -77,8 +83,6 @@
 		05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBDF1FE26ADE00DBCDDF /* User.swift */; };
 		05BFBBE21FE26B0500DBCDDF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBE11FE26B0500DBCDDF /* Category.swift */; };
 		05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBE31FE26B4C00DBCDDF /* Request.swift */; };
-		05BFBBE91FE2755E00DBCDDF /* MyKindnessWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBE71FE2755E00DBCDDF /* MyKindnessWallViewController.swift */; };
-		05BFBBEA1FE2755E00DBCDDF /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */; };
 		05BFBBEC1FE29F7C00DBCDDF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */; };
 		05DDD3E01F921DCD006C5E31 /* ApiInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */; };
 		05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DDD3E11F921E98006C5E31 /* ResponseModel.swift */; };
@@ -151,12 +155,18 @@
 		05644DCB1FFF06BC00B7C853 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		05644DCC1FFF06BC00B7C853 /* SectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionView.xib; sourceTree = "<group>"; };
 		05644DCF1FFF06F900B7C853 /* NibLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoader.swift; sourceTree = "<group>"; };
-		056FBB581F9135EA0023C9CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = app/view_controllers/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
-		056FBB591F9135EA0023C9CF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = app/view_controllers/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
+		056FBB581F9135EA0023C9CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = app/view_controllers/home/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		056FBB591F9135EA0023C9CF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = app/view_controllers/home/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
 		056FBB601F91585C0023C9CF /* APIURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLs.swift; sourceTree = "<group>"; };
 		05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiOutputs.swift; sourceTree = "<group>"; };
 		05AE64721FA93F4800FCCC28 /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
 		05B124CB202DB056007E28CC /* latest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = latest.json; path = app/latest.json; sourceTree = "<group>"; };
+		05BEA42F2049667400147BF5 /* MyKindnessWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyKindnessWallViewController.swift; path = "app/view_controllers/my kindnesswall/MyKindnessWallViewController.swift"; sourceTree = SOURCE_ROOT; };
+		05BEA4302049667400147BF5 /* MyKindnessWallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyKindnessWallViewController.xib; path = "app/view_controllers/my kindnesswall/MyKindnessWallViewController.xib"; sourceTree = SOURCE_ROOT; };
+		05BEA43720498EB400147BF5 /* UIView+hide+show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+hide+show.swift"; sourceTree = "<group>"; };
+		05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RegisterationHelp.swift"; sourceTree = "<group>"; };
+		05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterCell.swift"; sourceTree = "<group>"; };
+		05BEA43D2049919D00147BF5 /* String+numbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+numbers.swift"; sourceTree = "<group>"; };
 		05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFunctions.swift; sourceTree = "<group>"; };
 		05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationEnterPhoneViewController.swift; sourceTree = "<group>"; };
 		05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationEnterVerifyCodeViewController.xib; sourceTree = "<group>"; };
@@ -181,8 +191,6 @@
 		05BFBBDF1FE26ADE00DBCDDF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		05BFBBE11FE26B0500DBCDDF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		05BFBBE31FE26B4C00DBCDDF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		05BFBBE71FE2755E00DBCDDF /* MyKindnessWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKindnessWallViewController.swift; sourceTree = "<group>"; };
-		05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyKindnessWallViewController.xib; sourceTree = "<group>"; };
 		05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInput.swift; sourceTree = "<group>"; };
 		05DDD3E11F921E98006C5E31 /* ResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
@@ -288,22 +296,17 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05BEA43620497B2200147BF5 /* register gift */,
+				05BEA43520497B0A00147BF5 /* gift detail */,
+				05BEA43420497AF100147BF5 /* home */,
+				05BEA43320497AD500147BF5 /* my gifts */,
+				05BEA42E2049663A00147BF5 /* my kindnesswall */,
 				05644DD12000203500B7C853 /* chat */,
 				05029EC71FE33498004D96B1 /* requests */,
 				05BFBBB31FDA653400DBCDDF /* login */,
 				05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */,
-				05335D431FD0D0A800601115 /* GiftDetailViewController.swift */,
-				05335D441FD0D0A800601115 /* GiftDetailViewController.xib */,
-				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
-				05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */,
-				05BFBBE71FE2755E00DBCDDF /* MyKindnessWallViewController.swift */,
-				05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */,
 				60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */,
 				60AE9C87202DE87100F246CD /* OptionsListViewController.swift */,
-				056FBB581F9135EA0023C9CF /* HomeViewController.swift */,
-				056FBB591F9135EA0023C9CF /* HomeViewController.xib */,
-				6092D631204950F700AFDA7B /* MyGiftsViewController.swift */,
-				6092D632204950F700AFDA7B /* MyGiftsViewController.xib */,
 			);
 			path = view_controllers;
 			sourceTree = "<group>";
@@ -373,6 +376,52 @@
 			path = chat;
 			sourceTree = "<group>";
 		};
+		05BEA42E2049663A00147BF5 /* my kindnesswall */ = {
+			isa = PBXGroup;
+			children = (
+				05BEA42F2049667400147BF5 /* MyKindnessWallViewController.swift */,
+				05BEA4302049667400147BF5 /* MyKindnessWallViewController.xib */,
+			);
+			name = "my kindnesswall";
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		05BEA43320497AD500147BF5 /* my gifts */ = {
+			isa = PBXGroup;
+			children = (
+				6092D631204950F700AFDA7B /* MyGiftsViewController.swift */,
+				6092D632204950F700AFDA7B /* MyGiftsViewController.xib */,
+			);
+			path = "my gifts";
+			sourceTree = "<group>";
+		};
+		05BEA43420497AF100147BF5 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				056FBB581F9135EA0023C9CF /* HomeViewController.swift */,
+				056FBB591F9135EA0023C9CF /* HomeViewController.xib */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		05BEA43520497B0A00147BF5 /* gift detail */ = {
+			isa = PBXGroup;
+			children = (
+				05335D431FD0D0A800601115 /* GiftDetailViewController.swift */,
+				05335D441FD0D0A800601115 /* GiftDetailViewController.xib */,
+			);
+			path = "gift detail";
+			sourceTree = "<group>";
+		};
+		05BEA43620497B2200147BF5 /* register gift */ = {
+			isa = PBXGroup;
+			children = (
+				05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */,
+				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
+			);
+			path = "register gift";
+			sourceTree = "<group>";
+		};
 		05BFBBB31FDA653400DBCDDF /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +448,10 @@
 		05BFBBCD1FDB112800DBCDDF /* extenstions */ = {
 			isa = PBXGroup;
 			children = (
+				05BEA43D2049919D00147BF5 /* String+numbers.swift */,
+				05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */,
+				05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */,
+				05BEA43720498EB400147BF5 /* UIView+hide+show.swift */,
 				05644DC91FFF02A000B7C853 /* UITableView+isCellVisible.swift */,
 				60AE9C93202DFB6A00F246CD /* UITableView+RegisterNib.swift */,
 				05644DC11FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift */,
@@ -564,7 +617,7 @@
 				054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */,
 				60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */,
 				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
-				05BFBBEA1FE2755E00DBCDDF /* MyKindnessWallViewController.xib in Resources */,
+				05BEA4322049667500147BF5 /* MyKindnessWallViewController.xib in Resources */,
 				05029ED31FE93EC9004D96B1 /* RequestToAGiftTableViewCell.xib in Resources */,
 				6092D634204950F700AFDA7B /* MyGiftsViewController.xib in Resources */,
 				054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */,
@@ -678,11 +731,12 @@
 				05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */,
 				6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */,
 				05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */,
+				05BEA4312049667500147BF5 /* MyKindnessWallViewController.swift in Sources */,
+				05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */,
 				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
 				05644DBC1FFEF3A500B7C853 /* ChatListTableViewCell.swift in Sources */,
 				05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */,
 				05BFBBC11FDA9FCF00DBCDDF /* DateHelper.swift in Sources */,
-				05BFBBE91FE2755E00DBCDDF /* MyKindnessWallViewController.swift in Sources */,
 				05644DC41FFEF62300B7C853 /* ChatAbs.swift in Sources */,
 				60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */,
 				601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */,
@@ -700,6 +754,7 @@
 				05029ECE1FE9381E004D96B1 /* RequestsTableViewCell.swift in Sources */,
 				05BFBBBB1FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift in Sources */,
 				05644DD01FFF06F900B7C853 /* NibLoader.swift in Sources */,
+				05BEA43E2049919D00147BF5 /* String+numbers.swift in Sources */,
 				054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */,
 				0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */,
 				05F6AA551FFEEB8D00CDABC2 /* ChatConversationViewController.swift in Sources */,
@@ -713,9 +768,11 @@
 				05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */,
 				056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */,
 				601F83D32037367900F9118B /* Place.swift in Sources */,
+				05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */,
 				05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */,
 				602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */,
 				05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */,
+				05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */,
 				601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */,
 				05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */,
@@ -869,7 +926,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K6W5A74537;
+				DEVELOPMENT_TEAM = 9GZYVJV4M6;
 				INFOPLIST_FILE = app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ir.kindnesswall;
@@ -885,7 +942,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K6W5A74537;
+				DEVELOPMENT_TEAM = 9GZYVJV4M6;
 				INFOPLIST_FILE = app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ir.kindnesswall;

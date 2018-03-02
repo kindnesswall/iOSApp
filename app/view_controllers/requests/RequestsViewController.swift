@@ -22,14 +22,13 @@ class RequestsViewController: UIViewController {
         tableview.dataSource = self
         tableview.delegate = self
         
-        // Do any additional setup after loading the view.
-        let bundle = Bundle(for: GiftTableViewCell.self)
-        let nib = UINib(nibName: "RequestsTableViewCell", bundle: bundle)
-        self.tableview.register(nib, forCellReuseIdentifier: "RequestsTableViewCell")
+        self.tableview.register(type: RequestsTableViewCell.self)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
+        self.navigationItem.title="درخواستهای من"
         
         guard let _ = UserDefaults.standard.string(forKey: AppConstants.Authorization) else{
             loginView.isHidden = false
@@ -37,6 +36,10 @@ class RequestsViewController: UIViewController {
             return
         }
 
+        if gifts.count > 0 {
+            return
+        }
+        
         ApiMethods.getRequestsMyGifts(startIndex: 0) { (data, response, error) in
             
             APIRequest.logReply(data: data)
@@ -45,6 +48,7 @@ class RequestsViewController: UIViewController {
                     return
                 }
             }
+            
             guard error == nil else {
                 print("Get error register")
                 return
@@ -118,7 +122,7 @@ extension RequestsViewController:UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(122)
+        return CGFloat(46)
     }
     
 }
