@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyKindnessWallViewController" customModule="app" customModuleProvider="target">
             <connections>
+                <outlet property="contactUsBtn" destination="qlv-fg-nyn" id="hoq-rp-Iew"/>
                 <outlet property="loginLogoutBtn" destination="nQK-i4-MHV" id="1ay-22-6vj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,12 +37,26 @@
                         <action selector="logoutBtnClicked:" destination="-1" eventType="touchUpInside" id="NGe-YS-dls"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlv-fg-nyn" userLabel="Contact Us">
+                    <rect key="frame" x="8" y="78" width="359" height="34"/>
+                    <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                    <state key="normal" title="ارتباط با ما">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="contactUsBtnClicked:" destination="-1" eventType="touchUpInside" id="c15-5b-C7d"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="nQK-i4-MHV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="1KS-Vx-JRL"/>
+                <constraint firstItem="qlv-fg-nyn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="1LZ-dj-F6u"/>
+                <constraint firstItem="qlv-fg-nyn" firstAttribute="top" secondItem="nQK-i4-MHV" secondAttribute="bottom" constant="8" id="7Up-5B-Dkg"/>
                 <constraint firstItem="nQK-i4-MHV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="RgP-WD-AR2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nQK-i4-MHV" secondAttribute="trailing" constant="8" id="YV2-Xx-ne2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qlv-fg-nyn" secondAttribute="trailing" constant="8" id="vc4-MU-oZE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

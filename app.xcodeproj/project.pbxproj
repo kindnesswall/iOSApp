@@ -284,6 +284,7 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05BEA42D2049629F00147BF5 /* my kindnesswall */,
 				05644DD12000203500B7C853 /* chat */,
 				05029EC71FE33498004D96B1 /* requests */,
 				05BFBBB31FDA653400DBCDDF /* login */,
@@ -292,10 +293,8 @@
 				05335D441FD0D0A800601115 /* GiftDetailViewController.xib */,
 				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
 				05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */,
-				05BFBBE71FE2755E00DBCDDF /* MyKindnessWallViewController.swift */,
 				60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */,
 				60AE9C87202DE87100F246CD /* OptionsListViewController.swift */,
-				05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */,
 				056FBB581F9135EA0023C9CF /* HomeViewController.swift */,
 				056FBB591F9135EA0023C9CF /* HomeViewController.xib */,
 			);
@@ -365,6 +364,15 @@
 				05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */,
 			);
 			path = chat;
+			sourceTree = "<group>";
+		};
+		05BEA42D2049629F00147BF5 /* my kindnesswall */ = {
+			isa = PBXGroup;
+			children = (
+				05BFBBE71FE2755E00DBCDDF /* MyKindnessWallViewController.swift */,
+				05BFBBE81FE2755E00DBCDDF /* MyKindnessWallViewController.xib */,
+			);
+			path = "my kindnesswall";
 			sourceTree = "<group>";
 		};
 		05BFBBB31FDA653400DBCDDF /* login */ = {
@@ -631,6 +639,7 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
+				"${BUILT_PRODUCTS_DIR}/TOCropViewController/TOCropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 				"${BUILT_PRODUCTS_DIR}/XLActionController/XLActionController.framework",
 			);
@@ -642,6 +651,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TOCropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLActionController.framework",
 			);
@@ -861,7 +871,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K6W5A74537;
+				DEVELOPMENT_TEAM = 9GZYVJV4M6;
 				INFOPLIST_FILE = app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ir.kindnesswall;
@@ -877,7 +887,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K6W5A74537;
+				DEVELOPMENT_TEAM = 9GZYVJV4M6;
 				INFOPLIST_FILE = app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ir.kindnesswall;

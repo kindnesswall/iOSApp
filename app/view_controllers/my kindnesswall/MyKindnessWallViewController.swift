@@ -10,6 +10,7 @@ import UIKit
 
 class MyKindnessWallViewController: UIViewController {
 
+    @IBOutlet weak var contactUsBtn: UIButton!
     @IBOutlet var loginLogoutBtn: UIButton!
     
     @IBAction func logoutBtnClicked(_ sender: Any) {
@@ -18,11 +19,17 @@ class MyKindnessWallViewController: UIViewController {
              AppDelegate.clearUserDefault()
         } else {
             AppDelegate.me().showLoginVC()
-            
         }
        
         setLoginLogoutBtnTitle()
         
+    }
+    
+    @IBAction func contactUsBtnClicked(_ sender: Any) {
+        guard let url = URL(string: "https://t.me/Kindness_Wall_Admin") else {
+            return //be safe
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

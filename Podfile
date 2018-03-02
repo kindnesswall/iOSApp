@@ -9,7 +9,7 @@ target 'app' do
 
   # Pods for app
 
-pod 'SDWebImage', '~> 4.0'
+pod 'SDWebImage'
 pod 'ImageSlideshow', '~> 1.4'
 pod 'SwiftMessages'
 pod 'SwiftyOnboard'
