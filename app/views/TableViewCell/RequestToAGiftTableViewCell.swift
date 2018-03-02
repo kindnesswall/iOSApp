@@ -17,6 +17,7 @@ class RequestToAGiftTableViewCell: UITableViewCell {
     @IBOutlet var messageBtn: ButtonWithData!
     @IBOutlet var acceptRequestBtn: ButtonWithData!
     @IBOutlet var rejectRequestBtn: ButtonWithData!
+    @IBOutlet weak var rowNumberLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +34,8 @@ class RequestToAGiftTableViewCell: UITableViewCell {
     func fillUI(request:Request, rowNumber:Int) {
         setRow(number: rowNumber)
         
-        nameLbl.text = request.fromUser
+        rowNumberLbl.text = "- \(rowNumber+1)".CastNumberToPersian()
+        nameLbl.text = request.fromUser?.CastNumberToPersian()
     }
     
 }
