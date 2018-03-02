@@ -72,7 +72,7 @@ class NavigationBarStyle {
         
     }
     
-    public static func setLeftBtn(navigationItem:UINavigationItem,target:AnyObject,action:Selector?,text:String){
+    public static func setLeftBtn(navigationItem:UINavigationItem,target:AnyObject,action:Selector?,text:String,font:UIFont=AppFont.getBoldFont(size: 14)){
         
         let doneBtn=UIBarButtonItem()
         
@@ -80,8 +80,8 @@ class NavigationBarStyle {
         doneBtn.target=target
         doneBtn.action=action
         
-        doneBtn.setTitleTextAttributes([NSAttributedStringKey.font : AppFont.getBoldFont(size: 12),NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: UIControlState())
-        doneBtn.setTitleTextAttributes([NSAttributedStringKey.font : AppFont.getBoldFont(size: 12),NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: .highlighted)
+        doneBtn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: UIControlState())
+        doneBtn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: .highlighted)
         
         
         doneBtn.title=text
@@ -90,7 +90,7 @@ class NavigationBarStyle {
         
     }
     
-    public static func setRightBtn(navigationItem:UINavigationItem,target:AnyObject,action:Selector?,text:String){
+    public static func setRightBtn(navigationItem:UINavigationItem,target:AnyObject,action:Selector?,text:String,font:UIFont=AppFont.getBoldFont(size: 14)){
         
         let doneBtn=UIBarButtonItem()
         
@@ -98,8 +98,8 @@ class NavigationBarStyle {
         doneBtn.target=target
         doneBtn.action=action
         
-        doneBtn.setTitleTextAttributes([NSAttributedStringKey.font : AppFont.getBoldFont(size: 12),NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: UIControlState())
-        doneBtn.setTitleTextAttributes([NSAttributedStringKey.font : AppFont.getBoldFont(size: 12),NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: .highlighted)
+        doneBtn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: UIControlState())
+        doneBtn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: .highlighted)
         
         
         doneBtn.title=text

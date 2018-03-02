@@ -75,7 +75,7 @@ class GiftDetailViewController: UIViewController {
         print("for who: \(gift?.forWho ?? -1)")
         print("my id: \(UserDefaults.standard.string(forKey: AppConstants.USER_ID) ?? "")")
         
-        NavigationBarStyle.setRightBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.editBtnClicked), text: "ویرایش")
+        NavigationBarStyle.setRightBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.editBtnClicked), text: "ویرایش",font:AppFont.getRegularFont(size: 16))
         
     }
     

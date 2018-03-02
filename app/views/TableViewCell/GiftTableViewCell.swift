@@ -36,6 +36,8 @@ class GiftTableViewCell: UITableViewCell {
         giftCity.text=gift.address
         if let url = gift.giftImages?.first {
             giftImage.sd_setImage(with: URL(string: url))
+        } else {
+            giftImage.image=UIImage()
         }
 
     }
