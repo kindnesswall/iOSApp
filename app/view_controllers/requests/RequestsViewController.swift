@@ -12,6 +12,9 @@ class RequestsViewController: UIViewController {
 
     let userDefault = UserDefaults.standard
     var gifts:[Gift] = []
+    var isFirstTime = true
+    var loadingIndicator:InternetLoadingStateIndicator!
+    
     @IBOutlet var tableview: UITableView!
     
     @IBOutlet var requestView: UIView!
@@ -22,8 +25,12 @@ class RequestsViewController: UIViewController {
         tableview.dataSource = self
         tableview.delegate = self
         
-        self.tableview.register(type: RequestsTableViewCell.self)
+        loginView.hide()
+        requestView.hide()
         
+        self.tableview.register(type: RequestsTableViewCell.self)
+        loadingIndicator=InternetLoadingStateIndicator(view: self.view)
+        loadingIndicator.startLoading()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,15 +38,16 @@ class RequestsViewController: UIViewController {
         self.navigationItem.title="لیست درخواستها به هدیه‌های من"
         
         guard let _ = UserDefaults.standard.string(forKey: AppConstants.Authorization) else{
-            loginView.isHidden = false
-            requestView.isHidden = true
+            loginView.show()
+            requestView.hide()
+            loadingIndicator.endLoading()
             return
         }
 
-        if gifts.count > 0 {
+        guard isFirstTime else{
             return
         }
-        
+        isFirstTime = false
         ApiMethods.getRequestsMyGifts(startIndex: 0) { (data, response, error) in
             
             APIRequest.logReply(data: data)
@@ -55,6 +63,10 @@ class RequestsViewController: UIViewController {
             }
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+                
+                self.loginView.hide()
+                self.requestView.show()
+                self.loadingIndicator.endLoading()
                 
                 self.gifts.append(contentsOf: reply)
                 self.tableview.reloadData()

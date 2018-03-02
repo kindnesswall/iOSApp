@@ -82,18 +82,57 @@ class RequestToAGiftViewController: UIViewController {
     
     @IBAction func onAcceptRequestClicked(_ sender: ButtonWithData) {
         print(sender.data)
+        guard let rowNumber = sender.data, let i = rowNumber as? Int else{
+            return
+        }
         
+        guard let fromUserId = requests[i].fromUserId else {
+            return
+        }
+        FlashMessage.showMessage(body: "با درخواست موافقت شد",theme: .success)
+        navigationController?.popViewController(animated: true)
+//        ApiMethods.acceptRequest(giftId: giftId, fromUserId: fromUserId) { (data) in
+//
+//        }
     }
     
     @IBAction func onRejectRequestBtnClicked(_ sender: ButtonWithData) {
         print(sender.data)
+        guard let rowNumber = sender.data, let i = rowNumber as? Int else{
+            return
+        }
         
+        guard let fromUserId = requests[i].fromUserId else {
+            return
+        }
+        FlashMessage.showMessage(body: "درخواست رد شد",theme: .warning)
+
+        self.requests.remove(at: i)
+
+        tableview.deleteRows(at: [IndexPath(row: i, section: 0)], with: .fade)
+        tableview.reloadData()
+//        ApiMethods.denyRequest(giftId: giftId, fromUserId: fromUserId) { (data) in
+//
+//        }
     }
     
 }
 
 
 extension RequestToAGiftViewController:UITableViewDataSource{
+    
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            print("Deleted")
+//            self.requests.remove(at: indexPath.row)
+//            self.tableview.beginUpdates()
+//            self.tableview.deleteRows(at: [indexPath], with: .automatic)
+//            self.tableview.endUpdates()
+//        }
+//    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return requests.count
     }
