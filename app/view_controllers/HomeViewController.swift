@@ -14,11 +14,15 @@ class HomeViewController: UIViewController {
     var gifts:[Gift] = []
     @IBOutlet var tableview: UITableView!
     
+    let apiMethods=ApiMethods()
+    
     var lazyLoadingCount=10
     var isLoadingGifts=false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setNavigationBar()
         
         tableview.dataSource = self
         tableview.delegate = self
@@ -31,8 +35,22 @@ class HomeViewController: UIViewController {
         
     }
     
-    func getGifts(index:Int){
+    func setNavigationBar(){
+        NavigationBarStyle.setRightBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.filterBtnClicked), text: "همه هدیه‌ها",font:AppFont.getRegularFont(size: 16))
+    }
+    
+    @objc func filterBtnClicked(){
+        reloadPage()
+    }
+    
+    func reloadPage(){
         
+        apiMethods.clearAllTasksAndSessions()
+        isLoadingGifts=false
+        getGifts(index:0)
+    }
+    
+    func getGifts(index:Int){
         
         if isLoadingGifts {
             return
@@ -44,7 +62,7 @@ class HomeViewController: UIViewController {
             self.tableview.reloadData()
         }
         
-        ApiMethods.getGifts(cityId: "0", regionId: "0", categoryId: "0", startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { (data) in
+        apiMethods.getGifts(cityId: "0", regionId: "0", categoryId: "0", startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { (data) in
             APIRequest.logReply(data: data)
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {

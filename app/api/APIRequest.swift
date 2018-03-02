@@ -125,6 +125,15 @@ class APIRequest {
             let config = URLSessionConfiguration.default
             let session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
             let task=session.dataTask(with: request, completionHandler: { (data, response, error) in
+                
+                if let error = error as? NSError {
+                    if error.code == NSURLErrorCancelled {
+                        //cancelled
+                        print("Request Cancelled")
+                        return
+                    }
+                }
+                
                 complitionHandler(data, response, error)
             })
             task.resume()
@@ -164,6 +173,15 @@ class APIRequest {
             let config = URLSessionConfiguration.default
             let session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
             let task=session.dataTask(with: request, completionHandler: { (data, response, error) in
+                
+                if let error = error as? NSError {
+                    if error.code == NSURLErrorCancelled {
+                        //cancelled
+                        print("Request Cancelled")
+                        return
+                    }
+                }
+                
                 complitionHandler(data, response, error)
             })
             
@@ -272,6 +290,17 @@ class APIRequest {
     }
     
     
+    public static func stopAndClearSessionsAndTasks(sessions:inout [URLSession?],tasks: inout [URLSessionDataTask?]){
+        for task in tasks {
+            task?.cancel()
+        }
+        for session in sessions {
+            session?.invalidateAndCancel()
+        }
+        tasks=[]
+        sessions=[]
+    }
+    
     //MARK: - Else
     
     public static func logReply(data:Data?){
@@ -284,5 +313,7 @@ class APIRequest {
             
         }
     }
+    
+    
     
 }
