@@ -37,6 +37,10 @@ class RequestsViewController: UIViewController {
             return
         }
 
+        if gifts.count > 0 {
+            return
+        }
+        
         ApiMethods.getRequestsMyGifts(startIndex: 0) { (data, response, error) in
             
             APIRequest.logReply(data: data)
@@ -45,6 +49,7 @@ class RequestsViewController: UIViewController {
                     return
                 }
             }
+            
             guard error == nil else {
                 print("Get error register")
                 return
