@@ -151,8 +151,8 @@
 		05644DCB1FFF06BC00B7C853 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		05644DCC1FFF06BC00B7C853 /* SectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionView.xib; sourceTree = "<group>"; };
 		05644DCF1FFF06F900B7C853 /* NibLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoader.swift; sourceTree = "<group>"; };
-		056FBB581F9135EA0023C9CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = app/view_controllers/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
-		056FBB591F9135EA0023C9CF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = app/view_controllers/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
+		056FBB581F9135EA0023C9CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = app/view_controllers/home/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		056FBB591F9135EA0023C9CF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = app/view_controllers/home/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
 		056FBB601F91585C0023C9CF /* APIURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLs.swift; sourceTree = "<group>"; };
 		05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiOutputs.swift; sourceTree = "<group>"; };
 		05AE64721FA93F4800FCCC28 /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
@@ -288,21 +288,17 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05BEA43620497B2200147BF5 /* register gift */,
+				05BEA43520497B0A00147BF5 /* gift detail */,
+				05BEA43420497AF100147BF5 /* home */,
+				05BEA43320497AD500147BF5 /* my gifts */,
 				05BEA42E2049663A00147BF5 /* my kindnesswall */,
 				05644DD12000203500B7C853 /* chat */,
 				05029EC71FE33498004D96B1 /* requests */,
 				05BFBBB31FDA653400DBCDDF /* login */,
 				05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */,
-				05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */,
-				05335D431FD0D0A800601115 /* GiftDetailViewController.swift */,
-				05335D441FD0D0A800601115 /* GiftDetailViewController.xib */,
-				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
 				60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */,
 				60AE9C87202DE87100F246CD /* OptionsListViewController.swift */,
-				056FBB581F9135EA0023C9CF /* HomeViewController.swift */,
-				056FBB591F9135EA0023C9CF /* HomeViewController.xib */,
-				6092D631204950F700AFDA7B /* MyGiftsViewController.swift */,
-				6092D632204950F700AFDA7B /* MyGiftsViewController.xib */,
 			);
 			path = view_controllers;
 			sourceTree = "<group>";
@@ -380,6 +376,42 @@
 			);
 			name = "my kindnesswall";
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		05BEA43320497AD500147BF5 /* my gifts */ = {
+			isa = PBXGroup;
+			children = (
+				6092D631204950F700AFDA7B /* MyGiftsViewController.swift */,
+				6092D632204950F700AFDA7B /* MyGiftsViewController.xib */,
+			);
+			path = "my gifts";
+			sourceTree = "<group>";
+		};
+		05BEA43420497AF100147BF5 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				056FBB581F9135EA0023C9CF /* HomeViewController.swift */,
+				056FBB591F9135EA0023C9CF /* HomeViewController.xib */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		05BEA43520497B0A00147BF5 /* gift detail */ = {
+			isa = PBXGroup;
+			children = (
+				05335D431FD0D0A800601115 /* GiftDetailViewController.swift */,
+				05335D441FD0D0A800601115 /* GiftDetailViewController.xib */,
+			);
+			path = "gift detail";
+			sourceTree = "<group>";
+		};
+		05BEA43620497B2200147BF5 /* register gift */ = {
+			isa = PBXGroup;
+			children = (
+				05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */,
+				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
+			);
+			path = "register gift";
 			sourceTree = "<group>";
 		};
 		05BFBBB31FDA653400DBCDDF /* login */ = {
