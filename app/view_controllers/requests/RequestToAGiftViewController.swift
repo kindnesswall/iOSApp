@@ -21,10 +21,7 @@ class RequestToAGiftViewController: UIViewController {
         tableview.dataSource = self
         tableview.delegate = self
         
-        let bundle = Bundle(for: RequestToAGiftTableViewCell.self)
-        let nib = UINib(nibName: "RequestToAGiftTableViewCell", bundle: bundle)
-        self.tableview.register(nib, forCellReuseIdentifier: "RequestToAGiftTableViewCell")
-        
+        self.tableview.register(type: RequestToAGiftTableViewCell.self)
         
         // Do any additional setup after loading the view.
         ApiMethods.getRecievedRequestList(giftId: giftId, startIndex: 0) { (data, response, error) in
@@ -54,10 +51,32 @@ class RequestToAGiftViewController: UIViewController {
     
     @IBAction func onCallClicked(_ sender: ButtonWithData) {
         print(sender.data)
+        guard let rowNumber = sender.data, let i = rowNumber as? Int else{
+            return
+        }
+        
+        guard let phoneNumber = requests[i].fromUser else {
+            return
+        }
+        
+        guard let number = URL(string: "tel://" + phoneNumber) else { return }
+
+        UIApplication.shared.open(number, options: [:], completionHandler: nil)
+
     }
     
     @IBAction func onMessageBtnClicked(_ sender: ButtonWithData) {
         print(sender.data)
+        guard let rowNumber = sender.data, let i = rowNumber as? Int else{
+            return
+        }
+        
+        guard let phoneNumber = requests[i].fromUser else {
+            return
+        }
+        
+        UIApplication.shared.open(URL(string: "sms:" + phoneNumber)!, options: [:], completionHandler: nil)
+        
     }
     
     
@@ -83,8 +102,8 @@ extension RequestToAGiftViewController:UITableViewDataSource{
         
         let cell=tableView.dequeueReusableCell(withIdentifier: "RequestToAGiftTableViewCell") as! RequestToAGiftTableViewCell
         
-        cell.setRow(number: indexPath.row)
-        
+//        cell.setRow(number: indexPath.row)
+        cell.fillUI(request: requests[indexPath.row], rowNumber: indexPath.row)
         //        let gift:Gift = Gift()
         //        gift.title = "هدیه"
         //        gift.createDateTime = "تاریخ"

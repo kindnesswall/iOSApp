@@ -30,5 +30,10 @@ class RequestToAGiftTableViewCell: UITableViewCell {
         rejectRequestBtn.data = number as AnyObject
     }
     
+    func fillUI(request:Request, rowNumber:Int) {
+        setRow(number: rowNumber)
+        
+        nameLbl.text = request.fromUser
+    }
     
 }
