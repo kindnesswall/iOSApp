@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class ActivationEnterVerifyCodeViewController: UIViewController {
 
     var requestId:String!
     var session:URLSession?
     var task:URLSessionDataTask?
-    
+    let keychain = KeychainSwift()
     
     var mobile:String?
     
@@ -116,8 +117,10 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                     self.userDefault.set(userName, forKey: AppConstants.USERNAME)
                 }
                 if let token = reply.access_token {
-                    self.userDefault.set(
-                        AppConstants.BEARER + " " + token, forKey: AppConstants.Authorization)
+//                    self.userDefault.set(
+//                        AppConstants.BEARER + " " + token, forKey: AppConstants.Authorization)
+                    
+                    self.keychain.set(AppConstants.BEARER + " " + token, forKey: AppConstants.Authorization)
                 }
                 
             }

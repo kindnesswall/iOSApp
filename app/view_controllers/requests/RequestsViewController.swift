@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class RequestsViewController: UIViewController {
 
@@ -14,7 +15,8 @@ class RequestsViewController: UIViewController {
     var gifts:[Gift] = []
     var isFirstTime = true
     var loadingIndicator:InternetLoadingStateIndicator!
-    
+    let keychain = KeychainSwift()
+
     @IBOutlet var tableview: UITableView!
     
     @IBOutlet var requestView: UIView!
@@ -37,7 +39,7 @@ class RequestsViewController: UIViewController {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
         self.navigationItem.title="لیست درخواستها به هدیه‌های من"
         
-        guard let _ = UserDefaults.standard.string(forKey: AppConstants.Authorization) else{
+        guard let _ = keychain.get(AppConstants.Authorization) else{
             loginView.show()
             requestView.hide()
             loadingIndicator.endLoading()

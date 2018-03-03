@@ -17,5 +17,6 @@ pod 'CropViewController'
 pod 'XLActionController/Skype'
 pod 'UICircularProgressRing'
 pod 'MGSwipeTableCell'
+pod 'KeychainSwift', '~> 10.0'
 
 end

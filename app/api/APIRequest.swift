@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import KeychainSwift
 //import Toaster
 
 enum EnumHttpMethods:String {
@@ -93,9 +94,11 @@ class APIRequest {
         var returnRequest=request
         returnRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let userDefault = UserDefaults.standard
-        if let token = userDefault.string(forKey: AppConstants.Authorization) {
-            returnRequest.setValue(token, forHTTPHeaderField: AppConstants.Authorization)
+        let keychain = KeychainSwift()
+//        let userDefault = UserDefaults.standard
+        if let token = keychain.get(AppConstants.Authorization) {
+//            returnRequest.setValue(token, forHTTPHeaderField: AppConstants.Authorization)
+            keychain.set(token, forKey: AppConstants.Authorization)
             print("token: \(token)")
         }
         return returnRequest
