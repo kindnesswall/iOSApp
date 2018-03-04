@@ -24,15 +24,15 @@ class RequestToAGiftTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func setRow(number:Int) {
-        callBtn.data = number as AnyObject
-        messageBtn.data = number as AnyObject
-        acceptRequestBtn.data = number as AnyObject
-        rejectRequestBtn.data = number as AnyObject
+    func setRow(request:Request) {
+        callBtn.data = request as AnyObject
+        messageBtn.data = request as AnyObject
+        acceptRequestBtn.data = request as AnyObject
+        rejectRequestBtn.data = request as AnyObject
     }
     
     func fillUI(request:Request, rowNumber:Int) {
-        setRow(number: rowNumber)
+        setRow(request: request)
         
         rowNumberLbl.text = "- \(rowNumber+1)".CastNumberToPersian()
         nameLbl.text = request.fromUser?.CastNumberToPersian()

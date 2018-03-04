@@ -51,69 +51,92 @@ class RequestToAGiftViewController: UIViewController {
     
     @IBAction func onCallClicked(_ sender: ButtonWithData) {
         print(sender.data)
-        guard let rowNumber = sender.data, let i = rowNumber as? Int else{
+
+        guard let clickedRequest = sender.data else{
             return
         }
-        
-        guard let phoneNumber = requests[i].fromUser else {
-            return
+        for (index, req) in requests.enumerated() {
+            if req === clickedRequest {
+                guard let phoneNumber = req.fromUser else {
+                    return
+                }
+                guard let number = URL(string: "tel://" + phoneNumber) else { return }
+                UIApplication.shared.open(number, options: [:], completionHandler: nil)
+            }
         }
-        
-        guard let number = URL(string: "tel://" + phoneNumber) else { return }
-
-        UIApplication.shared.open(number, options: [:], completionHandler: nil)
-
     }
     
     @IBAction func onMessageBtnClicked(_ sender: ButtonWithData) {
         print(sender.data)
-        guard let rowNumber = sender.data, let i = rowNumber as? Int else{
+        guard let clickedRequest = sender.data else{
             return
         }
-        
-        guard let phoneNumber = requests[i].fromUser else {
-            return
+        for (index, req) in requests.enumerated() {
+            if req === clickedRequest {
+                guard let phoneNumber = req.fromUser else {
+                    return
+                }
+                
+                UIApplication.shared.open(URL(string: "sms:" + phoneNumber)!, options: [:], completionHandler: nil)
+
+            }
         }
-        
-        UIApplication.shared.open(URL(string: "sms:" + phoneNumber)!, options: [:], completionHandler: nil)
-        
     }
     
     
     @IBAction func onAcceptRequestClicked(_ sender: ButtonWithData) {
         print(sender.data)
-        guard let rowNumber = sender.data, let i = rowNumber as? Int else{
-            return
-        }
         
-        guard let fromUserId = requests[i].fromUserId else {
-            return
-        }
-        FlashMessage.showMessage(body: "با درخواست موافقت شد",theme: .success)
-        navigationController?.popViewController(animated: true)
-//        ApiMethods.acceptRequest(giftId: giftId, fromUserId: fromUserId) { (data) in
-//
-//        }
+        
+        var controller:AddPopUpController?
+        controller=AddPopUpController(nibName: "PromptUser", selfInstance: self, nibType: PromptUser.self, parentView: self.view, data: "آیا از قبول این درخواست مطمئن هستید؟", closeComplition: {}, submitComplition: {
+            
+            guard let clickedRequest = sender.data else{
+                return
+            }
+            for (index, req) in self.requests.enumerated() {
+                if req === clickedRequest {
+                    FlashMessage.showMessage(body: "با درخواست موافقت شد",theme: .success)
+                    self.navigationController?.popViewController(animated: true)
+                    //        ApiMethods.acceptRequest(giftId: giftId, fromUserId: fromUserId) { (data) in
+                    //
+                    //        }
+                }
+            }
+            
+        }, canHide: true)
+        
+        controller?.showPopUp()
+        
     }
     
     @IBAction func onRejectRequestBtnClicked(_ sender: ButtonWithData) {
         print(sender.data)
-        guard let rowNumber = sender.data, let i = rowNumber as? Int else{
-            return
-        }
         
-        guard let fromUserId = requests[i].fromUserId else {
-            return
-        }
-        FlashMessage.showMessage(body: "درخواست رد شد",theme: .warning)
-
-        self.requests.remove(at: i)
-
-        tableview.deleteRows(at: [IndexPath(row: i, section: 0)], with: .fade)
-        tableview.reloadData()
-//        ApiMethods.denyRequest(giftId: giftId, fromUserId: fromUserId) { (data) in
-//
-//        }
+        var controller:AddPopUpController?
+        controller=AddPopUpController(nibName: "PromptUser", selfInstance: self, nibType: PromptUser.self, parentView: self.view, data: "آیا از رد این درخواست مطمئن هستید؟", closeComplition: {}, submitComplition: {
+            
+            guard let clickedRequest = sender.data else{
+                return
+            }
+            for (index, req) in self.requests.enumerated() {
+                if req === clickedRequest {
+                    
+                    FlashMessage.showMessage(body: "درخواست رد شد",theme: .warning)
+                    
+                    self.requests.remove(at: index)
+                    
+                    self.tableview.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                    self.tableview.reloadData()
+                    //        ApiMethods.denyRequest(giftId: giftId, fromUserId: fromUserId) { (data) in
+                    //
+                    //        }
+                }
+            }
+            
+        }, canHide: true)
+        
+        controller?.showPopUp()
     }
     
 }

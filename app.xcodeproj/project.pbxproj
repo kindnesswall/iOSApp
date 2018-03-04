@@ -59,6 +59,10 @@
 		05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */; };
 		05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */; };
 		05BEA43E2049919D00147BF5 /* String+numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43D2049919D00147BF5 /* String+numbers.swift */; };
+		05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA442204C1FFA00147BF5 /* PromptUser.swift */; };
+		05BEA445204C1FFA00147BF5 /* PromptUser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BEA443204C1FFA00147BF5 /* PromptUser.xib */; };
+		05BEA447204C21E800147BF5 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA446204C21E800147BF5 /* PopUpView.swift */; };
+		05BEA449204C233000147BF5 /* AddPopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA448204C233000147BF5 /* AddPopUpController.swift */; };
 		05BFBBB21FDA5DBF00DBCDDF /* UIFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */; };
 		05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */; };
 		05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */; };
@@ -167,6 +171,10 @@
 		05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RegisterationHelp.swift"; sourceTree = "<group>"; };
 		05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterCell.swift"; sourceTree = "<group>"; };
 		05BEA43D2049919D00147BF5 /* String+numbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+numbers.swift"; sourceTree = "<group>"; };
+		05BEA442204C1FFA00147BF5 /* PromptUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptUser.swift; sourceTree = "<group>"; };
+		05BEA443204C1FFA00147BF5 /* PromptUser.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptUser.xib; sourceTree = "<group>"; };
+		05BEA446204C21E800147BF5 /* PopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		05BEA448204C233000147BF5 /* AddPopUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPopUpController.swift; sourceTree = "<group>"; };
 		05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFunctions.swift; sourceTree = "<group>"; };
 		05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationEnterPhoneViewController.swift; sourceTree = "<group>"; };
 		05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationEnterVerifyCodeViewController.xib; sourceTree = "<group>"; };
@@ -314,6 +322,8 @@
 		05335D471FD0DD7A00601115 /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				05BEA448204C233000147BF5 /* AddPopUpController.swift */,
+				05BEA446204C21E800147BF5 /* PopUpView.swift */,
 				05644DCF1FFF06F900B7C853 /* NibLoader.swift */,
 				05644DC51FFEFA2E00B7C853 /* DateHandler.swift */,
 				05644DB11FFEEF6D00B7C853 /* InternetLoadingStateIndicator.swift */,
@@ -537,6 +547,8 @@
 		60AE9C95202E00BB00F246CD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				05BEA442204C1FFA00147BF5 /* PromptUser.swift */,
+				05BEA443204C1FFA00147BF5 /* PromptUser.xib */,
 				05644DCB1FFF06BC00B7C853 /* SectionView.swift */,
 				05644DCC1FFF06BC00B7C853 /* SectionView.xib */,
 				602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */,
@@ -628,6 +640,7 @@
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
 				05F6AA531FFEEB8D00CDABC2 /* ChatConversationViewController.xib in Resources */,
 				05BFBBBA1FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib in Resources */,
+				05BEA445204C1FFA00147BF5 /* PromptUser.xib in Resources */,
 				05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */,
 				60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */,
 				054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */,
@@ -726,7 +739,9 @@
 				60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */,
 				05029ED61FE9A683004D96B1 /* ButtonWithData.swift in Sources */,
 				60AE9C94202DFB6A00F246CD /* UITableView+RegisterNib.swift in Sources */,
+				05BEA447204C21E800147BF5 /* PopUpView.swift in Sources */,
 				05644DBA1FFEF3A500B7C853 /* ChatConversationTableViewCell.swift in Sources */,
+				05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */,
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
 				05644DC21FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift in Sources */,
 				05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */,
@@ -779,6 +794,7 @@
 				05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */,
 				601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */,
+				05BEA449204C233000147BF5 /* AddPopUpController.swift in Sources */,
 				05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */,
 				601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */,
 				601F83C32036A36500F9118B /* DateStatusListViewModel.swift in Sources */,
