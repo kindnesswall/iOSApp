@@ -97,8 +97,7 @@ class APIRequest {
         let keychain = KeychainSwift()
 //        let userDefault = UserDefaults.standard
         if let token = keychain.get(AppConstants.Authorization) {
-//            returnRequest.setValue(token, forHTTPHeaderField: AppConstants.Authorization)
-            keychain.set(token, forKey: AppConstants.Authorization)
+            returnRequest.setValue(token, forHTTPHeaderField: AppConstants.Authorization)
             print("token: \(token)")
         }
         return returnRequest

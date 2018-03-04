@@ -19,6 +19,7 @@ class MyKindnessWallViewController: UIViewController {
         
         if let _=keychain.get(AppConstants.Authorization) { //UserDefaults.standard.string(forKey: AppConstants.Authorization) {
              AppDelegate.clearUserDefault()
+            keychain.clear()
         } else {
             AppDelegate.me().showLoginVC()
         }

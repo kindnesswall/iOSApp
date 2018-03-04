@@ -161,8 +161,8 @@
 		05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiOutputs.swift; sourceTree = "<group>"; };
 		05AE64721FA93F4800FCCC28 /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
 		05B124CB202DB056007E28CC /* latest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = latest.json; path = app/latest.json; sourceTree = "<group>"; };
-		05BEA42F2049667400147BF5 /* MyKindnessWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyKindnessWallViewController.swift; path = "app/view_controllers/my kindnesswall/MyKindnessWallViewController.swift"; sourceTree = SOURCE_ROOT; };
-		05BEA4302049667400147BF5 /* MyKindnessWallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyKindnessWallViewController.xib; path = "app/view_controllers/my kindnesswall/MyKindnessWallViewController.xib"; sourceTree = SOURCE_ROOT; };
+		05BEA42F2049667400147BF5 /* MyKindnessWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyKindnessWallViewController.swift; path = "app/view_controllers/New Group/MyKindnessWallViewController.swift"; sourceTree = SOURCE_ROOT; };
+		05BEA4302049667400147BF5 /* MyKindnessWallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyKindnessWallViewController.xib; path = "app/view_controllers/New Group/MyKindnessWallViewController.xib"; sourceTree = SOURCE_ROOT; };
 		05BEA43720498EB400147BF5 /* UIView+hide+show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+hide+show.swift"; sourceTree = "<group>"; };
 		05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RegisterationHelp.swift"; sourceTree = "<group>"; };
 		05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterCell.swift"; sourceTree = "<group>"; };
@@ -296,11 +296,11 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05BEA441204BFBAB00147BF5 /* my kindnesswall */,
 				05BEA43620497B2200147BF5 /* register gift */,
 				05BEA43520497B0A00147BF5 /* gift detail */,
 				05BEA43420497AF100147BF5 /* home */,
 				05BEA43320497AD500147BF5 /* my gifts */,
-				05BEA42E2049663A00147BF5 /* my kindnesswall */,
 				05644DD12000203500B7C853 /* chat */,
 				05029EC71FE33498004D96B1 /* requests */,
 				05BFBBB31FDA653400DBCDDF /* login */,
@@ -376,16 +376,6 @@
 			path = chat;
 			sourceTree = "<group>";
 		};
-		05BEA42E2049663A00147BF5 /* my kindnesswall */ = {
-			isa = PBXGroup;
-			children = (
-				05BEA42F2049667400147BF5 /* MyKindnessWallViewController.swift */,
-				05BEA4302049667400147BF5 /* MyKindnessWallViewController.xib */,
-			);
-			name = "my kindnesswall";
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		05BEA43320497AD500147BF5 /* my gifts */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +410,16 @@
 				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
 			);
 			path = "register gift";
+			sourceTree = "<group>";
+		};
+		05BEA441204BFBAB00147BF5 /* my kindnesswall */ = {
+			isa = PBXGroup;
+			children = (
+				05BEA42F2049667400147BF5 /* MyKindnessWallViewController.swift */,
+				05BEA4302049667400147BF5 /* MyKindnessWallViewController.xib */,
+			);
+			name = "my kindnesswall";
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		05BFBBB31FDA653400DBCDDF /* login */ = {
