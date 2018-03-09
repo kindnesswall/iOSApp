@@ -23,18 +23,13 @@ public class LoadingIndicator {
         case left
     }
     
-    convenience public init(view:UIView) {
-     
-        self.init(view: view,offset:0)
-        
-    }
     
-    init(view:UIView,offset:CGFloat) {
+    init(view:UIView,offset:CGFloat=0,color:UIColor=AppColor.tintColor) {
         self.superView=view
         loadingIndicatorType = .view
         
         self.activityIndicator.backgroundColor=view.backgroundColor
-        self.activityIndicator.color=UIColor.black
+        self.activityIndicator.color=color
         self.activityIndicator.hidesWhenStopped=true
         self.superView?.addSubview(self.activityIndicator)
         self.activityIndicator.isHidden=true
@@ -52,10 +47,10 @@ public class LoadingIndicator {
     }
 
     
-    init(navigationItem:UINavigationItem,type:NavigationItemType,navbarItem:UIBarButtonItem) {
+    init(navigationItem:UINavigationItem,type:NavigationItemType,replacedNavigationBarButton:UIBarButtonItem?,color:UIColor=AppColor.tintColor) {
         
         self.navigationItem=navigationItem
-        self.replacedNavigationBarButton=navbarItem
+        self.replacedNavigationBarButton=replacedNavigationBarButton
         
         switch type {
         case .left:
@@ -64,7 +59,7 @@ public class LoadingIndicator {
             loadingIndicatorType = .rightNavigationItem
         }
         
-        self.activityIndicator.color=UIColor.white
+        self.activityIndicator.color=color
         self.activityIndicator.hidesWhenStopped=true
         
     }
@@ -77,10 +72,10 @@ public class LoadingIndicator {
             self.activityIndicator.isHidden=false
         case .leftNavigationItem:
             let activityItem=UIBarButtonItem(customView: activityIndicator)
-            self.navigationItem?.leftBarButtonItem=activityItem
+            self.navigationItem?.leftBarButtonItems=[activityItem]
         case .rightNavigationItem:
             let activityItem=UIBarButtonItem(customView: activityIndicator)
-            self.navigationItem?.rightBarButtonItem=activityItem
+            self.navigationItem?.rightBarButtonItems=[activityItem]
         }
         
         self.activityIndicator.startAnimating()
@@ -95,11 +90,15 @@ public class LoadingIndicator {
         case .leftNavigationItem:
             
             if let replacedNavigationBarButton=self.replacedNavigationBarButton {
-                self.navigationItem?.leftBarButtonItem=replacedNavigationBarButton
+                self.navigationItem?.leftBarButtonItems=[replacedNavigationBarButton]
+            } else {
+                self.navigationItem?.leftBarButtonItems=[]
             }
         case .rightNavigationItem:
             if let replacedNavigationBarButton=self.replacedNavigationBarButton {
-                self.navigationItem?.rightBarButtonItem=replacedNavigationBarButton
+                self.navigationItem?.rightBarButtonItems=[replacedNavigationBarButton]
+            } else {
+                self.navigationItem?.rightBarButtonItems=[]
             }
         }
         

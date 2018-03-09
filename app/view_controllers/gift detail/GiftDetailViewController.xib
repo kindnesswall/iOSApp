@@ -247,6 +247,9 @@
                                             <state key="normal" title="حذف">
                                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="removeBtnClicked:" destination="-1" eventType="touchUpInside" id="raO-jF-BJw"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ6-HU-DLW">
                                             <rect key="frame" x="0.0" y="36" width="309" height="36"/>

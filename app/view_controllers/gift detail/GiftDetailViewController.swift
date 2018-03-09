@@ -33,12 +33,10 @@ class GiftDetailViewController: UIViewController {
     
     @IBOutlet weak var removeBtn: UIButton!
     
+    var loadingIndicator:LoadingIndicator?
+    var editBtn:UIBarButtonItem?
+    
     @IBAction func requestBtnClicked(_ sender: Any) {
-        
-        let controller=ActivationEnterPhoneViewController(nibName: "ActivationEnterPhoneViewController", bundle: Bundle(for: ActivationEnterPhoneViewController.self))
-        //            controller.backgroundImage = image
-        let nc = UINavigationController.init(rootViewController: controller)
-        self.tabBarController?.present(nc, animated: true, completion: nil)
         
     }
     override func viewDidLoad() {
@@ -62,25 +60,51 @@ class GiftDetailViewController: UIViewController {
         
         createSlideShow()
         
+        
+        
         guard let id = gift?.id else {
             return
         }
-        
-        ApiMethods.getGift(giftId: id) { (data) in
+        ApiMethods.getGift(giftId: id) { [weak self] (data) in
+            
+            if let reply=APIRequest.readJsonData(data: data, outputType: Gift.self) {
+                
+                self?.loadingIndicator?.stopLoading()
+                
+                if let myId=UserDefaults.standard.string(forKey: AppConstants.USER_ID) , let userId=reply.userId , myId==userId {
+                    self?.addEditBtn()
+                    self?.requestBtn.isHidden=true
+                    self?.removeBtn.isHidden=false
+                } else {
+                    self?.requestBtn.isHidden=false
+                    self?.removeBtn.isHidden=true
+                }
+                
+            }
+            
             
         }
     }
     
+    func addEditBtn(){
+        editBtn = NavigationBarStyle.getNavigationItem(target: self, action: #selector(self.editBtnClicked), text: "ویرایش",font:AppFont.getRegularFont(size: 16))
+        self.navigationItem.rightBarButtonItems=[editBtn!]
+    }
+    
     func setUI(){
-        print("for who: \(gift?.forWho ?? -1)")
-        print("my id: \(UserDefaults.standard.string(forKey: AppConstants.USER_ID) ?? "")")
         
-        NavigationBarStyle.setRightBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.editBtnClicked), text: "ویرایش",font:AppFont.getRegularFont(size: 16))
+        self.removeBtn.isHidden=true
+        self.requestBtn.isHidden=true
+        
+        self.loadingIndicator=LoadingIndicator(navigationItem: self.navigationItem, type: .right, replacedNavigationBarButton: nil)
+        self.loadingIndicator?.startLoading()
         
     }
     
     @objc func editBtnClicked(){
         
+    }
+    @IBAction func removeBtnClicked(_ sender: Any) {
     }
     
     @objc func didTap() {

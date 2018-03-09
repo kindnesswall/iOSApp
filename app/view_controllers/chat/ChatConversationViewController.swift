@@ -4,7 +4,7 @@ import UICircularProgressRing
 
 class ChatConversationViewController: UIViewController {
     
-    var loadingIndicator:InternetLoadingStateIndicator?
+    var loadingIndicator:LoadingIndicator?
 
     @IBOutlet weak var sendMsgLoader: UIView!
     
@@ -75,7 +75,7 @@ class ChatConversationViewController: UIViewController {
         
         ApiMethods.sendMessage(chatId: chatId, messageText: text) { (status) in
         
-            self.loadingIndicator?.endLoading()
+            self.loadingIndicator?.stopLoading()
             self.sendTextBtn.isHidden = true
             
 //            if status == APIStatus.DONE {
@@ -115,7 +115,7 @@ class ChatConversationViewController: UIViewController {
         
         tableview.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
         
-        loadingIndicator=InternetLoadingStateIndicator(view: self.sendMsgLoader)
+        loadingIndicator=LoadingIndicator(view: self.sendMsgLoader)
 
         myUserId = UserDefaults.standard.integer(forKey: AppConstants.USER_ID)
         
