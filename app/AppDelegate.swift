@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate {
@@ -14,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     var window: UIWindow?
     static let uDStandard = UserDefaults.standard
     let uDStandard = UserDefaults.standard
-    
+    let keychain = KeychainSwift()
+
     var current_time:Time?
 
     public var tabBarController:UITabBarController?
@@ -94,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if let _=UserDefaults.standard.string(forKey: AppConstants.Authorization) {
+        if let _=keychain.get(AppConstants.Authorization) {
            return true
         }
         

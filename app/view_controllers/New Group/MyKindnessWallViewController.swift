@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class MyKindnessWallViewController: UIViewController {
 
     @IBOutlet weak var contactUsBtn: UIButton!
     @IBOutlet var loginLogoutBtn: UIButton!
+    let keychain = KeychainSwift()
     
     @IBAction func logoutBtnClicked(_ sender: Any) {
         
-        if let _=UserDefaults.standard.string(forKey: AppConstants.Authorization) {
+        if let _=keychain.get(AppConstants.Authorization) { //UserDefaults.standard.string(forKey: AppConstants.Authorization) {
              AppDelegate.clearUserDefault()
+            keychain.clear()
         } else {
             AppDelegate.me().showLoginVC()
         }
@@ -40,7 +43,7 @@ class MyKindnessWallViewController: UIViewController {
     }
     
     func setLoginLogoutBtnTitle(){
-        if let _=UserDefaults.standard.string(forKey: AppConstants.Authorization) {
+        if let _=keychain.get(AppConstants.Authorization) {
             loginLogoutBtn.setTitle("خروج", for: .normal)
         } else {
             loginLogoutBtn.setTitle("ورود", for: .normal)

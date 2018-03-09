@@ -13,7 +13,6 @@ class APIURLs {
     static let UPLOAD_URL="http://api.kindnesswall.ir/api/"
     static let BASE_URL="http://test.kindnesswall.ir/api/"
     
-    
     static let API_VERSION = "v01/"
     static let ACCOUNT = "Account/"
 
