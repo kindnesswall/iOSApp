@@ -162,7 +162,23 @@ class MyGiftsViewController: UIViewController {
 }
 
 extension MyGiftsViewController : UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let controller = GiftDetailViewController(nibName: "GiftDetailViewController", bundle: Bundle(for: GiftDetailViewController.self))
+        
+        switch tableView {
+        case registeredGiftsTableView:
+            controller.gift = registeredGifts[indexPath.row]
+        case donatedGiftsTableView:
+            controller.gift = donatedGifts[indexPath.row]
+        default:
+            break
+        }
+        
+        print("Gift_id: \(controller.gift?.id ?? "")")
+        
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 }
 extension MyGiftsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
