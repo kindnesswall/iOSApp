@@ -14,7 +14,7 @@ class RequestsViewController: UIViewController {
     let userDefault = UserDefaults.standard
     var gifts:[Gift] = []
     var isFirstTime = true
-    var loadingIndicator:InternetLoadingStateIndicator!
+    var loadingIndicator:LoadingIndicator!
     let keychain = KeychainSwift()
 
     @IBOutlet var tableview: UITableView!
@@ -31,7 +31,7 @@ class RequestsViewController: UIViewController {
         requestView.hide()
         
         self.tableview.register(type: RequestsTableViewCell.self)
-        loadingIndicator=InternetLoadingStateIndicator(view: self.view)
+        loadingIndicator=LoadingIndicator(view: self.view)
         loadingIndicator.startLoading()
     }
     
@@ -42,7 +42,7 @@ class RequestsViewController: UIViewController {
         guard let _ = keychain.get(AppConstants.Authorization) else{
             loginView.show()
             requestView.hide()
-            loadingIndicator.endLoading()
+            loadingIndicator.stopLoading()
             return
         }
 
@@ -68,7 +68,7 @@ class RequestsViewController: UIViewController {
                 
                 self.loginView.hide()
                 self.requestView.show()
-                self.loadingIndicator.endLoading()
+                self.loadingIndicator.stopLoading()
                 
                 self.gifts.append(contentsOf: reply)
                 self.tableview.reloadData()
