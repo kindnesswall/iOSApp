@@ -78,7 +78,7 @@ class RegisterGiftViewController: UIViewController {
         APIRequest.request(url: APIURLs.Gift,httpMethod:.post, inputJson: input) { (data, response, error) in
             
             self.registerBtn.isEnabled=true
-            self.clearAllInput()
+            
             
             print("Register Reply")
             APIRequest.logReply(data: data)
@@ -87,6 +87,7 @@ class RegisterGiftViewController: UIViewController {
                 print((response).statusCode)
                 
                 if response.statusCode >= 200 && response.statusCode <= 300 {
+                    self.clearAllInput()
                     FlashMessage.showMessage(body: "ثبت کالا با موفقیت انجام شد",theme: .success)
                     
                 }
@@ -157,8 +158,23 @@ class RegisterGiftViewController: UIViewController {
         
         contentStackView.addGestureRecognizer(tapGesture)
         
+        self.configNavBar()
+        
         
         // Do any additional setup after loading the view.
+    }
+    
+    func configNavBar(){
+        
+        self.navigationItem.setRightBtn(target: self, action: #selector(self.clearBarBtnAction), text: "پاک کردن")
+        self.navigationItem.setLeftBtn(target: self, action: #selector(self.saveBarBtnAction), text: "ذخیره کردن")
+    }
+    
+    @objc func clearBarBtnAction(){
+        self.clearAllInput()
+    }
+    @objc func saveBarBtnAction(){
+        
     }
     
     @objc func tapGestureAction(){

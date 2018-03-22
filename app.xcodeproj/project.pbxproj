@@ -112,6 +112,7 @@
 		60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C8F202DF97100F246CD /* CategoryOptionsTableViewCell.swift */; };
 		60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */; };
 		60AE9C94202DFB6A00F246CD /* UITableView+RegisterNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C93202DFB6A00F246CD /* UITableView+RegisterNib.swift */; };
+		60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */; };
 		F7BCA4F8A441C01D89E9B782 /* Pods_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C277763F780436B62AC383 /* Pods_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +226,7 @@
 		60AE9C8F202DF97100F246CD /* CategoryOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOptionsTableViewCell.swift; sourceTree = "<group>"; };
 		60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryOptionsTableViewCell.xib; sourceTree = "<group>"; };
 		60AE9C93202DFB6A00F246CD /* UITableView+RegisterNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterNib.swift"; sourceTree = "<group>"; };
+		60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem + config.swift"; sourceTree = "<group>"; };
 		A4C277763F780436B62AC383 /* Pods_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -459,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				05BEA43D2049919D00147BF5 /* String+numbers.swift */,
+				60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */,
 				05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */,
 				05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */,
 				05BEA43720498EB400147BF5 /* UIView+hide+show.swift */,
@@ -790,6 +793,7 @@
 				05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */,
 				602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */,
 				05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */,
+				60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */,
 				05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */,
 				601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */,
