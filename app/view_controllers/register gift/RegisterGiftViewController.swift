@@ -44,7 +44,7 @@ class RegisterGiftViewController: UIViewController {
             return
         }
         
-        var addressObject=getAddress()
+        let addressObject=getAddress()
         guard let address=addressObject.address else {
             FlashMessage.showMessage(body: "لطفا محل کالا را انتخاب نمایید",theme: .warning)
             return
@@ -70,29 +70,35 @@ class RegisterGiftViewController: UIViewController {
         
         let giftImages=getGiftImages()
         
-        let input:[String:Any]=["title":title,"address":address,"description":giftDescription,"price":price,"categoryId":categoryId,"cityId":cityId,"regionId":(regionId ?? -1),"giftImages":giftImages]
-    
+        let input=RegisterGiftInput()
+        input.title=title
+        input.address=address
+        input.description=giftDescription
+        input.price=price
+        input.categoryId=categoryId
+        input.cityId=cityId
+        input.regionId=(regionId ?? -1)
+        input.giftImages=giftImages
+        
+        
         
         self.registerBtn.isEnabled=false
         
-        APIRequest.request(url: APIURLs.Gift,httpMethod:.post, inputJson: input) { (data, response, error) in
-            
+        APICall.request(url: APIURLs.Gift, httpMethod: .POST, input: input) { (data, response, error) in
             self.registerBtn.isEnabled=true
             
-            
             print("Register Reply")
-            APIRequest.logReply(data: data)
+            APICall.printData(data: data)
             
             if let response = response as? HTTPURLResponse {
                 print((response).statusCode)
-                
+
                 if response.statusCode >= 200 && response.statusCode <= 300 {
                     self.clearAllInput()
                     FlashMessage.showMessage(body: "ثبت کالا با موفقیت انجام شد",theme: .success)
-                    
+
                 }
             }
-            
         }
         
     }

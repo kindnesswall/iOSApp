@@ -113,6 +113,8 @@
 		60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */; };
 		60AE9C94202DFB6A00F246CD /* UITableView+RegisterNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C93202DFB6A00F246CD /* UITableView+RegisterNib.swift */; };
 		60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */; };
+		60FAB83C2064320E0039BF61 /* Request Inputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83B2064320E0039BF61 /* Request Inputs.swift */; };
+		60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83D2064DBE10039BF61 /* APICall.swift */; };
 		F7BCA4F8A441C01D89E9B782 /* Pods_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C277763F780436B62AC383 /* Pods_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -227,6 +229,8 @@
 		60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryOptionsTableViewCell.xib; sourceTree = "<group>"; };
 		60AE9C93202DFB6A00F246CD /* UITableView+RegisterNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterNib.swift"; sourceTree = "<group>"; };
 		60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem + config.swift"; sourceTree = "<group>"; };
+		60FAB83B2064320E0039BF61 /* Request Inputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request Inputs.swift"; sourceTree = "<group>"; };
+		60FAB83D2064DBE10039BF61 /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		A4C277763F780436B62AC383 /* Pods_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -363,6 +367,7 @@
 		054B1B581FCC44E3007570EF /* models */ = {
 			isa = PBXGroup;
 			children = (
+				60FAB83A206431EA0039BF61 /* Request IO */,
 				05644DC31FFEF62300B7C853 /* ChatAbs.swift */,
 				05BFBBC21FDAA45C00DBCDDF /* Time.swift */,
 				05BFBBDD1FE26A9000DBCDDF /* Gift.swift */,
@@ -493,6 +498,7 @@
 				056FBB601F91585C0023C9CF /* APIURLs.swift */,
 				05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */,
 				05AE64721FA93F4800FCCC28 /* ApiMethods.swift */,
+				60FAB83D2064DBE10039BF61 /* APICall.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -558,6 +564,14 @@
 				602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		60FAB83A206431EA0039BF61 /* Request IO */ = {
+			isa = PBXGroup;
+			children = (
+				60FAB83B2064320E0039BF61 /* Request Inputs.swift */,
+			);
+			path = "Request IO";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -744,6 +758,7 @@
 				05BEA447204C21E800147BF5 /* PopUpView.swift in Sources */,
 				05644DBA1FFEF3A500B7C853 /* ChatConversationTableViewCell.swift in Sources */,
 				05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */,
+				60FAB83C2064320E0039BF61 /* Request Inputs.swift in Sources */,
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
 				05644DC21FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift in Sources */,
 				05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */,
@@ -751,6 +766,7 @@
 				05644DCD1FFF06BD00B7C853 /* SectionView.swift in Sources */,
 				05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */,
 				6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */,
+				60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */,
 				05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */,
 				05BEA4312049667500147BF5 /* MyKindnessWallViewController.swift in Sources */,
 				05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */,

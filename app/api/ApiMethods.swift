@@ -52,7 +52,7 @@ class ApiMethods {
         
         APIRequest.request(
             url: APIURLs.getChatConversation,
-            inputJson: ["chat_id":chatId, "start_index":startIndex, "last_index":startIndex + offset - 1 ])
+            inputDictionary: ["chat_id":chatId, "start_index":startIndex, "last_index":startIndex + offset - 1 ])
         {(data, response, error) in
             
             APIRequest.logReply(data: data)
@@ -74,7 +74,7 @@ class ApiMethods {
         
         APIRequest.request(
             url: APIURLs.sendMessage,
-            inputJson: ["chat_id":chatId, "message_text":messageText ])
+            inputDictionary: ["chat_id":chatId, "message_text":messageText ])
         {(data, response, error) in
             
             APIRequest.logReply(data: data)
@@ -134,7 +134,7 @@ class ApiMethods {
 
         var jsonDicInput : [String : String] = ApiInput.LogoutInput(registeration_id: "")
         
-        APIRequest.request(url: url, inputJson: jsonDicInput) { (data, response, error) in
+        APIRequest.request(url: url, inputDictionary: jsonDicInput) { (data, response, error) in
             
             APIRequest.logReply(data: data)
             
@@ -148,7 +148,7 @@ class ApiMethods {
         
         var jsonDicInput : [String : String] = ApiInput.SetDeviceInput(registeration_id: "", device_id: "")
         
-        APIRequest.request(url: url, inputJson: jsonDicInput) { (data, response, error) in
+        APIRequest.request(url: url, inputDictionary: jsonDicInput) { (data, response, error) in
             
             APIRequest.logReply(data: data)
             completionHandler(data)
@@ -170,7 +170,7 @@ class ApiMethods {
         let searchText = "/?searchText=" + (searchText ?? "")
         let mainURL: String = APIURLs.Gift + "/" + cityId + "/" + regionId + "/" + categoryId + "/" + "\(startIndex)/" + "\(lastIndex)" + searchText
         
-        APIRequest.request(url: mainURL, httpMethod: .get, appendToSessions: &self.sessions, appendToTasks: &self.tasks, inputJson: nil) { (data, response, error) in
+        APIRequest.request(url: mainURL, httpMethod: .get, appendToSessions: &self.sessions, appendToTasks: &self.tasks, inputDictionary: nil) { (data, response, error) in
             
             guard error == nil else {
                 print("Get error register")
@@ -268,7 +268,7 @@ class ApiMethods {
         
         var jsonDicInput : [String : String] = ApiInput.BookmarkInput(giftId: giftId)
         
-        APIRequest.request(url: url, inputJson: jsonDicInput) { (data, response, error) in
+        APIRequest.request(url: url, inputDictionary: jsonDicInput) { (data, response, error) in
             
             APIRequest.logReply(data: data)
             guard error == nil else {

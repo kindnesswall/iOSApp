@@ -87,7 +87,7 @@ class MyGiftsViewController: UIViewController {
         }
         let url=APIURLs.getMyRegisteredGifts+"/"+userId+"/\(index)/\(index+lazyLoadingCount)"
         
-        APIRequest.request(url: url, httpMethod: .get, inputJson: nil) { (data, response, error) in
+        APIRequest.request(url: url, httpMethod: .get, inputDictionary: nil) { (data, response, error) in
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
                 self.registeredGifts.append(contentsOf: reply)
@@ -119,7 +119,7 @@ class MyGiftsViewController: UIViewController {
         }
         let url=APIURLs.getMyDonatedGifts+"/"+userId+"/\(index)/\(index+lazyLoadingCount)"
         
-        APIRequest.request(url: url, httpMethod: .get, inputJson: nil) { (data, response, error) in
+        APIRequest.request(url: url, httpMethod: .get, inputDictionary: nil) { (data, response, error) in
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
                 self.donatedGifts.append(contentsOf: reply)

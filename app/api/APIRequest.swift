@@ -104,7 +104,7 @@ class APIRequest {
         
     }
     
-    public static func request(url:String,httpMethod:EnumHttpMethods = .post,inputJson:[String:Any]?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
+    public static func request(url:String,httpMethod:EnumHttpMethods = .post,inputDictionary:[String:Any]?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
         
         let mainURL=URL(string: url)
         
@@ -115,13 +115,16 @@ class APIRequest {
             
             request=self.setRequestHeader(request: request)
             
-            if let inputJson=inputJson {
+            
+            
+            if let inputDictionary=inputDictionary {
                 
-                let json=try! JSONSerialization.data(withJSONObject: inputJson, options: JSONSerialization.WritingOptions.prettyPrinted)
+                let json=try! JSONSerialization.data(withJSONObject: inputDictionary, options: JSONSerialization.WritingOptions.prettyPrinted)
                 print("input json:")
                 APIRequest.logReply(data: json)
                 request.httpBody=json
             }
+            
             
             
             let config = URLSessionConfiguration.default
@@ -151,7 +154,7 @@ class APIRequest {
         httpMethod:EnumHttpMethods = .post,
         appendToSessions sessions: inout [Foundation.URLSession?],
         appendToTasks tasks: inout [URLSessionDataTask?],
-        inputJson:[String:Any]?,
+        inputDictionary:[String:Any]?,
         complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void){
         
         let mainURL=URL(string: url)
@@ -163,13 +166,17 @@ class APIRequest {
             
             request=self.setRequestHeader(request: request)
             
-            if let inputJson=inputJson {
+            
+            
+            if let inputDictionary=inputDictionary {
                 
-                let json=try! JSONSerialization.data(withJSONObject: inputJson, options: JSONSerialization.WritingOptions.prettyPrinted)
+                let json=try! JSONSerialization.data(withJSONObject: inputDictionary, options: JSONSerialization.WritingOptions.prettyPrinted)
                 print("input json:")
                 APIRequest.logReply(data: json)
                 request.httpBody=json
             }
+            
+            
             
             
             let config = URLSessionConfiguration.default
