@@ -37,13 +37,17 @@ class RegisterGiftViewController: UIViewController {
         
     }
     
-    
-    
     @IBOutlet weak var categoryBtn: UIButton!
     var category:Category?
     
     
     let imagePicker = UIImagePickerController()
+    
+    var isEditMode=false
+    var editedGift:Gift?
+    
+    var barClearBtn:UIBarButtonItem?
+    var barSaveBtn:UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,15 +58,102 @@ class RegisterGiftViewController: UIViewController {
         
         self.configNavBar()
         
+        if isEditMode {
+            readFromEditedGift()
+        } else {
+            readFromDraft()
+        }
+        
         
         // Do any additional setup after loading the view.
     }
     
     func configNavBar(){
         
-        self.navigationItem.setRightBtn(target: self, action: #selector(self.clearBarBtnAction), text: "پاک کردن")
-        self.navigationItem.setLeftBtn(target: self, action: #selector(self.saveBarBtnAction), text: "ذخیره کردن")
+        if !isEditMode {
+            self.barClearBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.clearBarBtnAction), text: "پاک کردن صفحه")
+            self.navigationItem.rightBarButtonItems=[self.barClearBtn!]
+            self.barSaveBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.saveBarBtnAction), text: "ذخیره پیش‌ نویس")
+            self.navigationItem.leftBarButtonItems=[self.barSaveBtn!]
+            
+        }
+        
     }
+    
+    func readFromDraft(){
+        guard let data = UserDefaults.standard.data(forKey: AppConstants.RegisterGiftDraft) else {
+            return
+        }
+        guard let draft = try? JSONDecoder().decode(RegisterGiftDraft.self, from: data) else {
+            return
+        }
+        
+        self.titleTextView.text=draft.title
+        self.descriptionTextView.text=draft.description
+        self.priceTextView.text=draft.price?.description ?? ""
+        
+        self.category=draft.category
+        self.categoryBtn.setTitle(draft.category?.title, for: .normal)
+        
+        if let draftPlaces = draft.places {
+            for draftPlace in draftPlaces {
+                self.places.append(draftPlace)
+                self.addGiftPlace(place: draftPlace)
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    func clearAllInput(){
+        
+        self.clearUploadedImages()
+        self.clearGiftPlaces()
+        
+        self.categoryBtn.setTitle("انتخاب", for: .normal)
+        self.category=nil
+        
+        self.dateStatusBtn.setTitle("انتخاب", for: .normal)
+        self.dateStatus=nil
+        
+        self.titleTextView.text=""
+        self.descriptionTextView.text=""
+        self.priceTextView.text=""
+        
+        let userDefault=UserDefaults.standard
+        userDefault.set(nil, forKey: AppConstants.RegisterGiftDraft)
+        userDefault.synchronize()
+        
+    }
+    
+    func saveDraft(){
+        
+        
+        let draft=RegisterGiftDraft()
+        draft.title=self.titleTextView.text
+        draft.description=self.descriptionTextView.text
+        draft.price=Int(self.priceTextView.text ?? "")
+        draft.category=Category(id: self.category?.id, title: self.category?.title)
+        draft.places=self.places
+        
+        guard let data=try? JSONEncoder().encode(draft) else {
+            return
+        }
+        
+        let userDefault=UserDefaults.standard
+        userDefault.set(data, forKey: AppConstants.RegisterGiftDraft)
+        userDefault.synchronize()
+        
+        
+    }
+    
+    func readFromEditedGift(){
+        
+    }
+    
+    
     
     func submitGift(){
         guard let title=self.titleTextView.text , title != "" else {
@@ -110,7 +201,6 @@ class RegisterGiftViewController: UIViewController {
         input.cityId=cityId
         input.regionId=(regionId ?? -1)
         input.giftImages=giftImages
-        
         
         
         self.registerBtn.isEnabled=false
@@ -164,22 +254,7 @@ class RegisterGiftViewController: UIViewController {
         
     }
     
-    func clearAllInput(){
-        
-        self.clearUploadedImages()
-        self.clearGiftPlaces()
-        
-        self.categoryBtn.setTitle("انتخاب", for: .normal)
-        self.category=nil
-        
-        self.dateStatusBtn.setTitle("انتخاب", for: .normal)
-        self.dateStatus=nil
-        
-        self.titleTextView.text=""
-        self.descriptionTextView.text=""
-        self.priceTextView.text=""
-        
-    }
+    
     
     
     
@@ -187,7 +262,7 @@ class RegisterGiftViewController: UIViewController {
         self.clearAllInput()
     }
     @objc func saveBarBtnAction(){
-        
+        self.saveDraft()
     }
     
     @objc func tapGestureAction(){
@@ -206,6 +281,7 @@ class RegisterGiftViewController: UIViewController {
         controller.option = OptionsListViewController.Option.place(0)
         controller.completionHandler={ [weak self] (id,name) in
             let place=Place(id: Int(id ?? ""), name: name)
+            self?.places.append(place)
             self?.addGiftPlace(place: place)
         }
         controller.closeHandler={ [weak self] in
@@ -229,8 +305,6 @@ class RegisterGiftViewController: UIViewController {
         label.widthAnchor.constraint(equalToConstant: width).isActive=true
         
         placesStackView.addArrangedSubview(label)
-        
-        self.places.append(place)
     }
     
     func clearGiftPlaces(){

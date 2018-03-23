@@ -31,5 +31,6 @@ class AppConstants {
     static let RegisterationId:String = "registerationId"
     static let ContentType:String = "content-type"
     
+    static let RegisterGiftDraft="RegisterGiftDraft"
 }
 
