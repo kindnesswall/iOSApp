@@ -10,10 +10,21 @@ import UIKit
 
 class UploadImageView: UIView {
     
-    var uploadSession:Foundation.URLSession?
-    var uploadTask:URLSessionDataTask?
+    
+    var sessions : [URLSession?]=[]
+    var tasks : [URLSessionUploadTask?]=[]
+    
+    func getTask()->URLSessionUploadTask? {
+        
+        guard let task = self.tasks.first else {
+            return nil
+        }
+        return task
+    }
     
     var imageSrc:String?
+    
+    weak var delegate : UploadImageViewDelegate?
 
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var imageView: UIImageView!
@@ -26,5 +37,20 @@ class UploadImageView: UIView {
         // Drawing code
     }
     */
+    
+    func cancelUploading(){
+        APICall.stopAndClearUploadRequests(sessions: &sessions, tasks: &tasks)
+    }
+    
+    @IBAction func cancelBtnAction(_ sender: Any) {
+        
+        self.cancelUploading()
+        
+        self.delegate?.imageCanceled(imageView: self)
+    }
+    
+}
 
+protocol UploadImageViewDelegate : class {
+    func imageCanceled(imageView:UploadImageView)
 }

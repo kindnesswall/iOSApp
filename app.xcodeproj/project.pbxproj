@@ -116,7 +116,8 @@
 		60FAB83C2064320E0039BF61 /* Request Inputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83B2064320E0039BF61 /* Request Inputs.swift */; };
 		60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83D2064DBE10039BF61 /* APICall.swift */; };
 		60FAB8402064EE950039BF61 /* RGVC + uploading images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */; };
-		60FAB843206503AE0039BF61 /* Draft Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB842206503AE0039BF61 /* Draft Models.swift */; };
+		60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB842206503AE0039BF61 /* Stored Models.swift */; };
+		60FAB845206571340039BF61 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60FAB844206571340039BF61 /* icomoon.ttf */; };
 		F7BCA4F8A441C01D89E9B782 /* Pods_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C277763F780436B62AC383 /* Pods_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -234,7 +235,8 @@
 		60FAB83B2064320E0039BF61 /* Request Inputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request Inputs.swift"; sourceTree = "<group>"; };
 		60FAB83D2064DBE10039BF61 /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGVC + uploading images.swift"; sourceTree = "<group>"; };
-		60FAB842206503AE0039BF61 /* Draft Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Draft Models.swift"; sourceTree = "<group>"; };
+		60FAB842206503AE0039BF61 /* Stored Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stored Models.swift"; sourceTree = "<group>"; };
+		60FAB844206571340039BF61 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = icomoon.ttf; path = icomoon/fonts/icomoon.ttf; sourceTree = "<group>"; };
 		A4C277763F780436B62AC383 /* Pods_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -358,6 +360,7 @@
 		054B1B4B1FCC3B60007570EF /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				60FAB844206571340039BF61 /* icomoon.ttf */,
 				054B1B4E1FCC4100007570EF /* IRANSansMobile_Black.ttf */,
 				054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */,
 				054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */,
@@ -371,7 +374,7 @@
 		054B1B581FCC44E3007570EF /* models */ = {
 			isa = PBXGroup;
 			children = (
-				60FAB841206503790039BF61 /* Drafts */,
+				60FAB841206503790039BF61 /* User Default Stored Models */,
 				60FAB83A206431EA0039BF61 /* Request IO */,
 				05644DC31FFEF62300B7C853 /* ChatAbs.swift */,
 				05BFBBC21FDAA45C00DBCDDF /* Time.swift */,
@@ -580,12 +583,12 @@
 			path = "Request IO";
 			sourceTree = "<group>";
 		};
-		60FAB841206503790039BF61 /* Drafts */ = {
+		60FAB841206503790039BF61 /* User Default Stored Models */ = {
 			isa = PBXGroup;
 			children = (
-				60FAB842206503AE0039BF61 /* Draft Models.swift */,
+				60FAB842206503AE0039BF61 /* Stored Models.swift */,
 			);
-			path = Drafts;
+			path = "User Default Stored Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -667,6 +670,7 @@
 				05644DB91FFEF3A500B7C853 /* ChatListTableViewCell.xib in Resources */,
 				054B1B541FCC4101007570EF /* IRANSansMobile_Black.ttf in Resources */,
 				05029ECB1FE334C5004D96B1 /* RequestToAGiftViewController.xib in Resources */,
+				60FAB845206571340039BF61 /* icomoon.ttf in Resources */,
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
 				05F6AA531FFEEB8D00CDABC2 /* ChatConversationViewController.xib in Resources */,
@@ -789,7 +793,7 @@
 				05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */,
 				05BFBBC11FDA9FCF00DBCDDF /* DateHelper.swift in Sources */,
 				05644DC41FFEF62300B7C853 /* ChatAbs.swift in Sources */,
-				60FAB843206503AE0039BF61 /* Draft Models.swift in Sources */,
+				60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */,
 				60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */,
 				601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,

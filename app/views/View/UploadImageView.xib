@@ -13,6 +13,9 @@
         <array key="IRANSansMobile.ttf">
             <string>IRANSansMobile</string>
         </array>
+        <array key="icomoon.ttf">
+            <string>icomoon</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -34,11 +37,23 @@
                     <color key="textColor" name="TintColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihK-nz-YaV">
+                    <rect key="frame" x="0.0" y="20" width="30" height="42"/>
+                    <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="30"/>
+                    <state key="normal" title="">
+                        <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="FxQ-Ka-v6C"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="aqB-4h-fbr" firstAttribute="centerY" secondItem="VMz-x7-Hn6" secondAttribute="centerY" id="5bt-Ai-xjO"/>
+                <constraint firstItem="ihK-nz-YaV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="5qC-q6-9CG"/>
                 <constraint firstItem="3qH-Gn-Mo1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5qx-Pv-4Uu"/>
+                <constraint firstItem="ihK-nz-YaV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ez0-MI-nEy"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VMz-x7-Hn6" secondAttribute="trailing" id="I7i-Gu-fm1"/>
                 <constraint firstItem="3qH-Gn-Mo1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="MIN-9L-K8c"/>
                 <constraint firstItem="aqB-4h-fbr" firstAttribute="centerX" secondItem="VMz-x7-Hn6" secondAttribute="centerX" id="Me4-2Q-6rx"/>

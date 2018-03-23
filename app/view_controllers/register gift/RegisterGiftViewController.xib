@@ -98,16 +98,16 @@
                                                     <rect key="frame" x="0.0" y="50" width="375" height="100"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="wsv-gy-uev">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                                            <rect key="frame" x="4" y="0.0" width="375" height="100"/>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="wsv-gy-uev" firstAttribute="height" secondItem="jce-19-sfK" secondAttribute="height" id="CGl-eR-mRy"/>
-                                                        <constraint firstItem="wsv-gy-uev" firstAttribute="leading" secondItem="jce-19-sfK" secondAttribute="leading" id="I3o-N6-S07"/>
+                                                        <constraint firstItem="wsv-gy-uev" firstAttribute="leading" secondItem="jce-19-sfK" secondAttribute="leading" constant="4" id="I3o-N6-S07"/>
                                                         <constraint firstAttribute="height" constant="100" id="OA0-8X-qbd"/>
                                                         <constraint firstItem="wsv-gy-uev" firstAttribute="width" secondItem="jce-19-sfK" secondAttribute="width" priority="250" id="RUp-e9-5EU"/>
                                                         <constraint firstItem="wsv-gy-uev" firstAttribute="top" secondItem="jce-19-sfK" secondAttribute="top" id="b7B-pg-qzb"/>
-                                                        <constraint firstAttribute="trailing" secondItem="wsv-gy-uev" secondAttribute="trailing" id="qxs-Dm-ucW"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wsv-gy-uev" secondAttribute="trailing" constant="4" id="qxs-Dm-ucW"/>
                                                         <constraint firstAttribute="bottom" secondItem="wsv-gy-uev" secondAttribute="bottom" id="zrj-Zd-rma"/>
                                                     </constraints>
                                                 </scrollView>

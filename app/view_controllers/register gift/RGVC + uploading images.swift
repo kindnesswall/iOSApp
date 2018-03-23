@@ -65,11 +65,12 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         uploadedImageView.widthAnchor.constraint(equalToConstant: 100).isActive=true
         
         uploadedImageView.imageView.image=selectedImage
+        uploadedImageView.delegate=self
         
         self.uploadedImageViews.append(uploadedImageView)
         self.uploadedImageStack.addArrangedSubview(uploadedImageView)
         
-        APIRequest.uploadImageTask(url: APIURLs.Upload, session: &uploadedImageView.uploadSession, task: &uploadedImageView.uploadTask,delegate:self, image: selectedImage, complitionHandler: { [weak self] (data, response, error) in
+        APICall.uploadImage(url: APIURLs.Upload, image: selectedImage, sessions: &uploadedImageView.sessions, tasks: &uploadedImageView.tasks, delegate: self) { [weak self] (data, response, error) in
             
             //            if let response = response as? HTTPURLResponse {
             //                print((response).statusCode)
@@ -90,7 +91,7 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
             
             if let imageSrc=APIRequest.readJsonData(data: data, outputType: ImageUpload.self)?.imageSrc {
                 
-                guard let uploadIndex=self?.findIndexOfUploadedImage(task: uploadedImageView.uploadTask) else {
+                guard let uploadIndex=self?.findIndexOfUploadedImage(task: uploadedImageView.getTask()) else {
                     return
                 }
                 self?.uploadedImageViews[uploadIndex].shadowView.isHidden=true
@@ -102,8 +103,8 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
                 FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
             }
             
-            
-        })
+        }
+        
     }
     
     
@@ -114,7 +115,7 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         }
         
         for i in 0..<self.uploadedImageViews.count {
-            if self.uploadedImageViews[i].uploadTask==task {
+            if self.uploadedImageViews[i].getTask()==task {
                 return i
             }
         }
@@ -124,6 +125,7 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     
     func clearUploadedImages(){
         for uploadedImageView in self.uploadedImageViews {
+            uploadedImageView.cancelUploading()
             uploadedImageView.removeFromSuperview()
         }
         self.uploadedImageViews=[]
@@ -156,5 +158,27 @@ extension RegisterGiftViewController:URLSessionTaskDelegate{
 
 extension RegisterGiftViewController:UINavigationControllerDelegate{
 
+}
+
+extension RegisterGiftViewController : UploadImageViewDelegate {
+ 
+    func imageCanceled(imageView: UploadImageView) {
+        guard let index=findIndexOfUploadedImage(imageView:imageView) else {
+            return
+        }
+        self.uploadedImageViews[index].removeFromSuperview()
+        self.uploadedImageViews.remove(at: index)
+    }
+    
+    func findIndexOfUploadedImage(imageView: UploadImageView)->Int?{
+        
+        for i in 0..<self.uploadedImageViews.count {
+            if self.uploadedImageViews[i]===imageView {
+                return i
+            }
+        }
+        return nil
+        
+    }
 }
 

@@ -108,7 +108,7 @@ class APICall {
     }
     
     
-    static func uploadImage(url urlString:String,image:UIImage?,sessions:inout [URLSession?],tasks:inout [URLSessionDataTask?],delegate:URLSessionDelegate,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
+    static func uploadImage(url urlString:String,image:UIImage?,sessions:inout [URLSession?],tasks:inout [URLSessionUploadTask?],delegate:URLSessionDelegate,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
         
         guard let url=URL(string:urlString) else {
             return
@@ -172,6 +172,19 @@ class APICall {
         tasks=[]
         sessions=[]
     }
+    
+    static func stopAndClearUploadRequests(sessions:inout [URLSession?],tasks: inout [URLSessionUploadTask?]){
+        
+        for task in tasks {
+            task?.cancel()
+        }
+        for session in sessions {
+            session?.invalidateAndCancel()
+        }
+        tasks=[]
+        sessions=[]
+    }
+    
     
     static func printData(data:Data?) {
         guard let data=data else {
