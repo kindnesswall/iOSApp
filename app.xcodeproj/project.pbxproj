@@ -115,6 +115,7 @@
 		60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */; };
 		60FAB83C2064320E0039BF61 /* Request Inputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83B2064320E0039BF61 /* Request Inputs.swift */; };
 		60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83D2064DBE10039BF61 /* APICall.swift */; };
+		60FAB8402064EE950039BF61 /* RGVC + uploading images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */; };
 		F7BCA4F8A441C01D89E9B782 /* Pods_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C277763F780436B62AC383 /* Pods_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -231,6 +232,7 @@
 		60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem + config.swift"; sourceTree = "<group>"; };
 		60FAB83B2064320E0039BF61 /* Request Inputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request Inputs.swift"; sourceTree = "<group>"; };
 		60FAB83D2064DBE10039BF61 /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
+		60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGVC + uploading images.swift"; sourceTree = "<group>"; };
 		A4C277763F780436B62AC383 /* Pods_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -425,6 +427,7 @@
 			children = (
 				05BFBBCF1FE0703500DBCDDF /* RegisterGiftViewController.xib */,
 				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
+				60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */,
 			);
 			path = "register gift";
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */,
 				60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */,
 				05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */,
+				60FAB8402064EE950039BF61 /* RGVC + uploading images.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */,
 				601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */,
 				05BEA449204C233000147BF5 /* AddPopUpController.swift in Sources */,
