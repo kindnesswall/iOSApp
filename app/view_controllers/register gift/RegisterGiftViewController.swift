@@ -304,8 +304,8 @@ class RegisterGiftViewController: UIViewController {
             
             responseHandler?()
             
-//            print("Register Reply")
-//            APICall.printData(data: data)
+            print("Register Reply")
+            APICall.printData(data: data)
             
             if let response = response as? HTTPURLResponse {
                 print((response).statusCode)

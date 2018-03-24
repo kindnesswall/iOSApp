@@ -70,6 +70,14 @@ class MyGiftsViewController: UIViewController {
         case donated
     }
     
+    func reloadRegisteredGifts(){
+        APICall.stopAndClearRequests(sessions: &registeredGiftsSessions, tasks: &registeredGiftsTasks)
+        isLoadingRegisteredGifts=false
+        getRegisteredGifts(index: 0)
+    }
+    
+    var registeredGiftsSessions:[URLSession?]=[]
+    var registeredGiftsTasks:[URLSessionDataTask?]=[]
     func getRegisteredGifts(index:Int){
         
         if isLoadingRegisteredGifts {
@@ -87,7 +95,10 @@ class MyGiftsViewController: UIViewController {
         }
         let url=APIURLs.getMyRegisteredGifts+"/"+userId+"/\(index)/\(index+lazyLoadingCount)"
         
-        APIRequest.request(url: url, httpMethod: .get, inputDictionary: nil) { (data, response, error) in
+        let input:APIEmptyInput?=nil
+        
+        APICall.request(url: url, httpMethod: .GET, input: input , sessions: &registeredGiftsSessions, tasks: &registeredGiftsTasks) { (data, response, error) in
+            
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
                 self.registeredGifts.append(contentsOf: reply)
@@ -100,8 +111,17 @@ class MyGiftsViewController: UIViewController {
                 
             }
         }
+        
     }
     
+    func reloadDonatedGifts(){
+        APICall.stopAndClearRequests(sessions: &donatedGiftsSessions, tasks: &donatedGiftsTasks)
+        isLoadingDonatedGifts=false
+        getDonatedGifts(index: 0)
+    }
+    
+    var donatedGiftsSessions:[URLSession?]=[]
+    var donatedGiftsTasks:[URLSessionDataTask?]=[]
     func getDonatedGifts(index:Int){
         
         if isLoadingDonatedGifts {
@@ -119,7 +139,10 @@ class MyGiftsViewController: UIViewController {
         }
         let url=APIURLs.getMyDonatedGifts+"/"+userId+"/\(index)/\(index+lazyLoadingCount)"
         
-        APIRequest.request(url: url, httpMethod: .get, inputDictionary: nil) { (data, response, error) in
+        let input:APIEmptyInput?=nil
+        
+        APICall.request(url: url, httpMethod: .GET, input: input, sessions: &donatedGiftsSessions, tasks: &donatedGiftsTasks) { (data, response, error) in
+            
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
                 self.donatedGifts.append(contentsOf: reply)
@@ -131,6 +154,7 @@ class MyGiftsViewController: UIViewController {
                 self.donatedGiftsTableView.reloadData()
             }
         }
+        
     }
     
     func configSegmentControl(){
