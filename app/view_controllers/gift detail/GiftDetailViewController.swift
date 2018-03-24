@@ -103,6 +103,15 @@ class GiftDetailViewController: UIViewController {
     
     @objc func editBtnClicked(){
         
+        let controller=RegisterGiftViewController()
+        
+        controller.isEditMode=true
+        controller.editedGift=self.gift
+        
+        let nc=UINavigationController(rootViewController: controller)
+        
+        self.present(nc, animated: true, completion: nil)
+        
     }
     @IBAction func removeBtnClicked(_ sender: Any) {
     }

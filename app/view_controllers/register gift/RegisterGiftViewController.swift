@@ -34,11 +34,29 @@ class RegisterGiftViewController: UIViewController {
 
     @IBAction func submitBtnAction(_ sender: Any) {
         
-        submitGift()
+        self.registerBtn.isEnabled=false
+        sendGift(httpMethod: .POST, responseHandler: {
+            self.registerBtn.isEnabled=true
+        }) {
+            self.clearAllInput()
+            FlashMessage.showMessage(body: "ثبت کالا با موفقیت انجام شد",theme: .success)
+        }
         
     }
     @IBAction func editBtnAction(_ sender: Any) {
-        
+        self.editBtn.isEnabled=false
+        sendGift(httpMethod: .PUT, responseHandler: {
+            self.editBtn.isEnabled=true
+        }) {
+            
+            FlashMessage.showMessage(body: "کالا با موفقیت ویرایش شد.", theme: .success)
+            
+            let when=DispatchTime.now() + 1
+            DispatchQueue.main.asyncAfter(deadline: when, execute: {
+                self.dismiss(animated: true, completion: nil)
+            })
+            
+        }
     }
     
     @IBOutlet weak var categoryBtn: UIButton!
@@ -145,8 +163,10 @@ class RegisterGiftViewController: UIViewController {
         self.descriptionTextView.text=draft.description
         self.priceTextView.text=draft.price?.description ?? ""
         
-        self.category=draft.category
-        self.categoryBtn.setTitle(draft.category?.title, for: .normal)
+        if let category=draft.category {
+            self.category=category
+            self.categoryBtn.setTitle(category.title, for: .normal)
+        }
         
         if let draftPlaces = draft.places {
             for draftPlace in draftPlaces {
@@ -188,7 +208,7 @@ class RegisterGiftViewController: UIViewController {
         draft.title=self.titleTextView.text
         draft.description=self.descriptionTextView.text
         draft.price=Int(self.priceTextView.text ?? "")
-        draft.category=Category(id: self.category?.id, title: self.category?.title)
+        draft.category=self.category
         draft.places=self.places
         
         guard let data=try? JSONEncoder().encode(draft) else {
@@ -199,6 +219,7 @@ class RegisterGiftViewController: UIViewController {
         userDefault.set(data, forKey: AppConstants.RegisterGiftDraft)
         userDefault.synchronize()
         
+        FlashMessage.showMessage(body: "پیش‌نویس با موفقیت ذخیره شد.", theme: .success)
         
     }
     
@@ -206,7 +227,7 @@ class RegisterGiftViewController: UIViewController {
     
     
     
-    func submitGift(){
+    func sendGift(httpMethod:HttpCallMethod,responseHandler:(()->Void)?,complitionHandler:(()->Void)?){
         
         let input=RegisterGiftInput()
         
@@ -267,20 +288,21 @@ class RegisterGiftViewController: UIViewController {
         input.giftImages=giftImages
         
         
-        self.registerBtn.isEnabled=false
         
-        APICall.request(url: APIURLs.Gift, httpMethod: .POST, input: input) { (data, response, error) in
-            self.registerBtn.isEnabled=true
+        
+        APICall.request(url: APIURLs.Gift, httpMethod: httpMethod, input: input) { (data, response, error) in
             
-            print("Register Reply")
-            APICall.printData(data: data)
+            responseHandler?()
+            
+//            print("Register Reply")
+//            APICall.printData(data: data)
             
             if let response = response as? HTTPURLResponse {
                 print((response).statusCode)
                 
                 if response.statusCode >= 200 && response.statusCode <= 300 {
-                    self.clearAllInput()
-                    FlashMessage.showMessage(body: "ثبت کالا با موفقیت انجام شد",theme: .success)
+                    
+                    complitionHandler?()
                     
                 }
             }
