@@ -21,6 +21,8 @@
                 <outlet property="contentStackView" destination="oq7-1x-PG0" id="coz-0g-UZa"/>
                 <outlet property="dateStatusBtn" destination="5M9-Gx-uFH" id="vkn-Ap-egw"/>
                 <outlet property="descriptionTextView" destination="MXF-di-20l" id="Q6s-Z3-zBR"/>
+                <outlet property="editBtn" destination="ax5-t0-Ip7" id="dMC-KW-wKU"/>
+                <outlet property="editedGiftOriginalAddress" destination="UGP-xS-ULl" id="gxV-XI-63f"/>
                 <outlet property="placesStackView" destination="Qi3-0m-DON" id="PpY-Dp-ZNj"/>
                 <outlet property="priceTextView" destination="dN6-6u-ltK" id="UUm-H5-QZV"/>
                 <outlet property="registerBtn" destination="PZ8-kb-Ljo" id="V6I-QA-Mj7"/>
@@ -278,6 +280,12 @@
                                                         <constraint firstItem="Qi3-0m-DON" firstAttribute="top" secondItem="tOa-68-Oyn" secondAttribute="top" id="rzQ-oz-bQD"/>
                                                     </constraints>
                                                 </scrollView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="آدرس:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGP-xS-ULl">
+                                                    <rect key="frame" x="7.5" y="56" width="359" height="40"/>
+                                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPs-4e-Gv5">
                                                     <rect key="frame" x="8" y="8" width="100" height="34"/>
                                                     <color key="backgroundColor" name="TintColor"/>
@@ -298,50 +306,59 @@
                                                 <constraint firstAttribute="trailing" secondItem="tOa-68-Oyn" secondAttribute="trailing" constant="8" id="1Ve-7N-5of"/>
                                                 <constraint firstItem="tOa-68-Oyn" firstAttribute="leading" secondItem="QfK-cL-6y5" secondAttribute="leading" constant="8" id="3Sy-Wm-CE6"/>
                                                 <constraint firstItem="LPs-4e-Gv5" firstAttribute="leading" secondItem="QfK-cL-6y5" secondAttribute="leading" constant="8" id="3m1-AQ-4YC"/>
+                                                <constraint firstItem="UGP-xS-ULl" firstAttribute="centerX" secondItem="tOa-68-Oyn" secondAttribute="centerX" id="5NQ-iW-laO"/>
                                                 <constraint firstAttribute="height" constant="100" id="IWt-BP-KWl"/>
                                                 <constraint firstAttribute="bottom" secondItem="tOa-68-Oyn" secondAttribute="bottom" constant="4" id="Twq-FT-b06"/>
                                                 <constraint firstAttribute="trailing" secondItem="o3t-mN-qSx" secondAttribute="trailing" constant="8" id="aWd-r8-Eh5"/>
+                                                <constraint firstItem="UGP-xS-ULl" firstAttribute="width" secondItem="tOa-68-Oyn" secondAttribute="width" id="c2M-E4-BVO"/>
                                                 <constraint firstItem="o3t-mN-qSx" firstAttribute="top" secondItem="QfK-cL-6y5" secondAttribute="top" constant="8" id="evK-8z-zeV"/>
+                                                <constraint firstItem="UGP-xS-ULl" firstAttribute="centerY" secondItem="tOa-68-Oyn" secondAttribute="centerY" id="jvF-hC-JV1"/>
                                                 <constraint firstItem="LPs-4e-Gv5" firstAttribute="top" secondItem="QfK-cL-6y5" secondAttribute="top" constant="8" id="ueW-ix-mFl"/>
+                                                <constraint firstItem="UGP-xS-ULl" firstAttribute="height" secondItem="tOa-68-Oyn" secondAttribute="height" id="zSw-Bq-3r4"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPO-5n-qJT">
                                             <rect key="frame" x="0.0" y="742" width="375" height="60"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ8-kb-Ljo">
-                                                    <rect key="frame" x="137" y="13" width="100" height="34"/>
-                                                    <color key="backgroundColor" name="TintColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="v0R-kC-bOs"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
-                                                    <state key="normal" title="ثبت نهایی">
-                                                        <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="submitBtnAction:" destination="-1" eventType="touchUpInside" id="EBY-7Y-KL2"/>
-                                                    </connections>
-                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5a-Gd-r75">
+                                                    <rect key="frame" x="87.5" y="13" width="200" height="34"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ax5-t0-Ip7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="34"/>
+                                                            <color key="backgroundColor" name="TintColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="2rX-2Y-Vmu"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                                                            <state key="normal" title="ویرایش">
+                                                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="editBtnAction:" destination="-1" eventType="touchUpInside" id="5ft-kT-woN"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ8-kb-Ljo">
+                                                            <rect key="frame" x="100" y="0.0" width="100" height="34"/>
+                                                            <color key="backgroundColor" name="TintColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="v0R-kC-bOs"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                                                            <state key="normal" title="ثبت نهایی">
+                                                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="submitBtnAction:" destination="-1" eventType="touchUpInside" id="EBY-7Y-KL2"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="e5a-Gd-r75" firstAttribute="centerY" secondItem="RPO-5n-qJT" secondAttribute="centerY" id="0Ig-Fb-QWM"/>
                                                 <constraint firstAttribute="height" constant="60" id="DhZ-Fe-QUD"/>
-                                                <constraint firstItem="PZ8-kb-Ljo" firstAttribute="centerY" secondItem="RPO-5n-qJT" secondAttribute="centerY" id="N8H-9K-NBr"/>
-                                                <constraint firstItem="PZ8-kb-Ljo" firstAttribute="centerX" secondItem="RPO-5n-qJT" secondAttribute="centerX" id="n6l-lr-ng3"/>
-                                            </constraints>
-                                        </view>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwv-C6-NhJ">
-                                            <rect key="frame" x="0.0" y="802" width="375" height="128"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="128" id="asg-hS-Cgd"/>
-                                            </constraints>
-                                        </view>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ht-qV-kgs">
-                                            <rect key="frame" x="0.0" y="802" width="375" height="128"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="128" id="EB1-vR-be2"/>
+                                                <constraint firstItem="e5a-Gd-r75" firstAttribute="centerX" secondItem="RPO-5n-qJT" secondAttribute="centerX" id="vbs-ZY-oAV"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -388,6 +405,9 @@
     <resources>
         <namedColor name="GrayBackgroundColor">
             <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TintColor">
+            <color red="0.4779999852180481" green="0.31400001049041748" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TintColor">
             <color red="0.4779999852180481" green="0.31400001049041748" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

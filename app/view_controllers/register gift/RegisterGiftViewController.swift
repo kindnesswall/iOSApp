@@ -20,6 +20,7 @@ class RegisterGiftViewController: UIViewController {
     @IBOutlet weak var priceTextView: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var registerBtn: UIButton!
     
     @IBOutlet weak var uploadedImageStack: UIStackView!
@@ -36,6 +37,9 @@ class RegisterGiftViewController: UIViewController {
         submitGift()
         
     }
+    @IBAction func editBtnAction(_ sender: Any) {
+        
+    }
     
     @IBOutlet weak var categoryBtn: UIButton!
     var category:Category?
@@ -45,6 +49,12 @@ class RegisterGiftViewController: UIViewController {
     
     var isEditMode=false
     var editedGift:Gift?
+    
+    @IBOutlet weak var editedGiftOriginalAddress: UILabel!
+    var editedGiftOriginalCityId = -1
+    var editedGiftOriginalRegionId = -1
+    var giftHasNewAddress=false
+    
     
     var barClearBtn:UIBarButtonItem?
     var barSaveBtn:UIBarButtonItem?
@@ -58,14 +68,38 @@ class RegisterGiftViewController: UIViewController {
         
         self.configNavBar()
         
+        self.configSendButtons()
+        
         if isEditMode {
             readFromEditedGift()
+            giftHasNewAddress=false
         } else {
             readFromDraft()
+            giftHasNewAddress=true
         }
+        
+        self.configAddressViews()
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    func configSendButtons(){
+        if isEditMode {
+            self.registerBtn.isHidden=true
+            self.editBtn.isHidden=false
+        } else {
+            self.registerBtn.isHidden=false
+            self.editBtn.isHidden=true
+        }
+    }
+    
+    func configAddressViews(){
+        if giftHasNewAddress {
+            self.editedGiftOriginalAddress.isHidden=true
+        } else {
+            self.editedGiftOriginalAddress.isHidden=false
+        }
     }
     
     func configNavBar(){
@@ -77,6 +111,25 @@ class RegisterGiftViewController: UIViewController {
             self.navigationItem.leftBarButtonItems=[self.barSaveBtn!]
             
         }
+        
+    }
+    
+    func readFromEditedGift(){
+        
+        guard let gift=editedGift else {
+            return
+        }
+        
+        self.titleTextView.text=gift.title
+        self.descriptionTextView.text=gift.description
+        self.priceTextView.text=gift.price
+        
+        self.category=Category(id: gift.categoryId, title: gift.category)
+        self.categoryBtn.setTitle(gift.category, for: .normal)
+        
+        self.editedGiftOriginalAddress.text=gift.address
+        self.editedGiftOriginalCityId=Int(gift.cityId ?? "") ?? -1
+        self.editedGiftOriginalRegionId=Int(gift.regionId ?? "") ?? -1
         
     }
     
@@ -149,57 +202,68 @@ class RegisterGiftViewController: UIViewController {
         
     }
     
-    func readFromEditedGift(){
-        
-    }
+    
     
     
     
     func submitGift(){
+        
+        let input=RegisterGiftInput()
+        
         guard let title=self.titleTextView.text , title != "" else {
             FlashMessage.showMessage(body: "لطفا عنوان کالا را وارد نمایید",theme: .warning)
             return
         }
+        input.title=title
         
         guard let categoryId=Int(self.category?.id ?? "") else {
             FlashMessage.showMessage(body: "لطفا دسته‌بندی کالا را انتخاب نمایید",theme: .warning)
             return
         }
-        
-        let addressObject=getAddress()
-        guard let address=addressObject.address else {
-            FlashMessage.showMessage(body: "لطفا محل کالا را انتخاب نمایید",theme: .warning)
-            return
-        }
-        guard let cityId=addressObject.cityId else {
-            FlashMessage.showMessage(body: "لطفا محل کالا را انتخاب نمایید",theme: .warning)
-            return
-        }
-        
-        let regionId=addressObject.regionId
-        
+        input.categoryId=categoryId
         
         guard let giftDescription=self.descriptionTextView.text , giftDescription != "" else {
             FlashMessage.showMessage(body: "لطفا توضیحات کالا را وارد نمایید",theme: .warning)
             return
         }
+        input.description=giftDescription
         
         guard let price=Int(self.priceTextView.text ?? "") else {
             FlashMessage.showMessage(body: "لطفا قیمت کالا را وارد نمایید",theme: .warning)
             return
         }
+        input.price=price
+        
+        
+        if giftHasNewAddress {
+            
+            let addressObject=getAddress()
+            guard let address=addressObject.address else {
+                FlashMessage.showMessage(body: "لطفا محل کالا را انتخاب نمایید",theme: .warning)
+                return
+            }
+            guard let cityId=addressObject.cityId else {
+                FlashMessage.showMessage(body: "لطفا محل کالا را انتخاب نمایید",theme: .warning)
+                return
+            }
+            
+            let regionId=addressObject.regionId
+            
+            input.address=address
+            input.cityId=cityId
+            input.regionId=(regionId ?? -1)
+            
+        } else {
+            
+            input.address=self.editedGiftOriginalAddress.text
+            input.cityId=self.editedGiftOriginalCityId
+            input.regionId=self.editedGiftOriginalRegionId
+            
+        }
+        
         
         
         let giftImages=getGiftImages()
-        
-        let input=RegisterGiftInput()
-        input.title=title
-        input.address=address
-        input.description=giftDescription
-        input.price=price
-        input.categoryId=categoryId
-        input.cityId=cityId
-        input.regionId=(regionId ?? -1)
         input.giftImages=giftImages
         
         
@@ -276,7 +340,11 @@ class RegisterGiftViewController: UIViewController {
     }
 
     @IBAction func placeBtnAction(_ sender: Any) {
+        
         self.clearGiftPlaces()
+        self.giftHasNewAddress=true
+        self.configAddressViews()
+        
         let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
         controller.option = OptionsListViewController.Option.place(0)
         controller.completionHandler={ [weak self] (id,name) in
