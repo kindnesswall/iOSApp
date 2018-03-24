@@ -67,7 +67,6 @@ class RegisterGiftViewController: UIViewController {
     
     var isEditMode=false
     var editedGift:Gift?
-    
     @IBOutlet weak var editedGiftOriginalAddress: UILabel!
     var editedGiftOriginalCityId = -1
     var editedGiftOriginalRegionId = -1
@@ -76,6 +75,7 @@ class RegisterGiftViewController: UIViewController {
     
     var barClearBtn:UIBarButtonItem?
     var barSaveBtn:UIBarButtonItem?
+    var closeBarBtn:UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,6 +128,9 @@ class RegisterGiftViewController: UIViewController {
             self.barSaveBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.saveBarBtnAction), text: "ذخیره پیش‌ نویس")
             self.navigationItem.leftBarButtonItems=[self.barSaveBtn!]
             
+        } else {
+            self.closeBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.closeBarBtnAction), text: "انصراف")
+            self.navigationItem.rightBarButtonItems=[self.closeBarBtn!]
         }
         
     }
@@ -148,6 +151,13 @@ class RegisterGiftViewController: UIViewController {
         self.editedGiftOriginalAddress.text=gift.address
         self.editedGiftOriginalCityId=Int(gift.cityId ?? "") ?? -1
         self.editedGiftOriginalRegionId=Int(gift.regionId ?? "") ?? -1
+        
+        if let giftImages = gift.giftImages {
+            for giftImage in giftImages {
+                let uploadImageView=self.addUploadImageView(imageSrc: giftImage)
+                self.imageViewUploadingHasFinished(uploadImageView: uploadImageView, imageSrc: giftImage)
+            }
+        }
         
     }
     
@@ -349,6 +359,10 @@ class RegisterGiftViewController: UIViewController {
     }
     @objc func saveBarBtnAction(){
         self.saveDraft()
+    }
+    
+    @objc func closeBarBtnAction(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func tapGestureAction(){

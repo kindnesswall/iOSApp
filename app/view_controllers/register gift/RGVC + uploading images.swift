@@ -61,14 +61,7 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     func uploadImage(selectedImage: UIImage) {
         //        if let token=UserDefaults.standard.string(forKey: AppConstants.Authorization) {
         
-        let uploadedImageView=NibLoader.loadViewFromNib(name: "UploadImageView", owner: self, nibType: UploadImageView.self) as! UploadImageView
-        uploadedImageView.widthAnchor.constraint(equalToConstant: 100).isActive=true
-        
-        uploadedImageView.imageView.image=selectedImage
-        uploadedImageView.delegate=self
-        
-        self.uploadedImageViews.append(uploadedImageView)
-        self.uploadedImageStack.addArrangedSubview(uploadedImageView)
+        let uploadedImageView=addUploadImageView(image: selectedImage)
         
         APICall.uploadImage(url: APIURLs.Upload, image: selectedImage, sessions: &uploadedImageView.sessions, tasks: &uploadedImageView.tasks, delegate: self) { [weak self] (data, response, error) in
             
@@ -94,9 +87,8 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
                 guard let uploadIndex=self?.findIndexOfUploadedImage(task: uploadedImageView.getTask()) else {
                     return
                 }
-                self?.uploadedImageViews[uploadIndex].shadowView.isHidden=true
-                self?.uploadedImageViews[uploadIndex].progressLabel.isHidden = true
-                self?.uploadedImageViews[uploadIndex].imageSrc=imageSrc
+                
+                self?.imageViewUploadingHasFinished(uploadImageView: self?.uploadedImageViews[uploadIndex], imageSrc: imageSrc)
                 
                 FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
             } else {
@@ -105,6 +97,38 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
             
         }
         
+    }
+    
+    func addUploadImageView(imageSrc:String) -> UploadImageView{
+        let uploadedImageView=initUploadImageView()
+        if let url=URL(string:imageSrc) {
+            uploadedImageView.imageView.sd_setImage(with: url, completed: nil)
+        }
+        return uploadedImageView
+    }
+    
+    func addUploadImageView(image:UIImage) -> UploadImageView{
+        let uploadedImageView=initUploadImageView()
+        uploadedImageView.imageView.image=image
+        return uploadedImageView
+    }
+    
+    func initUploadImageView()-> UploadImageView {
+        let uploadedImageView=NibLoader.loadViewFromNib(name: "UploadImageView", owner: self, nibType: UploadImageView.self) as! UploadImageView
+        uploadedImageView.widthAnchor.constraint(equalToConstant: 100).isActive=true
+        
+        uploadedImageView.delegate=self
+        
+        self.uploadedImageViews.append(uploadedImageView)
+        self.uploadedImageStack.addArrangedSubview(uploadedImageView)
+        
+        return uploadedImageView
+    }
+    
+    func imageViewUploadingHasFinished(uploadImageView:UploadImageView?,imageSrc:String){
+        uploadImageView?.shadowView.isHidden=true
+        uploadImageView?.progressLabel.isHidden = true
+        uploadImageView?.imageSrc=imageSrc
     }
     
     
