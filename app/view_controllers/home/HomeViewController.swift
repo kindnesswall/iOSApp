@@ -47,8 +47,10 @@ class HomeViewController: UIViewController {
         
         let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
         controller.option = OptionsListViewController.Option.category
+        controller.hasDefaultOption=true
         controller.completionHandler={ [weak self] (id,name) in
             
+            print("Selected Category id: \(id)")
             self?.categoryId=id ?? "0"
             self?.categotyBtn?.title=name
             self?.reloadPage()

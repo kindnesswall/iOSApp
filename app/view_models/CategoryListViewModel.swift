@@ -14,16 +14,20 @@ class CategoryListViewModel: NSObject {
     
     var categories=[Category]()
     
-    init(completionHandler:(()->Void)?) {
+    init(hasDefaultOption:Bool,completionHandler:(()->Void)?) {
         super.init()
         
-        getCategories(completionHandler: completionHandler)
+        getCategories(hasDefaultOption: hasDefaultOption,completionHandler: completionHandler)
     }
 
-    func getCategories(completionHandler:(()->Void)?){
+    func getCategories(hasDefaultOption:Bool,completionHandler:(()->Void)?){
         apiMethod.getCategories { (data, response, error) in
             if let reply=APIRequest.readJsonData(data: data, outputType: [Category].self) {
                 self.categories=[]
+                if hasDefaultOption {
+                    let defaultOption=Category(id: "0", title: "همه هدیه‌ها")
+                    self.categories.append(defaultOption)
+                }
                 self.categories.append(contentsOf: reply)
                 completionHandler?()
             }

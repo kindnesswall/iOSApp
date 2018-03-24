@@ -20,6 +20,8 @@ class OptionsListViewController: UIViewController {
     }
     var option:Option?
     
+    var hasDefaultOption=false
+    
     var completionHandler:((String?,String?)->Void)?
     var closeHandler:(()->Void)?
     
@@ -36,7 +38,7 @@ class OptionsListViewController: UIViewController {
                 
                 self.navigationItem.title="دسته بندی"
                 tableView.registerNib(type: CategoryOptionsTableViewCell.self, nib: "CategoryOptionsTableViewCell")
-                categoryListViewModel=CategoryListViewModel(completionHandler: {
+                categoryListViewModel=CategoryListViewModel(hasDefaultOption:self.hasDefaultOption,completionHandler: {
                     [weak self] () in self?.tableView.reloadData()
                     
                 })
