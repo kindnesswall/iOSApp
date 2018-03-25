@@ -20,6 +20,7 @@ class OptionsListViewController: UIViewController {
     }
     var option:Option?
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     var hasDefaultOption=false
     
     var completionHandler:((String?,String?)->Void)?
@@ -38,8 +39,12 @@ class OptionsListViewController: UIViewController {
                 
                 self.navigationItem.title="دسته بندی"
                 tableView.registerNib(type: CategoryOptionsTableViewCell.self, nib: "CategoryOptionsTableViewCell")
+               
+               loadingIndicator.startAnimating()
                 categoryListViewModel=CategoryListViewModel(hasDefaultOption:self.hasDefaultOption,completionHandler: {
-                    [weak self] () in self?.tableView.reloadData()
+                    [weak self] () in
+                self?.loadingIndicator.stopAnimating()
+                self?.tableView.reloadData()
                     
                 })
             case .dateStatus:
@@ -50,8 +55,11 @@ class OptionsListViewController: UIViewController {
             case .place(let container_id):
                 self.navigationItem.title="محل هدیه"
                 tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
+                loadingIndicator.startAnimating()
                 placeListViewModel=PlaceListViewModel(container_id: container_id, completionHandler: {
-                    [weak self] () in self?.tableView.reloadData()
+                    [weak self] () in
+                    self?.loadingIndicator.stopAnimating()
+                    self?.tableView.reloadData()
                 })
             }
         }

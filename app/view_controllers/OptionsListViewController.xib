@@ -5,12 +5,14 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OptionsListViewController" customModule="app" customModuleProvider="target">
             <connections>
+                <outlet property="loadingIndicator" destination="og1-jC-W6Y" id="RMC-7q-RhC"/>
                 <outlet property="tableView" destination="moJ-JX-VQG" id="RyE-18-7ur"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="moJ-JX-VQG">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="moJ-JX-VQG">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
@@ -28,15 +30,26 @@
                         <outlet property="delegate" destination="-1" id="5oh-Od-upj"/>
                     </connections>
                 </tableView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="og1-jC-W6Y">
+                    <rect key="frame" x="177" y="333.5" width="20" height="20"/>
+                    <color key="color" name="TintColor"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="moJ-JX-VQG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EBs-Gt-uUW"/>
+                <constraint firstItem="og1-jC-W6Y" firstAttribute="centerX" secondItem="moJ-JX-VQG" secondAttribute="centerX" id="Fpw-1T-dhG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="moJ-JX-VQG" secondAttribute="trailing" id="aEE-bK-elD"/>
                 <constraint firstItem="moJ-JX-VQG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="dLo-lu-qbO"/>
+                <constraint firstItem="og1-jC-W6Y" firstAttribute="centerY" secondItem="moJ-JX-VQG" secondAttribute="centerY" id="jNX-KB-eOj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="moJ-JX-VQG" secondAttribute="bottom" id="ngc-4r-JbJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="TintColor">
+            <color red="0.4779999852180481" green="0.31400001049041748" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

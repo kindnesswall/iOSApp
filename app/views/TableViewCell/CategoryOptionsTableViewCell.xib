@@ -25,17 +25,30 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhP-sL-DwI">
-                        <rect key="frame" x="16" y="11" width="288" height="22"/>
+                        <rect key="frame" x="24" y="11" width="272" height="22"/>
                         <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYL-zb-Uu6">
+                        <rect key="frame" x="0.0" y="42" width="296" height="1"/>
+                        <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="WUK-ev-QQW"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="sYL-zb-Uu6" secondAttribute="bottom" id="Msp-z0-9Rz"/>
                     <constraint firstItem="BhP-sL-DwI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Q4J-Qb-Alt"/>
                     <constraint firstAttribute="bottomMargin" secondItem="BhP-sL-DwI" secondAttribute="bottom" id="U8J-YU-VXd"/>
-                    <constraint firstItem="BhP-sL-DwI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="a9P-0s-lMk"/>
-                    <constraint firstAttribute="trailing" secondItem="BhP-sL-DwI" secondAttribute="trailing" constant="16" id="hmO-Za-sxK"/>
+                    <constraint firstItem="BhP-sL-DwI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="a9P-0s-lMk"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="BhP-sL-DwI" secondAttribute="trailing" constant="8" id="hmO-Za-sxK"/>
+                    <constraint firstItem="sYL-zb-Uu6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vih-Pz-fC5"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="sYL-zb-Uu6" secondAttribute="trailing" constant="8" id="yEp-6X-Pdf"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -25,16 +25,29 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdx-hc-jBc">
-                        <rect key="frame" x="32" y="11" width="256" height="22"/>
+                        <rect key="frame" x="24" y="11" width="272" height="22"/>
                         <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zpp-Zy-WNV">
+                        <rect key="frame" x="0.0" y="42" width="296" height="1"/>
+                        <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="tut-9K-YYz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="Sdx-hc-jBc" secondAttribute="trailing" constant="16" id="0nX-ak-Pcu"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Sdx-hc-jBc" secondAttribute="trailing" constant="8" id="0nX-ak-Pcu"/>
                     <constraint firstItem="Sdx-hc-jBc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="3NG-fe-jFQ"/>
-                    <constraint firstItem="Sdx-hc-jBc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="Oed-Q5-eBf"/>
+                    <constraint firstItem="Sdx-hc-jBc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="Oed-Q5-eBf"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Zpp-Zy-WNV" secondAttribute="trailing" constant="8" id="eFi-mG-FZA"/>
+                    <constraint firstItem="Zpp-Zy-WNV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="eGm-1C-iTm"/>
+                    <constraint firstAttribute="bottom" secondItem="Zpp-Zy-WNV" secondAttribute="bottom" id="mcj-hu-Vxt"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Sdx-hc-jBc" secondAttribute="bottom" id="ns6-mb-RIp"/>
                 </constraints>
             </tableViewCellContentView>
