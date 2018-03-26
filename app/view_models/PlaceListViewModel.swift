@@ -52,4 +52,18 @@ class PlaceListViewModel: NSObject {
         return false
     }
     
+    func hasOnlyOneOption(container_id:Int)->Place?{
+        var thePlaces=[Place]()
+        for place in rawPlaces {
+            if place.container_id==container_id {
+                thePlaces.append(place)
+            }
+        }
+        if thePlaces.count == 1 {
+            return thePlaces.first
+        } else {
+            return nil
+        }
+    }
+    
 }

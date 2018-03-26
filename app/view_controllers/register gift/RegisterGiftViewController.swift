@@ -44,8 +44,13 @@ class RegisterGiftViewController: UIViewController {
         
     }
     @IBAction func editBtnAction(_ sender: Any) {
+        
+        guard let giftId=editedGift?.id else {
+            return
+        }
+        
         self.editBtn.isEnabled=false
-        sendGift(httpMethod: .PUT, responseHandler: {
+        sendGift(httpMethod: .PUT,giftId: giftId, responseHandler: {
             self.editBtn.isEnabled=true
         }) {
             
@@ -237,7 +242,7 @@ class RegisterGiftViewController: UIViewController {
     
     
     
-    func sendGift(httpMethod:HttpCallMethod,responseHandler:(()->Void)?,complitionHandler:(()->Void)?){
+    func sendGift(httpMethod:HttpCallMethod,giftId:String?=nil,responseHandler:(()->Void)?,complitionHandler:(()->Void)?){
         
         let input=RegisterGiftInput()
         
@@ -298,9 +303,13 @@ class RegisterGiftViewController: UIViewController {
         input.giftImages=giftImages
         
         
+        var url=APIURLs.Gift
         
+        if let giftId=giftId {
+            url+="/\(giftId)"
+        }
         
-        APICall.request(url: APIURLs.Gift, httpMethod: httpMethod, input: input) { (data, response, error) in
+        APICall.request(url: url, httpMethod: httpMethod, input: input) { (data, response, error) in
             
             responseHandler?()
             
