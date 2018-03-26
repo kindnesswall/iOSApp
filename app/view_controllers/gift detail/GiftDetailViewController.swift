@@ -14,7 +14,9 @@ class GiftDetailViewController: UIViewController {
     var gift:Gift?
     var sdWebImageSource:[SDWebImageSource] = []
     var profileImages:[String] = []
-
+    
+    var editHandler:(()->Void)?
+    
     @IBOutlet var giftNamelbl: UILabel!
     
     @IBOutlet var giftDatelbl: UILabel!
@@ -44,23 +46,10 @@ class GiftDetailViewController: UIViewController {
         
         setUI()
 
-        // Do any additional setup after loading the view.
-        giftNamelbl.text = gift?.title
-        if let date = gift?.createDateTime {
-        giftDatelbl.text = UIFunctions.CastNumberToPersian(input: date)
-        }
-        giftCategory.text = gift?.category
-        giftAddress.text = gift?.address
-        if let isNew = gift?.isNew, isNew {
-            oldOrNewlbl.text = "نو"
-        }else{
-            oldOrNewlbl.text = "دسته دوم"
-        }
-        descriptionlbl.text = gift?.description
         
         createSlideShow()
         
-        
+        fillUIWithGift()
         
         guard let id = gift?.id else {
             return
@@ -86,6 +75,24 @@ class GiftDetailViewController: UIViewController {
         }
     }
     
+    func fillUIWithGift(){
+        
+        giftNamelbl.text = gift?.title
+        if let date = gift?.createDateTime {
+            giftDatelbl.text = UIFunctions.CastNumberToPersian(input: date)
+        }
+        giftCategory.text = gift?.category
+        giftAddress.text = gift?.address
+        if let isNew = gift?.isNew, isNew {
+            oldOrNewlbl.text = "نو"
+        }else{
+            oldOrNewlbl.text = "دسته دوم"
+        }
+        descriptionlbl.text = gift?.description
+        
+        addImagesToSlideShows()
+    }
+    
     func addEditBtn(){
         editBtn = NavigationBarStyle.getNavigationItem(target: self, action: #selector(self.editBtnClicked), text: "ویرایش",font:AppFont.getRegularFont(size: 16))
         self.navigationItem.rightBarButtonItems=[editBtn!]
@@ -107,6 +114,12 @@ class GiftDetailViewController: UIViewController {
         
         controller.isEditMode=true
         controller.editedGift=self.gift
+        controller.editHandler={ [weak self] in
+            
+            self?.fillUIWithGift()
+            self?.editHandler?()
+            
+        }
         
         let nc=UINavigationController(rootViewController: controller)
         
@@ -128,10 +141,7 @@ class GiftDetailViewController: UIViewController {
     
     func createSlideShow() {
         
-        guard let images = gift?.giftImages
-            else {
-            return
-        }
+        
         // Do any additional setup after loading the view.
         slideshow.backgroundColor = UIColor.white
         slideshow.slideshowInterval = 5.0
@@ -148,7 +158,19 @@ class GiftDetailViewController: UIViewController {
         
         // can be used with other sample sources as `afNetworkingSource`, `alamofireSource` or `sdWebImageSource` or `kingfisherSource`
         
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(GiftDetailViewController.didTap))
+        slideshow.addGestureRecognizer(recognizer)
         
+    }
+    
+    func addImagesToSlideShows(){
+        
+        guard let images = gift?.giftImages
+            else {
+                return
+        }
+        
+        self.sdWebImageSource=[]
         for img in images {
             self.sdWebImageSource.append(
                 SDWebImageSource(urlString: img)!
@@ -156,9 +178,5 @@ class GiftDetailViewController: UIViewController {
         }
         
         self.slideshow.setImageInputs(self.sdWebImageSource)
-        
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(GiftDetailViewController.didTap))
-        slideshow.addGestureRecognizer(recognizer)
-        
     }
 }

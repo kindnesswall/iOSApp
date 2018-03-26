@@ -56,6 +56,9 @@ class RegisterGiftViewController: UIViewController {
             
             FlashMessage.showMessage(body: "کالا با موفقیت ویرایش شد.", theme: .success)
             
+            self.writeChangesToEditedGift()
+            self.editHandler?()
+            
             let when=DispatchTime.now() + 1
             DispatchQueue.main.asyncAfter(deadline: when, execute: {
                 self.dismiss(animated: true, completion: nil)
@@ -73,10 +76,11 @@ class RegisterGiftViewController: UIViewController {
     var isEditMode=false
     var editedGift:Gift?
     @IBOutlet weak var editedGiftOriginalAddress: UILabel!
-    var editedGiftOriginalCityId = -1
-    var editedGiftOriginalRegionId = -1
+    var editedGiftOriginalCityId = 0
+    var editedGiftOriginalRegionId = 0
     var giftHasNewAddress=false
     
+    var editHandler:(()->Void)?
     
     var barClearBtn:UIBarButtonItem?
     var barSaveBtn:UIBarButtonItem?
@@ -154,8 +158,8 @@ class RegisterGiftViewController: UIViewController {
         self.categoryBtn.setTitle(gift.category, for: .normal)
         
         self.editedGiftOriginalAddress.text=gift.address
-        self.editedGiftOriginalCityId=Int(gift.cityId ?? "") ?? -1
-        self.editedGiftOriginalRegionId=Int(gift.regionId ?? "") ?? -1
+        self.editedGiftOriginalCityId=Int(gift.cityId ?? "") ?? 0
+        self.editedGiftOriginalRegionId=Int(gift.regionId ?? "") ?? 0
         
         if let giftImages = gift.giftImages {
             for giftImage in giftImages {
@@ -163,6 +167,45 @@ class RegisterGiftViewController: UIViewController {
                 self.imageViewUploadingHasFinished(uploadImageView: uploadImageView, imageSrc: giftImage)
             }
         }
+        
+    }
+    
+    func writeChangesToEditedGift(){
+        
+        guard let gift=editedGift else {
+            return
+        }
+        
+        gift.title=self.titleTextView.text
+        gift.description=self.descriptionTextView.text
+        gift.price=self.priceTextView.text
+        
+        gift.category=self.category?.title
+        gift.categoryId=self.category?.id
+        
+        
+        if giftHasNewAddress {
+            
+            let addressObject=getAddress()
+            
+            let address=addressObject.address
+            let cityId=addressObject.cityId
+            let regionId=addressObject.regionId
+            
+            gift.address=address
+            gift.cityId=cityId?.description ?? "0"
+            gift.regionId=regionId?.description ?? "0"
+            
+        } else {
+            
+            gift.address=self.editedGiftOriginalAddress.text
+            gift.cityId=self.editedGiftOriginalCityId.description
+            gift.regionId=self.editedGiftOriginalRegionId.description
+            
+        }
+        
+        let giftImages=getGiftImages()
+        gift.giftImages=giftImages
         
     }
     
@@ -287,7 +330,7 @@ class RegisterGiftViewController: UIViewController {
             
             input.address=address
             input.cityId=cityId
-            input.regionId=(regionId ?? -1)
+            input.regionId=(regionId ?? 0)
             
         } else {
             
@@ -313,8 +356,8 @@ class RegisterGiftViewController: UIViewController {
             
             responseHandler?()
             
-            print("Register Reply")
-            APICall.printData(data: data)
+//            print("Register Reply")
+//            APICall.printData(data: data)
             
             if let response = response as? HTTPURLResponse {
                 print((response).statusCode)

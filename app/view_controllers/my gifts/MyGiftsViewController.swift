@@ -199,6 +199,11 @@ extension MyGiftsViewController : UITableViewDelegate {
             break
         }
         
+        controller.editHandler = { [weak self] in
+            self?.reloadRegisteredGifts()
+            self?.reloadDonatedGifts()
+        }
+        
         print("Gift_id: \(controller.gift?.id ?? "")")
         
         self.navigationController?.pushViewController(controller, animated: true)
