@@ -127,6 +127,26 @@ class GiftDetailViewController: UIViewController {
         
     }
     @IBAction func removeBtnClicked(_ sender: Any) {
+        
+        self.removeBtn.isEnabled=false
+        guard let giftId=gift?.id else {
+            return
+        }
+        var input:APIEmptyInput?=nil
+        var url=APIURLs.Gift
+        url+="/\(giftId)"
+        APICall.request(url: url, httpMethod: .DELETE, input: input) { [weak self] (data, response, error) in
+            self?.removeBtn.isEnabled=true
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode >= 200 && response.statusCode <= 300 {
+                    
+                    self?.editHandler?()
+                    self?.navigationController?.popViewController(animated: true)
+                    
+                }
+            }
+        }
+        
     }
     
     @objc func didTap() {
