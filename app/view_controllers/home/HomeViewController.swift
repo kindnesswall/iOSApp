@@ -147,12 +147,22 @@ extension HomeViewController:UITableViewDelegate {
         
         controller.gift = gifts[indexPath.row]
         controller.editHandler={ [weak self] in
-            self?.reloadPage()
+            self?.editHandler()
         }
         print("Gift_id: \(controller.gift?.id ?? "")")
         
         self.navigationController?.pushViewController(controller, animated: true)
         
+    }
+    
+    func editHandler(){
+        reloadPage()
+        reloadOtherVCs()
+    }
+    func reloadOtherVCs(){
+        if let myGiftsVC=((self.tabBarController?.viewControllers?[TabIndex.MyGifts] as? UINavigationController)?.viewControllers.first) as? MyGiftsViewController {
+            myGiftsVC.reloadPage()
+        }
     }
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

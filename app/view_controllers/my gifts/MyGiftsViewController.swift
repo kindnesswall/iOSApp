@@ -200,13 +200,26 @@ extension MyGiftsViewController : UITableViewDelegate {
         }
         
         controller.editHandler = { [weak self] in
-            self?.reloadRegisteredGifts()
-            self?.reloadDonatedGifts()
+            self?.editHandler()
         }
         
         print("Gift_id: \(controller.gift?.id ?? "")")
         
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func editHandler(){
+        reloadPage()
+        reloadOtherVCs()
+    }
+    func reloadPage(){
+        self.reloadRegisteredGifts()
+        self.reloadDonatedGifts()
+    }
+    func reloadOtherVCs(){
+        if let home=((self.tabBarController?.viewControllers?[TabIndex.HOME] as? UINavigationController)?.viewControllers.first) as? HomeViewController {
+            home.reloadPage()
+        }
     }
 }
 extension MyGiftsViewController : UITableViewDataSource {

@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             tabs[TabIndex.MyGifts].pushViewController(controller4, animated: true)
             
             self.tabBarController?.viewControllers = tabs
-            self.tabBarController?.selectedIndex = 0
+            self.tabBarController?.selectedIndex = TabIndex.HOME
         } else {
             print("There is something wrong with tabbar controller")
         }
