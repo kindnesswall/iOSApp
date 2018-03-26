@@ -13,34 +13,20 @@ class PromptUser: PopUpView {
 
     @IBOutlet weak var message: UILabel!
     
-    var onAcceptClouser:( ()->Void)?
-    var onRejectClouser:( ()->Void)?
     
     @IBAction func acceptBtnClicked(_ sender: Any) {
-        self.onAcceptClouser?()
-        if let stopUploadClouser = onAcceptClouser {
-            stopUploadClouser()
-        }
-        self.controller?.hidePopUp()
+        
+        self.controller?.submitPopUp()
     }
     
     @IBAction func rejectBtnClicked(_ sender: Any) {
         
-        if let onRejectClouser = onRejectClouser {
-            onRejectClouser()
-        }
-        self.controller?.hidePopUp()
+        
+        self.controller?.declinePopUp()
 
     }
     
-    override func initPopUp() {
-        if let submitComplition=controller?.submitComplition as? ()->Void {
-            onAcceptClouser = submitComplition
-        }
-        
-        if let closeComplition=controller?.closeComplition as? ()->Void {
-            onRejectClouser = closeComplition
-        }
+    override func initPopUpView() {
         if let txt:String = controller?.data as? String {
             self.message.text = txt
         }

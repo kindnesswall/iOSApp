@@ -62,15 +62,18 @@ class HomeViewController: UIViewController {
     }
     
     
-    
+    var initialGiftsLoadingHasOccurred=false
     func reloadPage(){
-        
-        apiMethods.clearAllTasksAndSessions()
-        isLoadingGifts=false
-        getGifts(index:0)
+        if initialGiftsLoadingHasOccurred {
+            apiMethods.clearAllTasksAndSessions()
+            isLoadingGifts=false
+            getGifts(index:0)
+        }
     }
     
     func getGifts(index:Int){
+        
+        self.initialGiftsLoadingHasOccurred=true
         
         if isLoadingGifts {
             return

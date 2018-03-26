@@ -22,14 +22,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lHM-5v-Iw4">
                     <rect key="frame" x="20" y="283" width="335" height="100"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" آیا از رد درخواست مطمئن هستید؟" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62l-nn-aaR">
-                            <rect key="frame" x="20" y="20" width="295" height="21.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62l-nn-aaR">
+                            <rect key="frame" x="20" y="19.5" width="295" height="21.5"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0M-A9-aSu">
-                            <rect key="frame" x="96" y="49.5" width="60" height="34"/>
+                            <rect key="frame" x="96" y="49" width="60" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="kBg-9f-uZb"/>
                             </constraints>
@@ -40,7 +40,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaE-TB-Dii">
-                            <rect key="frame" x="20" y="49.5" width="60" height="34"/>
+                            <rect key="frame" x="20" y="49" width="60" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="f5w-r3-Gj0"/>
                             </constraints>

@@ -8,21 +8,12 @@
 
 import UIKit
 
-open class PopUpView: UIView {
+class PopUpView: UIView {
     
-    public var controller:AddPopUpController?
+    weak var controller:PopUpViewController?
     
-    
-    open func initPopUp(){
+    func initPopUpView(){
         
-    }
-    
-    open func popUpWillHide(){
-        
-    }
-    
-    open override func layoutSubviews() {
-        self.controller?.layoutPopUp()
     }
 
     /*

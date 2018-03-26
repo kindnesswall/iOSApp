@@ -87,9 +87,7 @@ class RequestToAGiftViewController: UIViewController {
     @IBAction func onAcceptRequestClicked(_ sender: ButtonWithData) {
         print(sender.data)
         
-        
-        var controller:AddPopUpController?
-        controller=AddPopUpController(nibName: "PromptUser", selfInstance: self, nibType: PromptUser.self, parentView: self.view, data: "آیا از قبول این درخواست مطمئن هستید؟", closeComplition: {}, submitComplition: {
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: "آیا از قبول این درخواست مطمئن هستید؟",declineHandler: nil) { (_) in
             
             guard let clickedRequest = sender.data else{
                 return
@@ -103,18 +101,15 @@ class RequestToAGiftViewController: UIViewController {
                     //        }
                 }
             }
-            
-        }, canHide: true)
+        }
         
-        controller?.showPopUp()
         
     }
     
     @IBAction func onRejectRequestBtnClicked(_ sender: ButtonWithData) {
         print(sender.data)
         
-        var controller:AddPopUpController?
-        controller=AddPopUpController(nibName: "PromptUser", selfInstance: self, nibType: PromptUser.self, parentView: self.view, data: "آیا از رد این درخواست مطمئن هستید؟", closeComplition: {}, submitComplition: {
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: "آیا از رد این درخواست مطمئن هستید؟",declineHandler: nil) { (_) in
             
             guard let clickedRequest = sender.data else{
                 return
@@ -133,10 +128,8 @@ class RequestToAGiftViewController: UIViewController {
                     //        }
                 }
             }
-            
-        }, canHide: true)
+        }
         
-        controller?.showPopUp()
     }
     
 }

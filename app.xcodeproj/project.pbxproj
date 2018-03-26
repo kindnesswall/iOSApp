@@ -61,7 +61,6 @@
 		05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA442204C1FFA00147BF5 /* PromptUser.swift */; };
 		05BEA445204C1FFA00147BF5 /* PromptUser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BEA443204C1FFA00147BF5 /* PromptUser.xib */; };
 		05BEA447204C21E800147BF5 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA446204C21E800147BF5 /* PopUpView.swift */; };
-		05BEA449204C233000147BF5 /* AddPopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA448204C233000147BF5 /* AddPopUpController.swift */; };
 		05BFBBB21FDA5DBF00DBCDDF /* UIFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */; };
 		05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */; };
 		05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */; };
@@ -103,6 +102,9 @@
 		601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D6203C3CD400F9118B /* ImageUpload.swift */; };
 		602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */; };
 		602BC8F82034B7CC00ECF6E2 /* UploadImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */; };
+		60302DE02068FC7E0025D397 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DDE2068FC7E0025D397 /* PopUpViewController.swift */; };
+		60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60302DDF2068FC7E0025D397 /* PopUpViewController.xib */; };
+		60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DE22069018C0025D397 /* PopUpMessage.swift */; };
 		6032F61C205287ED00975C23 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032F61B205287ED00975C23 /* LoadingIndicator.swift */; };
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
 		6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6092D631204950F700AFDA7B /* MyGiftsViewController.swift */; };
@@ -180,7 +182,6 @@
 		05BEA442204C1FFA00147BF5 /* PromptUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptUser.swift; sourceTree = "<group>"; };
 		05BEA443204C1FFA00147BF5 /* PromptUser.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptUser.xib; sourceTree = "<group>"; };
 		05BEA446204C21E800147BF5 /* PopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
-		05BEA448204C233000147BF5 /* AddPopUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPopUpController.swift; sourceTree = "<group>"; };
 		05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFunctions.swift; sourceTree = "<group>"; };
 		05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationEnterPhoneViewController.swift; sourceTree = "<group>"; };
 		05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivationEnterVerifyCodeViewController.xib; sourceTree = "<group>"; };
@@ -223,6 +224,9 @@
 		601F83D6203C3CD400F9118B /* ImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUpload.swift; sourceTree = "<group>"; };
 		602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageView.swift; sourceTree = "<group>"; };
 		602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageView.xib; sourceTree = "<group>"; };
+		60302DDE2068FC7E0025D397 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		60302DDF2068FC7E0025D397 /* PopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpViewController.xib; sourceTree = "<group>"; };
+		60302DE22069018C0025D397 /* PopUpMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMessage.swift; sourceTree = "<group>"; };
 		6032F61B205287ED00975C23 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		6040F3A2206688A800FCD429 /* APIEmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyInput.swift; sourceTree = "<group>"; };
 		6092D631204950F700AFDA7B /* MyGiftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGiftsViewController.swift; sourceTree = "<group>"; };
@@ -318,6 +322,7 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
+				60302DE4206953670025D397 /* PopUpViewController */,
 				05BEA441204BFBAB00147BF5 /* my kindnesswall */,
 				05BEA43620497B2200147BF5 /* register gift */,
 				05BEA43520497B0A00147BF5 /* gift detail */,
@@ -336,8 +341,6 @@
 		05335D471FD0DD7A00601115 /* helper */ = {
 			isa = PBXGroup;
 			children = (
-				05BEA448204C233000147BF5 /* AddPopUpController.swift */,
-				05BEA446204C21E800147BF5 /* PopUpView.swift */,
 				05644DCF1FFF06F900B7C853 /* NibLoader.swift */,
 				6032F61B205287ED00975C23 /* LoadingIndicator.swift */,
 				05644DC51FFEFA2E00B7C853 /* DateHandler.swift */,
@@ -532,6 +535,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		60302DE4206953670025D397 /* PopUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				60302DE22069018C0025D397 /* PopUpMessage.swift */,
+				05BEA446204C21E800147BF5 /* PopUpView.swift */,
+				60302DDE2068FC7E0025D397 /* PopUpViewController.swift */,
+				60302DDF2068FC7E0025D397 /* PopUpViewController.xib */,
+			);
+			path = PopUpViewController;
+			sourceTree = "<group>";
+		};
 		60AE9C82202DB96200F246CD /* view_models */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,6 +681,7 @@
 				60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */,
 				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
 				05BEA4322049667500147BF5 /* MyKindnessWallViewController.xib in Resources */,
+				60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */,
 				05029ED31FE93EC9004D96B1 /* RequestToAGiftTableViewCell.xib in Resources */,
 				6092D634204950F700AFDA7B /* MyGiftsViewController.xib in Resources */,
 				054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */,
@@ -808,6 +823,7 @@
 				05BFBBCA1FDAA53900DBCDDF /* AppFont.swift in Sources */,
 				05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */,
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
+				60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */,
 				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,
 				6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */,
 				05BFBBDB1FE24C6E00DBCDDF /* TabIndex.swift in Sources */,
@@ -837,10 +853,10 @@
 				60FAB8402064EE950039BF61 /* RGVC + uploading images.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */,
 				601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */,
-				05BEA449204C233000147BF5 /* AddPopUpController.swift in Sources */,
 				05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */,
 				601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */,
 				601F83C32036A36500F9118B /* DateStatusListViewModel.swift in Sources */,
+				60302DE02068FC7E0025D397 /* PopUpViewController.swift in Sources */,
 				05644DCA1FFF02A100B7C853 /* UITableView+isCellVisible.swift in Sources */,
 				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
 				05F6AA541FFEEB8D00CDABC2 /* ChatListTableViewController.swift in Sources */,

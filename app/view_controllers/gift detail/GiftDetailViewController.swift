@@ -128,6 +128,14 @@ class GiftDetailViewController: UIViewController {
     }
     @IBAction func removeBtnClicked(_ sender: Any) {
         
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: "آیا از حدف این هدیه اطمینان دارید؟",declineHandler: nil) { (ـ) in
+            self.removeGift()
+        }
+        
+    }
+    
+    func removeGift(){
+        
         self.removeBtn.isEnabled=false
         guard let giftId=gift?.id else {
             return
@@ -146,7 +154,6 @@ class GiftDetailViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     @objc func didTap() {

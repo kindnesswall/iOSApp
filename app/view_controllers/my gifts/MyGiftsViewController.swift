@@ -70,15 +70,22 @@ class MyGiftsViewController: UIViewController {
         case donated
     }
     
+    var initialRegisteredGiftsLoadingHasOccurred=false
     func reloadRegisteredGifts(){
-        APICall.stopAndClearRequests(sessions: &registeredGiftsSessions, tasks: &registeredGiftsTasks)
-        isLoadingRegisteredGifts=false
-        getRegisteredGifts(index: 0)
+        
+        if self.initialRegisteredGiftsLoadingHasOccurred {
+            APICall.stopAndClearRequests(sessions: &registeredGiftsSessions, tasks: &registeredGiftsTasks)
+            isLoadingRegisteredGifts=false
+            getRegisteredGifts(index: 0)
+        }
+        
     }
     
     var registeredGiftsSessions:[URLSession?]=[]
     var registeredGiftsTasks:[URLSessionDataTask?]=[]
     func getRegisteredGifts(index:Int){
+        
+        self.initialRegisteredGiftsLoadingHasOccurred=true
         
         if isLoadingRegisteredGifts {
             return
@@ -114,15 +121,22 @@ class MyGiftsViewController: UIViewController {
         
     }
     
+    var initialDonatedGiftsLoadingHasOccurred=false
     func reloadDonatedGifts(){
-        APICall.stopAndClearRequests(sessions: &donatedGiftsSessions, tasks: &donatedGiftsTasks)
-        isLoadingDonatedGifts=false
-        getDonatedGifts(index: 0)
+        
+        if self.initialDonatedGiftsLoadingHasOccurred {
+            APICall.stopAndClearRequests(sessions: &donatedGiftsSessions, tasks: &donatedGiftsTasks)
+            isLoadingDonatedGifts=false
+            getDonatedGifts(index: 0)
+        }
+        
     }
     
     var donatedGiftsSessions:[URLSession?]=[]
     var donatedGiftsTasks:[URLSessionDataTask?]=[]
     func getDonatedGifts(index:Int){
+        
+        self.initialDonatedGiftsLoadingHasOccurred=true
         
         if isLoadingDonatedGifts {
             return
@@ -212,6 +226,7 @@ extension MyGiftsViewController : UITableViewDelegate {
         reloadPage()
         reloadOtherVCs()
     }
+    
     func reloadPage(){
         self.reloadRegisteredGifts()
         self.reloadDonatedGifts()
