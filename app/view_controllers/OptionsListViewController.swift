@@ -16,7 +16,8 @@ class OptionsListViewController: UIViewController {
     enum Option {
         case category
         case dateStatus
-        case place(Int)
+        case city
+        case region(Int)
     }
     var option:Option?
     
@@ -52,11 +53,20 @@ class OptionsListViewController: UIViewController {
                 tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
                 dateStatusListViewModel=DateStatusListViewModel()
                 
-            case .place(let container_id):
+            case .city:
                 self.navigationItem.title="محل هدیه"
                 tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
                 loadingIndicator.startAnimating()
-                placeListViewModel=PlaceListViewModel(container_id: container_id, completionHandler: {
+                placeListViewModel=PlaceListViewModel(completionHandler: {
+                    [weak self] () in
+                    self?.loadingIndicator.stopAnimating()
+                    self?.tableView.reloadData()
+                })
+            case .region(let cityId):
+                self.navigationItem.title="محل هدیه"
+                tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
+                loadingIndicator.startAnimating()
+                placeListViewModel=PlaceListViewModel(cityId: cityId, completionHandler: {
                     [weak self] () in
                     self?.loadingIndicator.stopAnimating()
                     self?.tableView.reloadData()
@@ -111,7 +121,8 @@ extension OptionsListViewController:UITableViewDataSource {
             return categoryListViewModel?.categories.count ?? 0
         case .dateStatus:
             return dateStatusListViewModel?.dateStatus.count ?? 0
-        case .place:
+
+        case .city,.region:
             return placeListViewModel?.places.count ?? 0
         }
     }
@@ -131,7 +142,8 @@ extension OptionsListViewController:UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "GenericOptionsTableViewCell", for: indexPath) as! GenericOptionsTableViewCell
             dateStatusListViewModel?.setCell(cell: cell, indexPath: indexPath)
             return cell
-        case .place:
+
+        case .city,.region:
             let cell = tableView.dequeueReusableCell(withIdentifier: "GenericOptionsTableViewCell", for: indexPath) as! GenericOptionsTableViewCell
             placeListViewModel?.setCell(cell: cell, indexPath: indexPath)
             return cell
@@ -158,16 +170,22 @@ extension OptionsListViewController:UITableViewDelegate {
             let dateStatus=dateStatusListViewModel?.returnCellData(indexPath: indexPath)
             completionHandler?(dateStatus?.id,dateStatus?.title)
             self.dismiss(animated: true, completion: nil)
-        case .place:
+
+        case .city:
             let place=placeListViewModel?.returnCellData(indexPath: indexPath)
             completionHandler?(place?.id?.description,place?.name)
             
-            if placeListViewModel?.hasNestedOption(container_id: place?.id ?? -1) ?? false {
-                self.pushViewController(option: .place(place?.id ?? -1))
+            if placeListViewModel?.hasAnyRegion(container_id: place?.id ?? -1) ?? false {
+                self.pushViewController(option: .region(place?.id ?? -1))
             } else {
                 self.dismiss(animated: true, completion: nil)
             }
             
+        case .region:
+            let place=placeListViewModel?.returnCellData(indexPath: indexPath)
+            completionHandler?(place?.id?.description,place?.name)
+            
+            self.dismiss(animated: true, completion: nil)
             
 
         }
@@ -178,9 +196,9 @@ extension OptionsListViewController:UITableViewDelegate {
     
     func pushViewController(option:Option){
         switch option {
-        case .place(let container_id):
+        case .region(let cityId):
             let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
-            controller.option = OptionsListViewController.Option.place(container_id)
+            controller.option = OptionsListViewController.Option.region(cityId)
             controller.completionHandler=self.completionHandler
             controller.closeHandler=self.closeHandler
             self.navigationController?.pushViewController(controller, animated: true)

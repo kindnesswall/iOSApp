@@ -11,16 +11,20 @@ import UIKit
 class PlaceListViewModel: NSObject {
 
     var places=[Place]()
-    
     var rawPlaces=[Place]()
     
-    init(container_id:Int,completionHandler:(()->Void)?) {
+    init(completionHandler:(()->Void)?) {
         super.init()
-        getPlaces(container_id: container_id, completionHandler: completionHandler)
+        getCities(completionHandler: completionHandler)
     }
     
-    func getPlaces(container_id:Int,completionHandler:(()->Void)?) {
-        
+    init(cityId:Int,completionHandler:(()->Void)?) {
+        super.init()
+        getRegions(container_id: cityId, completionHandler: completionHandler)
+    }
+    
+    func getCities(completionHandler:(()->Void)?) {
+        let container_id=0
         APIRequest.requestTestJson(name: "latest") { (data) in
             if let jsonPlaces=APIRequest.readJsonData(data: data, outputType: PlaceResponse.self)?.places {
                 for place in jsonPlaces {
@@ -35,6 +39,51 @@ class PlaceListViewModel: NSObject {
         
     }
     
+    func getRegions(container_id:Int,completionHandler:(()->Void)?) {
+        
+        APIRequest.requestTestJson(name: "latest") { (data) in
+            if let jsonPlaces=APIRequest.readJsonData(data: data, outputType: PlaceResponse.self)?.places {
+                
+                for place in jsonPlaces {
+                    self.rawPlaces.append(place)
+                }
+                
+                let regions=self.getAllRegions(container_id: container_id)
+                self.places.append(contentsOf: regions)
+                completionHandler?()
+            }
+        }
+        
+    }
+    
+    func getAllRegions(container_id:Int)->[Place]{
+        
+        var partitions=[Place]()
+        for place in rawPlaces {
+            if place.container_id==container_id {
+                partitions.append(place)
+            }
+        }
+        var regions=[Place]()
+        for partition in partitions {
+            for place in rawPlaces {
+                if place.container_id==partition.id {
+                    regions.append(place)
+                }
+            }
+        }
+        
+        return regions
+    }
+    
+    func hasAnyRegion(container_id:Int)->Bool{
+        let regions=self.getAllRegions(container_id: container_id)
+        if regions.count>0 {
+            return true
+        } else {
+            return false
+        }
+    }
     
     func setCell(cell:GenericOptionsTableViewCell,indexPath:IndexPath) {
         cell.setValue(name: places[indexPath.row].name)
@@ -43,27 +92,5 @@ class PlaceListViewModel: NSObject {
         return places[indexPath.row]
     }
     
-    func hasNestedOption(container_id:Int)->Bool{
-        for place in rawPlaces {
-            if place.container_id==container_id {
-                return true
-            }
-        }
-        return false
-    }
-    
-    func hasOnlyOneOption(container_id:Int)->Place?{
-        var thePlaces=[Place]()
-        for place in rawPlaces {
-            if place.container_id==container_id {
-                thePlaces.append(place)
-            }
-        }
-        if thePlaces.count == 1 {
-            return thePlaces.first
-        } else {
-            return nil
-        }
-    }
     
 }
