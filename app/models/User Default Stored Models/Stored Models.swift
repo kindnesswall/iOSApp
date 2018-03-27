@@ -15,4 +15,5 @@ class RegisterGiftDraft : Codable {
     var price:Int?
     var places : [Place]?
     var category : Category?
+    var dateStatus : DateStatus?
 }

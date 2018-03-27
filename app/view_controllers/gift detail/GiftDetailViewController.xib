@@ -81,7 +81,7 @@
                                             <rect key="frame" x="0.0" y="100" width="309" height="50"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtM-QX-IeH">
-                                                    <rect key="frame" x="16" y="16" width="157" height="18"/>
+                                                    <rect key="frame" x="32" y="16" width="141" height="18"/>
                                                     <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -97,7 +97,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9x-jT-4OQ">
                                                     <rect key="frame" x="0.0" y="49" width="293" height="1"/>
-                                                    <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="IfO-AY-Nku"/>
                                                     </constraints>
@@ -109,7 +109,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="8OZ-NE-Nhy"/>
-                                                <constraint firstItem="qtM-QX-IeH" firstAttribute="leading" secondItem="wHe-OA-OMd" secondAttribute="leading" constant="16" id="CfO-YU-Dl2"/>
+                                                <constraint firstItem="qtM-QX-IeH" firstAttribute="leading" secondItem="wHe-OA-OMd" secondAttribute="leading" constant="32" id="CfO-YU-Dl2"/>
                                                 <constraint firstItem="ork-JQ-Qas" firstAttribute="leading" secondItem="qtM-QX-IeH" secondAttribute="trailing" constant="20" id="LYp-uR-T3K"/>
                                                 <constraint firstAttribute="trailing" secondItem="ork-JQ-Qas" secondAttribute="trailing" constant="16" id="YD5-Ax-OSp"/>
                                                 <constraint firstItem="qtM-QX-IeH" firstAttribute="centerY" secondItem="wHe-OA-OMd" secondAttribute="centerY" id="cjP-Lh-Fre"/>
@@ -131,15 +131,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbU-Q4-KMh">
-                                                    <rect key="frame" x="16" y="16" width="197" height="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbU-Q4-KMh">
+                                                    <rect key="frame" x="32" y="16" width="181" height="19"/>
                                                     <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scl-ZU-nd7">
                                                     <rect key="frame" x="0.0" y="49" width="293" height="1"/>
-                                                    <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="vCb-TY-pOa"/>
                                                     </constraints>
@@ -153,7 +153,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="scl-ZU-nd7" secondAttribute="bottom" id="4ze-ba-2mV"/>
                                                 <constraint firstItem="tbU-Q4-KMh" firstAttribute="centerY" secondItem="9cx-QF-CNH" secondAttribute="centerY" id="C3T-Ob-CD5"/>
                                                 <constraint firstAttribute="trailing" secondItem="scl-ZU-nd7" secondAttribute="trailing" constant="16" id="ECV-c0-LL2"/>
-                                                <constraint firstItem="tbU-Q4-KMh" firstAttribute="leading" secondItem="9cx-QF-CNH" secondAttribute="leading" constant="16" id="GXf-7y-86h"/>
+                                                <constraint firstItem="tbU-Q4-KMh" firstAttribute="leading" secondItem="9cx-QF-CNH" secondAttribute="leading" constant="32" id="GXf-7y-86h"/>
                                                 <constraint firstAttribute="trailing" secondItem="tvm-Lm-x2d" secondAttribute="trailing" constant="16" id="Nms-cR-Wwr"/>
                                                 <constraint firstItem="tvm-Lm-x2d" firstAttribute="centerY" secondItem="9cx-QF-CNH" secondAttribute="centerY" id="TAh-N1-Cmf"/>
                                                 <constraint firstAttribute="height" constant="50" id="YeX-w5-xPi"/>
@@ -181,7 +181,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYU-4S-kD4">
                                                     <rect key="frame" x="0.0" y="137" width="293" height="1"/>
-                                                    <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="FYY-KZ-8M7"/>
                                                     </constraints>

@@ -14,6 +14,10 @@ class RegisterGiftViewController: UIViewController {
 
     @IBOutlet weak var titleTextView: UITextField!
     @IBOutlet weak var contentStackView: UIStackView!
+    
+    @IBOutlet weak var categoryBtn: UIButton!
+    var category:Category?
+    
     @IBOutlet weak var dateStatusBtn: UIButton!
     var dateStatus:DateStatus?
     
@@ -66,10 +70,6 @@ class RegisterGiftViewController: UIViewController {
             
         }
     }
-    
-    @IBOutlet weak var categoryBtn: UIButton!
-    var category:Category?
-    
     
     let imagePicker = UIImagePickerController()
     
@@ -157,6 +157,16 @@ class RegisterGiftViewController: UIViewController {
         self.category=Category(id: gift.categoryId, title: gift.category)
         self.categoryBtn.setTitle(gift.category, for: .normal)
         
+        
+        if let isNew=gift.isNew {
+            if isNew {
+                self.dateStatus=DateStatus(id:"0",title:"نو")
+            } else {
+                self.dateStatus=DateStatus(id: "1" , title: "دسته‌دو")
+            }
+            self.dateStatusBtn.setTitle(self.dateStatus?.title, for: .normal)
+        }
+        
         self.editedGiftOriginalAddress.text=gift.address
         self.editedGiftOriginalCityId=Int(gift.cityId ?? "") ?? 0
         self.editedGiftOriginalRegionId=Int(gift.regionId ?? "") ?? 0
@@ -183,6 +193,13 @@ class RegisterGiftViewController: UIViewController {
         gift.category=self.category?.title
         gift.categoryId=self.category?.id
         
+        if let dateStatusId=self.dateStatus?.id {
+            if dateStatusId == "0" {
+                gift.isNew=true
+            } else {
+                gift.isNew=false
+            }
+        }
         
         if giftHasNewAddress {
             
@@ -226,6 +243,11 @@ class RegisterGiftViewController: UIViewController {
             self.categoryBtn.setTitle(category.title, for: .normal)
         }
         
+        if let dateStatus=draft.dateStatus {
+            self.dateStatus=dateStatus
+            self.dateStatusBtn.setTitle(dateStatus.title, for: .normal)
+        }
+        
         if let draftPlaces = draft.places {
             for draftPlace in draftPlaces {
                 self.places.append(draftPlace)
@@ -235,8 +257,6 @@ class RegisterGiftViewController: UIViewController {
         
         
     }
-    
-    
     
     func clearAllInput(){
         
@@ -267,6 +287,7 @@ class RegisterGiftViewController: UIViewController {
         draft.description=self.descriptionTextView.text
         draft.price=Int(self.priceTextView.text ?? "")
         draft.category=self.category
+        draft.dateStatus=self.dateStatus
         draft.places=self.places
         
         guard let data=try? JSONEncoder().encode(draft) else {
@@ -280,8 +301,6 @@ class RegisterGiftViewController: UIViewController {
         FlashMessage.showMessage(body: "پیش‌نویس با موفقیت ذخیره شد.", theme: .success)
         
     }
-    
-    
     
     
     
@@ -300,6 +319,18 @@ class RegisterGiftViewController: UIViewController {
             return
         }
         input.categoryId=categoryId
+        
+        
+        guard let dateStatusId=self.dateStatus?.id else {
+            FlashMessage.showMessage(body: "لطفا وضعیت نو یا دسته دو بودن کالا را مشخص کنید.",theme: .warning)
+            return
+        }
+        if dateStatusId == "0" {
+            input.isNew=true
+        } else {
+            input.isNew=false
+        }
+        
         
         guard let giftDescription=self.descriptionTextView.text , giftDescription != "" else {
             FlashMessage.showMessage(body: "لطفا توضیحات کالا را وارد نمایید",theme: .warning)

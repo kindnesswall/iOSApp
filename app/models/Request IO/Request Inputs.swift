@@ -15,6 +15,7 @@ class RegisterGiftInput : Codable {
     var description:String?
     var price:Int?
     var categoryId:Int?
+    var isNew:Bool?
     var cityId:Int?
     var regionId:Int?
     var giftImages : [String]?

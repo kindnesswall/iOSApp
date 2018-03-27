@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DateStatus {
+class DateStatus : Codable {
     var title:String?
     var id:String?
     
