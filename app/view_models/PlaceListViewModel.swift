@@ -13,39 +13,53 @@ class PlaceListViewModel: NSObject {
     var places=[Place]()
     var rawPlaces=[Place]()
     
-    init(completionHandler:(()->Void)?) {
+    init(hasDefaultOption:Bool,completionHandler:(()->Void)?) {
         super.init()
-        getCities(completionHandler: completionHandler)
+        getCities(hasDefaultOption:hasDefaultOption,completionHandler: completionHandler)
     }
     
-    init(cityId:Int,completionHandler:(()->Void)?) {
+    init(hasDefaultOption:Bool,cityId:Int,completionHandler:(()->Void)?) {
         super.init()
-        getRegions(container_id: cityId, completionHandler: completionHandler)
+        getRegions(hasDefaultOption:hasDefaultOption,container_id: cityId, completionHandler: completionHandler)
     }
     
-    func getCities(completionHandler:(()->Void)?) {
+    func getCities(hasDefaultOption:Bool,completionHandler:(()->Void)?) {
         let container_id=0
         APIRequest.requestTestJson(name: "latest") { (data) in
             if let jsonPlaces=APIRequest.readJsonData(data: data, outputType: PlaceResponse.self)?.places {
+                
+                self.places=[]
+                if hasDefaultOption {
+                    let defaultOption=Place(id: 0, name: "همه شهر‌ها")
+                    self.places.append(defaultOption)
+                }
+                
                 for place in jsonPlaces {
                     self.rawPlaces.append(place)
                     if place.container_id==container_id {
                         self.places.append(place)
-                        completionHandler?()
                     }
                 }
+                
+                completionHandler?()
             }
         }
         
     }
     
-    func getRegions(container_id:Int,completionHandler:(()->Void)?) {
+    func getRegions(hasDefaultOption:Bool,container_id:Int,completionHandler:(()->Void)?) {
         
         APIRequest.requestTestJson(name: "latest") { (data) in
             if let jsonPlaces=APIRequest.readJsonData(data: data, outputType: PlaceResponse.self)?.places {
                 
                 for place in jsonPlaces {
                     self.rawPlaces.append(place)
+                }
+                
+                self.places=[]
+                if hasDefaultOption {
+                    let defaultOption=Place(id: 0, name: "همه منطقه‌ها")
+                    self.places.append(defaultOption)
                 }
                 
                 let regions=self.getAllRegions(container_id: container_id)

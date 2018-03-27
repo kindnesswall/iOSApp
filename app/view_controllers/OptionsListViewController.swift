@@ -16,7 +16,7 @@ class OptionsListViewController: UIViewController {
     enum Option {
         case category
         case dateStatus
-        case city
+        case city(showRegion:Bool)
         case region(Int)
     }
     var option:Option?
@@ -57,7 +57,7 @@ class OptionsListViewController: UIViewController {
                 self.navigationItem.title="محل هدیه"
                 tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
                 loadingIndicator.startAnimating()
-                placeListViewModel=PlaceListViewModel(completionHandler: {
+                placeListViewModel=PlaceListViewModel(hasDefaultOption:self.hasDefaultOption,completionHandler: {
                     [weak self] () in
                     self?.loadingIndicator.stopAnimating()
                     self?.tableView.reloadData()
@@ -66,7 +66,7 @@ class OptionsListViewController: UIViewController {
                 self.navigationItem.title="محل هدیه"
                 tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
                 loadingIndicator.startAnimating()
-                placeListViewModel=PlaceListViewModel(cityId: cityId, completionHandler: {
+                placeListViewModel=PlaceListViewModel(hasDefaultOption:self.hasDefaultOption,cityId: cityId, completionHandler: {
                     [weak self] () in
                     self?.loadingIndicator.stopAnimating()
                     self?.tableView.reloadData()
@@ -171,11 +171,11 @@ extension OptionsListViewController:UITableViewDelegate {
             completionHandler?(dateStatus?.id,dateStatus?.title)
             self.dismiss(animated: true, completion: nil)
 
-        case .city:
+        case .city(let showRegion):
             let place=placeListViewModel?.returnCellData(indexPath: indexPath)
             completionHandler?(place?.id?.description,place?.name)
             
-            if placeListViewModel?.hasAnyRegion(container_id: place?.id ?? -1) ?? false {
+            if showRegion && placeListViewModel?.hasAnyRegion(container_id: place?.id ?? -1) ?? false {
                 self.pushViewController(option: .region(place?.id ?? -1))
             } else {
                 self.dismiss(animated: true, completion: nil)
@@ -201,6 +201,7 @@ extension OptionsListViewController:UITableViewDelegate {
             controller.option = OptionsListViewController.Option.region(cityId)
             controller.completionHandler=self.completionHandler
             controller.closeHandler=self.closeHandler
+            controller.hasDefaultOption=self.hasDefaultOption
             self.navigationController?.pushViewController(controller, animated: true)
         default:
             break

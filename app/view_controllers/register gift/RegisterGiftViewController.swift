@@ -434,7 +434,7 @@ class RegisterGiftViewController: UIViewController {
         self.configAddressViews()
         
         let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
-        controller.option = OptionsListViewController.Option.city
+        controller.option = OptionsListViewController.Option.city(showRegion: true)
         controller.completionHandler={ [weak self] (id,name) in
             let place=Place(id: Int(id ?? ""), name: name)
             self?.places.append(place)

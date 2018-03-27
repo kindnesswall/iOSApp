@@ -20,7 +20,9 @@ class HomeViewController: UIViewController {
     var isLoadingGifts=false
     
     var categoryId="0"
-    var categotyBtn:UIBarButtonItem?
+    var cityId="0"
+    var categotyBarBtn:UIBarButtonItem?
+    var cityBarBtn:UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,22 +41,43 @@ class HomeViewController: UIViewController {
     }
     
     func setNavigationBar(){
-        categotyBtn=NavigationBarStyle.getNavigationItem(target: self, action: #selector(self.filterBtnClicked), text: "همه هدیه‌ها",font:AppFont.getRegularFont(size: 16))
-        self.navigationItem.rightBarButtonItems=[categotyBtn!]
+        categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: "همه هدیه‌ها",font:AppFont.getRegularFont(size: 16))
+        self.navigationItem.rightBarButtonItems=[categotyBarBtn!]
+        
+        cityBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: "همه شهر‌ها",font:AppFont.getRegularFont(size: 16))
+        self.navigationItem.leftBarButtonItems=[cityBarBtn!]
     }
     
-    @objc func filterBtnClicked(){
+    @objc func categoryFilterBtnClicked(){
         
         let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
         controller.option = OptionsListViewController.Option.category
         controller.hasDefaultOption=true
         controller.completionHandler={ [weak self] (id,name) in
             
-            print("Selected Category id: \(id)")
+            print("Selected Category id: \(id ?? "")")
             self?.categoryId=id ?? "0"
-            self?.categotyBtn?.title=name
+            self?.categotyBarBtn?.title=name
             self?.reloadPage()
     
+        }
+        let nc=UINavigationController(rootViewController: controller)
+        self.present(nc, animated: true, completion: nil)
+        
+    }
+    
+    @objc func cityFilterBtnClicked(){
+        
+        let controller=OptionsListViewController()
+        controller.option = OptionsListViewController.Option.city(showRegion: false)
+        controller.hasDefaultOption=true
+        controller.completionHandler={ [weak self] (id,name) in
+            
+            print("Selected City id: \(id ?? "")")
+            self?.cityId=id ?? "0"
+            self?.cityBarBtn?.title=name
+            self?.reloadPage()
+            
         }
         let nc=UINavigationController(rootViewController: controller)
         self.present(nc, animated: true, completion: nil)
@@ -85,7 +108,7 @@ class HomeViewController: UIViewController {
             self.tableview.reloadData()
         }
         
-        apiMethods.getGifts(cityId: "0", regionId: "0", categoryId: self.categoryId, startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { (data) in
+        apiMethods.getGifts(cityId: self.cityId, regionId: "0", categoryId: self.categoryId, startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { (data) in
             APIRequest.logReply(data: data)
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
