@@ -18,6 +18,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterGiftViewController" customModule="app" customModuleProvider="target">
             <connections>
                 <outlet property="categoryBtn" destination="HnC-EQ-4xv" id="gqH-rz-tGH"/>
+                <outlet property="contentScrollView" destination="LIT-N3-2av" id="Xf0-es-yNf"/>
                 <outlet property="contentStackView" destination="oq7-1x-PG0" id="coz-0g-UZa"/>
                 <outlet property="dateStatusBtn" destination="5M9-Gx-uFH" id="vkn-Ap-egw"/>
                 <outlet property="descriptionTextView" destination="MXF-di-20l" id="Q6s-Z3-zBR"/>

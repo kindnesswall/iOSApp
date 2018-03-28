@@ -12,6 +12,7 @@ import CropViewController
 
 class RegisterGiftViewController: UIViewController {
 
+    @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var titleTextView: UITextField!
     @IBOutlet weak var contentStackView: UIStackView!
     
@@ -107,8 +108,33 @@ class RegisterGiftViewController: UIViewController {
         
         self.configAddressViews()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         // Do any additional setup after loading the view.
+    }
+    
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            let lastContentOffset=self.contentScrollView.contentOffset
+            let offset:CGFloat=60+10+150+10
+            if lastContentOffset.y<offset {
+                self.contentScrollView.contentOffset=CGPoint(x: lastContentOffset.x, y: offset)
+            }
+//            print("keyboard:\(keyboardSize.height)")
+            self.contentScrollView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+            
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        
+        self.contentScrollView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {}
+        
     }
     
     func configSendButtons(){
