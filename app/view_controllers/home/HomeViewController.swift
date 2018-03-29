@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     
     let apiMethods=ApiMethods()
     
-    var lazyLoadingCount=10
+    var lazyLoadingCount=20
     var isLoadingGifts=false
     
     var categoryId="0"
@@ -24,8 +24,13 @@ class HomeViewController: UIViewController {
     var categotyBarBtn:UIBarButtonItem?
     var cityBarBtn:UIBarButtonItem?
     
+    var lazyLoadingIndicator:LoadingIndicator?
+    var tableViewCellHeight:CGFloat=122
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.lazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight)
         
         setNavigationBar()
         
@@ -38,6 +43,16 @@ class HomeViewController: UIViewController {
         
         getGifts(index:0)
         
+    }
+    
+    func setTableViewLazyLoading(isLoading:Bool){
+        if isLoading {
+            self.tableview.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight, right: 0)
+            self.lazyLoadingIndicator?.startLoading()
+        } else {
+            self.tableview.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            self.lazyLoadingIndicator?.stopLoading()
+        }
     }
     
     func setNavigationBar(){
@@ -106,24 +121,34 @@ class HomeViewController: UIViewController {
         if index==0 {
             self.gifts=[]
             self.tableview.reloadData()
+        } else {
+            self.setTableViewLazyLoading(isLoading: true)
         }
         
         apiMethods.getGifts(cityId: self.cityId, regionId: "0", categoryId: self.categoryId, startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { (data) in
             APIRequest.logReply(data: data)
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
-                //                    if let status=reply.status,status==APIStatus.DONE {
-                //                        print("\(reply.result?.token)")
-                //                    }
-                
-                print("number of gifts: \(reply.count)")
-                self.gifts.append(contentsOf: reply)
                 
                 if reply.count == self.lazyLoadingCount {
                     self.isLoadingGifts=false
+                } else {
+                    self.setTableViewLazyLoading(isLoading: false)
                 }
                 
-                self.tableview.reloadData()
+                var insertedIndexes=[IndexPath]()
+                for i in self.gifts.count..<self.gifts.count+reply.count {
+                    insertedIndexes.append(IndexPath(item: i, section: 0))
+                }
+                
+                self.gifts.append(contentsOf: reply)
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2), execute: {
+                    UIView.performWithoutAnimation {
+                        self.tableview.insertRows(at: insertedIndexes, with: .bottom)
+                    }
+                })
+                
             }
             
         }

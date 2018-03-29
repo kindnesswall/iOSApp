@@ -4,7 +4,6 @@ import UIKit
 
 public class LoadingIndicator {
     
-    weak var superView:UIView?
     
     weak var navigationItem:UINavigationItem?
     weak var replacedNavigationBarButton:UIBarButtonItem?
@@ -25,13 +24,13 @@ public class LoadingIndicator {
     
     
     init(view:UIView,offset:CGFloat=0,color:UIColor=AppColor.tintColor) {
-        self.superView=view
+        
         loadingIndicatorType = .view
         
-        self.activityIndicator.backgroundColor=view.backgroundColor
+        self.activityIndicator.backgroundColor=UIColor.clear
         self.activityIndicator.color=color
         self.activityIndicator.hidesWhenStopped=true
-        self.superView?.addSubview(self.activityIndicator)
+        view.addSubview(self.activityIndicator)
         self.activityIndicator.isHidden=true
         
         //important !
@@ -43,9 +42,33 @@ public class LoadingIndicator {
         self.activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive=true
         self.activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: offset).isActive=true
         
-        
     }
 
+    init(viewBelowTableView:UIView,cellHeight:CGFloat,color:UIColor=AppColor.tintColor) {
+        
+        
+        loadingIndicatorType = .view
+        
+        let indicatorSize:CGFloat=100
+        
+        self.activityIndicator.backgroundColor=UIColor.clear
+        self.activityIndicator.color=color
+        self.activityIndicator.hidesWhenStopped=true
+        viewBelowTableView.insertSubview(self.activityIndicator, at: 0)
+        self.activityIndicator.isHidden=true
+        
+        //important !
+        self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.activityIndicator.heightAnchor.constraint(equalToConstant: indicatorSize).isActive=true
+        self.activityIndicator.widthAnchor.constraint(equalToConstant: indicatorSize).isActive=true
+        
+        self.activityIndicator.centerXAnchor.constraint(equalTo: viewBelowTableView.centerXAnchor).isActive=true
+        
+        self.activityIndicator.centerYAnchor.constraint(equalTo: viewBelowTableView.bottomAnchor, constant: (-1*cellHeight/2)-(indicatorSize/2)).isActive=true
+        
+        
+    }
     
     init(navigationItem:UINavigationItem,type:NavigationItemType,replacedNavigationBarButton:UIBarButtonItem?,color:UIColor=AppColor.tintColor) {
         
