@@ -137,6 +137,12 @@ class RegisterGiftViewController: UIViewController {
         
     }
     
+    deinit {
+        print("Register Gift View Controller Deinit")
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
     func configSendButtons(){
         if isEditMode {
             self.registerBtn.isHidden=true
