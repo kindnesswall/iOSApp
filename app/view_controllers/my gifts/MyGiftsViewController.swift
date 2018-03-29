@@ -18,15 +18,27 @@ class MyGiftsViewController: UIViewController {
     var registeredGifts=[Gift]()
     var donatedGifts=[Gift]()
     
-    var lazyLoadingCount=10
+    var lazyLoadingCount=20
     var isLoadingRegisteredGifts=false
     var isLoadingDonatedGifts=false
+    
+    var registeredLazyLoadingIndicator:LoadingIndicator?
+    var donatedLazyLoadingIndicator:LoadingIndicator?
+    var tableViewCellHeight:CGFloat=122
+    
+    enum GiftType {
+        case registered
+        case donated
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         registeredGiftsTableView.registerNib(type: GiftTableViewCell.self, nib: "GiftTableViewCell")
         donatedGiftsTableView.registerNib(type: GiftTableViewCell.self, nib: "GiftTableViewCell")
+        
+        self.registeredLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight)
+        self.donatedLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight)
         
         configSegmentControl()
         hideOrShowCorrespondingViewOfSegmentControl(type: .registered)
@@ -36,6 +48,29 @@ class MyGiftsViewController: UIViewController {
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    func setTableViewLazyLoading(isLoading:Bool,type:GiftType){
+        
+        var tableView:UITableView!
+        var lazyLoadingIndicator:LoadingIndicator!
+        
+        switch type {
+        case .registered:
+            tableView=registeredGiftsTableView
+            lazyLoadingIndicator=registeredLazyLoadingIndicator
+        case .donated:
+            tableView=donatedGiftsTableView
+            lazyLoadingIndicator=donatedLazyLoadingIndicator
+        }
+        
+        if isLoading {
+            tableView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight, right: 0)
+            lazyLoadingIndicator?.startLoading()
+        } else {
+            tableView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            lazyLoadingIndicator?.stopLoading()
+        }
     }
     
     @IBAction func segmentControlAction(_ sender: Any) {
@@ -95,6 +130,8 @@ class MyGiftsViewController: UIViewController {
         if index==0 {
             self.registeredGifts=[]
             self.registeredGiftsTableView.reloadData()
+        } else {
+            setTableViewLazyLoading(isLoading: true, type: .registered)
         }
         
         guard let userId=UserDefaults.standard.string(forKey: AppConstants.USER_ID) else {
@@ -108,13 +145,24 @@ class MyGiftsViewController: UIViewController {
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
-                self.registeredGifts.append(contentsOf: reply)
-                
                 if reply.count == self.lazyLoadingCount {
                     self.isLoadingRegisteredGifts=false
+                } else {
+                    self.setTableViewLazyLoading(isLoading: false, type: .registered)
                 }
                 
-                self.registeredGiftsTableView.reloadData()
+                var insertedIndexes=[IndexPath]()
+                for i in self.registeredGifts.count..<self.registeredGifts.count+reply.count {
+                    insertedIndexes.append(IndexPath(item: i, section: 0))
+                }
+                
+                self.registeredGifts.append(contentsOf: reply)
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
+                    UIView.performWithoutAnimation {
+                        self.registeredGiftsTableView.insertRows(at: insertedIndexes, with: .bottom)
+                    }
+                })
                 
             }
         }
@@ -146,6 +194,8 @@ class MyGiftsViewController: UIViewController {
         if index==0 {
             self.donatedGifts=[]
             self.donatedGiftsTableView.reloadData()
+        } else {
+            setTableViewLazyLoading(isLoading: true, type: .donated)
         }
         
         guard let userId=UserDefaults.standard.string(forKey: AppConstants.USER_ID) else {
@@ -159,13 +209,24 @@ class MyGiftsViewController: UIViewController {
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
-                self.donatedGifts.append(contentsOf: reply)
-                
                 if reply.count == self.lazyLoadingCount {
                     self.isLoadingDonatedGifts=false
+                } else {
+                    self.setTableViewLazyLoading(isLoading: false, type: .donated)
                 }
                 
-                self.donatedGiftsTableView.reloadData()
+                var insertedIndexes=[IndexPath]()
+                for i in self.donatedGifts.count..<self.donatedGifts.count+reply.count {
+                    insertedIndexes.append(IndexPath(item: i, section: 0))
+                }
+                
+                self.donatedGifts.append(contentsOf: reply)
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
+                    UIView.performWithoutAnimation {
+                        self.donatedGiftsTableView.insertRows(at: insertedIndexes, with: .bottom)
+                    }
+                })
             }
         }
         

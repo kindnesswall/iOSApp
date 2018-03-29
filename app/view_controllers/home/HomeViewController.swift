@@ -143,7 +143,7 @@ class HomeViewController: UIViewController {
                 
                 self.gifts.append(contentsOf: reply)
                 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2), execute: {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
                     UIView.performWithoutAnimation {
                         self.tableview.insertRows(at: insertedIndexes, with: .bottom)
                     }
