@@ -16,20 +16,23 @@ class HomeViewController: UIViewController {
     
     let apiMethods=ApiMethods()
     
+    var initialLoadingIndicator:LoadingIndicator?
     var lazyLoadingCount=20
     var isLoadingGifts=false
+    var lazyLoadingIndicator:LoadingIndicator?
+    var tableViewCellHeight:CGFloat=122
     
     var categoryId="0"
     var cityId="0"
     var categotyBarBtn:UIBarButtonItem?
     var cityBarBtn:UIBarButtonItem?
     
-    var lazyLoadingIndicator:LoadingIndicator?
-    var tableViewCellHeight:CGFloat=122
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.initialLoadingIndicator=LoadingIndicator(view: self.tableview)
         self.lazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight)
         
         setNavigationBar()
@@ -121,6 +124,7 @@ class HomeViewController: UIViewController {
         if index==0 {
             self.gifts=[]
             self.tableview.reloadData()
+            self.initialLoadingIndicator?.startLoading()
         } else {
             self.setTableViewLazyLoading(isLoading: true)
         }
@@ -129,6 +133,7 @@ class HomeViewController: UIViewController {
             APIRequest.logReply(data: data)
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+                self.initialLoadingIndicator?.stopLoading()
                 
                 if reply.count == self.lazyLoadingCount {
                     self.isLoadingGifts=false

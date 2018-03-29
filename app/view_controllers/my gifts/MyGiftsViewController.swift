@@ -18,6 +18,8 @@ class MyGiftsViewController: UIViewController {
     var registeredGifts=[Gift]()
     var donatedGifts=[Gift]()
     
+    var registeredInitialLoadingIndicator:LoadingIndicator?
+    var donatedInitialLoadingIndicator:LoadingIndicator?
     var lazyLoadingCount=20
     var isLoadingRegisteredGifts=false
     var isLoadingDonatedGifts=false
@@ -36,6 +38,9 @@ class MyGiftsViewController: UIViewController {
         
         registeredGiftsTableView.registerNib(type: GiftTableViewCell.self, nib: "GiftTableViewCell")
         donatedGiftsTableView.registerNib(type: GiftTableViewCell.self, nib: "GiftTableViewCell")
+        
+        self.registeredInitialLoadingIndicator=LoadingIndicator(view: self.registeredGiftsTableView)
+        self.donatedInitialLoadingIndicator=LoadingIndicator(view: self.donatedGiftsTableView)
         
         self.registeredLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight)
         self.donatedLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight)
@@ -118,6 +123,7 @@ class MyGiftsViewController: UIViewController {
     
     var registeredGiftsSessions:[URLSession?]=[]
     var registeredGiftsTasks:[URLSessionDataTask?]=[]
+    
     func getRegisteredGifts(index:Int){
         
         self.initialRegisteredGiftsLoadingHasOccurred=true
@@ -130,6 +136,7 @@ class MyGiftsViewController: UIViewController {
         if index==0 {
             self.registeredGifts=[]
             self.registeredGiftsTableView.reloadData()
+            self.registeredInitialLoadingIndicator?.startLoading()
         } else {
             setTableViewLazyLoading(isLoading: true, type: .registered)
         }
@@ -144,6 +151,7 @@ class MyGiftsViewController: UIViewController {
         APICall.request(url: url, httpMethod: .GET, input: input , sessions: &registeredGiftsSessions, tasks: &registeredGiftsTasks) { (data, response, error) in
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+                self.registeredInitialLoadingIndicator?.stopLoading()
                 
                 if reply.count == self.lazyLoadingCount {
                     self.isLoadingRegisteredGifts=false
@@ -182,6 +190,7 @@ class MyGiftsViewController: UIViewController {
     
     var donatedGiftsSessions:[URLSession?]=[]
     var donatedGiftsTasks:[URLSessionDataTask?]=[]
+    
     func getDonatedGifts(index:Int){
         
         self.initialDonatedGiftsLoadingHasOccurred=true
@@ -194,6 +203,7 @@ class MyGiftsViewController: UIViewController {
         if index==0 {
             self.donatedGifts=[]
             self.donatedGiftsTableView.reloadData()
+            self.donatedInitialLoadingIndicator?.startLoading()
         } else {
             setTableViewLazyLoading(isLoading: true, type: .donated)
         }
@@ -208,6 +218,7 @@ class MyGiftsViewController: UIViewController {
         APICall.request(url: url, httpMethod: .GET, input: input, sessions: &donatedGiftsSessions, tasks: &donatedGiftsTasks) { (data, response, error) in
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+                self.donatedInitialLoadingIndicator?.stopLoading()
                 
                 if reply.count == self.lazyLoadingCount {
                     self.isLoadingDonatedGifts=false
