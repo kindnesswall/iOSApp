@@ -28,10 +28,6 @@ class ActivationEnterPhoneViewController: UIViewController {
         self.submitComplition=submitComplition
     }
     
-    @IBAction func closeBtnClick(_ sender: Any) {
-        self.closeComplition?()
-        self.dismiss(animated: true, completion: nil)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,10 +50,20 @@ class ActivationEnterPhoneViewController: UIViewController {
         view.endEditing(true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.setDefaultStyle()
+    }
+    
     func setNavBar(){
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        NavigationBarStyle.removeDefaultBackBtn(navigationItem: navigationItem)
-        //        NavigationBarStyle.setExitBtn(navigationItem: navigationItem, selfInstance: self, exitBtnClickedFunction: #selector(self.exitBtnClicked), backText: "")
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationItem.removeDefaultBackBtn()
+        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
+    }
+    
+    @objc func exitBtnAction(){
+        self.closeComplition?()
+        self.dismiss(animated: true, completion: nil)
     }
     
     func customizeUIElements() {
@@ -108,12 +114,8 @@ class ActivationEnterPhoneViewController: UIViewController {
             let controller=ActivationEnterVerifyCodeViewController(nibName: "ActivationEnterVerifyCodeViewController", bundle:
                 Bundle(for: ActivationEnterVerifyCodeViewController.self))
             
-            controller.setCloseComplition {
-                self.closeComplition?()
-            }
-            controller.setSubmitComplition { (str) in
-                self.submitComplition?(str)
-            }
+            controller.setCloseComplition(closeComplition: self.closeComplition)
+            controller.setSubmitComplition(submitComplition: self.submitComplition)
             
             if mobile != "" {
                 controller.mobile=mobile

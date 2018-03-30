@@ -12,9 +12,6 @@
         <array key="IRANSansMobile.ttf">
             <string>IRANSansMobile</string>
         </array>
-        <array key="icomoon.ttf">
-            <string>icomoon</string>
-        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivationEnterPhoneViewController" customModule="app" customModuleProvider="target">
@@ -73,20 +70,6 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xf1-UX-xPJ">
-                            <rect key="frame" x="327" y="34" width="40" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="40" id="nmL-hw-ad5"/>
-                                <constraint firstAttribute="height" constant="40" id="sJv-tn-aRb"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="icomoon" family="icomoon" pointSize="24"/>
-                            <state key="normal" image="cancle">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="closeBtnClick:" destination="-1" eventType="touchUpInside" id="mIA-JI-leq"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="czN-OU-IcX" firstAttribute="centerX" secondItem="wQL-Cz-QtU" secondAttribute="centerX" id="0ox-IJ-VUB"/>
@@ -98,9 +81,7 @@
                         <constraint firstItem="BRE-N9-V0h" firstAttribute="centerY" secondItem="czN-OU-IcX" secondAttribute="centerY" id="Djc-bx-jBw"/>
                         <constraint firstItem="BRE-N9-V0h" firstAttribute="centerX" secondItem="wQL-Cz-QtU" secondAttribute="centerX" id="EV4-cj-wpm"/>
                         <constraint firstItem="fSO-5M-m2r" firstAttribute="leading" secondItem="wQL-Cz-QtU" secondAttribute="leading" constant="20" id="JPb-7q-Cz0"/>
-                        <constraint firstItem="xf1-UX-xPJ" firstAttribute="top" secondItem="wQL-Cz-QtU" secondAttribute="top" constant="34" id="bFJ-ta-nLD"/>
                         <constraint firstItem="YOh-Db-6C8" firstAttribute="centerX" secondItem="wQL-Cz-QtU" secondAttribute="centerX" id="diH-Fw-dpZ"/>
-                        <constraint firstAttribute="trailing" secondItem="xf1-UX-xPJ" secondAttribute="trailing" constant="8" id="jJH-VE-9Cd"/>
                         <constraint firstItem="YOh-Db-6C8" firstAttribute="centerY" secondItem="wQL-Cz-QtU" secondAttribute="centerY" constant="-80" id="t5Z-1T-uFo"/>
                     </constraints>
                 </view>
@@ -115,7 +96,4 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
-    <resources>
-        <image name="cancle" width="22" height="22"/>
-    </resources>
 </document>

@@ -31,7 +31,7 @@ class AppConstants {
     
 }
 
-class APIMethodVariablesName {
+class APIMethodDictionaryKey {
     static let Username:String = "username"
     static let Password:String = "password"
     static let DeviceId:String = "deviceId"

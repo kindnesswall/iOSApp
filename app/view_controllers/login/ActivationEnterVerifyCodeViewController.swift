@@ -50,7 +50,10 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         customizeUIElements()
+        
+        setNavBar()
         
         self.verifyCodeTextField.keyboardType = UIKeyboardType.numberPad
         
@@ -65,6 +68,22 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.setDefaultStyle()
+    }
+    
+    func setNavBar(){
+        //        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationItem.removeDefaultBackBtn()
+        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
+    }
+    
+    @objc func exitBtnAction(){
+        self.closeComplition?()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func registerBtnClick(_ sender: Any) {
@@ -193,6 +212,8 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                 Bundle(for: ActivationEnterVerifyCodeViewController.self))
             
             controller.setCloseComplition(closeComplition: self.closeComplition)
+            controller.setSubmitComplition(submitComplition: self.submitComplition)
+            
             if mobile != "" {
                 controller.mobile=mobile
             }
@@ -238,10 +259,6 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func closeBtnClick(_ sender: Any) {
-        self.closeComplition?()
-        self.dismiss(animated: true, completion: nil)
-    }
     
     func customizeUIElements() {
         self.verifyCodeTextField.backgroundColor=UIColor.clear
