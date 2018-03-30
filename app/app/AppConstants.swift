@@ -16,6 +16,7 @@ class AppConstants {
     public static let USER_ID:String = "USER_ID"
     public static let USER_NAME:String = "USER_NAME"
     static let Authorization:String = "Authorization"
+    static let APPLanguage:String = "APPLanguage"
     //--
     
     public static let PUSH_TOKEN:String = "PUSH_TOKEN"

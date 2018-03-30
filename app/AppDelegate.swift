@@ -64,6 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        AppLanguage.setLanguage(language: .persian)
+        
         showTabbar()
         
         if uDStandard.bool(forKey: AppConstants.WATCHED_INTRO) {

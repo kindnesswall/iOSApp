@@ -175,7 +175,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
-        self.navigationItem.title="خانه"
+        self.navigationItem.title=AppLiteral.home
     }
     
     
