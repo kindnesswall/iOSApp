@@ -100,10 +100,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
            return true
         }
         
-        if let _=(viewController as? UINavigationController)?.topViewController as? RegisterGiftViewController {
+        if let _=(viewController as? UINavigationController)?.viewControllers.first as? RegisterGiftViewController {
             showLoginVC()
             return false
         }
+        
+        if let _=(viewController as? UINavigationController)?.viewControllers.first as? MyGiftsViewController {
+            showLoginVC()
+            return false
+        }
+        
         
         return true
         
