@@ -28,6 +28,9 @@ class MyGiftsViewController: UIViewController {
     var donatedLazyLoadingIndicator:LoadingIndicator?
     var tableViewCellHeight:CGFloat=122
     
+    var registeredRefreshControl=UIRefreshControl()
+    var donatedRefreshControl=UIRefreshControl()
+    
     enum GiftType {
         case registered
         case donated
@@ -45,6 +48,8 @@ class MyGiftsViewController: UIViewController {
         self.registeredLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight)
         self.donatedLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight)
         
+        configRefreshControl()
+        
         configSegmentControl()
         hideOrShowCorrespondingViewOfSegmentControl(type: .registered)
         
@@ -53,6 +58,24 @@ class MyGiftsViewController: UIViewController {
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    func configRefreshControl(){
+        self.registeredRefreshControl.addTarget(self, action: #selector(self.registeredRefreshControlAction), for: .valueChanged)
+        registeredRefreshControl.tintColor=AppColor.tintColor
+        self.registeredGiftsTableView.addSubview(registeredRefreshControl)
+        
+        self.donatedRefreshControl.addTarget(self, action: #selector(self.donatedRefreshControlAction), for: .valueChanged)
+        donatedRefreshControl.tintColor=AppColor.tintColor
+        self.donatedGiftsTableView.addSubview(donatedRefreshControl)
+    }
+    @objc func registeredRefreshControlAction(){
+        self.reloadRegisteredGifts()
+        self.registeredInitialLoadingIndicator?.stopLoading()
+    }
+    @objc func donatedRefreshControlAction(){
+        self.reloadDonatedGifts()
+        self.donatedInitialLoadingIndicator?.stopLoading()
     }
     
     func setTableViewLazyLoading(isLoading:Bool,type:GiftType){
@@ -151,6 +174,7 @@ class MyGiftsViewController: UIViewController {
         APICall.request(url: url, httpMethod: .GET, input: input , sessions: &registeredGiftsSessions, tasks: &registeredGiftsTasks) { (data, response, error) in
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+                self.registeredRefreshControl.endRefreshing()
                 self.registeredInitialLoadingIndicator?.stopLoading()
                 
                 if reply.count == self.lazyLoadingCount {
@@ -218,6 +242,7 @@ class MyGiftsViewController: UIViewController {
         APICall.request(url: url, httpMethod: .GET, input: input, sessions: &donatedGiftsSessions, tasks: &donatedGiftsTasks) { (data, response, error) in
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+                self.donatedRefreshControl.endRefreshing()
                 self.donatedInitialLoadingIndicator?.stopLoading()
                 
                 if reply.count == self.lazyLoadingCount {
