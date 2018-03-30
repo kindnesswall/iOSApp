@@ -8,6 +8,7 @@
 
 import UIKit
 import ImageSlideshow
+import KeychainSwift
 
 class GiftDetailViewController: UIViewController {
 
@@ -60,7 +61,7 @@ class GiftDetailViewController: UIViewController {
                 
                 self?.loadingIndicator?.stopLoading()
                 
-                if let myId=UserDefaults.standard.string(forKey: AppConstants.USER_ID) , let userId=reply.userId , myId==userId {
+                if let myId=KeychainSwift().get(AppConstants.USER_ID) , let userId=reply.userId , myId==userId {
                     self?.addEditBtn()
                     self?.requestBtn.isHidden=true
                     self?.removeBtn.isHidden=false

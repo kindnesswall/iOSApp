@@ -83,6 +83,7 @@ class ActivationEnterPhoneViewController: UIViewController {
         }
         
         userDefault.set(mobile, forKey: AppConstants.PHONE_NUMBER)
+        userDefault.synchronize()
         
         phoneNumberTextField.isUserInteractionEnabled = false
         

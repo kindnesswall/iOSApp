@@ -12,25 +12,29 @@ class AppConstants {
     
     public static let BEARER:String = "bearer"
     
+    //KeyChain
     public static let USER_ID:String = "USER_ID"
-
+    public static let USER_NAME:String = "USER_NAME"
+    static let Authorization:String = "Authorization"
+    //--
+    
     public static let PUSH_TOKEN:String = "PUSH_TOKEN"
     public static let PHONE_NUMBER:String = "PHONE_NUMBER"
-    public static let IS_ACTIVE:String = "IS_ACTIVE"
-    public static let USERNAME:String = "username"
-    
+
     public static let WATCHED_INTRO:String = "watched_intro"
 
     public static let LastViewdUpdateVersion:String = "LastViewdUpdateVersion"
     
-    static let Phone:String = "Phone"
-    static let Authorization:String = "Authorization"
+    static let RegisterGiftDraft="RegisterGiftDraft"
+    
+    static let ContentType:String = "content-type"
+    
+}
+
+class APIMethodVariablesName {
     static let Username:String = "username"
     static let Password:String = "password"
     static let DeviceId:String = "deviceId"
     static let RegisterationId:String = "registerationId"
-    static let ContentType:String = "content-type"
-    
-    static let RegisterGiftDraft="RegisterGiftDraft"
 }
 

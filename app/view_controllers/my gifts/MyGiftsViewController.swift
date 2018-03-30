@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class MyGiftsViewController: UIViewController {
 
@@ -164,7 +165,7 @@ class MyGiftsViewController: UIViewController {
             setTableViewLazyLoading(isLoading: true, type: .registered)
         }
         
-        guard let userId=UserDefaults.standard.string(forKey: AppConstants.USER_ID) else {
+        guard let userId=KeychainSwift().get(AppConstants.USER_ID) else {
             return
         }
         let url=APIURLs.getMyRegisteredGifts+"/"+userId+"/\(index)/\(index+lazyLoadingCount)"
@@ -232,7 +233,7 @@ class MyGiftsViewController: UIViewController {
             setTableViewLazyLoading(isLoading: true, type: .donated)
         }
         
-        guard let userId=UserDefaults.standard.string(forKey: AppConstants.USER_ID) else {
+        guard let userId=KeychainSwift().get(AppConstants.USER_ID) else {
             return
         }
         let url=APIURLs.getMyDonatedGifts+"/"+userId+"/\(index)/\(index+lazyLoadingCount)"

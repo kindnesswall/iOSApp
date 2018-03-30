@@ -1,6 +1,7 @@
 import UIKit
 import AVFoundation
 import UICircularProgressRing
+import KeychainSwift
 
 class ChatConversationViewController: UIViewController {
     
@@ -117,7 +118,8 @@ class ChatConversationViewController: UIViewController {
         
         loadingIndicator=LoadingIndicator(view: self.sendMsgLoader)
 
-        myUserId = UserDefaults.standard.integer(forKey: AppConstants.USER_ID)
+//        myUserId = UserDefaults.standard.integer(forKey: AppConstants.USER_ID)
+        myUserId = Int(KeychainSwift().get(AppConstants.USER_ID) ?? "")
         
         // registering your nib
         let bundle=Bundle(for: ChatConversationTableViewCell.self)

@@ -10,7 +10,6 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    let userDefault = UserDefaults.standard
     var gifts:[Gift] = []
     @IBOutlet var tableview: UITableView!
     

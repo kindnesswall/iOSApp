@@ -35,10 +35,10 @@ class ApiMethods {
         let deviceId:String = "352136066349321"
         
         var formKeyValue:[String:String] = [
-            AppConstants.Username:mobile,
-            AppConstants.Password:verificationCode,
-            AppConstants.RegisterationId:regId,
-            AppConstants.DeviceId:deviceId,
+            APIMethodVariablesName.Username:mobile,
+            APIMethodVariablesName.Password:verificationCode,
+            APIMethodVariablesName.RegisterationId:regId,
+            APIMethodVariablesName.DeviceId:deviceId,
             "grant_type":"password"]
         
         let url:String = APIURLs.login
@@ -117,10 +117,6 @@ class ApiMethods {
     public static func register(telephone:String, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
         
         let mainURL: String = APIURLs.register + telephone
-        
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(telephone, forKey: AppConstants.Phone)
-        userDefaults.synchronize()
         
         APIRequest.Request(url: mainURL, httpMethod: .post, complitionHandler: { (data, response, error) in
             
