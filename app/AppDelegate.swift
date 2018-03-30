@@ -95,6 +95,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         self.tabBarController?.present(nc, animated: true, completion: nil)
     }
     
+    func checkForLogin()->Bool{
+        if let _=keychain.get(AppConstants.Authorization) {
+            return true
+        }
+        showLoginVC()
+        return false
+    }
+    
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if let _=keychain.get(AppConstants.Authorization) {
            return true

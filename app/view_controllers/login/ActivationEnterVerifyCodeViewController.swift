@@ -77,6 +77,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     func setNavBar(){
         //        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationItem.title="ورود"
         self.navigationItem.removeDefaultBackBtn()
         self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
     }

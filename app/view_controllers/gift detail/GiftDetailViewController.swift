@@ -39,9 +39,7 @@ class GiftDetailViewController: UIViewController {
     var loadingIndicator:LoadingIndicator?
     var editBtn:UIBarButtonItem?
     
-    @IBAction func requestBtnClicked(_ sender: Any) {
-        
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -107,6 +105,12 @@ class GiftDetailViewController: UIViewController {
         self.loadingIndicator=LoadingIndicator(navigationItem: self.navigationItem, type: .right, replacedNavigationBarButton: nil)
         self.loadingIndicator?.startLoading()
         
+    }
+    
+    @IBAction func requestBtnClicked(_ sender: Any) {
+        guard AppDelegate.me().checkForLogin() else {
+            return
+        }
     }
     
     @objc func editBtnClicked(){
