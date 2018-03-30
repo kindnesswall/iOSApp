@@ -22,6 +22,8 @@ class HomeViewController: UIViewController {
     var lazyLoadingIndicator:LoadingIndicator?
     var tableViewCellHeight:CGFloat=122
     
+    var refreshControl=UIRefreshControl()
+    
     var categoryId="0"
     var cityId="0"
     var categotyBarBtn:UIBarButtonItem?
@@ -35,6 +37,8 @@ class HomeViewController: UIViewController {
         self.initialLoadingIndicator=LoadingIndicator(view: self.tableview)
         self.lazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight)
         
+        configRefreshControl()
+        
         setNavigationBar()
         
         tableview.dataSource = self
@@ -46,6 +50,16 @@ class HomeViewController: UIViewController {
         
         getGifts(index:0)
         
+    }
+    
+    func configRefreshControl(){
+        self.refreshControl.addTarget(self, action: #selector(self.refreshControlAction), for: .valueChanged)
+        refreshControl.tintColor=AppColor.tintColor
+        self.tableview.addSubview(refreshControl)
+    }
+    @objc func refreshControlAction(){
+        reloadPage()
+        self.initialLoadingIndicator?.stopLoading()
     }
     
     func setTableViewLazyLoading(isLoading:Bool){
@@ -133,6 +147,7 @@ class HomeViewController: UIViewController {
             APIRequest.logReply(data: data)
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+                self.refreshControl.endRefreshing()
                 self.initialLoadingIndicator?.stopLoading()
                 
                 if reply.count == self.lazyLoadingCount {
