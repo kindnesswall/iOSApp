@@ -324,9 +324,21 @@ class AppLiteralForMessages{
         case .persian:
             return "پیش‌نویس با موفقیت ذخیره شد"
         case .english:
-            return "The draft has Saved successfully"
+            return "The draft has saved successfully"
         }
     }
+    
+    static var uploadedSuccessfully : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "آپلود عکس با موفقیت انجام شد"
+        case .english:
+            return "The Image has uploaded successfully"
+        }
+    }
+    
+    
     
     static var gettingPriceReason : String {
         let language = AppLanguage.getLanguage()
@@ -337,4 +349,78 @@ class AppLiteralForMessages{
             return ""
         }
     }
+    
+    //MARK: Errors
+    
+    static var imageUploadingError : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "آپلود عکس با مشکل روبه‌رو شد"
+        case .english:
+            return "An error has occurred in image uploading"
+        }
+    }
+    
+    static var titleError : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "لطفا عنوان کالا را وارد نمایید"
+        case .english:
+            return "Please write the title of the gift"
+        }
+    }
+    
+    static var categoryError : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "لطفا دسته‌بندی کالا را انتخاب نمایید"
+        case .english:
+            return "Please select the category of the gift"
+        }
+    }
+    
+    static var newOrSecondhandError : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "لطفا وضعیت نو یا دسته دو بودن کالا را مشخص کنید."
+        case .english:
+            return "Please select one of the \"new or secondhand\" options"
+        }
+    }
+    
+    static var descriptionError : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "لطفا توضیحات کالا را وارد نمایید"
+        case .english:
+            return "Please write the description of the gift"
+        }
+    }
+    
+    static var priceError : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "لطفا قیمت کالا را وارد نمایید"
+        case .english:
+            return "Please write the price of the gift"
+        }
+    }
+    
+    static var addressError : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "لطفا محل کالا را انتخاب نمایید"
+        case .english:
+            return "Please select the place of the gift"
+        }
+    }
+    
+    
 }

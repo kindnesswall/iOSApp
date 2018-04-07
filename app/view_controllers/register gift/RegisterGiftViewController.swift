@@ -351,20 +351,20 @@ class RegisterGiftViewController: UIViewController {
         let input=RegisterGiftInput()
         
         guard let title=self.titleTextView.text , title != "" else {
-            FlashMessage.showMessage(body: "لطفا عنوان کالا را وارد نمایید",theme: .warning)
+            FlashMessage.showMessage(body: AppLiteralForMessages.titleError,theme: .warning)
             return
         }
         input.title=title
         
         guard let categoryId=Int(self.category?.id ?? "") else {
-            FlashMessage.showMessage(body: "لطفا دسته‌بندی کالا را انتخاب نمایید",theme: .warning)
+            FlashMessage.showMessage(body: AppLiteralForMessages.categoryError,theme: .warning)
             return
         }
         input.categoryId=categoryId
         
         
         guard let dateStatusId=self.dateStatus?.id else {
-            FlashMessage.showMessage(body: "لطفا وضعیت نو یا دسته دو بودن کالا را مشخص کنید.",theme: .warning)
+            FlashMessage.showMessage(body: AppLiteralForMessages.newOrSecondhandError,theme: .warning)
             return
         }
         if dateStatusId == "0" {
@@ -375,13 +375,13 @@ class RegisterGiftViewController: UIViewController {
         
         
         guard let giftDescription=self.descriptionTextView.text , giftDescription != "" else {
-            FlashMessage.showMessage(body: "لطفا توضیحات کالا را وارد نمایید",theme: .warning)
+            FlashMessage.showMessage(body: AppLiteralForMessages.descriptionError,theme: .warning)
             return
         }
         input.description=giftDescription
         
         guard let price=Int(self.priceTextView.text ?? "") else {
-            FlashMessage.showMessage(body: "لطفا قیمت کالا را وارد نمایید",theme: .warning)
+            FlashMessage.showMessage(body: AppLiteralForMessages.priceError,theme: .warning)
             return
         }
         input.price=price
@@ -391,11 +391,11 @@ class RegisterGiftViewController: UIViewController {
             
             let addressObject=getAddress()
             guard let address=addressObject.address else {
-                FlashMessage.showMessage(body: "لطفا محل کالا را انتخاب نمایید",theme: .warning)
+                FlashMessage.showMessage(body: AppLiteralForMessages.addressError,theme: .warning)
                 return
             }
             guard let cityId=addressObject.cityId else {
-                FlashMessage.showMessage(body: "لطفا محل کالا را انتخاب نمایید",theme: .warning)
+                FlashMessage.showMessage(body: AppLiteralForMessages.addressError,theme: .warning)
                 return
             }
             
