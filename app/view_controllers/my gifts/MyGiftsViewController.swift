@@ -276,7 +276,13 @@ class MyGiftsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
-        self.navigationItem.title="هدیه‌های من"
+        self.setAllTextsInView()
+    }
+    
+    func setAllTextsInView(){
+        self.navigationItem.title=AppLiteral.myGifts
+        self.segmentControl.setTitle(AppLiteral.donated, forSegmentAt: 0)
+        self.segmentControl.setTitle(AppLiteral.registered, forSegmentAt: 1)
     }
 
     override func didReceiveMemoryWarning() {

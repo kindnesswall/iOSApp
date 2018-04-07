@@ -587,8 +587,15 @@ class RegisterGiftViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
-        self.navigationItem.title="ثبت هدیه"
-        
+        setAllTextsInView()
+    }
+    
+    func setAllTextsInView(){
+        if isEditMode {
+            self.navigationItem.title=AppLiteral.editGift
+        } else {
+            self.navigationItem.title=AppLiteral.registerGift
+        }
     }
     
    

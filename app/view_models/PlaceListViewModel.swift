@@ -30,7 +30,7 @@ class PlaceListViewModel: NSObject {
                 
                 self.places=[]
                 if hasDefaultOption {
-                    let defaultOption=Place(id: 0, name: "همه شهر‌ها")
+                    let defaultOption=Place(id: 0, name: AppLiteral.allCities)
                     self.places.append(defaultOption)
                 }
                 
@@ -58,7 +58,7 @@ class PlaceListViewModel: NSObject {
                 
                 self.places=[]
                 if hasDefaultOption {
-                    let defaultOption=Place(id: 0, name: "همه منطقه‌ها")
+                    let defaultOption=Place(id: 0, name:AppLiteral.allRegions)
                     self.places.append(defaultOption)
                 }
                 

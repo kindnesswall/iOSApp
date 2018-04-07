@@ -72,10 +72,10 @@ class HomeViewController: UIViewController {
     }
     
     func setNavigationBar(){
-        categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: "همه هدیه‌ها",font:AppFont.getRegularFont(size: 16))
+        categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: AppLiteral.allGifts,font:AppFont.getRegularFont(size: 16))
         self.navigationItem.rightBarButtonItems=[categotyBarBtn!]
         
-        cityBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: "همه شهر‌ها",font:AppFont.getRegularFont(size: 16))
+        cityBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: AppLiteral.allCities,font:AppFont.getRegularFont(size: 16))
         self.navigationItem.leftBarButtonItems=[cityBarBtn!]
     }
     
@@ -175,9 +175,12 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
-        self.navigationItem.title=AppLiteral.home
+        self.setAllTextsInView()
     }
     
+    func setAllTextsInView(){
+        self.navigationItem.title=AppLiteral.home
+    }
     
 }
 

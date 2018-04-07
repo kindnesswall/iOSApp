@@ -38,7 +38,7 @@ class OptionsListViewController: UIViewController {
             switch option {
             case .category:
                 
-                self.navigationItem.title="دسته بندی"
+                self.navigationItem.title=AppLiteral.category
                 tableView.registerNib(type: CategoryOptionsTableViewCell.self, nib: "CategoryOptionsTableViewCell")
                
                loadingIndicator.startAnimating()
@@ -49,12 +49,12 @@ class OptionsListViewController: UIViewController {
                     
                 })
             case .dateStatus:
-                self.navigationItem.title="وضعیت نو یا دسته ‌دو بودن"
+                self.navigationItem.title=AppLiteral.newOrSecondHand
                 tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
                 dateStatusListViewModel=DateStatusListViewModel()
                 
             case .city:
-                self.navigationItem.title="محل هدیه"
+                self.navigationItem.title=AppLiteral.placeOfTheGift
                 tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
                 loadingIndicator.startAnimating()
                 placeListViewModel=PlaceListViewModel(hasDefaultOption:self.hasDefaultOption,completionHandler: {
@@ -63,7 +63,7 @@ class OptionsListViewController: UIViewController {
                     self?.tableView.reloadData()
                 })
             case .region(let cityId):
-                self.navigationItem.title="محل هدیه"
+                self.navigationItem.title=AppLiteral.placeOfTheGift
                 tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
                 loadingIndicator.startAnimating()
                 placeListViewModel=PlaceListViewModel(hasDefaultOption:self.hasDefaultOption,cityId: cityId, completionHandler: {
@@ -80,7 +80,7 @@ class OptionsListViewController: UIViewController {
     }
     
     func setNavbar(){
-        NavigationBarStyle.setRightBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.exitBtnAction), text: "انصراف")
+        NavigationBarStyle.setRightBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.exitBtnAction), text: AppLiteral.cancel)
         NavigationBarStyle.removeDefaultBackBtn(navigationItem: self.navigationItem)
     }
     
