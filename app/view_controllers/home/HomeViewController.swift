@@ -180,6 +180,12 @@ class HomeViewController: UIViewController {
     
     func setAllTextsInView(){
         self.navigationItem.title=AppLiteral.home
+        if categoryId=="0" {
+            self.categotyBarBtn?.title=AppLiteral.allGifts
+        }
+        if cityId=="0" {
+            self.cityBarBtn?.title=AppLiteral.allCities
+        }
     }
     
 }

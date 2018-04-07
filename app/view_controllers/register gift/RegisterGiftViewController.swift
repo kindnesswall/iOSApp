@@ -34,6 +34,7 @@ class RegisterGiftViewController: UIViewController {
     @IBOutlet weak var placesStackView: UIStackView!
     var placesLabels=[UILabel]()
     var places=[Place]()
+    @IBOutlet weak var placeBtn: UIButton!
     
     @IBOutlet var uploadBtn: UIButton!
 
@@ -44,7 +45,7 @@ class RegisterGiftViewController: UIViewController {
             self.registerBtn.isEnabled=true
         }) {
             self.clearAllInput()
-            FlashMessage.showMessage(body: "ثبت کالا با موفقیت انجام شد",theme: .success)
+            FlashMessage.showMessage(body: AppLiteralForMessages.registeredSuccessfully,theme: .success)
         }
         
     }
@@ -59,7 +60,7 @@ class RegisterGiftViewController: UIViewController {
             self.editBtn.isEnabled=true
         }) {
             
-            FlashMessage.showMessage(body: "کالا با موفقیت ویرایش شد.", theme: .success)
+            FlashMessage.showMessage(body: AppLiteralForMessages.editedSuccessfully, theme: .success)
             
             self.writeChangesToEditedGift()
             self.editHandler?()
@@ -85,7 +86,16 @@ class RegisterGiftViewController: UIViewController {
     
     var barClearBtn:UIBarButtonItem?
     var barSaveBtn:UIBarButtonItem?
-    var closeBarBtn:UIBarButtonItem?
+    var barCloseBtn:UIBarButtonItem?
+    
+    
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var newOrSecondhandLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,14 +174,14 @@ class RegisterGiftViewController: UIViewController {
     func configNavBar(){
         
         if !isEditMode {
-            self.barClearBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.clearBarBtnAction), text: "پاک کردن صفحه")
+            self.barClearBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.clearBarBtnAction), text: AppLiteral.clearPage)
             self.navigationItem.rightBarButtonItems=[self.barClearBtn!]
-            self.barSaveBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.saveBarBtnAction), text: "ذخیره پیش‌ نویس")
+            self.barSaveBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.saveBarBtnAction), text: AppLiteral.saveDraft)
             self.navigationItem.leftBarButtonItems=[self.barSaveBtn!]
             
         } else {
-            self.closeBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.closeBarBtnAction), text: "انصراف")
-            self.navigationItem.rightBarButtonItems=[self.closeBarBtn!]
+            self.barCloseBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.closeBarBtnAction), text: AppLiteral.cancel)
+            self.navigationItem.rightBarButtonItems=[self.barCloseBtn!]
         }
         
     }
@@ -192,9 +202,9 @@ class RegisterGiftViewController: UIViewController {
         
         if let isNew=gift.isNew {
             if isNew {
-                self.dateStatus=DateStatus(id:"0",title:"نو")
+                self.dateStatus=DateStatus(id:"0",title:AppLiteral.new)
             } else {
-                self.dateStatus=DateStatus(id: "1" , title: "دسته‌دو")
+                self.dateStatus=DateStatus(id: "1" , title: AppLiteral.secondHand)
             }
             self.dateStatusBtn.setTitle(self.dateStatus?.title, for: .normal)
         }
@@ -295,10 +305,10 @@ class RegisterGiftViewController: UIViewController {
         self.clearUploadedImages()
         self.clearGiftPlaces()
         
-        self.categoryBtn.setTitle("انتخاب", for: .normal)
+        self.categoryBtn.setTitle(AppLiteral.select, for: .normal)
         self.category=nil
         
-        self.dateStatusBtn.setTitle("انتخاب", for: .normal)
+        self.dateStatusBtn.setTitle(AppLiteral.select, for: .normal)
         self.dateStatus=nil
         
         self.titleTextView.text=""
@@ -330,7 +340,7 @@ class RegisterGiftViewController: UIViewController {
         userDefault.set(data, forKey: AppConstants.RegisterGiftDraft)
         userDefault.synchronize()
         
-        FlashMessage.showMessage(body: "پیش‌نویس با موفقیت ذخیره شد.", theme: .success)
+        FlashMessage.showMessage(body: AppLiteralForMessages.draftSavedSuccessfully, theme: .success)
         
     }
     
@@ -560,7 +570,7 @@ class RegisterGiftViewController: UIViewController {
     @IBAction func uploadBtnClicked(_ sender: Any) {
         let actionController = SkypeActionController()
         
-        actionController.addAction(Action("دوربین", style: .default, handler: { action in
+        actionController.addAction(Action(AppLiteral.camera, style: .default, handler: { action in
             
             self.imagePicker.allowsEditing = false
             self.imagePicker.sourceType = .camera
@@ -570,7 +580,7 @@ class RegisterGiftViewController: UIViewController {
             
         }))
         
-        actionController.addAction(Action("گالری تصاویر", style: .default, handler: { action in
+        actionController.addAction(Action(AppLiteral.gallery, style: .default, handler: { action in
             
             self.imagePicker.allowsEditing = false
             self.imagePicker.sourceType = .photoLibrary
@@ -595,6 +605,29 @@ class RegisterGiftViewController: UIViewController {
             self.navigationItem.title=AppLiteral.editGift
         } else {
             self.navigationItem.title=AppLiteral.registerGift
+        }
+        
+        self.barClearBtn?.title=AppLiteral.clearPage
+        self.barSaveBtn?.title=AppLiteral.saveDraft
+        self.barCloseBtn?.title=AppLiteral.cancel
+        
+        self.categoryLabel.text=AppLiteral.giftCategory
+        self.titleLabel.text=AppLiteral.title
+        self.descriptionLabel.text=AppLiteral.description
+        self.placeLabel.text=AppLiteral.placeOfTheGift
+        self.newOrSecondhandLabel.text=AppLiteral.newOrSecondHand
+        self.priceLabel.text=AppLiteral.approximatePriceInToman+AppLiteralForMessages.gettingPriceReason
+        
+        self.registerBtn.setTitle(AppLiteral.registerGift, for: .normal)
+        self.editBtn.setTitle(AppLiteral.editGift, for: .normal)
+        
+        self.uploadBtn.setTitle(AppLiteral.addImage, for: .normal)
+        self.placeBtn.setTitle(AppLiteral.select, for: .normal)
+        if self.category == nil {
+            self.categoryBtn.setTitle(AppLiteral.select, for: .normal)
+        }
+        if self.dateStatus == nil {
+            self.dateStatusBtn.setTitle(AppLiteral.select, for: .normal)
         }
     }
     

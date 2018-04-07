@@ -122,11 +122,21 @@ class AppLiteral {
         }
     }
     
+    static var giftCategory : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "دسته بندی هدیه"
+        case .english:
+            return "Gift Category"
+        }
+    }
+    
     static var newOrSecondHand : String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
-            return "وضعیت نو یا دسته ‌دو بودن"
+            return "نو یا دسته دو بودن"
         case .english:
             return "New or Secondhand"
         }
@@ -192,4 +202,139 @@ class AppLiteral {
         }
     }
     
+    static var clearPage : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "پاک کردن صفحه"
+        case .english:
+            return "Clear Page"
+        }
+    }
+    
+    static var saveDraft : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "ذخیره پیش‌ نویس"
+        case .english:
+            return "Save Draft"
+        }
+    }
+    
+    static var select : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "انتخاب"
+        case .english:
+            return "Select"
+        }
+    }
+    
+    static var camera : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "دوربین"
+        case .english:
+            return "Camera"
+        }
+    }
+    
+    static var gallery : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "گالری تصاویر"
+        case .english:
+            return "Gallery"
+        }
+    }
+    
+    static var title : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "عنوان"
+        case .english:
+            return "Title"
+        }
+    }
+    
+    static var description : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "توضیحات"
+        case .english:
+            return "Description"
+        }
+    }
+    
+    static var approximatePriceInToman : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "ارزش تقریبی به تومان"
+        case .english:
+            return "Approximate Price in Toman"
+        }
+    }
+    
+    static var addImage : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "افزودن عکس"
+        case .english:
+            return "Add Image"
+        }
+    }
+    
+}
+
+//MARK: - AppLiteralForMessages
+
+class AppLiteralForMessages{
+    
+    static var registeredSuccessfully : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "ثبت کالا با موفقیت انجام شد"
+        case .english:
+            return "The gift has registered successfully"
+        }
+    }
+    
+    static var editedSuccessfully : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "کالا با موفقیت ویرایش شد"
+        case .english:
+            return "The gift has edited successfully"
+        }
+    }
+    
+    static var draftSavedSuccessfully : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "پیش‌نویس با موفقیت ذخیره شد"
+        case .english:
+            return "The draft has Saved successfully"
+        }
+    }
+    
+    static var gettingPriceReason : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return " (صرفا جهت برآورد و نمایش در قسمت آمار است و برای دیگران نمایش داده نمیشود) "
+        case .english:
+            return ""
+        }
+    }
 }

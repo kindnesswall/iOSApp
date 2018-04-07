@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,15 +18,22 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterGiftViewController" customModule="app" customModuleProvider="target">
             <connections>
                 <outlet property="categoryBtn" destination="HnC-EQ-4xv" id="gqH-rz-tGH"/>
+                <outlet property="categoryLabel" destination="Z9E-AU-gtz" id="WyI-uj-zNJ"/>
                 <outlet property="contentScrollView" destination="LIT-N3-2av" id="Xf0-es-yNf"/>
                 <outlet property="contentStackView" destination="oq7-1x-PG0" id="coz-0g-UZa"/>
                 <outlet property="dateStatusBtn" destination="5M9-Gx-uFH" id="vkn-Ap-egw"/>
+                <outlet property="descriptionLabel" destination="cSO-JU-J1f" id="ThY-9b-CiO"/>
                 <outlet property="descriptionTextView" destination="MXF-di-20l" id="Q6s-Z3-zBR"/>
                 <outlet property="editBtn" destination="ax5-t0-Ip7" id="dMC-KW-wKU"/>
                 <outlet property="editedGiftOriginalAddress" destination="UGP-xS-ULl" id="gxV-XI-63f"/>
+                <outlet property="newOrSecondhandLabel" destination="2h5-AC-6Cs" id="5Hx-VS-cHX"/>
+                <outlet property="placeBtn" destination="LPs-4e-Gv5" id="Iuq-Rf-wig"/>
+                <outlet property="placeLabel" destination="o3t-mN-qSx" id="Y0a-sf-Ll2"/>
                 <outlet property="placesStackView" destination="Qi3-0m-DON" id="PpY-Dp-ZNj"/>
+                <outlet property="priceLabel" destination="UgK-rh-Qb8" id="huW-pL-3Pa"/>
                 <outlet property="priceTextView" destination="dN6-6u-ltK" id="UUm-H5-QZV"/>
                 <outlet property="registerBtn" destination="PZ8-kb-Ljo" id="V6I-QA-Mj7"/>
+                <outlet property="titleLabel" destination="rWT-pH-5wK" id="Grx-ks-cki"/>
                 <outlet property="titleTextView" destination="dMb-Fv-LpJ" id="XMc-ld-Zzm"/>
                 <outlet property="uploadBtn" destination="EAz-HS-B9f" id="J7U-AD-VbP"/>
                 <outlet property="uploadedImageStack" destination="wsv-gy-uev" id="ySY-cb-WRA"/>
@@ -156,7 +163,7 @@
                                             <rect key="frame" x="0.0" y="330" width="375" height="132"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ارزش تقریبی به تومان (صرفا جهت برآورد و نمایش در قسمت آمار است و برای دیگران نمایش داده نمیشود) " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgK-rh-Qb8">
-                                                    <rect key="frame" x="8" y="8" width="351" height="70"/>
+                                                    <rect key="frame" x="8" y="8" width="359" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="BvB-JU-Dm0"/>
                                                     </constraints>
@@ -174,7 +181,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="dN6-6u-ltK" secondAttribute="trailing" constant="8" id="1hS-N2-w2f"/>
-                                                <constraint firstAttribute="trailing" secondItem="UgK-rh-Qb8" secondAttribute="trailing" constant="16" id="439-PZ-Ipd"/>
+                                                <constraint firstAttribute="trailing" secondItem="UgK-rh-Qb8" secondAttribute="trailing" constant="8" id="439-PZ-Ipd"/>
                                                 <constraint firstItem="dN6-6u-ltK" firstAttribute="leading" secondItem="WA2-at-daS" secondAttribute="leading" constant="8" id="65S-jS-W54"/>
                                                 <constraint firstAttribute="bottom" secondItem="dN6-6u-ltK" secondAttribute="bottom" constant="16" id="H1X-ZQ-LoQ"/>
                                                 <constraint firstItem="UgK-rh-Qb8" firstAttribute="top" secondItem="WA2-at-daS" secondAttribute="top" constant="8" id="NLY-pU-Wnx"/>
@@ -186,8 +193,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCP-Wc-D7o">
                                             <rect key="frame" x="0.0" y="472" width="375" height="150"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="توضیحات:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSO-JU-J1f">
-                                                    <rect key="frame" x="296" y="8" width="71" height="21.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="توضیحات" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSO-JU-J1f">
+                                                    <rect key="frame" x="300.5" y="8" width="66.5" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -281,7 +288,7 @@
                                                         <constraint firstItem="Qi3-0m-DON" firstAttribute="top" secondItem="tOa-68-Oyn" secondAttribute="top" id="rzQ-oz-bQD"/>
                                                     </constraints>
                                                 </scrollView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="آدرس:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGP-xS-ULl">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGP-xS-ULl">
                                                     <rect key="frame" x="7.5" y="56" width="359" height="40"/>
                                                     <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -322,16 +329,16 @@
                                             <rect key="frame" x="0.0" y="842" width="375" height="60"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5a-Gd-r75">
-                                                    <rect key="frame" x="87.5" y="13" width="200" height="34"/>
+                                                    <rect key="frame" x="37.5" y="13" width="300" height="34"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ax5-t0-Ip7">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="34"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="34"/>
                                                             <color key="backgroundColor" name="TintColor"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="100" id="2rX-2Y-Vmu"/>
+                                                                <constraint firstAttribute="width" constant="150" id="2rX-2Y-Vmu"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
-                                                            <state key="normal" title="ویرایش">
+                                                            <state key="normal" title="ویرایش هدیه">
                                                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
@@ -339,13 +346,13 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ8-kb-Ljo">
-                                                            <rect key="frame" x="100" y="0.0" width="100" height="34"/>
+                                                            <rect key="frame" x="150" y="0.0" width="150" height="34"/>
                                                             <color key="backgroundColor" name="TintColor"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="100" id="v0R-kC-bOs"/>
+                                                                <constraint firstAttribute="width" constant="150" id="v0R-kC-bOs"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
-                                                            <state key="normal" title="ثبت نهایی">
+                                                            <state key="normal" title="ثبت هدیه">
                                                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>

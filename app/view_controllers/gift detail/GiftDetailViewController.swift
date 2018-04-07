@@ -83,9 +83,9 @@ class GiftDetailViewController: UIViewController {
         giftCategory.text = gift?.category
         giftAddress.text = gift?.address
         if let isNew = gift?.isNew, isNew {
-            oldOrNewlbl.text = "نو"
+            oldOrNewlbl.text = AppLiteral.new
         }else{
-            oldOrNewlbl.text = "دسته دوم"
+            oldOrNewlbl.text = AppLiteral.secondHand
         }
         descriptionlbl.text = gift?.description
         
