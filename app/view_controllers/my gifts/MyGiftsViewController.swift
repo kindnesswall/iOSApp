@@ -195,11 +195,11 @@ class MyGiftsViewController: UIViewController {
                 
                 self.registeredGifts.append(contentsOf: reply)
                 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
+//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
                     UIView.performWithoutAnimation {
                         self.registeredGiftsTableView.insertRows(at: insertedIndexes, with: .bottom)
                     }
-                })
+//                })
                 
             }
         }
@@ -267,11 +267,11 @@ class MyGiftsViewController: UIViewController {
                 
                 self.donatedGifts.append(contentsOf: reply)
                 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
+//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
                     UIView.performWithoutAnimation {
                         self.donatedGiftsTableView.insertRows(at: insertedIndexes, with: .bottom)
                     }
-                })
+//                })
             }
         }
         
