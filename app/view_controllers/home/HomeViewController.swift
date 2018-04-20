@@ -135,17 +135,21 @@ class HomeViewController: UIViewController {
         isLoadingGifts=true
         
         if index==0 {
-            self.gifts=[]
-            self.tableview.reloadData()
             self.initialLoadingIndicator?.startLoading()
         } else {
             self.setTableViewLazyLoading(isLoading: true)
         }
         
         apiMethods.getGifts(cityId: self.cityId, regionId: "0", categoryId: self.categoryId, startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { (data) in
-            APIRequest.logReply(data: data)
+//            APIRequest.logReply(data: data)
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+                
+                if index==0 {
+                    self.gifts=[]
+                    self.tableview.reloadData()
+                }
+                
                 self.refreshControl.endRefreshing()
                 self.initialLoadingIndicator?.stopLoading()
                 

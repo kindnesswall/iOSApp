@@ -158,8 +158,6 @@ class MyGiftsViewController: UIViewController {
         isLoadingRegisteredGifts=true
         
         if index==0 {
-            self.registeredGifts=[]
-            self.registeredGiftsTableView.reloadData()
             self.registeredInitialLoadingIndicator?.startLoading()
         } else {
             setTableViewLazyLoading(isLoading: true, type: .registered)
@@ -175,6 +173,12 @@ class MyGiftsViewController: UIViewController {
         APICall.request(url: url, httpMethod: .GET, input: input , sessions: &registeredGiftsSessions, tasks: &registeredGiftsTasks) { (data, response, error) in
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+                
+                if index==0 {
+                    self.registeredGifts=[]
+                    self.registeredGiftsTableView.reloadData()
+                }
+                
                 self.registeredRefreshControl.endRefreshing()
                 self.registeredInitialLoadingIndicator?.stopLoading()
                 
@@ -226,8 +230,6 @@ class MyGiftsViewController: UIViewController {
         isLoadingDonatedGifts=true
         
         if index==0 {
-            self.donatedGifts=[]
-            self.donatedGiftsTableView.reloadData()
             self.donatedInitialLoadingIndicator?.startLoading()
         } else {
             setTableViewLazyLoading(isLoading: true, type: .donated)
@@ -243,6 +245,12 @@ class MyGiftsViewController: UIViewController {
         APICall.request(url: url, httpMethod: .GET, input: input, sessions: &donatedGiftsSessions, tasks: &donatedGiftsTasks) { (data, response, error) in
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+                
+                if index==0 {
+                    self.donatedGifts=[]
+                    self.donatedGiftsTableView.reloadData()
+                }
+                
                 self.donatedRefreshControl.endRefreshing()
                 self.donatedInitialLoadingIndicator?.stopLoading()
                 
