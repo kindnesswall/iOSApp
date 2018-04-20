@@ -471,6 +471,7 @@
 		05BFBBC41FDAA49E00DBCDDF /* app */ = {
 			isa = PBXGroup;
 			children = (
+				60861155206E50CD000A42E5 /* AppLanguage.swift */,
 				05BFBBC91FDAA53900DBCDDF /* AppFont.swift */,
 				05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */,
 				05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */,
@@ -519,7 +520,6 @@
 				05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */,
 				05AE64721FA93F4800FCCC28 /* ApiMethods.swift */,
 				60FAB83D2064DBE10039BF61 /* APICall.swift */,
-				60861155206E50CD000A42E5 /* AppLanguage.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";

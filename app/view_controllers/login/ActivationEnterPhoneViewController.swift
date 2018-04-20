@@ -12,6 +12,7 @@ class ActivationEnterPhoneViewController: UIViewController {
     
     let userDefault=UserDefaults.standard
     
+    @IBOutlet weak var guideLabel: UILabel!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
@@ -53,11 +54,18 @@ class ActivationEnterPhoneViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.setDefaultStyle()
+        self.setAllTextsInView()
+    }
+    
+    func setAllTextsInView(){
+        self.navigationItem.title=AppLiteral.login
+        self.registerBtn.setTitle(AppLiteral.sendingActivationCode, for: .normal)
+        self.guideLabel.text=AppLiteralForMessages.guideOfSendingActivationCode
     }
     
     func setNavBar(){
 //        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationItem.title="ورود"
+        self.navigationItem.title=AppLiteral.login
         self.navigationItem.removeDefaultBackBtn()
         self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
     }

@@ -18,10 +18,6 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     var mobile:String?
     
-    var part1:String = "تا لحظاتی دیگر پیامی حاوی کد فعالسازی به شماره "
-    
-    var part2:String = " ارسال خواهد شد. در صورتیکه کد را دریافت نکردید می توانید پس از ۱ دقیقه مجددا سعی کنید."
-    
     let userDefault = UserDefaults.standard
     
     @IBOutlet weak var verifyCodeTextField: UITextField!
@@ -57,13 +53,17 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         
         self.verifyCodeTextField.keyboardType = UIKeyboardType.numberPad
         
-        if let phoneNumber = userDefault.string(forKey: AppConstants.PHONE_NUMBER) {
-            tipLabel.text = part1 + UIFunctions.CastNumberToPersian(input: phoneNumber) + part2
-        }
+        self.setTipLabel()
         
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
 //        view.addGestureRecognizer(tap)
         
+    }
+    
+    func setTipLabel(){
+        if let phoneNumber = userDefault.string(forKey: AppConstants.PHONE_NUMBER) {
+            tipLabel.text = AppLiteralForMessages.guideOfRegitering_part1 + AppLanguage.getNumberString(number: phoneNumber) + AppLiteralForMessages.guideOfRegitering_part2
+        }
     }
     
     @objc func dismissKeyboard() {
@@ -73,11 +73,23 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.setDefaultStyle()
+        self.setAllTextsInView()
+    }
+    
+    func setAllTextsInView(){
+        
+        self.navigationItem.title=AppLiteral.login
+        
+        self.registerBtn.setTitle(AppLiteral.registeringActivationCode, for: .normal)
+        self.sendAgainBtn.setTitle(AppLiteral.resendingActivationCode, for: .normal)
+        self.returnBtn.setTitle(AppLiteral.back, for: .normal)
+        
+        self.setTipLabel()
     }
     
     func setNavBar(){
         //        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationItem.title="ورود"
+        self.navigationItem.title=AppLiteral.login
         self.navigationItem.removeDefaultBackBtn()
         self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
     }

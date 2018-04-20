@@ -38,6 +38,20 @@ class AppLanguage{
         return language
     }
     
+    
+    //MARK: - Utilities
+    
+    static func getNumberString(number:String)->String{
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return number.CastNumberToPersian()
+        case .english:
+            return number
+        }
+    }
+    
+    
 }
 
 class AppLiteral {
@@ -49,6 +63,16 @@ class AppLiteral {
             return "خانه"
         case .english:
             return "Home"
+        }
+    }
+    
+    static var back : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "بازگشت"
+        case .english:
+            return "Back"
         }
     }
     
@@ -292,6 +316,47 @@ class AppLiteral {
         }
     }
     
+    static var login : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "ورود"
+        case .english:
+            return "Login"
+        }
+    }
+    
+    static var sendingActivationCode : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "ارسال کد فعال سازی"
+        case .english:
+            return "Send Activation Code"
+        }
+    }
+    
+    static var resendingActivationCode : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "دریافت مجدد کد فعالسازی"
+        case .english:
+            return "Resend Activation Code"
+        }
+    }
+    
+    static var registeringActivationCode : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "ثبت کد فعالسازی"
+        case .english:
+            return "Register Activation Code"
+        }
+    }
+    
+    
 }
 
 //MARK: - AppLiteralForMessages
@@ -422,5 +487,34 @@ class AppLiteralForMessages{
         }
     }
     
+    static var guideOfSendingActivationCode : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "کد فعالسازی به شماره زیر ارسال می شود. درصورتی که شماره صحیح نیست آن را ویرایش کنید."
+        case .english:
+            return "The activation code will be sent to the following phone number. If the phone number is not correct, please edit it."
+        }
+    }
+    
+    static var guideOfRegitering_part1 : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "تا لحظاتی دیگر پیامی حاوی کد فعالسازی به شماره "
+        case .english:
+            return "After few seconds, the message containing activation code will be sent to the phone number "
+        }
+    }
+    
+    static var guideOfRegitering_part2 : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return " ارسال خواهد شد. در صورتیکه کد را دریافت نکردید می توانید پس از ۱ دقیقه مجددا سعی کنید."
+        case .english:
+            return ". If you didn't receive the message, you can resend the activation code after 10 minutes."
+        }
+    }
     
 }
