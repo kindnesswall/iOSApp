@@ -51,6 +51,16 @@ class AppLanguage{
         }
     }
     
+    static func getTextAlignment()->NSTextAlignment{
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return .right
+        case .english:
+            return .left
+        }
+    }
+    
 }
 
 class AppLiteral {

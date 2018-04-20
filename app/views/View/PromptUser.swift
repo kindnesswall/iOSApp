@@ -33,7 +33,7 @@ class PromptUser: PopUpView {
         self.acceptBtn.setTitle(AppLiteral.yes, for: .normal)
         self.rejectBtn.setTitle(AppLiteral.no, for: .normal)
         
-        self.message.textAlignment = .natural
+        self.message.textAlignment = AppLanguage.getTextAlignment()
         
         if let txt:String = controller?.data as? String {
             self.message.text = txt
