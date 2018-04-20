@@ -51,20 +51,9 @@ class AppLanguage{
         }
     }
     
-    
 }
 
 class AppLiteral {
-    
-    static var home : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "خانه"
-        case .english:
-            return "Home"
-        }
-    }
     
     static var back : String {
         let language = AppLanguage.getLanguage()
@@ -73,6 +62,46 @@ class AppLiteral {
             return "بازگشت"
         case .english:
             return "Back"
+        }
+    }
+    
+    static var cancel : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "انصراف"
+        case .english:
+            return "Cancel"
+        }
+    }
+    
+    static var yes : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "بله"
+        case .english:
+            return "Yes"
+        }
+    }
+    
+    static var no : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "خیر"
+        case .english:
+            return "No"
+        }
+    }
+    
+    static var home : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "خانه"
+        case .english:
+            return "Home"
         }
     }
     
@@ -96,6 +125,16 @@ class AppLiteral {
         }
     }
     
+    static var edit : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "ویرایش"
+        case .english:
+            return "Edit"
+        }
+    }
+    
     static var editGift : String {
         let language = AppLanguage.getLanguage()
         switch language {
@@ -103,6 +142,46 @@ class AppLiteral {
             return "ویرایش هدیه"
         case .english:
             return "Gift Editing"
+        }
+    }
+    
+    static var request : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "درخواست"
+        case .english:
+            return "Request"
+        }
+    }
+    
+    static var remove : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "حذف"
+        case .english:
+            return "Remove"
+        }
+    }
+    
+    static var status : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "وضعیت"
+        case .english:
+            return "Status"
+        }
+    }
+    
+    static var address : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "آدرس"
+        case .english:
+            return "Address"
         }
     }
     
@@ -193,16 +272,6 @@ class AppLiteral {
             return "محل هدیه"
         case .english:
             return "Place of the Gift"
-        }
-    }
-    
-    static var cancel : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "انصراف"
-        case .english:
-            return "Cancel"
         }
     }
     
@@ -484,6 +553,16 @@ class AppLiteralForMessages{
             return "لطفا محل کالا را انتخاب نمایید"
         case .english:
             return "Please select the place of the gift"
+        }
+    }
+    
+    static var giftRemovingPrompt : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "آیا از حدف این هدیه اطمینان دارید؟"
+        case .english:
+            return "Are you sure that you want to remove the gift?"
         }
     }
     

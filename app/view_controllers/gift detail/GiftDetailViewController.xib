@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,12 +17,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GiftDetailViewController" customModule="app" customModuleProvider="target">
             <connections>
-                <outlet property="descriptionlbl" destination="DbJ-yi-oGa" id="H5I-vD-XCh"/>
+                <outlet property="addressLabel" destination="ejt-di-g48" id="5Xk-kC-laq"/>
+                <outlet property="categoryLabel" destination="ork-JQ-Qas" id="yza-1t-7tL"/>
+                <outlet property="descriptionLabel" destination="xOg-iW-mA8" id="3UF-hi-tRg"/>
                 <outlet property="giftAddress" destination="XC5-dY-n2t" id="3Jg-x3-sam"/>
                 <outlet property="giftCategory" destination="qtM-QX-IeH" id="HDE-Gd-ewo"/>
                 <outlet property="giftDatelbl" destination="iOu-x1-2cU" id="2yo-VB-m6m"/>
+                <outlet property="giftDescription" destination="DbJ-yi-oGa" id="Rc6-ZO-yLP"/>
                 <outlet property="giftNamelbl" destination="NEG-oL-UgO" id="gmr-DC-Fsi"/>
-                <outlet property="oldOrNewlbl" destination="tbU-Q4-KMh" id="s7I-iH-F1N"/>
+                <outlet property="oldOrNew" destination="tbU-Q4-KMh" id="s7I-iH-F1N"/>
+                <outlet property="oldOrNewLabel" destination="tvm-Lm-x2d" id="TgJ-MR-g9I"/>
                 <outlet property="removeBtn" destination="tsH-hz-jPQ" id="sVn-nH-Obx"/>
                 <outlet property="requestBtn" destination="QJ6-HU-DLW" id="Kdp-Kr-KCz"/>
                 <outlet property="slideshow" destination="hWw-ZU-D9E" id="40h-Wy-lmY"/>

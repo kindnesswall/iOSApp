@@ -18,6 +18,10 @@ class GiftDetailViewController: UIViewController {
     
     var editHandler:(()->Void)?
     
+    @IBOutlet weak var oldOrNewLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet var giftNamelbl: UILabel!
     
     @IBOutlet var giftDatelbl: UILabel!
@@ -26,9 +30,9 @@ class GiftDetailViewController: UIViewController {
     
     @IBOutlet var giftAddress: UILabel!
     
-    @IBOutlet var oldOrNewlbl: UILabel!
+    @IBOutlet var oldOrNew: UILabel!
     
-    @IBOutlet var descriptionlbl: UILabel!
+    @IBOutlet var giftDescription: UILabel!
     
     @IBOutlet var requestBtn: UIButton!
     
@@ -78,22 +82,22 @@ class GiftDetailViewController: UIViewController {
         
         giftNamelbl.text = gift?.title
         if let date = gift?.createDateTime {
-            giftDatelbl.text = UIFunctions.CastNumberToPersian(input: date)
+            giftDatelbl.text = AppLanguage.getNumberString(number: date)
         }
         giftCategory.text = gift?.category
         giftAddress.text = gift?.address
         if let isNew = gift?.isNew, isNew {
-            oldOrNewlbl.text = AppLiteral.new
+            oldOrNew.text = AppLiteral.new
         }else{
-            oldOrNewlbl.text = AppLiteral.secondHand
+            oldOrNew.text = AppLiteral.secondHand
         }
-        descriptionlbl.text = gift?.description
+        giftDescription.text = gift?.description
         
         addImagesToSlideShows()
     }
     
     func addEditBtn(){
-        editBtn = NavigationBarStyle.getNavigationItem(target: self, action: #selector(self.editBtnClicked), text: "ویرایش",font:AppFont.getRegularFont(size: 16))
+        editBtn = NavigationBarStyle.getNavigationItem(target: self, action: #selector(self.editBtnClicked), text: AppLiteral.edit,font:AppFont.getRegularFont(size: 16))
         self.navigationItem.rightBarButtonItems=[editBtn!]
     }
     
@@ -133,7 +137,7 @@ class GiftDetailViewController: UIViewController {
     }
     @IBAction func removeBtnClicked(_ sender: Any) {
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: "آیا از حدف این هدیه اطمینان دارید؟",declineHandler: nil) { (ـ) in
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: AppLiteralForMessages.giftRemovingPrompt,declineHandler: nil) { (ـ) in
             self.removeGift()
         }
         
@@ -169,6 +173,17 @@ class GiftDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
+        self.setAllTextsInView()
+    }
+    
+    func setAllTextsInView(){
+        self.editBtn?.title=AppLiteral.edit
+        self.removeBtn.setTitle(AppLiteral.remove, for: .normal)
+        self.requestBtn.setTitle(AppLiteral.request, for: .normal)
+        self.categoryLabel.text=AppLiteral.category
+        self.oldOrNewLabel.text=AppLiteral.status
+        self.addressLabel.text=AppLiteral.address
+        self.descriptionLabel.text=AppLiteral.description
     }
     
     func createSlideShow() {
