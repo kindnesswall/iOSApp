@@ -93,7 +93,7 @@ class ActivationEnterPhoneViewController: UIViewController {
     @IBAction func registerBtnClick(_ sender: Any) {
         let mobile:String = phoneNumberTextField.text ?? ""
         if !mobile.starts(with: "09") || mobile.count != 11 || !mobile.isNumber{
-            FlashMessage.showMessage(body: "شماره به درستی وارد نشده است", theme: .error)
+            FlashMessage.showMessage(body: AppLiteralForMessages.phoneNumberIncorrectError, theme: .error)
             return
         }
         
@@ -107,7 +107,7 @@ class ActivationEnterPhoneViewController: UIViewController {
         
         ApiMethods.register(telephone: mobile) { (data, response, error) in
             
-            self.registerBtn.setTitle("ورود", for: [])
+            self.registerBtn.setTitle(AppLiteral.sendingActivationCode, for: [])
             self.loading.stopAnimating()
             
             if let response = response as? HTTPURLResponse {

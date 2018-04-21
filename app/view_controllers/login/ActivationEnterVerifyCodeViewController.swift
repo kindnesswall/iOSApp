@@ -104,17 +104,17 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         let activationCode:String = verifyCodeTextField.text!
         
         if activationCode.count <= 0 {
-            FlashMessage.showMessage(body: "کد را وارد نمایید",theme: .warning)
+            FlashMessage.showMessage(body: AppLiteralForMessages.activationCodeError,theme: .warning)
             return
         }
         
         if activationCode.count < 4 {
-            FlashMessage.showMessage(body: "کد وارد شده صحیح نمی باشد",theme: .warning)
+            FlashMessage.showMessage(body: AppLiteralForMessages.activationCodeIncorrectError,theme: .warning)
             return
         }
         
         guard let mobile = userDefault.string(forKey: AppConstants.PHONE_NUMBER) else {
-            FlashMessage.showMessage(body: "شماره تلفن را مجدد وارد کنید", theme: .error)
+            FlashMessage.showMessage(body: AppLiteralForMessages.phoneNumberTryAgainError, theme: .error)
             return
         }
         
@@ -124,7 +124,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         ApiMethods.login(mobile: mobile, verificationCode: activationCode) { (data, urlResponse, error) in
             
             DispatchQueue.main.async {
-                self.registerBtn.setTitle("ثبت کد فعالسازی", for: [])
+                self.registerBtn.setTitle(AppLiteral.registeringActivationCode, for: [])
                 self.registerLoading.stopAnimating()
             }
             
@@ -142,6 +142,11 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
 
             if let reply=APIRequest.readJsonData(data: data, outputType: TokenOutput.self) {
                 
+                if let error = reply.error , error == TokenOutputError.invalid_grant.rawValue {
+                    FlashMessage.showMessage(body: AppLiteralForMessages.activationCodeIncorrectError,theme: .warning)
+                    return
+                }
+                
                 if let userId = reply.userId {
 //                    self.userDefault.set(userId, forKey: AppConstants.USER_ID)
                     self.keychain.set(userId, forKey: AppConstants.USER_ID)
@@ -157,13 +162,13 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                     self.keychain.set(AppConstants.BEARER + " " + token, forKey: AppConstants.Authorization)
                 }
                 
+                self.dismiss(animated: true, completion: {
+                    
+                    self.submitComplition?("")
+                    
+                })
+                
             }
-            
-            self.dismiss(animated: true, completion: {
-                
-                self.submitComplition?("")
-                
-            })
             
         }
 //        APIRequest.request(
@@ -202,13 +207,13 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         self.resendLoading.startAnimating()
         
         guard let mobile = userDefault.string(forKey: AppConstants.PHONE_NUMBER) else {
-            FlashMessage.showMessage(body: "شماره تلفن را مجدد وارد کنید", theme: .error)
+            FlashMessage.showMessage(body: AppLiteralForMessages.phoneNumberTryAgainError, theme: .error)
             return
         }
         
         ApiMethods.register(telephone: mobile) { (data, response, error) in
             
-            self.sendAgainBtn.setTitle("دریافت مجدد کد فعالسازی", for: [])
+            self.sendAgainBtn.setTitle(AppLiteral.resendingActivationCode, for: [])
             self.resendLoading.stopAnimating()
             
             if let response = response as? HTTPURLResponse {
@@ -275,7 +280,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     func customizeUIElements() {
         self.verifyCodeTextField.backgroundColor=UIColor.clear
-        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:"کد فعالسازی", attributes: [NSAttributedStringKey.font : AppFont.getLightFont(size: 13),NSAttributedStringKey.foregroundColor: UIColor.gray])
+        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:AppLiteral.activationCode, attributes: [NSAttributedStringKey.font : AppFont.getLightFont(size: 13),NSAttributedStringKey.foregroundColor: UIColor.gray])
         
         self.registerBtn.backgroundColor=AppColor.tintColor
         

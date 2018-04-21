@@ -24,4 +24,9 @@ class TokenOutput: Codable {
     var access_token:String?
     var userName:String?
     var userId:String?
+    var error:String?
+}
+
+enum TokenOutputError:String {
+    case invalid_grant="invalid_grant"
 }

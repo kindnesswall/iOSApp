@@ -405,6 +405,16 @@ class AppLiteral {
         }
     }
     
+    static var activationCode : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "کد فعالسازی"
+        case .english:
+            return "Activation Code"
+        }
+    }
+    
     static var sendingActivationCode : String {
         let language = AppLanguage.getLanguage()
         switch language {
@@ -576,6 +586,45 @@ class AppLiteralForMessages{
         }
     }
     
+    static var phoneNumberIncorrectError : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "شماره موبایل صحیح نمی باشد."
+        case .english:
+            return "The phone number is not correct."
+        }
+    }
+    static var phoneNumberTryAgainError : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "شماره تلفن را مجدد وارد کنید"
+        case .english:
+            return "Please write the number again"
+        }
+    }
+    
+    static var activationCodeError : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "لطفا کد فعالسازی را وارد نمایید."
+        case .english:
+            return "Please write the activation code."
+        }
+    }
+    
+    static var activationCodeIncorrectError : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "کد فعالسازی وارد شده صحیح نمی باشد."
+        case .english:
+            return "The activation code is not correct."
+        }
+    }
+    
     static var guideOfSendingActivationCode : String {
         let language = AppLanguage.getLanguage()
         switch language {
@@ -602,7 +651,7 @@ class AppLiteralForMessages{
         case .persian:
             return " ارسال خواهد شد. در صورتیکه کد را دریافت نکردید می توانید پس از ۱ دقیقه مجددا سعی کنید."
         case .english:
-            return ". If you didn't receive the message, you can resend the activation code after 10 minutes."
+            return ". If you didn't receive the message, you can resend the activation code after 1 minutes."
         }
     }
     
