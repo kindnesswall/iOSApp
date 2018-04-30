@@ -26,6 +26,12 @@ class PopUpViewController: UIViewController {
         self.declineHandler=declineHandler
     }
     
+    enum PopUpAnimation{
+        case modal
+        case none
+    }
+    var popUpAnimation:PopUpAnimation = .none
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,14 +47,14 @@ class PopUpViewController: UIViewController {
         showPopUpWithAnimation()
     }
     
-    private func addDismissTapGesture(){
-        let dismissTapGesture=UITapGestureRecognizer(target: self, action: #selector(self.dismissTapGestureAction))
-        self.view.addGestureRecognizer(dismissTapGesture)
-    }
-    
-    @objc private func dismissTapGestureAction(){
-        dismissPopUpWithAnimation()
-    }
+//    private func addDismissTapGesture(){
+//        let dismissTapGesture=UITapGestureRecognizer(target: self, action: #selector(self.dismissTapGestureAction))
+//        self.view.addGestureRecognizer(dismissTapGesture)
+//    }
+//
+//    @objc private func dismissTapGestureAction(){
+//        dismissPopUpWithAnimation()
+//    }
     
     private func addPopUpView(){
         
@@ -70,7 +76,16 @@ class PopUpViewController: UIViewController {
         let width=self.view.frame.width
         let height=self.view.frame.height
         
-        popUpView.frame=CGRect(x: 0, y: height, width: width , height: height)
+        var yOffset:CGFloat=0
+        popUpView.alpha=1
+        
+        switch popUpAnimation {
+        case .modal:
+            yOffset=height
+        case .none:
+            popUpView.alpha=0
+        }
+        popUpView.frame=CGRect(x: 0, y: yOffset, width: width , height: height)
         
         popUpView.controller=self
         popUpView.initPopUpView()
@@ -79,21 +94,44 @@ class PopUpViewController: UIViewController {
     }
     
     private func showPopUpWithAnimation(){
-        let height=self.view.frame.height
         
-        UIView.animate(withDuration: 0.35) {
-            self.popUpView?.center.y=height/2
+        switch popUpAnimation {
+        case .modal:
+            
+            let height=self.view.frame.height
+            UIView.animate(withDuration: 0.35) {
+                self.popUpView?.center.y=height/2
+            }
+        case .none:
+            
+            UIView.animate(withDuration: 0.1) {
+                self.popUpView?.alpha=1
+            }
         }
     }
     
     private func dismissPopUpWithAnimation(){
-        let height=self.view.frame.height
         
-        UIView.animate(withDuration: 0.35, animations: {
-            self.popUpView?.center.y = (1.5*height)
-        }) { (_) in
-            self.dismiss(animated: false, completion: nil)
+        switch popUpAnimation {
+        case .modal:
+            
+            let height=self.view.frame.height
+            UIView.animate(withDuration: 0.35, animations: {
+                self.popUpView?.center.y = (1.5*height)
+            }) { (_) in
+                self.dismiss(animated: false, completion: nil)
+            }
+            
+        case .none:
+            
+            UIView.animate(withDuration: 0.1, animations: {
+                self.popUpView?.alpha=0
+            }) { (_) in
+                self.dismiss(animated: false, completion: nil)
+            }
         }
+        
+        
     }
     
     func submitPopUp(data:Any?=nil){

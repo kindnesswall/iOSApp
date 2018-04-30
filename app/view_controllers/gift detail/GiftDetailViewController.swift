@@ -137,7 +137,7 @@ class GiftDetailViewController: UIViewController {
     }
     @IBAction func removeBtnClicked(_ sender: Any) {
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: AppLiteralForMessages.giftRemovingPrompt,declineHandler: nil) { (ـ) in
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: AppLiteralForMessages.giftRemovingPrompt,animation:.none,declineHandler: nil) { (ـ) in
             self.removeGift()
         }
         

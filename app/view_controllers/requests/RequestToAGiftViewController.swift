@@ -87,7 +87,7 @@ class RequestToAGiftViewController: UIViewController {
     @IBAction func onAcceptRequestClicked(_ sender: ButtonWithData) {
         print(sender.data)
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: "آیا از قبول این درخواست مطمئن هستید؟",declineHandler: nil) { (_) in
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: "آیا از قبول این درخواست مطمئن هستید؟",animation: .none,declineHandler: nil) { (_) in
             
             guard let clickedRequest = sender.data else{
                 return
@@ -109,7 +109,7 @@ class RequestToAGiftViewController: UIViewController {
     @IBAction func onRejectRequestBtnClicked(_ sender: ButtonWithData) {
         print(sender.data)
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: "آیا از رد این درخواست مطمئن هستید؟",declineHandler: nil) { (_) in
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: "آیا از رد این درخواست مطمئن هستید؟",animation: .none,declineHandler: nil) { (_) in
             
             guard let clickedRequest = sender.data else{
                 return
