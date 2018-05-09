@@ -110,7 +110,7 @@ class PopUpViewController: UIViewController {
         }
     }
     
-    private func dismissPopUpWithAnimation(){
+    private func dismissPopUpWithAnimation(completion: (() -> Void)? = nil){
         
         switch popUpAnimation {
         case .modal:
@@ -119,7 +119,7 @@ class PopUpViewController: UIViewController {
             UIView.animate(withDuration: 0.35, animations: {
                 self.popUpView?.center.y = (1.5*height)
             }) { (_) in
-                self.dismiss(animated: false, completion: nil)
+                self.dismiss(animated: false, completion: completion)
             }
             
         case .none:
@@ -127,7 +127,7 @@ class PopUpViewController: UIViewController {
             UIView.animate(withDuration: 0.1, animations: {
                 self.popUpView?.alpha=0
             }) { (_) in
-                self.dismiss(animated: false, completion: nil)
+                self.dismiss(animated: false, completion: completion)
             }
         }
         
@@ -135,15 +135,17 @@ class PopUpViewController: UIViewController {
     }
     
     func submitPopUp(data:Any?=nil){
-        self.submitHandler?(data)
-        self.dismissPopUp()
+        self.dismissPopUp {
+            self.submitHandler?(data)
+        }
     }
     func declinePopUp(data:Any?=nil){
-        self.declineHandler?(data)
-        self.dismissPopUp()
+        self.dismissPopUp {
+            self.declineHandler?(data)
+        }
     }
-    func dismissPopUp(){
-        self.dismissPopUpWithAnimation()
+    func dismissPopUp(completion: (() -> Void)? = nil){
+        self.dismissPopUpWithAnimation(completion: completion)
     }
     
     override func didReceiveMemoryWarning() {
