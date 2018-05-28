@@ -131,7 +131,7 @@ class APIRequest {
             let session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
             let task=session.dataTask(with: request, completionHandler: { (data, response, error) in
                 
-                if let error = error as? NSError {
+                if let error = error as NSError? {
                     if error.code == NSURLErrorCancelled {
                         //cancelled
                         print("Request Cancelled")
@@ -183,7 +183,7 @@ class APIRequest {
             let session = Foundation.URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
             let task=session.dataTask(with: request, completionHandler: { (data, response, error) in
                 
-                if let error = error as? NSError {
+                if let error = error as NSError? {
                     if error.code == NSURLErrorCancelled {
                         //cancelled
                         print("Request Cancelled")

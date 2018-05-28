@@ -53,7 +53,7 @@ class APICall {
         let session=URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
         let task=session.dataTask(with: request) { (data, response, error) in
             
-            if let error = error as? NSError {
+            if let error = error as NSError? {
                 if error.code == NSURLErrorCancelled {
                     //cancelled
                     print("Request Cancelled")
@@ -90,7 +90,7 @@ class APICall {
         let session=URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
         let task=session.dataTask(with: request) { (data, response, error) in
             
-            if let error = error as? NSError {
+            if let error = error as NSError? {
                 if error.code == NSURLErrorCancelled {
                     //cancelled
                     print("Request Cancelled")
@@ -135,7 +135,7 @@ class APICall {
         
         let task=session.uploadTask(with: request, from: dataToSend) { (data, response, error) in
             
-            if let error = error as? NSError {
+            if let error = error as NSError? {
                 if error.code == NSURLErrorCancelled {
                     //cancelled
                     print("Request Cancelled")
