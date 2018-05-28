@@ -45,9 +45,10 @@ class MyGiftsViewController: UIViewController {
         
         self.registeredInitialLoadingIndicator=LoadingIndicator(view: self.registeredGiftsTableView)
         self.donatedInitialLoadingIndicator=LoadingIndicator(view: self.donatedGiftsTableView)
-        
-        self.registeredLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight)
-        self.donatedLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight)
+        self.registeredLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight/2)
+        self.donatedLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight/2)
+        registeredGiftsTableView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight/2, right: 0)
+        donatedGiftsTableView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight/2, right: 0)
         
         configRefreshControl()
         
@@ -81,23 +82,18 @@ class MyGiftsViewController: UIViewController {
     
     func setTableViewLazyLoading(isLoading:Bool,type:GiftType){
         
-        var tableView:UITableView!
         var lazyLoadingIndicator:LoadingIndicator!
         
         switch type {
         case .registered:
-            tableView=registeredGiftsTableView
             lazyLoadingIndicator=registeredLazyLoadingIndicator
         case .donated:
-            tableView=donatedGiftsTableView
             lazyLoadingIndicator=donatedLazyLoadingIndicator
         }
         
         if isLoading {
-            tableView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight, right: 0)
             lazyLoadingIndicator?.startLoading()
         } else {
-            tableView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             lazyLoadingIndicator?.stopLoading()
         }
     }
@@ -181,11 +177,11 @@ class MyGiftsViewController: UIViewController {
                 
                 self.registeredRefreshControl.endRefreshing()
                 self.registeredInitialLoadingIndicator?.stopLoading()
+                self.setTableViewLazyLoading(isLoading: false, type: .registered)
+
                 
                 if reply.count == self.lazyLoadingCount {
                     self.isLoadingRegisteredGifts=false
-                } else {
-                    self.setTableViewLazyLoading(isLoading: false, type: .registered)
                 }
                 
                 var insertedIndexes=[IndexPath]()
@@ -253,11 +249,10 @@ class MyGiftsViewController: UIViewController {
                 
                 self.donatedRefreshControl.endRefreshing()
                 self.donatedInitialLoadingIndicator?.stopLoading()
+                self.setTableViewLazyLoading(isLoading: false, type: .donated)
                 
                 if reply.count == self.lazyLoadingCount {
                     self.isLoadingDonatedGifts=false
-                } else {
-                    self.setTableViewLazyLoading(isLoading: false, type: .donated)
                 }
                 
                 var insertedIndexes=[IndexPath]()

@@ -34,7 +34,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         self.initialLoadingIndicator=LoadingIndicator(view: self.tableview)
-        self.lazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight)
+        self.lazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight/2)
+        self.tableview.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight/2, right: 0)
         
         configRefreshControl()
         
@@ -63,10 +64,8 @@ class HomeViewController: UIViewController {
     
     func setTableViewLazyLoading(isLoading:Bool){
         if isLoading {
-            self.tableview.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight, right: 0)
             self.lazyLoadingIndicator?.startLoading()
         } else {
-            self.tableview.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             self.lazyLoadingIndicator?.stopLoading()
         }
     }
@@ -152,11 +151,10 @@ class HomeViewController: UIViewController {
                 
                 self.refreshControl.endRefreshing()
                 self.initialLoadingIndicator?.stopLoading()
+                self.setTableViewLazyLoading(isLoading: false)
                 
                 if reply.count == self.lazyLoadingCount {
                     self.isLoadingGifts=false
-                } else {
-                    self.setTableViewLazyLoading(isLoading: false)
                 }
                 
                 var insertedIndexes=[IndexPath]()
