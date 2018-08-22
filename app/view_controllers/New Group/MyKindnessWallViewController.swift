@@ -32,10 +32,10 @@ class MyKindnessWallViewController: UIViewController {
     }
     
     @IBAction func contactUsBtnClicked(_ sender: Any) {
-        guard let url = URL(string: "https://t.me/Kindness_Wall_Admin") else {
-            return //be safe
-        }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        
+        let controller = ContactUsViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
+        
     }
     @IBAction func statisticBtnAction(_ sender: Any) {
         
@@ -48,7 +48,10 @@ class MyKindnessWallViewController: UIViewController {
         
     }
     @IBAction func bugReportBtnAction(_ sender: Any) {
-        
+        guard let url = URL(string: "https://t.me/Kindness_Wall_Admin") else {
+            return //be safe
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -105,6 +105,16 @@ class AppLiteral {
         }
     }
     
+    static var skip : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "بگذر"
+        case .english:
+            return "Skip"
+        }
+    }
+    
     static var home : String {
         let language = AppLanguage.getLanguage()
         switch language {
@@ -452,6 +462,16 @@ class AppLiteral {
             return "درباره دیوار مهربانی"
         case .english:
             return "About Kindness Wall"
+        }
+    }
+    
+    static var letsGoToTheApplication : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "بریم داخل اپلیکیشن!"
+        case .english:
+            return "Let's go to the application!"
         }
     }
     

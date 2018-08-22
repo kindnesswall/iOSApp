@@ -119,8 +119,8 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         overlay.skipButton.setTitleColor(UIColor.white, for: .normal)
         overlay.skipButton.titleLabel?.font = AppFont.getRegularFont(size: 16)
         
-        overlay.continueButton.setTitle("بله", for: .normal)
-        overlay.skipButton.setTitle("بگذر", for: .normal)
+        overlay.continueButton.setTitle(AppLiteral.yes, for: .normal)
+        overlay.skipButton.setTitle(AppLiteral.skip, for: .normal)
         
         //Return the overlay view:
         return overlay
@@ -133,11 +133,11 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         overlay.continueButton.tag = Int(position)
         
         if Int(currentPage) < titleArray.count-1 {
-            overlay.continueButton.setTitle("بله", for: .normal)
-            overlay.skipButton.setTitle("بگذر", for: .normal)
+            overlay.continueButton.setTitle(AppLiteral.yes, for: .normal)
+            overlay.skipButton.setTitle(AppLiteral.skip, for: .normal)
             overlay.skipButton.isHidden = false
         } else {
-            overlay.continueButton.setTitle("بریم داخل اپلیکیشن!", for: .normal)
+            overlay.continueButton.setTitle(AppLiteral.letsGoToTheApplication, for: .normal)
             overlay.skipButton.isHidden = true
         }
     }
