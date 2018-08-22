@@ -119,6 +119,9 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         overlay.skipButton.setTitleColor(UIColor.white, for: .normal)
         overlay.skipButton.titleLabel?.font = AppFont.getRegularFont(size: 16)
         
+        overlay.continueButton.setTitle("بله", for: .normal)
+        overlay.skipButton.setTitle("بگذر", for: .normal)
+        
         //Return the overlay view:
         return overlay
     }
