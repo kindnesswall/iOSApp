@@ -405,6 +405,66 @@ class AppLiteral {
         }
     }
     
+    static var logout : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "خروج"
+        case .english:
+            return "Logout"
+        }
+    }
+    
+    static var myWall : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "دیوار من"
+        case .english:
+            return "My Wall"
+        }
+    }
+    
+    static var contactUs : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "ارتباط با ما"
+        case .english:
+            return "Contact Us"
+        }
+    }
+    
+    static var bugReport : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "گزارش اشکالات برنامه"
+        case .english:
+            return "Bug Report"
+        }
+    }
+    
+    static var aboutKindnessWall : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "درباره دیوار مهربانی"
+        case .english:
+            return "About Kindness Wall"
+        }
+    }
+    
+    static var statistic : String {
+        let language = AppLanguage.getLanguage()
+        switch language {
+        case .persian:
+            return "آمار"
+        case .english:
+            return "Statistic"
+        }
+    }
+    
     static var activationCode : String {
         let language = AppLanguage.getLanguage()
         switch language {

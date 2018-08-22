@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,8 +16,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyKindnessWallViewController" customModule="app" customModuleProvider="target">
             <connections>
+                <outlet property="aboutKindnessWallBtn" destination="Lkc-mO-68e" id="yiF-Lm-oZy"/>
+                <outlet property="bugReportBtn" destination="Lzg-Yj-27L" id="F8r-hr-f0L"/>
                 <outlet property="contactUsBtn" destination="qlv-fg-nyn" id="hoq-rp-Iew"/>
                 <outlet property="loginLogoutBtn" destination="nQK-i4-MHV" id="1ay-22-6vj"/>
+                <outlet property="statisticBtn" destination="Dtn-EF-Gw1" id="cNT-K6-9ZW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,37 +29,72 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQK-i4-MHV">
-                    <rect key="frame" x="8" y="36" width="359" height="34"/>
-                    <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
-                    <state key="normal">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="logoutBtnClicked:" destination="-1" eventType="touchUpInside" id="NGe-YS-dls"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlv-fg-nyn" userLabel="Contact Us">
-                    <rect key="frame" x="8" y="78" width="359" height="34"/>
-                    <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
-                    <state key="normal" title="ارتباط با ما">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="contactUsBtnClicked:" destination="-1" eventType="touchUpInside" id="c15-5b-C7d"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zJL-MM-Knh">
+                    <rect key="frame" x="16" y="36" width="343" height="202"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dtn-EF-Gw1">
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                            <color key="backgroundColor" red="0.47843137254901957" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                            <state key="normal" title="آمار">
+                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="statisticBtnAction:" destination="-1" eventType="touchUpInside" id="o2V-Or-KNT"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlv-fg-nyn" userLabel="Contact Us">
+                            <rect key="frame" x="0.0" y="42" width="343" height="34"/>
+                            <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                            <state key="normal" title="ارتباط با ما">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="contactUsBtnClicked:" destination="-1" eventType="touchUpInside" id="c15-5b-C7d"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lkc-mO-68e">
+                            <rect key="frame" x="0.0" y="84" width="343" height="34"/>
+                            <color key="backgroundColor" red="0.47843137254901957" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                            <state key="normal" title="درباره دیوار مهربانی">
+                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="aboutKindnessWallBtnAction:" destination="-1" eventType="touchUpInside" id="lck-Kb-P6Z"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzg-Yj-27L">
+                            <rect key="frame" x="0.0" y="126" width="343" height="34"/>
+                            <color key="backgroundColor" red="0.47843137254901957" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                            <state key="normal" title="گزارش اشکالات برنامه">
+                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="bugReportBtnAction:" destination="-1" eventType="touchUpInside" id="QMe-ET-19T"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQK-i4-MHV">
+                            <rect key="frame" x="0.0" y="168" width="343" height="34"/>
+                            <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="logoutBtnClicked:" destination="-1" eventType="touchUpInside" id="NGe-YS-dls"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="nQK-i4-MHV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="1KS-Vx-JRL"/>
-                <constraint firstItem="qlv-fg-nyn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="1LZ-dj-F6u"/>
-                <constraint firstItem="qlv-fg-nyn" firstAttribute="top" secondItem="nQK-i4-MHV" secondAttribute="bottom" constant="8" id="7Up-5B-Dkg"/>
-                <constraint firstItem="nQK-i4-MHV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="RgP-WD-AR2"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nQK-i4-MHV" secondAttribute="trailing" constant="8" id="YV2-Xx-ne2"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qlv-fg-nyn" secondAttribute="trailing" constant="8" id="vc4-MU-oZE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zJL-MM-Knh" secondAttribute="trailing" constant="16" id="3Hq-lK-eUr"/>
+                <constraint firstItem="zJL-MM-Knh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="fSe-qA-T30"/>
+                <constraint firstItem="zJL-MM-Knh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="rZW-su-cht"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

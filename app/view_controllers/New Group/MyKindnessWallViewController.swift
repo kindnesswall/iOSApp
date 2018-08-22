@@ -11,6 +11,9 @@ import KeychainSwift
 
 class MyKindnessWallViewController: UIViewController {
 
+    @IBOutlet weak var bugReportBtn: UIButton!
+    @IBOutlet weak var aboutKindnessWallBtn: UIButton!
+    @IBOutlet weak var statisticBtn: UIButton!
     @IBOutlet weak var contactUsBtn: UIButton!
     @IBOutlet var loginLogoutBtn: UIButton!
     let keychain = KeychainSwift()
@@ -34,20 +37,39 @@ class MyKindnessWallViewController: UIViewController {
         }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
+    @IBAction func statisticBtnAction(_ sender: Any) {
+        
+    }
+    @IBAction func aboutKindnessWallBtnAction(_ sender: Any) {
+        
+    }
+    @IBAction func bugReportBtnAction(_ sender: Any) {
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
-        self.navigationItem.title="دیوار من"
         
+        setAllTextsInView()
+        
+    }
+    
+    func setAllTextsInView(){
         setLoginLogoutBtnTitle()
+        
+        self.navigationItem.title=AppLiteral.myWall
+        
+        contactUsBtn.setTitle(AppLiteral.contactUs, for: .normal)
+        bugReportBtn.setTitle(AppLiteral.bugReport, for: .normal)
+        aboutKindnessWallBtn.setTitle(AppLiteral.aboutKindnessWall, for: .normal)
+        statisticBtn.setTitle(AppLiteral.statistic, for: .normal)
     }
     
     func setLoginLogoutBtnTitle(){
         if let _=keychain.get(AppConstants.Authorization) {
-            loginLogoutBtn.setTitle("خروج", for: .normal)
+            loginLogoutBtn.setTitle(AppLiteral.logout, for: .normal)
         } else {
-            loginLogoutBtn.setTitle("ورود", for: .normal)
-            
+            loginLogoutBtn.setTitle(AppLiteral.login, for: .normal)
         }
     }
     
