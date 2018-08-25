@@ -38,7 +38,8 @@ class MyKindnessWallViewController: UIViewController {
         
     }
     @IBAction func statisticBtnAction(_ sender: Any) {
-        
+        let controller = StatisticViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     @IBAction func aboutKindnessWallBtnAction(_ sender: Any) {
         

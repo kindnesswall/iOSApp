@@ -95,6 +95,11 @@
 		05F6AA561FFEEB8D00CDABC2 /* ChatListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */; };
 		6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */; };
 		6009DB96212D6FE5002FD769 /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB94212D6FE5002FD769 /* ContactUsViewController.xib */; };
+		6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB972130922C002FD769 /* StatisticViewController.swift */; };
+		6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB982130922C002FD769 /* StatisticViewController.xib */; };
+		6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB9B2130931C002FD769 /* StatisticTableViewCell.swift */; };
+		6009DB9E2130931C002FD769 /* StatisticTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB9C2130931C002FD769 /* StatisticTableViewCell.xib */; };
+		6009DBA02130A385002FD769 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB9F2130A385002FD769 /* Statistics.swift */; };
 		601F83C32036A36500F9118B /* DateStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83C22036A36400F9118B /* DateStatusListViewModel.swift */; };
 		601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83CC2036A50600F9118B /* GenericOptionsTableViewCell.swift */; };
 		601F83CF2036A50600F9118B /* GenericOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 601F83CD2036A50600F9118B /* GenericOptionsTableViewCell.xib */; };
@@ -221,6 +226,11 @@
 		34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
 		6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		6009DB94212D6FE5002FD769 /* ContactUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsViewController.xib; sourceTree = "<group>"; };
+		6009DB972130922C002FD769 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
+		6009DB982130922C002FD769 /* StatisticViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticViewController.xib; sourceTree = "<group>"; };
+		6009DB9B2130931C002FD769 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
+		6009DB9C2130931C002FD769 /* StatisticTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticTableViewCell.xib; sourceTree = "<group>"; };
+		6009DB9F2130A385002FD769 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		601F83C22036A36400F9118B /* DateStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStatusListViewModel.swift; sourceTree = "<group>"; };
 		601F83CC2036A50600F9118B /* GenericOptionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericOptionsTableViewCell.swift; sourceTree = "<group>"; };
 		601F83CD2036A50600F9118B /* GenericOptionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericOptionsTableViewCell.xib; sourceTree = "<group>"; };
@@ -399,6 +409,7 @@
 				601F83D02036A8BE00F9118B /* DateStatus.swift */,
 				601F83D22037367900F9118B /* Place.swift */,
 				601F83D6203C3CD400F9118B /* ImageUpload.swift */,
+				6009DB9F2130A385002FD769 /* Statistics.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -458,6 +469,8 @@
 				05BEA4302049667400147BF5 /* MyKindnessWallViewController.xib */,
 				6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */,
 				6009DB94212D6FE5002FD769 /* ContactUsViewController.xib */,
+				6009DB972130922C002FD769 /* StatisticViewController.swift */,
+				6009DB982130922C002FD769 /* StatisticViewController.xib */,
 			);
 			name = "my kindnesswall";
 			path = "New Group";
@@ -587,6 +600,8 @@
 				60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */,
 				601F83CC2036A50600F9118B /* GenericOptionsTableViewCell.swift */,
 				601F83CD2036A50600F9118B /* GenericOptionsTableViewCell.xib */,
+				6009DB9B2130931C002FD769 /* StatisticTableViewCell.swift */,
+				6009DB9C2130931C002FD769 /* StatisticTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -704,6 +719,7 @@
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
 				05F6AA531FFEEB8D00CDABC2 /* ChatConversationViewController.xib in Resources */,
+				6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */,
 				05BFBBBA1FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib in Resources */,
 				05BEA445204C1FFA00147BF5 /* PromptUser.xib in Resources */,
 				05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */,
@@ -713,6 +729,7 @@
 				05BFBBD51FE1C4EE00DBCDDF /* RequestsViewController.xib in Resources */,
 				05F6AA561FFEEB8D00CDABC2 /* ChatListTableViewController.xib in Resources */,
 				05644DBB1FFEF3A500B7C853 /* OthersChatConversationTableViewCell.xib in Resources */,
+				6009DB9E2130931C002FD769 /* StatisticTableViewCell.xib in Resources */,
 				054B1B551FCC4101007570EF /* IRANSansMobile_Medium.ttf in Resources */,
 				05B124CC202DB056007E28CC /* latest.json in Resources */,
 				05BFBBD11FE0703500DBCDDF /* RegisterGiftViewController.xib in Resources */,
@@ -807,9 +824,11 @@
 				05BEA447204C21E800147BF5 /* PopUpView.swift in Sources */,
 				05644DBA1FFEF3A500B7C853 /* ChatConversationTableViewCell.swift in Sources */,
 				05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */,
+				6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */,
 				60FAB83C2064320E0039BF61 /* Request Inputs.swift in Sources */,
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
 				05644DC21FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift in Sources */,
+				6009DBA02130A385002FD769 /* Statistics.swift in Sources */,
 				05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */,
 				05644DC61FFEFA2E00B7C853 /* DateHandler.swift in Sources */,
 				05644DCD1FFF06BD00B7C853 /* SectionView.swift in Sources */,
@@ -823,6 +842,7 @@
 				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
 				05644DBC1FFEF3A500B7C853 /* ChatListTableViewCell.swift in Sources */,
 				05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */,
+				6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */,
 				05BFBBC11FDA9FCF00DBCDDF /* DateHelper.swift in Sources */,
 				60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */,
 				05644DC41FFEF62300B7C853 /* ChatAbs.swift in Sources */,
