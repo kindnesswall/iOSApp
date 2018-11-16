@@ -280,12 +280,12 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     func customizeUIElements() {
         self.verifyCodeTextField.backgroundColor=UIColor.clear
-        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:AppLiteral.activationCode, attributes: [NSAttributedStringKey.font : AppFont.getLightFont(size: 13),NSAttributedStringKey.foregroundColor: UIColor.gray])
+        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:AppLiteral.activationCode, attributes: [NSAttributedString.Key.font : AppFont.getLightFont(size: 13),NSAttributedString.Key.foregroundColor: UIColor.gray])
         
         self.registerBtn.backgroundColor=AppColor.tintColor
         
-        self.returnBtn.setTitleColor(AppColor.tintColor, for: UIControlState())
-        self.sendAgainBtn.setTitleColor(AppColor.tintColor, for: UIControlState())
+        self.returnBtn.setTitleColor(AppColor.tintColor, for: UIControl.State())
+        self.sendAgainBtn.setTitleColor(AppColor.tintColor, for: UIControl.State())
 
         UIFunctions.setBordersStyle(view: self.registerBtn, radius: 10, width: 1, color: AppColor.tintColor)
         

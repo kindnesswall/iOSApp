@@ -17,8 +17,8 @@ extension UINavigationItem {
         btn.target=target
         btn.action=action
         
-        btn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor:color], for: .normal)
-        btn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor:color], for: .highlighted)
+        btn.setTitleTextAttributes([NSAttributedString.Key.font : font,NSAttributedString.Key.foregroundColor:color], for: .normal)
+        btn.setTitleTextAttributes([NSAttributedString.Key.font : font,NSAttributedString.Key.foregroundColor:color], for: .highlighted)
         
         btn.title=text
         

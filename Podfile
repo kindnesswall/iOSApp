@@ -12,7 +12,7 @@ target 'app' do
 pod 'SDWebImage'
 pod 'ImageSlideshow', '~> 1.4'
 pod 'SwiftMessages'
-pod 'SwiftyOnboard'
+#pod 'SwiftyOnboard'
 pod 'CropViewController'
 pod 'XLActionController/Skype'
 pod 'UICircularProgressRing'

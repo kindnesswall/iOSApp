@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="IRAN Sans.ttf">
-            <string>IRANSans</string>
-        </array>
-    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatConversationViewController" customModule="VC" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatConversationViewController" customModule="app" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="173" id="KGk-i7-Jjw" customClass="OthersChatConversationTableViewCell" customModule="VC" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="173" id="KGk-i7-Jjw" customClass="OthersChatConversationTableViewCell" customModule="app" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="473" height="173"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -41,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9c-kq-qAQ">
-                                <rect key="frame" x="8" y="15.5" width="40" height="40.5"/>
+                                <rect key="frame" x="8" y="16" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" id="jaX-LH-M2C"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="ujp-xv-OTL"/>
@@ -50,7 +45,7 @@
                                 <color key="textColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2VA-y5-coI" userLabel="Download Btn" customClass="ButtonWithData" customModule="VC" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2VA-y5-coI" userLabel="Download Btn" customClass="ButtonWithData" customModule="app" customModuleProvider="target">
                                 <rect key="frame" x="8" y="16" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="E6f-TJ-azt"/>
@@ -61,7 +56,7 @@
                                     <action selector="downloadBtnClicked:" destination="-1" eventType="touchUpInside" id="pX2-Oa-WVK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnh-cW-0bh" customClass="ButtonWithData" customModule="VC" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnh-cW-0bh" customClass="ButtonWithData" customModule="app" customModuleProvider="target">
                                 <rect key="frame" x="8" y="16" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Dbr-ak-ePq"/>
@@ -72,11 +67,11 @@
                                     <action selector="playPauseBtnClicked:" destination="-1" eventType="touchUpInside" id="K6J-E1-eyz"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRy-ai-wzJ" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
-                                <rect key="frame" x="8" y="15.5" width="40" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRy-ai-wzJ" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                <rect key="frame" x="8" y="16" width="40" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLa-JY-33d" customClass="ButtonWithData" customModule="VC" customModuleProvider="target">
-                                        <rect key="frame" x="14" y="14" width="13" height="13"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLa-JY-33d" customClass="ButtonWithData" customModule="app" customModuleProvider="target">
+                                        <rect key="frame" x="13.5" y="13.5" width="13" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="13" id="hx4-oq-WxT"/>
                                             <constraint firstAttribute="height" constant="13" id="m5L-b5-11o"/>

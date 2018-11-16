@@ -19,7 +19,7 @@ class ChatConversationTableViewCell: UITableViewCell {
     @IBOutlet weak var playPauseBtn: ButtonWithData!
     //    @IBOutlet weak var leftMarginConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var circleProgressRing: UICircularProgressRingView!
+    @IBOutlet weak var circleProgressRing: UICircularProgressRing!
     
     @IBOutlet weak var pauseBtn: ButtonWithData!
     

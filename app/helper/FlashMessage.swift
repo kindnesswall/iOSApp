@@ -9,7 +9,7 @@ class FlashMessage {
         var view:MessageView
         var content = body
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
-            view = MessageView.viewFromNib(layout: .messageViewIOS8)
+            view = MessageView.viewFromNib(layout: .messageView)
         }else{
             view = MessageView.viewFromNib(layout: .cardView)
             for _ in 1..<100 {

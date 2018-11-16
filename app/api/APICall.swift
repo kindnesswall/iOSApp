@@ -123,7 +123,7 @@ class APICall {
         
         var imageData:Data?
         if let image=image {
-            imageData=UIImageJPEGRepresentation(image, 1)
+            imageData=image.jpegData(compressionQuality: 1)
         }
         guard let dataToSend=imageData else {
             return

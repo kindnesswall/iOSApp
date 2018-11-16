@@ -247,7 +247,7 @@ class APIRequest {
             
             if let image=image {
                 
-                let imageData=UIImageJPEGRepresentation(image, 1)
+                let imageData=image.jpegData(compressionQuality: 1)
                 
                 if let imageData=imageData {
                     //                    request.httpBody=imageData

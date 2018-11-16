@@ -9,7 +9,7 @@ class NavigationBarStyle {
     public static func setDefaultStyle(navigationC:UINavigationController?) {
 //        navigationC?.navigationBar.barTintColor=AppColor.tintColor
         navigationC?.navigationBar.tintColor=AppColor.tintColor
-        navigationC?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: AppFont.getBoldFont(size: 17),NSAttributedStringKey.foregroundColor: AppColor.tintColor]
+        navigationC?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: AppFont.getBoldFont(size: 17),NSAttributedString.Key.foregroundColor: AppColor.tintColor]
     }
     
     
@@ -39,7 +39,7 @@ class NavigationBarStyle {
         
         setDefaultStyle(navigationC: navigationC)
         
-        let backgroundImage = UIImage(named: image)?.resizableImage(withCapInsets: UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: UIImageResizingMode.stretch)
+        let backgroundImage = UIImage(named: image)?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), resizingMode: UIImage.ResizingMode.stretch)
         
         navigationC?.navigationBar.setBackgroundImage(backgroundImage!, for: UIBarMetrics.default)
         navigationC?.navigationBar.shadowImage = UIImage()
@@ -58,8 +58,8 @@ class NavigationBarStyle {
         backBtn.target=target
         backBtn.action=action
         
-        backBtn.setTitleTextAttributes([NSAttributedStringKey.font : UIFont(name: "icomoon", size: 25)!,NSAttributedStringKey.foregroundColor: UIColor.white], for: UIControlState())
-        backBtn.setTitleTextAttributes([NSAttributedStringKey.font : UIFont(name: "icomoon", size: 25)!,NSAttributedStringKey.foregroundColor: UIColor.white], for: .highlighted)
+        backBtn.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: "icomoon", size: 25)!,NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())
+        backBtn.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: "icomoon", size: 25)!,NSAttributedString.Key.foregroundColor: UIColor.white], for: .highlighted)
         
         //        titleBackBtn.setTitleTextAttributes([NSFontAttributeName : UIFont(name: "IranSans-Light", size: 15)!,NSForegroundColorAttributeName: UIColor.white], for: UIControlState())
         
@@ -97,8 +97,8 @@ class NavigationBarStyle {
         btn.target=target
         btn.action=action
         
-        btn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: UIControlState())
-        btn.setTitleTextAttributes([NSAttributedStringKey.font : font,NSAttributedStringKey.foregroundColor: AppColor.tintColor], for: .highlighted)
+        btn.setTitleTextAttributes([NSAttributedString.Key.font : font,NSAttributedString.Key.foregroundColor: AppColor.tintColor], for: UIControl.State())
+        btn.setTitleTextAttributes([NSAttributedString.Key.font : font,NSAttributedString.Key.foregroundColor: AppColor.tintColor], for: .highlighted)
         
         
         btn.title=text

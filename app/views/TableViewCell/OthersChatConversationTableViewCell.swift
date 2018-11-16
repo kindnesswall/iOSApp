@@ -17,7 +17,7 @@ class OthersChatConversationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var usernameLabel: UILabel!
     
-    @IBOutlet weak var circleProgressRing: UICircularProgressRingView!
+    @IBOutlet weak var circleProgressRing: UICircularProgressRing!
     
     @IBOutlet weak var downloadBtn: ButtonWithData!
     

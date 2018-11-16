@@ -10,10 +10,12 @@ import UIKit
 import CropViewController
 
 extension RegisterGiftViewController:UIImagePickerControllerDelegate{
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         
-        let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let selectedImage = info[.originalImage] as? UIImage
+        
+        
         if let selectedImage=selectedImage {
             
             
