@@ -43,9 +43,9 @@ class MyKindnessWallViewController: UIViewController {
     }
     @IBAction func aboutKindnessWallBtnAction(_ sender: Any) {
         
-//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as! IntroViewController
-//        self.present(viewController, animated: true, completion: nil)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as! IntroViewController
+        self.present(viewController, animated: true, completion: nil)
         
     }
     @IBAction func bugReportBtnAction(_ sender: Any) {
