@@ -33,6 +33,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableview.isHidden = true
+        
         self.initialLoadingIndicator=LoadingIndicator(view: self.tableview)
         self.lazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight/2)
         self.tableview.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight/2, right: 0)
@@ -146,6 +148,7 @@ class HomeViewController: UIViewController {
                 
                 if index==0 {
                     self.gifts=[]
+                    self.tableview.isHidden = false
                     self.tableview.reloadData()
                 }
                 

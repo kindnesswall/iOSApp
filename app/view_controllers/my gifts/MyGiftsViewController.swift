@@ -40,6 +40,9 @@ class MyGiftsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.registeredGiftsTableView.isHidden = true
+        self.donatedGiftsTableView.isHidden = true
+        
         registeredGiftsTableView.registerNib(type: GiftTableViewCell.self, nib: "GiftTableViewCell")
         donatedGiftsTableView.registerNib(type: GiftTableViewCell.self, nib: "GiftTableViewCell")
         
@@ -58,7 +61,7 @@ class MyGiftsViewController: UIViewController {
         getRegisteredGifts(index:0)
         getDonatedGifts(index:0)
         
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -111,13 +114,13 @@ class MyGiftsViewController: UIViewController {
     
     func hideOrShowCorrespondingViewOfSegmentControl(type :SegmentControlViewType){
         
-        if type == .registered {
+        if type == .registered, self.registeredGifts.count > 0{
             self.registeredGiftsTableView.isHidden=false
         } else {
             self.registeredGiftsTableView.isHidden=true
         }
         
-        if type == .donated {
+        if type == .donated, self.donatedGifts.count > 0 {
             self.donatedGiftsTableView.isHidden=false
         } else {
             self.donatedGiftsTableView.isHidden=true
