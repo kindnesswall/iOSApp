@@ -21,7 +21,6 @@
 		0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8691F8C1A920084CDF1 /* Assets.xcassets */; };
 		0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0507C86B1F8C1A920084CDF1 /* LaunchScreen.storyboard */; };
 		05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05335D431FD0D0A800601115 /* GiftDetailViewController.swift */; };
-		05335D461FD0D0A800601115 /* GiftDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05335D441FD0D0A800601115 /* GiftDetailViewController.xib */; };
 		05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05335D481FD0DDA200601115 /* SDWebImageSource.swift */; };
 		054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */; };
 		054B1B4A1FCC29F6007570EF /* GiftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B481FCC29F6007570EF /* GiftTableViewCell.xib */; };
@@ -47,7 +46,6 @@
 		05644DCE1FFF06BD00B7C853 /* SectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05644DCC1FFF06BC00B7C853 /* SectionView.xib */; };
 		05644DD01FFF06F900B7C853 /* NibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DCF1FFF06F900B7C853 /* NibLoader.swift */; };
 		056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FBB581F9135EA0023C9CF /* HomeViewController.swift */; };
-		056FBB5B1F9135EA0023C9CF /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056FBB591F9135EA0023C9CF /* HomeViewController.xib */; };
 		056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FBB601F91585C0023C9CF /* APIURLs.swift */; };
 		05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */; };
 		05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE64721FA93F4800FCCC28 /* ApiMethods.swift */; };
@@ -93,6 +91,10 @@
 		05F6AA541FFEEB8D00CDABC2 /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6AA501FFEEB8C00CDABC2 /* ChatListTableViewController.swift */; };
 		05F6AA551FFEEB8D00CDABC2 /* ChatConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6AA511FFEEB8D00CDABC2 /* ChatConversationViewController.swift */; };
 		05F6AA561FFEEB8D00CDABC2 /* ChatListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */; };
+		5245920F21AAD6BB0009824C /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5245921121AAD6BB0009824C /* HomeViewController.xib */; };
+		5245921821AAD7420009824C /* GiftDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5245921A21AAD7420009824C /* GiftDetailViewController.xib */; };
+		5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5245921F21AAFC750009824C /* LocalizationSystem.swift */; };
+		5245922221AAFEDC0009824C /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5245922121AAFEDC0009824C /* MyGiftsViewController.xib */; };
 		6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */; };
 		6009DB96212D6FE5002FD769 /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB94212D6FE5002FD769 /* ContactUsViewController.xib */; };
 		6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB972130922C002FD769 /* StatisticViewController.swift */; };
@@ -117,7 +119,6 @@
 		60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */; };
 		60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861155206E50CD000A42E5 /* AppLanguage.swift */; };
 		6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6092D631204950F700AFDA7B /* MyGiftsViewController.swift */; };
-		6092D634204950F700AFDA7B /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6092D632204950F700AFDA7B /* MyGiftsViewController.xib */; };
 		60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */; };
 		60AE9C86202DB9B100F246CD /* CategoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C85202DB9B100F246CD /* CategoryListViewModel.swift */; };
 		60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C87202DE87100F246CD /* OptionsListViewController.swift */; };
@@ -151,7 +152,6 @@
 		0507C86C1F8C1A920084CDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0507C86E1F8C1A920084CDF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05335D431FD0D0A800601115 /* GiftDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetailViewController.swift; sourceTree = "<group>"; };
-		05335D441FD0D0A800601115 /* GiftDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftDetailViewController.xib; sourceTree = "<group>"; };
 		05335D481FD0DDA200601115 /* SDWebImageSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDWebImageSource.swift; sourceTree = "<group>"; };
 		054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftTableViewCell.swift; sourceTree = "<group>"; };
 		054B1B481FCC29F6007570EF /* GiftTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftTableViewCell.xib; sourceTree = "<group>"; };
@@ -177,7 +177,6 @@
 		05644DCC1FFF06BC00B7C853 /* SectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionView.xib; sourceTree = "<group>"; };
 		05644DCF1FFF06F900B7C853 /* NibLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoader.swift; sourceTree = "<group>"; };
 		056FBB581F9135EA0023C9CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = app/view_controllers/home/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
-		056FBB591F9135EA0023C9CF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = app/view_controllers/home/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
 		056FBB601F91585C0023C9CF /* APIURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLs.swift; sourceTree = "<group>"; };
 		05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiOutputs.swift; sourceTree = "<group>"; };
 		05AE64721FA93F4800FCCC28 /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
@@ -224,6 +223,15 @@
 		05F6AA511FFEEB8D00CDABC2 /* ChatConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConversationViewController.swift; sourceTree = "<group>"; };
 		05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatListTableViewController.xib; sourceTree = "<group>"; };
 		34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
+		524591D921AA71130009824C /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Main.strings; sourceTree = "<group>"; };
+		524591DA21AA71140009824C /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5245920E21AAD39A0009824C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		5245921221AAD6C60009824C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HomeViewController.xib; sourceTree = "<group>"; };
+		5245921921AAD7420009824C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
+		5245921C21AAD7450009824C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/GiftDetailViewController.strings; sourceTree = "<group>"; };
+		5245921E21AAD7470009824C /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/GiftDetailViewController.strings; sourceTree = "<group>"; };
+		5245921F21AAFC750009824C /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSystem.swift; sourceTree = "<group>"; };
+		5245922121AAFEDC0009824C /* MyGiftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyGiftsViewController.xib; sourceTree = "<group>"; };
 		6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		6009DB94212D6FE5002FD769 /* ContactUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsViewController.xib; sourceTree = "<group>"; };
 		6009DB972130922C002FD769 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
@@ -248,7 +256,6 @@
 		60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar + config.swift"; sourceTree = "<group>"; };
 		60861155206E50CD000A42E5 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		6092D631204950F700AFDA7B /* MyGiftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGiftsViewController.swift; sourceTree = "<group>"; };
-		6092D632204950F700AFDA7B /* MyGiftsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyGiftsViewController.xib; sourceTree = "<group>"; };
 		60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsListViewController.xib; sourceTree = "<group>"; };
 		60AE9C85202DB9B100F246CD /* CategoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewModel.swift; sourceTree = "<group>"; };
 		60AE9C87202DE87100F246CD /* OptionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsListViewController.swift; sourceTree = "<group>"; };
@@ -359,6 +366,7 @@
 		05335D471FD0DD7A00601115 /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				5245921F21AAFC750009824C /* LocalizationSystem.swift */,
 				05644DCF1FFF06F900B7C853 /* NibLoader.swift */,
 				6032F61B205287ED00975C23 /* LoadingIndicator.swift */,
 				05644DC51FFEFA2E00B7C853 /* DateHandler.swift */,
@@ -428,8 +436,8 @@
 		05BEA43320497AD500147BF5 /* my gifts */ = {
 			isa = PBXGroup;
 			children = (
+				5245922121AAFEDC0009824C /* MyGiftsViewController.xib */,
 				6092D631204950F700AFDA7B /* MyGiftsViewController.swift */,
-				6092D632204950F700AFDA7B /* MyGiftsViewController.xib */,
 			);
 			path = "my gifts";
 			sourceTree = "<group>";
@@ -438,7 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				056FBB581F9135EA0023C9CF /* HomeViewController.swift */,
-				056FBB591F9135EA0023C9CF /* HomeViewController.xib */,
+				5245921121AAD6BB0009824C /* HomeViewController.xib */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -447,7 +455,7 @@
 			isa = PBXGroup;
 			children = (
 				05335D431FD0D0A800601115 /* GiftDetailViewController.swift */,
-				05335D441FD0D0A800601115 /* GiftDetailViewController.xib */,
+				5245921A21AAD7420009824C /* GiftDetailViewController.xib */,
 			);
 			path = "gift detail";
 			sourceTree = "<group>";
@@ -681,6 +689,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fa,
 			);
 			mainGroup = 0507C8561F8C1A920084CDF1;
 			productRefGroup = 0507C8601F8C1A920084CDF1 /* Products */;
@@ -710,7 +719,6 @@
 				05BEA4322049667500147BF5 /* MyKindnessWallViewController.xib in Resources */,
 				60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */,
 				05029ED31FE93EC9004D96B1 /* RequestToAGiftTableViewCell.xib in Resources */,
-				6092D634204950F700AFDA7B /* MyGiftsViewController.xib in Resources */,
 				054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */,
 				05644DB91FFEF3A500B7C853 /* ChatListTableViewCell.xib in Resources */,
 				054B1B541FCC4101007570EF /* IRANSansMobile_Black.ttf in Resources */,
@@ -724,6 +732,7 @@
 				05BEA445204C1FFA00147BF5 /* PromptUser.xib in Resources */,
 				05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */,
 				60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */,
+				5245922221AAFEDC0009824C /* MyGiftsViewController.xib in Resources */,
 				054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */,
 				6009DB96212D6FE5002FD769 /* ContactUsViewController.xib in Resources */,
 				05BFBBD51FE1C4EE00DBCDDF /* RequestsViewController.xib in Resources */,
@@ -733,8 +742,8 @@
 				054B1B551FCC4101007570EF /* IRANSansMobile_Medium.ttf in Resources */,
 				05B124CC202DB056007E28CC /* latest.json in Resources */,
 				05BFBBD11FE0703500DBCDDF /* RegisterGiftViewController.xib in Resources */,
-				056FBB5B1F9135EA0023C9CF /* HomeViewController.xib in Resources */,
-				05335D461FD0D0A800601115 /* GiftDetailViewController.xib in Resources */,
+				5245920F21AAD6BB0009824C /* HomeViewController.xib in Resources */,
+				5245921821AAD7420009824C /* GiftDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,6 +845,7 @@
 				6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */,
 				60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */,
 				05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */,
+				5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */,
 				05BEA4312049667500147BF5 /* MyKindnessWallViewController.swift in Sources */,
 				05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */,
 				6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */,
@@ -910,6 +920,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				0507C8671F8C1A920084CDF1 /* Base */,
+				524591D921AA71130009824C /* fa */,
+				5245920E21AAD39A0009824C /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -918,8 +930,28 @@
 			isa = PBXVariantGroup;
 			children = (
 				0507C86C1F8C1A920084CDF1 /* Base */,
+				524591DA21AA71140009824C /* fa */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		5245921121AAD6BB0009824C /* HomeViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5245921221AAD6C60009824C /* Base */,
+			);
+			name = HomeViewController.xib;
+			path = app/view_controllers/home;
+			sourceTree = SOURCE_ROOT;
+		};
+		5245921A21AAD7420009824C /* GiftDetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5245921921AAD7420009824C /* Base */,
+				5245921C21AAD7450009824C /* en */,
+				5245921E21AAD7470009824C /* fa */,
+			);
+			name = GiftDetailViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -929,6 +961,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -987,6 +1020,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

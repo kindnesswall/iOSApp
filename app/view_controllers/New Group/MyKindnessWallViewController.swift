@@ -18,6 +18,22 @@ class MyKindnessWallViewController: UIViewController {
     @IBOutlet var loginLogoutBtn: UIButton!
     let keychain = KeychainSwift()
     
+    @IBAction func SwitchLanguageBtnClicked(_ sender: Any) {
+        if LocalizationSystem.sharedInstance.getLanguage() == "fa" {
+            LocalizationSystem.sharedInstance.setLanguage(languageCode: "en")
+            UIView.appearance().semanticContentAttribute = .forceLeftToRight
+        } else {
+            LocalizationSystem.sharedInstance.setLanguage(languageCode: "fa")
+            UIView.appearance().semanticContentAttribute = .forceRightToLeft
+        }
+        
+        exit(0);
+        
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarRoot") as! ViewController
+//        let appDlg = UIApplication.shared.delegate as? AppDelegate
+//        appDlg?.window?.rootViewController = vc
+    }
+    
     @IBAction func logoutBtnClicked(_ sender: Any) {
         
         if let _=keychain.get(AppConstants.Authorization) { //UserDefaults.standard.string(forKey: AppConstants.Authorization) {

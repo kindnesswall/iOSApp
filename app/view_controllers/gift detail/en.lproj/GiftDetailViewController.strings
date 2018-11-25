@@ -1,0 +1,39 @@
+
+/* Class = "UILabel"; text = " "; ObjectID = "NEG-oL-UgO"; */
+"NEG-oL-UgO.text" = " ";
+
+/* Class = "UIButton"; normalTitle = "درخواست"; ObjectID = "QJ6-HU-DLW"; */
+"QJ6-HU-DLW.normalTitle" = "Request";
+
+/* Class = "UILabel"; text = " "; ObjectID = "b9x-jT-4OQ"; */
+"b9x-jT-4OQ.text" = " ";
+
+/* Class = "UILabel"; text = "آدرس:"; ObjectID = "ejt-di-g48"; */
+"ejt-di-g48.text" = "Address:";
+
+/* Class = "UILabel"; text = " "; ObjectID = "iOu-x1-2cU"; */
+"iOu-x1-2cU.text" = " ";
+
+/* Class = "UILabel"; text = "دسته بندی"; ObjectID = "ork-JQ-Qas"; */
+"ork-JQ-Qas.text" = "Category:";
+
+/* Class = "UILabel"; text = " "; ObjectID = "qYU-4S-kD4"; */
+"qYU-4S-kD4.text" = " ";
+
+/* Class = "UILabel"; text = " "; ObjectID = "qtM-QX-IeH"; */
+"qtM-QX-IeH.text" = " ";
+
+/* Class = "UILabel"; text = " "; ObjectID = "scl-ZU-nd7"; */
+"scl-ZU-nd7.text" = " ";
+
+/* Class = "UILabel"; text = " "; ObjectID = "tbU-Q4-KMh"; */
+"tbU-Q4-KMh.text" = " ";
+
+/* Class = "UIButton"; normalTitle = "حذف"; ObjectID = "tsH-hz-jPQ"; */
+"tsH-hz-jPQ.normalTitle" = "Delete";
+
+/* Class = "UILabel"; text = "وضعیت"; ObjectID = "tvm-Lm-x2d"; */
+"tvm-Lm-x2d.text" = "Status";
+
+/* Class = "UILabel"; text = "توضیحات:"; ObjectID = "xOg-iW-mA8"; */
+"xOg-iW-mA8.text" = "Description";
