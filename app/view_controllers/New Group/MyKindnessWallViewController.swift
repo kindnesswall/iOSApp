@@ -27,7 +27,25 @@ class MyKindnessWallViewController: UIViewController {
             UIView.appearance().semanticContentAttribute = .forceRightToLeft
         }
         
-        exit(0);
+        let alert = UIAlertController(title: "بستن برنامه", message: "برای تغییر زبان باید پس از بسته شدن برنامه آن را مجدد اجرا کنید", preferredStyle: UIAlertController.Style.alert)
+        
+//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {
+//
+//        })
+        
+            alert.addAction(UIAlertAction(title: "باشه", style: UIAlertAction.Style.default, handler: { (action) in
+                exit(0)
+            }))
+        
+        alert.addAction(UIAlertAction(title: "بی‌خیال", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: {
+                
+            })
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+
+        
         
 //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarRoot") as! ViewController
 //        let appDlg = UIApplication.shared.delegate as? AppDelegate
