@@ -95,6 +95,7 @@
 		5245921821AAD7420009824C /* GiftDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5245921A21AAD7420009824C /* GiftDetailViewController.xib */; };
 		5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5245921F21AAFC750009824C /* LocalizationSystem.swift */; };
 		5245922221AAFEDC0009824C /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5245922121AAFEDC0009824C /* MyGiftsViewController.xib */; };
+		5245922521AB47EA0009824C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5245922721AB47EA0009824C /* Localizable.strings */; };
 		6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */; };
 		6009DB96212D6FE5002FD769 /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB94212D6FE5002FD769 /* ContactUsViewController.xib */; };
 		6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB972130922C002FD769 /* StatisticViewController.swift */; };
@@ -232,6 +233,8 @@
 		5245921E21AAD7470009824C /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/GiftDetailViewController.strings; sourceTree = "<group>"; };
 		5245921F21AAFC750009824C /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSystem.swift; sourceTree = "<group>"; };
 		5245922121AAFEDC0009824C /* MyGiftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyGiftsViewController.xib; sourceTree = "<group>"; };
+		5245922621AB47EA0009824C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5245922821AB4BC30009824C /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		6009DB94212D6FE5002FD769 /* ContactUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsViewController.xib; sourceTree = "<group>"; };
 		6009DB972130922C002FD769 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
@@ -340,6 +343,7 @@
 				0507C8641F8C1A920084CDF1 /* ViewController.swift */,
 				0507C8661F8C1A920084CDF1 /* Main.storyboard */,
 				0507C86B1F8C1A920084CDF1 /* LaunchScreen.storyboard */,
+				5245922721AB47EA0009824C /* Localizable.strings */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -728,6 +732,7 @@
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
 				05F6AA531FFEEB8D00CDABC2 /* ChatConversationViewController.xib in Resources */,
 				6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */,
+				5245922521AB47EA0009824C /* Localizable.strings in Resources */,
 				05BFBBBA1FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib in Resources */,
 				05BEA445204C1FFA00147BF5 /* PromptUser.xib in Resources */,
 				05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */,
@@ -952,6 +957,15 @@
 				5245921E21AAD7470009824C /* fa */,
 			);
 			name = GiftDetailViewController.xib;
+			sourceTree = "<group>";
+		};
+		5245922721AB47EA0009824C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5245922621AB47EA0009824C /* en */,
+				5245922821AB4BC30009824C /* fa */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

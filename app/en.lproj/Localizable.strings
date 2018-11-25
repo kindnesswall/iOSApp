@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  app
+
+  Created by Hamed.Gh on 11/26/18.
+  Copyright © 2018 Hamed.Gh. All rights reserved.
+*/
+
+"Switch_Language_dialog_title" = "Close App";
+"Switch_Language_dialog_text" = "To switch language, open the app after closing";
+"Switch_Language_dialog_ok" = "OK";
+"Switch_Language_dialog_cancel" = "Cancel";
+
+"logout_dialog_title" = "Logout";
+"logout_dialog_text" = "Are you sure?";
+"logout_dialog_ok" = "Yes";
+"logout_dialog_cancel" = "No";

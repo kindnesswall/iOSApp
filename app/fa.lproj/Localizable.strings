@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  app
+
+  Created by Hamed.Gh on 11/26/18.
+  Copyright © 2018 Hamed.Gh. All rights reserved.
+*/
+
+"Switch_Language_dialog_title" = "بستن برنامه";
+"Switch_Language_dialog_text" = "برای تغییر زبان باید پس از بسته شدن برنامه آن را مجدد اجرا کنید";
+"Switch_Language_dialog_ok" = "باشه";
+"Switch_Language_dialog_cancel" = "بی‌خیال";
+
+"logout_dialog_title" = "خروج";
+"logout_dialog_text" = "آیا مطمئن هستید؟";
+"logout_dialog_ok" = "بله";
+"logout_dialog_cancel" = "خیر";

@@ -13,6 +13,10 @@ class LocalizationSystem:NSObject {
     
     var bundle: Bundle!
     
+    static func getStr(forKey:String)->String{
+        return LocalizationSystem.sharedInstance.localizedStringForKey(key:forKey)
+    }
+    
     class var sharedInstance: LocalizationSystem {
         struct Singleton {
             static let instance: LocalizationSystem = LocalizationSystem()
@@ -23,6 +27,10 @@ class LocalizationSystem:NSObject {
     override init() {
         super.init()
         bundle = Bundle.main
+    }
+    
+    func localizedStringForKey(key:String) -> String {
+        return localizedStringForKey(key:key, comment:"")
     }
     
     func localizedStringForKey(key:String, comment:String) -> String {
