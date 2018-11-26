@@ -286,9 +286,10 @@ class MyGiftsViewController: UIViewController {
     }
     
     func setAllTextsInView(){
-        self.navigationItem.title=AppLiteral.myGifts
-        self.segmentControl.setTitle(AppLiteral.donated, forSegmentAt: 0)
-        self.segmentControl.setTitle(AppLiteral.registered, forSegmentAt: 1)
+        self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.MyGiftsViewController_title)
+        
+        self.segmentControl.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.donated), forSegmentAt: 0)
+        self.segmentControl.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.registered), forSegmentAt: 1)
     }
 
     override func didReceiveMemoryWarning() {

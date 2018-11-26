@@ -25,7 +25,7 @@ class CategoryListViewModel: NSObject {
             if let reply=APIRequest.readJsonData(data: data, outputType: [Category].self) {
                 self.categories=[]
                 if hasDefaultOption {
-                    let defaultOption=Category(id: "0", title: AppLiteral.allGifts)
+                    let defaultOption=Category(id: "0", title: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts))
                     self.categories.append(defaultOption)
                 }
                 self.categories.append(contentsOf: reply)

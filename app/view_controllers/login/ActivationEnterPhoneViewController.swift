@@ -58,14 +58,14 @@ class ActivationEnterPhoneViewController: UIViewController {
     }
     
     func setAllTextsInView(){
-        self.navigationItem.title=AppLiteral.login
-        self.registerBtn.setTitle(AppLiteral.sendingActivationCode, for: .normal)
-        self.guideLabel.text=AppLiteralForMessages.guideOfSendingActivationCode
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.login)
+        self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: .normal)
+        self.guideLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.guideOfSendingActivationCode)
     }
     
     func setNavBar(){
 //        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationItem.title=AppLiteral.login
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.login)
         self.navigationItem.removeDefaultBackBtn()
         self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
     }
@@ -93,7 +93,7 @@ class ActivationEnterPhoneViewController: UIViewController {
     @IBAction func registerBtnClick(_ sender: Any) {
         let mobile:String = phoneNumberTextField.text ?? ""
         if !mobile.starts(with: "09") || mobile.count != 11 || !mobile.isNumber{
-            FlashMessage.showMessage(body: AppLiteralForMessages.phoneNumberIncorrectError, theme: .error)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.phoneNumberIncorrectError), theme: .error)
             return
         }
         
@@ -107,7 +107,7 @@ class ActivationEnterPhoneViewController: UIViewController {
         
         ApiMethods.register(telephone: mobile) { (data, response, error) in
             
-            self.registerBtn.setTitle(AppLiteral.sendingActivationCode, for: [])
+            self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: [])
             self.loading.stopAnimating()
             
             if let response = response as? HTTPURLResponse {

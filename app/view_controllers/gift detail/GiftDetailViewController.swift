@@ -87,9 +87,9 @@ class GiftDetailViewController: UIViewController {
         giftCategory.text = gift?.category
         giftAddress.text = gift?.address
         if let isNew = gift?.isNew, isNew {
-            oldOrNew.text = AppLiteral.new
+            oldOrNew.text = LocalizationSystem.getStr(forKey: LanguageKeys.new)
         }else{
-            oldOrNew.text = AppLiteral.secondHand
+            oldOrNew.text = LocalizationSystem.getStr(forKey: LanguageKeys.used)
         }
         giftDescription.text = gift?.description
         
@@ -97,7 +97,13 @@ class GiftDetailViewController: UIViewController {
     }
     
     func addEditBtn(){
-        editBtn = NavigationBarStyle.getNavigationItem(target: self, action: #selector(self.editBtnClicked), text: AppLiteral.edit,font:AppFont.getRegularFont(size: 16))
+        editBtn = NavigationBarStyle.getNavigationItem(
+            target: self,
+            action: #selector(self.editBtnClicked),
+            text:LocalizationSystem.getStr(forKey: LanguageKeys.edit),
+            font:AppFont.getRegularFont(size: 16)
+        )
+        
         self.navigationItem.rightBarButtonItems=[editBtn!]
     }
     
@@ -137,7 +143,7 @@ class GiftDetailViewController: UIViewController {
     }
     @IBAction func removeBtnClicked(_ sender: Any) {
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: AppLiteralForMessages.giftRemovingPrompt,animation:.none,declineHandler: nil) { (ـ) in
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: LocalizationSystem.getStr(forKey: LanguageKeys.giftRemovingPrompt),animation:.none,declineHandler: nil) { (ـ) in
             self.removeGift()
         }
         
@@ -177,13 +183,16 @@ class GiftDetailViewController: UIViewController {
     }
     
     func setAllTextsInView(){
-        self.editBtn?.title=AppLiteral.edit
-        self.removeBtn.setTitle(AppLiteral.remove, for: .normal)
-        self.requestBtn.setTitle(AppLiteral.request, for: .normal)
-        self.categoryLabel.text=AppLiteral.category
-        self.oldOrNewLabel.text=AppLiteral.status
-        self.addressLabel.text=AppLiteral.address
-        self.descriptionLabel.text=AppLiteral.description
+        self.editBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.edit)
+        self.removeBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.remove), for: .normal)
+        self.requestBtn.setTitle(
+            LocalizationSystem.getStr(forKey: LanguageKeys.request),
+            for: .normal)
+        
+        self.categoryLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.category)
+        self.oldOrNewLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.status)
+        self.addressLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.address)
+        self.descriptionLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.description)
     }
     
     func createSlideShow() {

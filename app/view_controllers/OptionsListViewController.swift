@@ -38,7 +38,7 @@ class OptionsListViewController: UIViewController {
             switch option {
             case .category:
                 
-                self.navigationItem.title=AppLiteral.category
+                self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.category)
                 tableView.registerNib(type: CategoryOptionsTableViewCell.self, nib: "CategoryOptionsTableViewCell")
                
                loadingIndicator.startAnimating()
@@ -49,12 +49,12 @@ class OptionsListViewController: UIViewController {
                     
                 })
             case .dateStatus:
-                self.navigationItem.title=AppLiteral.newOrSecondHand
+                self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.newOrUsed)
                 tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
                 dateStatusListViewModel=DateStatusListViewModel()
                 
             case .city:
-                self.navigationItem.title=AppLiteral.placeOfTheGift
+                self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.placeOfTheGift)
                 tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
                 loadingIndicator.startAnimating()
                 placeListViewModel=PlaceListViewModel(hasDefaultOption:self.hasDefaultOption,completionHandler: {
@@ -63,7 +63,7 @@ class OptionsListViewController: UIViewController {
                     self?.tableView.reloadData()
                 })
             case .region(let cityId):
-                self.navigationItem.title=AppLiteral.placeOfTheGift
+                self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.placeOfTheGift)
                 tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
                 loadingIndicator.startAnimating()
                 placeListViewModel=PlaceListViewModel(hasDefaultOption:self.hasDefaultOption,cityId: cityId, completionHandler: {
@@ -80,7 +80,7 @@ class OptionsListViewController: UIViewController {
     }
     
     func setNavbar(){
-        NavigationBarStyle.setRightBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.exitBtnAction), text: AppLiteral.cancel)
+        NavigationBarStyle.setRightBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.exitBtnAction), text: LocalizationSystem.getStr(forKey: LanguageKeys.cancel))
         NavigationBarStyle.removeDefaultBackBtn(navigationItem: self.navigationItem)
     }
     

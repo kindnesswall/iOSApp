@@ -15,8 +15,8 @@ class DateStatusListViewModel: NSObject {
     override init() {
         super.init()
         
-        dateStatus.append(DateStatus(id:"0",title:AppLiteral.new))
-        dateStatus.append(DateStatus(id: "1" , title: AppLiteral.secondHand))
+        dateStatus.append(DateStatus(id:"0",title:LocalizationSystem.getStr(forKey: LanguageKeys.new)))
+        dateStatus.append(DateStatus(id: "1" , title: LocalizationSystem.getStr(forKey: LanguageKeys.used)))
     }
     
     func setCell(cell:GenericOptionsTableViewCell,indexPath:IndexPath) {

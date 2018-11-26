@@ -30,7 +30,7 @@ class PlaceListViewModel: NSObject {
                 
                 self.places=[]
                 if hasDefaultOption {
-                    let defaultOption=Place(id: 0, name: AppLiteral.allCities)
+                    let defaultOption=Place(id: 0, name: LocalizationSystem.getStr(forKey: LanguageKeys.allCities))
                     self.places.append(defaultOption)
                 }
                 
@@ -58,7 +58,7 @@ class PlaceListViewModel: NSObject {
                 
                 self.places=[]
                 if hasDefaultOption {
-                    let defaultOption=Place(id: 0, name:AppLiteral.allRegions)
+                    let defaultOption=Place(id: 0, name:LocalizationSystem.getStr(forKey: LanguageKeys.allRegions))
                     self.places.append(defaultOption)
                 }
                 

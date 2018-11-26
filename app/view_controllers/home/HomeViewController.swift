@@ -73,10 +73,10 @@ class HomeViewController: UIViewController {
     }
     
     func setNavigationBar(){
-        categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: AppLiteral.allGifts,font:AppFont.getRegularFont(size: 16))
+        categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts),font:AppFont.getRegularFont(size: 16))
         self.navigationItem.rightBarButtonItems=[categotyBarBtn!]
         
-        cityBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: AppLiteral.allCities,font:AppFont.getRegularFont(size: 16))
+        cityBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allCities),font:AppFont.getRegularFont(size: 16))
         self.navigationItem.leftBarButtonItems=[cityBarBtn!]
     }
     
@@ -184,12 +184,12 @@ class HomeViewController: UIViewController {
     }
     
     func setAllTextsInView(){
-        self.navigationItem.title=AppLiteral.home
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.home)
         if categoryId=="0" {
-            self.categotyBarBtn?.title=AppLiteral.allGifts
+            self.categotyBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allGifts)
         }
         if cityId=="0" {
-            self.cityBarBtn?.title=AppLiteral.allCities
+            self.cityBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allCities)
         }
     }
     

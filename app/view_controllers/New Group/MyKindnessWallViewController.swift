@@ -25,7 +25,7 @@ class MyKindnessWallViewController: UIViewController {
                                       message: LocalizationSystem.getStr(forKey: "Switch_Language_dialog_text"),
                                       preferredStyle: UIAlertController.Style.alert)
         
-            alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: "Switch_Language_dialog_ok"), style: UIAlertAction.Style.default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
                 if LocalizationSystem.sharedInstance.getLanguage() == "fa" {
                     LocalizationSystem.sharedInstance.setLanguage(languageCode: "en")
                     UIView.appearance().semanticContentAttribute = .forceLeftToRight
@@ -37,7 +37,7 @@ class MyKindnessWallViewController: UIViewController {
                 exit(0)
             }))
         
-        alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: "Switch_Language_dialog_cancel"), style: UIAlertAction.Style.default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.cancel), style: UIAlertAction.Style.default, handler: { (action) in
             alert.dismiss(animated: true, completion: {
                 
             })
@@ -57,13 +57,13 @@ class MyKindnessWallViewController: UIViewController {
                 message: LocalizationSystem.getStr(forKey: "logout_dialog_text"),
                 preferredStyle: UIAlertController.Style.alert)
             
-            alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: "logout_dialog_ok"), style: UIAlertAction.Style.default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
                 AppDelegate.clearUserDefault()
                 self.keychain.clear()
                 self.setLoginLogoutBtnTitle()
             }))
             
-            alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: "logout_dialog_cancel"), style: UIAlertAction.Style.default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.cancel), style: UIAlertAction.Style.default, handler: { (action) in
                 alert.dismiss(animated: true, completion: {
                     
                 })
@@ -111,7 +111,7 @@ class MyKindnessWallViewController: UIViewController {
     func setAllTextsInView(){
         setLoginLogoutBtnTitle()
         
-        self.navigationItem.title=AppLiteral.myWall
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.myWall)
         
 //        contactUsBtn.setTitle(AppLiteral.contactUs, for: .normal)
 //        bugReportBtn.setTitle(AppLiteral.bugReport, for: .normal)
@@ -121,9 +121,9 @@ class MyKindnessWallViewController: UIViewController {
     
     func setLoginLogoutBtnTitle(){
         if let _=keychain.get(AppConstants.Authorization) {
-            loginLogoutBtn.setTitle(AppLiteral.logout, for: .normal)
+            loginLogoutBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.logout), for: .normal)
         } else {
-            loginLogoutBtn.setTitle(AppLiteral.login, for: .normal)
+            loginLogoutBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.login), for: .normal)
         }
     }
     

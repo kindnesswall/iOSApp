@@ -92,9 +92,9 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
                 
                 self?.imageViewUploadingHasFinished(uploadImageView: self?.uploadedImageViews[uploadIndex], imageSrc: imageSrc)
                 
-                FlashMessage.showMessage(body: AppLiteralForMessages.uploadedSuccessfully,theme: .success)
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.uploadedSuccessfully),theme: .success)
             } else {
-                FlashMessage.showMessage(body: AppLiteralForMessages.imageUploadingError,theme: .warning)
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
             }
             
         }

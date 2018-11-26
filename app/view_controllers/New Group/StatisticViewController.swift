@@ -19,10 +19,10 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        self.navigationItem.title = AppLiteral.statistic
+        self.navigationItem.title = LocalizationSystem.getStr(forKey: "StatisticViewController_title")
+        
         self.tableView.register(type: StatisticTableViewCell.self)
         self.initialLoadingIndicator=LoadingIndicator(view: self.view)
-        
         
         fetchStatistics()
         // Do any additional setup after loading the view.
