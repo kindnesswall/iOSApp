@@ -20,6 +20,7 @@
 "MyGiftsViewController_title" = "هدیه‌های من";
 "RegisterGiftViewController_title" = "ثبت هدیه";
 "EditGiftViewController_title" = "ویرایش هدیه";
+"RequestsViewController_title" = "لیست درخواستها به هدیه‌های من";
 
 "back" = "بازگشت";
 "cancel" = "انصراف";

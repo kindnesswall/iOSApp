@@ -37,7 +37,7 @@ class RequestsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
-        self.navigationItem.title="لیست درخواستها به هدیه‌های من"
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.RequestsViewController_title)
         
         guard let _ = keychain.get(AppConstants.Authorization) else{
             loginView.show()

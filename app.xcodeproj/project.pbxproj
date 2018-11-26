@@ -73,7 +73,6 @@
 		05BFBBCC1FDB101700DBCDDF /* UIFont+printAllFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */; };
 		05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */; };
 		05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */; };
-		05BFBBD51FE1C4EE00DBCDDF /* RequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BFBBD31FE1C4EE00DBCDDF /* RequestsViewController.xib */; };
 		05BFBBD71FE1D6FE00DBCDDF /* String+isNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */; };
 		05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD81FE24C4D00DBCDDF /* AppConstants.swift */; };
 		05BFBBDB1FE24C6E00DBCDDF /* TabIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBDA1FE24C6E00DBCDDF /* TabIndex.swift */; };
@@ -92,10 +91,11 @@
 		5245920F21AAD6BB0009824C /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5245921121AAD6BB0009824C /* HomeViewController.xib */; };
 		5245921821AAD7420009824C /* GiftDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5245921A21AAD7420009824C /* GiftDetailViewController.xib */; };
 		5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5245921F21AAFC750009824C /* LocalizationSystem.swift */; };
-		5245922221AAFEDC0009824C /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5245922121AAFEDC0009824C /* MyGiftsViewController.xib */; };
 		5245922521AB47EA0009824C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5245922721AB47EA0009824C /* Localizable.strings */; };
 		528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */; };
 		528A2D8D21ABE04300DECE0F /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D8F21ABE04300DECE0F /* MyKindnessWallViewController.xib */; };
+		528A2D9621AC405D00DECE0F /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D9821AC405D00DECE0F /* MyGiftsViewController.xib */; };
+		528A2D9F21AC40C900DECE0F /* RequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DA121AC40C900DECE0F /* RequestsViewController.xib */; };
 		6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */; };
 		6009DB96212D6FE5002FD769 /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB94212D6FE5002FD769 /* ContactUsViewController.xib */; };
 		6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB972130922C002FD769 /* StatisticViewController.swift */; };
@@ -205,7 +205,6 @@
 		05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+printAllFonts.swift"; sourceTree = "<group>"; };
 		05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewController.swift; sourceTree = "<group>"; };
 		05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
-		05BFBBD31FE1C4EE00DBCDDF /* RequestsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestsViewController.xib; sourceTree = "<group>"; };
 		05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isNumber.swift"; sourceTree = "<group>"; };
 		05BFBBD81FE24C4D00DBCDDF /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		05BFBBDA1FE24C6E00DBCDDF /* TabIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabIndex.swift; sourceTree = "<group>"; };
@@ -227,7 +226,6 @@
 		5245920E21AAD39A0009824C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		5245921221AAD6C60009824C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HomeViewController.xib; sourceTree = "<group>"; };
 		5245921F21AAFC750009824C /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSystem.swift; sourceTree = "<group>"; };
-		5245922121AAFEDC0009824C /* MyGiftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyGiftsViewController.xib; sourceTree = "<group>"; };
 		5245922621AB47EA0009824C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5245922821AB4BC30009824C /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Localizable.strings; sourceTree = "<group>"; };
 		528A2D8221ABD73C00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
@@ -236,6 +234,10 @@
 		528A2D8521ABDC0F00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
 		528A2D9221ABE05200DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MyKindnessWallViewController.xib; sourceTree = "<group>"; };
 		528A2D9521ABE05D00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/MyKindnessWallViewController.xib; sourceTree = "<group>"; };
+		528A2D9B21AC406C00DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MyGiftsViewController.xib; sourceTree = "<group>"; };
+		528A2D9E21AC407100DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/MyGiftsViewController.xib; sourceTree = "<group>"; };
+		528A2DA621AC40D200DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RequestsViewController.xib; sourceTree = "<group>"; };
+		528A2DA721AC40D600DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/RequestsViewController.xib; sourceTree = "<group>"; };
 		6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		6009DB94212D6FE5002FD769 /* ContactUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsViewController.xib; sourceTree = "<group>"; };
 		6009DB972130922C002FD769 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
@@ -291,7 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */,
-				05BFBBD31FE1C4EE00DBCDDF /* RequestsViewController.xib */,
+				528A2DA121AC40C900DECE0F /* RequestsViewController.xib */,
 				05029EC81FE334C5004D96B1 /* RequestToAGiftViewController.swift */,
 				05029EC91FE334C5004D96B1 /* RequestToAGiftViewController.xib */,
 			);
@@ -441,7 +443,7 @@
 		05BEA43320497AD500147BF5 /* my gifts */ = {
 			isa = PBXGroup;
 			children = (
-				5245922121AAFEDC0009824C /* MyGiftsViewController.xib */,
+				528A2D9821AC405D00DECE0F /* MyGiftsViewController.xib */,
 				6092D631204950F700AFDA7B /* MyGiftsViewController.swift */,
 			);
 			path = "my gifts";
@@ -737,10 +739,10 @@
 				05BEA445204C1FFA00147BF5 /* PromptUser.xib in Resources */,
 				05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */,
 				60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */,
-				5245922221AAFEDC0009824C /* MyGiftsViewController.xib in Resources */,
+				528A2D9621AC405D00DECE0F /* MyGiftsViewController.xib in Resources */,
 				054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */,
 				6009DB96212D6FE5002FD769 /* ContactUsViewController.xib in Resources */,
-				05BFBBD51FE1C4EE00DBCDDF /* RequestsViewController.xib in Resources */,
+				528A2D9F21AC40C900DECE0F /* RequestsViewController.xib in Resources */,
 				05F6AA561FFEEB8D00CDABC2 /* ChatListTableViewController.xib in Resources */,
 				05644DBB1FFEF3A500B7C853 /* OthersChatConversationTableViewCell.xib in Resources */,
 				6009DB9E2130931C002FD769 /* StatisticTableViewCell.xib in Resources */,
@@ -984,6 +986,24 @@
 				528A2D9521ABE05D00DECE0F /* fa */,
 			);
 			name = MyKindnessWallViewController.xib;
+			sourceTree = "<group>";
+		};
+		528A2D9821AC405D00DECE0F /* MyGiftsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				528A2D9B21AC406C00DECE0F /* en */,
+				528A2D9E21AC407100DECE0F /* fa */,
+			);
+			name = MyGiftsViewController.xib;
+			sourceTree = "<group>";
+		};
+		528A2DA121AC40C900DECE0F /* RequestsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				528A2DA621AC40D200DECE0F /* en */,
+				528A2DA721AC40D600DECE0F /* fa */,
+			);
+			name = RequestsViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
