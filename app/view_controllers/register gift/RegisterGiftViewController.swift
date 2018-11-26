@@ -592,12 +592,11 @@ class RegisterGiftViewController: UIViewController {
         
         present(actionController, animated: true, completion: nil)
 
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
-        setAllTextsInView()
+//        setAllTextsInView()
     }
     
     func setAllTextsInView(){

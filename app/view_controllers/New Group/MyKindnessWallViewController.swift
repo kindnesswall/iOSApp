@@ -113,10 +113,10 @@ class MyKindnessWallViewController: UIViewController {
         
         self.navigationItem.title=AppLiteral.myWall
         
-        contactUsBtn.setTitle(AppLiteral.contactUs, for: .normal)
-        bugReportBtn.setTitle(AppLiteral.bugReport, for: .normal)
-        aboutKindnessWallBtn.setTitle(AppLiteral.aboutKindnessWall, for: .normal)
-        statisticBtn.setTitle(AppLiteral.statistic, for: .normal)
+//        contactUsBtn.setTitle(AppLiteral.contactUs, for: .normal)
+//        bugReportBtn.setTitle(AppLiteral.bugReport, for: .normal)
+//        aboutKindnessWallBtn.setTitle(AppLiteral.aboutKindnessWall, for: .normal)
+//        statisticBtn.setTitle(AppLiteral.statistic, for: .normal)
     }
     
     func setLoginLogoutBtnTitle(){

@@ -475,15 +475,15 @@ class AppLiteral {
         }
     }
     
-    static var statistic : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "آمار"
-        case .english:
-            return "Statistic"
-        }
-    }
+//    static var statistic : String {
+//        let language = AppLanguage.getLanguage()
+//        switch language {
+//        case .persian:
+//            return "آمار"
+//        case .english:
+//            return "Statistic"
+//        }
+//    }
     
     static var activationCode : String {
         let language = AppLanguage.getLanguage()
