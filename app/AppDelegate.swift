@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        AppLanguage.setLanguage(language: .persian)
+        UIView.appearance().semanticContentAttribute = .forceLeftToRight
         
         showTabbar()
         
@@ -120,9 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             return false
         }
         
-        
         return true
-        
         
     }
 }

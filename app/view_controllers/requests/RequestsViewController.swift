@@ -17,6 +17,7 @@ class RequestsViewController: UIViewController {
     var loadingIndicator:LoadingIndicator!
     let keychain = KeychainSwift()
 
+    @IBOutlet weak var noRequestMsgLbl: UILabel!
     @IBOutlet var tableview: UITableView!
     
     @IBOutlet var requestView: UIView!
@@ -29,7 +30,8 @@ class RequestsViewController: UIViewController {
         
         loginView.hide()
         requestView.hide()
-        
+        noRequestMsgLbl.hide()
+
         self.tableview.register(type: RequestsTableViewCell.self)
         loadingIndicator=LoadingIndicator(view: self.view)
         loadingIndicator.startLoading()
@@ -67,11 +69,20 @@ class RequestsViewController: UIViewController {
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
                 self.loginView.hide()
-                self.requestView.show()
+                
                 self.loadingIndicator.stopLoading()
                 
                 self.gifts.append(contentsOf: reply)
                 self.tableview.reloadData()
+                if self.gifts.count <= 0 {
+                    self.noRequestMsgLbl.show()
+                    self.tableview.hide()
+                    self.requestView.hide()
+                }else{
+                    self.noRequestMsgLbl.hide()
+                    self.tableview.show()
+                    self.requestView.show()
+                }
                 
                 print("count:")
                 print(reply.count)
@@ -90,8 +101,8 @@ class RequestsViewController: UIViewController {
             
         }
         controller.setSubmitComplition { (str) in
-            self.loginView.isHidden = true
-            self.requestView.isHidden = false
+            self.loginView.hide()
+            self.requestView.show()
         }
         
         let nc = UINavigationController.init(rootViewController: controller)

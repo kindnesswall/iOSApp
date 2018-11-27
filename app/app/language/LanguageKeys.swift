@@ -1,67 +1,12 @@
 //
-//  AppLanguage.swift
+//  LanguageKeys.swift
 //  app
 //
-//  Created by AmirHossein on 3/30/18.
+//  Created by Hamed.Gh on 11/27/18.
 //  Copyright © 2018 Hamed.Gh. All rights reserved.
 //
 
 import Foundation
-import KeychainSwift
-
-class AppLanguage{
-    
-    static private var language:Language?
-    
-    enum Language:String {
-        case persian
-        case english
-    }
-    
-    static func setLanguage(language:Language){
-        self.language=language
-        KeychainSwift().set(language.rawValue, forKey: AppConstants.APPLanguage)
-    }
-    static func getLanguage()->Language {
-        
-        if let language=self.language {
-            return language
-        }
-        
-        let defaultLanguage=Language.persian
-        
-        guard let languageString=KeychainSwift().get(AppConstants.APPLanguage) , let language=Language(rawValue: languageString) else {
-            return defaultLanguage
-        }
-        
-        self.language=language
-        return language
-    }
-    
-    
-    //MARK: - Utilities
-    
-    static func getNumberString(number:String)->String{
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return number.CastNumberToPersian()
-        case .english:
-            return number
-        }
-    }
-    
-    static func getTextAlignment()->NSTextAlignment{
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return .right
-        case .english:
-            return .left
-        }
-    }
-    
-}
 
 struct LanguageKeys {
     static let RegisterGiftViewController_title : String = "RegisterGiftViewController_title"
@@ -78,12 +23,12 @@ struct LanguageKeys {
     static let no : String = "no"
     static let skip : String = "skip"
     static let home : String = "home"
-
+    
     static let request : String = "request"
     static let remove : String = "remove"
     static let status : String = "status"
     static let address : String = "address"
-
+    
     static let allGifts : String = "allGifts"
     static let allCities : String = "allCities"
     static let allRegions : String = "allRegions"
@@ -116,7 +61,7 @@ struct LanguageKeys {
     static let sendingActivationCode : String = "sendingActivationCode"
     static let resendActivationCode : String = "resendActivationCode"
     static let registeringActivationCode : String = "registeringActivationCode"
-
+    
     static let giftRegisteredSuccessfully : String = "giftRegisteredSuccessfully"
     static let editedSuccessfully : String = "editedSuccessfully"
     static let draftSavedSuccessfully : String = "draftSavedSuccessfully"
@@ -138,5 +83,10 @@ struct LanguageKeys {
     static let guideOfSendingActivationCode : String = "guideOfSendingActivationCode"
     static let guideOfRegitering_part1 : String = "guideOfRegitering_part1"
     static let guideOfRegitering_part2 : String = "guideOfRegitering_part2"
-
+    
+    static let logout_dialog_title : String = "logout_dialog_title"
+    static let logout_dialog_text : String = "logout_dialog_text"
+    static let Switch_Language_dialog_title : String = "Switch_Language_dialog_title"
+    static let Switch_Language_dialog_text : String = "Switch_Language_dialog_text"
+    
 }

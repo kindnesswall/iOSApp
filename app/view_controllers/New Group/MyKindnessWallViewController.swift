@@ -21,17 +21,15 @@ class MyKindnessWallViewController: UIViewController {
     @IBAction func SwitchLanguageBtnClicked(_ sender: Any) {
         
         let alert = UIAlertController(
-            title:LocalizationSystem.getStr(forKey: "Switch_Language_dialog_title"),
-                                      message: LocalizationSystem.getStr(forKey: "Switch_Language_dialog_text"),
+            title:LocalizationSystem.getStr(forKey: LanguageKeys.Switch_Language_dialog_title),
+                                      message: LocalizationSystem.getStr(forKey: LanguageKeys.Switch_Language_dialog_text),
                                       preferredStyle: UIAlertController.Style.alert)
         
             alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
-                if LocalizationSystem.sharedInstance.getLanguage() == "fa" {
-                    LocalizationSystem.sharedInstance.setLanguage(languageCode: "en")
-                    UIView.appearance().semanticContentAttribute = .forceLeftToRight
+                if AppLanguage.getLanguage() == AppLanguage.Persian {
+                    LocalizationSystem.sharedInstance.setLanguage(languageCode: AppLanguage.English)
                 } else {
-                    LocalizationSystem.sharedInstance.setLanguage(languageCode: "fa")
-                    UIView.appearance().semanticContentAttribute = .forceRightToLeft
+                    LocalizationSystem.sharedInstance.setLanguage(languageCode: AppLanguage.Persian)
                 }
                 
                 exit(0)
@@ -53,8 +51,8 @@ class MyKindnessWallViewController: UIViewController {
             
             
             let alert = UIAlertController(
-                title:LocalizationSystem.getStr(forKey: "logout_dialog_title"),
-                message: LocalizationSystem.getStr(forKey: "logout_dialog_text"),
+                title:LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_title),
+                message: LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_text),
                 preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
