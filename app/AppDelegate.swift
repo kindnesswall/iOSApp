@@ -65,6 +65,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         // Override point for customization after application launch.
         
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
+
+        if uDStandard.bool(forKey: AppConstants.WATCHED_SELECT_LANGUAGE) {
+            showTabbarIntro()
+        }else{
+            showSelectLanguageVC()
+        }
+        
+        return true
+    }
+    
+    func showTabbarIntro() {
         
         showTabbar()
         
@@ -72,16 +83,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             showIntro()
             uDStandard.set(true, forKey: AppConstants.WATCHED_INTRO)
         }
-        
-        return true
+    }
+    
+    func showSelectLanguageVC() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let viewController:UIViewController = LanguageViewController()
+//        let nc = UINavigationController.init(rootViewController: viewController)
+        window!.rootViewController = viewController
+        window!.makeKeyAndVisible()
     }
     
     func showTabbar()  {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        self.tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarRoot") as! UITabBarController
+//        self.tabBarController=self.window?.rootViewController as? UITabBarController
         
-        self.tabBarController=self.window?.rootViewController as? UITabBarController
         self.tabBarController?.delegate=self
         
+        window!.rootViewController = self.tabBarController
+        
         pushViewControllersIntoTabs()
+        window!.makeKeyAndVisible()
     }
     
     func showIntro() {

@@ -26,6 +26,7 @@ class MyKindnessWallViewController: UIViewController {
                                       preferredStyle: UIAlertController.Style.alert)
         
             alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
+                
                 if AppLanguage.getLanguage() == AppLanguage.Persian {
                     LocalizationSystem.sharedInstance.setLanguage(languageCode: AppLanguage.English)
                 } else {
@@ -130,6 +131,7 @@ class MyKindnessWallViewController: UIViewController {
 
         print("App Lang:")
         print(LocalizationSystem.sharedInstance.getLanguage())
-        // Do any additional setup after loading the view.
+        
+        
     }
 }
