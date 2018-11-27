@@ -49,6 +49,9 @@ class GiftDetailViewController: UIViewController {
         
         setUI()
 
+        if let _=KeychainSwift().get(AppConstants.Authorization) {
+            self.requestBtn.hide()
+        }
         
         createSlideShow()
         
@@ -65,10 +68,10 @@ class GiftDetailViewController: UIViewController {
                 
                 if let myId=KeychainSwift().get(AppConstants.USER_ID) , let userId=reply.userId , myId==userId {
                     self?.addEditBtn()
-                    self?.requestBtn.isHidden=true
+//                    self?.requestBtn.isHidden=true
                     self?.removeBtn.isHidden=false
                 } else {
-                    self?.requestBtn.isHidden=false
+//                    self?.requestBtn.isHidden=false
                     self?.removeBtn.isHidden=true
                 }
                 
@@ -110,7 +113,7 @@ class GiftDetailViewController: UIViewController {
     func setUI(){
         
         self.removeBtn.isHidden=true
-        self.requestBtn.isHidden=true
+//        self.requestBtn.isHidden=true
         
         self.loadingIndicator=LoadingIndicator(navigationItem: self.navigationItem, type: .right, replacedNavigationBarButton: nil)
         self.loadingIndicator?.startLoading()
