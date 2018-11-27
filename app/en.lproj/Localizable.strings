@@ -6,6 +6,16 @@
   Copyright © 2018 Hamed.Gh. All rights reserved.
 */
 
+"intro_culture" = "KindnessWall's Culture";
+"intro_donate_platform" = "2nate.com";
+"intro_free" = "Free";
+"intro_opensource" = "Open Source";
+
+"intro_subtitle_culture" = "If you have something you do not need anymore, you can donate it to others. If you need something and you can not afford it, you can receive it as a gift.";
+"intro_subtitle_donate_platform" = "We are partnering with 2nate.com.2nate is an Iranian donation platform that is currently focusing on fundraising projects that have social impacts. It allows people to easily create a campaign and start raising funds for its cause. 2nate.com raises money for causes and projects people care about and love.";
+"intro_subtitle_free" = "KindnessWall is free forever.";
+"intro_subtitle_opensource" = "Application codes will be available to programmers";
+
 "Switch_Language_dialog_title" = "Close App";
 "Switch_Language_dialog_text" = "To switch language, open the app after closing";
 "Switch_Language_dialog_ok" = "OK";

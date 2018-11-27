@@ -89,4 +89,14 @@ struct LanguageKeys {
     static let Switch_Language_dialog_title : String = "Switch_Language_dialog_title"
     static let Switch_Language_dialog_text : String = "Switch_Language_dialog_text"
     
+    static let intro_culture : String = "intro_culture"
+    static let intro_donate_platform : String = "intro_donate_platform"
+    static let intro_free : String = "intro_free"
+    static let intro_opensource : String = "intro_opensource"
+    
+    static let intro_subtitle_culture : String = "intro_subtitle_culture"
+    static let intro_subtitle_donate_platform : String = "intro_subtitle_donate_platform"
+    static let intro_subtitle_free : String = "intro_subtitle_free"
+    static let intro_subtitle_opensource : String = "intro_subtitle_opensource"
+    
 }
