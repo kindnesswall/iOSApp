@@ -14,6 +14,7 @@ class LanguageViewController: UIViewController {
     @IBOutlet weak var lbl: UILabel!
     
     private let datasource = [AppLanguage.Persian, AppLanguage.English]
+    private let datasourceToShow = ["فارسی", "English"]
     
     @IBOutlet weak var okBtn: UIButton!
     override func viewDidLoad() {
@@ -98,6 +99,6 @@ extension LanguageViewController:UIPickerViewDelegate,UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return datasource[row]
+        return datasourceToShow[row]
     }
 }
