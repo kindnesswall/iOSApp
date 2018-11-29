@@ -32,6 +32,8 @@
 "popup_accept_request_msg" = "Are you sure to accept this request?";
 "popup_request_accepted" = "The request accepted!";
 
+"loading" = "loading";
+
 "StatisticViewController_title" = "Statistic";
 "MyGiftsViewController_title" = "My Gifts";
 "RegisterGiftViewController_title" = "Register Gift";
@@ -56,7 +58,7 @@
 "bugReport" = "Bug Report";
 "contactUs" = "Contact Us";
 "myWall" = "My Wall";
-"logout" = "Logout";
+"logout" = "Logout from ";
 "login" = "Login";
 "addImage" = "Add Image";
 "approximatePrice" = "Approximated Price";

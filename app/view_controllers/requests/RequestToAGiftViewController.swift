@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class RequestToAGiftViewController: UIViewController {
 
@@ -15,12 +16,19 @@ class RequestToAGiftViewController: UIViewController {
     @IBOutlet var tableview: UITableView!
     var giftId:String = "-1"
     
+    let hud = JGProgressHUD(style: .dark)
+    
+    var onReject:(()->())?
+    var onAccept:(()->())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableview.dataSource = self
         tableview.delegate = self
         
+        hud.textLabel.text = ""//LocalizationSystem.getStr(forKey: LanguageKeys.loading)
+
         self.tableview.register(type: RequestToAGiftTableViewCell.self)
         
         // Do any additional setup after loading the view.
@@ -95,16 +103,30 @@ class RequestToAGiftViewController: UIViewController {
             guard let clickedRequest = sender.data else{
                 return
             }
+                
             for (index, req) in self.requests.enumerated() {
                 if req === clickedRequest {
-                    FlashMessage.showMessage(
-                        body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_accepted),
-                        theme: .success
-                    )
-                    self.navigationController?.popViewController(animated: true)
-                    //        ApiMethods.acceptRequest(giftId: giftId, fromUserId: fromUserId) { (data) in
-                    //
-                    //        }
+                    
+                    self.hud.show(in: self.view)
+                    if let fromUserID = self.requests[index].fromUserId,
+                        let giftId = self.requests[index].giftId{
+                        ApiMethods.acceptRequest(
+                            giftId: giftId,
+                            fromUserId: fromUserID
+                        ) { (data) in
+                            
+                            self.hud.dismiss(afterDelay: 0)
+                            
+                            FlashMessage.showMessage(
+                                body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_accepted),
+                                theme: .success
+                            )
+                            self.onAccept?()
+                            
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                    
                 }
             }
         }
@@ -127,17 +149,29 @@ class RequestToAGiftViewController: UIViewController {
             for (index, req) in self.requests.enumerated() {
                 if req === clickedRequest {
                     
-                    FlashMessage.showMessage(
-                        body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_rejected)
-                        ,theme: .warning)
-                    
-                    self.requests.remove(at: index)
-                    
-                    self.tableview.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
-                    self.tableview.reloadData()
-                    //        ApiMethods.denyRequest(giftId: giftId, fromUserId: fromUserId) { (data) in
-                    //
-                    //        }
+                    if let fromUserID = self.requests[index].fromUserId,
+                        let giftId = self.requests[index].giftId{
+                        
+                        self.hud.show(in: self.view)
+                        
+                        ApiMethods.denyRequest(
+                            giftId: giftId,
+                            fromUserId: fromUserID) { (data) in
+                            
+                                self.hud.dismiss(afterDelay: 0)
+                                
+                                FlashMessage.showMessage(
+                                body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_rejected)
+                                ,theme: .warning)
+                            
+                                self.requests.remove(at: index)
+                            
+                                self.tableview.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                                self.tableview.reloadData()
+                                
+                                self.onReject?()
+                        }
+                    }
                 }
             }
         }

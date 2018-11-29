@@ -104,5 +104,6 @@ struct LanguageKeys {
     
     static let popup_accept_request_msg : String = "popup_accept_request_msg"
     static let popup_request_accepted : String = "popup_request_accepted"
-    
+ 
+    static let loading : String = "loading"
 }

@@ -50,7 +50,6 @@ class MyKindnessWallViewController: UIViewController {
         
         if let _=keychain.get(AppConstants.Authorization) { //UserDefaults.standard.string(forKey: AppConstants.Authorization) {
             
-            
             let alert = UIAlertController(
                 title:LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_title),
                 message: LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_text),
@@ -120,7 +119,9 @@ class MyKindnessWallViewController: UIViewController {
     
     func setLoginLogoutBtnTitle(){
         if let _=keychain.get(AppConstants.Authorization) {
-            loginLogoutBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.logout), for: .normal)
+            loginLogoutBtn.setTitle(
+                LocalizationSystem.getStr(forKey: LanguageKeys.logout) +
+                    AppLanguage.getNumberString(number: (self.keychain.get(AppConstants.PHONE_NUMBER) ?? "")), for: .normal)
         } else {
             loginLogoutBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.login), for: .normal)
         }

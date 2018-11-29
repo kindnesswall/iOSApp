@@ -74,21 +74,26 @@ class RequestsViewController: UIViewController {
                 
                 self.gifts.append(contentsOf: reply)
                 self.tableview.reloadData()
-                if self.gifts.count <= 0 {
-                    self.noRequestMsgLbl.show()
-                    self.tableview.hide()
-                    self.requestView.hide()
-                }else{
-                    self.noRequestMsgLbl.hide()
-                    self.tableview.show()
-                    self.requestView.show()
-                }
+                
+                self.showViewsBasedOnNumberOfGifts()
                 
                 print("count:")
                 print(reply.count)
                 
             }
             
+        }
+    }
+    
+    func showViewsBasedOnNumberOfGifts() {
+        if self.gifts.count <= 0 {
+            self.noRequestMsgLbl.show()
+            self.tableview.hide()
+            self.requestView.hide()
+        }else{
+            self.noRequestMsgLbl.hide()
+            self.tableview.show()
+            self.requestView.show()
         }
     }
     
@@ -141,7 +146,29 @@ extension RequestsViewController:UITableViewDelegate {
         let controller = RequestToAGiftViewController(nibName: "RequestToAGiftViewController", bundle: Bundle(for: RequestToAGiftViewController.self))
         
         controller.giftId = gifts[indexPath.row].id!
-        
+        controller.onAccept = {
+            self.gifts.remove(at: indexPath.row)
+            
+            self.tableview.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
+            self.tableview.reloadData()
+            
+            self.showViewsBasedOnNumberOfGifts()
+        }
+        controller.onReject = {
+            if let requestCount = self.gifts[indexPath.row].requestCount, var count = Int(requestCount) {
+                count = count - 1
+                
+                if count <= 0 {
+                    self.showViewsBasedOnNumberOfGifts()
+                }else{
+                    self.gifts[indexPath.row].requestCount = String(count)
+                
+                    let indexPath = IndexPath(item: indexPath.row, section: 0)
+                    self.tableview.reloadRows(at: [indexPath], with: .top)
+                }
+            }
+        }
+
         self.navigationController?.pushViewController(controller, animated: true)
         
     }

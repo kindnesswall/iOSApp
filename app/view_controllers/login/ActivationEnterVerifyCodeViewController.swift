@@ -147,6 +147,8 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                     return
                 }
                 
+                self.keychain.set(mobile, forKey: AppConstants.PHONE_NUMBER)
+                
                 if let userId = reply.userId {
 //                    self.userDefault.set(userId, forKey: AppConstants.USER_ID)
                     self.keychain.set(userId, forKey: AppConstants.USER_ID)

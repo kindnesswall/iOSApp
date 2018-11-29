@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class HomeViewController: UIViewController {
 
@@ -15,7 +16,8 @@ class HomeViewController: UIViewController {
     
     let apiMethods=ApiMethods()
     
-    var initialLoadingIndicator:LoadingIndicator?
+    let hud = JGProgressHUD(style: .dark)
+    
     var lazyLoadingCount=20
     var isLoadingGifts=false
     var lazyLoadingIndicator:LoadingIndicator?
@@ -28,14 +30,13 @@ class HomeViewController: UIViewController {
     var categotyBarBtn:UIBarButtonItem?
     var cityBarBtn:UIBarButtonItem?
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableview.isHidden = true
         
-        self.initialLoadingIndicator=LoadingIndicator(view: self.tableview)
+        hud.textLabel.text = LocalizationSystem.getStr(forKey: LanguageKeys.loading)
+        
         self.lazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight/2)
         self.tableview.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight/2, right: 0)
         
@@ -61,7 +62,7 @@ class HomeViewController: UIViewController {
     }
     @objc func refreshControlAction(){
         reloadPage()
-        self.initialLoadingIndicator?.stopLoading()
+        self.hud.dismiss(afterDelay: 0)
     }
     
     func setTableViewLazyLoading(isLoading:Bool){
@@ -136,7 +137,8 @@ class HomeViewController: UIViewController {
         isLoadingGifts=true
         
         if index==0 {
-            self.initialLoadingIndicator?.startLoading()
+            hud.show(in: self.view)
+            
         } else {
             self.setTableViewLazyLoading(isLoading: true)
         }
@@ -153,7 +155,9 @@ class HomeViewController: UIViewController {
                 }
                 
                 self.refreshControl.endRefreshing()
-                self.initialLoadingIndicator?.stopLoading()
+                
+                self.hud.dismiss(afterDelay: 0)
+                
                 self.setTableViewLazyLoading(isLoading: false)
                 
                 if reply.count == self.lazyLoadingCount {

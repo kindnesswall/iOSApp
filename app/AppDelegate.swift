@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         
         showTabbar()
         
-        if uDStandard.bool(forKey: AppConstants.WATCHED_INTRO) {
+        if !uDStandard.bool(forKey: AppConstants.WATCHED_INTRO) {
             showIntro()
             uDStandard.set(true, forKey: AppConstants.WATCHED_INTRO)
         }
