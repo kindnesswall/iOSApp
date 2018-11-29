@@ -155,19 +155,19 @@ class RegisterGiftViewController: UIViewController {
     
     func configSendButtons(){
         if isEditMode {
-            self.registerBtn.isHidden=true
-            self.editBtn.isHidden=false
+            self.registerBtn.hide()
+            self.editBtn.show()
         } else {
-            self.registerBtn.isHidden=false
-            self.editBtn.isHidden=true
+            self.registerBtn.show()
+            self.editBtn.hide()
         }
     }
     
     func configAddressViews(){
         if giftHasNewAddress {
-            self.editedGiftOriginalAddress.isHidden=true
+            self.editedGiftOriginalAddress.hide()
         } else {
-            self.editedGiftOriginalAddress.isHidden=false
+            self.editedGiftOriginalAddress.show()
         }
     }
     

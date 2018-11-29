@@ -18,7 +18,7 @@ class FlashMessage {
         }
         
         view.configureTheme(theme)
-        view.button?.isHidden=true
+        view.button?.hide()
         view.titleLabel?.font=AppFont.getBoldFont(size: 12)
         view.titleLabel?.textAlignment = .right
         view.bodyLabel?.font=AppFont.getRegularFont(size: 12)

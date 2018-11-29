@@ -40,12 +40,10 @@ class MyGiftsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.registeredGiftsTableView.isHidden = true
-        self.donatedGiftsTableView.isHidden = true
+        self.registeredGiftsTableView.hide()
+        self.donatedGiftsTableView.hide()
         
         registeredGiftsTableView.register(type: GiftTableViewCell.self)
-//        donatedGiftsTableView.registerNib(type: GiftTableViewCell.self, nib: "GiftTableViewCell")
-
         donatedGiftsTableView.register(type: GiftTableViewCell.self)
 
         self.registeredInitialLoadingIndicator=LoadingIndicator(view: self.registeredGiftsTableView)
@@ -74,6 +72,7 @@ class MyGiftsViewController: UIViewController {
         donatedRefreshControl.tintColor=AppColor.tintColor
         self.donatedGiftsTableView.addSubview(donatedRefreshControl)
     }
+    
     @objc func registeredRefreshControlAction(){
         self.reloadRegisteredGifts()
         self.registeredInitialLoadingIndicator?.stopLoading()
@@ -115,15 +114,15 @@ class MyGiftsViewController: UIViewController {
     func hideOrShowCorrespondingViewOfSegmentControl(type :SegmentControlViewType){
         
         if type == .registered, self.registeredGifts.count > 0{
-            self.registeredGiftsTableView.isHidden=false
+            self.registeredGiftsTableView.show()
         } else {
-            self.registeredGiftsTableView.isHidden=true
+            self.registeredGiftsTableView.hide()
         }
         
         if type == .donated, self.donatedGifts.count > 0 {
-            self.donatedGiftsTableView.isHidden=false
+            self.donatedGiftsTableView.show()
         } else {
-            self.donatedGiftsTableView.isHidden=true
+            self.donatedGiftsTableView.hide()
         }
         
     }

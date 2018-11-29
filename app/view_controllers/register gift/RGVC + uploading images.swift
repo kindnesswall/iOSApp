@@ -128,7 +128,7 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     }
     
     func imageViewUploadingHasFinished(uploadImageView:UploadImageView?,imageSrc:String){
-        uploadImageView?.shadowView.isHidden=true
+        uploadImageView?.shadowView.hide()
         uploadImageView?.progressLabel.isHidden = true
         uploadImageView?.imageSrc=imageSrc
     }

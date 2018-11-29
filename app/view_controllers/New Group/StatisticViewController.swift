@@ -30,11 +30,11 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
     
     func startLoadingPage(){
         self.initialLoadingIndicator?.startLoading()
-        self.tableView.isHidden=true
+        self.tableView.hide()
     }
     func stopLoadingPage(){
         self.initialLoadingIndicator?.stopLoading()
-        self.tableView.isHidden=false
+        self.tableView.show()
     }
 
     override func didReceiveMemoryWarning() {
