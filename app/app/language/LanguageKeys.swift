@@ -14,6 +14,9 @@ struct LanguageKeys {
     static let EditGiftViewController_title : String = "EditGiftViewController_title"
     static let RequestsViewController_title : String = "RequestsViewController_title"
     
+    static let noGiftRegistered : String = "noGiftRegistered"
+    static let noGiftDonated : String = "noGiftDonated"
+    
     static let ok : String = "ok"
     
     static let edit : String = "edit"
@@ -61,6 +64,8 @@ struct LanguageKeys {
     static let sendingActivationCode : String = "sendingActivationCode"
     static let resendActivationCode : String = "resendActivationCode"
     static let registeringActivationCode : String = "registeringActivationCode"
+    
+    static let operationFailed : String = "operationFailed"
     
     static let giftRegisteredSuccessfully : String = "giftRegisteredSuccessfully"
     static let editedSuccessfully : String = "editedSuccessfully"

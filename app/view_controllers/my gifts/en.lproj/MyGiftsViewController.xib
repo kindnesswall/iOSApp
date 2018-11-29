@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyGiftsViewController" customModule="app" customModuleProvider="target">
             <connections>
                 <outlet property="donatedGiftsTableView" destination="5ZO-Nc-wGa" id="qYf-je-vAK"/>
+                <outlet property="noGiftMsg" destination="kII-Rp-G8o" id="NA3-6a-lmq"/>
                 <outlet property="registeredGiftsTableView" destination="Wbd-2k-rXX" id="ax6-8r-KG2"/>
                 <outlet property="segmentControl" destination="DEa-fe-m5I" id="VGM-aM-9yn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -49,10 +49,17 @@
                         <outlet property="delegate" destination="-1" id="nxZ-Uh-dpO"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kII-Rp-G8o">
+                    <rect key="frame" x="187.5" y="343.5" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="5ZO-Nc-wGa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1Ca-1d-fle"/>
+                <constraint firstItem="kII-Rp-G8o" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="9Nz-fr-Ioh"/>
                 <constraint firstItem="DEa-fe-m5I" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="HDi-ya-W2n"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DEa-fe-m5I" secondAttribute="trailing" constant="16" id="HVP-qw-wR4"/>
                 <constraint firstItem="Wbd-2k-rXX" firstAttribute="top" secondItem="DEa-fe-m5I" secondAttribute="bottom" constant="10" id="IVO-Oc-tnC"/>
@@ -60,6 +67,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Wbd-2k-rXX" secondAttribute="bottom" id="Q7h-iH-Q8P"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5ZO-Nc-wGa" secondAttribute="bottom" id="bSb-hP-7yq"/>
                 <constraint firstItem="Wbd-2k-rXX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="buI-Hf-elE"/>
+                <constraint firstItem="kII-Rp-G8o" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="ifa-mV-nPx"/>
                 <constraint firstItem="DEa-fe-m5I" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="ix2-JA-tLl"/>
                 <constraint firstItem="5ZO-Nc-wGa" firstAttribute="top" secondItem="DEa-fe-m5I" secondAttribute="bottom" constant="10" id="r3n-91-MKe"/>
                 <constraint firstAttribute="trailing" secondItem="5ZO-Nc-wGa" secondAttribute="trailing" id="uRR-on-VRJ"/>

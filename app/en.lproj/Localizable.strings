@@ -6,6 +6,11 @@
   Copyright © 2018 Hamed.Gh. All rights reserved.
 */
 
+"operationFailed" = "We encounter error at our server!";
+
+"noGiftRegistered" = "There is no gift that registered by you";
+"noGiftDonated" = "There is no gift that donated by you";
+
 "intro_culture" = "KindnessWall's Culture";
 "intro_donate_platform" = "2nate.com";
 "intro_free" = "Free";

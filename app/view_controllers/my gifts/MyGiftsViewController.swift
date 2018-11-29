@@ -11,6 +11,8 @@ import KeychainSwift
 
 class MyGiftsViewController: UIViewController {
 
+    @IBOutlet weak var noGiftMsg: UILabel!
+    
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
     @IBOutlet weak var registeredGiftsTableView: UITableView!
@@ -22,6 +24,9 @@ class MyGiftsViewController: UIViewController {
     var registeredInitialLoadingIndicator:LoadingIndicator?
     var donatedInitialLoadingIndicator:LoadingIndicator?
     var lazyLoadingCount=20
+    var isLoadingRegisteredGifts_ForLazyLoading=false
+    var isLoadingDonatedGifts_ForLazyLoading=false
+    
     var isLoadingRegisteredGifts=false
     var isLoadingDonatedGifts=false
     
@@ -36,6 +41,8 @@ class MyGiftsViewController: UIViewController {
         case registered
         case donated
     }
+    
+    var currentSegment :SegmentControlViewType = .registered
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +66,6 @@ class MyGiftsViewController: UIViewController {
         
         getRegisteredGifts(index:0)
         getDonatedGifts(index:0)
-        
     }
     
     func configRefreshControl(){
@@ -76,6 +82,7 @@ class MyGiftsViewController: UIViewController {
         self.reloadRegisteredGifts()
         self.registeredInitialLoadingIndicator?.stopLoading()
     }
+    
     @objc func donatedRefreshControlAction(){
         self.reloadDonatedGifts()
         self.donatedInitialLoadingIndicator?.stopLoading()
@@ -111,18 +118,46 @@ class MyGiftsViewController: UIViewController {
     }
     
     func hideOrShowCorrespondingViewOfSegmentControl(type :SegmentControlViewType){
+        currentSegment = type
         
-        if type == .registered, self.registeredGifts.count > 0{
-            self.registeredGiftsTableView.show()
-        } else {
-            self.registeredGiftsTableView.hide()
-        }
-        
-        if type == .donated, self.donatedGifts.count > 0 {
-            self.donatedGiftsTableView.show()
-        } else {
+        if type == .registered {
             self.donatedGiftsTableView.hide()
+            if self.registeredGifts.count > 0{
+                noGiftMsg.hide()
+                registeredGiftsTableView.show()
+
+            }else if isLoadingRegisteredGifts {
+                noGiftMsg.hide()
+            }else{
+                self.noGiftMsg.text = LocalizationSystem.getStr(forKey: LanguageKeys.noGiftRegistered)
+                self.noGiftMsg.show()
+            }
+
+        }else if type == .donated{
+            self.registeredGiftsTableView.hide()
+            if self.donatedGifts.count > 0{
+                noGiftMsg.hide()
+                donatedGiftsTableView.show()
+
+            }else if isLoadingDonatedGifts{
+                noGiftMsg.hide()
+            }else{
+                self.noGiftMsg.text = LocalizationSystem.getStr(forKey: LanguageKeys.noGiftDonated)
+                self.noGiftMsg.show()
+            }
         }
+        
+//        if type == .registered, self.registeredGifts.count > 0{
+//            self.registeredGiftsTableView.show()
+//        } else {
+//            self.registeredGiftsTableView.hide()
+//        }
+//
+//        if type == .donated, self.donatedGifts.count > 0 {
+//            self.donatedGiftsTableView.show()
+//        } else {
+//            self.donatedGiftsTableView.hide()
+//        }
         
     }
     
@@ -136,7 +171,7 @@ class MyGiftsViewController: UIViewController {
         
         if self.initialRegisteredGiftsLoadingHasOccurred {
             APICall.stopAndClearRequests(sessions: &registeredGiftsSessions, tasks: &registeredGiftsTasks)
-            isLoadingRegisteredGifts=false
+            isLoadingRegisteredGifts_ForLazyLoading=false
             getRegisteredGifts(index: 0)
         }
         
@@ -149,10 +184,10 @@ class MyGiftsViewController: UIViewController {
         
         self.initialRegisteredGiftsLoadingHasOccurred=true
         
-        if isLoadingRegisteredGifts {
+        if isLoadingRegisteredGifts_ForLazyLoading {
             return
         }
-        isLoadingRegisteredGifts=true
+        isLoadingRegisteredGifts_ForLazyLoading=true
         
         if index==0 {
             self.registeredInitialLoadingIndicator?.startLoading()
@@ -167,35 +202,41 @@ class MyGiftsViewController: UIViewController {
         
         let input:APIEmptyInput?=nil
         
-        APICall.request(url: url, httpMethod: .GET, input: input , sessions: &registeredGiftsSessions, tasks: &registeredGiftsTasks) { (data, response, error) in
+        isLoadingRegisteredGifts = true
+        APICall.request(url: url, httpMethod: .GET, input: input , sessions: &registeredGiftsSessions, tasks: &registeredGiftsTasks) { [weak self] (data, response, error) in
+            
+            self?.isLoadingRegisteredGifts = false
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
                 if index==0 {
-                    self.registeredGifts=[]
-                    self.registeredGiftsTableView.reloadData()
+                    self?.registeredGifts=[]
+                    self?.registeredGiftsTableView.reloadData()
                 }
                 
-                self.registeredRefreshControl.endRefreshing()
-                self.registeredInitialLoadingIndicator?.stopLoading()
-                self.setTableViewLazyLoading(isLoading: false, type: .registered)
+                self?.registeredRefreshControl.endRefreshing()
+                self?.registeredInitialLoadingIndicator?.stopLoading()
+                self?.setTableViewLazyLoading(isLoading: false, type: .registered)
 
                 
-                if reply.count == self.lazyLoadingCount {
-                    self.isLoadingRegisteredGifts=false
+                if reply.count == self?.lazyLoadingCount {
+                    self?.isLoadingRegisteredGifts_ForLazyLoading=false
                 }
                 
                 var insertedIndexes=[IndexPath]()
-                for i in self.registeredGifts.count..<self.registeredGifts.count+reply.count {
-                    insertedIndexes.append(IndexPath(item: i, section: 0))
+                if let minCount = self?.registeredGifts.count {
+                    for i in minCount..<minCount+reply.count {
+                        insertedIndexes.append(IndexPath(item: i, section: 0))
+                    }
                 }
                 
-                self.registeredGifts.append(contentsOf: reply)
-                self.hideOrShowCorrespondingViewOfSegmentControl(type: .registered)
-
+                self?.registeredGifts.append(contentsOf: reply)
+                self?.hideOrShowCorrespondingViewOfSegmentControl(type: self?.currentSegment ?? .registered)
+                
+//                self?.showMessage()
 //                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
                     UIView.performWithoutAnimation {
-                        self.registeredGiftsTableView.insertRows(at: insertedIndexes, with: .bottom)
+                        self?.registeredGiftsTableView.insertRows(at: insertedIndexes, with: .bottom)
                     }
 //                })
                 
@@ -204,12 +245,24 @@ class MyGiftsViewController: UIViewController {
         
     }
     
+    func showMessage() {
+//        if self.currentSegment == .registered, self.registeredGifts.count <= 0{
+//            self.noGiftMsg.text = LocalizationSystem.getStr(forKey: LanguageKeys.noGiftRegistered)
+//            self.noGiftMsg.show()
+//        } else if self.currentSegment == .donated, self.donatedGifts.count <= 0 {
+//            self.noGiftMsg.text = LocalizationSystem.getStr(forKey: LanguageKeys.noGiftDonated)
+//            self.noGiftMsg.show()
+//        } else {
+//            self.noGiftMsg.hide()
+//        }
+    }
+    
     var initialDonatedGiftsLoadingHasOccurred=false
     func reloadDonatedGifts(){
         
         if self.initialDonatedGiftsLoadingHasOccurred {
             APICall.stopAndClearRequests(sessions: &donatedGiftsSessions, tasks: &donatedGiftsTasks)
-            isLoadingDonatedGifts=false
+            isLoadingDonatedGifts_ForLazyLoading=false
             getDonatedGifts(index: 0)
         }
         
@@ -222,10 +275,10 @@ class MyGiftsViewController: UIViewController {
         
         self.initialDonatedGiftsLoadingHasOccurred=true
         
-        if isLoadingDonatedGifts {
+        if isLoadingDonatedGifts_ForLazyLoading {
             return
         }
-        isLoadingDonatedGifts=true
+        isLoadingDonatedGifts_ForLazyLoading=true
         
         if index==0 {
             self.donatedInitialLoadingIndicator?.startLoading()
@@ -240,33 +293,40 @@ class MyGiftsViewController: UIViewController {
         
         let input:APIEmptyInput?=nil
         
-        APICall.request(url: url, httpMethod: .GET, input: input, sessions: &donatedGiftsSessions, tasks: &donatedGiftsTasks) { (data, response, error) in
+        isLoadingDonatedGifts = true
+        
+        APICall.request(url: url, httpMethod: .GET, input: input, sessions: &donatedGiftsSessions, tasks: &donatedGiftsTasks) { [weak self] (data, response, error) in
+            
+            self?.isLoadingDonatedGifts = false
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
                 if index==0 {
-                    self.donatedGifts=[]
-                    self.donatedGiftsTableView.reloadData()
+                    self?.donatedGifts=[]
+                    self?.donatedGiftsTableView.reloadData()
                 }
                 
-                self.donatedRefreshControl.endRefreshing()
-                self.donatedInitialLoadingIndicator?.stopLoading()
-                self.setTableViewLazyLoading(isLoading: false, type: .donated)
+                self?.donatedRefreshControl.endRefreshing()
+                self?.donatedInitialLoadingIndicator?.stopLoading()
+                self?.setTableViewLazyLoading(isLoading: false, type: .donated)
                 
-                if reply.count == self.lazyLoadingCount {
-                    self.isLoadingDonatedGifts=false
+                if reply.count == self?.lazyLoadingCount {
+                    self?.isLoadingDonatedGifts_ForLazyLoading=false
                 }
                 
                 var insertedIndexes=[IndexPath]()
-                for i in self.donatedGifts.count..<self.donatedGifts.count+reply.count {
-                    insertedIndexes.append(IndexPath(item: i, section: 0))
+                if let minCount = self?.registeredGifts.count {
+                    for i in minCount..<minCount+reply.count {
+                        insertedIndexes.append(IndexPath(item: i, section: 0))
+                    }
                 }
                 
-                self.donatedGifts.append(contentsOf: reply)
-                
+                self?.donatedGifts.append(contentsOf: reply)
+                self?.hideOrShowCorrespondingViewOfSegmentControl(type: self?.currentSegment ?? .registered)
+//                self?.showMessage()
 //                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
                     UIView.performWithoutAnimation {
-                        self.donatedGiftsTableView.insertRows(at: insertedIndexes, with: .bottom)
+                        self?.donatedGiftsTableView.insertRows(at: insertedIndexes, with: .bottom)
                     }
 //                })
             }
@@ -368,7 +428,7 @@ extension MyGiftsViewController : UITableViewDataSource {
             
             let index=indexPath.row+1
             if index==self.registeredGifts.count {
-                if !self.isLoadingRegisteredGifts {
+                if !self.isLoadingRegisteredGifts_ForLazyLoading {
                     getRegisteredGifts(index: index)
                 }
             }
@@ -381,7 +441,7 @@ extension MyGiftsViewController : UITableViewDataSource {
             
             let index=indexPath.row+1
             if index==self.donatedGifts.count {
-                if !self.isLoadingDonatedGifts {
+                if !self.isLoadingDonatedGifts_ForLazyLoading {
                     getDonatedGifts(index: index)
                 }
             }

@@ -163,12 +163,20 @@ class GiftDetailViewController: UIViewController {
         url+="/\(giftId)"
         APICall.request(url: url, httpMethod: .DELETE, input: input) { [weak self] (data, response, error) in
             self?.removeBtn.isEnabled=true
+            
+            if let error = error {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
+                return
+            }
+            
             if let response = response as? HTTPURLResponse {
                 if response.statusCode >= 200 && response.statusCode <= 300 {
                     
                     self?.editHandler?()
                     self?.navigationController?.popViewController(animated: true)
                     
+                }else{
+                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
                 }
             }
         }
