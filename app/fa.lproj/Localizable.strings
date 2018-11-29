@@ -26,6 +26,12 @@
 "logout_dialog_ok" = "بله";
 "logout_dialog_cancel" = "خیر";
 
+"popup_reject_request_msg" = "آیا از رد این درخواست مطمئن هستید؟";
+"popup_request_rejected" = "درخواست رد شد";
+
+"popup_accept_request_msg" = "آیا از قبول این درخواست مطمئن هستید؟";
+"popup_request_accepted" = "با درخواست موافقت شد";
+
 "StatisticViewController_title" = "آمار";
 "MyGiftsViewController_title" = "هدیه‌های من";
 "RegisterGiftViewController_title" = "ثبت هدیه";

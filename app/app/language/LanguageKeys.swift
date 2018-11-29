@@ -99,4 +99,10 @@ struct LanguageKeys {
     static let intro_subtitle_free : String = "intro_subtitle_free"
     static let intro_subtitle_opensource : String = "intro_subtitle_opensource"
     
+    static let popup_reject_request_msg : String = "popup_reject_request_msg"
+    static let popup_request_rejected : String = "popup_request_rejected"
+    
+    static let popup_accept_request_msg : String = "popup_accept_request_msg"
+    static let popup_request_accepted : String = "popup_request_accepted"
+    
 }

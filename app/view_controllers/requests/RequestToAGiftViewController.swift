@@ -87,14 +87,20 @@ class RequestToAGiftViewController: UIViewController {
     @IBAction func onAcceptRequestClicked(_ sender: ButtonWithData) {
         print(sender.data)
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: "آیا از قبول این درخواست مطمئن هستید؟",animation: .none,declineHandler: nil) { (_) in
+        PopUpMessage.showPopUp(
+            nibClass: PromptUser.self,
+            data: LocalizationSystem.getStr(forKey: LanguageKeys.popup_accept_request_msg),
+            animation: .none,declineHandler: nil) { (_) in
             
             guard let clickedRequest = sender.data else{
                 return
             }
             for (index, req) in self.requests.enumerated() {
                 if req === clickedRequest {
-                    FlashMessage.showMessage(body: "با درخواست موافقت شد",theme: .success)
+                    FlashMessage.showMessage(
+                        body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_accepted),
+                        theme: .success
+                    )
                     self.navigationController?.popViewController(animated: true)
                     //        ApiMethods.acceptRequest(giftId: giftId, fromUserId: fromUserId) { (data) in
                     //
@@ -109,7 +115,11 @@ class RequestToAGiftViewController: UIViewController {
     @IBAction func onRejectRequestBtnClicked(_ sender: ButtonWithData) {
         print(sender.data)
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: "آیا از رد این درخواست مطمئن هستید؟",animation: .none,declineHandler: nil) { (_) in
+        PopUpMessage.showPopUp(
+            nibClass: PromptUser.self,
+            data: LocalizationSystem.getStr(forKey: LanguageKeys.popup_reject_request_msg),
+            animation: .none,
+            declineHandler: nil) { (_) in
             
             guard let clickedRequest = sender.data else{
                 return
@@ -117,7 +127,9 @@ class RequestToAGiftViewController: UIViewController {
             for (index, req) in self.requests.enumerated() {
                 if req === clickedRequest {
                     
-                    FlashMessage.showMessage(body: "درخواست رد شد",theme: .warning)
+                    FlashMessage.showMessage(
+                        body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_rejected)
+                        ,theme: .warning)
                     
                     self.requests.remove(at: index)
                     

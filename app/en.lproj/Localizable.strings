@@ -26,6 +26,12 @@
 "logout_dialog_ok" = "Yes";
 "logout_dialog_cancel" = "No";
 
+"popup_reject_request_msg" = "Are you sure to reject this request?";
+"popup_request_rejected" = "The request rejected!";
+
+"popup_accept_request_msg" = "Are you sure to accept this request?";
+"popup_request_accepted" = "The request accepted!";
+
 "StatisticViewController_title" = "Statistic";
 "MyGiftsViewController_title" = "My Gifts";
 "RegisterGiftViewController_title" = "Register Gift";
