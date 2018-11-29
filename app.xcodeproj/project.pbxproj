@@ -130,7 +130,6 @@
 		60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C87202DE87100F246CD /* OptionsListViewController.swift */; };
 		60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C8F202DF97100F246CD /* CategoryOptionsTableViewCell.swift */; };
 		60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */; };
-		60AE9C94202DFB6A00F246CD /* UITableView+RegisterNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C93202DFB6A00F246CD /* UITableView+RegisterNib.swift */; };
 		60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */; };
 		60FAB83C2064320E0039BF61 /* Request Inputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83B2064320E0039BF61 /* Request Inputs.swift */; };
 		60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83D2064DBE10039BF61 /* APICall.swift */; };
@@ -292,7 +291,6 @@
 		60AE9C87202DE87100F246CD /* OptionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsListViewController.swift; sourceTree = "<group>"; };
 		60AE9C8F202DF97100F246CD /* CategoryOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOptionsTableViewCell.swift; sourceTree = "<group>"; };
 		60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryOptionsTableViewCell.xib; sourceTree = "<group>"; };
-		60AE9C93202DFB6A00F246CD /* UITableView+RegisterNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterNib.swift"; sourceTree = "<group>"; };
 		60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem + config.swift"; sourceTree = "<group>"; };
 		60FAB83B2064320E0039BF61 /* Request Inputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request Inputs.swift"; sourceTree = "<group>"; };
 		60FAB83D2064DBE10039BF61 /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
@@ -560,7 +558,6 @@
 				05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */,
 				05BEA43720498EB400147BF5 /* UIView+hide+show.swift */,
 				05644DC91FFF02A000B7C853 /* UITableView+isCellVisible.swift */,
-				60AE9C93202DFB6A00F246CD /* UITableView+RegisterNib.swift */,
 				05644DC11FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift */,
 				05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */,
 				05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */,
@@ -942,7 +939,6 @@
 				05BFBBBF1FDA9FCF00DBCDDF /* NavigationBarStyle.swift in Sources */,
 				60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */,
 				05029ED61FE9A683004D96B1 /* ButtonWithData.swift in Sources */,
-				60AE9C94202DFB6A00F246CD /* UITableView+RegisterNib.swift in Sources */,
 				05BEA447204C21E800147BF5 /* PopUpView.swift in Sources */,
 				05644DBA1FFEF3A500B7C853 /* ChatConversationTableViewCell.swift in Sources */,
 				05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */,

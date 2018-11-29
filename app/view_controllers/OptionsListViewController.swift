@@ -39,7 +39,7 @@ class OptionsListViewController: UIViewController {
             case .category:
                 
                 self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.category)
-                tableView.registerNib(type: CategoryOptionsTableViewCell.self, nib: "CategoryOptionsTableViewCell")
+                tableView.register(type: CategoryOptionsTableViewCell.self)
                
                loadingIndicator.startAnimating()
                 categoryListViewModel=CategoryListViewModel(hasDefaultOption:self.hasDefaultOption,completionHandler: {
@@ -50,12 +50,12 @@ class OptionsListViewController: UIViewController {
                 })
             case .dateStatus:
                 self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.newOrUsed)
-                tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
+                tableView.register(type: GenericOptionsTableViewCell.self)
                 dateStatusListViewModel=DateStatusListViewModel()
                 
             case .city:
                 self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.placeOfTheGift)
-                tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
+                tableView.register(type: GenericOptionsTableViewCell.self)
                 loadingIndicator.startAnimating()
                 placeListViewModel=PlaceListViewModel(hasDefaultOption:self.hasDefaultOption,completionHandler: {
                     [weak self] () in
@@ -64,7 +64,7 @@ class OptionsListViewController: UIViewController {
                 })
             case .region(let cityId):
                 self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.placeOfTheGift)
-                tableView.registerNib(type: GenericOptionsTableViewCell.self, nib: "GenericOptionsTableViewCell")
+                tableView.register(type: GenericOptionsTableViewCell.self)
                 loadingIndicator.startAnimating()
                 placeListViewModel=PlaceListViewModel(hasDefaultOption:self.hasDefaultOption,cityId: cityId, completionHandler: {
                     [weak self] () in

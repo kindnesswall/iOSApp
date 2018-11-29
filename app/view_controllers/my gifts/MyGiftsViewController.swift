@@ -43,9 +43,11 @@ class MyGiftsViewController: UIViewController {
         self.registeredGiftsTableView.isHidden = true
         self.donatedGiftsTableView.isHidden = true
         
-        registeredGiftsTableView.registerNib(type: GiftTableViewCell.self, nib: "GiftTableViewCell")
-        donatedGiftsTableView.registerNib(type: GiftTableViewCell.self, nib: "GiftTableViewCell")
-        
+        registeredGiftsTableView.register(type: GiftTableViewCell.self)
+//        donatedGiftsTableView.registerNib(type: GiftTableViewCell.self, nib: "GiftTableViewCell")
+
+        donatedGiftsTableView.register(type: GiftTableViewCell.self)
+
         self.registeredInitialLoadingIndicator=LoadingIndicator(view: self.registeredGiftsTableView)
         self.donatedInitialLoadingIndicator=LoadingIndicator(view: self.donatedGiftsTableView)
         self.registeredLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight/2)
@@ -61,8 +63,6 @@ class MyGiftsViewController: UIViewController {
         getRegisteredGifts(index:0)
         getDonatedGifts(index:0)
         
-        
-        // Do any additional setup after loading the view.
     }
     
     func configRefreshControl(){
