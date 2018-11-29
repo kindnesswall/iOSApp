@@ -56,7 +56,6 @@ class MyGiftsViewController: UIViewController {
         configRefreshControl()
         
         configSegmentControl()
-        hideOrShowCorrespondingViewOfSegmentControl(type: .registered)
         
         getRegisteredGifts(index:0)
         getDonatedGifts(index:0)
@@ -192,7 +191,8 @@ class MyGiftsViewController: UIViewController {
                 }
                 
                 self.registeredGifts.append(contentsOf: reply)
-                
+                self.hideOrShowCorrespondingViewOfSegmentControl(type: .registered)
+
 //                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
                     UIView.performWithoutAnimation {
                         self.registeredGiftsTableView.insertRows(at: insertedIndexes, with: .bottom)

@@ -143,37 +143,39 @@ class HomeViewController: UIViewController {
             self.setTableViewLazyLoading(isLoading: true)
         }
         
-        apiMethods.getGifts(cityId: self.cityId, regionId: "0", categoryId: self.categoryId, startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { (data) in
+        apiMethods.getGifts(cityId: self.cityId, regionId: "0", categoryId: self.categoryId, startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { [weak self] (data) in
 //            APIRequest.logReply(data: data)
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
                 if index==0 {
-                    self.gifts=[]
-                    self.tableview.isHidden = false
-                    self.tableview.reloadData()
+                    self?.gifts=[]
+                    self?.tableview.isHidden = false
+                    self?.tableview.reloadData()
                 }
                 
-                self.refreshControl.endRefreshing()
+                self?.refreshControl.endRefreshing()
                 
-                self.hud.dismiss(afterDelay: 0)
+                self?.hud.dismiss(afterDelay: 0)
                 
-                self.setTableViewLazyLoading(isLoading: false)
+                self?.setTableViewLazyLoading(isLoading: false)
                 
-                if reply.count == self.lazyLoadingCount {
-                    self.isLoadingGifts=false
+                if reply.count == self?.lazyLoadingCount {
+                    self?.isLoadingGifts=false
                 }
                 
                 var insertedIndexes=[IndexPath]()
-                for i in self.gifts.count..<self.gifts.count+reply.count {
-                    insertedIndexes.append(IndexPath(item: i, section: 0))
+                if let minCount = self?.gifts.count {
+                    for i in minCount..<minCount + reply.count{
+                        insertedIndexes.append(IndexPath(item: i, section: 0))
+                    }
                 }
                 
-                self.gifts.append(contentsOf: reply)
+                self?.gifts.append(contentsOf: reply)
                 
 //                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
                     UIView.performWithoutAnimation {
-                        self.tableview.insertRows(at: insertedIndexes, with: .bottom)
+                        self?.tableview.insertRows(at: insertedIndexes, with: .bottom)
                     }
 //                })
                 

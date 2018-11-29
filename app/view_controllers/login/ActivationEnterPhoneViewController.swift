@@ -105,10 +105,10 @@ class ActivationEnterPhoneViewController: UIViewController {
         registerBtn.setTitle("", for: [])
         loading.startAnimating()
         
-        ApiMethods.register(telephone: mobile) { (data, response, error) in
+        ApiMethods.register(telephone: mobile) { [weak self] (data, response, error) in
             
-            self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: [])
-            self.loading.stopAnimating()
+            self?.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: [])
+            self?.loading.stopAnimating()
             
             if let response = response as? HTTPURLResponse {
                 if response.statusCode < 200 && response.statusCode >= 300 {
@@ -123,13 +123,13 @@ class ActivationEnterPhoneViewController: UIViewController {
             let controller=ActivationEnterVerifyCodeViewController(nibName: "ActivationEnterVerifyCodeViewController", bundle:
                 Bundle(for: ActivationEnterVerifyCodeViewController.self))
             
-            controller.setCloseComplition(closeComplition: self.closeComplition)
-            controller.setSubmitComplition(submitComplition: self.submitComplition)
+            controller.setCloseComplition(closeComplition: self?.closeComplition)
+            controller.setSubmitComplition(submitComplition: self?.submitComplition)
             
             if mobile != "" {
                 controller.mobile=mobile
             }
-            self.navigationController?.pushViewController(controller, animated: true)
+            self?.navigationController?.pushViewController(controller, animated: true)
             
         }
         

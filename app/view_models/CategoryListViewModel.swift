@@ -21,14 +21,14 @@ class CategoryListViewModel: NSObject {
     }
 
     func getCategories(hasDefaultOption:Bool,completionHandler:(()->Void)?){
-        apiMethod.getCategories { (data, response, error) in
+        apiMethod.getCategories { [weak self] (data, response, error) in
             if let reply=APIRequest.readJsonData(data: data, outputType: [Category].self) {
-                self.categories=[]
+                self?.categories=[]
                 if hasDefaultOption {
                     let defaultOption=Category(id: "0", title: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts))
-                    self.categories.append(defaultOption)
+                    self?.categories.append(defaultOption)
                 }
-                self.categories.append(contentsOf: reply)
+                self?.categories.append(contentsOf: reply)
                 completionHandler?()
             }
         }

@@ -62,9 +62,9 @@ class ApiMethods {
 //                outputType: ChatConversationOutput.self) {
 //                
 //                if let status=reply.status,status==APIStatus.DONE {
-//                    
+//
 //                    complitionHandler(reply)
-//                    
+//
 //                }
 //            }
         }
@@ -124,32 +124,32 @@ class ApiMethods {
         })
     }
     
-    public static func logout(completionHandler:@escaping(Data?)->Void) {
-        
-        let url:String = APIURLs.logout
-
-        var jsonDicInput : [String : String] = ApiInput.LogoutInput(registeration_id: "")
-        
-        APIRequest.request(url: url, inputDictionary: jsonDicInput) { (data, response, error) in
-            
-            APIRequest.logReply(data: data)
-            
-            completionHandler(data)
-        }
-    }
+//    public static func logout(completionHandler:@escaping(Data?)->Void) {
+//
+//        let url:String = APIURLs.logout
+//
+//        var jsonDicInput : [String : String] = ApiInput.LogoutInput(registeration_id: "")
+//
+//        APIRequest.request(url: url, inputDictionary: jsonDicInput) { (data, response, error) in
+//
+//            APIRequest.logReply(data: data)
+//
+//            completionHandler(data)
+//        }
+//    }
     
-    public static func setDevice(completionHandler:@escaping(Data?)->Void) {
-        
-        let url:String = APIURLs.setDevice
-        
-        var jsonDicInput : [String : String] = ApiInput.SetDeviceInput(registeration_id: "", device_id: "")
-        
-        APIRequest.request(url: url, inputDictionary: jsonDicInput) { (data, response, error) in
-            
-            APIRequest.logReply(data: data)
-            completionHandler(data)
-        }
-    }
+//    public static func setDevice(completionHandler:@escaping(Data?)->Void) {
+//
+//        let url:String = APIURLs.setDevice
+//
+//        var jsonDicInput : [String : String] = ApiInput.SetDeviceInput(registeration_id: "", device_id: "")
+//
+//        APIRequest.request(url: url, inputDictionary: jsonDicInput) { (data, response, error) in
+//
+//            APIRequest.logReply(data: data)
+//            completionHandler(data)
+//        }
+//    }
     
     public func getGifts(
         cityId:String,
@@ -194,35 +194,35 @@ class ApiMethods {
     }
     
     
-    public static func deleteGift(giftId: String,
-                                  completionHandler:@escaping(Data?)->Void) {
-        let mainURL: String = APIURLs.Gift + "/" + giftId
-        
-        APIRequest.Request(url: mainURL, httpMethod: .delete, complitionHandler: { (data, response, error) in
-            
-            APIRequest.logReply(data: data)
-            guard error == nil else {
-                print("Get error register")
-                return
-            }
-            completionHandler(data)
-        })
-    }
+//    public static func deleteGift(giftId: String,
+//                                  completionHandler:@escaping(Data?)->Void) {
+//        let mainURL: String = APIURLs.Gift + "/" + giftId
+//
+//        APIRequest.Request(url: mainURL, httpMethod: .delete, complitionHandler: { (data, response, error) in
+//
+//            APIRequest.logReply(data: data)
+//            guard error == nil else {
+//                print("Get error register")
+//                return
+//            }
+//            completionHandler(data)
+//        })
+//    }
     
-    public static func deleteMyRequest(giftId: String,
-                                       completionHandler:@escaping(Data?)->Void) {
-        let mainURL: String = APIURLs.deleteMyRequest + "/" + giftId
-        
-        APIRequest.Request(url: mainURL, httpMethod: .delete, complitionHandler: { (data, response, error) in
-            
-            APIRequest.logReply(data: data)
-            guard error == nil else {
-                print("Get error register")
-                return
-            }
-            completionHandler(data)
-        })
-    }
+//    public static func deleteMyRequest(giftId: String,
+//                                       completionHandler:@escaping(Data?)->Void) {
+//        let mainURL: String = APIURLs.deleteMyRequest + "/" + giftId
+//
+//        APIRequest.Request(url: mainURL, httpMethod: .delete, complitionHandler: { (data, response, error) in
+//
+//            APIRequest.logReply(data: data)
+//            guard error == nil else {
+//                print("Get error register")
+//                return
+//            }
+//            completionHandler(data)
+//        })
+//    }
     
     public static func acceptRequest(giftId: String,
                                      fromUserId : String,
@@ -258,22 +258,22 @@ class ApiMethods {
         })
     }
     
-    public static func bookmark(giftId: String, completionHandler:@escaping(Data?)->Void) {
-        
-        let url:String = APIURLs.bookmark
-        
-        var jsonDicInput : [String : String] = ApiInput.BookmarkInput(giftId: giftId)
-        
-        APIRequest.request(url: url, inputDictionary: jsonDicInput) { (data, response, error) in
-            
-            APIRequest.logReply(data: data)
-            guard error == nil else {
-                print("Get error register")
-                return
-            }
-            completionHandler(data)
-        }
-    }
+//    public static func bookmark(giftId: String, completionHandler:@escaping(Data?)->Void) {
+//        
+//        let url:String = APIURLs.bookmark
+//        
+//        var jsonDicInput : [String : String] = ApiInput.BookmarkInput(giftId: giftId)
+//        
+//        APIRequest.request(url: url, inputDictionary: jsonDicInput) { (data, response, error) in
+//            
+//            APIRequest.logReply(data: data)
+//            guard error == nil else {
+//                print("Get error register")
+//                return
+//            }
+//            completionHandler(data)
+//        }
+//    }
     
     public func clearAllTasksAndSessions(){
         APIRequest.stopAndClearSessionsAndTasks(sessions: &self.sessions, tasks: &self.tasks)

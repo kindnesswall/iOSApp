@@ -32,7 +32,7 @@ class RequestToAGiftViewController: UIViewController {
         self.tableview.register(type: RequestToAGiftTableViewCell.self)
         
         // Do any additional setup after loading the view.
-        ApiMethods.getRecievedRequestList(giftId: giftId, startIndex: 0) { (data, response, error) in
+        ApiMethods.getRecievedRequestList(giftId: giftId, startIndex: 0) { [weak self] (data, response, error) in
             
             APIRequest.logReply(data: data)
             if let response = response as? HTTPURLResponse {
@@ -47,8 +47,8 @@ class RequestToAGiftViewController: UIViewController {
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Request].self) {
                 
-                self.requests.append(contentsOf: reply)
-                self.tableview.reloadData()
+                self?.requests.append(contentsOf: reply)
+                self?.tableview.reloadData()
                 
                 print("count:")
                 print(reply.count)
@@ -113,17 +113,17 @@ class RequestToAGiftViewController: UIViewController {
                         ApiMethods.acceptRequest(
                             giftId: giftId,
                             fromUserId: fromUserID
-                        ) { (data) in
+                        ) { [weak self] (data) in
                             
-                            self.hud.dismiss(afterDelay: 0)
+                            self?.hud.dismiss(afterDelay: 0)
                             
                             FlashMessage.showMessage(
                                 body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_accepted),
                                 theme: .success
                             )
-                            self.onAccept?()
+                            self?.onAccept?()
                             
-                            self.navigationController?.popViewController(animated: true)
+                            self?.navigationController?.popViewController(animated: true)
                         }
                     }
                     
@@ -156,20 +156,20 @@ class RequestToAGiftViewController: UIViewController {
                         
                         ApiMethods.denyRequest(
                             giftId: giftId,
-                            fromUserId: fromUserID) { (data) in
+                            fromUserId: fromUserID) { [weak self] (data) in
                             
-                                self.hud.dismiss(afterDelay: 0)
+                                self?.hud.dismiss(afterDelay: 0)
                                 
                                 FlashMessage.showMessage(
                                 body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_rejected)
                                 ,theme: .warning)
                             
-                                self.requests.remove(at: index)
+                                self?.requests.remove(at: index)
                             
-                                self.tableview.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
-                                self.tableview.reloadData()
+                                self?.tableview.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                                self?.tableview.reloadData()
                                 
-                                self.onReject?()
+                                self?.onReject?()
                         }
                     }
                 }

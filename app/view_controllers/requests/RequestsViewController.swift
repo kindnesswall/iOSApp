@@ -52,7 +52,7 @@ class RequestsViewController: UIViewController {
             return
         }
         isFirstTime = false
-        ApiMethods.getRequestsMyGifts(startIndex: 0) { (data, response, error) in
+        ApiMethods.getRequestsMyGifts(startIndex: 0) { [weak self] (data, response, error) in
             
             APIRequest.logReply(data: data)
             if let response = response as? HTTPURLResponse {
@@ -68,14 +68,14 @@ class RequestsViewController: UIViewController {
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
-                self.loginView.hide()
+                self?.loginView.hide()
                 
-                self.loadingIndicator.stopLoading()
+                self?.loadingIndicator.stopLoading()
                 
-                self.gifts.append(contentsOf: reply)
-                self.tableview.reloadData()
+                self?.gifts.append(contentsOf: reply)
+                self?.tableview.reloadData()
                 
-                self.showViewsBasedOnNumberOfGifts()
+                self?.showViewsBasedOnNumberOfGifts()
                 
                 print("count:")
                 print(reply.count)
