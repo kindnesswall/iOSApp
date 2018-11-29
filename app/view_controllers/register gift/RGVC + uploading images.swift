@@ -173,7 +173,8 @@ extension RegisterGiftViewController:URLSessionTaskDelegate{
         guard let uploadIndex=findIndexOfUploadedImage(task: task) else {
             return
         }
-        self.uploadedImageViews[uploadIndex].progressLabel.text = "٪" + UIFunctions.CastNumberToPersian(input: percent)
+        
+        self.uploadedImageViews[uploadIndex].progressLabel.text = "٪" + String(AppLanguage.getNumberString(number: String(percent)))
     }
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         
