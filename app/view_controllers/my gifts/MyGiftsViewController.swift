@@ -46,8 +46,8 @@ class MyGiftsViewController: UIViewController {
         registeredGiftsTableView.register(type: GiftTableViewCell.self)
         donatedGiftsTableView.register(type: GiftTableViewCell.self)
 
-        self.registeredInitialLoadingIndicator=LoadingIndicator(view: self.registeredGiftsTableView)
-        self.donatedInitialLoadingIndicator=LoadingIndicator(view: self.donatedGiftsTableView)
+        self.registeredInitialLoadingIndicator=LoadingIndicator(view: self.view)
+        self.donatedInitialLoadingIndicator=LoadingIndicator(view: self.view)
         self.registeredLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight/2)
         self.donatedLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight/2)
         registeredGiftsTableView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight/2, right: 0)
