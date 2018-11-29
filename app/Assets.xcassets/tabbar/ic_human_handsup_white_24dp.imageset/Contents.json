@@ -2,7 +2,6 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ic_human_handsup_white_24dp.png",
       "scale" : "1x"
     },
     {
@@ -11,6 +10,7 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "ic_human_handsup_white_24dp.png",
       "scale" : "3x"
     }
   ],
