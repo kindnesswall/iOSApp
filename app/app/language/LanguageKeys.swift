@@ -69,6 +69,8 @@ struct LanguageKeys {
     
     static let operationFailed : String = "operationFailed"
     
+    static let AppVersion : String = "AppVersion"
+    
     static let giftRegisteredSuccessfully : String = "giftRegisteredSuccessfully"
     static let editedSuccessfully : String = "editedSuccessfully"
     static let draftSavedSuccessfully : String = "draftSavedSuccessfully"

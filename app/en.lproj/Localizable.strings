@@ -6,6 +6,8 @@
   Copyright © 2018 Hamed.Gh. All rights reserved.
 */
 
+"AppVersion" = "App Version: ";
+
 "operationFailed" = "We encounter error at our server!";
 "weEncounterErrorTryAgain" = "We encounter error, please try again!";
 

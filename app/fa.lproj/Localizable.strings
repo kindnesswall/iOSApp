@@ -6,6 +6,8 @@
   Copyright © 2018 Hamed.Gh. All rights reserved.
 */
 
+"AppVersion" = "نسخه برنامه: ";
+
 "activationCodeTryAgainOneMinuteLater" = "یک دقیقه دیگر مجددا تلاش کنید!";
 "activationCodeSendSuccessfully" = "کد فعالسازی با موفقیت ارسال شد!";
 

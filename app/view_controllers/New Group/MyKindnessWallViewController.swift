@@ -11,6 +11,8 @@ import KeychainSwift
 
 class MyKindnessWallViewController: UIViewController {
 
+    @IBOutlet weak var versionNoLbl: UILabel!
+    
     @IBOutlet weak var bugReportBtn: UIButton!
     @IBOutlet weak var aboutKindnessWallBtn: UIButton!
     @IBOutlet weak var statisticBtn: UIButton!
@@ -100,12 +102,6 @@ class MyKindnessWallViewController: UIViewController {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
-        
-        setAllTextsInView()
-    }
-    
     func setAllTextsInView(){
         setLoginLogoutBtnTitle()
         
@@ -127,12 +123,22 @@ class MyKindnessWallViewController: UIViewController {
         }
     }
     
+    func getVersion() -> String {
+        let dic = Bundle.main.infoDictionary!
+        let version = dic["CFBundleShortVersionString"] as! String
+        
+        return version
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("App Lang:")
-        print(LocalizationSystem.sharedInstance.getLanguage())
+        versionNoLbl.text = LocalizationSystem.getStr(forKey: LanguageKeys.AppVersion) + AppLanguage.getNumberString(number: getVersion())
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
         
-        
+        setAllTextsInView()
     }
 }
