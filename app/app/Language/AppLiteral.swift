@@ -1,67 +1,13 @@
 //
-//  AppLanguage.swift
+//  AppLiteral.swift
 //  app
 //
-//  Created by AmirHossein on 3/30/18.
+//  Created by Amir Hossein on 11/17/18.
 //  Copyright © 2018 Hamed.Gh. All rights reserved.
 //
 
 import Foundation
-import KeychainSwift
 
-class AppLanguage{
-    
-    static private var language:Language?
-    
-    enum Language:String {
-        case persian
-        case english
-    }
-    
-    static func setLanguage(language:Language){
-        self.language=language
-        KeychainSwift().set(language.rawValue, forKey: AppConstants.APPLanguage)
-    }
-    static func getLanguage()->Language {
-        
-        if let language=self.language {
-            return language
-        }
-        
-        let defaultLanguage=Language.persian
-        
-        guard let languageString=KeychainSwift().get(AppConstants.APPLanguage) , let language=Language(rawValue: languageString) else {
-            return defaultLanguage
-        }
-        
-        self.language=language
-        return language
-    }
-    
-    
-    //MARK: - Utilities
-    
-    static func getNumberString(number:String)->String{
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return number.CastNumberToPersian()
-        case .english:
-            return number
-        }
-    }
-    
-    static func getTextAlignment()->NSTextAlignment{
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return .right
-        case .english:
-            return .left
-        }
-    }
-    
-}
 
 class AppLiteral {
     
@@ -525,214 +471,45 @@ class AppLiteral {
         }
     }
     
-    
-}
-
-//MARK: - AppLiteralForMessages
-
-class AppLiteralForMessages{
-    
-    static var registeredSuccessfully : String {
+    static var kindnessWallCulture : String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
-            return "ثبت کالا با موفقیت انجام شد"
+            return "فرهنگ دیوار مهربانی"
         case .english:
-            return "The gift has registered successfully"
+            return "Kindness Wall Culture"
         }
     }
     
-    static var editedSuccessfully : String {
+    static var withDonateCollaboration: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
-            return "کالا با موفقیت ویرایش شد"
+            return "با همکاری دونِیت"
         case .english:
-            return "The gift has edited successfully"
+            return "With 2Nate Collaboration"
         }
     }
     
-    static var draftSavedSuccessfully : String {
+    static var alwaysFree: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
-            return "پیش‌نویس با موفقیت ذخیره شد"
+            return "همیشه رایگان"
         case .english:
-            return "The draft has saved successfully"
+            return "Always Free"
         }
     }
     
-    static var uploadedSuccessfully : String {
+    static var openSource: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
-            return "آپلود عکس با موفقیت انجام شد"
+            return "متن باز"
         case .english:
-            return "The Image has uploaded successfully"
+            return "Open Source"
         }
     }
     
-    
-    
-    static var gettingPriceReason : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return " (صرفا جهت برآورد و نمایش در قسمت آمار است و برای دیگران نمایش داده نمیشود) "
-        case .english:
-            return ""
-        }
-    }
-    
-    //MARK: Errors
-    
-    static var imageUploadingError : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "آپلود عکس با مشکل روبه‌رو شد"
-        case .english:
-            return "An error has occurred in image uploading"
-        }
-    }
-    
-    static var titleError : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "لطفا عنوان کالا را وارد نمایید"
-        case .english:
-            return "Please write the title of the gift"
-        }
-    }
-    
-    static var categoryError : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "لطفا دسته‌بندی کالا را انتخاب نمایید"
-        case .english:
-            return "Please select the category of the gift"
-        }
-    }
-    
-    static var newOrSecondhandError : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "لطفا وضعیت نو یا دسته دو بودن کالا را مشخص کنید."
-        case .english:
-            return "Please select one of the \"new or secondhand\" options"
-        }
-    }
-    
-    static var descriptionError : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "لطفا توضیحات کالا را وارد نمایید"
-        case .english:
-            return "Please write the description of the gift"
-        }
-    }
-    
-    static var priceError : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "لطفا قیمت کالا را وارد نمایید"
-        case .english:
-            return "Please write the price of the gift"
-        }
-    }
-    
-    static var addressError : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "لطفا محل کالا را انتخاب نمایید"
-        case .english:
-            return "Please select the place of the gift"
-        }
-    }
-    
-    static var giftRemovingPrompt : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "آیا از حدف این هدیه اطمینان دارید؟"
-        case .english:
-            return "Are you sure that you want to remove the gift?"
-        }
-    }
-    
-    static var phoneNumberIncorrectError : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "شماره موبایل صحیح نمی باشد."
-        case .english:
-            return "The phone number is not correct."
-        }
-    }
-    static var phoneNumberTryAgainError : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "شماره تلفن را مجدد وارد کنید"
-        case .english:
-            return "Please write the number again"
-        }
-    }
-    
-    static var activationCodeError : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "لطفا کد فعالسازی را وارد نمایید."
-        case .english:
-            return "Please write the activation code."
-        }
-    }
-    
-    static var activationCodeIncorrectError : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "کد فعالسازی وارد شده صحیح نمی باشد."
-        case .english:
-            return "The activation code is not correct."
-        }
-    }
-    
-    static var guideOfSendingActivationCode : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "کد فعالسازی به شماره زیر ارسال می شود. درصورتی که شماره صحیح نیست آن را ویرایش کنید."
-        case .english:
-            return "The activation code will be sent to the following phone number. If the phone number is not correct, please edit it."
-        }
-    }
-    
-    static var guideOfRegitering_part1 : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return "تا لحظاتی دیگر پیامی حاوی کد فعالسازی به شماره "
-        case .english:
-            return "After few seconds, the message containing activation code will be sent to the phone number "
-        }
-    }
-    
-    static var guideOfRegitering_part2 : String {
-        let language = AppLanguage.getLanguage()
-        switch language {
-        case .persian:
-            return " ارسال خواهد شد. در صورتیکه کد را دریافت نکردید می توانید پس از ۱ دقیقه مجددا سعی کنید."
-        case .english:
-            return ". If you didn't receive the message, you can resend the activation code after 1 minutes."
-        }
-    }
     
 }

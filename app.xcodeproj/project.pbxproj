@@ -114,6 +114,8 @@
 		60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DE22069018C0025D397 /* PopUpMessage.swift */; };
 		6032F61C205287ED00975C23 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032F61B205287ED00975C23 /* LoadingIndicator.swift */; };
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
+		6080700221A02BA20046F940 /* AppLiteralForMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700121A02BA20046F940 /* AppLiteralForMessages.swift */; };
+		6080700421A02BC70046F940 /* AppLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700321A02BC70046F940 /* AppLiteral.swift */; };
 		60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */; };
 		60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861155206E50CD000A42E5 /* AppLanguage.swift */; };
 		6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6092D631204950F700AFDA7B /* MyGiftsViewController.swift */; };
@@ -245,6 +247,8 @@
 		60302DE22069018C0025D397 /* PopUpMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMessage.swift; sourceTree = "<group>"; };
 		6032F61B205287ED00975C23 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		6040F3A2206688A800FCD429 /* APIEmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyInput.swift; sourceTree = "<group>"; };
+		6080700121A02BA20046F940 /* AppLiteralForMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLiteralForMessages.swift; sourceTree = "<group>"; };
+		6080700321A02BC70046F940 /* AppLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLiteral.swift; sourceTree = "<group>"; };
 		60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar + config.swift"; sourceTree = "<group>"; };
 		60861155206E50CD000A42E5 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		6092D631204950F700AFDA7B /* MyGiftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGiftsViewController.swift; sourceTree = "<group>"; };
@@ -490,7 +494,7 @@
 		05BFBBC41FDAA49E00DBCDDF /* app */ = {
 			isa = PBXGroup;
 			children = (
-				60861155206E50CD000A42E5 /* AppLanguage.swift */,
+				6080700021A02B760046F940 /* Language */,
 				05BFBBC91FDAA53900DBCDDF /* AppFont.swift */,
 				05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */,
 				05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */,
@@ -569,6 +573,16 @@
 				60302DDF2068FC7E0025D397 /* PopUpViewController.xib */,
 			);
 			path = PopUpViewController;
+			sourceTree = "<group>";
+		};
+		6080700021A02B760046F940 /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				60861155206E50CD000A42E5 /* AppLanguage.swift */,
+				6080700321A02BC70046F940 /* AppLiteral.swift */,
+				6080700121A02BA20046F940 /* AppLiteralForMessages.swift */,
+			);
+			path = Language;
 			sourceTree = "<group>";
 		};
 		60AE9C82202DB96200F246CD /* view_models */ = {
@@ -856,6 +870,7 @@
 				05644DC01FFEF44A00B7C853 /* Message.swift in Sources */,
 				05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */,
 				05BFBBCA1FDAA53900DBCDDF /* AppFont.swift in Sources */,
+				6080700421A02BC70046F940 /* AppLiteral.swift in Sources */,
 				05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */,
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
 				60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */,
@@ -882,6 +897,7 @@
 				05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */,
 				05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */,
 				60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */,
+				6080700221A02BA20046F940 /* AppLiteralForMessages.swift in Sources */,
 				602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */,
 				05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */,
 				60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */,

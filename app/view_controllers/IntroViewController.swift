@@ -13,24 +13,27 @@ class IntroViewController: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
     let colors:[UIColor] = [#colorLiteral(red: 0.9980840087, green: 0.3723873496, blue: 0.4952875376, alpha: 1),#colorLiteral(red: 0.2666860223, green: 0.5116362572, blue: 1, alpha: 1),#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1),#colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)]
-    var titleArray: [String] = [
-        "فرهنگ دیوار مهربانی",
-        "با همکاری دونیت",
-        "همیشه رایگان",
-        "متن باز"
-    ]
+    var titleArray = [AppLiteral.kindnessWallCulture,
+                      AppLiteral.withDonateCollaboration,
+                      AppLiteral.alwaysFree,
+                      AppLiteral.openSource
+                      ]
+    
     var subTitleArray2: [String] = [
     "",
     "",
     "",
     ""
         ]
+    
+    
     var subTitleArray: [String] = [
-        "نیاز داری، بردار. نیاز نداری، بذار :)",
-        "دونِیت یک پلتفرم جذب سرمایه جمعی ایرانی است که در حال حاضر بر روی تامین سرمایه پروژه هایی که تاثیرات اجتماعی دارند، تمرکز کرده است.\n" ,
-        "برنامه دیوار مهربانی برای همیشه رایگان خواهد ماند؛ بدون هر گونه تبلیغات.",
-        "کدهای برنامه همیشه در دسترس برنامه نویسان خواهد بود."
- ]
+    AppLiteralForMessages.kindnessWallCultureDescription,
+    AppLiteralForMessages.withDonateCollaborationDescription,
+    AppLiteralForMessages.alwaysFreeDescription,
+    AppLiteralForMessages.openSourceDescription
+    ]
+    
     
     var gradiant: CAGradientLayer = {
         //Gradiant for the background view
@@ -96,7 +99,7 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         
         //Set the font and color for the labels:
         view.title.font = AppFont.getBoldFont(size: 22)
-        view.subTitle.font = AppFont.getRegularFont(size: 20)
+        view.subTitle.font = AppFont.getRegularFont(size: 18)
         
         //Set the text in the page:
         view.title.text = titleArray[index]
