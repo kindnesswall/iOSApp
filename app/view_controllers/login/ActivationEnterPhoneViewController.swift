@@ -132,49 +132,6 @@ class ActivationEnterPhoneViewController: UIViewController {
             self?.navigationController?.pushViewController(controller, animated: true)
             
         }
-        
-//        APIRequest.request(
-//            url: APIURLs.requestActivateUser,
-//            inputJson: input
-//        ) { (data, response, error) in
-//            
-//            self.registerBtn.setTitle("ارسال کد فعال‌سازی", for: [])
-//            self.loading.stopAnimating()
-//            
-//            APIRequest.logReply(data: data)
-//            
-//            self.phoneNumberTextField.isUserInteractionEnabled = true
-//            
-//            if let reply=APIRequest.readJsonData(data: data, outpuType: RequestActivateUserOutput.self) {
-//                if let status=reply.status,status==APIStatus.DONE {
-//                    
-//                    switch status{
-//                    case APIStatus.DONE:
-//                        
-//                        let controller=ActivationEnterVerifyCodeViewController(nibName: "ActivationEnterVerifyCodeViewController", bundle:
-//                            Bundle(for: ActivationEnterVerifyCodeViewController.self))
-//                        if let requestedId = reply.request_id {
-//                            controller.requestId = String(describing: requestedId)
-//                        }
-//                        controller.setCloseComplition(closeComplition: self.closeComplition)
-//                        if mobile != "" {
-//                            controller.mobile=mobile
-//                        }
-//                        self.navigationController?.pushViewController(controller, animated: true)
-//                        
-//                    case APIStatus.INVALID_USER_OR_PASS:
-//                        FlashMessage.showMessage(body: "لطفا نام کاربری و رمز عبور خود را وارد نمایید.",theme: .warning)
-//                    default:
-//                        
-//                        break
-//                    }
-//                    
-//                    
-//                }
-//            }
-//        }
-        
-        
     }
     
 }

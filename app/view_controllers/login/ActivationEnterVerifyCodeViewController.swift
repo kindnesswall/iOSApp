@@ -13,7 +13,6 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
 
     var requestId:String!
     var session:URLSession?
-    var task:URLSessionDataTask?
     let keychain = KeychainSwift()
     
     var mobile:String?
