@@ -1,0 +1,120 @@
+/* 
+  Localizable.strings
+  app
+
+  Created by Hamed.Gh on 11/26/18.
+  Copyright © 2018 Hamed.Gh. All rights reserved.
+*/
+
+"AppVersion" = "نسخه برنامه: ";
+
+"activationCodeTryAgainOneMinuteLater" = "یک دقیقه دیگر مجددا تلاش کنید!";
+"activationCodeSendSuccessfully" = "کد فعالسازی با موفقیت ارسال شد!";
+
+"operationFailed" = "ما در سرورهای خود با خطا مواجه شدیم";
+"weEncounterErrorTryAgain" = "ما با خطا مواجه شدیم، لطفا مجددا امتحان کنید!";
+
+"noGiftRegistered" = "هیچ هدیه‌ی ثبت شده‌ای وجود ندارد.";
+"noGiftDonated" = "شما تا کنون هیچ هدیه‌ای اهدا نکرده‌اید.";
+
+"intro_culture" = "فرهنگ دیوار مهربانی";
+"intro_donate_platform" = "با همکاری دونیت";
+"intro_free" = "همیشه رایگان";
+"intro_opensource" = "متن باز";
+
+"intro_subtitle_culture" = "نیاز داری، بردار. نیاز نداری، بذار :)";
+"intro_subtitle_donate_platform" = "دونِیت یک پلتفرم جذب سرمایه جمعی ایرانی است که در حال حاضر بر روی تامین سرمایه پروژه هایی که تاثیرات اجتماعی دارند، تمرکز کرده است.\n" ;
+"intro_subtitle_free" = "برنامه دیوار مهربانی برای همیشه رایگان خواهد ماند.";
+"intro_subtitle_opensource" = "کدهای برنامه همیشه در دسترس برنامه نویسان خواهد بود.";
+
+"Switch_Language_dialog_title" = "بستن برنامه";
+"Switch_Language_dialog_text" = "برای تغییر زبان باید پس از بسته شدن برنامه آن را مجدد اجرا کنید";
+"Switch_Language_dialog_ok" = "باشه";
+"Switch_Language_dialog_cancel" = "بی‌خیال";
+
+"logout_dialog_title" = "خروج";
+"logout_dialog_text" = "آیا مطمئن هستید؟";
+"logout_dialog_ok" = "بله";
+"logout_dialog_cancel" = "خیر";
+
+"popup_reject_request_msg" = "آیا از رد این درخواست مطمئن هستید؟";
+"popup_request_rejected" = "درخواست رد شد";
+
+"popup_accept_request_msg" = "آیا از قبول این درخواست مطمئن هستید؟";
+"popup_request_accepted" = "با درخواست موافقت شد";
+
+"StatisticViewController_title" = "آمار";
+"MyGiftsViewController_title" = "هدیه‌های من";
+"RegisterGiftViewController_title" = "ثبت هدیه";
+"EditGiftViewController_title" = "ویرایش هدیه";
+"RequestsViewController_title" = "لیست درخواستها به هدیه‌های من";
+
+"back" = "بازگشت";
+"cancel" = "انصراف";
+"yes" = "بله";
+"ok" = "باشه";
+"no" = "نه";
+"skip" = "بگذر";
+"edit" = "ویرایش";
+
+"registeringActivationCode" = "ثبت کد فعالسازی";
+"resendActivationCode" = "ارسال مجدد کد فعالسازی";
+"sendingActivationCode" =  "ارسال کد فعال سازی";
+"activationCode" = "کد فعالسازی";
+"statistic" = "آمار";
+"letsGoToTheApplication" = "بریم داخل اپلیکیشن!";
+"aboutKindnessWall" = "درباره دیوار مهربانی";
+"bugReport" = "گزارش اشکالات برنامه";
+"contactUs" = "ارتباط با ما";
+"myWall" = "دیوار من";
+"logout" = "خروج از ";
+"login" = "ورود";
+"addImage" =  "افزودن عکس";
+"approximatePrice" =  "ارزش تقریبی به تومان";
+"description" = "توضیحات";
+"title" = "عنوان";
+"gallery" = "گالری تصاویر";
+"camera" = "دوربین";
+"select" = "انتخاب";
+"saveDraft" = "ذخیره پیش‌ نویس";
+"clearPage" = "پاک کردن صفحه";
+"donated" = "اهدا شده";
+"registered" = "ثبت شده";
+"placeOfTheGift" = "محل هدیه";
+"used" = "دسته دو";
+"new" = "نو";
+"newOrUsed" = "نو یا دسته دوم؟";
+"giftCategory" = "دسته بندی هدیه";
+"category" = "دسته‌بندی";
+"allRegions" = "همه منطقه‌ها";
+"allCities" = "همه شهرها";
+"allGifts" = "همه هدیه‌ها";
+"address" = "آدرس";
+"status" = "وضعیت";
+"remove" = "حذف";
+"request" = "درخواست";
+"home" = "خانه";
+
+"loading" = "بارگذاری";
+
+"giftRegisteredSuccessfully" = "ثبت هدیه با موفقیت انجام شد";
+"editedSuccessfully" =  "هدیه با موفقیت ویرایش شد";
+"draftSavedSuccessfully" = "پیش‌نویس با موفقیت ذخیره شد";
+"uploadedSuccessfully" = "آپلود عکس با موفقیت انجام شد";
+"gettingPriceReason" = " (صرفا جهت برآورد و نمایش در قسمت آمار است و برای دیگران نمایش داده نمیشود) ";
+"imageUploadingError" = "آپلود عکس با مشکل روبه‌رو شد";
+"titleError" = "لطفا عنوان هدیه را وارد نمایید";
+"categoryError" = "لطفا دسته‌بندی کالا را انتخاب نمایید";
+"newOrUsedError" = "لطفا وضعیت نو یا دسته دو بودن کالا را مشخص کنید.";
+"descriptionError" = "لطفا توضیحات هدیه را وارد نمایید";
+"priceError" = "لطفا قیمت هدیه را وارد نمایید";
+"addressError" = "لطفا محل هدیه را انتخاب نمایید";
+"giftRemovingPrompt" = "آیا از حدف این هدیه اطمینان دارید؟";
+"phoneNumberIncorrectError" = "شماره موبایل صحیح نمی باشد.";
+"phoneNumberTryAgainError" = "شماره تلفن را مجدد وارد کنید";
+"activationCodeError" = "لطفا کد فعالسازی را وارد نمایید.";
+"activationCodeIncorrectError" = "کد فعالسازی وارد شده صحیح نمی باشد.";
+"guideOfSendingActivationCode" = "کد فعالسازی به شماره زیر ارسال می شود. درصورتی که شماره صحیح نیست آن را ویرایش کنید.";
+"guideOfRegitering_part1" = "تا لحظاتی دیگر پیامی حاوی کد فعالسازی به شماره ";
+"guideOfRegitering_part2" = " ارسال خواهد شد. در صورتیکه کد را دریافت نکردید می توانید پس از ۱ دقیقه مجددا سعی کنید.";
+

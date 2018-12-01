@@ -45,7 +45,7 @@ class RegisterGiftViewController: UIViewController {
             self.registerBtn.isEnabled=true
         }) {
             self.clearAllInput()
-            FlashMessage.showMessage(body: AppLiteralForMessages.registeredSuccessfully,theme: .success)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.giftRegisteredSuccessfully),theme: .success)
         }
         
     }
@@ -60,7 +60,7 @@ class RegisterGiftViewController: UIViewController {
             self.editBtn.isEnabled=true
         }) {
             
-            FlashMessage.showMessage(body: AppLiteralForMessages.editedSuccessfully, theme: .success)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.editedSuccessfully), theme: .success)
             
             self.writeChangesToEditedGift()
             self.editHandler?()
@@ -155,32 +155,33 @@ class RegisterGiftViewController: UIViewController {
     
     func configSendButtons(){
         if isEditMode {
-            self.registerBtn.isHidden=true
-            self.editBtn.isHidden=false
+            self.registerBtn.hide()
+            self.editBtn.show()
         } else {
-            self.registerBtn.isHidden=false
-            self.editBtn.isHidden=true
+            self.registerBtn.show()
+            self.editBtn.hide()
         }
     }
     
     func configAddressViews(){
         if giftHasNewAddress {
-            self.editedGiftOriginalAddress.isHidden=true
+            self.editedGiftOriginalAddress.hide()
         } else {
-            self.editedGiftOriginalAddress.isHidden=false
+            self.editedGiftOriginalAddress.show()
         }
     }
     
     func configNavBar(){
         
         if !isEditMode {
-            self.barClearBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.clearBarBtnAction), text: AppLiteral.clearPage)
+            self.barClearBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.clearBarBtnAction), text: LocalizationSystem.getStr(forKey: LanguageKeys.clearPage))
             self.navigationItem.rightBarButtonItems=[self.barClearBtn!]
-            self.barSaveBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.saveBarBtnAction), text: AppLiteral.saveDraft)
+            self.barSaveBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.saveBarBtnAction), text: LocalizationSystem.getStr(forKey: LanguageKeys.saveDraft))
             self.navigationItem.leftBarButtonItems=[self.barSaveBtn!]
             
         } else {
-            self.barCloseBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.closeBarBtnAction), text: AppLiteral.cancel)
+            self.barCloseBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.closeBarBtnAction), text: LocalizationSystem.getStr(forKey: LanguageKeys.cancel))
+            
             self.navigationItem.rightBarButtonItems=[self.barCloseBtn!]
         }
         
@@ -202,9 +203,9 @@ class RegisterGiftViewController: UIViewController {
         
         if let isNew=gift.isNew {
             if isNew {
-                self.dateStatus=DateStatus(id:"0",title:AppLiteral.new)
+                self.dateStatus=DateStatus(id:"0",title:LocalizationSystem.getStr(forKey: LanguageKeys.new))
             } else {
-                self.dateStatus=DateStatus(id: "1" , title: AppLiteral.secondHand)
+                self.dateStatus=DateStatus(id: "1" , title: LocalizationSystem.getStr(forKey: LanguageKeys.used))
             }
             self.dateStatusBtn.setTitle(self.dateStatus?.title, for: .normal)
         }
@@ -305,10 +306,10 @@ class RegisterGiftViewController: UIViewController {
         self.clearUploadedImages()
         self.clearGiftPlaces()
         
-        self.categoryBtn.setTitle(AppLiteral.select, for: .normal)
+        self.categoryBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
         self.category=nil
         
-        self.dateStatusBtn.setTitle(AppLiteral.select, for: .normal)
+        self.dateStatusBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
         self.dateStatus=nil
         
         self.titleTextView.text=""
@@ -340,7 +341,7 @@ class RegisterGiftViewController: UIViewController {
         userDefault.set(data, forKey: AppConstants.RegisterGiftDraft)
         userDefault.synchronize()
         
-        FlashMessage.showMessage(body: AppLiteralForMessages.draftSavedSuccessfully, theme: .success)
+        FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.draftSavedSuccessfully), theme: .success)
         
     }
     
@@ -351,20 +352,20 @@ class RegisterGiftViewController: UIViewController {
         let input=RegisterGiftInput()
         
         guard let title=self.titleTextView.text , title != "" else {
-            FlashMessage.showMessage(body: AppLiteralForMessages.titleError,theme: .warning)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.titleError),theme: .warning)
             return
         }
         input.title=title
         
         guard let categoryId=Int(self.category?.id ?? "") else {
-            FlashMessage.showMessage(body: AppLiteralForMessages.categoryError,theme: .warning)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.categoryError),theme: .warning)
             return
         }
         input.categoryId=categoryId
         
         
         guard let dateStatusId=self.dateStatus?.id else {
-            FlashMessage.showMessage(body: AppLiteralForMessages.newOrSecondhandError,theme: .warning)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.newOrUsedError),theme: .warning)
             return
         }
         if dateStatusId == "0" {
@@ -375,13 +376,13 @@ class RegisterGiftViewController: UIViewController {
         
         
         guard let giftDescription=self.descriptionTextView.text , giftDescription != "" else {
-            FlashMessage.showMessage(body: AppLiteralForMessages.descriptionError,theme: .warning)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.descriptionError),theme: .warning)
             return
         }
         input.description=giftDescription
         
         guard let price=Int(self.priceTextView.text ?? "") else {
-            FlashMessage.showMessage(body: AppLiteralForMessages.priceError,theme: .warning)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.priceError),theme: .warning)
             return
         }
         input.price=price
@@ -391,11 +392,11 @@ class RegisterGiftViewController: UIViewController {
             
             let addressObject=getAddress()
             guard let address=addressObject.address else {
-                FlashMessage.showMessage(body: AppLiteralForMessages.addressError,theme: .warning)
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.addressError),theme: .warning)
                 return
             }
             guard let cityId=addressObject.cityId else {
-                FlashMessage.showMessage(body: AppLiteralForMessages.addressError,theme: .warning)
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.addressError),theme: .warning)
                 return
             }
             
@@ -570,7 +571,7 @@ class RegisterGiftViewController: UIViewController {
     @IBAction func uploadBtnClicked(_ sender: Any) {
         let actionController = SkypeActionController()
         
-        actionController.addAction(Action(AppLiteral.camera, style: .default, handler: { action in
+        actionController.addAction(Action(LocalizationSystem.getStr(forKey: LanguageKeys.camera), style: .default, handler: { action in
             
             self.imagePicker.allowsEditing = false
             self.imagePicker.sourceType = .camera
@@ -580,7 +581,7 @@ class RegisterGiftViewController: UIViewController {
             
         }))
         
-        actionController.addAction(Action(AppLiteral.gallery, style: .default, handler: { action in
+        actionController.addAction(Action(LocalizationSystem.getStr(forKey: LanguageKeys.gallery), style: .default, handler: { action in
             
             self.imagePicker.allowsEditing = false
             self.imagePicker.sourceType = .photoLibrary
@@ -592,42 +593,45 @@ class RegisterGiftViewController: UIViewController {
         
         present(actionController, animated: true, completion: nil)
 
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
-        setAllTextsInView()
+//        setAllTextsInView()
     }
     
     func setAllTextsInView(){
         if isEditMode {
-            self.navigationItem.title=AppLiteral.editGift
+            self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.EditGiftViewController_title)
         } else {
-            self.navigationItem.title=AppLiteral.registerGift
+            self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.RegisterGiftViewController_title)
+            
         }
         
-        self.barClearBtn?.title=AppLiteral.clearPage
-        self.barSaveBtn?.title=AppLiteral.saveDraft
-        self.barCloseBtn?.title=AppLiteral.cancel
+        self.barClearBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.clearPage)
+        self.barSaveBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.saveDraft)
+        self.barCloseBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.cancel)
         
-        self.categoryLabel.text=AppLiteral.giftCategory
-        self.titleLabel.text=AppLiteral.title
-        self.descriptionLabel.text=AppLiteral.description
-        self.placeLabel.text=AppLiteral.placeOfTheGift
-        self.newOrSecondhandLabel.text=AppLiteral.newOrSecondHand
-        self.priceLabel.text=AppLiteral.approximatePriceInToman+AppLiteralForMessages.gettingPriceReason
+        self.categoryLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.giftCategory)
+        self.titleLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.title)
+        self.descriptionLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.description)
+        self.placeLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.placeOfTheGift)
+        self.newOrSecondhandLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.newOrUsed)
+        self.priceLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.approximatePrice)+LocalizationSystem.getStr(forKey: LanguageKeys.gettingPriceReason)
         
-        self.registerBtn.setTitle(AppLiteral.registerGift, for: .normal)
-        self.editBtn.setTitle(AppLiteral.editGift, for: .normal)
+        self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.RegisterGiftViewController_title), for: .normal)
         
-        self.uploadBtn.setTitle(AppLiteral.addImage, for: .normal)
-        self.placeBtn.setTitle(AppLiteral.select, for: .normal)
+        self.editBtn.setTitle(
+            LocalizationSystem.getStr(forKey: LanguageKeys.EditGiftViewController_title),
+            for: .normal)
+        
+        self.uploadBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.addImage), for: .normal)
+        self.placeBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
         if self.category == nil {
-            self.categoryBtn.setTitle(AppLiteral.select, for: .normal)
+            self.categoryBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
         }
         if self.dateStatus == nil {
-            self.dateStatusBtn.setTitle(AppLiteral.select, for: .normal)
+            self.dateStatusBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
         }
     }
     

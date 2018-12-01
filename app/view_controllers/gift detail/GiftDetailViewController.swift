@@ -49,6 +49,9 @@ class GiftDetailViewController: UIViewController {
         
         setUI()
 
+        if let _=KeychainSwift().get(AppConstants.Authorization) {
+            self.requestBtn.hide()
+        }
         
         createSlideShow()
         
@@ -65,11 +68,11 @@ class GiftDetailViewController: UIViewController {
                 
                 if let myId=KeychainSwift().get(AppConstants.USER_ID) , let userId=reply.userId , myId==userId {
                     self?.addEditBtn()
-                    self?.requestBtn.isHidden=true
-                    self?.removeBtn.isHidden=false
+//                    self?.requestBtn.hide()
+                    self?.removeBtn.show()
                 } else {
-                    self?.requestBtn.isHidden=false
-                    self?.removeBtn.isHidden=true
+//                    self?.requestBtn.show()
+                    self?.removeBtn.hide()
                 }
                 
             }
@@ -87,9 +90,9 @@ class GiftDetailViewController: UIViewController {
         giftCategory.text = gift?.category
         giftAddress.text = gift?.address
         if let isNew = gift?.isNew, isNew {
-            oldOrNew.text = AppLiteral.new
+            oldOrNew.text = LocalizationSystem.getStr(forKey: LanguageKeys.new)
         }else{
-            oldOrNew.text = AppLiteral.secondHand
+            oldOrNew.text = LocalizationSystem.getStr(forKey: LanguageKeys.used)
         }
         giftDescription.text = gift?.description
         
@@ -97,14 +100,20 @@ class GiftDetailViewController: UIViewController {
     }
     
     func addEditBtn(){
-        editBtn = NavigationBarStyle.getNavigationItem(target: self, action: #selector(self.editBtnClicked), text: AppLiteral.edit,font:AppFont.getRegularFont(size: 16))
+        editBtn = NavigationBarStyle.getNavigationItem(
+            target: self,
+            action: #selector(self.editBtnClicked),
+            text:LocalizationSystem.getStr(forKey: LanguageKeys.edit),
+            font:AppFont.getRegularFont(size: 16)
+        )
+        
         self.navigationItem.rightBarButtonItems=[editBtn!]
     }
     
     func setUI(){
         
-        self.removeBtn.isHidden=true
-        self.requestBtn.isHidden=true
+        self.removeBtn.hide()
+//        self.requestBtn.hide()
         
         self.loadingIndicator=LoadingIndicator(navigationItem: self.navigationItem, type: .right, replacedNavigationBarButton: nil)
         self.loadingIndicator?.startLoading()
@@ -137,7 +146,7 @@ class GiftDetailViewController: UIViewController {
     }
     @IBAction func removeBtnClicked(_ sender: Any) {
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: AppLiteralForMessages.giftRemovingPrompt,animation:.none,declineHandler: nil) { (ـ) in
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: LocalizationSystem.getStr(forKey: LanguageKeys.giftRemovingPrompt),animation:.none,declineHandler: nil) { (ـ) in
             self.removeGift()
         }
         
@@ -154,12 +163,20 @@ class GiftDetailViewController: UIViewController {
         url+="/\(giftId)"
         APICall.request(url: url, httpMethod: .DELETE, input: input) { [weak self] (data, response, error) in
             self?.removeBtn.isEnabled=true
+            
+            if let error = error {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
+                return
+            }
+            
             if let response = response as? HTTPURLResponse {
                 if response.statusCode >= 200 && response.statusCode <= 300 {
                     
                     self?.editHandler?()
                     self?.navigationController?.popViewController(animated: true)
                     
+                }else{
+                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
                 }
             }
         }
@@ -177,13 +194,16 @@ class GiftDetailViewController: UIViewController {
     }
     
     func setAllTextsInView(){
-        self.editBtn?.title=AppLiteral.edit
-        self.removeBtn.setTitle(AppLiteral.remove, for: .normal)
-        self.requestBtn.setTitle(AppLiteral.request, for: .normal)
-        self.categoryLabel.text=AppLiteral.category
-        self.oldOrNewLabel.text=AppLiteral.status
-        self.addressLabel.text=AppLiteral.address
-        self.descriptionLabel.text=AppLiteral.description
+        self.editBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.edit)
+        self.removeBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.remove), for: .normal)
+        self.requestBtn.setTitle(
+            LocalizationSystem.getStr(forKey: LanguageKeys.request),
+            for: .normal)
+        
+        self.categoryLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.category)
+        self.oldOrNewLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.status)
+        self.addressLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.address)
+        self.descriptionLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.description)
     }
     
     func createSlideShow() {

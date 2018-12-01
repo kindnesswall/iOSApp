@@ -13,11 +13,12 @@ class IntroViewController: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
     let colors:[UIColor] = [#colorLiteral(red: 0.9980840087, green: 0.3723873496, blue: 0.4952875376, alpha: 1),#colorLiteral(red: 0.2666860223, green: 0.5116362572, blue: 1, alpha: 1),#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1),#colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)]
-    var titleArray = [AppLiteral.kindnessWallCulture,
-                      AppLiteral.withDonateCollaboration,
-                      AppLiteral.alwaysFree,
-                      AppLiteral.openSource
-                      ]
+    var titleArray: [String] = [
+        LocalizationSystem.getStr(forKey: LanguageKeys.intro_culture),
+        LocalizationSystem.getStr(forKey: LanguageKeys.intro_donate_platform),
+        LocalizationSystem.getStr(forKey: LanguageKeys.intro_free),
+        LocalizationSystem.getStr(forKey: LanguageKeys.intro_opensource)
+    ]
     
     var subTitleArray2: [String] = [
     "",
@@ -25,15 +26,12 @@ class IntroViewController: UIViewController {
     "",
     ""
         ]
-    
-    
     var subTitleArray: [String] = [
-    AppLiteralForMessages.kindnessWallCultureDescription,
-    AppLiteralForMessages.withDonateCollaborationDescription,
-    AppLiteralForMessages.alwaysFreeDescription,
-    AppLiteralForMessages.openSourceDescription
-    ]
-    
+        LocalizationSystem.getStr(forKey: LanguageKeys.intro_subtitle_culture),
+        LocalizationSystem.getStr(forKey: LanguageKeys.intro_subtitle_donate_platform),
+        LocalizationSystem.getStr(forKey: LanguageKeys.intro_subtitle_free),
+        LocalizationSystem.getStr(forKey: LanguageKeys.intro_subtitle_opensource)
+ ]
     
     var gradiant: CAGradientLayer = {
         //Gradiant for the background view
@@ -99,7 +97,7 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         
         //Set the font and color for the labels:
         view.title.font = AppFont.getBoldFont(size: 22)
-        view.subTitle.font = AppFont.getRegularFont(size: 18)
+        view.subTitle.font = AppFont.getRegularFont(size: 14)
         
         //Set the text in the page:
         view.title.text = titleArray[index]
@@ -122,8 +120,12 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         overlay.skipButton.setTitleColor(UIColor.white, for: .normal)
         overlay.skipButton.titleLabel?.font = AppFont.getRegularFont(size: 16)
         
-        overlay.continueButton.setTitle(AppLiteral.yes, for: .normal)
-        overlay.skipButton.setTitle(AppLiteral.skip, for: .normal)
+        overlay.continueButton.setTitle(
+            LocalizationSystem.getStr(forKey: LanguageKeys.yes),
+            for: .normal)
+        
+        overlay.skipButton.setTitle(
+            LocalizationSystem.getStr(forKey: LanguageKeys.skip), for: .normal)
         
         //Return the overlay view:
         return overlay
@@ -136,11 +138,16 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         overlay.continueButton.tag = Int(position)
         
         if Int(currentPage) < titleArray.count-1 {
-            overlay.continueButton.setTitle(AppLiteral.yes, for: .normal)
-            overlay.skipButton.setTitle(AppLiteral.skip, for: .normal)
+            overlay.continueButton.setTitle(
+                LocalizationSystem.getStr(forKey: LanguageKeys.yes),
+                for: .normal)
+            
+            overlay.skipButton.setTitle(
+                LocalizationSystem.getStr(forKey: LanguageKeys.skip), for: .normal)
+            
             overlay.skipButton.isHidden = false
         } else {
-            overlay.continueButton.setTitle(AppLiteral.letsGoToTheApplication, for: .normal)
+            overlay.continueButton.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.letsGoToTheApplication), for: .normal)
             overlay.skipButton.isHidden = true
         }
     }

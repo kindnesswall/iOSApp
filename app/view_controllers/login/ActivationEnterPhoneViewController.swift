@@ -58,14 +58,14 @@ class ActivationEnterPhoneViewController: UIViewController {
     }
     
     func setAllTextsInView(){
-        self.navigationItem.title=AppLiteral.login
-        self.registerBtn.setTitle(AppLiteral.sendingActivationCode, for: .normal)
-        self.guideLabel.text=AppLiteralForMessages.guideOfSendingActivationCode
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.login)
+        self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: .normal)
+        self.guideLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.guideOfSendingActivationCode)
     }
     
     func setNavBar(){
 //        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationItem.title=AppLiteral.login
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.login)
         self.navigationItem.removeDefaultBackBtn()
         self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
     }
@@ -93,7 +93,7 @@ class ActivationEnterPhoneViewController: UIViewController {
     @IBAction func registerBtnClick(_ sender: Any) {
         let mobile:String = phoneNumberTextField.text ?? ""
         if !mobile.starts(with: "09") || mobile.count != 11 || !mobile.isNumber{
-            FlashMessage.showMessage(body: AppLiteralForMessages.phoneNumberIncorrectError, theme: .error)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.phoneNumberIncorrectError), theme: .error)
             return
         }
         
@@ -105,10 +105,10 @@ class ActivationEnterPhoneViewController: UIViewController {
         registerBtn.setTitle("", for: [])
         loading.startAnimating()
         
-        ApiMethods.register(telephone: mobile) { (data, response, error) in
+        ApiMethods.register(telephone: mobile) { [weak self] (data, response, error) in
             
-            self.registerBtn.setTitle(AppLiteral.sendingActivationCode, for: [])
-            self.loading.stopAnimating()
+            self?.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: [])
+            self?.loading.stopAnimating()
             
             if let response = response as? HTTPURLResponse {
                 if response.statusCode < 200 && response.statusCode >= 300 {
@@ -123,58 +123,15 @@ class ActivationEnterPhoneViewController: UIViewController {
             let controller=ActivationEnterVerifyCodeViewController(nibName: "ActivationEnterVerifyCodeViewController", bundle:
                 Bundle(for: ActivationEnterVerifyCodeViewController.self))
             
-            controller.setCloseComplition(closeComplition: self.closeComplition)
-            controller.setSubmitComplition(submitComplition: self.submitComplition)
+            controller.setCloseComplition(closeComplition: self?.closeComplition)
+            controller.setSubmitComplition(submitComplition: self?.submitComplition)
             
             if mobile != "" {
                 controller.mobile=mobile
             }
-            self.navigationController?.pushViewController(controller, animated: true)
+            self?.navigationController?.pushViewController(controller, animated: true)
             
         }
-        
-//        APIRequest.request(
-//            url: APIURLs.requestActivateUser,
-//            inputJson: input
-//        ) { (data, response, error) in
-//            
-//            self.registerBtn.setTitle("ارسال کد فعال‌سازی", for: [])
-//            self.loading.stopAnimating()
-//            
-//            APIRequest.logReply(data: data)
-//            
-//            self.phoneNumberTextField.isUserInteractionEnabled = true
-//            
-//            if let reply=APIRequest.readJsonData(data: data, outpuType: RequestActivateUserOutput.self) {
-//                if let status=reply.status,status==APIStatus.DONE {
-//                    
-//                    switch status{
-//                    case APIStatus.DONE:
-//                        
-//                        let controller=ActivationEnterVerifyCodeViewController(nibName: "ActivationEnterVerifyCodeViewController", bundle:
-//                            Bundle(for: ActivationEnterVerifyCodeViewController.self))
-//                        if let requestedId = reply.request_id {
-//                            controller.requestId = String(describing: requestedId)
-//                        }
-//                        controller.setCloseComplition(closeComplition: self.closeComplition)
-//                        if mobile != "" {
-//                            controller.mobile=mobile
-//                        }
-//                        self.navigationController?.pushViewController(controller, animated: true)
-//                        
-//                    case APIStatus.INVALID_USER_OR_PASS:
-//                        FlashMessage.showMessage(body: "لطفا نام کاربری و رمز عبور خود را وارد نمایید.",theme: .warning)
-//                    default:
-//                        
-//                        break
-//                    }
-//                    
-//                    
-//                }
-//            }
-//        }
-        
-        
     }
     
 }

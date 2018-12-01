@@ -1,0 +1,119 @@
+/* 
+  Localizable.strings
+  app
+
+  Created by Hamed.Gh on 11/26/18.
+  Copyright © 2018 Hamed.Gh. All rights reserved.
+*/
+
+"AppVersion" = "App Version: ";
+
+"operationFailed" = "We encounter error at our server!";
+"weEncounterErrorTryAgain" = "We encounter error, please try again!";
+
+"noGiftRegistered" = "There is no gift that registered by you";
+"noGiftDonated" = "There is no gift that donated by you";
+
+"intro_culture" = "KindnessWall's Culture";
+"intro_donate_platform" = "2nate.com";
+"intro_free" = "Free";
+"intro_opensource" = "Open Source";
+
+"intro_subtitle_culture" = "If you have something you do not need anymore, you can donate it to others. If you need something and you can not afford it, you can receive it as a gift.";
+"intro_subtitle_donate_platform" = "We are partnering with 2nate.com.2nate is an Iranian donation platform that is currently focusing on fundraising projects that have social impacts. It allows people to easily create a campaign and start raising funds for its cause. 2nate.com raises money for causes and projects people care about and love.";
+"intro_subtitle_free" = "KindnessWall is free forever.";
+"intro_subtitle_opensource" = "Application codes will be available to programmers";
+
+"Switch_Language_dialog_title" = "Close App";
+"Switch_Language_dialog_text" = "To switch language, open the app after closing";
+"Switch_Language_dialog_ok" = "OK";
+"Switch_Language_dialog_cancel" = "Cancel";
+
+"logout_dialog_title" = "Logout";
+"logout_dialog_text" = "Are you sure?";
+"logout_dialog_ok" = "Yes";
+"logout_dialog_cancel" = "No";
+
+"popup_reject_request_msg" = "Are you sure to reject this request?";
+"popup_request_rejected" = "The request rejected!";
+
+"popup_accept_request_msg" = "Are you sure to accept this request?";
+"popup_request_accepted" = "The request accepted!";
+
+"loading" = "loading";
+
+"StatisticViewController_title" = "Statistic";
+"MyGiftsViewController_title" = "My Gifts";
+"RegisterGiftViewController_title" = "Register Gift";
+"EditGiftViewController_title" = "Edit Gift Info";
+"RequestsViewController_title" = "The List of Requests to my Gifts";
+
+"back" = "Back";
+"cancel" = "Cancel";
+"yes" = "Yes";
+"ok" = "OK";
+"no" = "No";
+"skip" = "Skip";
+"edit" = "Edit";
+
+"registeringActivationCode" = "Register Activation Code";
+"resendActivationCode" = "Resend Activation Code";
+"sendingActivationCode" = "Sending Activation Code";
+"activationCode" = "Activation Code";
+"statistic" = "Statistics";
+"letsGoToTheApplication" = "Let's Go To The Application";
+"aboutKindnessWall" = "About KindnessWall";
+"bugReport" = "Bug Report";
+"contactUs" = "Contact Us";
+"myWall" = "My Wall";
+"logout" = "Logout from ";
+"login" = "Login";
+"addImage" = "Add Image";
+"approximatePrice" = "Approximated Price";
+"description" = "Description";
+"title" = "Title";
+"gallery" = "Gallery";
+"camera" = "Camera";
+"select" = "Select";
+"saveDraft" = "Save Draft";
+"clearPage" = "Clear Page";
+"donated" = "Donated";
+"registered" = "Registered";
+"placeOfTheGift" = "Gift's Location";
+"used" = "Used";
+"new" = "New";
+"newOrUsed" = "New Or Used?";
+"giftCategory" = "Gift's Category";
+"category" = "Category";
+"allRegions" = "All Regions";
+"allCities" = "All Cities";
+"allGifts" = "All Gifts";
+"address" = "Address";
+"status" = "Status";
+"remove" = "Remove";
+"request" = "Request";
+"home" = "Home";
+
+"giftRegisteredSuccessfully" = "The gift has been registered successfully";
+"editedSuccessfully" = "The gift edited successfully";
+"draftSavedSuccessfully" = "The draft saved successfully";
+"uploadedSuccessfully" = "The Image uploaded successfully";
+"gettingPriceReason" = "";
+"imageUploadingError" = "An error occurred while uploading the image";
+"titleError" = "Please write the title of the gift";
+"categoryError" = "Please select the category of the gift";
+"newOrUsedError" = "Please select one of the \"New or Used\" options";
+"descriptionError" = "Please write the description of the gift";
+"priceError" = "Please write the price of the gift";
+"addressError" = "Please select the location of the gift";
+"giftRemovingPrompt" = "Are you sure that you want to remove the gift?";
+"phoneNumberIncorrectError" = "The phone number is not correct.";
+"phoneNumberTryAgainError" = "Please type your telephone number again";
+"activationCodeError" = "Please type the activation code.";
+"activationCodeIncorrectError" = "The activation code is not correct.";
+"guideOfSendingActivationCode" = "The activation code will be sent to the following phone number. If the phone number is not correct, please edit it.";
+"guideOfRegitering_part1" = "After few seconds, the message containing activation code will be sent to the phone number";
+"guideOfRegitering_part2" = ". If you didn't receive the message, you can resend the activation code after 1 minutes.";
+
+"activationCodeSendSuccessfully" = "Activation Code Send Successfully";
+"activationCodeTryAgainOneMinuteLater" = "Try Again One Minute Later!";

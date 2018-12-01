@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="IRANSansMobile.ttf">
+            <string>IRANSansMobile</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GiftDetailViewController" customModule="app" customModuleProvider="target">
+            <connections>
+                <outlet property="addressLabel" destination="ejt-di-g48" id="5Xk-kC-laq"/>
+                <outlet property="categoryLabel" destination="ork-JQ-Qas" id="yza-1t-7tL"/>
+                <outlet property="descriptionLabel" destination="xOg-iW-mA8" id="3UF-hi-tRg"/>
+                <outlet property="giftAddress" destination="XC5-dY-n2t" id="3Jg-x3-sam"/>
+                <outlet property="giftCategory" destination="qtM-QX-IeH" id="HDE-Gd-ewo"/>
+                <outlet property="giftDatelbl" destination="iOu-x1-2cU" id="2yo-VB-m6m"/>
+                <outlet property="giftDescription" destination="DbJ-yi-oGa" id="Rc6-ZO-yLP"/>
+                <outlet property="giftNamelbl" destination="NEG-oL-UgO" id="gmr-DC-Fsi"/>
+                <outlet property="oldOrNew" destination="tbU-Q4-KMh" id="s7I-iH-F1N"/>
+                <outlet property="oldOrNewLabel" destination="tvm-Lm-x2d" id="TgJ-MR-g9I"/>
+                <outlet property="removeBtn" destination="tsH-hz-jPQ" id="sVn-nH-Obx"/>
+                <outlet property="requestBtn" destination="QJ6-HU-DLW" id="Kdp-Kr-KCz"/>
+                <outlet property="slideshow" destination="hWw-ZU-D9E" id="40h-Wy-lmY"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="309" height="948"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdS-XU-1jJ">
+                    <rect key="frame" x="0.0" y="20" width="309" height="928"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lxc-hW-rNo">
+                            <rect key="frame" x="0.0" y="0.0" width="309" height="838"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWw-ZU-D9E" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                                    <rect key="frame" x="0.0" y="0.0" width="309" height="300"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="300" id="5ZH-tL-z0L"/>
+                                    </constraints>
+                                </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-EV-GT4">
+                                    <rect key="frame" x="0.0" y="300" width="309" height="466"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1D-L3-jIo">
+                                            <rect key="frame" x="0.0" y="0.0" width="309" height="100"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEG-oL-UgO">
+                                                    <rect key="frame" x="16" y="39.5" width="277" height="21.5"/>
+                                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOu-x1-2cU">
+                                                    <rect key="frame" x="16" y="69" width="277" height="15.5"/>
+                                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="12"/>
+                                                    <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="NEG-oL-UgO" firstAttribute="leading" secondItem="H1D-L3-jIo" secondAttribute="leading" constant="16" id="XPe-KW-L1a"/>
+                                                <constraint firstAttribute="trailing" secondItem="iOu-x1-2cU" secondAttribute="trailing" constant="16" id="atV-8X-UPt"/>
+                                                <constraint firstAttribute="height" constant="100" id="n7N-Sr-me7"/>
+                                                <constraint firstItem="iOu-x1-2cU" firstAttribute="leading" secondItem="H1D-L3-jIo" secondAttribute="leading" constant="16" id="pPA-v3-HHp"/>
+                                                <constraint firstItem="iOu-x1-2cU" firstAttribute="top" secondItem="NEG-oL-UgO" secondAttribute="bottom" constant="8" id="sb3-4m-dmn"/>
+                                                <constraint firstAttribute="trailing" secondItem="NEG-oL-UgO" secondAttribute="trailing" constant="16" id="vih-gL-Uiu"/>
+                                                <constraint firstItem="NEG-oL-UgO" firstAttribute="centerY" secondItem="H1D-L3-jIo" secondAttribute="centerY" id="vjr-OP-RzX"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wHe-OA-OMd">
+                                            <rect key="frame" x="0.0" y="100" width="309" height="50"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtM-QX-IeH">
+                                                    <rect key="frame" x="136" y="16" width="141" height="18"/>
+                                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9x-jT-4OQ">
+                                                    <rect key="frame" x="0.0" y="49" width="293" height="1"/>
+                                                    <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="IfO-AY-Nku"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ork-JQ-Qas">
+                                                    <rect key="frame" x="16" y="15.5" width="100" height="19"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="mad-cJ-bLi"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="8OZ-NE-Nhy"/>
+                                                <constraint firstAttribute="trailing" secondItem="qtM-QX-IeH" secondAttribute="trailing" constant="32" id="CUM-eM-gDN"/>
+                                                <constraint firstItem="qtM-QX-IeH" firstAttribute="centerY" secondItem="wHe-OA-OMd" secondAttribute="centerY" id="cjP-Lh-Fre"/>
+                                                <constraint firstItem="qtM-QX-IeH" firstAttribute="leading" secondItem="ork-JQ-Qas" secondAttribute="trailing" constant="20" id="deJ-cP-eMQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="b9x-jT-4OQ" secondAttribute="trailing" constant="16" id="ijT-Hc-yfD"/>
+                                                <constraint firstItem="ork-JQ-Qas" firstAttribute="centerY" secondItem="wHe-OA-OMd" secondAttribute="centerY" id="kJW-fz-R6a"/>
+                                                <constraint firstItem="b9x-jT-4OQ" firstAttribute="leading" secondItem="wHe-OA-OMd" secondAttribute="leading" id="uqH-RV-xN5"/>
+                                                <constraint firstItem="ork-JQ-Qas" firstAttribute="leading" secondItem="wHe-OA-OMd" secondAttribute="leading" constant="16" id="v7c-dF-s93"/>
+                                                <constraint firstAttribute="bottom" secondItem="b9x-jT-4OQ" secondAttribute="bottom" id="yGg-49-t8G"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cx-QF-CNH">
+                                            <rect key="frame" x="0.0" y="150" width="309" height="50"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbU-Q4-KMh">
+                                                    <rect key="frame" x="96" y="15.5" width="181" height="19"/>
+                                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scl-ZU-nd7">
+                                                    <rect key="frame" x="0.0" y="49" width="293" height="1"/>
+                                                    <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="vCb-TY-pOa"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvm-Lm-x2d">
+                                                    <rect key="frame" x="16" y="15.5" width="60" height="19"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="eec-ub-u03"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="tbU-Q4-KMh" secondAttribute="trailing" constant="32" id="2XZ-NS-tp5"/>
+                                                <constraint firstAttribute="bottom" secondItem="scl-ZU-nd7" secondAttribute="bottom" id="4ze-ba-2mV"/>
+                                                <constraint firstItem="tbU-Q4-KMh" firstAttribute="centerY" secondItem="9cx-QF-CNH" secondAttribute="centerY" id="C3T-Ob-CD5"/>
+                                                <constraint firstAttribute="trailing" secondItem="scl-ZU-nd7" secondAttribute="trailing" constant="16" id="ECV-c0-LL2"/>
+                                                <constraint firstItem="tvm-Lm-x2d" firstAttribute="leading" secondItem="9cx-QF-CNH" secondAttribute="leading" constant="16" id="QHv-4V-OO0"/>
+                                                <constraint firstItem="tvm-Lm-x2d" firstAttribute="centerY" secondItem="9cx-QF-CNH" secondAttribute="centerY" id="TAh-N1-Cmf"/>
+                                                <constraint firstAttribute="height" constant="50" id="YeX-w5-xPi"/>
+                                                <constraint firstItem="scl-ZU-nd7" firstAttribute="leading" secondItem="9cx-QF-CNH" secondAttribute="leading" id="YtA-CM-Y00"/>
+                                                <constraint firstItem="tbU-Q4-KMh" firstAttribute="leading" secondItem="tvm-Lm-x2d" secondAttribute="trailing" constant="20" id="uuk-tl-Pfb"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0OW-vt-7hK">
+                                            <rect key="frame" x="0.0" y="200" width="309" height="138"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejt-di-g48">
+                                                    <rect key="frame" x="16" y="16" width="59.5" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="WWS-6I-Zyy"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC5-dY-n2t">
+                                                    <rect key="frame" x="16" y="54" width="277" height="68"/>
+                                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYU-4S-kD4">
+                                                    <rect key="frame" x="0.0" y="137" width="293" height="1"/>
+                                                    <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="FYY-KZ-8M7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="XC5-dY-n2t" secondAttribute="bottom" constant="16" id="0Za-IJ-SZu"/>
+                                                <constraint firstItem="ejt-di-g48" firstAttribute="top" secondItem="0OW-vt-7hK" secondAttribute="top" constant="16" id="HDq-wt-nse"/>
+                                                <constraint firstAttribute="trailing" secondItem="XC5-dY-n2t" secondAttribute="trailing" constant="16" id="JrV-RV-ZR0"/>
+                                                <constraint firstItem="XC5-dY-n2t" firstAttribute="leading" secondItem="0OW-vt-7hK" secondAttribute="leading" constant="16" id="QKy-rx-tyQ"/>
+                                                <constraint firstItem="ejt-di-g48" firstAttribute="leading" secondItem="0OW-vt-7hK" secondAttribute="leading" constant="16" id="ZCg-bW-tal"/>
+                                                <constraint firstAttribute="bottom" secondItem="qYU-4S-kD4" secondAttribute="bottom" id="jN0-OQ-zs6"/>
+                                                <constraint firstAttribute="trailing" secondItem="qYU-4S-kD4" secondAttribute="trailing" constant="16" id="kNM-0C-RZD"/>
+                                                <constraint firstItem="XC5-dY-n2t" firstAttribute="top" secondItem="ejt-di-g48" secondAttribute="bottom" constant="8" id="t4K-K7-X6A"/>
+                                                <constraint firstItem="qYU-4S-kD4" firstAttribute="leading" secondItem="0OW-vt-7hK" secondAttribute="leading" id="uU1-1L-6yX"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ssl-6Y-70a">
+                                            <rect key="frame" x="0.0" y="338" width="309" height="128"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOg-iW-mA8">
+                                                    <rect key="frame" x="16" y="16" width="80" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="kiY-3R-whW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbJ-yi-oGa">
+                                                    <rect key="frame" x="16" y="54" width="277" height="58"/>
+                                                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="DbJ-yi-oGa" firstAttribute="leading" secondItem="Ssl-6Y-70a" secondAttribute="leading" constant="16" id="3fM-dr-Jke"/>
+                                                <constraint firstAttribute="bottom" secondItem="DbJ-yi-oGa" secondAttribute="bottom" constant="16" id="Wa1-Jw-nVl"/>
+                                                <constraint firstItem="xOg-iW-mA8" firstAttribute="leading" secondItem="Ssl-6Y-70a" secondAttribute="leading" constant="16" id="mFj-11-lqg"/>
+                                                <constraint firstItem="xOg-iW-mA8" firstAttribute="top" secondItem="Ssl-6Y-70a" secondAttribute="top" constant="16" id="mGq-ot-OuQ"/>
+                                                <constraint firstItem="DbJ-yi-oGa" firstAttribute="top" secondItem="xOg-iW-mA8" secondAttribute="bottom" constant="8" id="ptn-7Y-OfS"/>
+                                                <constraint firstAttribute="trailing" secondItem="DbJ-yi-oGa" secondAttribute="trailing" constant="16" id="v20-DA-LMN"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="b6t-US-SmH">
+                                    <rect key="frame" x="0.0" y="766" width="309" height="72"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsH-hz-jPQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="309" height="36"/>
+                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="jcb-Ff-NsA"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                                            <state key="normal" title="Delete">
+                                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="removeBtnClicked:" destination="-1" eventType="touchUpInside" id="raO-jF-BJw"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ6-HU-DLW">
+                                            <rect key="frame" x="0.0" y="36" width="309" height="36"/>
+                                            <color key="backgroundColor" name="TintColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="SoW-8f-Usq"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                                            <state key="normal" title="Request">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="requestBtnClicked:" destination="-1" eventType="touchUpInside" id="XQF-cE-Wzd"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="b6t-US-SmH" firstAttribute="top" secondItem="fLV-EV-GT4" secondAttribute="bottom" id="0LL-La-qmR"/>
+                                <constraint firstAttribute="trailing" secondItem="hWw-ZU-D9E" secondAttribute="trailing" id="55a-2d-LTO"/>
+                                <constraint firstItem="hWw-ZU-D9E" firstAttribute="top" secondItem="Lxc-hW-rNo" secondAttribute="top" id="8NR-Fi-b2t"/>
+                                <constraint firstItem="fLV-EV-GT4" firstAttribute="leading" secondItem="Lxc-hW-rNo" secondAttribute="leading" id="LCd-fQ-dsN"/>
+                                <constraint firstAttribute="trailing" secondItem="b6t-US-SmH" secondAttribute="trailing" id="i47-IG-pxb"/>
+                                <constraint firstAttribute="trailing" secondItem="fLV-EV-GT4" secondAttribute="trailing" id="n94-6b-YmQ"/>
+                                <constraint firstItem="b6t-US-SmH" firstAttribute="leading" secondItem="Lxc-hW-rNo" secondAttribute="leading" id="nkE-v8-JTU"/>
+                                <constraint firstItem="fLV-EV-GT4" firstAttribute="top" secondItem="hWw-ZU-D9E" secondAttribute="bottom" id="rqr-vF-QOk"/>
+                                <constraint firstAttribute="bottom" secondItem="b6t-US-SmH" secondAttribute="bottom" id="yBE-ai-TIc"/>
+                                <constraint firstItem="hWw-ZU-D9E" firstAttribute="leading" secondItem="Lxc-hW-rNo" secondAttribute="leading" id="z0S-zp-qAI"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Lxc-hW-rNo" secondAttribute="bottom" id="Ldq-wd-1ba"/>
+                        <constraint firstItem="Lxc-hW-rNo" firstAttribute="width" secondItem="DdS-XU-1jJ" secondAttribute="width" id="Tyb-VZ-8di"/>
+                        <constraint firstAttribute="trailing" secondItem="Lxc-hW-rNo" secondAttribute="trailing" id="gZp-AD-BxL"/>
+                        <constraint firstItem="Lxc-hW-rNo" firstAttribute="top" secondItem="DdS-XU-1jJ" secondAttribute="top" id="hKN-UU-OH7"/>
+                        <constraint firstItem="Lxc-hW-rNo" firstAttribute="height" secondItem="DdS-XU-1jJ" secondAttribute="height" priority="250" id="s2l-R9-yYr"/>
+                        <constraint firstItem="Lxc-hW-rNo" firstAttribute="leading" secondItem="DdS-XU-1jJ" secondAttribute="leading" id="vgE-qh-R9n"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DdS-XU-1jJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="T89-Zs-CbO"/>
+                <constraint firstItem="DdS-XU-1jJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="d6X-H6-yPc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DdS-XU-1jJ" secondAttribute="trailing" id="kGS-RU-x5o"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DdS-XU-1jJ" secondAttribute="bottom" id="lgb-HD-kak"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="47.5" y="562"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="TintColor">
+            <color red="0.4779999852180481" green="0.31400001049041748" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

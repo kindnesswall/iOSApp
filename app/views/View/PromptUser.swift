@@ -22,16 +22,17 @@ class PromptUser: PopUpView {
     }
     
     @IBAction func rejectBtnClicked(_ sender: Any) {
-        
-        
         self.controller?.declinePopUp()
-
     }
     
     override func initPopUpView() {
         
-        self.acceptBtn.setTitle(AppLiteral.yes, for: .normal)
-        self.rejectBtn.setTitle(AppLiteral.no, for: .normal)
+        self.acceptBtn.setTitle(
+            LocalizationSystem.getStr(forKey: LanguageKeys.yes),
+            for: .normal)
+        
+        self.rejectBtn.setTitle(
+            LocalizationSystem.getStr(forKey: LanguageKeys.no), for: .normal)
         
         self.message.textAlignment = AppLanguage.getTextAlignment()
         

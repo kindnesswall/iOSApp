@@ -19,10 +19,10 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = AppLiteral.statistic
+        self.navigationItem.title = LocalizationSystem.getStr(forKey: "StatisticViewController_title")
+        
         self.tableView.register(type: StatisticTableViewCell.self)
         self.initialLoadingIndicator=LoadingIndicator(view: self.view)
-        
         
         fetchStatistics()
         // Do any additional setup after loading the view.
@@ -30,11 +30,11 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
     
     func startLoadingPage(){
         self.initialLoadingIndicator?.startLoading()
-        self.tableView.isHidden=true
+        self.tableView.hide()
     }
     func stopLoadingPage(){
         self.initialLoadingIndicator?.stopLoading()
-        self.tableView.isHidden=false
+        self.tableView.show()
     }
 
     override func didReceiveMemoryWarning() {

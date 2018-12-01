@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J0O-CZ-t8x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J0O-CZ-t8x">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +35,7 @@
         <scene sceneID="L3H-3K-hAL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Dw-OM-lRS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ثبت هدیه" id="QMD-IL-3h9"/>
+                    <tabBarItem key="tabBarItem" title="ثبت هدیه" image="ic_gift_white_36dp" id="QMD-IL-3h9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cCD-qg-41j">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -51,7 +51,7 @@
         <scene sceneID="dF8-QV-EDX">
             <objects>
                 <navigationController id="dIc-UX-04e" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="درخواستها" id="5uA-Tn-CJs"/>
+                    <tabBarItem key="tabBarItem" title="درخواستها" image="ic_human_handsup_white_24dp" id="5uA-Tn-CJs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZzC-tO-pCe">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -80,7 +80,7 @@
         <scene sceneID="WBK-h8-VGF">
             <objects>
                 <navigationController id="LeQ-FY-e8B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="دیوار من" id="Giq-yA-iw8"/>
+                    <tabBarItem key="tabBarItem" title="دیوار من" image="ic_mywall" id="Giq-yA-iw8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="amh-7K-A96">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -94,7 +94,7 @@
         <scene sceneID="jh8-ND-T8A">
             <objects>
                 <navigationController id="Q3b-p9-9Cb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="هدیه‌های من" id="hwT-SD-rgX"/>
+                    <tabBarItem key="tabBarItem" title="هدیه‌های من" image="ic_list" id="hwT-SD-rgX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q3l-ri-aoB">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -108,7 +108,7 @@
         <scene sceneID="49l-z7-VEd">
             <objects>
                 <navigationController id="v24-Mi-6dR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="خانه" id="XSi-Od-cG1"/>
+                    <tabBarItem key="tabBarItem" title="خانه" image="ic_home_white_24dp" id="XSi-Od-cG1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7dT-nl-p5p">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -119,4 +119,11 @@
             <point key="canvasLocation" x="-2006" y="988"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_gift_white_36dp" width="96" height="96"/>
+        <image name="ic_home_white_24dp" width="96" height="96"/>
+        <image name="ic_human_handsup_white_24dp" width="96" height="96"/>
+        <image name="ic_list" width="96" height="96"/>
+        <image name="ic_mywall" width="91" height="89"/>
+    </resources>
 </document>

@@ -92,9 +92,9 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
                 
                 self?.imageViewUploadingHasFinished(uploadImageView: self?.uploadedImageViews[uploadIndex], imageSrc: imageSrc)
                 
-                FlashMessage.showMessage(body: AppLiteralForMessages.uploadedSuccessfully,theme: .success)
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.uploadedSuccessfully),theme: .success)
             } else {
-                FlashMessage.showMessage(body: AppLiteralForMessages.imageUploadingError,theme: .warning)
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
             }
             
         }
@@ -128,7 +128,7 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     }
     
     func imageViewUploadingHasFinished(uploadImageView:UploadImageView?,imageSrc:String){
-        uploadImageView?.shadowView.isHidden=true
+        uploadImageView?.shadowView.hide()
         uploadImageView?.progressLabel.isHidden = true
         uploadImageView?.imageSrc=imageSrc
     }
@@ -173,7 +173,8 @@ extension RegisterGiftViewController:URLSessionTaskDelegate{
         guard let uploadIndex=findIndexOfUploadedImage(task: task) else {
             return
         }
-        self.uploadedImageViews[uploadIndex].progressLabel.text = "٪" + UIFunctions.CastNumberToPersian(input: percent)
+        
+        self.uploadedImageViews[uploadIndex].progressLabel.text = "٪" + String(AppLanguage.getNumberString(number: String(percent)))
     }
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         

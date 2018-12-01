@@ -31,7 +31,7 @@ public class LoadingIndicator {
         self.activityIndicator.color=color
         self.activityIndicator.hidesWhenStopped=true
         view.addSubview(self.activityIndicator)
-        self.activityIndicator.isHidden=true
+        self.activityIndicator.isHidden = true
         
         //important !
         self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +55,7 @@ public class LoadingIndicator {
         self.activityIndicator.color=color
         self.activityIndicator.hidesWhenStopped=true
         viewBelowTableView.insertSubview(self.activityIndicator, at: 0)
-        self.activityIndicator.isHidden=true
+        self.activityIndicator.isHidden = true
         
         //important !
         self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +92,7 @@ public class LoadingIndicator {
         
         switch loadingIndicatorType {
         case .view:
-            self.activityIndicator.isHidden=false
+            self.activityIndicator.isHidden = false
         case .leftNavigationItem:
             let activityItem=UIBarButtonItem(customView: activityIndicator)
             self.navigationItem?.leftBarButtonItems=[activityItem]
@@ -109,7 +109,7 @@ public class LoadingIndicator {
         
         switch loadingIndicatorType {
         case .view:
-            self.activityIndicator.isHidden=true
+            self.activityIndicator.isHidden = true
         case .leftNavigationItem:
             
             if let replacedNavigationBarButton=self.replacedNavigationBarButton {

@@ -13,7 +13,6 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
 
     var requestId:String!
     var session:URLSession?
-    var task:URLSessionDataTask?
     let keychain = KeychainSwift()
     
     var mobile:String?
@@ -62,7 +61,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     func setTipLabel(){
         if let phoneNumber = userDefault.string(forKey: AppConstants.PHONE_NUMBER) {
-            tipLabel.text = AppLiteralForMessages.guideOfRegitering_part1 + AppLanguage.getNumberString(number: phoneNumber) + AppLiteralForMessages.guideOfRegitering_part2
+            tipLabel.text = LocalizationSystem.getStr(forKey: LanguageKeys.guideOfRegitering_part1) + AppLanguage.getNumberString(number: phoneNumber) + LocalizationSystem.getStr(forKey: LanguageKeys.guideOfRegitering_part2)
         }
     }
     
@@ -78,18 +77,18 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     func setAllTextsInView(){
         
-        self.navigationItem.title=AppLiteral.login
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.login)
         
-        self.registerBtn.setTitle(AppLiteral.registeringActivationCode, for: .normal)
-        self.sendAgainBtn.setTitle(AppLiteral.resendingActivationCode, for: .normal)
-        self.returnBtn.setTitle(AppLiteral.back, for: .normal)
+        self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.registeringActivationCode), for: .normal)
+        self.sendAgainBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.resendActivationCode), for: .normal)
+        self.returnBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.back), for: .normal)
         
         self.setTipLabel()
     }
     
     func setNavBar(){
         //        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationItem.title=AppLiteral.login
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.login)
         self.navigationItem.removeDefaultBackBtn()
         self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
     }
@@ -104,28 +103,28 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         let activationCode:String = verifyCodeTextField.text!
         
         if activationCode.count <= 0 {
-            FlashMessage.showMessage(body: AppLiteralForMessages.activationCodeError,theme: .warning)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeError),theme: .warning)
             return
         }
         
         if activationCode.count < 4 {
-            FlashMessage.showMessage(body: AppLiteralForMessages.activationCodeIncorrectError,theme: .warning)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeIncorrectError),theme: .warning)
             return
         }
         
         guard let mobile = userDefault.string(forKey: AppConstants.PHONE_NUMBER) else {
-            FlashMessage.showMessage(body: AppLiteralForMessages.phoneNumberTryAgainError, theme: .error)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.phoneNumberTryAgainError), theme: .error)
             return
         }
         
         registerBtn.setTitle("", for: [])
         registerLoading.startAnimating()
         
-        ApiMethods.login(mobile: mobile, verificationCode: activationCode) { (data, urlResponse, error) in
+        ApiMethods.login(mobile: mobile, verificationCode: activationCode) { [weak self] (data, urlResponse, error) in
             
             DispatchQueue.main.async {
-                self.registerBtn.setTitle(AppLiteral.registeringActivationCode, for: [])
-                self.registerLoading.stopAnimating()
+                self?.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.registeringActivationCode), for: [])
+                self?.registerLoading.stopAnimating()
             }
             
             if let response = urlResponse as? HTTPURLResponse {
@@ -143,62 +142,34 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
             if let reply=APIRequest.readJsonData(data: data, outputType: TokenOutput.self) {
                 
                 if let error = reply.error , error == TokenOutputError.invalid_grant.rawValue {
-                    FlashMessage.showMessage(body: AppLiteralForMessages.activationCodeIncorrectError,theme: .warning)
+                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeIncorrectError),theme: .warning)
                     return
                 }
                 
+                self?.keychain.set(mobile, forKey: AppConstants.PHONE_NUMBER)
+                
                 if let userId = reply.userId {
 //                    self.userDefault.set(userId, forKey: AppConstants.USER_ID)
-                    self.keychain.set(userId, forKey: AppConstants.USER_ID)
+                    self?.keychain.set(userId, forKey: AppConstants.USER_ID)
                 }
                 if let userName = reply.userName {
 //                    self.userDefault.set(userName, forKey: AppConstants.USERNAME)
-                    self.keychain.set(userName, forKey: AppConstants.USER_NAME)
+                    self?.keychain.set(userName, forKey: AppConstants.USER_NAME)
                 }
                 if let token = reply.access_token {
 //                    self.userDefault.set(
 //                        AppConstants.BEARER + " " + token, forKey: AppConstants.Authorization)
                     
-                    self.keychain.set(AppConstants.BEARER + " " + token, forKey: AppConstants.Authorization)
+                    self?.keychain.set(AppConstants.BEARER + " " + token, forKey: AppConstants.Authorization)
                 }
                 
-                self.dismiss(animated: true, completion: {
+                self?.dismiss(animated: true, completion: {
                     
-                    self.submitComplition?("")
+                    self?.submitComplition?("")
                     
                 })
-                
             }
-            
         }
-//        APIRequest.request(
-//            url: APIURLs.activateUser,
-//            inputJson: ["request_id":requestId,"activation_code":activationCode]
-//        ) { (data, response, error) in
-//
-//            self.registerBtn.setTitle("ثبت کدفعالسازی", for: [])
-//            self.registerLoading.stopAnimating()
-//
-//            APIRequest.logReply(data: data)
-//
-//            if let reply=APIRequest.readJsonData(data: data, outpuType: ActivateUserOutput.self) {
-//                if let status=reply.status,status==APIStatus.DONE {
-//
-//                    if let isValid = reply.is_valid, isValid {
-//
-//                        self.userDefault.set(isValid, forKey: AppConstants.IS_ACTIVE)
-//                        self.submitComplition?("")
-//                        self.dismiss(animated: true, completion: nil)
-//
-//                    }else{
-//                        FlashMessage.showMessage(body: "کد وارد شده صحیح نمی باشد",theme: .warning)
-//                    }
-//
-//                }
-//            }
-//        }
-//
-        
     }
     
     @IBAction func sendAgainBtnClick(_ sender: Any) {
@@ -207,69 +178,33 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         self.resendLoading.startAnimating()
         
         guard let mobile = userDefault.string(forKey: AppConstants.PHONE_NUMBER) else {
-            FlashMessage.showMessage(body: AppLiteralForMessages.phoneNumberTryAgainError, theme: .error)
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.phoneNumberTryAgainError), theme: .error)
+            self.sendAgainBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.resendActivationCode), for: [])
+            self.resendLoading.stopAnimating()
             return
         }
         
         ApiMethods.register(telephone: mobile) { (data, response, error) in
             
-            self.sendAgainBtn.setTitle(AppLiteral.resendingActivationCode, for: [])
+            self.sendAgainBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.resendActivationCode), for: [])
             self.resendLoading.stopAnimating()
             
             if let response = response as? HTTPURLResponse {
                 if response.statusCode < 200 && response.statusCode >= 300 {
+                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeSendSuccessfully), theme: .success)
+                    return
+                }else{
+                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeTryAgainOneMinuteLater), theme: .error)
                     return
                 }
             }
             guard error == nil else {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
                 print("Get error register")
                 return
             }
             
-            let controller=ActivationEnterVerifyCodeViewController(nibName: "ActivationEnterVerifyCodeViewController", bundle:
-                Bundle(for: ActivationEnterVerifyCodeViewController.self))
-            
-            controller.setCloseComplition(closeComplition: self.closeComplition)
-            controller.setSubmitComplition(submitComplition: self.submitComplition)
-            
-            if mobile != "" {
-                controller.mobile=mobile
-            }
-            self.navigationController?.pushViewController(controller, animated: true)
-            
         }
-        
-//        APIRequest.request(
-//            url: APIURLs.requestActivateUser,
-//            inputJson:input
-//        ) { (data, response, error) in
-//
-//            self.sendAgainBtn.setTitle("دریافت مجدد کد فعالسازی", for: [])
-//            self.resendLoading.stopAnimating()
-//
-//            APIRequest.logReply(data: data)
-//
-//            if let reply=APIRequest.readJsonData(data: data, outpuType: RequestActivateUserOutput.self) {
-//                if let status=reply.status,status==APIStatus.DONE {
-//
-//                    switch status{
-//                    case APIStatus.DONE:
-//
-//                        FlashMessage.showMessage(body: "کد مجدد به شماره تلفن شما ارسال گردید",theme: .warning)
-//
-//                        self.requestId = String(describing: reply.request_id)
-//
-//
-//                    default:
-//
-//                        break
-//                    }
-//
-//
-//                }
-//            }
-//        }
-        
         
     }
     
@@ -280,7 +215,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     func customizeUIElements() {
         self.verifyCodeTextField.backgroundColor=UIColor.clear
-        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:AppLiteral.activationCode, attributes: [NSAttributedString.Key.font : AppFont.getLightFont(size: 13),NSAttributedString.Key.foregroundColor: UIColor.gray])
+        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:LocalizationSystem.getStr(forKey: LanguageKeys.activationCode), attributes: [NSAttributedString.Key.font : AppFont.getLightFont(size: 13),NSAttributedString.Key.foregroundColor: UIColor.gray])
         
         self.registerBtn.backgroundColor=AppColor.tintColor
         

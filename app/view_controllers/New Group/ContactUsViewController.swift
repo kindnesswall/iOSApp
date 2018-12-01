@@ -13,7 +13,7 @@ class ContactUsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = AppLiteral.contactUs
+        self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.contactUs)
 
         // Do any additional setup after loading the view.
     }

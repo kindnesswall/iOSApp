@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class RequestToAGiftViewController: UIViewController {
 
@@ -15,16 +16,23 @@ class RequestToAGiftViewController: UIViewController {
     @IBOutlet var tableview: UITableView!
     var giftId:String = "-1"
     
+    let hud = JGProgressHUD(style: .dark)
+    
+    var onReject:(()->())?
+    var onAccept:(()->())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableview.dataSource = self
         tableview.delegate = self
         
+        hud.textLabel.text = ""//LocalizationSystem.getStr(forKey: LanguageKeys.loading)
+
         self.tableview.register(type: RequestToAGiftTableViewCell.self)
         
         // Do any additional setup after loading the view.
-        ApiMethods.getRecievedRequestList(giftId: giftId, startIndex: 0) { (data, response, error) in
+        ApiMethods.getRecievedRequestList(giftId: giftId, startIndex: 0) { [weak self] (data, response, error) in
             
             APIRequest.logReply(data: data)
             if let response = response as? HTTPURLResponse {
@@ -39,8 +47,8 @@ class RequestToAGiftViewController: UIViewController {
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Request].self) {
                 
-                self.requests.append(contentsOf: reply)
-                self.tableview.reloadData()
+                self?.requests.append(contentsOf: reply)
+                self?.tableview.reloadData()
                 
                 print("count:")
                 print(reply.count)
@@ -87,18 +95,38 @@ class RequestToAGiftViewController: UIViewController {
     @IBAction func onAcceptRequestClicked(_ sender: ButtonWithData) {
         print(sender.data)
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: "آیا از قبول این درخواست مطمئن هستید؟",animation: .none,declineHandler: nil) { (_) in
+        PopUpMessage.showPopUp(
+            nibClass: PromptUser.self,
+            data: LocalizationSystem.getStr(forKey: LanguageKeys.popup_accept_request_msg),
+            animation: .none,declineHandler: nil) { (_) in
             
             guard let clickedRequest = sender.data else{
                 return
             }
+                
             for (index, req) in self.requests.enumerated() {
                 if req === clickedRequest {
-                    FlashMessage.showMessage(body: "با درخواست موافقت شد",theme: .success)
-                    self.navigationController?.popViewController(animated: true)
-                    //        ApiMethods.acceptRequest(giftId: giftId, fromUserId: fromUserId) { (data) in
-                    //
-                    //        }
+                    
+                    self.hud.show(in: self.view)
+                    if let fromUserID = self.requests[index].fromUserId,
+                        let giftId = self.requests[index].giftId{
+                        ApiMethods.acceptRequest(
+                            giftId: giftId,
+                            fromUserId: fromUserID
+                        ) { [weak self] (data) in
+                            
+                            self?.hud.dismiss(afterDelay: 0)
+                            
+                            FlashMessage.showMessage(
+                                body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_accepted),
+                                theme: .success
+                            )
+                            self?.onAccept?()
+                            
+                            self?.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                    
                 }
             }
         }
@@ -109,7 +137,11 @@ class RequestToAGiftViewController: UIViewController {
     @IBAction func onRejectRequestBtnClicked(_ sender: ButtonWithData) {
         print(sender.data)
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: "آیا از رد این درخواست مطمئن هستید؟",animation: .none,declineHandler: nil) { (_) in
+        PopUpMessage.showPopUp(
+            nibClass: PromptUser.self,
+            data: LocalizationSystem.getStr(forKey: LanguageKeys.popup_reject_request_msg),
+            animation: .none,
+            declineHandler: nil) { (_) in
             
             guard let clickedRequest = sender.data else{
                 return
@@ -117,15 +149,29 @@ class RequestToAGiftViewController: UIViewController {
             for (index, req) in self.requests.enumerated() {
                 if req === clickedRequest {
                     
-                    FlashMessage.showMessage(body: "درخواست رد شد",theme: .warning)
-                    
-                    self.requests.remove(at: index)
-                    
-                    self.tableview.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
-                    self.tableview.reloadData()
-                    //        ApiMethods.denyRequest(giftId: giftId, fromUserId: fromUserId) { (data) in
-                    //
-                    //        }
+                    if let fromUserID = self.requests[index].fromUserId,
+                        let giftId = self.requests[index].giftId{
+                        
+                        self.hud.show(in: self.view)
+                        
+                        ApiMethods.denyRequest(
+                            giftId: giftId,
+                            fromUserId: fromUserID) { [weak self] (data) in
+                            
+                                self?.hud.dismiss(afterDelay: 0)
+                                
+                                FlashMessage.showMessage(
+                                body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_rejected)
+                                ,theme: .warning)
+                            
+                                self?.requests.remove(at: index)
+                            
+                                self?.tableview.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                                self?.tableview.reloadData()
+                                
+                                self?.onReject?()
+                        }
+                    }
                 }
             }
         }

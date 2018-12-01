@@ -64,24 +64,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        AppLanguage.setLanguage(language: .persian)
-        
-        showTabbar()
-        
-        if uDStandard.bool(forKey: AppConstants.WATCHED_INTRO) {
-            showIntro()
-            uDStandard.set(true, forKey: AppConstants.WATCHED_INTRO)
+        UIView.appearance().semanticContentAttribute = .forceLeftToRight
+
+        if uDStandard.bool(forKey: AppConstants.WATCHED_SELECT_LANGUAGE) {
+            showTabbarIntro()
+        }else{
+            showSelectLanguageVC()
         }
         
         return true
     }
     
-    func showTabbar()  {
+    func showTabbarIntro() {
         
-        self.tabBarController=self.window?.rootViewController as? UITabBarController
+        showTabbar()
+        
+        if !uDStandard.bool(forKey: AppConstants.WATCHED_INTRO) {
+            showIntro()
+            uDStandard.set(true, forKey: AppConstants.WATCHED_INTRO)
+        }
+    }
+    
+    func showSelectLanguageVC() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let viewController:UIViewController = LanguageViewController()
+//        let nc = UINavigationController.init(rootViewController: viewController)
+        window!.rootViewController = viewController
+        window!.makeKeyAndVisible()
+    }
+    
+    func showTabbar()  {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        self.tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarRoot") as! UITabBarController
+//        self.tabBarController=self.window?.rootViewController as? UITabBarController
+        
         self.tabBarController?.delegate=self
         
+        window!.rootViewController = self.tabBarController
+        
         pushViewControllersIntoTabs()
+        window!.makeKeyAndVisible()
     }
     
     func showIntro() {
@@ -120,9 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             return false
         }
         
-        
         return true
-        
         
     }
 }

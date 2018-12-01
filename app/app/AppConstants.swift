@@ -23,6 +23,7 @@ class AppConstants {
     public static let PHONE_NUMBER:String = "PHONE_NUMBER"
 
     public static let WATCHED_INTRO:String = "watched_intro"
+    public static let WATCHED_SELECT_LANGUAGE:String = "WATCHED_SELECT_LANGUAGE"
 
     public static let LastViewdUpdateVersion:String = "LastViewdUpdateVersion"
     

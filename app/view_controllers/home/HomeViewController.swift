@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class HomeViewController: UIViewController {
 
@@ -15,7 +16,8 @@ class HomeViewController: UIViewController {
     
     let apiMethods=ApiMethods()
     
-    var initialLoadingIndicator:LoadingIndicator?
+    let hud = JGProgressHUD(style: .dark)
+    
     var lazyLoadingCount=20
     var isLoadingGifts=false
     var lazyLoadingIndicator:LoadingIndicator?
@@ -28,12 +30,13 @@ class HomeViewController: UIViewController {
     var categotyBarBtn:UIBarButtonItem?
     var cityBarBtn:UIBarButtonItem?
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.initialLoadingIndicator=LoadingIndicator(view: self.tableview)
+        self.tableview.isHidden = true
+        
+        hud.textLabel.text = LocalizationSystem.getStr(forKey: LanguageKeys.loading)
+        
         self.lazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight/2)
         self.tableview.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight/2, right: 0)
         
@@ -59,7 +62,7 @@ class HomeViewController: UIViewController {
     }
     @objc func refreshControlAction(){
         reloadPage()
-        self.initialLoadingIndicator?.stopLoading()
+        self.hud.dismiss(afterDelay: 0)
     }
     
     func setTableViewLazyLoading(isLoading:Bool){
@@ -71,10 +74,10 @@ class HomeViewController: UIViewController {
     }
     
     func setNavigationBar(){
-        categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: AppLiteral.allGifts,font:AppFont.getRegularFont(size: 16))
+        categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts),font:AppFont.getRegularFont(size: 16))
         self.navigationItem.rightBarButtonItems=[categotyBarBtn!]
         
-        cityBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: AppLiteral.allCities,font:AppFont.getRegularFont(size: 16))
+        cityBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allCities),font:AppFont.getRegularFont(size: 16))
         self.navigationItem.leftBarButtonItems=[cityBarBtn!]
     }
     
@@ -134,39 +137,45 @@ class HomeViewController: UIViewController {
         isLoadingGifts=true
         
         if index==0 {
-            self.initialLoadingIndicator?.startLoading()
+            hud.show(in: self.view)
+            
         } else {
             self.setTableViewLazyLoading(isLoading: true)
         }
         
-        apiMethods.getGifts(cityId: self.cityId, regionId: "0", categoryId: self.categoryId, startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { (data) in
+        apiMethods.getGifts(cityId: self.cityId, regionId: "0", categoryId: self.categoryId, startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { [weak self] (data) in
 //            APIRequest.logReply(data: data)
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
                 if index==0 {
-                    self.gifts=[]
-                    self.tableview.reloadData()
+                    self?.gifts=[]
+                    self?.tableview.isHidden = false
+                    self?.tableview.reloadData()
                 }
                 
-                self.refreshControl.endRefreshing()
-                self.initialLoadingIndicator?.stopLoading()
-                self.setTableViewLazyLoading(isLoading: false)
+                self?.refreshControl.endRefreshing()
                 
-                if reply.count == self.lazyLoadingCount {
-                    self.isLoadingGifts=false
+                self?.hud.dismiss(afterDelay: 0)
+                
+                self?.setTableViewLazyLoading(isLoading: false)
+                
+                if reply.count == self?.lazyLoadingCount {
+                    self?.isLoadingGifts=false
                 }
                 
                 var insertedIndexes=[IndexPath]()
-                for i in self.gifts.count..<self.gifts.count+reply.count {
-                    insertedIndexes.append(IndexPath(item: i, section: 0))
+                if let minCount = self?.gifts.count {
+                    for i in minCount..<minCount + reply.count{
+                        insertedIndexes.append(IndexPath(item: i, section: 0))
+                    }
                 }
                 
-                self.gifts.append(contentsOf: reply)
+                self?.gifts.append(contentsOf: reply)
                 
 //                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
                     UIView.performWithoutAnimation {
-                        self.tableview.insertRows(at: insertedIndexes, with: .bottom)
+                        self?.tableview.insertRows(at: insertedIndexes, with: .bottom)
                     }
 //                })
                 
@@ -181,12 +190,12 @@ class HomeViewController: UIViewController {
     }
     
     func setAllTextsInView(){
-        self.navigationItem.title=AppLiteral.home
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.home)
         if categoryId=="0" {
-            self.categotyBarBtn?.title=AppLiteral.allGifts
+            self.categotyBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allGifts)
         }
         if cityId=="0" {
-            self.cityBarBtn?.title=AppLiteral.allCities
+            self.cityBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allCities)
         }
     }
     

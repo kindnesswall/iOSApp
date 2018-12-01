@@ -17,6 +17,7 @@ class RequestsViewController: UIViewController {
     var loadingIndicator:LoadingIndicator!
     let keychain = KeychainSwift()
 
+    @IBOutlet weak var noRequestMsgLbl: UILabel!
     @IBOutlet var tableview: UITableView!
     
     @IBOutlet var requestView: UIView!
@@ -29,7 +30,8 @@ class RequestsViewController: UIViewController {
         
         loginView.hide()
         requestView.hide()
-        
+        noRequestMsgLbl.hide()
+
         self.tableview.register(type: RequestsTableViewCell.self)
         loadingIndicator=LoadingIndicator(view: self.view)
         loadingIndicator.startLoading()
@@ -37,7 +39,7 @@ class RequestsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
-        self.navigationItem.title="لیست درخواستها به هدیه‌های من"
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.RequestsViewController_title)
         
         guard let _ = keychain.get(AppConstants.Authorization) else{
             loginView.show()
@@ -50,7 +52,7 @@ class RequestsViewController: UIViewController {
             return
         }
         isFirstTime = false
-        ApiMethods.getRequestsMyGifts(startIndex: 0) { (data, response, error) in
+        ApiMethods.getRequestsMyGifts(startIndex: 0) { [weak self] (data, response, error) in
             
             APIRequest.logReply(data: data)
             if let response = response as? HTTPURLResponse {
@@ -66,18 +68,32 @@ class RequestsViewController: UIViewController {
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
-                self.loginView.hide()
-                self.requestView.show()
-                self.loadingIndicator.stopLoading()
+                self?.loginView.hide()
                 
-                self.gifts.append(contentsOf: reply)
-                self.tableview.reloadData()
+                self?.loadingIndicator.stopLoading()
+                
+                self?.gifts.append(contentsOf: reply)
+                self?.tableview.reloadData()
+                
+                self?.showViewsBasedOnNumberOfGifts()
                 
                 print("count:")
                 print(reply.count)
                 
             }
             
+        }
+    }
+    
+    func showViewsBasedOnNumberOfGifts() {
+        if self.gifts.count <= 0 {
+            self.noRequestMsgLbl.show()
+            self.tableview.hide()
+            self.requestView.hide()
+        }else{
+            self.noRequestMsgLbl.hide()
+            self.tableview.show()
+            self.requestView.show()
         }
     }
     
@@ -90,8 +106,8 @@ class RequestsViewController: UIViewController {
             
         }
         controller.setSubmitComplition { (str) in
-            self.loginView.isHidden = true
-            self.requestView.isHidden = false
+            self.loginView.hide()
+            self.requestView.show()
         }
         
         let nc = UINavigationController.init(rootViewController: controller)
@@ -130,7 +146,29 @@ extension RequestsViewController:UITableViewDelegate {
         let controller = RequestToAGiftViewController(nibName: "RequestToAGiftViewController", bundle: Bundle(for: RequestToAGiftViewController.self))
         
         controller.giftId = gifts[indexPath.row].id!
-        
+        controller.onAccept = {
+            self.gifts.remove(at: indexPath.row)
+            
+            self.tableview.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
+            self.tableview.reloadData()
+            
+            self.showViewsBasedOnNumberOfGifts()
+        }
+        controller.onReject = {
+            if let requestCount = self.gifts[indexPath.row].requestCount, var count = Int(requestCount) {
+                count = count - 1
+                
+                if count <= 0 {
+                    self.showViewsBasedOnNumberOfGifts()
+                }else{
+                    self.gifts[indexPath.row].requestCount = String(count)
+                
+                    let indexPath = IndexPath(item: indexPath.row, section: 0)
+                    self.tableview.reloadRows(at: [indexPath], with: .top)
+                }
+            }
+        }
+
         self.navigationController?.pushViewController(controller, animated: true)
         
     }
