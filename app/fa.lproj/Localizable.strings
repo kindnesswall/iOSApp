@@ -6,7 +6,11 @@
   Copyright © 2018 Hamed.Gh. All rights reserved.
 */
 
+"activationCodeTryAgainOneMinuteLater" = "یک دقیقه دیگر مجددا تلاش کنید!";
+"activationCodeSendSuccessfully" = "کد فعالسازی با موفقیت ارسال شد!";
+
 "operationFailed" = "ما در سرورهای خود با خطا مواجه شدیم";
+"weEncounterErrorTryAgain" = "ما با خطا مواجه شدیم، لطفا مجددا امتحان کنید!";
 
 "noGiftRegistered" = "هیچ هدیه‌ی ثبت شده‌ای وجود ندارد.";
 "noGiftDonated" = "شما تا کنون هیچ هدیه‌ای اهدا نکرده‌اید.";

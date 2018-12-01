@@ -7,6 +7,7 @@
 */
 
 "operationFailed" = "We encounter error at our server!";
+"weEncounterErrorTryAgain" = "We encounter error, please try again!";
 
 "noGiftRegistered" = "There is no gift that registered by you";
 "noGiftDonated" = "There is no gift that donated by you";
@@ -111,3 +112,6 @@
 "guideOfSendingActivationCode" = "The activation code will be sent to the following phone number. If the phone number is not correct, please edit it.";
 "guideOfRegitering_part1" = "After few seconds, the message containing activation code will be sent to the phone number";
 "guideOfRegitering_part2" = ". If you didn't receive the message, you can resend the activation code after 1 minutes.";
+
+"activationCodeSendSuccessfully" = "Activation Code Send Successfully";
+"activationCodeTryAgainOneMinuteLater" = "Try Again One Minute Later!";

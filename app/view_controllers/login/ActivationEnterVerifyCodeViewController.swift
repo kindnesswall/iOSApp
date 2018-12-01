@@ -169,38 +169,8 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                     self?.submitComplition?("")
                     
                 })
-                
             }
-            
         }
-//        APIRequest.request(
-//            url: APIURLs.activateUser,
-//            inputJson: ["request_id":requestId,"activation_code":activationCode]
-//        ) { (data, response, error) in
-//
-//            self.registerBtn.setTitle("ثبت کدفعالسازی", for: [])
-//            self.registerLoading.stopAnimating()
-//
-//            APIRequest.logReply(data: data)
-//
-//            if let reply=APIRequest.readJsonData(data: data, outpuType: ActivateUserOutput.self) {
-//                if let status=reply.status,status==APIStatus.DONE {
-//
-//                    if let isValid = reply.is_valid, isValid {
-//
-//                        self.userDefault.set(isValid, forKey: AppConstants.IS_ACTIVE)
-//                        self.submitComplition?("")
-//                        self.dismiss(animated: true, completion: nil)
-//
-//                    }else{
-//                        FlashMessage.showMessage(body: "کد وارد شده صحیح نمی باشد",theme: .warning)
-//                    }
-//
-//                }
-//            }
-//        }
-//
-        
     }
     
     @IBAction func sendAgainBtnClick(_ sender: Any) {
@@ -210,6 +180,8 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         
         guard let mobile = userDefault.string(forKey: AppConstants.PHONE_NUMBER) else {
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.phoneNumberTryAgainError), theme: .error)
+            self.sendAgainBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.resendActivationCode), for: [])
+            self.resendLoading.stopAnimating()
             return
         }
         
@@ -220,58 +192,20 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
             
             if let response = response as? HTTPURLResponse {
                 if response.statusCode < 200 && response.statusCode >= 300 {
+                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeSendSuccessfully), theme: .success)
+                    return
+                }else{
+                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeTryAgainOneMinuteLater), theme: .error)
                     return
                 }
             }
             guard error == nil else {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
                 print("Get error register")
                 return
             }
             
-            let controller=ActivationEnterVerifyCodeViewController(nibName: "ActivationEnterVerifyCodeViewController", bundle:
-                Bundle(for: ActivationEnterVerifyCodeViewController.self))
-            
-            controller.setCloseComplition(closeComplition: self.closeComplition)
-            controller.setSubmitComplition(submitComplition: self.submitComplition)
-            
-            if mobile != "" {
-                controller.mobile=mobile
-            }
-            self.navigationController?.pushViewController(controller, animated: true)
-            
         }
-        
-//        APIRequest.request(
-//            url: APIURLs.requestActivateUser,
-//            inputJson:input
-//        ) { (data, response, error) in
-//
-//            self.sendAgainBtn.setTitle("دریافت مجدد کد فعالسازی", for: [])
-//            self.resendLoading.stopAnimating()
-//
-//            APIRequest.logReply(data: data)
-//
-//            if let reply=APIRequest.readJsonData(data: data, outpuType: RequestActivateUserOutput.self) {
-//                if let status=reply.status,status==APIStatus.DONE {
-//
-//                    switch status{
-//                    case APIStatus.DONE:
-//
-//                        FlashMessage.showMessage(body: "کد مجدد به شماره تلفن شما ارسال گردید",theme: .warning)
-//
-//                        self.requestId = String(describing: reply.request_id)
-//
-//
-//                    default:
-//
-//                        break
-//                    }
-//
-//
-//                }
-//            }
-//        }
-        
         
     }
     
