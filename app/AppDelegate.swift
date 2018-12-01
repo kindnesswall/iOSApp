@@ -143,6 +143,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             return false
         }
         
+        if let _=(viewController as? UINavigationController)?.viewControllers.first as? RequestsViewController {
+            showLoginVC()
+            return false
+        }
+        
         return true
         
     }

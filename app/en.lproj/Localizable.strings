@@ -112,7 +112,7 @@
 "activationCodeError" = "Please type the activation code.";
 "activationCodeIncorrectError" = "The activation code is not correct.";
 "guideOfSendingActivationCode" = "The activation code will be sent to the following phone number. If the phone number is not correct, please edit it.";
-"guideOfRegitering_part1" = "After few seconds, the message containing activation code will be sent to the phone number";
+"guideOfRegitering_part1" = "After few seconds, the message containing activation code will be sent to the phone number ";
 "guideOfRegitering_part2" = ". If you didn't receive the message, you can resend the activation code after 1 minutes.";
 
 "activationCodeSendSuccessfully" = "Activation Code Send Successfully";
