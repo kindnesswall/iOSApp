@@ -123,17 +123,18 @@ class MyKindnessWallViewController: UIViewController {
         }
     }
     
-    func getVersion() -> String {
+    func getVersionBuildNo() -> String {
         let dic = Bundle.main.infoDictionary!
         let version = dic["CFBundleShortVersionString"] as! String
+        let buildNumber = dic["CFBundleVersion"] as! String
         
-        return version
+        return version+"("+buildNumber+")"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        versionNoLbl.text = LocalizationSystem.getStr(forKey: LanguageKeys.AppVersion) + AppLanguage.getNumberString(number: getVersion())
+        versionNoLbl.text = LocalizationSystem.getStr(forKey: LanguageKeys.AppVersion) + AppLanguage.getNumberString(number: getVersionBuildNo())
     }
     
     override func viewWillAppear(_ animated: Bool) {
