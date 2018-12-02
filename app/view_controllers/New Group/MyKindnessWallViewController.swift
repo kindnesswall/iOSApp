@@ -96,10 +96,9 @@ class MyKindnessWallViewController: UIViewController {
         
     }
     @IBAction func bugReportBtnAction(_ sender: Any) {
-        guard let url = URL(string: "https://t.me/Kindness_Wall_Admin") else {
-            return //be safe
-        }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        let urlAddress = "https://t.me/Kindness_Wall_Admin"
+        URLBrowser(urlAddress: urlAddress).openURL()
+        
     }
     
     func setAllTextsInView(){

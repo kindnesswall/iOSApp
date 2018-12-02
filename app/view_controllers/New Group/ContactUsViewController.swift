@@ -9,15 +9,64 @@
 import UIKit
 
 class ContactUsViewController: UIViewController {
+    
+    
+    class ContactUsModel {
+        var image:UIImage?
+        var link:String?
+        
+        init(image:UIImage?,link:String?) {
+            self.image=image
+            self.link=link
+        }
+        
+        init(){
+            
+        }
+        
+    }
+    
+    var data = [ContactUsModel]()
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.contactUs)
+        
+        self.collectionView.register(cellType: ContactUsCollectionViewCell.self)
 
+        fillContactUsData()
         // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func criticismsAndSuggestionsBtnAction(_ sender: Any) {
+        let urlAddress = ""
+        URLBrowser(urlAddress: urlAddress).openURL()
+    }
+    
+    func fillContactUsData(){
+        
+        let github = ContactUsModel(image: UIImage(named: "github") , link: nil)
+        
+        let gmail = ContactUsModel(image: UIImage(named: "gmail") , link: nil)
+        
+        let instagram = ContactUsModel(image: UIImage(named: "instagram") , link: nil)
+        
+        let telegram = ContactUsModel(image: UIImage(named: "telegram") , link: nil)
+        
+        let facebook = ContactUsModel(image: UIImage(named: "facebook") , link: nil)
+        
+        let website = ContactUsModel(image: UIImage(named: "website") , link: nil)
+        
+        data.append(github)
+        data.append(gmail)
+        data.append(instagram)
+        data.append(telegram)
+        data.append(facebook)
+        data.append(website)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -40,4 +89,51 @@ class ContactUsViewController: UIViewController {
     }
     */
 
+}
+
+
+extension ContactUsViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactUsCollectionViewCell.identifier, for: indexPath) as! ContactUsCollectionViewCell
+        
+        cell.setUI(data: data[indexPath.item])
+        
+        return cell
+    }
+    
+    
+}
+
+extension ContactUsViewController : UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = self.data[indexPath.item]
+        guard let urlAddress = item.link else {
+            return
+        }
+        URLBrowser(urlAddress: urlAddress).openURL()
+    }
+}
+
+extension ContactUsViewController : UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let collectionViewWidth = collectionView.frame.width
+        
+        let numberOfItemsInRow : CGFloat = 4
+        
+        let width = collectionViewWidth / numberOfItemsInRow
+        
+        let height = width
+        
+        return CGSize(width: width, height: height)
+        
+    }
 }
