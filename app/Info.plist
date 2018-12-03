@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>0.1</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -27,6 +27,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) need to access your camera to take photo</string>
+	<key>Privacy - Photo Library Usage Description </key>
+	<string>$(PRODUCT_NAME) need to access your photo library to take photo</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>IRANSansMobile_Black.ttf</string>
@@ -58,9 +62,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) need to access your camera to take photo</string>
-	<key>Privacy - Photo Library Usage Description </key>
-	<string>$(PRODUCT_NAME) need to access your photo library to take photo</string>
 </dict>
 </plist>

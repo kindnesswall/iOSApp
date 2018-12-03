@@ -89,8 +89,6 @@
 		5245921821AAD7420009824C /* GiftDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5245921A21AAD7420009824C /* GiftDetailViewController.xib */; };
 		5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5245921F21AAFC750009824C /* LocalizationSystem.swift */; };
 		5245922521AB47EA0009824C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5245922721AB47EA0009824C /* Localizable.strings */; };
-		52525E2521AEB9C000A7D03E /* appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52525E2421AEB9C000A7D03E /* appUITests.swift */; };
-		52525E2D21AEBB1600A7D03E /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52525E2C21AEBB1600A7D03E /* SnapshotHelper.swift */; };
 		528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */; };
 		528A2D8D21ABE04300DECE0F /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D8F21ABE04300DECE0F /* MyKindnessWallViewController.xib */; };
 		528A2D9621AC405D00DECE0F /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D9821AC405D00DECE0F /* MyGiftsViewController.xib */; };
@@ -140,7 +138,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		52525E2721AEB9C000A7D03E /* PBXContainerItemProxy */ = {
+		5263D5A421B4425B00B634A8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0507C8571F8C1A920084CDF1 /* Project object */;
 			proxyType = 1;
@@ -239,10 +237,10 @@
 		5245921F21AAFC750009824C /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSystem.swift; sourceTree = "<group>"; };
 		5245922621AB47EA0009824C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5245922821AB4BC30009824C /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Localizable.strings; sourceTree = "<group>"; };
-		52525E2221AEB9C000A7D03E /* appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52525E2421AEB9C000A7D03E /* appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appUITests.swift; sourceTree = "<group>"; };
 		52525E2621AEB9C000A7D03E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52525E2C21AEBB1600A7D03E /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		5263D59F21B4425B00B634A8 /* appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		528A2D8221ABD73C00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8321ABD83600DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8421ABDC0400DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
@@ -309,7 +307,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		52525E1F21AEB9C000A7D03E /* Frameworks */ = {
+		5263D59C21B4425B00B634A8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -354,7 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				0507C85F1F8C1A920084CDF1 /* app.app */,
-				52525E2221AEB9C000A7D03E /* appUITests.xctest */,
+				5263D59F21B4425B00B634A8 /* appUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -741,22 +739,22 @@
 			productReference = 0507C85F1F8C1A920084CDF1 /* app.app */;
 			productType = "com.apple.product-type.application";
 		};
-		52525E2121AEB9C000A7D03E /* appUITests */ = {
+		5263D59E21B4425B00B634A8 /* appUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 52525E2B21AEB9C000A7D03E /* Build configuration list for PBXNativeTarget "appUITests" */;
+			buildConfigurationList = 5263D5A621B4425B00B634A8 /* Build configuration list for PBXNativeTarget "appUITests" */;
 			buildPhases = (
-				52525E1E21AEB9C000A7D03E /* Sources */,
-				52525E1F21AEB9C000A7D03E /* Frameworks */,
-				52525E2021AEB9C000A7D03E /* Resources */,
+				5263D59B21B4425B00B634A8 /* Sources */,
+				5263D59C21B4425B00B634A8 /* Frameworks */,
+				5263D59D21B4425B00B634A8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				52525E2821AEB9C000A7D03E /* PBXTargetDependency */,
+				5263D5A521B4425B00B634A8 /* PBXTargetDependency */,
 			);
 			name = appUITests;
 			productName = appUITests;
-			productReference = 52525E2221AEB9C000A7D03E /* appUITests.xctest */;
+			productReference = 5263D59F21B4425B00B634A8 /* appUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -765,16 +763,17 @@
 		0507C8571F8C1A920084CDF1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				DefaultBuildSystemTypeForWorkspace = Original;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Hamed.Gh;
 				TargetAttributes = {
 					0507C85E1F8C1A920084CDF1 = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
-					52525E2121AEB9C000A7D03E = {
-						CreatedOnToolsVersion = 10.0;
+					5263D59E21B4425B00B634A8 = {
+						CreatedOnToolsVersion = 10.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0507C85E1F8C1A920084CDF1;
 					};
@@ -795,7 +794,7 @@
 			projectRoot = "";
 			targets = (
 				0507C85E1F8C1A920084CDF1 /* app */,
-				52525E2121AEB9C000A7D03E /* appUITests */,
+				5263D59E21B4425B00B634A8 /* appUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -848,7 +847,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		52525E2021AEB9C000A7D03E /* Resources */ = {
+		5263D59D21B4425B00B634A8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1024,22 +1023,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		52525E1E21AEB9C000A7D03E /* Sources */ = {
+		5263D59B21B4425B00B634A8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52525E2521AEB9C000A7D03E /* appUITests.swift in Sources */,
-				52525E2D21AEBB1600A7D03E /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		52525E2821AEB9C000A7D03E /* PBXTargetDependency */ = {
+		5263D5A521B4425B00B634A8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0507C85E1F8C1A920084CDF1 /* app */;
-			targetProxy = 52525E2721AEB9C000A7D03E /* PBXContainerItemProxy */;
+			targetProxy = 5263D5A421B4425B00B634A8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1186,7 +1183,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Taghi Kiany Fard (K6W5A74537)";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1245,7 +1243,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Taghi Kiany Fard (K6W5A74537)";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1272,13 +1271,15 @@
 			baseConfigurationReference = 006A9055ED7D4288198332F6 /* Pods-app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Taghi Kiany Fard (Q85XTDNN3B)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = K6W5A74537;
 				INFOPLIST_FILE = app/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ir.kindnesswall;
+				PRODUCT_BUNDLE_IDENTIFIER = ir.kindnesswall.publicusers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "KindnessWall For Public Users";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1289,28 +1290,31 @@
 			baseConfigurationReference = 34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Taghi Kiany Fard (K6W5A74537)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = K6W5A74537;
 				INFOPLIST_FILE = app/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ir.kindnesswall;
+				PRODUCT_BUNDLE_IDENTIFIER = ir.kindnesswall.publicusers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "KindnessWall For Public Users Distribution";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		52525E2921AEB9C000A7D03E /* Debug */ = {
+		5263D5A721B4425B00B634A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K6W5A74537;
 				INFOPLIST_FILE = appUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1322,16 +1326,17 @@
 			};
 			name = Debug;
 		};
-		52525E2A21AEB9C000A7D03E /* Release */ = {
+		5263D5A821B4425B00B634A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K6W5A74537;
 				INFOPLIST_FILE = appUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = hamedgh.ir.appUITests;
@@ -1363,11 +1368,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		52525E2B21AEB9C000A7D03E /* Build configuration list for PBXNativeTarget "appUITests" */ = {
+		5263D5A621B4425B00B634A8 /* Build configuration list for PBXNativeTarget "appUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				52525E2921AEB9C000A7D03E /* Debug */,
-				52525E2A21AEB9C000A7D03E /* Release */,
+				5263D5A721B4425B00B634A8 /* Debug */,
+				5263D5A821B4425B00B634A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
