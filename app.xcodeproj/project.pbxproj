@@ -89,6 +89,7 @@
 		5245921821AAD7420009824C /* GiftDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5245921A21AAD7420009824C /* GiftDetailViewController.xib */; };
 		5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5245921F21AAFC750009824C /* LocalizationSystem.swift */; };
 		5245922521AB47EA0009824C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5245922721AB47EA0009824C /* Localizable.strings */; };
+		5263D5AA21B5972800B634A8 /* ShakingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D5A921B5972800B634A8 /* ShakingTextField.swift */; };
 		528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */; };
 		528A2D8D21ABE04300DECE0F /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D8F21ABE04300DECE0F /* MyKindnessWallViewController.xib */; };
 		528A2D9621AC405D00DECE0F /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D9821AC405D00DECE0F /* MyGiftsViewController.xib */; };
@@ -245,6 +246,7 @@
 		52525E2621AEB9C000A7D03E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52525E2C21AEBB1600A7D03E /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		5263D59F21B4425B00B634A8 /* appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5263D5A921B5972800B634A8 /* ShakingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakingTextField.swift; sourceTree = "<group>"; };
 		528A2D8221ABD73C00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8321ABD83600DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8421ABDC0400DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				05029ED51FE9A683004D96B1 /* ButtonWithData.swift */,
+				5263D5A921B5972800B634A8 /* ShakingTextField.swift */,
 			);
 			path = custom_classes;
 			sourceTree = "<group>";
@@ -1043,6 +1046,7 @@
 				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
 				05F6AA541FFEEB8D00CDABC2 /* ChatListTableViewController.swift in Sources */,
 				05BFBBD71FE1D6FE00DBCDDF /* String+isNumber.swift in Sources */,
+				5263D5AA21B5972800B634A8 /* ShakingTextField.swift in Sources */,
 				05BFBBE21FE26B0500DBCDDF /* Category.swift in Sources */,
 				05644DBE1FFEF3A500B7C853 /* OthersChatConversationTableViewCell.swift in Sources */,
 				601F83D12036A8BE00F9118B /* DateStatus.swift in Sources */,
