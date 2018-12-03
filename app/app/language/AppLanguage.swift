@@ -11,6 +11,7 @@ import KeychainSwift
 
 class AppLanguage{
     
+    
     static let English:String = "en"
     static let Persian:String = "fa"
 

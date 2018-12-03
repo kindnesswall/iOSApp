@@ -91,8 +91,8 @@ class ActivationEnterPhoneViewController: UIViewController {
     }
     
     @IBAction func registerBtnClick(_ sender: Any) {
-        let mobile:String = phoneNumberTextField.text ?? ""
-        if !mobile.starts(with: "09") || mobile.count != 11 || !mobile.isNumber{
+        let mobile:String = phoneNumberTextField.text?.castNumberToEnglish() ?? ""
+        if !mobile.starts(with: "9") || mobile.count != 10 || !mobile.isNumber{
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.phoneNumberIncorrectError), theme: .error)
             return
         }
@@ -126,9 +126,7 @@ class ActivationEnterPhoneViewController: UIViewController {
             controller.setCloseComplition(closeComplition: self?.closeComplition)
             controller.setSubmitComplition(submitComplition: self?.submitComplition)
             
-            if mobile != "" {
-                controller.mobile=mobile
-            }
+            
             self?.navigationController?.pushViewController(controller, animated: true)
             
         }

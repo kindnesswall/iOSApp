@@ -9,6 +9,17 @@
 import Foundation
 
 class APIURLs {
+    
+    //Contact us links:
+    static let githubLink = "https://github.com/kindnesswall"
+    static let facebookLink = "https://www.facebook.com/profile.php?id=100018883545560"
+    static let gmailLink = "mailto:info@kindnesswall.ir"
+    static let instagramLink = "https://www.instagram.com/kindness_wall"
+    static let telegramLink = "https://telegram.me/Kindness_Wall_Admin"
+    static let webSiteLink = "http://www.kindnesswall.ir"
+    
+    
+    
     static let BASE_URL="http://api.kindnesswall.ir/api/"
     static let UPLOAD_URL="http://api.kindnesswall.ir/api/"
 //    static let BASE_URL="http://test.kindnesswall.ir/api/"

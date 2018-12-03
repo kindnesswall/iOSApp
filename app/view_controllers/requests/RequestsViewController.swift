@@ -21,14 +21,12 @@ class RequestsViewController: UIViewController {
     @IBOutlet var tableview: UITableView!
     
     @IBOutlet var requestView: UIView!
-    @IBOutlet var loginView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableview.dataSource = self
         tableview.delegate = self
         
-        loginView.hide()
         requestView.hide()
         noRequestMsgLbl.hide()
 
@@ -41,12 +39,6 @@ class RequestsViewController: UIViewController {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
         self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.RequestsViewController_title)
         
-        guard let _ = keychain.get(AppConstants.Authorization) else{
-            loginView.show()
-            requestView.hide()
-            loadingIndicator.stopLoading()
-            return
-        }
 
         guard isFirstTime else{
             return
@@ -68,7 +60,6 @@ class RequestsViewController: UIViewController {
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
-                self?.loginView.hide()
                 
                 self?.loadingIndicator.stopLoading()
                 
@@ -97,23 +88,6 @@ class RequestsViewController: UIViewController {
         }
     }
     
-    @IBAction func loginBtnClicked(_ sender: Any) {
-        
-        let controller=ActivationEnterPhoneViewController(nibName: "ActivationEnterPhoneViewController", bundle: Bundle(for: ActivationEnterPhoneViewController.self))
-        //            controller.backgroundImage = image
-        
-        controller.setCloseComplition {
-            
-        }
-        controller.setSubmitComplition { (str) in
-            self.loginView.hide()
-            self.requestView.show()
-        }
-        
-        let nc = UINavigationController.init(rootViewController: controller)
-        self.tabBarController?.present(nc, animated: true, completion: nil)
-        
-    }
     
     
 }

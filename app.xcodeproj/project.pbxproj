@@ -100,7 +100,6 @@
 		528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A2DC821ADAA2100DECE0F /* LanguageViewController.swift */; };
 		528A2DCB21ADAA2100DECE0F /* LanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */; };
 		6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */; };
-		6009DB96212D6FE5002FD769 /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB94212D6FE5002FD769 /* ContactUsViewController.xib */; };
 		6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB972130922C002FD769 /* StatisticViewController.swift */; };
 		6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB982130922C002FD769 /* StatisticViewController.xib */; };
 		6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB9B2130931C002FD769 /* StatisticTableViewCell.swift */; };
@@ -120,6 +119,11 @@
 		60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DE22069018C0025D397 /* PopUpMessage.swift */; };
 		6032F61C205287ED00975C23 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032F61B205287ED00975C23 /* LoadingIndicator.swift */; };
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
+		6080700821B3F82A0046F940 /* ContactUsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700621B3F82A0046F940 /* ContactUsCollectionViewCell.swift */; };
+		6080700921B3F82A0046F940 /* ContactUsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */; };
+		6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */; };
+		6080700D21B436590046F940 /* URLBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700C21B436590046F940 /* URLBrowser.swift */; };
+		6080700E21B43B1E0046F940 /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6080701021B43B1E0046F940 /* ContactUsViewController.xib */; };
 		60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */; };
 		60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861155206E50CD000A42E5 /* AppLanguage.swift */; };
 		6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6092D631204950F700AFDA7B /* MyGiftsViewController.swift */; };
@@ -261,7 +265,6 @@
 		528A2DC821ADAA2100DECE0F /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageViewController.xib; sourceTree = "<group>"; };
 		6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
-		6009DB94212D6FE5002FD769 /* ContactUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsViewController.xib; sourceTree = "<group>"; };
 		6009DB972130922C002FD769 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		6009DB982130922C002FD769 /* StatisticViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticViewController.xib; sourceTree = "<group>"; };
 		6009DB9B2130931C002FD769 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
@@ -281,6 +284,13 @@
 		60302DE22069018C0025D397 /* PopUpMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMessage.swift; sourceTree = "<group>"; };
 		6032F61B205287ED00975C23 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		6040F3A2206688A800FCD429 /* APIEmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyInput.swift; sourceTree = "<group>"; };
+		6080700621B3F82A0046F940 /* ContactUsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsCollectionViewCell.swift; sourceTree = "<group>"; };
+		6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsCollectionViewCell.xib; sourceTree = "<group>"; };
+		6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + RegisterCell.swift"; sourceTree = "<group>"; };
+		6080700C21B436590046F940 /* URLBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBrowser.swift; sourceTree = "<group>"; };
+		6080701321B43DE80046F940 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ContactUsViewController.xib; sourceTree = "<group>"; };
+		6080701821B43EB20046F940 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ContactUsViewController.strings; sourceTree = "<group>"; };
+		6080701A21B43EB50046F940 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/ContactUsViewController.strings; sourceTree = "<group>"; };
 		60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar + config.swift"; sourceTree = "<group>"; };
 		60861155206E50CD000A42E5 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		6092D631204950F700AFDA7B /* MyGiftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGiftsViewController.swift; sourceTree = "<group>"; };
@@ -413,6 +423,7 @@
 				05BFBBBC1FDA9FCE00DBCDDF /* NavigationBarStyle.swift */,
 				05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */,
 				05335D481FD0DDA200601115 /* SDWebImageSource.swift */,
+				6080700C21B436590046F940 /* URLBrowser.swift */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -420,6 +431,7 @@
 		054B1B461FCC29B3007570EF /* views */ = {
 			isa = PBXGroup;
 			children = (
+				6080700521B3F8110046F940 /* CollectionViewCell */,
 				60AE9C95202E00BB00F246CD /* View */,
 				60AE9C89202DF7AB00F246CD /* TableViewCell */,
 			);
@@ -514,7 +526,7 @@
 				528A2D8F21ABE04300DECE0F /* MyKindnessWallViewController.xib */,
 				05BEA42F2049667400147BF5 /* MyKindnessWallViewController.swift */,
 				6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */,
-				6009DB94212D6FE5002FD769 /* ContactUsViewController.xib */,
+				6080701021B43B1E0046F940 /* ContactUsViewController.xib */,
 				6009DB972130922C002FD769 /* StatisticViewController.swift */,
 				6009DB982130922C002FD769 /* StatisticViewController.xib */,
 			);
@@ -553,6 +565,7 @@
 				60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */,
 				60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */,
 				05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */,
+				6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */,
 				05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */,
 				05BEA43720498EB400147BF5 /* UIView+hide+show.swift */,
 				05644DC91FFF02A000B7C853 /* UITableView+isCellVisible.swift */,
@@ -655,6 +668,15 @@
 				60302DDF2068FC7E0025D397 /* PopUpViewController.xib */,
 			);
 			path = PopUpViewController;
+			sourceTree = "<group>";
+		};
+		6080700521B3F8110046F940 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6080700621B3F82A0046F940 /* ContactUsCollectionViewCell.swift */,
+				6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		60AE9C82202DB96200F246CD /* view_models */ = {
@@ -816,6 +838,7 @@
 				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
 				60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */,
 				528A2DAB21AD3D8200DECE0F /* RequestToAGiftTableViewCell.xib in Resources */,
+				6080700921B3F82A0046F940 /* ContactUsCollectionViewCell.xib in Resources */,
 				054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */,
 				05644DB91FFEF3A500B7C853 /* ChatListTableViewCell.xib in Resources */,
 				528A2DCB21ADAA2100DECE0F /* LanguageViewController.xib in Resources */,
@@ -833,7 +856,7 @@
 				60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */,
 				528A2D9621AC405D00DECE0F /* MyGiftsViewController.xib in Resources */,
 				054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */,
-				6009DB96212D6FE5002FD769 /* ContactUsViewController.xib in Resources */,
+				6080700E21B43B1E0046F940 /* ContactUsViewController.xib in Resources */,
 				528A2D9F21AC40C900DECE0F /* RequestsViewController.xib in Resources */,
 				05F6AA561FFEEB8D00CDABC2 /* ChatListTableViewController.xib in Resources */,
 				05644DBB1FFEF3A500B7C853 /* OthersChatConversationTableViewCell.xib in Resources */,
@@ -938,6 +961,7 @@
 				05BFBBBF1FDA9FCF00DBCDDF /* NavigationBarStyle.swift in Sources */,
 				60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */,
 				05029ED61FE9A683004D96B1 /* ButtonWithData.swift in Sources */,
+				6080700821B3F82A0046F940 /* ContactUsCollectionViewCell.swift in Sources */,
 				05BEA447204C21E800147BF5 /* PopUpView.swift in Sources */,
 				05644DBA1FFEF3A500B7C853 /* ChatConversationTableViewCell.swift in Sources */,
 				05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */,
@@ -958,6 +982,7 @@
 				05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */,
 				6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */,
 				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
+				6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */,
 				05644DBC1FFEF3A500B7C853 /* ChatListTableViewCell.swift in Sources */,
 				05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */,
 				6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */,
@@ -993,6 +1018,7 @@
 				05DDD3E21F921E98006C5E31 /* ResponseModel.swift in Sources */,
 				05BFBBCC1FDB101700DBCDDF /* UIFont+printAllFonts.swift in Sources */,
 				60AE9C86202DB9B100F246CD /* CategoryListViewModel.swift in Sources */,
+				6080700D21B436590046F940 /* URLBrowser.swift in Sources */,
 				05BFBBEC1FE29F7C00DBCDDF /* IntroViewController.swift in Sources */,
 				05644DC81FFF01C300B7C853 /* ChatConversationResult.swift in Sources */,
 				05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */,
@@ -1148,6 +1174,16 @@
 				528A2DC521AD3EC600DECE0F /* fa */,
 			);
 			name = GiftTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		6080701021B43B1E0046F940 /* ContactUsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6080701321B43DE80046F940 /* Base */,
+				6080701821B43EB20046F940 /* en */,
+				6080701A21B43EB50046F940 /* fa */,
+			);
+			name = ContactUsViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

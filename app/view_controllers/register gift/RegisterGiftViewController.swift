@@ -231,7 +231,7 @@ class RegisterGiftViewController: UIViewController {
         
         gift.title=self.titleTextView.text
         gift.description=self.descriptionTextView.text
-        gift.price=self.priceTextView.text
+        gift.price=self.priceTextView.text?.castNumberToEnglish()
         
         gift.category=self.category?.title
         gift.categoryId=self.category?.id
@@ -328,7 +328,7 @@ class RegisterGiftViewController: UIViewController {
         let draft=RegisterGiftDraft()
         draft.title=self.titleTextView.text
         draft.description=self.descriptionTextView.text
-        draft.price=Int(self.priceTextView.text ?? "")
+        draft.price=Int(self.priceTextView.text?.castNumberToEnglish() ?? "")
         draft.category=self.category
         draft.dateStatus=self.dateStatus
         draft.places=self.places
@@ -381,7 +381,7 @@ class RegisterGiftViewController: UIViewController {
         }
         input.description=giftDescription
         
-        guard let price=Int(self.priceTextView.text ?? "") else {
+        guard let price=Int(self.priceTextView.text?.castNumberToEnglish() ?? "") else {
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.priceError),theme: .warning)
             return
         }

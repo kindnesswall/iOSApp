@@ -46,4 +46,12 @@ extension String{
         return number
     }
     
+    public func castNumberToEnglish()->String? {
+        let number = self
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "en")
+        let englishNumber = formatter.number(from: number)
+        return englishNumber?.description
+    }
+    
 }

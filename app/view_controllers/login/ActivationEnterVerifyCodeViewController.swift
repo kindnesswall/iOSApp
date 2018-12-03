@@ -15,8 +15,6 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     var session:URLSession?
     let keychain = KeychainSwift()
     
-    var mobile:String?
-    
     let userDefault = UserDefaults.standard
     
     @IBOutlet weak var verifyCodeTextField: UITextField!
@@ -100,7 +98,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     @IBAction func registerBtnClick(_ sender: Any) {
         
-        let activationCode:String = verifyCodeTextField.text!
+        let activationCode:String = verifyCodeTextField.text?.castNumberToEnglish() ?? ""
         
         if activationCode.count <= 0 {
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeError),theme: .warning)
