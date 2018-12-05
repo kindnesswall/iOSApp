@@ -34,7 +34,7 @@ class ApiMethods {
         let regId:String = "eoFH_ujJBxU:APA91bEEEAv1RpiP4RHzwJLEa9bRFdAi1sTIgFV9GScwfDNcmDucVFkWG0EstL5I5zNVaFqCVT3NMiBUjhtyQEFUM89S9tXf44u0N4LhozYv1KWNcGkyCMeUEmcOYRYEiu5gud18h_A"
         let deviceId:String = "352136066349321"
         
-        var formKeyValue:[String:String] = [
+        let formKeyValue:[String:String] = [
             APIMethodDictionaryKey.Username:mobile,
             APIMethodDictionaryKey.Password:verificationCode,
             APIMethodDictionaryKey.RegisterationId:regId,

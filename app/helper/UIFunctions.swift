@@ -84,11 +84,9 @@ public class UIFunctions{
     public static func makeCircleView(borderWidth: Int, imageView: UIView, borderColor: UIColor){
         imageView.layer.borderWidth = CGFloat(borderWidth)
         imageView.layer.masksToBounds = false
-        if borderColor != nil {
-          imageView.layer.borderColor = borderColor.cgColor
-        } else {
-            imageView.layer.borderColor = UIColor.clear.cgColor
-        }
+        
+        imageView.layer.borderColor = borderColor.cgColor
+        
         imageView.layer.cornerRadius = imageView.frame.height/2
         imageView.clipsToBounds = true
     }

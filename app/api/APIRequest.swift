@@ -20,8 +20,6 @@ enum EnumHttpMethods:String {
             return "PUT"
         case .delete:
             return "DELETE"
-        default:
-            return "GET"
         }
     }
 }
@@ -54,7 +52,7 @@ class APIRequest {
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             
             guard error == nil else{
-                print(error)
+                print(error.debugDescription)
                 return
             }
             
