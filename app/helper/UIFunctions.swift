@@ -126,7 +126,7 @@ public class UIFunctions{
         var birthdate=""
         var day = birthdayDay
         
-        if(day.characters.count == 1){
+        if(day.count == 1){
             day = "0"+day
         }
         

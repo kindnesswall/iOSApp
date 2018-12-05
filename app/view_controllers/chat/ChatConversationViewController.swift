@@ -145,10 +145,12 @@ class ChatConversationViewController: UIViewController {
         guard let chatId = chatId else {
             return
         }
-        ApiMethods.getChatConversation(chatId: chatId, startIndex: lastIndexLoaded, complitionHandler: { [weak self] (output) in
+        ApiMethods.getChatConversation(chatId: chatId, startIndex: lastIndexLoaded, complitionHandler: {
+//            [weak self]
+            (output) in
             
             //            print(output)
-            if let result = output.result, let messages = result.list  {
+//            if let result = output.result, let messages = result.list  {
                 //                self.messages.append(contentsOf: messages)
                 
 //                let listLength = self.messages.count
@@ -157,7 +159,7 @@ class ChatConversationViewController: UIViewController {
 //                }
 //
 //                self.tableview.reloadData()
-            }
+//            }
             
         })
     }
