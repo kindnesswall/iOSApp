@@ -21,6 +21,11 @@ class RequestsViewController: UIViewController {
     @IBOutlet var tableview: UITableView!
     
     @IBOutlet var requestView: UIView!
+    
+    deinit {
+        print("RequestsViewController deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

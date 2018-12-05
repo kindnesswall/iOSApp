@@ -43,6 +43,9 @@ class GiftDetailViewController: UIViewController {
     var loadingIndicator:LoadingIndicator?
     var editBtn:UIBarButtonItem?
     
+    deinit {
+        print("GiftDetailViewController deinit")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
