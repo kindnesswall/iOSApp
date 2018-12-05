@@ -22,29 +22,10 @@ class MyKindnessWallViewController: UIViewController {
     
     @IBAction func SwitchLanguageBtnClicked(_ sender: Any) {
         
-        let alert = UIAlertController(
-            title:LocalizationSystem.getStr(forKey: LanguageKeys.Switch_Language_dialog_title),
-                                      message: LocalizationSystem.getStr(forKey: LanguageKeys.Switch_Language_dialog_text),
-                                      preferredStyle: UIAlertController.Style.alert)
         
-            alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
-                
-                if AppLanguage.getLanguage() == AppLanguage.Persian {
-                    LocalizationSystem.sharedInstance.setLanguage(languageCode: AppLanguage.English)
-                } else {
-                    LocalizationSystem.sharedInstance.setLanguage(languageCode: AppLanguage.Persian)
-                }
-                
-                exit(0)
-            }))
-        
-        alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.cancel), style: UIAlertAction.Style.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: {
-                
-            })
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
+        let controller = LanguageViewController()
+        controller.tabBarIsInitialized = true
+        self.tabBarController?.present(controller, animated: true, completion: nil)
 
     }
     
@@ -128,6 +109,10 @@ class MyKindnessWallViewController: UIViewController {
         let buildNumber = dic["CFBundleVersion"] as! String
         
         return version+"("+buildNumber+")"
+    }
+    
+    deinit {
+        print("MyKindnessWallViewController deinit")
     }
     
     override func viewDidLoad() {

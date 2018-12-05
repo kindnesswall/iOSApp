@@ -140,6 +140,7 @@
 		60FAB8402064EE950039BF61 /* RGVC + uploading images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */; };
 		60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB842206503AE0039BF61 /* Stored Models.swift */; };
 		60FAB845206571340039BF61 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60FAB844206571340039BF61 /* icomoon.ttf */; };
+		60FBFF1C21B74E2E00006E0A /* AppDelegate + Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FBFF1B21B74E2D00006E0A /* AppDelegate + Tabbar.swift */; };
 		F7BCA4F8A441C01D89E9B782 /* Pods_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C277763F780436B62AC383 /* Pods_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -307,6 +308,7 @@
 		60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGVC + uploading images.swift"; sourceTree = "<group>"; };
 		60FAB842206503AE0039BF61 /* Stored Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stored Models.swift"; sourceTree = "<group>"; };
 		60FAB844206571340039BF61 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = icomoon.ttf; path = icomoon/fonts/icomoon.ttf; sourceTree = "<group>"; };
+		60FBFF1B21B74E2D00006E0A /* AppDelegate + Tabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate + Tabbar.swift"; sourceTree = "<group>"; };
 		A4C277763F780436B62AC383 /* Pods_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -385,6 +387,7 @@
 				0507C8691F8C1A920084CDF1 /* Assets.xcassets */,
 				0507C86E1F8C1A920084CDF1 /* Info.plist */,
 				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
+				60FBFF1B21B74E2D00006E0A /* AppDelegate + Tabbar.swift */,
 				0507C8641F8C1A920084CDF1 /* ViewController.swift */,
 				0507C8661F8C1A920084CDF1 /* Main.storyboard */,
 				0507C86B1F8C1A920084CDF1 /* LaunchScreen.storyboard */,
@@ -1027,6 +1030,7 @@
 				601F83D32037367900F9118B /* Place.swift in Sources */,
 				05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */,
 				05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */,
+				60FBFF1C21B74E2E00006E0A /* AppDelegate + Tabbar.swift in Sources */,
 				60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */,
 				602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */,
 				05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */,

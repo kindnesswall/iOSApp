@@ -17,6 +17,9 @@ class LanguageViewController: UIViewController {
     private let datasourceToShow = ["فارسی", "English"]
     
     @IBOutlet weak var okBtn: UIButton!
+    
+    var tabBarIsInitialized : Bool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,9 +31,12 @@ class LanguageViewController: UIViewController {
     @IBAction func okBtnClicked(_ sender: Any) {
 
         UserDefaults.standard.set(true, forKey: AppConstants.WATCHED_SELECT_LANGUAGE)
+        UserDefaults.standard.synchronize()
         
         if datasource[pickerView.selectedRow(inComponent: 0)] == AppLanguage.getLanguage() {
-            AppDelegate.me().showTabbarIntro()
+            
+            languageHasNotChanged()
+            
         } else {
             
             var title:String!
@@ -57,9 +63,7 @@ class LanguageViewController: UIViewController {
             
             alert.addAction(UIAlertAction(title: okBtn, style: UIAlertAction.Style.default, handler: { (action) in
                 
-                LocalizationSystem.sharedInstance.setLanguage(languageCode: self.datasource[self.pickerView.selectedRow(inComponent: 0)])
-                
-                exit(0)
+                self.languageHasChangedTo(selectedLanguage: self.datasource[self.pickerView.selectedRow(inComponent: 0)])
             }))
             
             alert.addAction(UIAlertAction(title: cancelBtn, style: UIAlertAction.Style.default, handler: { (action) in
@@ -71,6 +75,21 @@ class LanguageViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             
         }
+    }
+    
+    private func languageHasNotChanged(){
+        
+        if tabBarIsInitialized {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            AppDelegate.me().showTabbarIntro()
+        }
+        
+    }
+    
+    private func languageHasChangedTo(selectedLanguage: String){
+        LocalizationSystem.sharedInstance.setLanguage(languageCode: selectedLanguage)
+        exit(0)
     }
 }
 

@@ -118,3 +118,8 @@
 "guideOfRegitering_part1" = "تا لحظاتی دیگر پیامی حاوی کد فعالسازی به شماره ";
 "guideOfRegitering_part2" = " ارسال خواهد شد. در صورتیکه کد را دریافت نکردید می توانید پس از ۱ دقیقه مجددا سعی کنید.";
 
+"tabBar_home" = "خانه";
+"tabBar_my_gifts" = "هدیه‌های من";
+"tabBar_give_gift" = "ثبت هدیه";
+"tabBar_requests" = "درخواستها";
+"tabBar_my_wall" = "دیوار من";

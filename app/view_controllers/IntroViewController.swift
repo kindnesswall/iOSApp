@@ -69,7 +69,6 @@ class IntroViewController: UIViewController {
     @objc func handleContinue(sender: UIButton) {
         let index = sender.tag
         if index == titleArray.count-1 {
-//            AppDelegate.me().showTabbar()
             self.dismiss(animated: true, completion: nil)
         }else{
             swiftyOnboard?.goToPage(index: index + 1, animated: true)
