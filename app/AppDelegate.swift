@@ -23,7 +23,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     static let screenWidth = UIScreen.main.bounds.width
 
-    static func clearUserDefault() {
+    static func clearUserDefaultAuthValues() {
+        
+        let watched_select_language = uDStandard.bool(forKey: AppConstants.WATCHED_SELECT_LANGUAGE)
+        let watched_intro = uDStandard.bool(forKey: AppConstants.WATCHED_INTRO)
+        
+        clearAllUserDefaultValues()
+        
+        uDStandard.set(watched_select_language, forKey: AppConstants.WATCHED_SELECT_LANGUAGE)
+        uDStandard.set(watched_intro, forKey: AppConstants.WATCHED_INTRO)
+        
+        uDStandard.synchronize()
+    }
+    
+    
+    static func clearAllUserDefaultValues(){
         let domain = Bundle.main.bundleIdentifier!
         uDStandard.removePersistentDomain(forName: domain)
         uDStandard.synchronize()
@@ -55,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !uDStandard.bool(forKey: AppConstants.WATCHED_INTRO) {
             showIntro()
             uDStandard.set(true, forKey: AppConstants.WATCHED_INTRO)
+            uDStandard.synchronize()
         }
     }
     
