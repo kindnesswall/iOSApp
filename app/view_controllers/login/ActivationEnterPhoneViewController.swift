@@ -13,7 +13,7 @@ class ActivationEnterPhoneViewController: UIViewController {
     let userDefault=UserDefaults.standard
     
     @IBOutlet weak var guideLabel: UILabel!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: ShakingTextField!
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
@@ -94,6 +94,7 @@ class ActivationEnterPhoneViewController: UIViewController {
         let mobile:String = phoneNumberTextField.text?.castNumberToEnglish() ?? ""
         if !mobile.starts(with: "9") || mobile.count != 10 || !mobile.isNumber{
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.phoneNumberIncorrectError), theme: .error)
+            self.phoneNumberTextField.shake()
             return
         }
         

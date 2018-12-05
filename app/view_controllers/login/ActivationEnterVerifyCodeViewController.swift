@@ -17,7 +17,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     let userDefault = UserDefaults.standard
     
-    @IBOutlet weak var verifyCodeTextField: UITextField!
+    @IBOutlet weak var verifyCodeTextField: ShakingTextField!
     @IBOutlet weak var resendLoading: UIActivityIndicatorView!
     
     @IBOutlet weak var registerBtn: UIButton!
@@ -102,11 +102,13 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         
         if activationCode.count <= 0 {
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeError),theme: .warning)
+            self.verifyCodeTextField.shake()
             return
         }
         
         if activationCode.count < 4 {
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeIncorrectError),theme: .warning)
+            self.verifyCodeTextField.shake()
             return
         }
         
@@ -141,6 +143,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                 
                 if let error = reply.error , error == TokenOutputError.invalid_grant.rawValue {
                     FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeIncorrectError),theme: .warning)
+                    self?.verifyCodeTextField.shake()
                     return
                 }
                 
