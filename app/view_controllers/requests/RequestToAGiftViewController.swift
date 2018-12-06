@@ -58,7 +58,7 @@ class RequestToAGiftViewController: UIViewController {
     }
     
     @IBAction func onCallClicked(_ sender: ButtonWithData) {
-//        print(sender.data)
+        print(sender.data?.description ?? "")
 
         guard let clickedRequest = sender.data else{
             return
@@ -75,7 +75,7 @@ class RequestToAGiftViewController: UIViewController {
     }
     
     @IBAction func onMessageBtnClicked(_ sender: ButtonWithData) {
-//        print(sender.data)
+        print(sender.data?.description ?? "")
         guard let clickedRequest = sender.data else{
             return
         }
@@ -93,7 +93,7 @@ class RequestToAGiftViewController: UIViewController {
     
     
     @IBAction func onAcceptRequestClicked(_ sender: ButtonWithData) {
-//        print(sender.data)
+        print(sender.data?.description ?? "")
         
         PopUpMessage.showPopUp(
             nibClass: PromptUser.self,
@@ -135,7 +135,7 @@ class RequestToAGiftViewController: UIViewController {
     }
     
     @IBAction func onRejectRequestBtnClicked(_ sender: ButtonWithData) {
-//        print(sender.data)
+        print(sender.data?.description ?? "")
         
         PopUpMessage.showPopUp(
             nibClass: PromptUser.self,

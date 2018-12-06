@@ -117,3 +117,9 @@
 
 "activationCodeSendSuccessfully" = "Activation Code Send Successfully";
 "activationCodeTryAgainOneMinuteLater" = "Try Again One Minute Later!";
+
+"tabBar_home" = "Home";
+"tabBar_my_gifts" = "My Gifts";
+"tabBar_give_gift" = "Give Gift";
+"tabBar_requests" = "Requests";
+"tabBar_my_wall" = "My Wall";

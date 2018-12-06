@@ -30,6 +30,10 @@ class HomeViewController: UIViewController {
     var categotyBarBtn:UIBarButtonItem?
     var cityBarBtn:UIBarButtonItem?
     
+    deinit {
+        print("HomeViewController deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -97,6 +97,12 @@ class RegisterGiftViewController: UIViewController {
     @IBOutlet weak var newOrSecondhandLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
+    deinit {
+        print("RegisterGiftViewController Deinit")
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -147,11 +153,7 @@ class RegisterGiftViewController: UIViewController {
         
     }
     
-    deinit {
-        print("Register Gift View Controller Deinit")
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+    
     
     func configSendButtons(){
         if isEditMode {

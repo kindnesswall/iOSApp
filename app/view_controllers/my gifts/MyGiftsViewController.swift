@@ -44,6 +44,10 @@ class MyGiftsViewController: UIViewController {
     
     var currentSegment :SegmentControlViewType = .registered
     
+    deinit {
+        print("MyGiftsViewController deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -10,7 +10,7 @@ import UIKit
 import KeychainSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     static let uDStandard = UserDefaults.standard
@@ -23,7 +23,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
 
     static let screenWidth = UIScreen.main.bounds.width
 
-    static func clearUserDefault() {
+    static func clearUserDefaultAuthValues() {
+        
+        let watched_select_language = uDStandard.bool(forKey: AppConstants.WATCHED_SELECT_LANGUAGE)
+        let watched_intro = uDStandard.bool(forKey: AppConstants.WATCHED_INTRO)
+        
+        clearAllUserDefaultValues()
+        
+        uDStandard.set(watched_select_language, forKey: AppConstants.WATCHED_SELECT_LANGUAGE)
+        uDStandard.set(watched_intro, forKey: AppConstants.WATCHED_INTRO)
+        
+        uDStandard.synchronize()
+    }
+    
+    
+    static func clearAllUserDefaultValues(){
         let domain = Bundle.main.bundleIdentifier!
         uDStandard.removePersistentDomain(forName: domain)
         uDStandard.synchronize()
@@ -32,34 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
     }
     
-    func pushViewControllersIntoTabs()  {
-        if var tabs = self.tabBarController?.viewControllers as? [UINavigationController] {
-            
-            // Tab0
-            let controller0=RegisterGiftViewController(nibName: "RegisterGiftViewController", bundle: Bundle(for: RegisterGiftViewController.self))
-            tabs[TabIndex.RegisterGift].pushViewController(controller0, animated: true)
-            
-            let controller1=RequestsViewController(nibName: "RequestsViewController", bundle: Bundle(for: RequestsViewController.self))
-            tabs[TabIndex.Requests].pushViewController(controller1, animated: true)
-            
-            let controller2=HomeViewController(nibName: "HomeViewController", bundle: Bundle(for: HomeViewController.self))
-            tabs[TabIndex.HOME].pushViewController(controller2, animated: true)
-            
-            let controller3=MyKindnessWallViewController(nibName: "MyKindnessWallViewController", bundle: Bundle(for: MyKindnessWallViewController.self))
-            tabs[TabIndex.MyKindnessWall].pushViewController(controller3, animated: true)
-            
-//            let controller4=ChatListTableViewController(nibName: "ChatListTableViewController", bundle: Bundle(for: ChatListTableViewController.self))
-//            tabs[TabIndex.CHAT].pushViewController(controller4, animated: true)
-            
-            let controller4=MyGiftsViewController(nibName: "MyGiftsViewController", bundle: Bundle(for: MyGiftsViewController.self))
-            tabs[TabIndex.MyGifts].pushViewController(controller4, animated: true)
-            
-            self.tabBarController?.viewControllers = tabs
-            self.tabBarController?.selectedIndex = TabIndex.HOME
-        } else {
-            print("There is something wrong with tabbar controller")
-        }
-    }
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -77,35 +64,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     
     func showTabbarIntro() {
         
-        showTabbar()
+        initializeTabbar()
         
         if !uDStandard.bool(forKey: AppConstants.WATCHED_INTRO) {
             showIntro()
             uDStandard.set(true, forKey: AppConstants.WATCHED_INTRO)
+            uDStandard.synchronize()
         }
     }
     
     func showSelectLanguageVC() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController:UIViewController = LanguageViewController()
+        let viewController = LanguageViewController()
+        viewController.tabBarIsInitialized = false
 //        let nc = UINavigationController.init(rootViewController: viewController)
         window!.rootViewController = viewController
         window!.makeKeyAndVisible()
     }
     
-    func showTabbar()  {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        self.tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarRoot") as? UITabBarController
-//        self.tabBarController=self.window?.rootViewController as? UITabBarController
-        
-        self.tabBarController?.delegate=self
-        
-        window!.rootViewController = self.tabBarController
-        
-        pushViewControllersIntoTabs()
-        window!.makeKeyAndVisible()
-    }
     
     func showIntro() {
         
@@ -128,28 +104,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         return false
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if let _=keychain.get(AppConstants.Authorization) {
-           return true
-        }
-        
-        if let _=(viewController as? UINavigationController)?.viewControllers.first as? RegisterGiftViewController {
-            showLoginVC()
-            return false
-        }
-        
-        if let _=(viewController as? UINavigationController)?.viewControllers.first as? MyGiftsViewController {
-            showLoginVC()
-            return false
-        }
-        
-        if let _=(viewController as? UINavigationController)?.viewControllers.first as? RequestsViewController {
-            showLoginVC()
-            return false
-        }
-        
-        return true
-        
-    }
+    
 }
 

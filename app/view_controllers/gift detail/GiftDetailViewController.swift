@@ -43,6 +43,9 @@ class GiftDetailViewController: UIViewController {
     var loadingIndicator:LoadingIndicator?
     var editBtn:UIBarButtonItem?
     
+    deinit {
+        print("GiftDetailViewController deinit")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,7 +167,7 @@ class GiftDetailViewController: UIViewController {
         APICall.request(url: url, httpMethod: .DELETE, input: input) { [weak self] (data, response, error) in
             self?.removeBtn.isEnabled=true
             
-            if let _ = error {
+            if error != nil {
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
                 return
             }

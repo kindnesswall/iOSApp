@@ -105,6 +105,7 @@
 		6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB9B2130931C002FD769 /* StatisticTableViewCell.swift */; };
 		6009DB9E2130931C002FD769 /* StatisticTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB9C2130931C002FD769 /* StatisticTableViewCell.xib */; };
 		6009DBA02130A385002FD769 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB9F2130A385002FD769 /* Statistics.swift */; };
+		6019F27521B80257003C3E76 /* AppDelegate + Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6019F27421B80257003C3E76 /* AppDelegate + Tabbar.swift */; };
 		601F83C32036A36500F9118B /* DateStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83C22036A36400F9118B /* DateStatusListViewModel.swift */; };
 		601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83CC2036A50600F9118B /* GenericOptionsTableViewCell.swift */; };
 		601F83CF2036A50600F9118B /* GenericOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 601F83CD2036A50600F9118B /* GenericOptionsTableViewCell.xib */; };
@@ -270,6 +271,7 @@
 		6009DB9B2130931C002FD769 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
 		6009DB9C2130931C002FD769 /* StatisticTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticTableViewCell.xib; sourceTree = "<group>"; };
 		6009DB9F2130A385002FD769 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		6019F27421B80257003C3E76 /* AppDelegate + Tabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate + Tabbar.swift"; sourceTree = "<group>"; };
 		601F83C22036A36400F9118B /* DateStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStatusListViewModel.swift; sourceTree = "<group>"; };
 		601F83CC2036A50600F9118B /* GenericOptionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericOptionsTableViewCell.swift; sourceTree = "<group>"; };
 		601F83CD2036A50600F9118B /* GenericOptionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericOptionsTableViewCell.xib; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				0507C8691F8C1A920084CDF1 /* Assets.xcassets */,
 				0507C86E1F8C1A920084CDF1 /* Info.plist */,
 				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
+				6019F27421B80257003C3E76 /* AppDelegate + Tabbar.swift */,
 				0507C8641F8C1A920084CDF1 /* ViewController.swift */,
 				0507C8661F8C1A920084CDF1 /* Main.storyboard */,
 				0507C86B1F8C1A920084CDF1 /* LaunchScreen.storyboard */,
@@ -750,7 +753,6 @@
 				0507C85C1F8C1A920084CDF1 /* Frameworks */,
 				0507C85D1F8C1A920084CDF1 /* Resources */,
 				4F2C17FB1F8C5E4205EA5192 /* [CP] Embed Pods Frameworks */,
-				A4F0388D7B7191B05E49F1F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -934,21 +936,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-app/Pods-app-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A4F0388D7B7191B05E49F1F1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-app/Pods-app-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -995,6 +982,7 @@
 				528A2DA921AD340200DECE0F /* LanguageKeys.swift in Sources */,
 				05BFBBC81FDAA4EF00DBCDDF /* AppColor.swift in Sources */,
 				05029ED21FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift in Sources */,
+				6019F27521B80257003C3E76 /* AppDelegate + Tabbar.swift in Sources */,
 				05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */,
 				05644DC01FFEF44A00B7C853 /* Message.swift in Sources */,
 				05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */,
