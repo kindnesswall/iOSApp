@@ -125,7 +125,7 @@ class HomeViewController: UIViewController {
     var initialGiftsLoadingHasOccurred=false
     func reloadPage(){
         if initialGiftsLoadingHasOccurred {
-//            apiMethods.clearAllTasksAndSessions()
+            apiMethods.clearAllTasksAndSessions()
             isLoadingGifts=false
             getGifts(index:0)
         }

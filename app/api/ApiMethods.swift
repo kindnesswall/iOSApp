@@ -12,8 +12,8 @@ class ApiMethods {
     
     public static let offset:Int = 15
     
-//    var sessions:[URLSession?]=[]
-//    var tasks:[URLSessionDataTask?]=[]
+    var sessions:[URLSession?]=[]
+    var tasks:[URLSessionDataTask?]=[]
     
     
     public func getCategories(completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
@@ -166,7 +166,7 @@ class ApiMethods {
         let searchText = "/?searchText=" + (searchText ?? "")
         let mainURL: String = APIURLs.Gift + "/" + cityId + "/" + regionId + "/" + categoryId + "/" + "\(startIndex)/" + "\(lastIndex)" + searchText
         
-        APIRequest.request(url: mainURL, httpMethod: .get, inputDictionary: nil) { (data, response, error) in
+        APIRequest.request(url: mainURL, httpMethod: .get, appendToSessions: &self.sessions, appendToTasks: &self.tasks, inputDictionary: nil) { (data, response, error) in
             
             guard error == nil else {
                 print("Get error register")
@@ -275,9 +275,9 @@ class ApiMethods {
 //        }
 //    }
     
-//    public func clearAllTasksAndSessions(){
-//        APIRequest.stopAndClearSessionsAndTasks(sessions: &self.sessions, tasks: &self.tasks)
-//    }
+    public func clearAllTasksAndSessions(){
+        APIRequest.stopAndClearSessionsAndTasks(sessions: &self.sessions, tasks: &self.tasks)
+    }
     
     
 }
