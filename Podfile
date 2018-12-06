@@ -9,7 +9,7 @@ target 'app' do
 
   # Pods for app
 
-pod 'SDWebImage'
+#pod 'SDWebImage'
 pod 'ImageSlideshow', '~> 1.6'
 pod 'SwiftMessages'
 pod 'SwiftyOnboard'
@@ -19,5 +19,7 @@ pod 'UICircularProgressRing'
 pod 'MGSwipeTableCell'
 pod 'KeychainSwift', '~> 10.0'
 pod 'JGProgressHUD'
+pod 'Kingfisher', '~> 4.0'
+pod "ImageSlideshow/Kingfisher"
 
 end

@@ -8,6 +8,7 @@
 
 import UIKit
 import CropViewController
+import Kingfisher
 
 extension RegisterGiftViewController:UIImagePickerControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -104,7 +105,7 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     func addUploadImageView(imageSrc:String) -> UploadImageView{
         let uploadedImageView=initUploadImageView()
         if let url=URL(string:imageSrc) {
-            uploadedImageView.imageView.sd_setImage(with: url, completed: nil)
+            uploadedImageView.imageView.kf.setImage(with: url)
         }
         return uploadedImageView
     }

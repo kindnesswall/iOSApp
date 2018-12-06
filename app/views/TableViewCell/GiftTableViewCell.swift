@@ -7,10 +7,12 @@
 //
 
 import UIKit
-import SDWebImage
+//import SDWebImage
+import Kingfisher
 
 class GiftTableViewCell: UITableViewCell {
 
+    
     @IBOutlet var giftImage: UIImageView!
     @IBOutlet var giftTitle: UILabel!
     @IBOutlet var giftDate: UILabel!
@@ -29,16 +31,45 @@ class GiftTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBOutlet weak var precentView: ProgressBarView!
+    
     func filViews(gift:Gift) {
+        
         giftTitle.text = gift.title
         giftDate.text = gift.createDateTime
         giftDescription.text = gift.description
         giftCity.text=gift.address
-        if let url = gift.giftImages?.first {
-            giftImage.sd_setImage(with: URL(string: url))
-        } else {
-            giftImage.image=UIImage()
+        
+        self.precentView.hide()
+        self.giftImage.show()
+        self.precentView.progress = 0
+        
+        if let urlStr = gift.giftImages?.first,
+            let url = URL(string: urlStr) {
+            
+            self.giftImage.kf.setImage(
+                with: url,
+                placeholder: UIImage(named: "placeholder"),
+                options: [.transition(.fade(0.6))], progressBlock: { [weak self]
+                    receivedSize, totalSize in
+                    
+                    let percentage = (Float(receivedSize) / Float(totalSize)) // * 100.0
+                    if percentage == 1 {
+                        self?.precentView.hide()
+                        self?.giftImage.show()
+                    } else {
+                        self?.precentView.show()
+                        self?.giftImage.hide()
+                        self?.precentView.progress = percentage
+                    }
+            })
+            
         }
+//        else {
+//            giftImage.image = UIImage(named: "placeholder")
+//            self.precentView.hide()
+//            self.giftImage.show()
+//        }
 
     }
 }

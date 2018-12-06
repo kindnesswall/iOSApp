@@ -9,11 +9,13 @@
 import UIKit
 import ImageSlideshow
 import KeychainSwift
+import Kingfisher
+//import ImageSlideshow;/Kingfisher
 
 class GiftDetailViewController: UIViewController {
 
     var gift:Gift?
-    var sdWebImageSource:[SDWebImageSource] = []
+//    var sdWebImageSource:[SDWebImageSource] = []
     var profileImages:[String] = []
     
     var editHandler:(()->Void)?
@@ -240,13 +242,13 @@ class GiftDetailViewController: UIViewController {
                 return
         }
         
-        self.sdWebImageSource=[]
+        var sdWebImageSource:[KingfisherSource] = []
         for img in images {
-            self.sdWebImageSource.append(
-                SDWebImageSource(urlString: img)!
-            )
+            if let source = KingfisherSource(urlString: img) {
+                sdWebImageSource.append(source)
+            }
         }
         
-        self.slideshow.setImageInputs(self.sdWebImageSource)
+        self.slideshow.setImageInputs(sdWebImageSource)
     }
 }

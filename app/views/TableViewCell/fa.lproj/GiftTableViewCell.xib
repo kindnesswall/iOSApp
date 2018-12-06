@@ -34,6 +34,14 @@
                             <constraint firstAttribute="width" constant="110" id="bkd-Zr-697"/>
                         </constraints>
                     </imageView>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z5J-NX-N5w" customClass="ProgressBarView" customModule="app" customModuleProvider="target">
+                        <rect key="frame" x="271" y="31" width="60" height="60"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="7lT-U4-d3C"/>
+                            <constraint firstAttribute="width" constant="60" id="MxT-ny-hKW"/>
+                        </constraints>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عنوان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZk-Zm-A8l">
                         <rect key="frame" x="24" y="11" width="214" height="24"/>
                         <constraints>
@@ -80,10 +88,12 @@
                     <constraint firstAttribute="trailing" secondItem="EOH-Km-dB8" secondAttribute="trailing" constant="12" id="RmY-YH-L90"/>
                     <constraint firstItem="EOH-Km-dB8" firstAttribute="leading" secondItem="rXL-Zd-AuB" secondAttribute="trailing" constant="8" id="UTc-Kx-7fz"/>
                     <constraint firstAttribute="bottomMargin" secondItem="z8h-J4-KVI" secondAttribute="bottom" constant="8" id="VHH-d0-dBd"/>
+                    <constraint firstItem="Z5J-NX-N5w" firstAttribute="centerY" secondItem="EOH-Km-dB8" secondAttribute="centerY" id="WcC-h7-6EO"/>
                     <constraint firstItem="cZk-Zm-A8l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="Ys2-DH-WWk"/>
                     <constraint firstItem="rXL-Zd-AuB" firstAttribute="top" secondItem="cZk-Zm-A8l" secondAttribute="bottom" constant="4" id="chs-S6-bDU"/>
                     <constraint firstItem="cZk-Zm-A8l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ktv-1V-lDd"/>
                     <constraint firstItem="5HW-dd-zk3" firstAttribute="top" secondItem="cZk-Zm-A8l" secondAttribute="bottom" constant="4" id="n6a-YU-KmU"/>
+                    <constraint firstItem="Z5J-NX-N5w" firstAttribute="centerX" secondItem="EOH-Km-dB8" secondAttribute="centerX" id="oA9-jG-ErS"/>
                     <constraint firstItem="z8h-J4-KVI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="tJM-7D-Uup"/>
                     <constraint firstItem="z8h-J4-KVI" firstAttribute="top" secondItem="5HW-dd-zk3" secondAttribute="bottom" constant="4" id="uv8-Zd-Yt6"/>
                     <constraint firstItem="5HW-dd-zk3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="xDJ-g4-cfv"/>
@@ -103,6 +113,7 @@
                 <outlet property="giftDescription" destination="z8h-J4-KVI" id="Kas-iq-D8s"/>
                 <outlet property="giftImage" destination="EOH-Km-dB8" id="9hE-UK-ygi"/>
                 <outlet property="giftTitle" destination="cZk-Zm-A8l" id="u4O-p6-tlA"/>
+                <outlet property="precentView" destination="Z5J-NX-N5w" id="ar5-wL-QUj"/>
             </connections>
             <point key="canvasLocation" x="-154" y="-40"/>
         </tableViewCell>
