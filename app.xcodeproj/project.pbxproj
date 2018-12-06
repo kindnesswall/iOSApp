@@ -400,6 +400,7 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5263D5FF21B9272300B634A8 /* OptionsList */,
 				528A2DC721ADA9EE00DECE0F /* languageVC */,
 				60302DE4206953670025D397 /* PopUpViewController */,
 				05BEA441204BFBAB00147BF5 /* my kindnesswall */,
@@ -411,8 +412,6 @@
 				05029EC71FE33498004D96B1 /* requests */,
 				05BFBBB31FDA653400DBCDDF /* login */,
 				05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */,
-				60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */,
-				60AE9C87202DE87100F246CD /* OptionsListViewController.swift */,
 			);
 			path = view_controllers;
 			sourceTree = "<group>";
@@ -631,6 +630,15 @@
 				52525E2621AEB9C000A7D03E /* Info.plist */,
 			);
 			path = appUITests;
+			sourceTree = "<group>";
+		};
+		5263D5FF21B9272300B634A8 /* OptionsList */ = {
+			isa = PBXGroup;
+			children = (
+				60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */,
+				60AE9C87202DE87100F246CD /* OptionsListViewController.swift */,
+			);
+			path = OptionsList;
 			sourceTree = "<group>";
 		};
 		528A2DAA21AD39C500DECE0F /* language */ = {
