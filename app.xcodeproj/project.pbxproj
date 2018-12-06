@@ -89,6 +89,7 @@
 		5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5245921F21AAFC750009824C /* LocalizationSystem.swift */; };
 		5245922521AB47EA0009824C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5245922721AB47EA0009824C /* Localizable.strings */; };
 		5263D5AA21B5972800B634A8 /* ShakingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D5A921B5972800B634A8 /* ShakingTextField.swift */; };
+		5263D5FE21B915F400B634A8 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D5FD21B915F400B634A8 /* LanguageViewModel.swift */; };
 		528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */; };
 		528A2D8D21ABE04300DECE0F /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D8F21ABE04300DECE0F /* MyKindnessWallViewController.xib */; };
 		528A2D9621AC405D00DECE0F /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D9821AC405D00DECE0F /* MyGiftsViewController.xib */; };
@@ -246,6 +247,7 @@
 		52525E2C21AEBB1600A7D03E /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		5263D59F21B4425B00B634A8 /* appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5263D5A921B5972800B634A8 /* ShakingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakingTextField.swift; sourceTree = "<group>"; };
+		5263D5FD21B915F400B634A8 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
 		528A2D8221ABD73C00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8321ABD83600DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8421ABDC0400DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
@@ -688,6 +690,7 @@
 				60AE9C85202DB9B100F246CD /* CategoryListViewModel.swift */,
 				601F83C22036A36400F9118B /* DateStatusListViewModel.swift */,
 				601F83D420373E9E00F9118B /* PlaceListViewModel.swift */,
+				5263D5FD21B915F400B634A8 /* LanguageViewModel.swift */,
 			);
 			path = view_models;
 			sourceTree = "<group>";
@@ -1029,6 +1032,7 @@
 				601F83D32037367900F9118B /* Place.swift in Sources */,
 				05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */,
 				05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */,
+				5263D5FE21B915F400B634A8 /* LanguageViewModel.swift in Sources */,
 				60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */,
 				602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */,
 				05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */,

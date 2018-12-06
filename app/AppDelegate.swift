@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func showSelectLanguageVC() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let viewController = LanguageViewController()
-        viewController.tabBarIsInitialized = false
+        viewController.languageViewModel.tabBarIsInitialized = false
 //        let nc = UINavigationController.init(rootViewController: viewController)
         window!.rootViewController = viewController
         window!.makeKeyAndVisible()

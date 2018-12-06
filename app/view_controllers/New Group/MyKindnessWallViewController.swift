@@ -24,7 +24,7 @@ class MyKindnessWallViewController: UIViewController {
         
         
         let controller = LanguageViewController()
-        controller.tabBarIsInitialized = true
+        controller.languageViewModel.tabBarIsInitialized = true
         self.tabBarController?.present(controller, animated: true, completion: nil)
 
     }
