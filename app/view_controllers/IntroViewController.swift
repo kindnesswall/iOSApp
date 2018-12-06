@@ -43,11 +43,14 @@ class IntroViewController: UIViewController {
         return gradiant
     }()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent // .default
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         gradient()
-        UIApplication.shared.statusBarStyle = .lightContent
         
         swiftyOnboard = SwiftyOnboard(frame: view.frame, style: .light)
         

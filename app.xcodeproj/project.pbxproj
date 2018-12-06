@@ -62,7 +62,6 @@
 		05BFBBBB1FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBB71FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift */; };
 		05BFBBBF1FDA9FCF00DBCDDF /* NavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBBC1FDA9FCE00DBCDDF /* NavigationBarStyle.swift */; };
 		05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBBD1FDA9FCE00DBCDDF /* FlashMessage.swift */; };
-		05BFBBC11FDA9FCF00DBCDDF /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBBE1FDA9FCE00DBCDDF /* DateHelper.swift */; };
 		05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC21FDAA45C00DBCDDF /* Time.swift */; };
 		05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */; };
 		05BFBBC81FDAA4EF00DBCDDF /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */; };
@@ -211,7 +210,6 @@
 		05BFBBB71FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationEnterVerifyCodeViewController.swift; sourceTree = "<group>"; };
 		05BFBBBC1FDA9FCE00DBCDDF /* NavigationBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarStyle.swift; sourceTree = "<group>"; };
 		05BFBBBD1FDA9FCE00DBCDDF /* FlashMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashMessage.swift; sourceTree = "<group>"; };
-		05BFBBBE1FDA9FCE00DBCDDF /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		05BFBBC21FDAA45C00DBCDDF /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
 		05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
@@ -421,7 +419,6 @@
 				05644DCF1FFF06F900B7C853 /* NibLoader.swift */,
 				6032F61B205287ED00975C23 /* LoadingIndicator.swift */,
 				05644DC51FFEFA2E00B7C853 /* DateHandler.swift */,
-				05BFBBBE1FDA9FCE00DBCDDF /* DateHelper.swift */,
 				05BFBBBD1FDA9FCE00DBCDDF /* FlashMessage.swift */,
 				05BFBBBC1FDA9FCE00DBCDDF /* NavigationBarStyle.swift */,
 				05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */,
@@ -989,7 +986,6 @@
 				05644DBC1FFEF3A500B7C853 /* ChatListTableViewCell.swift in Sources */,
 				05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */,
 				6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */,
-				05BFBBC11FDA9FCF00DBCDDF /* DateHelper.swift in Sources */,
 				60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */,
 				05644DC41FFEF62300B7C853 /* ChatAbs.swift in Sources */,
 				60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */,
@@ -1315,7 +1311,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = K6W5A74537;
 				INFOPLIST_FILE = app/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ir.kindnesswall.publicusers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1334,7 +1330,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = K6W5A74537;
 				INFOPLIST_FILE = app/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ir.kindnesswall.publicusers;
 				PRODUCT_NAME = "$(TARGET_NAME)";

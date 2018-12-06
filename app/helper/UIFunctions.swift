@@ -84,11 +84,11 @@ public class UIFunctions{
     public static func makeCircleView(borderWidth: Int, imageView: UIView, borderColor: UIColor){
         imageView.layer.borderWidth = CGFloat(borderWidth)
         imageView.layer.masksToBounds = false
-        if borderColor != nil {
+//        if borderColor != nil {
           imageView.layer.borderColor = borderColor.cgColor
-        } else {
-            imageView.layer.borderColor = UIColor.clear.cgColor
-        }
+//        } else {
+//            imageView.layer.borderColor = UIColor.clear.cgColor
+//        }
         imageView.layer.cornerRadius = imageView.frame.height/2
         imageView.clipsToBounds = true
     }
@@ -123,30 +123,30 @@ public class UIFunctions{
         return number
     }
     
-    public static func makeDate(birthdateYear:String,birthdayMonth:String,birthdayDay:String)->String{
-        
-        var birthdate=""
-        var day = birthdayDay
-        
-        if(day.characters.count == 1){
-            day = "0"+day
-        }
-        
-        var month = birthdayMonth
-        month=month.replacingOccurrences(of: "فروردین", with: "01")
-        month=month.replacingOccurrences(of: "اردیبهشت", with: "02")
-        month=month.replacingOccurrences(of: "خرداد", with: "03")
-        month=month.replacingOccurrences(of: "تیر", with: "04")
-        month=month.replacingOccurrences(of: "مرداد", with: "05")
-        month=month.replacingOccurrences(of: "شهریور", with: "06")
-        month=month.replacingOccurrences(of: "مهر", with: "07")
-        month=month.replacingOccurrences(of: "آبان", with: "08")
-        month=month.replacingOccurrences(of: "آذر", with: "09")
-        month=month.replacingOccurrences(of: "دی", with: "10")
-        month=month.replacingOccurrences(of: "بهمن", with: "11")
-        month=month.replacingOccurrences(of: "اسفند", with: "12")
-        
-        birthdate = birthdateYear+"/"+month+"/"+day
-        return birthdate
-    }
+//    public static func makeDate(birthdateYear:String,birthdayMonth:String,birthdayDay:String)->String{
+//        
+//        var birthdate=""
+//        var day = birthdayDay
+//        
+//        if(day.characters.count == 1){
+//            day = "0"+day
+//        }
+//        
+//        var month = birthdayMonth
+//        month=month.replacingOccurrences(of: "فروردین", with: "01")
+//        month=month.replacingOccurrences(of: "اردیبهشت", with: "02")
+//        month=month.replacingOccurrences(of: "خرداد", with: "03")
+//        month=month.replacingOccurrences(of: "تیر", with: "04")
+//        month=month.replacingOccurrences(of: "مرداد", with: "05")
+//        month=month.replacingOccurrences(of: "شهریور", with: "06")
+//        month=month.replacingOccurrences(of: "مهر", with: "07")
+//        month=month.replacingOccurrences(of: "آبان", with: "08")
+//        month=month.replacingOccurrences(of: "آذر", with: "09")
+//        month=month.replacingOccurrences(of: "دی", with: "10")
+//        month=month.replacingOccurrences(of: "بهمن", with: "11")
+//        month=month.replacingOccurrences(of: "اسفند", with: "12")
+//        
+//        birthdate = birthdateYear+"/"+month+"/"+day
+//        return birthdate
+//    }
 }

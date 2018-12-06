@@ -112,16 +112,16 @@ class HomeViewController: UIViewController {
             self?.reloadPage()
             
         }
+        
         let nc=UINavigationController(rootViewController: controller)
         self.present(nc, animated: true, completion: nil)
         
     }
     
-    
     var initialGiftsLoadingHasOccurred=false
     func reloadPage(){
         if initialGiftsLoadingHasOccurred {
-            apiMethods.clearAllTasksAndSessions()
+//            apiMethods.clearAllTasksAndSessions()
             isLoadingGifts=false
             getGifts(index:0)
         }

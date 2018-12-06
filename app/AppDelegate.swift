@@ -96,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     func showTabbar()  {
         window = UIWindow(frame: UIScreen.main.bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        self.tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarRoot") as! UITabBarController
+        self.tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarRoot") as? UITabBarController
 //        self.tabBarController=self.window?.rootViewController as? UITabBarController
         
         self.tabBarController?.delegate=self

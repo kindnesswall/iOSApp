@@ -20,8 +20,6 @@ enum EnumHttpMethods:String {
             return "PUT"
         case .delete:
             return "DELETE"
-        default:
-            return "GET"
         }
     }
 }
@@ -53,7 +51,7 @@ class APIRequest {
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             
-            guard error == nil else{
+            if let error = error {
                 print(error)
                 return
             }
@@ -299,16 +297,16 @@ class APIRequest {
     }
     
     
-    public static func stopAndClearSessionsAndTasks(sessions:inout [URLSession?],tasks: inout [URLSessionDataTask?]){
-        for task in tasks {
-            task?.cancel()
-        }
-        for session in sessions {
-            session?.invalidateAndCancel()
-        }
-        tasks=[]
-        sessions=[]
-    }
+//    public static func stopAndClearSessionsAndTasks(sessions:inout [URLSession?],tasks: inout [URLSessionDataTask?]){
+//        for task in tasks {
+//            task?.cancel()
+//        }
+//        for session in sessions {
+//            session?.invalidateAndCancel()
+//        }
+//        tasks=[]
+//        sessions=[]
+//    }
     
     //MARK: - Else
     

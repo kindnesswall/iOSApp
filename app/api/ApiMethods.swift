@@ -12,8 +12,8 @@ class ApiMethods {
     
     public static let offset:Int = 15
     
-    var sessions:[URLSession?]=[]
-    var tasks:[URLSessionDataTask?]=[]
+//    var sessions:[URLSession?]=[]
+//    var tasks:[URLSessionDataTask?]=[]
     
     
     public func getCategories(completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
@@ -34,7 +34,7 @@ class ApiMethods {
         let regId:String = "eoFH_ujJBxU:APA91bEEEAv1RpiP4RHzwJLEa9bRFdAi1sTIgFV9GScwfDNcmDucVFkWG0EstL5I5zNVaFqCVT3NMiBUjhtyQEFUM89S9tXf44u0N4LhozYv1KWNcGkyCMeUEmcOYRYEiu5gud18h_A"
         let deviceId:String = "352136066349321"
         
-        var formKeyValue:[String:String] = [
+        let formKeyValue:[String:String] = [
             APIMethodDictionaryKey.Username:mobile,
             APIMethodDictionaryKey.Password:verificationCode,
             APIMethodDictionaryKey.RegisterationId:regId,
@@ -166,7 +166,7 @@ class ApiMethods {
         let searchText = "/?searchText=" + (searchText ?? "")
         let mainURL: String = APIURLs.Gift + "/" + cityId + "/" + regionId + "/" + categoryId + "/" + "\(startIndex)/" + "\(lastIndex)" + searchText
         
-        APIRequest.request(url: mainURL, httpMethod: .get, appendToSessions: &self.sessions, appendToTasks: &self.tasks, inputDictionary: nil) { (data, response, error) in
+        APIRequest.request(url: mainURL, httpMethod: .get, inputDictionary: nil) { (data, response, error) in
             
             guard error == nil else {
                 print("Get error register")
@@ -275,9 +275,9 @@ class ApiMethods {
 //        }
 //    }
     
-    public func clearAllTasksAndSessions(){
-        APIRequest.stopAndClearSessionsAndTasks(sessions: &self.sessions, tasks: &self.tasks)
-    }
+//    public func clearAllTasksAndSessions(){
+//        APIRequest.stopAndClearSessionsAndTasks(sessions: &self.sessions, tasks: &self.tasks)
+//    }
     
     
 }
