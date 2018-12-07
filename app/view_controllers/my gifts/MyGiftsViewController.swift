@@ -18,6 +18,8 @@ class MyGiftsViewController: UIViewController {
     @IBOutlet weak var registeredGiftsTableView: UITableView!
     @IBOutlet weak var donatedGiftsTableView: UITableView!
     
+    let myGiftViewModel:MyGiftViewModel = MyGiftViewModel()
+    
     var registeredGifts=[Gift]()
     var donatedGifts=[Gift]()
     
@@ -425,9 +427,11 @@ extension MyGiftsViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let cell=tableView.dequeueReusableCell(withIdentifier: GiftTableViewCell.identifier, for: indexPath) as! GiftTableViewCell
+        
         switch tableView {
         case registeredGiftsTableView:
-            let cell=tableView.dequeueReusableCell(withIdentifier: "GiftTableViewCell", for: indexPath) as! GiftTableViewCell
+            
             cell.filViews(gift: registeredGifts[indexPath.row])
             
             let index=indexPath.row+1
@@ -440,7 +444,7 @@ extension MyGiftsViewController : UITableViewDataSource {
             return cell
             
         case donatedGiftsTableView:
-            let cell=tableView.dequeueReusableCell(withIdentifier: "GiftTableViewCell", for: indexPath) as! GiftTableViewCell
+            
             cell.filViews(gift: donatedGifts[indexPath.row])
             
             let index=indexPath.row+1
