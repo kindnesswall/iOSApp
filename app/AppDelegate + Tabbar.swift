@@ -39,19 +39,34 @@ extension AppDelegate : UITabBarControllerDelegate{
             return
         }
         
-        let homeViewController=HomeViewController(nibName: "HomeViewController", bundle: Bundle(for: HomeViewController.self))
+        let homeViewController=HomeViewController(
+            nibName: HomeViewController.identifier,
+            bundle: HomeViewController.bundle
+        )
         tabs[TabIndex.HOME].pushViewController(homeViewController, animated: true)
         
-        let myGiftsViewController=MyGiftsViewController(nibName: "MyGiftsViewController", bundle: Bundle(for: MyGiftsViewController.self))
+        let myGiftsViewController=MyGiftsViewController(
+            nibName: MyGiftsViewController.identifier,
+            bundle: MyGiftsViewController.bundle
+        )
         tabs[TabIndex.MyGifts].pushViewController(myGiftsViewController, animated: true)
         
-        let registerGiftViewController=RegisterGiftViewController(nibName: "RegisterGiftViewController", bundle: Bundle(for: RegisterGiftViewController.self))
+        let registerGiftViewController=RegisterGiftViewController(
+            nibName: RegisterGiftViewController.identifier,
+            bundle: RegisterGiftViewController.bundle
+        )
         tabs[TabIndex.RegisterGift].pushViewController(registerGiftViewController, animated: true)
         
-        let requestsViewController=RequestsViewController(nibName: "RequestsViewController", bundle: Bundle(for: RequestsViewController.self))
+        let requestsViewController=RequestsViewController(
+            nibName: RequestsViewController.identifier,
+            bundle: RequestsViewController.bundle
+        )
         tabs[TabIndex.Requests].pushViewController(requestsViewController, animated: true)
         
-        let myKindnessWallViewController=MyKindnessWallViewController(nibName: "MyKindnessWallViewController", bundle: Bundle(for: MyKindnessWallViewController.self))
+        let myKindnessWallViewController=MyKindnessWallViewController(
+            nibName: MyKindnessWallViewController.identifier,
+            bundle: MyKindnessWallViewController.bundle
+        )
         tabs[TabIndex.MyKindnessWall].pushViewController(myKindnessWallViewController, animated: true)
         
         

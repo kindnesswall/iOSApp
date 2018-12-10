@@ -197,7 +197,10 @@ extension OptionsListViewController:UITableViewDelegate {
     func pushViewController(option:Option){
         switch option {
         case .region(let cityId):
-            let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
+            let controller=OptionsListViewController(
+                nibName: OptionsListViewController.identifier,
+                bundle: OptionsListViewController.bundle
+            )
             controller.option = OptionsListViewController.Option.region(cityId)
             controller.completionHandler=self.completionHandler
             controller.closeHandler=self.closeHandler

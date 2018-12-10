@@ -121,8 +121,9 @@ class ActivationEnterPhoneViewController: UIViewController {
                 return
             }
 
-            let controller=ActivationEnterVerifyCodeViewController(nibName: "ActivationEnterVerifyCodeViewController", bundle:
-                Bundle(for: ActivationEnterVerifyCodeViewController.self))
+            let controller=ActivationEnterVerifyCodeViewController(
+                nibName: ActivationEnterVerifyCodeViewController.identifier,
+                bundle: ActivationEnterVerifyCodeViewController.bundle)
             
             controller.setCloseComplition(closeComplition: self?.closeComplition)
             controller.setSubmitComplition(submitComplition: self?.submitComplition)

@@ -17,4 +17,17 @@ extension UIView{
     static var identifier: String {
         return String(describing: self)
     }
+    
+    static var bundle: Bundle {
+        return Bundle(for:self)
+    }
+}
+
+extension UIViewController {
+    static var identifier: String {
+        return String(describing: self)
+    }
+    static var bundle: Bundle {
+        return Bundle(for:self)
+    }
 }

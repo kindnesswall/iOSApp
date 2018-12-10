@@ -107,9 +107,10 @@ class HomeViewController: UIViewController {
         tableview.dataSource = self
         tableview.delegate = self
         
-        let bundle = Bundle(for: GiftTableViewCell.self)
-        let nib = UINib(nibName: "GiftTableViewCell", bundle: bundle)
-        self.tableview.register(nib, forCellReuseIdentifier: "GiftTableViewCell")
+        self.tableview.register(
+            GiftTableViewCell.nib,
+            forCellReuseIdentifier: GiftTableViewCell.identifier
+        )
         
         getGifts(index:0)
         
@@ -143,7 +144,11 @@ class HomeViewController: UIViewController {
     
     @objc func categoryFilterBtnClicked(){
         
-        let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
+        let controller=OptionsListViewController(
+            nibName: OptionsListViewController.identifier,
+            bundle: OptionsListViewController.bundle
+        )
+        
         controller.option = OptionsListViewController.Option.category
         controller.hasDefaultOption=true
         controller.completionHandler={ [weak self] (id,name) in
@@ -268,7 +273,7 @@ extension HomeViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell=tableView.dequeueReusableCell(withIdentifier: "GiftTableViewCell") as! GiftTableViewCell
+        let cell=tableView.dequeueReusableCell(withIdentifier: GiftTableViewCell.identifier) as! GiftTableViewCell
         
 //        let gift:Gift = Gift()
 //        gift.title = "هدیه"
@@ -328,10 +333,6 @@ extension HomeViewController:UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\n\n")
-        print(GiftTableViewCell.identifier)
-        print("\n\n")
-        
         if let ad = self.videoInterstitialAd, self.isMoreThanOneDayIDidntSawAd()
         {
             self.userDefault.set(
@@ -342,7 +343,10 @@ extension HomeViewController:UITableViewDelegate {
             return
         }
         
-        let controller = GiftDetailViewController(nibName: "GiftDetailViewController", bundle: Bundle(for: GiftDetailViewController.self))
+        let controller = GiftDetailViewController(
+            nibName: GiftDetailViewController.identifier,
+            bundle: GiftDetailViewController.bundle
+        )
         
         controller.gift = gifts[indexPath.row]
         controller.editHandler={ [weak self] in

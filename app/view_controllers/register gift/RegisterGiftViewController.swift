@@ -509,7 +509,10 @@ class RegisterGiftViewController: UIViewController {
         self.giftHasNewAddress=true
         self.configAddressViews()
         
-        let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
+        let controller=OptionsListViewController(
+            nibName: OptionsListViewController.identifier,
+            bundle: OptionsListViewController.bundle
+        )
         controller.option = OptionsListViewController.Option.city(showRegion: true)
         controller.completionHandler={ [weak self] (id,name) in
             let place=Place(id: Int(id ?? ""), name: name)
@@ -549,7 +552,10 @@ class RegisterGiftViewController: UIViewController {
     
     @IBAction func categoryBtnClicked(_ sender: Any) {
         
-        let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
+        let controller=OptionsListViewController(
+            nibName: OptionsListViewController.identifier,
+            bundle: OptionsListViewController.bundle
+        )
         controller.option = OptionsListViewController.Option.category
         controller.completionHandler={ [weak self] (id,name) in
             self?.categoryBtn.setTitle(name, for: .normal)
@@ -560,7 +566,10 @@ class RegisterGiftViewController: UIViewController {
     }
     
     @IBAction func dateStatusBtnAction(_ sender: Any) {
-        let controller=OptionsListViewController(nibName: "OptionsListViewController", bundle: Bundle(for:OptionsListViewController.self))
+        let controller=OptionsListViewController(
+            nibName: OptionsListViewController.identifier,
+            bundle: OptionsListViewController.bundle
+        )
         controller.option = OptionsListViewController.Option.dateStatus
         controller.completionHandler={ [weak self] (id,name) in
             self?.dateStatusBtn.setTitle(name, for: .normal)

@@ -378,7 +378,10 @@ class MyGiftsViewController: UIViewController {
 extension MyGiftsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let controller = GiftDetailViewController(nibName: "GiftDetailViewController", bundle: Bundle(for: GiftDetailViewController.self))
+        let controller = GiftDetailViewController(
+            nibName: GiftDetailViewController.identifier,
+            bundle: GiftDetailViewController.bundle
+        )
         
         switch tableView {
         case registeredGiftsTableView:

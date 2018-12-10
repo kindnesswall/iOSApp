@@ -91,7 +91,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     func showLoginVC(){
-        let controller=ActivationEnterPhoneViewController(nibName: "ActivationEnterPhoneViewController", bundle: Bundle(for: ActivationEnterPhoneViewController.self))
+        let controller=ActivationEnterPhoneViewController(
+            nibName: ActivationEnterPhoneViewController.identifier,
+            bundle: ActivationEnterPhoneViewController.bundle
+        )
         let nc = UINavigationController.init(rootViewController: controller)
         self.tabBarController?.present(nc, animated: true, completion: nil)
     }
