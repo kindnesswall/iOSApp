@@ -92,6 +92,9 @@
 		5263D5FE21B915F400B634A8 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D5FD21B915F400B634A8 /* LanguageViewModel.swift */; };
 		5263D60121B93F0000B634A8 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D60021B93F0000B634A8 /* ProgressBarView.swift */; };
 		5263D60321BB0CC300B634A8 /* MyGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D60221BB0CC300B634A8 /* MyGiftViewModel.swift */; };
+		526545F521BE9DB900C98821 /* TapsellSDKv3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526545F421BE9DB900C98821 /* TapsellSDKv3.framework */; };
+		526545F721BE9E7300C98821 /* TapsellSDKv3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 526545F421BE9DB900C98821 /* TapsellSDKv3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		526545FA21BF082E00C98821 /* TapSellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526545F921BF082E00C98821 /* TapSellConstants.swift */; };
 		528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */; };
 		528A2D8D21ABE04300DECE0F /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D8F21ABE04300DECE0F /* MyKindnessWallViewController.xib */; };
 		528A2D9621AC405D00DECE0F /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D9821AC405D00DECE0F /* MyGiftsViewController.xib */; };
@@ -154,6 +157,20 @@
 			remoteInfo = app;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		526545F821BE9E7300C98821 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				526545F721BE9E7300C98821 /* TapsellSDKv3.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		006A9055ED7D4288198332F6 /* Pods-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.debug.xcconfig"; sourceTree = "<group>"; };
@@ -252,6 +269,8 @@
 		5263D5FD21B915F400B634A8 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
 		5263D60021B93F0000B634A8 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		5263D60221BB0CC300B634A8 /* MyGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGiftViewModel.swift; sourceTree = "<group>"; };
+		526545F421BE9DB900C98821 /* TapsellSDKv3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TapsellSDKv3.framework; sourceTree = "<group>"; };
+		526545F921BF082E00C98821 /* TapSellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSellConstants.swift; sourceTree = "<group>"; };
 		528A2D8221ABD73C00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8321ABD83600DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8421ABDC0400DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
@@ -321,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				526545F521BE9DB900C98821 /* TapsellSDKv3.framework in Frameworks */,
 				F7BCA4F8A441C01D89E9B782 /* Pods_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +379,7 @@
 		0507C8561F8C1A920084CDF1 = {
 			isa = PBXGroup;
 			children = (
+				526545F421BE9DB900C98821 /* TapsellSDKv3.framework */,
 				05B124CB202DB056007E28CC /* latest.json */,
 				0507C8611F8C1A920084CDF1 /* app */,
 				52525E2321AEB9C000A7D03E /* appUITests */,
@@ -563,6 +584,7 @@
 				05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */,
 				05BFBBD81FE24C4D00DBCDDF /* AppConstants.swift */,
 				05BFBBDA1FE24C6E00DBCDDF /* TabIndex.swift */,
+				526545F921BF082E00C98821 /* TapSellConstants.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -771,6 +793,7 @@
 				0507C85D1F8C1A920084CDF1 /* Resources */,
 				4F2C17FB1F8C5E4205EA5192 /* [CP] Embed Pods Frameworks */,
 				5B0595FDAC58969CC068CEFE /* [CP] Copy Pods Resources */,
+				526545F821BE9E7300C98821 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1012,6 +1035,7 @@
 				05644DC41FFEF62300B7C853 /* ChatAbs.swift in Sources */,
 				60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */,
 				60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */,
+				526545FA21BF082E00C98821 /* TapSellConstants.swift in Sources */,
 				601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,
 				528A2DA921AD340200DECE0F /* LanguageKeys.swift in Sources */,
@@ -1338,6 +1362,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Taghi Kiany Fard (Q85XTDNN3B)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = K6W5A74537;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = app/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1357,6 +1385,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Taghi Kiany Fard (K6W5A74537)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = K6W5A74537;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = app/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

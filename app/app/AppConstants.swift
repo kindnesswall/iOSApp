@@ -30,7 +30,9 @@ class AppConstants {
     static let RegisterGiftDraft="RegisterGiftDraft"
     
     static let ContentType:String = "content-type"
-    
+
+    public static let LastTimeISawAd:String = "LastTimeISawAd"
+
 }
 
 class APIMethodDictionaryKey {

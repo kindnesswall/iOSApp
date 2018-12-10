@@ -8,9 +8,13 @@
 
 import UIKit
 import JGProgressHUD
+import TapsellSDKv3
 
 class HomeViewController: UIViewController {
 
+    let userDefault=UserDefaults.standard
+
+    let NumberOfSecondsOfOneDay:Float = 26*60*60
     var gifts:[Gift] = []
     @IBOutlet var tableview: UITableView!
     
@@ -34,8 +38,60 @@ class HomeViewController: UIViewController {
         print("HomeViewController deinit")
     }
     
+    var videoInterstitialAd:TapsellAd?
+    var rewardBasedAd:TapsellAd?
+
+    func requestRewardBasedAd() {
+        let requestOptions = TSAdRequestOptions()
+        requestOptions.setCacheType(CacheTypeCached)
+        
+        Tapsell.requestAd(
+            forZone: TapSellConstants.ZoneID.RewardBased,
+            andOptions: requestOptions,
+            onAdAvailable:{ [weak self](tapsellAd) in
+                print("\n\n onAdAvailable \n\n")
+                
+                self?.rewardBasedAd = tapsellAd
+                
+            }, onNoAdAvailable: {
+                print("onNoAdAvailable")
+        }, onError: { (error) in
+            print("onError")
+        }, onExpiring: { (ad) in
+            print("onExpiring")
+        }
+        )
+    }
+    
+    func requestVideoInterstitialAd() {
+        let requestOptions = TSAdRequestOptions()
+        requestOptions.setCacheType(CacheTypeCached)
+        
+        Tapsell.requestAd(
+            forZone: TapSellConstants.ZoneID.VideoInterstitial,
+            andOptions: requestOptions,
+            onAdAvailable:{ [weak self](tapsellAd) in
+                print("\n\n onAdAvailable \n\n")
+                
+                self?.videoInterstitialAd = tapsellAd
+                
+            }, onNoAdAvailable: {
+                print("onNoAdAvailable")
+            }, onError: { (error) in
+                print("onError")
+            }, onExpiring: { (ad) in
+                print("onExpiring")
+            }
+        )
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Tapsell.initialize(withAppKey: TapSellConstants.KEY)
+        
+        self.requestVideoInterstitialAd()
+//        self.requestRewardBasedAd()
         
         self.tableview.isHidden = true
         
@@ -235,8 +291,57 @@ extension HomeViewController:UITableViewDataSource{
 }
 
 extension HomeViewController:UITableViewDelegate {
+    
+    func show(ad:TapsellAd) {
+        let showOptions = TSAdShowOptions()
+        showOptions.setOrientation(OrientationUnlocked)
+        showOptions.setBackDisabled(false)
+        showOptions.setShowDialoge(false)
+        
+        Tapsell.setAdShowFinishedCallback { [weak self](ad, completed) in
+            if(ad!.isRewardedAd() && completed){
+                // give reward to user if neccessary
+                
+            }
+        }
+        
+        ad.show(
+            with: showOptions,
+            andOpenedCallback:{ [weak self](tapsellAd) in
+                print("\n\n andOpenedCallback \n\n")
+                
+            }, andClosedCallback:{ (tapsellAd) in
+                print("\n\n andClosedCallback \n\n")
+            }
+        )
+        
+    }
+    
+    func isMoreThanOneDayIDidntSawAd()->Bool {
+        let lastTimeISawAd = userDefault.float(forKey: AppConstants.LastTimeISawAd)
+        let currentDateTime = Float(Date().timeIntervalSinceReferenceDate)
+        if currentDateTime > lastTimeISawAd + NumberOfSecondsOfOneDay {
+            return true
+        }else{
+            return false
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     
+        print("\n\n")
+        print(GiftTableViewCell.identifier)
+        print("\n\n")
+        
+        if let ad = self.videoInterstitialAd, self.isMoreThanOneDayIDidntSawAd()
+        {
+            self.userDefault.set(
+                Float(Date().timeIntervalSinceReferenceDate),
+                forKey: AppConstants.LastTimeISawAd)
+            
+            self.show(ad:ad)
+            return
+        }
+        
         let controller = GiftDetailViewController(nibName: "GiftDetailViewController", bundle: Bundle(for: GiftDetailViewController.self))
         
         controller.gift = gifts[indexPath.row]
