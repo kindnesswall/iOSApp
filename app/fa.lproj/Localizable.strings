@@ -8,6 +8,9 @@
 
 "AppVersion" = "نسخه برنامه: ";
 
+"requestfail_dialog_title" = "خطا در ارتباط";
+"requestfail_dialog_text" = "لطفا مجددا تلاش نمایید :(";
+
 "activationCodeTryAgainOneMinuteLater" = "یک دقیقه دیگر مجددا تلاش کنید!";
 "activationCodeSendSuccessfully" = "کد فعالسازی با موفقیت ارسال شد!";
 

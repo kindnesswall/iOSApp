@@ -8,6 +8,9 @@
 
 "AppVersion" = "App Version: ";
 
+"requestfail_dialog_title" = "Connection Fail";
+"requestfail_dialog_text" = "Please try again :(";
+
 "operationFailed" = "We encounter error at our server!";
 "weEncounterErrorTryAgain" = "We encounter error, please try again!";
 

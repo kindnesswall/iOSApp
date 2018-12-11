@@ -147,10 +147,10 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
             overlay.skipButton.setTitle(
                 LocalizationSystem.getStr(forKey: LanguageKeys.skip), for: .normal)
             
-            overlay.skipButton.isHidden = false
+            overlay.skipButton.show()
         } else {
             overlay.continueButton.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.letsGoToTheApplication), for: .normal)
-            overlay.skipButton.isHidden = true
+            overlay.skipButton.hide()
         }
     }
 }

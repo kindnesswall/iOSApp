@@ -47,7 +47,7 @@
 //    
 //    
 //    func setDefaultStateUI() {
-//        self.messageTextField.isHidden = false
+//        self.messageTextField.show()
 //    }
 //    
 //    var messages:[Message] = []
@@ -70,14 +70,14 @@
 //        }
 //        
 //        self.loadingIndicator?.startLoading()
-//        self.sendTextBtn.isHidden = true
+//        self.sendTextBtn.hide()
 //        
 //        
 //        
 //        ApiMethods.sendMessage(chatId: chatId, messageText: text) { (status) in
 //        
 //            self.loadingIndicator?.stopLoading()
-//            self.sendTextBtn.isHidden = true
+//            self.sendTextBtn.hide()
 //            
 ////            if status == APIStatus.DONE {
 ////
@@ -178,9 +178,9 @@
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        
 //        if !tableView.isCellVisible(section: 0, row: 0) {
-//            showFirstMsgBtn.isHidden = false
+//            showFirstMsgBtn.show()
 //        }else{
-//            showFirstMsgBtn.isHidden = true
+//            showFirstMsgBtn.hide()
 //        }
 //        
 //        

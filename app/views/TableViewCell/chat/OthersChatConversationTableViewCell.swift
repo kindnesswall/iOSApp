@@ -37,7 +37,7 @@
 //        UIFunctions.setBordersStyle(view: self.messageView, radius: 10, width: 1, color: AppColor.greyBgColor)
 //        
 //        circleProgressRing.shouldShowValueText = false
-//        self.circleProgressRing.isHidden = true
+//        self.circleProgressRing.hide()
 //    }
 //    
 //    func fillUI(msg:Message) {
@@ -78,9 +78,9 @@
 ////        switch type {
 ////
 ////        case "text":
-//            downloadBtn.isHidden = true
-//            messageLabel.isHidden = false
-//            playPauseBtn.isHidden = true
+//            downloadBtn.hide()
+//            messageLabel.show()
+//            playPauseBtn.hide()
 //            
 ////            break
 ////        default:

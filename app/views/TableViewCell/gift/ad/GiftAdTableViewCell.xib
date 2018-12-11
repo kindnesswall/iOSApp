@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="IRANSansMobile.ttf">
+            <string>IRANSansMobile</string>
+        </array>
+        <array key="IRANSansMobile_Medium.ttf">
+            <string>IRANSansMobile-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="app" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="KGk-i7-Jjw" customClass="GiftAdTableViewCell" customModule="app" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="368" height="124"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" customClass="TSNativeBannerAdView">
+                <rect key="frame" x="0.0" y="0.0" width="368" height="123.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EOH-Km-dB8">
+                        <rect key="frame" x="246" y="6" width="110" height="110"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="110" id="Zd9-Re-573"/>
+                            <constraint firstAttribute="width" constant="110" id="bkd-Zr-697"/>
+                        </constraints>
+                    </imageView>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yfy-Ib-K9k" customClass="ProgressBarView" customModule="app" customModuleProvider="target">
+                        <rect key="frame" x="271" y="31" width="60" height="60"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="75d-BD-lkN"/>
+                            <constraint firstAttribute="height" constant="60" id="O5Z-rK-zMg"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عنوان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZk-Zm-A8l">
+                        <rect key="frame" x="24" y="11" width="214" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="HtW-lt-UfK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="IRANSansMobile-Medium" family="IRANSansMobile" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تاریخ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lef-gO-vmM">
+                        <rect key="frame" x="214" y="36.5" width="23.5" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="11"/>
+                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="توضیحات" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8h-J4-KVI">
+                        <rect key="frame" x="24" y="67" width="202" height="38"/>
+                        <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="13"/>
+                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="شهر" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HW-dd-zk3">
+                        <rect key="frame" x="24" y="39" width="197" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="YZU-oe-Zew"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="12"/>
+                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" tag="11" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="rXL-Zd-AuB">
+                        <rect key="frame" x="223" y="39" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="6qX-GC-TWI"/>
+                            <constraint firstAttribute="height" constant="15" id="IT8-25-Yho"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QxH-2j-EfJ">
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="90" id="RcV-MY-mIU"/>
+                            <constraint firstAttribute="width" constant="160" id="rSE-iL-JYa"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGB-pm-YFk">
+                        <rect key="frame" x="0.0" y="90" width="46" height="30"/>
+                        <state key="normal" title="Button"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Yfy-Ib-K9k" firstAttribute="centerY" secondItem="EOH-Km-dB8" secondAttribute="centerY" id="810-IR-w1X"/>
+                    <constraint firstItem="EOH-Km-dB8" firstAttribute="leading" secondItem="cZk-Zm-A8l" secondAttribute="trailing" constant="8" id="8NF-RZ-Ffy"/>
+                    <constraint firstItem="EOH-Km-dB8" firstAttribute="leading" secondItem="z8h-J4-KVI" secondAttribute="trailing" constant="20" id="HOe-sq-JrU"/>
+                    <constraint firstItem="rXL-Zd-AuB" firstAttribute="leading" secondItem="5HW-dd-zk3" secondAttribute="trailing" constant="2" id="R9m-mU-tT0"/>
+                    <constraint firstAttribute="trailing" secondItem="EOH-Km-dB8" secondAttribute="trailing" constant="12" id="RmY-YH-L90"/>
+                    <constraint firstItem="XGB-pm-YFk" firstAttribute="top" secondItem="QxH-2j-EfJ" secondAttribute="bottom" id="TWc-iQ-J3Y"/>
+                    <constraint firstItem="EOH-Km-dB8" firstAttribute="leading" secondItem="rXL-Zd-AuB" secondAttribute="trailing" constant="8" id="UTc-Kx-7fz"/>
+                    <constraint firstItem="XGB-pm-YFk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="V2Y-uj-8M7"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="z8h-J4-KVI" secondAttribute="bottom" constant="8" id="VHH-d0-dBd"/>
+                    <constraint firstItem="cZk-Zm-A8l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="Ys2-DH-WWk"/>
+                    <constraint firstItem="Yfy-Ib-K9k" firstAttribute="centerX" secondItem="EOH-Km-dB8" secondAttribute="centerX" id="a4Z-Um-waX"/>
+                    <constraint firstItem="rXL-Zd-AuB" firstAttribute="top" secondItem="cZk-Zm-A8l" secondAttribute="bottom" constant="4" id="chs-S6-bDU"/>
+                    <constraint firstItem="cZk-Zm-A8l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ktv-1V-lDd"/>
+                    <constraint firstItem="5HW-dd-zk3" firstAttribute="top" secondItem="cZk-Zm-A8l" secondAttribute="bottom" constant="4" id="n6a-YU-KmU"/>
+                    <constraint firstItem="QxH-2j-EfJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pp1-R6-PPg"/>
+                    <constraint firstItem="QxH-2j-EfJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="qqm-IU-fLd"/>
+                    <constraint firstItem="z8h-J4-KVI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="tJM-7D-Uup"/>
+                    <constraint firstItem="z8h-J4-KVI" firstAttribute="top" secondItem="5HW-dd-zk3" secondAttribute="bottom" constant="4" id="uv8-Zd-Yt6"/>
+                    <constraint firstItem="5HW-dd-zk3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="xDJ-g4-cfv"/>
+                    <constraint firstItem="EOH-Km-dB8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="xzU-Uu-pFc"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="subviews">
+                        <exclude reference="Lef-gO-vmM"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="nativeBanner" destination="H2p-sc-9uM" id="8Cu-Ls-5Dh"/>
+                <outlet property="titleLbl" destination="cZk-Zm-A8l" id="ygC-eg-55E"/>
+            </connections>
+            <point key="canvasLocation" x="-154" y="-40"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="map" width="64" height="64"/>
+    </resources>
+</document>

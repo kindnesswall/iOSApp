@@ -32,7 +32,7 @@ class ChatListTableViewCell: MGSwipeTableCell {
         
         chatTxt.text = chat.last_message?.text ?? ""
         if chat.count_unseen == 0 || chat.count_unseen == nil {
-            unreadMsgCount.isHidden = true
+            unreadMsgCount.hide()
         }else{
             unreadMsgCount.text = UIFunctions.CastNumberToPersian(input: chat.count_unseen!)
         }

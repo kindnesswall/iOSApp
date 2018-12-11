@@ -8,7 +8,19 @@
 
 import Foundation
 
-class Gift: Codable {
+protocol GiftPresenter {
+    var title:String? { get }
+    var createDateTime:String? { get }
+    var description:String? { get }
+    var address:String? { get }
+    var giftImages:[String]? { get }
+    var requestCount:String? { get }
+    var isAd:Bool? { get }
+}
+
+class Gift: Codable,GiftPresenter {
+    var isAd:Bool? = false
+    
     var requestCount:String?
     var title:String?
     var address:String?

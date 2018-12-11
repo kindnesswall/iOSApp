@@ -158,7 +158,7 @@ class ApiMethods {
         startIndex:Int,
         lastIndex:Int,
         searchText:String?,
-        completionHandler:@escaping(Data?)->Void) {
+        completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
         
         let regionId = regionId ?? "0"
         let categoryId = categoryId ?? "0"
@@ -168,11 +168,7 @@ class ApiMethods {
         
         APIRequest.request(url: mainURL, httpMethod: .get, appendToSessions: &self.sessions, appendToTasks: &self.tasks, inputDictionary: nil) { (data, response, error) in
             
-            guard error == nil else {
-                print("Get error register")
-                return
-            }
-            completionHandler(data)
+            completionHandler(data,response, error)
         }
         
     }

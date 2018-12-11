@@ -32,7 +32,7 @@
 //
 //        
 //        circleProgressRing.shouldShowValueText = false
-//        self.circleProgressRing.isHidden = true
+//        self.circleProgressRing.hide()
 //    }
 //
 //    override func setSelected(_ selected: Bool, animated: Bool) {
@@ -75,9 +75,9 @@
 ////
 ////        switch type {
 ////        case "text":
-//            downloadBtn.isHidden = true
-//            messageLabel.isHidden = false
-//            playPauseBtn.isHidden = true
+//            downloadBtn.hide()
+//            messageLabel.show()
+//            playPauseBtn.hide()
 //
 ////            break
 ////        default:

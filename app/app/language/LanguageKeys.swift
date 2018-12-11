@@ -101,6 +101,9 @@ struct LanguageKeys {
     static let guideOfSendingActivationCode : String = "guideOfSendingActivationCode"
     static let guideOfRegitering_part1 : String = "guideOfRegitering_part1"
     static let guideOfRegitering_part2 : String = "guideOfRegitering_part2"
+
+    static let requestfail_dialog_title : String = "requestfail_dialog_title"
+    static let requestfail_dialog_text : String = "requestfail_dialog_text"
     
     static let logout_dialog_title : String = "logout_dialog_title"
     static let logout_dialog_text : String = "logout_dialog_text"

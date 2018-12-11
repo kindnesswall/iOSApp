@@ -95,6 +95,9 @@
 		526545F521BE9DB900C98821 /* TapsellSDKv3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526545F421BE9DB900C98821 /* TapsellSDKv3.framework */; };
 		526545F721BE9E7300C98821 /* TapsellSDKv3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 526545F421BE9DB900C98821 /* TapsellSDKv3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		526545FA21BF082E00C98821 /* TapSellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526545F921BF082E00C98821 /* TapSellConstants.swift */; };
+		526545FC21BF2CD200C98821 /* Array+chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526545FB21BF2CD200C98821 /* Array+chunked.swift */; };
+		5265460921BFB59900C98821 /* GiftAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5265460821BFB59900C98821 /* GiftAdTableViewCell.swift */; };
+		5265461321BFF32F00C98821 /* GiftAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5265461221BFF32E00C98821 /* GiftAdTableViewCell.xib */; };
 		528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */; };
 		528A2D8D21ABE04300DECE0F /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D8F21ABE04300DECE0F /* MyKindnessWallViewController.xib */; };
 		528A2D9621AC405D00DECE0F /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D9821AC405D00DECE0F /* MyGiftsViewController.xib */; };
@@ -271,6 +274,9 @@
 		5263D60221BB0CC300B634A8 /* MyGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGiftViewModel.swift; sourceTree = "<group>"; };
 		526545F421BE9DB900C98821 /* TapsellSDKv3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TapsellSDKv3.framework; sourceTree = "<group>"; };
 		526545F921BF082E00C98821 /* TapSellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSellConstants.swift; sourceTree = "<group>"; };
+		526545FB21BF2CD200C98821 /* Array+chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+chunked.swift"; sourceTree = "<group>"; };
+		5265460821BFB59900C98821 /* GiftAdTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiftAdTableViewCell.swift; sourceTree = "<group>"; };
+		5265461221BFF32E00C98821 /* GiftAdTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GiftAdTableViewCell.xib; sourceTree = "<group>"; };
 		528A2D8221ABD73C00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8321ABD83600DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8421ABDC0400DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
@@ -426,9 +432,9 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5263D5FF21B9272300B634A8 /* OptionsList */,
-				528A2DC721ADA9EE00DECE0F /* languageVC */,
-				60302DE4206953670025D397 /* PopUpViewController */,
+				5263D5FF21B9272300B634A8 /* options list */,
+				528A2DC721ADA9EE00DECE0F /* language */,
+				60302DE4206953670025D397 /* pop_up */,
 				05BEA441204BFBAB00147BF5 /* my kindnesswall */,
 				05BEA43620497B2200147BF5 /* register gift */,
 				05BEA43520497B0A00147BF5 /* gift detail */,
@@ -604,6 +610,7 @@
 				05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */,
 				05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */,
 				05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */,
+				526545FB21BF2CD200C98821 /* Array+chunked.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -659,13 +666,113 @@
 			path = appUITests;
 			sourceTree = "<group>";
 		};
-		5263D5FF21B9272300B634A8 /* OptionsList */ = {
+		5263D5FF21B9272300B634A8 /* options list */ = {
 			isa = PBXGroup;
 			children = (
 				60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */,
 				60AE9C87202DE87100F246CD /* OptionsListViewController.swift */,
 			);
-			path = OptionsList;
+			path = "options list";
+			sourceTree = "<group>";
+		};
+		526545FD21BFB38E00C98821 /* ad */ = {
+			isa = PBXGroup;
+			children = (
+				5265461221BFF32E00C98821 /* GiftAdTableViewCell.xib */,
+				5265460821BFB59900C98821 /* GiftAdTableViewCell.swift */,
+			);
+			path = ad;
+			sourceTree = "<group>";
+		};
+		526545FE21BFB3A900C98821 /* gift */ = {
+			isa = PBXGroup;
+			children = (
+				054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */,
+				528A2DBF21AD3EBF00DECE0F /* GiftTableViewCell.xib */,
+				526545FD21BFB38E00C98821 /* ad */,
+			);
+			path = gift;
+			sourceTree = "<group>";
+		};
+		526545FF21BFB3D200C98821 /* statistic */ = {
+			isa = PBXGroup;
+			children = (
+				6009DB9B2130931C002FD769 /* StatisticTableViewCell.swift */,
+				6009DB9C2130931C002FD769 /* StatisticTableViewCell.xib */,
+			);
+			path = statistic;
+			sourceTree = "<group>";
+		};
+		5265460021BFB3F100C98821 /* generic options */ = {
+			isa = PBXGroup;
+			children = (
+				601F83CC2036A50600F9118B /* GenericOptionsTableViewCell.swift */,
+				601F83CD2036A50600F9118B /* GenericOptionsTableViewCell.xib */,
+			);
+			path = "generic options";
+			sourceTree = "<group>";
+		};
+		5265460121BFB41100C98821 /* category options */ = {
+			isa = PBXGroup;
+			children = (
+				60AE9C8F202DF97100F246CD /* CategoryOptionsTableViewCell.swift */,
+				60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */,
+			);
+			path = "category options";
+			sourceTree = "<group>";
+		};
+		5265460221BFB42800C98821 /* requests */ = {
+			isa = PBXGroup;
+			children = (
+				05029ECC1FE9381E004D96B1 /* RequestsTableViewCell.swift */,
+				528A2DB621AD3E6400DECE0F /* RequestsTableViewCell.xib */,
+			);
+			path = requests;
+			sourceTree = "<group>";
+		};
+		5265460321BFB43C00C98821 /* request to a gift */ = {
+			isa = PBXGroup;
+			children = (
+				05029ED01FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift */,
+				528A2DAD21AD3D8200DECE0F /* RequestToAGiftTableViewCell.xib */,
+			);
+			path = "request to a gift";
+			sourceTree = "<group>";
+		};
+		5265460421BFB46E00C98821 /* prompt user */ = {
+			isa = PBXGroup;
+			children = (
+				05BEA442204C1FFA00147BF5 /* PromptUser.swift */,
+				05BEA443204C1FFA00147BF5 /* PromptUser.xib */,
+			);
+			path = "prompt user";
+			sourceTree = "<group>";
+		};
+		5265460521BFB48500C98821 /* section view */ = {
+			isa = PBXGroup;
+			children = (
+				05644DCB1FFF06BC00B7C853 /* SectionView.swift */,
+				05644DCC1FFF06BC00B7C853 /* SectionView.xib */,
+			);
+			path = "section view";
+			sourceTree = "<group>";
+		};
+		5265460621BFB4A100C98821 /* upload image_view */ = {
+			isa = PBXGroup;
+			children = (
+				602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */,
+				602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */,
+			);
+			path = "upload image_view";
+			sourceTree = "<group>";
+		};
+		5265460721BFB4E800C98821 /* contact us */ = {
+			isa = PBXGroup;
+			children = (
+				6080700621B3F82A0046F940 /* ContactUsCollectionViewCell.swift */,
+				6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */,
+			);
+			path = "contact us";
 			sourceTree = "<group>";
 		};
 		528A2DAA21AD39C500DECE0F /* language */ = {
@@ -690,16 +797,16 @@
 			path = chat;
 			sourceTree = "<group>";
 		};
-		528A2DC721ADA9EE00DECE0F /* languageVC */ = {
+		528A2DC721ADA9EE00DECE0F /* language */ = {
 			isa = PBXGroup;
 			children = (
 				528A2DC821ADAA2100DECE0F /* LanguageViewController.swift */,
 				528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */,
 			);
-			path = languageVC;
+			path = language;
 			sourceTree = "<group>";
 		};
-		60302DE4206953670025D397 /* PopUpViewController */ = {
+		60302DE4206953670025D397 /* pop_up */ = {
 			isa = PBXGroup;
 			children = (
 				60302DE22069018C0025D397 /* PopUpMessage.swift */,
@@ -707,14 +814,13 @@
 				60302DDE2068FC7E0025D397 /* PopUpViewController.swift */,
 				60302DDF2068FC7E0025D397 /* PopUpViewController.xib */,
 			);
-			path = PopUpViewController;
+			path = pop_up;
 			sourceTree = "<group>";
 		};
 		6080700521B3F8110046F940 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				6080700621B3F82A0046F940 /* ContactUsCollectionViewCell.swift */,
-				6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */,
+				5265460721BFB4E800C98821 /* contact us */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -734,19 +840,13 @@
 		60AE9C89202DF7AB00F246CD /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				5265460321BFB43C00C98821 /* request to a gift */,
+				5265460221BFB42800C98821 /* requests */,
+				5265460121BFB41100C98821 /* category options */,
+				5265460021BFB3F100C98821 /* generic options */,
+				526545FF21BFB3D200C98821 /* statistic */,
+				526545FE21BFB3A900C98821 /* gift */,
 				528A2DC621AD3EF400DECE0F /* chat */,
-				05029ED01FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift */,
-				528A2DAD21AD3D8200DECE0F /* RequestToAGiftTableViewCell.xib */,
-				05029ECC1FE9381E004D96B1 /* RequestsTableViewCell.swift */,
-				528A2DB621AD3E6400DECE0F /* RequestsTableViewCell.xib */,
-				054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */,
-				528A2DBF21AD3EBF00DECE0F /* GiftTableViewCell.xib */,
-				60AE9C8F202DF97100F246CD /* CategoryOptionsTableViewCell.swift */,
-				60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */,
-				601F83CC2036A50600F9118B /* GenericOptionsTableViewCell.swift */,
-				601F83CD2036A50600F9118B /* GenericOptionsTableViewCell.xib */,
-				6009DB9B2130931C002FD769 /* StatisticTableViewCell.swift */,
-				6009DB9C2130931C002FD769 /* StatisticTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -754,12 +854,9 @@
 		60AE9C95202E00BB00F246CD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				05BEA442204C1FFA00147BF5 /* PromptUser.swift */,
-				05BEA443204C1FFA00147BF5 /* PromptUser.xib */,
-				05644DCB1FFF06BC00B7C853 /* SectionView.swift */,
-				05644DCC1FFF06BC00B7C853 /* SectionView.xib */,
-				602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */,
-				602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */,
+				5265460621BFB4A100C98821 /* upload image_view */,
+				5265460521BFB48500C98821 /* section view */,
+				5265460421BFB46E00C98821 /* prompt user */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -889,6 +986,7 @@
 				05029ECB1FE334C5004D96B1 /* RequestToAGiftViewController.xib in Resources */,
 				60FAB845206571340039BF61 /* icomoon.ttf in Resources */,
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
+				5265461321BFF32F00C98821 /* GiftAdTableViewCell.xib in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
 				05F6AA531FFEEB8D00CDABC2 /* ChatConversationViewController.xib in Resources */,
 				6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */,
@@ -1010,6 +1108,7 @@
 				05644DBA1FFEF3A500B7C853 /* ChatConversationTableViewCell.swift in Sources */,
 				05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */,
 				6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */,
+				5265460921BFB59900C98821 /* GiftAdTableViewCell.swift in Sources */,
 				5263D60121B93F0000B634A8 /* ProgressBarView.swift in Sources */,
 				60FAB83C2064320E0039BF61 /* Request Inputs.swift in Sources */,
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
@@ -1089,6 +1188,7 @@
 				05644DCA1FFF02A100B7C853 /* UITableView+isCellVisible.swift in Sources */,
 				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
 				05F6AA541FFEEB8D00CDABC2 /* ChatListTableViewController.swift in Sources */,
+				526545FC21BF2CD200C98821 /* Array+chunked.swift in Sources */,
 				05BFBBD71FE1D6FE00DBCDDF /* String+isNumber.swift in Sources */,
 				5263D5AA21B5972800B634A8 /* ShakingTextField.swift in Sources */,
 				05BFBBE21FE26B0500DBCDDF /* Category.swift in Sources */,

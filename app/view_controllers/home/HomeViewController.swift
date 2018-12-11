@@ -12,6 +12,9 @@ import TapsellSDKv3
 
 class HomeViewController: UIViewController {
 
+//    var nativeBanner : TSNativeBannerAdView!
+//    var nativeBannerBundle:TSNativeBannerBundle?
+
     let userDefault=UserDefaults.standard
 
     let NumberOfSecondsOfOneDay:Float = 26*60*60
@@ -40,7 +43,7 @@ class HomeViewController: UIViewController {
     
     var videoInterstitialAd:TapsellAd?
     var rewardBasedAd:TapsellAd?
-
+    
     func requestRewardBasedAd() {
         let requestOptions = TSAdRequestOptions()
         requestOptions.setCacheType(CacheTypeCached)
@@ -93,7 +96,7 @@ class HomeViewController: UIViewController {
         self.requestVideoInterstitialAd()
 //        self.requestRewardBasedAd()
         
-        self.tableview.isHidden = true
+        self.tableview.hide()
         
         hud.textLabel.text = LocalizationSystem.getStr(forKey: LanguageKeys.loading)
         
@@ -111,9 +114,42 @@ class HomeViewController: UIViewController {
             GiftTableViewCell.nib,
             forCellReuseIdentifier: GiftTableViewCell.identifier
         )
+        self.tableview.register(
+            GiftAdTableViewCell.nib,
+            forCellReuseIdentifier: GiftAdTableViewCell.identifier
+        )
         
         getGifts(index:0)
         
+//        let nib : NSArray = Bundle.main.loadNibNamed(GiftAdTableViewCell.identifier, owner: self, options: nil)! as NSArray
+//        let cell : GiftAdTableViewCell! = nib[0] as! GiftAdTableViewCell
+//        nativeBanner = cell.nativeBanner
+        
+//        self.nativeBanner.titleLabelTag = 1;
+//        self.nativeBanner.descriptionLabelTag = 2;
+//        self.nativeBanner.logoImageTag = 3;
+//        self.nativeBanner.mainImageTag = 4;
+//        self.nativeBanner.callToActionButtonTag = 5;
+        
+//        Tapsell.requestNativeBannerAd(
+//            forZone: TapSellConstants.ZoneID.NativeBanner,
+//            andContainerView: nativeBanner,
+//            onRequestFilled: {
+//                self.nativeBannerBundle = self.nativeBanner.getBundle()
+//                print("\n\n")
+//                print("NativeBanner : onRequestFilled")
+//                print("\n\n")
+//                //                self.nativeBannerBundle = self.nativeBanner.getBundle()
+//        }, onNoAdAvailable: {
+//            print("\n\n")
+//            print("NativeBanner : onNoAdAvailable")
+//            print("\n\n")
+//        }) { (error) in
+//            print("\n\n")
+//            print("NativeBanner : onError")
+//            print("\n\n")
+//            print("error: ", error ?? "Null")
+//        }
     }
     
     func configRefreshControl(){
@@ -192,6 +228,10 @@ class HomeViewController: UIViewController {
         }
     }
     
+//    func updateRow(index:Int) {
+//        let indexPath = IndexPath(item: index, section: 0)
+//        tableview.reloadRows(at: [indexPath], with: .top)
+//    }
     func getGifts(index:Int){
         
         self.initialGiftsLoadingHasOccurred=true
@@ -208,14 +248,47 @@ class HomeViewController: UIViewController {
             self.setTableViewLazyLoading(isLoading: true)
         }
         
-        apiMethods.getGifts(cityId: self.cityId, regionId: "0", categoryId: self.categoryId, startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { [weak self] (data) in
+        apiMethods.getGifts(cityId: self.cityId, regionId: "0", categoryId: self.categoryId, startIndex: index,lastIndex: index+lazyLoadingCount, searchText: "") { [weak self] (data, response, error) in
 //            APIRequest.logReply(data: data)
+            
+            guard error == nil, let response = response as? HTTPURLResponse, response.statusCode>=200,response.statusCode<300 else {
+                print("Get error register")
+                
+                self?.refreshControl.endRefreshing()
+                self?.hud.dismiss(afterDelay: 0)
+                self?.setTableViewLazyLoading(isLoading: false)
+                
+                let alert = UIAlertController(
+                    title:LocalizationSystem.getStr(forKey: LanguageKeys.requestfail_dialog_title),
+                    message: LocalizationSystem.getStr(forKey: LanguageKeys.requestfail_dialog_text),
+                    preferredStyle: UIAlertController.Style.alert)
+                
+                alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
+                    self?.isLoadingGifts=false
+                    self?.getGifts(index:index)
+                }))
+                
+                if let gifts = self?.gifts, gifts.count > 0 {
+                    self?.tableview.show()
+                    alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.cancel), style: UIAlertAction.Style.default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: {
+                            
+                        })
+                    }))
+                }else{
+                    self?.tableview.hide()
+                }
+                
+                self?.present(alert, animated: true, completion: nil)
+                
+                return
+            }
             
             if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
                 
                 if index==0 {
                     self?.gifts=[]
-                    self?.tableview.isHidden = false
+                    self?.tableview.show()
                     self?.tableview.reloadData()
                 }
                 
@@ -230,18 +303,24 @@ class HomeViewController: UIViewController {
                 }
                 
                 var insertedIndexes=[IndexPath]()
-                if let minCount = self?.gifts.count {
-                    for i in minCount..<minCount + reply.count{
+                let firstIndex = self?.gifts.count
+                
+                let chunkedGifts = reply.chunked(into: 10)
+                for chunk in chunkedGifts {
+                    let ad = Gift()
+                    ad.isAd = true
+                    self?.gifts.append(ad)
+                    self?.gifts.append(contentsOf: chunk)
+                }
+                if let firstIndex = firstIndex, let lastIndex = self?.gifts.count {
+                    for i in firstIndex..<lastIndex{
                         insertedIndexes.append(IndexPath(item: i, section: 0))
                     }
                 }
-                
-                self?.gifts.append(contentsOf: reply)
-                
 //                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
-                    UIView.performWithoutAnimation {
-                        self?.tableview.insertRows(at: insertedIndexes, with: .bottom)
-                    }
+                UIView.performWithoutAnimation {
+                    self?.tableview.insertRows(at: insertedIndexes, with: .bottom)
+                }
 //                })
                 
             }
@@ -273,25 +352,27 @@ extension HomeViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell=tableView.dequeueReusableCell(withIdentifier: GiftTableViewCell.identifier) as! GiftTableViewCell
-        
-//        let gift:Gift = Gift()
-//        gift.title = "هدیه"
-//        gift.createDateTime = "تاریخ"
-//        gift.description = "توضیحات بسیار کامل و جامع"
-//        gift.giftImages = ["https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Meso2mil-English.JPG/220px-Meso2mil-English.JPG"]
-//
-        
-        cell.filViews(gift: gifts[indexPath.row])
-        
         let index=indexPath.row+1
         if index==self.gifts.count {
             if !self.isLoadingGifts {
                 getGifts(index: index)
             }
         }
+
+        if let isAd = gifts[indexPath.row].isAd, isAd {
+            let cell=tableView.dequeueReusableCell(
+                withIdentifier: GiftAdTableViewCell.identifier) as! GiftAdTableViewCell
         
-        return cell
+            cell.showAd()//index: index, vc: self)
+
+            return cell
+        }else{
+            let cell=tableView.dequeueReusableCell(withIdentifier: GiftTableViewCell.identifier) as! GiftTableViewCell
+            
+            cell.filViews(gift: gifts[indexPath.row])
+            return cell
+        }
+        
     }
 }
 
@@ -319,7 +400,9 @@ extension HomeViewController:UITableViewDelegate {
                 print("\n\n andClosedCallback \n\n")
             }
         )
-        
+        self.userDefault.set(
+            Float(Date().timeIntervalSinceReferenceDate),
+            forKey: AppConstants.LastTimeISawAd)
     }
     
     func isMoreThanOneDayIDidntSawAd()->Bool {
@@ -335,13 +418,14 @@ extension HomeViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let ad = self.videoInterstitialAd, self.isMoreThanOneDayIDidntSawAd()
         {
-            self.userDefault.set(
-                Float(Date().timeIntervalSinceReferenceDate),
-                forKey: AppConstants.LastTimeISawAd)
-            
             self.show(ad:ad)
             return
         }
+        
+//        if let isAd = gifts[indexPath.row].isAd, !isAd {
+//            self.show(ad: <#T##TapsellAd#>)
+//            return
+//        }
         
         let controller = GiftDetailViewController(
             nibName: GiftDetailViewController.identifier,

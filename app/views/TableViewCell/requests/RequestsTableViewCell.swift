@@ -19,7 +19,7 @@ class RequestsTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func fillUI(gift:Gift) {
+    func fillUI(gift:GiftPresenter) {
         giftName.text = gift.title
         
         numberOfRequestsLbl.text = gift.requestCount?.CastNumberToPersian()

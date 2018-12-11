@@ -33,7 +33,7 @@ class GiftTableViewCell: UITableViewCell {
     
     @IBOutlet weak var precentView: ProgressBarView!
     
-    func filViews(gift:Gift) {
+    func filViews(gift:GiftPresenter) {
         
         giftTitle.text = gift.title
         giftDate.text = gift.createDateTime
