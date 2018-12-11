@@ -115,8 +115,8 @@ class HomeViewController: UIViewController {
             forCellReuseIdentifier: GiftTableViewCell.identifier
         )
         self.tableview.register(
-            GiftAdTableViewCell.nib,
-            forCellReuseIdentifier: GiftAdTableViewCell.identifier
+            GiftAdCell.nib,
+            forCellReuseIdentifier: GiftAdCell.identifier
         )
         
         getGifts(index:0)
@@ -361,9 +361,9 @@ extension HomeViewController:UITableViewDataSource{
 
         if let isAd = gifts[indexPath.row].isAd, isAd {
             let cell=tableView.dequeueReusableCell(
-                withIdentifier: GiftAdTableViewCell.identifier) as! GiftAdTableViewCell
+                withIdentifier: GiftAdCell.identifier) as! GiftAdCell
         
-            cell.showAd()//index: index, vc: self)
+//            cell.showAd()//index: index, vc: self)
 
             return cell
         }else{
@@ -419,6 +419,10 @@ extension HomeViewController:UITableViewDelegate {
         if let ad = self.videoInterstitialAd, self.isMoreThanOneDayIDidntSawAd()
         {
             self.show(ad:ad)
+            return
+        }
+        
+        guard !(gifts[indexPath.row].isAd ?? false) else {
             return
         }
         
