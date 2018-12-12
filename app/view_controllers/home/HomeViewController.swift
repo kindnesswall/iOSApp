@@ -363,7 +363,7 @@ extension HomeViewController:UITableViewDataSource{
             let cell=tableView.dequeueReusableCell(
                 withIdentifier: GiftAdCell.identifier) as! GiftAdCell
         
-//            cell.showAd()//index: index, vc: self)
+            cell.showAd()//index: index, vc: self)
 
             return cell
         }else{
@@ -416,10 +416,13 @@ extension HomeViewController:UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let ad = self.videoInterstitialAd, self.isMoreThanOneDayIDidntSawAd()
-        {
-            self.show(ad:ad)
-            return
+        
+        if gifts[indexPath.row].isAd == nil || gifts[indexPath.row].isAd == false {
+            if let ad = self.videoInterstitialAd, self.isMoreThanOneDayIDidntSawAd()
+            {
+                self.show(ad:ad)
+                return
+            }
         }
         
         guard !(gifts[indexPath.row].isAd ?? false) else {

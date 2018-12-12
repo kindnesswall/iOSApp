@@ -96,8 +96,6 @@
 		526545F721BE9E7300C98821 /* TapsellSDKv3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 526545F421BE9DB900C98821 /* TapsellSDKv3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		526545FA21BF082E00C98821 /* TapSellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526545F921BF082E00C98821 /* TapSellConstants.swift */; };
 		526545FC21BF2CD200C98821 /* Array+chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526545FB21BF2CD200C98821 /* Array+chunked.swift */; };
-		5265460921BFB59900C98821 /* GiftAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5265460821BFB59900C98821 /* GiftAdTableViewCell.swift */; };
-		5265461321BFF32F00C98821 /* GiftAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5265461221BFF32E00C98821 /* GiftAdTableViewCell.xib */; };
 		528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */; };
 		528A2D8D21ABE04300DECE0F /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D8F21ABE04300DECE0F /* MyKindnessWallViewController.xib */; };
 		528A2D9621AC405D00DECE0F /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D9821AC405D00DECE0F /* MyGiftsViewController.xib */; };
@@ -277,8 +275,6 @@
 		526545F421BE9DB900C98821 /* TapsellSDKv3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TapsellSDKv3.framework; sourceTree = "<group>"; };
 		526545F921BF082E00C98821 /* TapSellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSellConstants.swift; sourceTree = "<group>"; };
 		526545FB21BF2CD200C98821 /* Array+chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+chunked.swift"; sourceTree = "<group>"; };
-		5265460821BFB59900C98821 /* GiftAdTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiftAdTableViewCell.swift; sourceTree = "<group>"; };
-		5265461221BFF32E00C98821 /* GiftAdTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GiftAdTableViewCell.xib; sourceTree = "<group>"; };
 		528A2D8221ABD73C00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8321ABD83600DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8421ABDC0400DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
@@ -682,8 +678,6 @@
 		526545FD21BFB38E00C98821 /* ad */ = {
 			isa = PBXGroup;
 			children = (
-				5265461221BFF32E00C98821 /* GiftAdTableViewCell.xib */,
-				5265460821BFB59900C98821 /* GiftAdTableViewCell.swift */,
 				6072E4F821C05A9200F17205 /* GiftAdCell.swift */,
 				6072E4F921C05A9200F17205 /* GiftAdCell.xib */,
 			);
@@ -992,7 +986,6 @@
 				05029ECB1FE334C5004D96B1 /* RequestToAGiftViewController.xib in Resources */,
 				60FAB845206571340039BF61 /* icomoon.ttf in Resources */,
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
-				5265461321BFF32F00C98821 /* GiftAdTableViewCell.xib in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
 				05F6AA531FFEEB8D00CDABC2 /* ChatConversationViewController.xib in Resources */,
 				6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */,
@@ -1099,7 +1092,6 @@
 				05644DBA1FFEF3A500B7C853 /* ChatConversationTableViewCell.swift in Sources */,
 				05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */,
 				6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */,
-				5265460921BFB59900C98821 /* GiftAdTableViewCell.swift in Sources */,
 				5263D60121B93F0000B634A8 /* ProgressBarView.swift in Sources */,
 				60FAB83C2064320E0039BF61 /* Request Inputs.swift in Sources */,
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
