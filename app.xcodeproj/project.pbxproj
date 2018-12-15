@@ -106,6 +106,7 @@
 		528A2DBD21AD3EBF00DECE0F /* GiftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DBF21AD3EBF00DECE0F /* GiftTableViewCell.xib */; };
 		528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A2DC821ADAA2100DECE0F /* LanguageViewController.swift */; };
 		528A2DCB21ADAA2100DECE0F /* LanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */; };
+		52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768521C5109B00C2E012 /* InfoPlist.strings */; };
 		6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */; };
 		6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB972130922C002FD769 /* StatisticViewController.swift */; };
 		6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB982130922C002FD769 /* StatisticViewController.xib */; };
@@ -294,6 +295,8 @@
 		528A2DC521AD3EC600DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/GiftTableViewCell.xib; sourceTree = "<group>"; };
 		528A2DC821ADAA2100DECE0F /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageViewController.xib; sourceTree = "<group>"; };
+		52DD768421C5109B00C2E012 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		52DD768621C5109D00C2E012 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		6009DB972130922C002FD769 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		6009DB982130922C002FD769 /* StatisticViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticViewController.xib; sourceTree = "<group>"; };
@@ -419,6 +422,7 @@
 				05DDD3DC1F921D03006C5E31 /* api */,
 				0507C8691F8C1A920084CDF1 /* Assets.xcassets */,
 				0507C86E1F8C1A920084CDF1 /* Info.plist */,
+				52DD768521C5109B00C2E012 /* InfoPlist.strings */,
 				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
 				6019F27421B80257003C3E76 /* AppDelegate + Tabbar.swift */,
 				0507C8641F8C1A920084CDF1 /* ViewController.swift */,
@@ -989,6 +993,7 @@
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
 				05F6AA531FFEEB8D00CDABC2 /* ChatConversationViewController.xib in Resources */,
 				6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */,
+				52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */,
 				5245922521AB47EA0009824C /* Localizable.strings in Resources */,
 				05BFBBBA1FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib in Resources */,
 				05BEA445204C1FFA00147BF5 /* PromptUser.xib in Resources */,
@@ -1306,6 +1311,15 @@
 				528A2DC521AD3EC600DECE0F /* fa */,
 			);
 			name = GiftTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		52DD768521C5109B00C2E012 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52DD768421C5109B00C2E012 /* en */,
+				52DD768621C5109D00C2E012 /* fa */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		6080701021B43B1E0046F940 /* ContactUsViewController.xib */ = {

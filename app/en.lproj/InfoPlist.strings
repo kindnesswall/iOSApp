@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  app
+
+  Created by Hamed.Gh on 12/15/18.
+  Copyright © 2018 Hamed.Gh. All rights reserved.
+*/
+//"ADD_ITEM_SHORTCUT_TITLE" = "Donate a Gift";
+"ADD_ITEM_SHORTCUT_TITLE" = "ثبت هدیه";

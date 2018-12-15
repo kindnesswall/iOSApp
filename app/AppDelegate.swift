@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public var tabBarController:UITabBarController?
 
     static let screenWidth = UIScreen.main.bounds.width
+    var launchedShortcutItem: UIApplicationShortcutItem?
 
     static func clearUserDefaultAuthValues() {
         
@@ -50,7 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        print("\n\ndidFinishLaunchingWithOptions\n\n")
+
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
 
         if uDStandard.bool(forKey: AppConstants.WATCHED_SELECT_LANGUAGE) {
@@ -59,7 +61,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             showSelectLanguageVC()
         }
         
+        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            
+            _ = handleShortCut(shortcutItem)
+            
+        }
+        
         return true
+    }
+    
+    func handleShortCut(_ item: UIApplicationShortcutItem) -> Bool {
+        if item.type == "ir.kindnesswall.publicusers.DonateGift" {
+            // shortcut was triggered!
+            //                showTabbarIntro()
+            self.tabBarController?.selectedIndex = TabIndex.RegisterGift
+            return true
+        }
+        return false
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        // Alternatively, a shortcut item may be passed in through this delegate method if the app was
+        // still in memory when the Home screen quick action was used. Again, store it for processing.
+        launchedShortcutItem = shortcutItem
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        print("\n\napplicationDidBecomeActive\n\n")
+
+        guard let item = launchedShortcutItem else { return }
+        print("there is one item")
+        _ = handleShortCut(item)
+        
+        launchedShortcutItem = nil
+        
+        if (application.applicationIconBadgeNumber != 0) {
+            application.applicationIconBadgeNumber = 0
+        }
     }
     
     func showTabbarIntro() {
