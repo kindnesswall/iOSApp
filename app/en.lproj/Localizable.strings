@@ -6,6 +6,8 @@
   Copyright © 2018 Hamed.Gh. All rights reserved.
 */
 
+"DonateGift" = "Donate a Gift";
+
 "AppVersion" = "App Version: ";
 
 "requestfail_dialog_title" = "Connection Fail";

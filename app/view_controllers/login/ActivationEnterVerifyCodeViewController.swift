@@ -165,7 +165,14 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                 }
                 
                 self?.dismiss(animated: true, completion: {
-                    
+                    UIApplication.shared.shortcutItems = [
+                        UIApplicationShortcutItem(
+                        type: "ir.kindnesswall.publicusers.DonateGift",
+                        localizedTitle: LocalizationSystem.getStr(forKey: LanguageKeys.DonateGift),
+                        localizedSubtitle: "",
+                        icon: UIApplicationShortcutIcon(type: .favorite),
+                        userInfo: nil)
+                    ]
                     self?.submitComplition?("")
                     
                 })

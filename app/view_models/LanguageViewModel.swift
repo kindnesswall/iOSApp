@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 protocol LanguageViewDelegate {
     func show(alert:UIAlertController) -> ()
@@ -16,6 +17,7 @@ protocol LanguageViewDelegate {
 }
 
 class LanguageViewModel: NSObject {
+    let keychain = KeychainSwift()
     let datasource = [AppLanguage.Persian, AppLanguage.English]
     let datasourceToShow = ["فارسی", "English"]
     var delegate:LanguageViewDelegate?
@@ -47,7 +49,33 @@ class LanguageViewModel: NSObject {
         
         alert.addAction(UIAlertAction(title: okBtn, style: UIAlertAction.Style.default, handler: { (action) in
             
+            if let _=self.keychain.get(AppConstants.Authorization) {
+                if AppLanguage.getLanguage() == AppLanguage.English {
+                    UIApplication.shared.shortcutItems = [
+                        UIApplicationShortcutItem(
+                            type: "ir.kindnesswall.publicusers.DonateGift",
+                            localizedTitle: "ثبت هدیه",
+                            localizedSubtitle: "",
+                            icon: UIApplicationShortcutIcon(type: .favorite),
+                            userInfo: nil)
+                    ]
+                }else if AppLanguage.getLanguage() == AppLanguage.Persian {
+                    UIApplication.shared.shortcutItems = [
+                        UIApplicationShortcutItem(
+                            type: "ir.kindnesswall.publicusers.DonateGift",
+                            localizedTitle: "Donate a Gift",
+                            localizedSubtitle: "",
+                            icon: UIApplicationShortcutIcon(type: .favorite),
+                            userInfo: nil)
+                    ]
+                }
+                
+            } else {
+                UIApplication.shared.shortcutItems = []
+            }
+            
             self.languageHasChangedTo(selectedLanguage: self.datasource[index])
+            
         }))
         
         alert.addAction(UIAlertAction(title: cancelBtn, style: UIAlertAction.Style.default, handler: { (action) in

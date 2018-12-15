@@ -69,18 +69,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeLove</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>ADD_ITEM_SHORTCUT_TITLE</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>ir.kindnesswall.publicusers.DonateGift</string>
-		</dict>
-	</array>
-	<key>CFBundleAllowMixedLocalizations</key>
-	<true/>
 </dict>
 </plist>
