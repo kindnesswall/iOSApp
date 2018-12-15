@@ -37,6 +37,8 @@ class HomeViewController: UIViewController {
     var categotyBarBtn:UIBarButtonItem?
     var cityBarBtn:UIBarButtonItem?
     
+    var previewRowIndex:Int?
+    
     deinit {
         print("HomeViewController deinit")
     }
@@ -91,6 +93,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerForPreviewing(with: self, sourceView: tableview)
+        
         Tapsell.initialize(withAppKey: TapSellConstants.KEY)
         
         self.requestVideoInterstitialAd()
@@ -120,36 +124,6 @@ class HomeViewController: UIViewController {
         )
         
         getGifts(index:0)
-        
-//        let nib : NSArray = Bundle.main.loadNibNamed(GiftAdTableViewCell.identifier, owner: self, options: nil)! as NSArray
-//        let cell : GiftAdTableViewCell! = nib[0] as! GiftAdTableViewCell
-//        nativeBanner = cell.nativeBanner
-        
-//        self.nativeBanner.titleLabelTag = 1;
-//        self.nativeBanner.descriptionLabelTag = 2;
-//        self.nativeBanner.logoImageTag = 3;
-//        self.nativeBanner.mainImageTag = 4;
-//        self.nativeBanner.callToActionButtonTag = 5;
-        
-//        Tapsell.requestNativeBannerAd(
-//            forZone: TapSellConstants.ZoneID.NativeBanner,
-//            andContainerView: nativeBanner,
-//            onRequestFilled: {
-//                self.nativeBannerBundle = self.nativeBanner.getBundle()
-//                print("\n\n")
-//                print("NativeBanner : onRequestFilled")
-//                print("\n\n")
-//                //                self.nativeBannerBundle = self.nativeBanner.getBundle()
-//        }, onNoAdAvailable: {
-//            print("\n\n")
-//            print("NativeBanner : onNoAdAvailable")
-//            print("\n\n")
-//        }) { (error) in
-//            print("\n\n")
-//            print("NativeBanner : onError")
-//            print("\n\n")
-//            print("error: ", error ?? "Null")
-//        }
     }
     
     func configRefreshControl(){
@@ -228,10 +202,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-//    func updateRow(index:Int) {
-//        let indexPath = IndexPath(item: index, section: 0)
-//        tableview.reloadRows(at: [indexPath], with: .top)
-//    }
     func getGifts(index:Int){
         
         self.initialGiftsLoadingHasOccurred=true
@@ -374,6 +344,21 @@ extension HomeViewController:UITableViewDataSource{
         }
         
     }
+    
+    func getGiftDetailVCFor(index:Int) -> UIViewController {
+        let controller = GiftDetailViewController(
+            nibName: GiftDetailViewController.identifier,
+            bundle: GiftDetailViewController.bundle
+        )
+        
+        controller.gift = gifts[index]
+        controller.editHandler={ [weak self] in
+            self?.editHandler()
+        }
+        print("Gift_id: \(controller.gift?.id ?? "")")
+        
+        return controller
+    }
 }
 
 extension HomeViewController:UITableViewDelegate {
@@ -429,21 +414,7 @@ extension HomeViewController:UITableViewDelegate {
             return
         }
         
-//        if let isAd = gifts[indexPath.row].isAd, !isAd {
-//            self.show(ad: <#T##TapsellAd#>)
-//            return
-//        }
-        
-        let controller = GiftDetailViewController(
-            nibName: GiftDetailViewController.identifier,
-            bundle: GiftDetailViewController.bundle
-        )
-        
-        controller.gift = gifts[indexPath.row]
-        controller.editHandler={ [weak self] in
-            self?.editHandler()
-        }
-        print("Gift_id: \(controller.gift?.id ?? "")")
+        let controller = getGiftDetailVCFor(index: indexPath.row)
         
         self.navigationController?.pushViewController(controller, animated: true)
         
@@ -459,8 +430,34 @@ extension HomeViewController:UITableViewDelegate {
         }
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return CGFloat(122)
-//    }
+}
+
+extension HomeViewController:UIViewControllerPreviewingDelegate{
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        if let indexPath = tableview.indexPathForRow(at: location) {
+            previewRowIndex = indexPath.row
+            guard !(gifts[indexPath.row].isAd ?? false) else {
+                return nil
+            }
+            
+            previewingContext.sourceRect = tableview.rectForRow(at: indexPath)
+            return getGiftDetailVCFor(index: indexPath.row)
+        }
+        
+        return nil
+    }
     
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        
+        if let index = previewRowIndex, gifts[index].isAd == nil || gifts[index].isAd == false {
+            previewRowIndex = nil
+            if let ad = self.videoInterstitialAd, self.isMoreThanOneDayIDidntSawAd()
+            {
+                self.show(ad:ad)
+                return
+            }
+        }
+        self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
 }
