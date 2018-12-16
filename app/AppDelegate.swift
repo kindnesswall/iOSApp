@@ -8,6 +8,7 @@
 
 import UIKit
 import KeychainSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
 
+        FirebaseApp.configure()
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
 
         if uDStandard.bool(forKey: AppConstants.WATCHED_SELECT_LANGUAGE) {

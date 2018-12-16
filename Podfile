@@ -22,4 +22,10 @@ pod 'JGProgressHUD'
 pod 'Kingfisher', '~> 4.0'
 pod "ImageSlideshow/Kingfisher"
 
+pod 'Firebase/Core'
+pod 'Firebase/Performance'
+
+pod 'Fabric', '~> 1.9.0'
+pod 'Crashlytics', '~> 3.12.0'
+
 end

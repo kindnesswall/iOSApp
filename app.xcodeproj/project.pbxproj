@@ -107,6 +107,7 @@
 		528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A2DC821ADAA2100DECE0F /* LanguageViewController.swift */; };
 		528A2DCB21ADAA2100DECE0F /* LanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */; };
 		52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768521C5109B00C2E012 /* InfoPlist.strings */; };
+		52DD768821C6428300C2E012 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768721C6428300C2E012 /* GoogleService-Info.plist */; };
 		6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */; };
 		6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB972130922C002FD769 /* StatisticViewController.swift */; };
 		6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB982130922C002FD769 /* StatisticViewController.xib */; };
@@ -297,6 +298,7 @@
 		528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageViewController.xib; sourceTree = "<group>"; };
 		52DD768421C5109B00C2E012 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		52DD768621C5109D00C2E012 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		52DD768721C6428300C2E012 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		6009DB972130922C002FD769 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		6009DB982130922C002FD769 /* StatisticViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticViewController.xib; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 		0507C8611F8C1A920084CDF1 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				52DD768721C6428300C2E012 /* GoogleService-Info.plist */,
 				05029ED41FE9A663004D96B1 /* custom_classes */,
 				05BFBBCD1FDB112800DBCDDF /* extensions */,
 				05BFBBC41FDAA49E00DBCDDF /* app */,
@@ -894,6 +897,8 @@
 				0507C85D1F8C1A920084CDF1 /* Resources */,
 				4F2C17FB1F8C5E4205EA5192 /* [CP] Embed Pods Frameworks */,
 				526545F821BE9E7300C98821 /* Embed Frameworks */,
+				BF6AFD1FD54EDF5D7933157E /* [CP] Copy Pods Resources */,
+				52DD768C21C64D3000C2E012 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1010,6 +1015,7 @@
 				05B124CC202DB056007E28CC /* latest.json in Resources */,
 				528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */,
 				5245920F21AAD6BB0009824C /* HomeViewController.xib in Resources */,
+				52DD768821C6428300C2E012 /* GoogleService-Info.plist in Resources */,
 				528A2D8D21ABE04300DECE0F /* MyKindnessWallViewController.xib in Resources */,
 				5245921821AAD7420009824C /* GiftDetailViewController.xib in Resources */,
 			);
@@ -1051,32 +1057,76 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-app/Pods-app-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 				"${BUILT_PRODUCTS_DIR}/XLActionController/XLActionController.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLActionController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-app/Pods-app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52DD768C21C64D3000C2E012 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
+		};
+		BF6AFD1FD54EDF5D7933157E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-app/Pods-app-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
