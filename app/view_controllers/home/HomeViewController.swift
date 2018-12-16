@@ -312,7 +312,6 @@ class HomeViewController: UIViewController {
             self.cityBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allCities)
         }
     }
-    
 }
 
 extension HomeViewController:UITableViewDataSource{
@@ -333,6 +332,10 @@ extension HomeViewController:UITableViewDataSource{
             let cell=tableView.dequeueReusableCell(
                 withIdentifier: GiftAdCell.identifier) as! GiftAdCell
         
+            cell.setOnClickBtn {
+                AppDelegate.me().shareApp()
+            }
+            
             cell.showAd()//index: index, vc: self)
 
             return cell

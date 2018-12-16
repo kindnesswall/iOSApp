@@ -13,8 +13,9 @@ class GiftAdCell: UITableViewCell {
     
     
     @IBOutlet weak var sponsorLbl: UILabel!
+    var btnClickedClouser:(()->())?
     @IBAction func btnClicked(_ sender: Any) {
-        
+        self.btnClickedClouser?()
     }
     
     @IBOutlet weak var btn: UIButton!
@@ -30,7 +31,12 @@ class GiftAdCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setOnClickBtn(_ clouser:@escaping ()->()) {
+        self.btnClickedClouser = clouser
+    }
+    
     func showAd() {
+        
         Tapsell.requestNativeBannerAd(
             forZone: TapSellConstants.ZoneID.NativeBanner,
             andContainerView: nativeBanner,

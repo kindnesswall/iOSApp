@@ -20,6 +20,10 @@ class MyKindnessWallViewController: UIViewController {
     @IBOutlet var loginLogoutBtn: UIButton!
     let keychain = KeychainSwift()
     
+    @IBAction func shareApp(_ sender: Any) {
+        AppDelegate.me().shareApp()
+    }
+    
     @IBAction func SwitchLanguageBtnClicked(_ sender: Any) {
         
         
