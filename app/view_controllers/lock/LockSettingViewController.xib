@@ -17,6 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LockSettingViewController" customModule="app" customModuleProvider="target">
             <connections>
+                <outlet property="changePasscodeBtn" destination="G8q-DK-0Wh" id="1D3-aF-WWZ"/>
                 <outlet property="turnPasscodeOnOffBtn" destination="REX-nk-v88" id="t7c-PI-THp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,18 +27,30 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MqM-LQ-Xpk">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MqM-LQ-Xpk">
                     <rect key="frame" x="16" y="52" width="343" height="34"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REX-nk-v88">
                             <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
-                            <state key="normal" title="Turn Passcode On">
+                            <state key="normal">
                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="turnPassOnOffBtnClicked:" destination="-1" eventType="touchUpInside" id="lhW-g6-55n"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8q-DK-0Wh">
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="0.0"/>
+                            <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                            <state key="normal" title="Change Passcode">
+                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="changePasscodeBtnClicked:" destination="-1" eventType="touchUpInside" id="Up2-Pj-cNy"/>
+                                <action selector="turnPassOnOffBtnClicked:" destination="-1" eventType="touchUpInside" id="mbO-pf-Krb"/>
                             </connections>
                         </button>
                     </subviews>

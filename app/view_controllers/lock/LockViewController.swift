@@ -49,6 +49,46 @@ class LockViewController: UIViewController {
             circles[i].mainColor = .black
         }
     }
+    
+    func afterLastPasscodeKeyPressed() {
+        switch mode {
+        case .SetPassCode:
+            if isReEnterPasscode {
+                for i in 0...((circles.count ?? 1) - 1) {
+                    if passcode[i] != reEnterPasscode[i]{
+                        passwordCounter = -1
+                        clearCircles()
+                        
+                        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                        
+                        mainTitleLbl.text = "Enter a passcode"
+                        isReEnterPasscode = false
+                        
+                        passcode.removeAll()
+                        reEnterPasscode.removeAll()
+                        return
+                    }
+                }
+                savePasscode()
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                passwordCounter = -1
+                clearCircles()
+                
+                mainTitleLbl.text = "Re-enter your new passcode"
+                isReEnterPasscode = true
+            }
+        case .CheckPassCode:
+            if isPasscodeCorrect(){
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                passwordCounter = -1
+                clearCircles()
+            }
+        }
+    }
+    
     @IBAction func numbersClicked(_ sender: Any) {
         print("Number \((sender as AnyObject).tag) clicked.")
         
@@ -68,43 +108,9 @@ class LockViewController: UIViewController {
             }
         }
         if passwordCounter >= circles.count-1 {
-            switch mode {
-            case .SetPassCode:
-                if isReEnterPasscode {
-                    for i in 0...((circles.count ?? 1) - 1) {
-                        if passcode[i] != reEnterPasscode[i]{
-                            passwordCounter = -1
-                            clearCircles()
-                            
-                            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-                            
-                            mainTitleLbl.text = "Enter a passcode"
-                            isReEnterPasscode = false
-                            
-                            passcode.removeAll()
-                            reEnterPasscode.removeAll()
-                            return
-                        }
-                    }
-                    savePasscode()
-                    self.dismiss(animated: true, completion: nil)
-                }else{
-                    passwordCounter = -1
-                    clearCircles()
-                    
-                    mainTitleLbl.text = "Re-enter your new passcode"
-                    isReEnterPasscode = true
-                }
-            case .CheckPassCode:
-                if isPasscodeCorrect(){
-                    self.dismiss(animated: true, completion: nil)
-                }else{
-                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-                    passwordCounter = -1
-                    clearCircles()
-                }
-            }
-            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in 
+               self?.afterLastPasscodeKeyPressed()
+            })
         }
     }
     

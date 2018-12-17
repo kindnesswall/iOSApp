@@ -27,6 +27,8 @@ struct LanguageKeys {
     
     static let ok : String = "ok"
     
+    static let turnPasscodeOff : String = "TurnPasscodeOff"
+    
     static let edit : String = "edit"
     static let back : String = "back"
     static let cancel : String = "cancel"
