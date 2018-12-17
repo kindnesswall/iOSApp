@@ -108,6 +108,10 @@
 		528A2DCB21ADAA2100DECE0F /* LanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */; };
 		52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768521C5109B00C2E012 /* InfoPlist.strings */; };
 		52DD768821C6428300C2E012 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768721C6428300C2E012 /* GoogleService-Info.plist */; };
+		52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD768F21C68ECE00C2E012 /* RoundButton.swift */; };
+		52DD769621C6BFC100C2E012 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769421C6BFC100C2E012 /* LockViewController.swift */; };
+		52DD769721C6BFC100C2E012 /* LockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52DD769521C6BFC100C2E012 /* LockViewController.xib */; };
+		52DD769921C6E19600C2E012 /* CircleDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769821C6E19600C2E012 /* CircleDotView.swift */; };
 		6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */; };
 		6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB972130922C002FD769 /* StatisticViewController.swift */; };
 		6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB982130922C002FD769 /* StatisticViewController.xib */; };
@@ -299,6 +303,10 @@
 		52DD768421C5109B00C2E012 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		52DD768621C5109D00C2E012 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		52DD768721C6428300C2E012 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		52DD768F21C68ECE00C2E012 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		52DD769421C6BFC100C2E012 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
+		52DD769521C6BFC100C2E012 /* LockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LockViewController.xib; sourceTree = "<group>"; };
+		52DD769821C6E19600C2E012 /* CircleDotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDotView.swift; sourceTree = "<group>"; };
 		6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		6009DB972130922C002FD769 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		6009DB982130922C002FD769 /* StatisticViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticViewController.xib; sourceTree = "<group>"; };
@@ -439,6 +447,7 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
+				52DD769321C6BFA200C2E012 /* lock */,
 				5263D5FF21B9272300B634A8 /* options list */,
 				528A2DC721ADA9EE00DECE0F /* language */,
 				60302DE4206953670025D397 /* pop_up */,
@@ -467,6 +476,8 @@
 				05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */,
 				05335D481FD0DDA200601115 /* SDWebImageSource.swift */,
 				6080700C21B436590046F940 /* URLBrowser.swift */,
+				52DD769821C6E19600C2E012 /* CircleDotView.swift */,
+				52DD768F21C68ECE00C2E012 /* RoundButton.swift */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -813,6 +824,15 @@
 			path = language;
 			sourceTree = "<group>";
 		};
+		52DD769321C6BFA200C2E012 /* lock */ = {
+			isa = PBXGroup;
+			children = (
+				52DD769421C6BFC100C2E012 /* LockViewController.swift */,
+				52DD769521C6BFC100C2E012 /* LockViewController.xib */,
+			);
+			path = lock;
+			sourceTree = "<group>";
+		};
 		60302DE4206953670025D397 /* pop_up */ = {
 			isa = PBXGroup;
 			children = (
@@ -977,6 +997,7 @@
 				601F83CF2036A50600F9118B /* GenericOptionsTableViewCell.xib in Resources */,
 				05644DCE1FFF06BD00B7C853 /* SectionView.xib in Resources */,
 				0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */,
+				52DD769721C6BFC100C2E012 /* LockViewController.xib in Resources */,
 				528A2DBD21AD3EBF00DECE0F /* GiftTableViewCell.xib in Resources */,
 				05644DBD1FFEF3A500B7C853 /* ChatConversationTableViewCell.xib in Resources */,
 				528A2DB421AD3E6400DECE0F /* RequestsTableViewCell.xib in Resources */,
@@ -1146,6 +1167,7 @@
 				05BEA447204C21E800147BF5 /* PopUpView.swift in Sources */,
 				05644DBA1FFEF3A500B7C853 /* ChatConversationTableViewCell.swift in Sources */,
 				05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */,
+				52DD769921C6E19600C2E012 /* CircleDotView.swift in Sources */,
 				6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */,
 				5263D60121B93F0000B634A8 /* ProgressBarView.swift in Sources */,
 				60FAB83C2064320E0039BF61 /* Request Inputs.swift in Sources */,
@@ -1214,9 +1236,11 @@
 				60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */,
 				602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */,
 				05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */,
+				52DD769621C6BFC100C2E012 /* LockViewController.swift in Sources */,
 				60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */,
 				05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */,
 				60FAB8402064EE950039BF61 /* RGVC + uploading images.swift in Sources */,
+				52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */,
 				528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */,
 				601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */,

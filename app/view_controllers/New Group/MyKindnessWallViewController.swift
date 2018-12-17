@@ -24,6 +24,14 @@ class MyKindnessWallViewController: UIViewController {
         AppDelegate.me().shareApp()
     }
     
+    @IBAction func lockBtnClicked(_ sender: Any) {
+        
+        let controller = LockViewController()
+        self.tabBarController?.present(controller, animated: true, completion: nil)
+        
+    }
+    
+    
     @IBAction func SwitchLanguageBtnClicked(_ sender: Any) {
         
         

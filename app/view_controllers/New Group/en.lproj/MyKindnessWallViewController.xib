@@ -32,7 +32,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zJL-MM-Knh">
-                    <rect key="frame" x="16" y="36" width="343" height="344"/>
+                    <rect key="frame" x="16" y="36" width="343" height="386"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7P-9g-ZhZ">
                             <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -118,16 +118,29 @@
                                 <action selector="logoutBtnClicked:" destination="-1" eventType="touchUpInside" id="NGe-YS-dls"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIW-xi-jGN">
+                            <rect key="frame" x="0.0" y="352" width="343" height="34"/>
+                            <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                            <state key="normal" title="Lock">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="lockBtnClicked:" destination="-1" eventType="touchUpInside" id="bAP-h0-Wi2"/>
+                                <action selector="logoutBtnClicked:" destination="-1" eventType="touchUpInside" id="Jog-Yy-FFE"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zJL-MM-Knh" secondAttribute="trailing" constant="16" id="3Hq-lK-eUr"/>
                 <constraint firstItem="zJL-MM-Knh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="fSe-qA-T30"/>
                 <constraint firstItem="zJL-MM-Knh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="rZW-su-cht"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
     </objects>
 </document>
