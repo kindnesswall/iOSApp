@@ -88,6 +88,7 @@ class LockViewController: UIViewController {
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 passwordCounter = -1
                 clearCircles()
+                passcode.removeAll()
             }
         }
     }
