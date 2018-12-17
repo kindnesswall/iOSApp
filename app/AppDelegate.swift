@@ -69,6 +69,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.tabBarController?.present(activityViewController, animated: true, completion: nil)
     }
     
+    func showLockVC() {
+        let controller = LockViewController()
+        controller.mode = .CheckPassCode
+        controller.isCancelable = false
+        self.tabBarController?.present(controller, animated: true, completion: nil)
+    }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
@@ -115,6 +121,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("\n\napplicationDidBecomeActive\n\n")
 
+        if isPasscodeSaved() {
+            showLockVC()
+        }
+        
         guard let item = launchedShortcutItem else { return }
         print("there is one item")
         _ = handleShortCut(item)

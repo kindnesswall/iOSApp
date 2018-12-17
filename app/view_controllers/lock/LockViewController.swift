@@ -17,6 +17,7 @@ class LockViewController: UIViewController {
         case SetPassCode
         case CheckPassCode
     }
+    @IBOutlet weak var cancelBtn: UIButton!
     
     @IBOutlet weak var mainTitleLbl: UILabel!
     
@@ -29,7 +30,7 @@ class LockViewController: UIViewController {
     var onPasscodeCorrect:(()->())?
     
     let keychain = KeychainSwift()
-
+    var isCancelable:Bool = true
     var passwordCounter:Int = -1 {
         didSet{
             if passwordCounter >= 4 {
@@ -51,7 +52,7 @@ class LockViewController: UIViewController {
     }
     
     func clearCircles() {
-        for i in 0...((circles.count ?? 1) - 1) {
+        for i in 0...(circles.count - 1) {
             circles[i].mainColor = .black
         }
     }
@@ -60,7 +61,7 @@ class LockViewController: UIViewController {
         switch mode {
         case .SetPassCode:
             if isReEnterPasscode {
-                for i in 0...((circles.count ?? 1) - 1) {
+                for i in 0...(circles.count - 1) {
                     if passcode[i] != reEnterPasscode[i]{
                         passwordCounter = -1
                         clearCircles()
@@ -185,6 +186,8 @@ class LockViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        if !isCancelable {
+            cancelBtn.hide()
+        }
     }
 }
