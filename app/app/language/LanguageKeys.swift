@@ -65,6 +65,8 @@ struct LanguageKeys {
     static let login : String = "login"
     static let logout : String = "logout"
     static let myWall : String = "myWall"
+    static let PasscodeLock : String = "PasscodeLock"
+    
     static let contactUs : String = "contactUs"
     static let bugReport : String = "bugReport"
     static let aboutKindnessWall : String = "aboutKindnessWall"

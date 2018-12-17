@@ -46,6 +46,10 @@ class LockViewController: UIViewController {
     var passcode:[Int] = [Int]()
     var reEnterPasscode:[Int] = [Int]()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func clearCircles() {
         for i in 0...((circles.count ?? 1) - 1) {
             circles[i].mainColor = .black

@@ -29,6 +29,9 @@ class LockSettingViewController: UIViewController {
             turnPasscodeOnOffBtn.setTitle("Turn Passcode On", for: UIControl.State.normal)
             changePasscodeBtn.hide()
         }
+        
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.PasscodeLock)
+
     }
     
     func setPasscode() {

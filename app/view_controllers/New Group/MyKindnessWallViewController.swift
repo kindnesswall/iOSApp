@@ -117,8 +117,15 @@ class MyKindnessWallViewController: UIViewController {
                 LocalizationSystem.getStr(forKey: LanguageKeys.logout) +
                     AppLanguage.getNumberString(number: (self.keychain.get(AppConstants.PHONE_NUMBER) ?? "")), for: .normal)
         } else {
-            passcodeTouchIDBtn.hide()
             loginLogoutBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.login), for: .normal)
+        }
+    }
+    
+    func setPasscodeBtnVisiblity()  {
+        if let _=keychain.get(AppConstants.Authorization) {
+            passcodeTouchIDBtn.show()
+        }else{
+            passcodeTouchIDBtn.hide()
         }
     }
     
@@ -144,5 +151,7 @@ class MyKindnessWallViewController: UIViewController {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
         
         setAllTextsInView()
+        
+        setPasscodeBtnVisiblity()
     }
 }
