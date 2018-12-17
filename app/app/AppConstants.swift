@@ -32,7 +32,8 @@ class AppConstants {
     static let ContentType:String = "content-type"
 
     public static let LastTimeISawAd:String = "LastTimeISawAd"
-
+    
+    public static let PassCode:String = "PassCode"
 }
 
 class APIMethodDictionaryKey {

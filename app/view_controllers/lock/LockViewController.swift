@@ -8,9 +8,16 @@
 
 import UIKit
 import AudioToolbox
+import CryptoSwift
+import KeychainSwift
 
 class LockViewController: UIViewController {
 
+    enum Mode {
+        case SetPassCode
+        case CheckPassCode
+    }
+    
     @IBOutlet weak var mainTitleLbl: UILabel!
     
     @IBOutlet var circles: [CircledDotView]!
@@ -19,6 +26,8 @@ class LockViewController: UIViewController {
     
     @IBOutlet weak var fingerPrintBtn: UIButton!
     
+    let keychain = KeychainSwift()
+
     var passwordCounter:Int = -1 {
         didSet{
             if passwordCounter >= 4 {
@@ -26,10 +35,9 @@ class LockViewController: UIViewController {
             }
         }
     }
-    enum Mode {
-        case SetPassCode
-        case CheckPassCode
-    }
+    
+    let Salt = "x4vV8bGgqqmQwgCoyXFQj+(o.nUNQhVP7ND"
+
     var mode:Mode = .SetPassCode
     
     var isReEnterPasscode:Bool = false
@@ -78,6 +86,7 @@ class LockViewController: UIViewController {
                             return
                         }
                     }
+                    savePasscode()
                     self.dismiss(animated: true, completion: nil)
                 }else{
                     passwordCounter = -1
@@ -87,10 +96,45 @@ class LockViewController: UIViewController {
                     isReEnterPasscode = true
                 }
             case .CheckPassCode:
-                var i = 2
+                if isPasscodeCorrect(){
+                    self.dismiss(animated: true, completion: nil)
+                }else{
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    passwordCounter = -1
+                    clearCircles()
+                }
             }
             
         }
+    }
+    
+    func savePasscode() {
+        self.keychain.set(hashPasscode(), forKey: AppConstants.PassCode)
+    }
+    
+    func hashPasscode()-> String {
+        var pass:String = ""
+        for i in 0...passcode.count-1 {
+            pass = pass + "\(passcode[i])"
+        }
+        return "\(pass).\(Salt)".sha256()
+    }
+    
+    func isPasscodeCorrect() -> Bool {
+        guard passcode.count == circles.count else { return false }
+        
+        var pass:String = ""
+        for i in 0...passcode.count-1 {
+            pass = pass + "\(passcode[i])"
+        }
+        
+        let passCodeHash:String = "\(pass).\(Salt)".sha256()
+        let lastSavedPasscodeHash:String = self.keychain.get(AppConstants.PassCode) ?? ""
+        if passCodeHash == lastSavedPasscodeHash {
+            return true
+        }
+        
+        return false
     }
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
@@ -98,7 +142,23 @@ class LockViewController: UIViewController {
     }
     
     @IBAction func deleteBtnClicked(_ sender: Any) {
-        
+        if passwordCounter >= 0 {
+            
+            switch mode{
+            case .CheckPassCode:
+                passcode.remove(at: passwordCounter)
+                
+            case .SetPassCode:
+                if isReEnterPasscode {
+                    reEnterPasscode.remove(at: passwordCounter)
+                }else{
+                    passcode.remove(at: passwordCounter)
+                }
+            }
+            
+            circles[passwordCounter].mainColor = .black
+            passwordCounter -= 1
+        }
     }
     
     override func viewDidLoad() {

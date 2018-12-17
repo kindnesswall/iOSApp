@@ -112,6 +112,8 @@
 		52DD769621C6BFC100C2E012 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769421C6BFC100C2E012 /* LockViewController.swift */; };
 		52DD769721C6BFC100C2E012 /* LockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52DD769521C6BFC100C2E012 /* LockViewController.xib */; };
 		52DD769921C6E19600C2E012 /* CircleDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769821C6E19600C2E012 /* CircleDotView.swift */; };
+		52DD769C21C7D26700C2E012 /* LockSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769A21C7D26600C2E012 /* LockSettingViewController.swift */; };
+		52DD769D21C7D26700C2E012 /* LockSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52DD769B21C7D26600C2E012 /* LockSettingViewController.xib */; };
 		6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */; };
 		6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB972130922C002FD769 /* StatisticViewController.swift */; };
 		6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB982130922C002FD769 /* StatisticViewController.xib */; };
@@ -307,6 +309,8 @@
 		52DD769421C6BFC100C2E012 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
 		52DD769521C6BFC100C2E012 /* LockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LockViewController.xib; sourceTree = "<group>"; };
 		52DD769821C6E19600C2E012 /* CircleDotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDotView.swift; sourceTree = "<group>"; };
+		52DD769A21C7D26600C2E012 /* LockSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingViewController.swift; sourceTree = "<group>"; };
+		52DD769B21C7D26600C2E012 /* LockSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LockSettingViewController.xib; sourceTree = "<group>"; };
 		6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		6009DB972130922C002FD769 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		6009DB982130922C002FD769 /* StatisticViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticViewController.xib; sourceTree = "<group>"; };
@@ -829,6 +833,8 @@
 			children = (
 				52DD769421C6BFC100C2E012 /* LockViewController.swift */,
 				52DD769521C6BFC100C2E012 /* LockViewController.xib */,
+				52DD769A21C7D26600C2E012 /* LockSettingViewController.swift */,
+				52DD769B21C7D26600C2E012 /* LockSettingViewController.xib */,
 			);
 			path = lock;
 			sourceTree = "<group>";
@@ -1018,6 +1024,7 @@
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
 				05F6AA531FFEEB8D00CDABC2 /* ChatConversationViewController.xib in Resources */,
+				52DD769D21C7D26700C2E012 /* LockSettingViewController.xib in Resources */,
 				6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */,
 				52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */,
 				5245922521AB47EA0009824C /* Localizable.strings in Resources */,
@@ -1078,6 +1085,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-app/Pods-app-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -1096,6 +1104,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -1195,6 +1204,7 @@
 				05644DC41FFEF62300B7C853 /* ChatAbs.swift in Sources */,
 				60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */,
 				60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */,
+				52DD769C21C7D26700C2E012 /* LockSettingViewController.swift in Sources */,
 				526545FA21BF082E00C98821 /* TapSellConstants.swift in Sources */,
 				601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,

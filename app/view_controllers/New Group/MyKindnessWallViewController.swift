@@ -20,20 +20,18 @@ class MyKindnessWallViewController: UIViewController {
     @IBOutlet var loginLogoutBtn: UIButton!
     let keychain = KeychainSwift()
     
+    @IBOutlet weak var passcodeTouchIDBtn: UIButton!
+    
     @IBAction func shareApp(_ sender: Any) {
         AppDelegate.me().shareApp()
     }
     
-    @IBAction func lockBtnClicked(_ sender: Any) {
-        
-        let controller = LockViewController()
-        self.tabBarController?.present(controller, animated: true, completion: nil)
-        
+    @IBAction func passcodeTouchIDBtnClicked(_ sender: Any) {
+        let controller = LockSettingViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    
     @IBAction func SwitchLanguageBtnClicked(_ sender: Any) {
-        
         
         let controller = LanguageViewController()
         controller.languageViewModel.tabBarIsInitialized = true
@@ -112,6 +110,7 @@ class MyKindnessWallViewController: UIViewController {
                 LocalizationSystem.getStr(forKey: LanguageKeys.logout) +
                     AppLanguage.getNumberString(number: (self.keychain.get(AppConstants.PHONE_NUMBER) ?? "")), for: .normal)
         } else {
+            passcodeTouchIDBtn.hide()
             loginLogoutBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.login), for: .normal)
         }
     }

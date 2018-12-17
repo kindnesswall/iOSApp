@@ -21,6 +21,7 @@
                 <outlet property="bugReportBtn" destination="Lzg-Yj-27L" id="F8r-hr-f0L"/>
                 <outlet property="contactUsBtn" destination="qlv-fg-nyn" id="hoq-rp-Iew"/>
                 <outlet property="loginLogoutBtn" destination="nQK-i4-MHV" id="1ay-22-6vj"/>
+                <outlet property="passcodeTouchIDBtn" destination="CIW-xi-jGN" id="cCQ-cf-XId"/>
                 <outlet property="statisticBtn" destination="Dtn-EF-Gw1" id="cNT-K6-9ZW"/>
                 <outlet property="versionNoLbl" destination="I7P-9g-ZhZ" id="Bgq-kA-wbh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -122,12 +123,11 @@
                             <rect key="frame" x="0.0" y="352" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
-                            <state key="normal" title="Lock">
+                            <state key="normal" title="Passcode &amp; Touch ID">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="lockBtnClicked:" destination="-1" eventType="touchUpInside" id="bAP-h0-Wi2"/>
-                                <action selector="logoutBtnClicked:" destination="-1" eventType="touchUpInside" id="Jog-Yy-FFE"/>
+                                <action selector="passcodeTouchIDBtnClicked:" destination="-1" eventType="touchUpInside" id="bAP-h0-Wi2"/>
                             </connections>
                         </button>
                     </subviews>
