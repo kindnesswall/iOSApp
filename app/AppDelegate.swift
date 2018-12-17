@@ -73,6 +73,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
 
+        if uDStandard.object(forKey: AppConstants.FirstInstall) == nil {
+            uDStandard.set(false, forKey: AppConstants.FirstInstall)
+            uDStandard.synchronize()
+            keychain.clear()
+        }
+        
         FirebaseApp.configure()
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
 

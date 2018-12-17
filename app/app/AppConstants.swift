@@ -34,6 +34,8 @@ class AppConstants {
     public static let LastTimeISawAd:String = "LastTimeISawAd"
     
     public static let PassCode:String = "PassCode"
+    
+    public static let FirstInstall:String = "FirstInstall"
 }
 
 class APIMethodDictionaryKey {
