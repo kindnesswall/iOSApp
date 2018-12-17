@@ -38,6 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         uDStandard.synchronize()
     }
     
+    public func isPasscodeSaved() -> Bool {
+        if let _ = keychain.get(AppConstants.PassCode) {
+            return true
+        }
+        return false
+    }
     
     static func clearAllUserDefaultValues(){
         let domain = Bundle.main.bundleIdentifier!
@@ -77,9 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
-            
             _ = handleShortCut(shortcutItem)
-            
         }
         
         return true

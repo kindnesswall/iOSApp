@@ -26,6 +26,8 @@ class LockViewController: UIViewController {
     
     @IBOutlet weak var fingerPrintBtn: UIButton!
     
+    var onPasscodeCorrect:(()->())?
+    
     let keychain = KeychainSwift()
 
     var passwordCounter:Int = -1 {
@@ -80,6 +82,7 @@ class LockViewController: UIViewController {
             }
         case .CheckPassCode:
             if isPasscodeCorrect(){
+                self.onPasscodeCorrect?()
                 self.dismiss(animated: true, completion: nil)
             }else{
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -88,9 +91,13 @@ class LockViewController: UIViewController {
             }
         }
     }
-    
+    var mutex: Int = 0
     @IBAction func numbersClicked(_ sender: Any) {
         print("Number \((sender as AnyObject).tag) clicked.")
+        
+        guard self.mutex == 0 else {
+            return
+        }
         
         passwordCounter += 1
         circles[passwordCounter].mainColor = .lightGray
@@ -108,8 +115,10 @@ class LockViewController: UIViewController {
             }
         }
         if passwordCounter >= circles.count-1 {
+            self.mutex = 1
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in 
                self?.afterLastPasscodeKeyPressed()
+                self?.mutex = 0
             })
         }
     }

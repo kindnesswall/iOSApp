@@ -36,6 +36,7 @@ class GiftAdCell: UITableViewCell {
     }
     
     func showAd() {
+//        btn?.setTitle("", for: UIControl.State.normal)
         
         Tapsell.requestNativeBannerAd(
             forZone: TapSellConstants.ZoneID.NativeBanner,

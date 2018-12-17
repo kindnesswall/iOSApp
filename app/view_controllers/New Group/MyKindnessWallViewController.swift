@@ -27,16 +27,25 @@ class MyKindnessWallViewController: UIViewController {
     }
     
     @IBAction func passcodeTouchIDBtnClicked(_ sender: Any) {
-        let controller = LockSettingViewController()
-        self.navigationController?.pushViewController(controller, animated: true)
+        
+        if AppDelegate.me().isPasscodeSaved() {
+            let controller = LockViewController()
+            controller.mode = .CheckPassCode
+            controller.onPasscodeCorrect = {
+                let controller = LockSettingViewController()
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            self.tabBarController?.present(controller, animated: true, completion: nil)
+        }else{
+            let controller = LockSettingViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     @IBAction func SwitchLanguageBtnClicked(_ sender: Any) {
-        
         let controller = LanguageViewController()
         controller.languageViewModel.tabBarIsInitialized = true
         self.tabBarController?.present(controller, animated: true, completion: nil)
-
     }
     
     @IBAction func logoutBtnClicked(_ sender: Any) {
@@ -71,26 +80,24 @@ class MyKindnessWallViewController: UIViewController {
     }
     
     @IBAction func contactUsBtnClicked(_ sender: Any) {
-        
         let controller = ContactUsViewController()
         self.navigationController?.pushViewController(controller, animated: true)
-        
     }
+    
     @IBAction func statisticBtnAction(_ sender: Any) {
         let controller = StatisticViewController()
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
     @IBAction func aboutKindnessWallBtnAction(_ sender: Any) {
-        
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as! IntroViewController
         self.present(viewController, animated: true, completion: nil)
-        
     }
+    
     @IBAction func bugReportBtnAction(_ sender: Any) {
         let urlAddress = APIURLs.telegramLink
         URLBrowser(urlAddress: urlAddress).openURL()
-        
     }
     
     func setAllTextsInView(){
