@@ -49,7 +49,8 @@ class LockSettingViewController: UIViewController {
                 
                 self?.keychain.delete(AppConstants.PassCode)
                 self?.turnPasscodeOnOffBtn.setTitle("Turn Passcode On", for: UIControl.State.normal)
-                
+                self?.changePasscodeBtn.hide()
+
             }))
             
             alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.cancel), style: UIAlertAction.Style.cancel, handler: { (action) in
