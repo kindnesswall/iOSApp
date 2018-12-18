@@ -55,9 +55,14 @@ class LockViewController: UIViewController {
     }
     
     @IBAction func bioAuthBtnClicked(_ sender: Any) {
-        touchMe.authenticateUser() { [weak self] in
-            self?.onPasscodeCorrect?()
-            self?.dismiss(animated: true, completion: nil)
+        touchMe.authenticateUser() { [weak self] (msg) in
+            
+            if let _ = msg {
+                
+            }else{
+                self?.onPasscodeCorrect?()
+                self?.dismiss(animated: true, completion: nil)
+            }
         }
     }
     
