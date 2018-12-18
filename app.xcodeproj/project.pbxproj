@@ -97,6 +97,8 @@
 		526545FA21BF082E00C98821 /* TapSellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526545F921BF082E00C98821 /* TapSellConstants.swift */; };
 		526545FC21BF2CD200C98821 /* Array+chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526545FB21BF2CD200C98821 /* Array+chunked.swift */; };
 		5283174721C906930044B9AD /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283174621C906930044B9AD /* TouchIDAuthentication.swift */; };
+		5283174821C91B400044B9AD /* LockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5283174A21C91B400044B9AD /* LockViewController.xib */; };
+		5283174D21C91B7F0044B9AD /* LockSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5283174F21C91B7F0044B9AD /* LockSettingViewController.xib */; };
 		528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */; };
 		528A2D8D21ABE04300DECE0F /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D8F21ABE04300DECE0F /* MyKindnessWallViewController.xib */; };
 		528A2D9621AC405D00DECE0F /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D9821AC405D00DECE0F /* MyGiftsViewController.xib */; };
@@ -111,10 +113,8 @@
 		52DD768821C6428300C2E012 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768721C6428300C2E012 /* GoogleService-Info.plist */; };
 		52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD768F21C68ECE00C2E012 /* RoundButton.swift */; };
 		52DD769621C6BFC100C2E012 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769421C6BFC100C2E012 /* LockViewController.swift */; };
-		52DD769721C6BFC100C2E012 /* LockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52DD769521C6BFC100C2E012 /* LockViewController.xib */; };
 		52DD769921C6E19600C2E012 /* CircleDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769821C6E19600C2E012 /* CircleDotView.swift */; };
 		52DD769C21C7D26700C2E012 /* LockSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769A21C7D26600C2E012 /* LockSettingViewController.swift */; };
-		52DD769D21C7D26700C2E012 /* LockSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52DD769B21C7D26600C2E012 /* LockSettingViewController.xib */; };
 		6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */; };
 		6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB972130922C002FD769 /* StatisticViewController.swift */; };
 		6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB982130922C002FD769 /* StatisticViewController.xib */; };
@@ -285,6 +285,10 @@
 		526545F921BF082E00C98821 /* TapSellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSellConstants.swift; sourceTree = "<group>"; };
 		526545FB21BF2CD200C98821 /* Array+chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+chunked.swift"; sourceTree = "<group>"; };
 		5283174621C906930044B9AD /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
+		5283174921C91B400044B9AD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LockViewController.xib; sourceTree = "<group>"; };
+		5283174C21C91B430044B9AD /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/LockViewController.strings; sourceTree = "<group>"; };
+		5283174E21C91B7F0044B9AD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LockSettingViewController.xib; sourceTree = "<group>"; };
+		5283175121C91B810044B9AD /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/LockSettingViewController.strings; sourceTree = "<group>"; };
 		528A2D8221ABD73C00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8321ABD83600DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8421ABDC0400DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
@@ -309,10 +313,8 @@
 		52DD768721C6428300C2E012 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52DD768F21C68ECE00C2E012 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		52DD769421C6BFC100C2E012 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
-		52DD769521C6BFC100C2E012 /* LockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LockViewController.xib; sourceTree = "<group>"; };
 		52DD769821C6E19600C2E012 /* CircleDotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDotView.swift; sourceTree = "<group>"; };
 		52DD769A21C7D26600C2E012 /* LockSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingViewController.swift; sourceTree = "<group>"; };
-		52DD769B21C7D26600C2E012 /* LockSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LockSettingViewController.xib; sourceTree = "<group>"; };
 		6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		6009DB972130922C002FD769 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		6009DB982130922C002FD769 /* StatisticViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticViewController.xib; sourceTree = "<group>"; };
@@ -835,9 +837,9 @@
 			isa = PBXGroup;
 			children = (
 				52DD769421C6BFC100C2E012 /* LockViewController.swift */,
-				52DD769521C6BFC100C2E012 /* LockViewController.xib */,
+				5283174A21C91B400044B9AD /* LockViewController.xib */,
 				52DD769A21C7D26600C2E012 /* LockSettingViewController.swift */,
-				52DD769B21C7D26600C2E012 /* LockSettingViewController.xib */,
+				5283174F21C91B7F0044B9AD /* LockSettingViewController.xib */,
 			);
 			path = lock;
 			sourceTree = "<group>";
@@ -1006,7 +1008,7 @@
 				601F83CF2036A50600F9118B /* GenericOptionsTableViewCell.xib in Resources */,
 				05644DCE1FFF06BD00B7C853 /* SectionView.xib in Resources */,
 				0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */,
-				52DD769721C6BFC100C2E012 /* LockViewController.xib in Resources */,
+				5283174821C91B400044B9AD /* LockViewController.xib in Resources */,
 				528A2DBD21AD3EBF00DECE0F /* GiftTableViewCell.xib in Resources */,
 				05644DBD1FFEF3A500B7C853 /* ChatConversationTableViewCell.xib in Resources */,
 				528A2DB421AD3E6400DECE0F /* RequestsTableViewCell.xib in Resources */,
@@ -1027,7 +1029,7 @@
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
 				05F6AA531FFEEB8D00CDABC2 /* ChatConversationViewController.xib in Resources */,
-				52DD769D21C7D26700C2E012 /* LockSettingViewController.xib in Resources */,
+				5283174D21C91B7F0044B9AD /* LockSettingViewController.xib in Resources */,
 				6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */,
 				52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */,
 				5245922521AB47EA0009824C /* Localizable.strings in Resources */,
@@ -1336,6 +1338,24 @@
 				5245922821AB4BC30009824C /* fa */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		5283174A21C91B400044B9AD /* LockViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5283174921C91B400044B9AD /* en */,
+				5283174C21C91B430044B9AD /* fa */,
+			);
+			name = LockViewController.xib;
+			sourceTree = "<group>";
+		};
+		5283174F21C91B7F0044B9AD /* LockSettingViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5283174E21C91B7F0044B9AD /* en */,
+				5283175121C91B810044B9AD /* fa */,
+			);
+			name = LockSettingViewController.xib;
 			sourceTree = "<group>";
 		};
 		528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */ = {
