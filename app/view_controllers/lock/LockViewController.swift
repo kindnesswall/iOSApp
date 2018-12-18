@@ -17,6 +17,7 @@ class LockViewController: UIViewController {
         case SetPassCode
         case CheckPassCode
     }
+    
     @IBOutlet weak var cancelBtn: UIButton!
     
     @IBOutlet weak var mainTitleLbl: UILabel!
@@ -28,6 +29,8 @@ class LockViewController: UIViewController {
     @IBOutlet weak var fingerPrintBtn: UIButton!
     
     var onPasscodeCorrect:(()->())?
+    
+    let touchMe = BiometricIDAuth()
     
     let keychain = KeychainSwift()
     var isCancelable:Bool = true
@@ -49,6 +52,13 @@ class LockViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    @IBAction func bioAuthBtnClicked(_ sender: Any) {
+        touchMe.authenticateUser() { [weak self] in
+            self?.onPasscodeCorrect?()
+            self?.dismiss(animated: true, completion: nil)
+        }
     }
     
     func clearCircles() {
@@ -189,5 +199,17 @@ class LockViewController: UIViewController {
         if !isCancelable {
             cancelBtn.hide()
         }
+        
+        switch touchMe.biometricType() {
+        case .faceID:
+            fingerPrintBtn.setImage(UIImage(named: "faceIcon"),  for: .normal)
+            fingerPrintBtn.setImage(UIImage(named: "faceIcon_dark"),  for: .highlighted)
+        default:
+            fingerPrintBtn.setImage(UIImage(named: "touch_icon"),  for: .normal)
+            fingerPrintBtn.setImage(UIImage(named: "touch_icon_dark"),  for: .highlighted)
+        }
+        
+        fingerPrintBtn.isHidden = !touchMe.canEvaluatePolicy()
+
     }
 }

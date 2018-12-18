@@ -655,7 +655,7 @@
                         </button>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JjF-n3-Xrt" userLabel="finger print">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JjF-n3-Xrt" userLabel="finger print">
                     <rect key="frame" x="52.5" y="422.5" width="70" height="70"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="5ao-Qf-MpG"/>
@@ -663,6 +663,9 @@
                     </constraints>
                     <state key="normal" image="touch_icon"/>
                     <state key="highlighted" image="touch_icon_dark"/>
+                    <connections>
+                        <action selector="bioAuthBtnClicked:" destination="-1" eventType="touchUpInside" id="nfb-LZ-ow2"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qh-3A-7UC">
                     <rect key="frame" x="277.5" y="601" width="45" height="30"/>

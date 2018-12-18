@@ -55,12 +55,21 @@
                         </button>
                     </subviews>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: if you forget the passcode, you'll need to delete and reinstall the app." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytT-vZ-BNt">
+                    <rect key="frame" x="16" y="102" width="343" height="43"/>
+                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="ytT-vZ-BNt" firstAttribute="leading" secondItem="MqM-LQ-Xpk" secondAttribute="leading" id="3JA-Wu-iBj"/>
                 <constraint firstItem="MqM-LQ-Xpk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="JpI-1j-6Gn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MqM-LQ-Xpk" secondAttribute="trailing" constant="16" id="KhM-GC-9cu"/>
                 <constraint firstItem="MqM-LQ-Xpk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="NKq-yS-1MO"/>
+                <constraint firstItem="ytT-vZ-BNt" firstAttribute="top" secondItem="MqM-LQ-Xpk" secondAttribute="bottom" constant="16" id="eVf-Jy-EnH"/>
+                <constraint firstItem="ytT-vZ-BNt" firstAttribute="trailing" secondItem="MqM-LQ-Xpk" secondAttribute="trailing" id="vqv-PP-19O"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
