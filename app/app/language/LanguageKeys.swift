@@ -27,7 +27,8 @@ struct LanguageKeys {
     
     static let ok : String = "ok"
     
-    static let turnPasscodeOff : String = "TurnPasscodeOff"
+    static let TurnPasscodeOff : String = "TurnPasscodeOff"
+    static let TurnPasscodeOn : String = "TurnPasscodeOn"
     
     static let edit : String = "edit"
     static let back : String = "back"
@@ -67,6 +68,9 @@ struct LanguageKeys {
     static let myWall : String = "myWall"
     static let PasscodeLock : String = "PasscodeLock"
     
+    static let EnterAPasscode : String = "EnterAPasscode"
+    static let ReEnterNewPasscode : String = "ReEnterNewPasscode"
+
     static let contactUs : String = "contactUs"
     static let bugReport : String = "bugReport"
     static let aboutKindnessWall : String = "aboutKindnessWall"

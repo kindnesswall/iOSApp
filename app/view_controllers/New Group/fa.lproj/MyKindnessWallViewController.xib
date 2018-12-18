@@ -21,6 +21,7 @@
                 <outlet property="bugReportBtn" destination="Lzg-Yj-27L" id="F8r-hr-f0L"/>
                 <outlet property="contactUsBtn" destination="qlv-fg-nyn" id="hoq-rp-Iew"/>
                 <outlet property="loginLogoutBtn" destination="nQK-i4-MHV" id="1ay-22-6vj"/>
+                <outlet property="passcodeTouchIDBtn" destination="ia4-8D-7ss" id="T8L-hI-Oop"/>
                 <outlet property="statisticBtn" destination="Dtn-EF-Gw1" id="cNT-K6-9ZW"/>
                 <outlet property="versionNoLbl" destination="kzJ-ky-mkM" id="6PI-ei-sNT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -32,7 +33,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zJL-MM-Knh">
-                    <rect key="frame" x="16" y="36" width="343" height="344"/>
+                    <rect key="frame" x="16" y="36" width="343" height="386"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzJ-ky-mkM">
                             <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -116,6 +117,17 @@
                             </state>
                             <connections>
                                 <action selector="logoutBtnClicked:" destination="-1" eventType="touchUpInside" id="NGe-YS-dls"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ia4-8D-7ss">
+                            <rect key="frame" x="0.0" y="352" width="343" height="34"/>
+                            <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                            <state key="normal" title="گذرواژه و هویت سنجی بیومتریک">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="passcodeTouchIDBtnClicked:" destination="-1" eventType="touchUpInside" id="no8-lC-vlW"/>
                             </connections>
                         </button>
                     </subviews>

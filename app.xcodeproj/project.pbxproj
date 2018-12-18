@@ -286,9 +286,9 @@
 		526545FB21BF2CD200C98821 /* Array+chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+chunked.swift"; sourceTree = "<group>"; };
 		5283174621C906930044B9AD /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
 		5283174921C91B400044B9AD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LockViewController.xib; sourceTree = "<group>"; };
-		5283174C21C91B430044B9AD /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/LockViewController.strings; sourceTree = "<group>"; };
 		5283174E21C91B7F0044B9AD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LockSettingViewController.xib; sourceTree = "<group>"; };
-		5283175121C91B810044B9AD /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/LockSettingViewController.strings; sourceTree = "<group>"; };
+		5283175221C921A30044B9AD /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/LockSettingViewController.xib; sourceTree = "<group>"; };
+		5283175321C923120044B9AD /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/LockViewController.xib; sourceTree = "<group>"; };
 		528A2D8221ABD73C00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8321ABD83600DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8421ABDC0400DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
@@ -1344,7 +1344,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5283174921C91B400044B9AD /* en */,
-				5283174C21C91B430044B9AD /* fa */,
+				5283175321C923120044B9AD /* fa */,
 			);
 			name = LockViewController.xib;
 			sourceTree = "<group>";
@@ -1353,7 +1353,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5283174E21C91B7F0044B9AD /* en */,
-				5283175121C91B810044B9AD /* fa */,
+				5283175221C921A30044B9AD /* fa */,
 			);
 			name = LockSettingViewController.xib;
 			sourceTree = "<group>";

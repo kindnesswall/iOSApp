@@ -6,9 +6,13 @@
   Copyright © 2018 Hamed.Gh. All rights reserved.
 */
 
-"PasscodeLock" = "Passcode Lock";
+"ReEnterNewPasscode" = "گذرواژه جدید خود را دوباره وارد کنید";
+"EnterAPasscode" = "گذرواژه خود را وارد نمایید";
 
-"TurnPasscodeOff" = "";
+"PasscodeLock" = "قفل با گذرواژه";
+
+"TurnPasscodeOn" = "فعال کردن گذرواژه";
+"TurnPasscodeOff" = "غیرفعال کردن گذرواژه";
 
 "DonateGift" = "ثبت هدیه";
 

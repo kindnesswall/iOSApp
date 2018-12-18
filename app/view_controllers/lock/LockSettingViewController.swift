@@ -23,10 +23,10 @@ class LockSettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if AppDelegate.me().isPasscodeSaved() {
-            turnPasscodeOnOffBtn.setTitle("Turn Passcode Off", for: UIControl.State.normal)
+            turnPasscodeOnOffBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.TurnPasscodeOff), for: UIControl.State.normal)
             changePasscodeBtn.show()
         }else{
-            turnPasscodeOnOffBtn.setTitle("Turn Passcode On", for: UIControl.State.normal)
+            turnPasscodeOnOffBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.TurnPasscodeOn), for: UIControl.State.normal)
             changePasscodeBtn.hide()
         }
         
@@ -48,10 +48,10 @@ class LockSettingViewController: UIViewController {
         if AppDelegate.me().isPasscodeSaved() {
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             
-            alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.turnPasscodeOff), style: UIAlertAction.Style.destructive, handler: { [weak self] (action) in
+            alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.TurnPasscodeOff), style: UIAlertAction.Style.destructive, handler: { [weak self] (action) in
                 
                 self?.keychain.delete(AppConstants.PassCode)
-                self?.turnPasscodeOnOffBtn.setTitle("Turn Passcode On", for: UIControl.State.normal)
+                self?.turnPasscodeOnOffBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.TurnPasscodeOn), for: UIControl.State.normal)
                 self?.changePasscodeBtn.hide()
 
             }))

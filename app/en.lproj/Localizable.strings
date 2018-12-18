@@ -6,8 +6,12 @@
   Copyright © 2018 Hamed.Gh. All rights reserved.
 */
 
+"ReEnterNewPasscode" = "Re-enter your new passcode";
+"EnterAPasscode" = "Enter a passcode";
+
 "PasscodeLock" = "Passcode Lock";
 
+"TurnPasscodeOn" = "Turn Passcode On";
 "TurnPasscodeOff" = "Turn Passcode Off";
 
 "DonateGift" = "Donate a Gift";
