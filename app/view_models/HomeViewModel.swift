@@ -118,7 +118,7 @@ class HomeViewModel: NSObject {
                     }
                 }
                
-                self?.delegate?.insertToTableView(insertedIndexes: insertedIndexes)
+                self?.delegate?.insertNewItemsToTableView(insertedIndexes: insertedIndexes)
                 
             
             }
@@ -133,6 +133,6 @@ protocol HomeViewModelDelegate: class {
     func refreshControlAnimation(isLoading:Bool)
     func showTableView(show:Bool)
     func reloadTableView()
-    func insertToTableView(insertedIndexes:[IndexPath])
+    func insertNewItemsToTableView(insertedIndexes:[IndexPath])
     func presentfailedAlert(alert:UIAlertController)
 }

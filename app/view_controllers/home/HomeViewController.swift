@@ -375,10 +375,12 @@ extension HomeViewController:UIViewControllerPreviewingDelegate{
 extension HomeViewController : HomeViewModelDelegate {
     
     
-    func insertToTableView(insertedIndexes:[IndexPath]) {
+    func insertNewItemsToTableView(insertedIndexes:[IndexPath]) {
+        //                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
         UIView.performWithoutAnimation {
             self.tableview.insertRows(at: insertedIndexes, with: .bottom)
         }
+        //                })
     }
     
     func reloadTableView() {
