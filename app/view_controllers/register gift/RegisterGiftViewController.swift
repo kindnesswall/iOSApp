@@ -117,10 +117,10 @@ class RegisterGiftViewController: UIViewController {
         self.configSendButtons()
         
         if isEditMode {
-            readFromEditedGift()
+            self.viewModel.readFromEditedGift()
             self.viewModel.giftHasNewAddress=false
         } else {
-            readFromDraft()
+            self.viewModel.readFromDraft()
             self.viewModel.giftHasNewAddress=true
         }
         
@@ -192,40 +192,6 @@ class RegisterGiftViewController: UIViewController {
     }
     
     
-    
-    
-    func readFromDraft(){
-        guard let data = UserDefaults.standard.data(forKey: AppConstants.RegisterGiftDraft) else {
-            return
-        }
-        guard let draft = try? JSONDecoder().decode(RegisterGiftDraft.self, from: data) else {
-            return
-        }
-        
-        self.titleTextView.text=draft.title
-        self.descriptionTextView.text=draft.description
-        self.priceTextView.text=draft.price?.description ?? ""
-        
-        if let category=draft.category {
-            self.viewModel.category=category
-            self.categoryBtn.setTitle(category.title, for: .normal)
-        }
-        
-        if let dateStatus=draft.dateStatus {
-            self.viewModel.dateStatus=dateStatus
-            self.dateStatusBtn.setTitle(dateStatus.title, for: .normal)
-        }
-        
-        if let draftPlaces = draft.places {
-            for draftPlace in draftPlaces {
-                self.viewModel.places.append(draftPlace)
-                self.addGiftPlace(place: draftPlace)
-            }
-        }
-        
-        
-    }
-    
     func clearAllInput(){
         
         self.clearUploadedImages()
@@ -246,48 +212,6 @@ class RegisterGiftViewController: UIViewController {
         userDefault.synchronize()
         
     }
-    
-    
-    
-    
-    func readFromEditedGift(){
-        
-        guard let gift=self.viewModel.editedGift else {
-            return
-        }
-        
-        self.titleTextView.text=gift.title
-        self.descriptionTextView.text=gift.description
-        self.priceTextView.text=gift.price
-        
-        self.viewModel.category=Category(id: gift.categoryId, title: gift.category)
-        self.categoryBtn.setTitle(gift.category, for: .normal)
-        
-        
-        if let isNew=gift.isNew {
-            if isNew {
-                self.viewModel.dateStatus=DateStatus(id:"0",title:LocalizationSystem.getStr(forKey: LanguageKeys.new))
-            } else {
-                self.viewModel.dateStatus=DateStatus(id: "1" , title: LocalizationSystem.getStr(forKey: LanguageKeys.used))
-            }
-            self.dateStatusBtn.setTitle(self.viewModel.dateStatus?.title, for: .normal)
-        }
-        
-        self.editedGiftOriginalAddress.text=gift.address
-        self.viewModel.editedGiftAddress.address = gift.address
-        self.viewModel.editedGiftAddress.cityId=Int(gift.cityId ?? "") ?? 0
-        self.viewModel.editedGiftAddress.regionId=Int(gift.regionId ?? "") ?? 0
-        
-        if let giftImages = gift.giftImages {
-            for giftImage in giftImages {
-                let uploadImageView=self.addUploadImageView(imageSrc: giftImage)
-                self.imageViewUploadingHasFinished(uploadImageView: uploadImageView, imageSrc: giftImage)
-            }
-        }
-        
-    }
-    
-    
     
     
     @objc func clearBarBtnAction(){
@@ -460,16 +384,21 @@ class RegisterGiftViewController: UIViewController {
 
 extension RegisterGiftViewController : RegisterGiftViewModelDelegate {
     
-    func getUIProperties() -> RegisterGiftViewModel.UIProperties {
-        let uiProperties = RegisterGiftViewModel.UIProperties()
+
+    func setUIInputProperties(uiProperties: RegisterGiftViewModel.UIInputProperties) {
+        descriptionTextView.text = uiProperties.descriptionTextViewText
+        priceTextView.text = uiProperties.priceTextViewText
+        titleTextView.text = uiProperties.titleTextViewText
+    }
+    
+    func getUIInputProperties() -> RegisterGiftViewModel.UIInputProperties {
+        let uiProperties = RegisterGiftViewModel.UIInputProperties()
         uiProperties.descriptionTextViewText = descriptionTextView.text
         uiProperties.priceTextViewText = priceTextView.text
         uiProperties.titleTextViewText = titleTextView.text
         return uiProperties
         
     }
-    
-    
     
     func getGiftImages()->[String] {
         var giftImages=[String]()
@@ -480,6 +409,29 @@ extension RegisterGiftViewController : RegisterGiftViewModelDelegate {
         }
         return giftImages
     }
+    
+    
+    func setCategoryBtnTitle(text: String?) {
+        self.categoryBtn.setTitle(text, for: .normal)
+    }
+    
+    func setDateStatusBtnTitle(text: String?) {
+        self.dateStatusBtn.setTitle(text, for: .normal)
+    }
+    
+    func setEditedGiftOriginalAddressLabel(text: String?) {
+        self.editedGiftOriginalAddress.text=text
+    }
+    
+    func addUploadedImageFromEditedGift(giftImage: String) {
+        let uploadImageView=self.addUploadImageView(imageSrc: giftImage)
+        self.imageViewUploadingHasFinished(uploadImageView: uploadImageView, imageSrc: giftImage)
+    }
+    
+    func addGiftPlaceToUIStack(place: Place) {
+        self.addGiftPlace(place: place)
+    }
+    
 }
 
 

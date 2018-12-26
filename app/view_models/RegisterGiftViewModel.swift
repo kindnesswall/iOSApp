@@ -19,7 +19,7 @@ class RegisterGiftViewModel: NSObject {
     
     weak var delegate : RegisterGiftViewModelDelegate?
     
-    class UIProperties {
+    class UIInputProperties {
         var titleTextViewText : String?
         var priceTextViewText : String?
         var descriptionTextViewText : String?
@@ -47,7 +47,7 @@ class RegisterGiftViewModel: NSObject {
         
         let input=RegisterGiftInput()
         
-        let uiProperties = delegate?.getUIProperties()
+        let uiProperties = delegate?.getUIInputProperties()
         
         guard let title=uiProperties?.titleTextViewText , title != "" else {
             inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.titleError), responseHandler: responseHandler)
@@ -155,7 +155,7 @@ class RegisterGiftViewModel: NSObject {
             return
         }
         
-        let uiProperties = delegate?.getUIProperties()
+        let uiProperties = delegate?.getUIInputProperties()
         
         gift.title=uiProperties?.titleTextViewText
         gift.description=uiProperties?.descriptionTextViewText
@@ -197,11 +197,49 @@ class RegisterGiftViewModel: NSObject {
         
     }
     
+    func readFromEditedGift(){
+        
+        guard let gift=self.editedGift else {
+            return
+        }
+        
+        let uiProperties = UIInputProperties()
+        uiProperties.titleTextViewText=gift.title
+        uiProperties.descriptionTextViewText=gift.description
+        uiProperties.priceTextViewText=gift.price
+        self.delegate?.setUIInputProperties(uiProperties: uiProperties)
+        
+        self.category=Category(id: gift.categoryId, title: gift.category)
+        self.delegate?.setCategoryBtnTitle(text: gift.category)
+        
+        
+        if let isNew=gift.isNew {
+            if isNew {
+                self.dateStatus=DateStatus(id:"0",title:LocalizationSystem.getStr(forKey: LanguageKeys.new))
+            } else {
+                self.dateStatus=DateStatus(id: "1" , title: LocalizationSystem.getStr(forKey: LanguageKeys.used))
+            }
+            self.delegate?.setDateStatusBtnTitle(text: self.dateStatus?.title)
+        }
+        
+        self.delegate?.setEditedGiftOriginalAddressLabel(text: gift.address)
+        self.editedGiftAddress.address = gift.address
+        self.editedGiftAddress.cityId=Int(gift.cityId ?? "") ?? 0
+        self.editedGiftAddress.regionId=Int(gift.regionId ?? "") ?? 0
+        
+        if let giftImages = gift.giftImages {
+            for giftImage in giftImages {
+                self.delegate?.addUploadedImageFromEditedGift(giftImage: giftImage)
+            }
+        }
+        
+    }
+    
     func saveDraft(){
         
         let draft=RegisterGiftDraft()
         
-        let uiProperties = delegate?.getUIProperties()
+        let uiProperties = delegate?.getUIInputProperties()
         
         draft.title=uiProperties?.titleTextViewText
         draft.description=uiProperties?.descriptionTextViewText
@@ -221,6 +259,45 @@ class RegisterGiftViewModel: NSObject {
         userDefault.synchronize()
         
         FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.draftSavedSuccessfully), theme: .success)
+        
+    }
+    
+    
+    
+    
+    
+    
+    func readFromDraft(){
+        guard let data = UserDefaults.standard.data(forKey: AppConstants.RegisterGiftDraft) else {
+            return
+        }
+        guard let draft = try? JSONDecoder().decode(RegisterGiftDraft.self, from: data) else {
+            return
+        }
+        
+        let uiProperties = UIInputProperties()
+        uiProperties.titleTextViewText=draft.title
+        uiProperties.descriptionTextViewText=draft.description
+        uiProperties.priceTextViewText=draft.price?.description ?? ""
+        self.delegate?.setUIInputProperties(uiProperties: uiProperties)
+        
+        if let category=draft.category {
+            self.category=category
+            self.delegate?.setCategoryBtnTitle(text: category.title)
+        }
+        
+        if let dateStatus=draft.dateStatus {
+            self.dateStatus=dateStatus
+            self.delegate?.setDateStatusBtnTitle(text: dateStatus.title)
+        }
+        
+        if let draftPlaces = draft.places {
+            for draftPlace in draftPlaces {
+                self.places.append(draftPlace)
+                self.delegate?.addGiftPlaceToUIStack(place: draftPlace)
+            }
+        }
+        
         
     }
     
@@ -248,6 +325,13 @@ class RegisterGiftViewModel: NSObject {
 }
 
 protocol RegisterGiftViewModelDelegate : class {
-    func getUIProperties() -> RegisterGiftViewModel.UIProperties
+    func getUIInputProperties() -> RegisterGiftViewModel.UIInputProperties
+    func setUIInputProperties(uiProperties : RegisterGiftViewModel.UIInputProperties)
     func getGiftImages()->[String]
+    
+    func setCategoryBtnTitle(text:String?)
+    func setDateStatusBtnTitle(text:String?)
+    func setEditedGiftOriginalAddressLabel(text:String?)
+    func addUploadedImageFromEditedGift(giftImage :String)
+    func addGiftPlaceToUIStack(place:Place)
 }
