@@ -16,12 +16,12 @@ class AppConstants {
     public static let USER_ID:String = "USER_ID"
     public static let USER_NAME:String = "USER_NAME"
     static let Authorization:String = "Authorization"
-    static let APPLanguage:String = "APPLanguage"
     //--
     
     public static let PUSH_TOKEN:String = "PUSH_TOKEN"
     public static let PHONE_NUMBER:String = "PHONE_NUMBER"
 
+    static let AppleLanguages:String = "AppleLanguages"
     public static let WATCHED_INTRO:String = "watched_intro"
     public static let WATCHED_SELECT_LANGUAGE:String = "WATCHED_SELECT_LANGUAGE"
 
