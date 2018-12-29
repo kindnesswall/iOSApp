@@ -39,63 +39,90 @@ extension AppDelegate : UITabBarControllerDelegate{
             return
         }
         
-        let homeViewController=HomeViewController(
-            nibName: HomeViewController.identifier,
-            bundle: HomeViewController.bundle
-        )
-        tabs[TabIndex.HOME].pushViewController(homeViewController, animated: true)
-        
-        let myGiftsViewController=MyGiftsViewController(
-            nibName: MyGiftsViewController.identifier,
-            bundle: MyGiftsViewController.bundle
-        )
-        tabs[TabIndex.MyGifts].pushViewController(myGiftsViewController, animated: true)
-        
-        let registerGiftViewController=RegisterGiftViewController(
-            nibName: RegisterGiftViewController.identifier,
-            bundle: RegisterGiftViewController.bundle
-        )
-        tabs[TabIndex.RegisterGift].pushViewController(registerGiftViewController, animated: true)
-        
-        let requestsViewController=RequestsViewController(
-            nibName: RequestsViewController.identifier,
-            bundle: RequestsViewController.bundle
-        )
-        tabs[TabIndex.Requests].pushViewController(requestsViewController, animated: true)
-        
-        let myKindnessWallViewController=MyKindnessWallViewController(
-            nibName: MyKindnessWallViewController.identifier,
-            bundle: MyKindnessWallViewController.bundle
-        )
-        tabs[TabIndex.MyKindnessWall].pushViewController(myKindnessWallViewController, animated: true)
-        
+        initiateTab(tabIndex: TabIndex.HOME,tabs:tabs)
+        initiateTab(tabIndex: TabIndex.MyGifts,tabs:tabs)
+        initiateTab(tabIndex: TabIndex.RegisterGift,tabs:tabs)
+        initiateTab(tabIndex: TabIndex.Requests,tabs:tabs)
+        initiateTab(tabIndex: TabIndex.MyKindnessWall,tabs:tabs)
         
         self.tabBarController?.selectedIndex = TabIndex.HOME
         
     }
     
+    func getTabViewController(tabIndex:Int)->UIViewController{
+        var controller:UIViewController
+        switch tabIndex {
+        case TabIndex.HOME:
+            controller=HomeViewController(
+                nibName: HomeViewController.identifier,
+                bundle: HomeViewController.bundle
+            )
+            
+        case TabIndex.MyGifts:
+            controller=MyGiftsViewController(
+                nibName: MyGiftsViewController.identifier,
+                bundle: MyGiftsViewController.bundle
+            )
+            
+        case TabIndex.RegisterGift:
+            controller=RegisterGiftViewController(
+                nibName: RegisterGiftViewController.identifier,
+                bundle: RegisterGiftViewController.bundle
+            )
+            
+        case TabIndex.Requests:
+            controller=RequestsViewController(
+                nibName: RequestsViewController.identifier,
+                bundle: RequestsViewController.bundle
+            )
+        case TabIndex.MyKindnessWall:
+            controller=MyKindnessWallViewController(
+                nibName: MyKindnessWallViewController.identifier,
+                bundle: MyKindnessWallViewController.bundle
+            )
+        default:
+            fatalError()
+        }
+        
+        return controller
+    }
+    
+    func initiateTab(tabIndex:Int,tabs:[UINavigationController]) {
+        tabs[tabIndex].setViewControllers([getTabViewController(tabIndex:tabIndex)], animated: false)
+    }
+    
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if let _=keychain.get(AppConstants.Authorization) {
-            return true
-        }
         
-        if let _=(viewController as? UINavigationController)?.viewControllers.first as? RegisterGiftViewController {
+        let auth=keychain.get(AppConstants.Authorization)
+        
+        if auth==nil,
+            authIsMandatory(for: viewController)
+            {
             showLoginVC()
             return false
         }
         
-        if let _=(viewController as? UINavigationController)?.viewControllers.first as? MyGiftsViewController {
-            showLoginVC()
-            return false
-        }
-        
-        if let _=(viewController as? UINavigationController)?.viewControllers.first as? RequestsViewController {
-            showLoginVC()
-            return false
+        if (viewController as? UINavigationController)?.viewControllers.first as? RequestsViewController != nil {
+            if let tabs = self.tabBarController?.viewControllers as? [UINavigationController] {
+                initiateTab(tabIndex: TabIndex.Requests, tabs: tabs)
+            }
         }
         
         return true
         
+    }
+    
+    private func authIsMandatory(for viewController:UIViewController)->Bool {
+        if
+            (viewController as? UINavigationController)?.viewControllers.first as? RegisterGiftViewController != nil
+            ||
+            (viewController as? UINavigationController)?.viewControllers.first as? MyGiftsViewController != nil
+            ||
+            (viewController as? UINavigationController)?.viewControllers.first as? RequestsViewController != nil  {
+            return true
+        }
+        
+        return false
     }
 }
