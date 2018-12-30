@@ -9,22 +9,45 @@
 import UIKit
 import KeychainSwift
 import Firebase
+import GoogleSignIn
+import FirebaseAuth
+
+
+extension AppDelegate: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        // ...
+        if let error = error {
+            // ...
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        // ...
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     static let uDStandard = UserDefaults.standard
     let uDStandard = UserDefaults.standard
     let keychain = KeychainSwift()
     var isActiveAfterBioAuth:Bool = false
     var current_time:Time?
-
+    
     public var tabBarController:UITabBarController?
-
+    
     static let screenWidth = UIScreen.main.bounds.width
     var launchedShortcutItem: UIApplicationShortcutItem?
-
+    
     static func clearUserDefaultAuthValues() {
         
         let watched_select_language = uDStandard.bool(forKey: AppConstants.WATCHED_SELECT_LANGUAGE)
@@ -78,7 +101,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
-
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        
         if uDStandard.object(forKey: AppConstants.FirstInstall) == nil {
             uDStandard.set(false, forKey: AppConstants.FirstInstall)
             uDStandard.synchronize()
@@ -87,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
-
+        
         if uDStandard.bool(forKey: AppConstants.WATCHED_SELECT_LANGUAGE) {
             showTabbarIntro()
         }else{
@@ -120,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("\n\napplicationDidBecomeActive\n\n")
-
+        
         if isPasscodeSaved(), !isActiveAfterBioAuth {
             showLockVC()
         }
@@ -152,7 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let viewController = LanguageViewController()
         viewController.languageViewModel.tabBarIsInitialized = false
-//        let nc = UINavigationController.init(rootViewController: viewController)
+        //        let nc = UINavigationController.init(rootViewController: viewController)
         window!.rootViewController = viewController
         window!.makeKeyAndVisible()
     }
@@ -163,7 +189,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as! IntroViewController
         self.tabBarController?.present(viewController, animated: true, completion: nil)
-
+        
     }
     func showLoginVC(){
         let controller=ActivationEnterPhoneViewController(
@@ -182,6 +208,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
     
-    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
+        -> Bool {
+            return GIDSignIn.sharedInstance().handle(url,
+                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                                     annotation: [:])
+    }
 }
 
