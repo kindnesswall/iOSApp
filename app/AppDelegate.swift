@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var current_time:Time?
 
     public var tabBarController:UITabBarController?
+    
+    var tabBarPagesRelaodDelegates = [ReloadablePage]()
 
     static let screenWidth = UIScreen.main.bounds.width
     var launchedShortcutItem: UIApplicationShortcutItem?

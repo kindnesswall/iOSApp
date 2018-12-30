@@ -47,6 +47,7 @@ class RegisterGiftViewController: UIViewController {
         }) {
             self.clearAllInput()
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.giftRegisteredSuccessfully),theme: .success)
+            self.reloadOtherPages()
         }
         
     }
@@ -376,6 +377,10 @@ class RegisterGiftViewController: UIViewController {
         if self.viewModel.dateStatus == nil {
             self.dateStatusBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
         }
+    }
+    
+    func reloadOtherPages(){
+        AppDelegate.me().reloadTabBarPages(currentPage: nil)
     }
     
    

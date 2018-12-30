@@ -139,6 +139,7 @@
 		6072E4FA21C05A9200F17205 /* GiftAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6072E4F821C05A9200F17205 /* GiftAdCell.swift */; };
 		6072E4FB21C05A9200F17205 /* GiftAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6072E4F921C05A9200F17205 /* GiftAdCell.xib */; };
 		60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */; };
+		60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1821D7CFA60058421A /* ReloadablePage.swift */; };
 		6080700821B3F82A0046F940 /* ContactUsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700621B3F82A0046F940 /* ContactUsCollectionViewCell.swift */; };
 		6080700921B3F82A0046F940 /* ContactUsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */; };
 		6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */; };
@@ -343,6 +344,7 @@
 		6072E4F821C05A9200F17205 /* GiftAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAdCell.swift; sourceTree = "<group>"; };
 		6072E4F921C05A9200F17205 /* GiftAdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftAdCell.xib; sourceTree = "<group>"; };
 		60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewModel.swift; sourceTree = "<group>"; };
+		60749B1821D7CFA60058421A /* ReloadablePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadablePage.swift; sourceTree = "<group>"; };
 		6080700621B3F82A0046F940 /* ContactUsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsCollectionViewCell.swift; sourceTree = "<group>"; };
 		6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsCollectionViewCell.xib; sourceTree = "<group>"; };
 		6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + RegisterCell.swift"; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 				05BFBBCD1FDB112800DBCDDF /* extensions */,
 				05BFBBC41FDAA49E00DBCDDF /* app */,
 				05335D471FD0DD7A00601115 /* helper */,
+				60749B1721D7CE020058421A /* protocols */,
 				60AE9C82202DB96200F246CD /* view_models */,
 				05335D421FD0D05C00601115 /* view_controllers */,
 				054B1B461FCC29B3007570EF /* views */,
@@ -863,6 +866,14 @@
 			path = pop_up;
 			sourceTree = "<group>";
 		};
+		60749B1721D7CE020058421A /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				60749B1821D7CFA60058421A /* ReloadablePage.swift */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
 		6080700521B3F8110046F940 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1239,6 +1250,7 @@
 				05BFBBC81FDAA4EF00DBCDDF /* AppColor.swift in Sources */,
 				05029ED21FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift in Sources */,
 				6019F27521B80257003C3E76 /* AppDelegate + Tabbar.swift in Sources */,
+				60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */,
 				05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */,
 				05644DC01FFEF44A00B7C853 /* Message.swift in Sources */,
 				05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */,

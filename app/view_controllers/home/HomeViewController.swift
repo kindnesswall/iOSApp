@@ -331,13 +331,7 @@ extension HomeViewController:UITableViewDelegate {
         reloadOtherVCs()
     }
     func reloadOtherVCs(){
-        if let myGiftsVC=((self.tabBarController?.viewControllers?[TabIndex.MyGifts] as? UINavigationController)?.viewControllers.first) as? MyGiftsViewController {
-            myGiftsVC.reloadPage()
-        }
-    }
-    
-    func reloadPage(){
-        self.homeViewModel.reloadPage()
+        AppDelegate.me().reloadTabBarPages(currentPage: self)
     }
     
 }
@@ -369,6 +363,12 @@ extension HomeViewController:UIViewControllerPreviewingDelegate{
             }
         }
         self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
+}
+
+extension HomeViewController : ReloadablePage {
+    func reloadPage(){
+        self.homeViewModel.reloadPage()
     }
 }
 
