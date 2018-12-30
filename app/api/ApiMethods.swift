@@ -35,10 +35,10 @@ class ApiMethods {
         let deviceId:String = "352136066349321"
         
         let formKeyValue:[String:String] = [
-            APIMethodDictionaryKey.Username:mobile,
-            APIMethodDictionaryKey.Password:verificationCode,
-            APIMethodDictionaryKey.RegisterationId:regId,
-            APIMethodDictionaryKey.DeviceId:deviceId,
+            AppConst.APIMethodDictionaryKey.Username:mobile,
+            AppConst.APIMethodDictionaryKey.Password:verificationCode,
+            AppConst.APIMethodDictionaryKey.RegisterationId:regId,
+            AppConst.APIMethodDictionaryKey.DeviceId:deviceId,
             "grant_type":"password"]
         
         let url:String = APIURLs.login

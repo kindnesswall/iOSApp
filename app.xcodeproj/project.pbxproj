@@ -65,7 +65,6 @@
 		05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC21FDAA45C00DBCDDF /* Time.swift */; };
 		05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */; };
 		05BFBBC81FDAA4EF00DBCDDF /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */; };
-		05BFBBCA1FDAA53900DBCDDF /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC91FDAA53900DBCDDF /* AppFont.swift */; };
 		05BFBBCC1FDB101700DBCDDF /* UIFont+printAllFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */; };
 		05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */; };
 		05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */; };
@@ -257,7 +256,6 @@
 		05BFBBC21FDAA45C00DBCDDF /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnums.swift; sourceTree = "<group>"; };
 		05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
-		05BFBBC91FDAA53900DBCDDF /* AppFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+printAllFonts.swift"; sourceTree = "<group>"; };
 		05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewController.swift; sourceTree = "<group>"; };
 		05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
@@ -635,7 +633,6 @@
 			isa = PBXGroup;
 			children = (
 				528A2DAA21AD39C500DECE0F /* language */,
-				05BFBBC91FDAA53900DBCDDF /* AppFont.swift */,
 				05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */,
 				05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */,
 				05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */,
@@ -1312,7 +1309,6 @@
 				05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */,
 				05644DC01FFEF44A00B7C853 /* Message.swift in Sources */,
 				05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */,
-				05BFBBCA1FDAA53900DBCDDF /* AppFont.swift in Sources */,
 				05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */,
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
 				522F6B5421D81696001C67B9 /* LoginRegisterVC+setupviews.swift in Sources */,

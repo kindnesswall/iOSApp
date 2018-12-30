@@ -145,7 +145,7 @@ class LockViewController: UIViewController {
     }
     
     func savePasscode() {
-        self.keychain.set(hashPasscode(), forKey: AppConst.PassCode)
+        self.keychain.set(hashPasscode(), forKey: AppConst.KeyChain.PassCode)
     }
     
     func hashPasscode()-> String {
@@ -165,7 +165,7 @@ class LockViewController: UIViewController {
         }
         
         let passCodeHash:String = "\(pass).\(Salt)".sha256()
-        let lastSavedPasscodeHash:String = self.keychain.get(AppConst.PassCode) ?? ""
+        let lastSavedPasscodeHash:String = self.keychain.get(AppConst.KeyChain.PassCode) ?? ""
         if passCodeHash == lastSavedPasscodeHash {
             return true
         }

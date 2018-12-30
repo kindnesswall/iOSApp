@@ -193,7 +193,7 @@ class MyGiftsViewController: UIViewController {
     
     func configSegmentControl(){
         self.segmentControl.tintColor=AppColor.tintColor
-        self.segmentControl.setTitleTextAttributes([NSAttributedString.Key.font:AppFont.getLightFont(size: 13)], for: .normal)
+        self.segmentControl.setTitleTextAttributes([NSAttributedString.Key.font:AppConst.Resource.Font.getLightFont(size: 13)], for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {

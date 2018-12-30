@@ -9,7 +9,7 @@ class NavigationBarStyle {
     public static func setDefaultStyle(navigationC:UINavigationController?) {
 //        navigationC?.navigationBar.barTintColor=AppColor.tintColor
         navigationC?.navigationBar.tintColor=AppColor.tintColor
-        navigationC?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: AppFont.getBoldFont(size: 17),NSAttributedString.Key.foregroundColor: AppColor.tintColor]
+        navigationC?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: AppConst.Resource.Font.getBoldFont(size: 17),NSAttributedString.Key.foregroundColor: AppColor.tintColor]
     }
     
     
@@ -73,7 +73,7 @@ class NavigationBarStyle {
         
     }
     
-    public static func setLeftBtn(navigationItem:UINavigationItem,target:AnyObject,action:Selector?,text:String,font:UIFont=AppFont.getBoldFont(size: 14)){
+    public static func setLeftBtn(navigationItem:UINavigationItem,target:AnyObject,action:Selector?,text:String,font:UIFont=AppConst.Resource.Font.getBoldFont(size: 14)){
         
         let btn=NavigationBarStyle.getNavigationItem(target: target, action: action, text: text,font:font)
         
@@ -81,7 +81,7 @@ class NavigationBarStyle {
         
     }
     
-    public static func setRightBtn(navigationItem:UINavigationItem,target:AnyObject,action:Selector?,text:String,font:UIFont=AppFont.getBoldFont(size: 14)){
+    public static func setRightBtn(navigationItem:UINavigationItem,target:AnyObject,action:Selector?,text:String,font:UIFont=AppConst.Resource.Font.getBoldFont(size: 14)){
         
         let btn=NavigationBarStyle.getNavigationItem(target: target, action: action, text: text,font:font)
         
@@ -89,7 +89,7 @@ class NavigationBarStyle {
         
     }
     
-    public static func getNavigationItem(target:AnyObject,action:Selector?,text:String,font:UIFont=AppFont.getBoldFont(size: 14))->UIBarButtonItem{
+    public static func getNavigationItem(target:AnyObject,action:Selector?,text:String,font:UIFont=AppConst.Resource.Font.getBoldFont(size: 14))->UIBarButtonItem{
         
         let btn=UIBarButtonItem()
         

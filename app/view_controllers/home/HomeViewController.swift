@@ -149,10 +149,10 @@ class HomeViewController: UIViewController {
     }
     
     func setNavigationBar(){
-        categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts),font:AppFont.getRegularFont(size: 16))
+        categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts),font:AppConst.Resource.Font.getRegularFont(size: 16))
         self.navigationItem.rightBarButtonItems=[categotyBarBtn!]
         
-        cityBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allCities),font:AppFont.getRegularFont(size: 16))
+        cityBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allCities),font:AppConst.Resource.Font.getRegularFont(size: 16))
         self.navigationItem.leftBarButtonItems=[cityBarBtn!]
     }
     
@@ -293,11 +293,11 @@ extension HomeViewController:UITableViewDelegate {
         )
         self.userDefault.set(
             Float(Date().timeIntervalSinceReferenceDate),
-            forKey: AppConst.LastTimeISawAd)
+            forKey: AppConst.UserDefaults.LastTimeISawAd)
     }
     
     func isMoreThanOneDayIDidntSawAd()->Bool {
-        let lastTimeISawAd = userDefault.float(forKey: AppConst.LastTimeISawAd)
+        let lastTimeISawAd = userDefault.float(forKey: AppConst.UserDefaults.LastTimeISawAd)
         let currentDateTime = Float(Date().timeIntervalSinceReferenceDate)
         if currentDateTime > lastTimeISawAd + NumberOfSecondsOfOneDay {
             return true

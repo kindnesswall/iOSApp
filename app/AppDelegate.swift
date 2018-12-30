@@ -51,21 +51,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public func clearUserDefaultAuthValues() {
 
         
-        let watched_select_language = uDStandard.bool(forKey: AppConst.WATCHED_SELECT_LANGUAGE)
-        let watched_intro = uDStandard.bool(forKey: AppConst.WATCHED_INTRO)
-        let appleLanguages = uDStandard.object(forKey: AppConst.AppleLanguages)
+        let watched_select_language = uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
+        let watched_intro = uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO)
+        let appleLanguages = uDStandard.object(forKey: AppConst.UserDefaults.AppleLanguages)
         
         clearAllUserDefaultValues()
         
-        uDStandard.set(watched_select_language, forKey: AppConst.WATCHED_SELECT_LANGUAGE)
-        uDStandard.set(watched_intro, forKey: AppConst.WATCHED_INTRO)
-        uDStandard.set(appleLanguages, forKey: AppConst.AppleLanguages)
+        uDStandard.set(watched_select_language, forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
+        uDStandard.set(watched_intro, forKey: AppConst.UserDefaults.WATCHED_INTRO)
+        uDStandard.set(appleLanguages, forKey: AppConst.UserDefaults.AppleLanguages)
         
         uDStandard.synchronize()
     }
     
     public func isPasscodeSaved() -> Bool {
-        if let _ = keychain.get(AppConst.PassCode) {
+        if let _ = keychain.get(AppConst.KeyChain.PassCode) {
             return true
         }
         return false
@@ -108,8 +108,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
-        if uDStandard.object(forKey: AppConst.FirstInstall) == nil {
-            uDStandard.set(false, forKey: AppConst.FirstInstall)
+        if uDStandard.object(forKey: AppConst.UserDefaults.FirstInstall) == nil {
+            uDStandard.set(false, forKey: AppConst.UserDefaults.FirstInstall)
             uDStandard.synchronize()
             keychain.clear()
         }
@@ -117,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
         
-        if uDStandard.bool(forKey: AppConst.WATCHED_SELECT_LANGUAGE) {
+        if uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE) {
             showTabbarIntro()
         }else{
             showSelectLanguageVC()
@@ -170,9 +170,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         initializeTabbar()
         
-        if !uDStandard.bool(forKey: AppConst.WATCHED_INTRO) {
+        if !uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO) {
             showIntro()
-            uDStandard.set(true, forKey: AppConst.WATCHED_INTRO)
+            uDStandard.set(true, forKey: AppConst.UserDefaults.WATCHED_INTRO)
             uDStandard.synchronize()
         }
     }

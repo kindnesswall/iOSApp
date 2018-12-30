@@ -67,7 +67,7 @@ class ActivationEnterPhoneViewController: UIViewController {
 //        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.login)
         self.navigationItem.removeDefaultBackBtn()
-        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
+        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppConst.Resource.Font.getIcomoonFont(size: 24))
     }
     
     @objc func exitBtnAction(){

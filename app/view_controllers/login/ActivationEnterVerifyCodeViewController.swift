@@ -88,7 +88,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         //        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.login)
         self.navigationItem.removeDefaultBackBtn()
-        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
+        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppConst.Resource.Font.getIcomoonFont(size: 24))
     }
     
     @objc func exitBtnAction(){
@@ -223,7 +223,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     
     func customizeUIElements() {
         self.verifyCodeTextField.backgroundColor=UIColor.clear
-        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:LocalizationSystem.getStr(forKey: LanguageKeys.activationCode), attributes: [NSAttributedString.Key.font : AppFont.getLightFont(size: 13),NSAttributedString.Key.foregroundColor: UIColor.gray])
+        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:LocalizationSystem.getStr(forKey: LanguageKeys.activationCode), attributes: [NSAttributedString.Key.font : AppConst.Resource.Font.getLightFont(size: 13),NSAttributedString.Key.foregroundColor: UIColor.gray])
         
         self.registerBtn.backgroundColor=AppColor.tintColor
         
