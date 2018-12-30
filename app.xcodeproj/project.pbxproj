@@ -115,6 +115,9 @@
 		528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A2DC821ADAA2100DECE0F /* LanguageViewController.swift */; };
 		528A2DCB21ADAA2100DECE0F /* LanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */; };
 		52D1A13B21D92859005EA2F0 /* ApiUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A13A21D92859005EA2F0 /* ApiUtility.swift */; };
+		52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A13C21D93577005EA2F0 /* RGVC+handleKeyboard.swift */; };
+		52D1A13F21D936AD005EA2F0 /* RGVC+IBAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A13E21D936AD005EA2F0 /* RGVC+IBAction.swift */; };
+		52D1A14121D9376E005EA2F0 /* RGVC+vm delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A14021D9376E005EA2F0 /* RGVC+vm delegate.swift */; };
 		52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768521C5109B00C2E012 /* InfoPlist.strings */; };
 		52DD768821C6428300C2E012 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768721C6428300C2E012 /* GoogleService-Info.plist */; };
 		52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD768F21C68ECE00C2E012 /* RoundButton.swift */; };
@@ -324,6 +327,9 @@
 		528A2DC821ADAA2100DECE0F /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageViewController.xib; sourceTree = "<group>"; };
 		52D1A13A21D92859005EA2F0 /* ApiUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUtility.swift; sourceTree = "<group>"; };
+		52D1A13C21D93577005EA2F0 /* RGVC+handleKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGVC+handleKeyboard.swift"; sourceTree = "<group>"; };
+		52D1A13E21D936AD005EA2F0 /* RGVC+IBAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGVC+IBAction.swift"; sourceTree = "<group>"; };
+		52D1A14021D9376E005EA2F0 /* RGVC+vm delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGVC+vm delegate.swift"; sourceTree = "<group>"; };
 		52DD768421C5109B00C2E012 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		52DD768621C5109D00C2E012 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		52DD768721C6428300C2E012 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -601,6 +607,9 @@
 				528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */,
 				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
 				60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */,
+				52D1A13C21D93577005EA2F0 /* RGVC+handleKeyboard.swift */,
+				52D1A13E21D936AD005EA2F0 /* RGVC+IBAction.swift */,
+				52D1A14021D9376E005EA2F0 /* RGVC+vm delegate.swift */,
 			);
 			path = "register gift";
 			sourceTree = "<group>";
@@ -1297,6 +1306,7 @@
 				6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */,
 				05644DBC1FFEF3A500B7C853 /* ChatListTableViewCell.swift in Sources */,
 				6072E4FA21C05A9200F17205 /* GiftAdCell.swift in Sources */,
+				52D1A14121D9376E005EA2F0 /* RGVC+vm delegate.swift in Sources */,
 				05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */,
 				6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */,
 				60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */,
@@ -1330,6 +1340,7 @@
 				05BEA43E2049919D00147BF5 /* String+numbers.swift in Sources */,
 				054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */,
 				0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */,
+				52D1A13F21D936AD005EA2F0 /* RGVC+IBAction.swift in Sources */,
 				5283174721C906930044B9AD /* TouchIDAuthentication.swift in Sources */,
 				05F6AA551FFEEB8D00CDABC2 /* ChatConversationViewController.swift in Sources */,
 				05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */,
@@ -1365,6 +1376,7 @@
 				601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */,
 				601F83C32036A36500F9118B /* DateStatusListViewModel.swift in Sources */,
 				60302DE02068FC7E0025D397 /* PopUpViewController.swift in Sources */,
+				52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */,
 				05644DCA1FFF02A100B7C853 /* UITableView+isCellVisible.swift in Sources */,
 				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
 				05F6AA541FFEEB8D00CDABC2 /* ChatListTableViewController.swift in Sources */,
