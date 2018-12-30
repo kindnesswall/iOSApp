@@ -1,5 +1,5 @@
 //
-//  LoginRegisterVC+ImagePicker.swift
+//  FirbaseLoginRegisterVC+ImagePicker.swift
 //  SwiftMessenger
 //
 //  Created by Hamed.Gh on 12/23/18.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension LoginRegisterVC:UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+extension FirbaseLoginRegisterVC:UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     @objc func handleImageTap(){
         let picker = UIImagePickerController()

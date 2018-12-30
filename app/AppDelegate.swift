@@ -211,12 +211,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     func showLoginVC(){
-        let controller=ActivationEnterPhoneViewController(
-            nibName: ActivationEnterPhoneViewController.identifier,
-            bundle: ActivationEnterPhoneViewController.bundle
-        )
-        let nc = UINavigationController.init(rootViewController: controller)
-        self.tabBarController?.present(nc, animated: true, completion: nil)
+        guard let selectedCountry = uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY) else {
+            showSelectCountryVC()
+            return
+        }
+        
+        if selectedCountry == AppConst.Country.IRAN {
+            let controller=ActivationEnterPhoneViewController(
+                nibName: ActivationEnterPhoneViewController.identifier,
+                bundle: ActivationEnterPhoneViewController.bundle
+            )
+            let nc = UINavigationController.init(rootViewController: controller)
+            self.tabBarController?.present(nc, animated: true, completion: nil)
+        }else{
+            let vc = FirbaseLoginRegisterVC()
+            self.tabBarController?.present(vc, animated: true, completion: nil)
+        }
     }
     
     func checkForLogin()->Bool{

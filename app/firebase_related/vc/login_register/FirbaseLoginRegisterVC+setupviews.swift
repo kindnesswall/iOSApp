@@ -1,5 +1,5 @@
 //
-//  LoginRegisterVC+setupviews.swift
+//  FirbaseLoginRegisterVC+setupviews.swift
 //  SwiftMessenger
 //
 //  Created by Hamed.Gh on 12/23/18.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension LoginRegisterVC {
+extension FirbaseLoginRegisterVC {
     func setupViews() {
         setupInputContainterView()
         setupLoginRegisterBtn()

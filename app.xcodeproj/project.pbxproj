@@ -80,10 +80,10 @@
 		05F6AA541FFEEB8D00CDABC2 /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6AA501FFEEB8C00CDABC2 /* ChatListTableViewController.swift */; };
 		05F6AA551FFEEB8D00CDABC2 /* ChatConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6AA511FFEEB8D00CDABC2 /* ChatConversationViewController.swift */; };
 		05F6AA561FFEEB8D00CDABC2 /* ChatListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */; };
-		522F6B5321D81696001C67B9 /* LoginRegisterVC+handlerFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B4F21D81696001C67B9 /* LoginRegisterVC+handlerFunctions.swift */; };
-		522F6B5421D81696001C67B9 /* LoginRegisterVC+setupviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5021D81696001C67B9 /* LoginRegisterVC+setupviews.swift */; };
-		522F6B5521D81696001C67B9 /* LoginRegisterVC+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5121D81696001C67B9 /* LoginRegisterVC+ImagePicker.swift */; };
-		522F6B5621D81697001C67B9 /* LoginRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5221D81696001C67B9 /* LoginRegisterVC.swift */; };
+		522F6B5321D81696001C67B9 /* FirbaseLoginRegisterVC+handlerFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B4F21D81696001C67B9 /* FirbaseLoginRegisterVC+handlerFunctions.swift */; };
+		522F6B5421D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5021D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift */; };
+		522F6B5521D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5121D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift */; };
+		522F6B5621D81697001C67B9 /* FirbaseLoginRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5221D81696001C67B9 /* FirbaseLoginRegisterVC.swift */; };
 		522F6B5821D816DD001C67B9 /* UIColor+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5721D816DD001C67B9 /* UIColor+init.swift */; };
 		522F6B5A21D817CB001C67B9 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5921D817CB001C67B9 /* Const.swift */; };
 		522F6B5E21D81AA2001C67B9 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5D21D81AA2001C67B9 /* FirebaseUser.swift */; };
@@ -271,10 +271,10 @@
 		05F6AA511FFEEB8D00CDABC2 /* ChatConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConversationViewController.swift; sourceTree = "<group>"; };
 		05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatListTableViewController.xib; sourceTree = "<group>"; };
 		34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
-		522F6B4F21D81696001C67B9 /* LoginRegisterVC+handlerFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginRegisterVC+handlerFunctions.swift"; sourceTree = "<group>"; };
-		522F6B5021D81696001C67B9 /* LoginRegisterVC+setupviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginRegisterVC+setupviews.swift"; sourceTree = "<group>"; };
-		522F6B5121D81696001C67B9 /* LoginRegisterVC+ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginRegisterVC+ImagePicker.swift"; sourceTree = "<group>"; };
-		522F6B5221D81696001C67B9 /* LoginRegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegisterVC.swift; sourceTree = "<group>"; };
+		522F6B4F21D81696001C67B9 /* FirbaseLoginRegisterVC+handlerFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FirbaseLoginRegisterVC+handlerFunctions.swift"; sourceTree = "<group>"; };
+		522F6B5021D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FirbaseLoginRegisterVC+setupviews.swift"; sourceTree = "<group>"; };
+		522F6B5121D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FirbaseLoginRegisterVC+ImagePicker.swift"; sourceTree = "<group>"; };
+		522F6B5221D81696001C67B9 /* FirbaseLoginRegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirbaseLoginRegisterVC.swift; sourceTree = "<group>"; };
 		522F6B5721D816DD001C67B9 /* UIColor+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+init.swift"; sourceTree = "<group>"; };
 		522F6B5921D817CB001C67B9 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		522F6B5D21D81AA2001C67B9 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
@@ -713,10 +713,10 @@
 		522F6B4E21D81671001C67B9 /* login_register */ = {
 			isa = PBXGroup;
 			children = (
-				522F6B5221D81696001C67B9 /* LoginRegisterVC.swift */,
-				522F6B4F21D81696001C67B9 /* LoginRegisterVC+handlerFunctions.swift */,
-				522F6B5121D81696001C67B9 /* LoginRegisterVC+ImagePicker.swift */,
-				522F6B5021D81696001C67B9 /* LoginRegisterVC+setupviews.swift */,
+				522F6B5221D81696001C67B9 /* FirbaseLoginRegisterVC.swift */,
+				522F6B4F21D81696001C67B9 /* FirbaseLoginRegisterVC+handlerFunctions.swift */,
+				522F6B5121D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift */,
+				522F6B5021D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift */,
 			);
 			path = login_register;
 			sourceTree = "<group>";
@@ -1291,7 +1291,7 @@
 				60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */,
 				05644DC41FFEF62300B7C853 /* ChatAbs.swift in Sources */,
 				60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */,
-				522F6B5621D81697001C67B9 /* LoginRegisterVC.swift in Sources */,
+				522F6B5621D81697001C67B9 /* FirbaseLoginRegisterVC.swift in Sources */,
 				522F6B5821D816DD001C67B9 /* UIColor+init.swift in Sources */,
 				60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */,
 				52DD769C21C7D26700C2E012 /* LockSettingViewController.swift in Sources */,
@@ -1308,7 +1308,7 @@
 				05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */,
 				05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */,
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
-				522F6B5421D81696001C67B9 /* LoginRegisterVC+setupviews.swift in Sources */,
+				522F6B5421D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift in Sources */,
 				60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */,
 				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,
 				6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */,
@@ -1328,7 +1328,7 @@
 				6080700D21B436590046F940 /* URLBrowser.swift in Sources */,
 				05BFBBEC1FE29F7C00DBCDDF /* IntroViewController.swift in Sources */,
 				05644DC81FFF01C300B7C853 /* ChatConversationResult.swift in Sources */,
-				522F6B5321D81696001C67B9 /* LoginRegisterVC+handlerFunctions.swift in Sources */,
+				522F6B5321D81696001C67B9 /* FirbaseLoginRegisterVC+handlerFunctions.swift in Sources */,
 				05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */,
 				056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */,
 				601F83D32037367900F9118B /* Place.swift in Sources */,
@@ -1346,7 +1346,7 @@
 				52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */,
 				528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConst.swift in Sources */,
-				522F6B5521D81696001C67B9 /* LoginRegisterVC+ImagePicker.swift in Sources */,
+				522F6B5521D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift in Sources */,
 				601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */,
 				05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */,
 				522F6B6421D8B173001C67B9 /* SelectCountryVC.swift in Sources */,

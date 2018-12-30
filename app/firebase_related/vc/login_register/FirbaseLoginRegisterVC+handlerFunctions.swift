@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-extension LoginRegisterVC {
+extension FirbaseLoginRegisterVC {
     func handleRegister(_ email:String,_ password:String) {
         
         guard let name = self.nameTF.text else {

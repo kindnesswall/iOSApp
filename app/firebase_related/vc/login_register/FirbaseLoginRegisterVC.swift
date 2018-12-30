@@ -1,5 +1,5 @@
 //
-//  LoginRegisterVC.swift
+//  FirbaseLoginRegisterVC.swift
 //  SwiftMessenger
 //
 //  Created by Hamed.Gh on 12/22/18.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginRegisterVC: UIViewController,UITextFieldDelegate {
+class FirbaseLoginRegisterVC: UIViewController,UITextFieldDelegate {
     
     var inputContainerViewHeightConstraint: NSLayoutConstraint?
     var passwordHeightConstraint: NSLayoutConstraint?
@@ -17,7 +17,7 @@ class LoginRegisterVC: UIViewController,UITextFieldDelegate {
     var nameHeightConstraint: NSLayoutConstraint?
     
 //    var messagesController: MessageVC?
-
+    
     let inputContainerView:UIView = {
         var customView = UIView()
         customView.backgroundColor = .white
