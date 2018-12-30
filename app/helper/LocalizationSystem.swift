@@ -49,10 +49,10 @@ class LocalizationSystem:NSObject {
     // If this function is not called it will use the default OS language.
     // If the language does not exists y returns the default OS language.
     func setLanguage(languageCode:String) {
-        var appleLanguages = UserDefaults.standard.object(forKey: "AppleLanguages") as! [String]
+        var appleLanguages = UserDefaults.standard.object(forKey: AppConstants.AppleLanguages) as! [String]
         appleLanguages.remove(at: 0)
         appleLanguages.insert(languageCode, at: 0)
-        UserDefaults.standard.set(appleLanguages, forKey: "AppleLanguages")
+        UserDefaults.standard.set(appleLanguages, forKey: AppConstants.AppleLanguages)
         UserDefaults.standard.synchronize() //needs restrat
         
         if let languageDirectoryPath = Bundle.main.path(forResource: languageCode, ofType: "lproj")  {
@@ -71,7 +71,7 @@ class LocalizationSystem:NSObject {
     //MARK:- getLanguage
     // Just gets the current setted up language.
     func getLanguage() -> String {
-        let appleLanguages = UserDefaults.standard.object(forKey: "AppleLanguages") as! [String]
+        let appleLanguages = UserDefaults.standard.object(forKey: AppConstants.AppleLanguages) as! [String]
         let prefferedLanguage = appleLanguages[0]
         if prefferedLanguage.contains("-") {
             let array = prefferedLanguage.components(separatedBy: "-")

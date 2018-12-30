@@ -145,6 +145,7 @@
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
 		6072E4FA21C05A9200F17205 /* GiftAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6072E4F821C05A9200F17205 /* GiftAdCell.swift */; };
 		6072E4FB21C05A9200F17205 /* GiftAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6072E4F921C05A9200F17205 /* GiftAdCell.xib */; };
+		60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */; };
 		6080700821B3F82A0046F940 /* ContactUsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700621B3F82A0046F940 /* ContactUsCollectionViewCell.swift */; };
 		6080700921B3F82A0046F940 /* ContactUsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */; };
 		6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */; };
@@ -355,6 +356,7 @@
 		6040F3A2206688A800FCD429 /* APIEmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyInput.swift; sourceTree = "<group>"; };
 		6072E4F821C05A9200F17205 /* GiftAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAdCell.swift; sourceTree = "<group>"; };
 		6072E4F921C05A9200F17205 /* GiftAdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftAdCell.xib; sourceTree = "<group>"; };
+		60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewModel.swift; sourceTree = "<group>"; };
 		6080700621B3F82A0046F940 /* ContactUsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsCollectionViewCell.swift; sourceTree = "<group>"; };
 		6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsCollectionViewCell.xib; sourceTree = "<group>"; };
 		6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + RegisterCell.swift"; sourceTree = "<group>"; };
@@ -937,6 +939,7 @@
 				601F83C22036A36400F9118B /* DateStatusListViewModel.swift */,
 				601F83D420373E9E00F9118B /* PlaceListViewModel.swift */,
 				5263D5FD21B915F400B634A8 /* LanguageViewModel.swift */,
+				60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */,
 				60C972EE21C9C16500A8D1C5 /* GiftViewModel */,
 				60C972E821C99BA700A8D1C5 /* HomeViewModel.swift */,
 			);
@@ -1345,6 +1348,7 @@
 				602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */,
 				05BFBBC61FDAA4B200DBCDDF /* AppEnums.swift in Sources */,
 				52DD769621C6BFC100C2E012 /* LockViewController.swift in Sources */,
+				60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */,
 				60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */,
 				05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */,
 				60FAB8402064EE950039BF61 /* RGVC + uploading images.swift in Sources */,
