@@ -54,7 +54,7 @@ class GiftDetailViewController: UIViewController {
         
         setUI()
 
-        if let _=KeychainSwift().get(AppConstants.Authorization) {
+        if let _=KeychainSwift().get(AppConst.KeyChain.Authorization) {
             self.requestBtn.hide()
         }
         
@@ -67,11 +67,11 @@ class GiftDetailViewController: UIViewController {
         }
         ApiMethods.getGift(giftId: id) { [weak self] (data) in
             
-            if let reply=APIRequest.readJsonData(data: data, outputType: Gift.self) {
+            if let reply=ApiUtility.convert(data: data, to: Gift.self) {
                 
                 self?.loadingIndicator?.stopLoading()
                 
-                if let myId=KeychainSwift().get(AppConstants.USER_ID) , let userId=reply.userId , myId==userId {
+                if let myId=KeychainSwift().get(AppConst.KeyChain.USER_ID) , let userId=reply.userId , myId==userId {
                     self?.addEditBtn()
 //                    self?.requestBtn.hide()
                     self?.removeBtn.show()
@@ -109,7 +109,7 @@ class GiftDetailViewController: UIViewController {
             target: self,
             action: #selector(self.editBtnClicked),
             text:LocalizationSystem.getStr(forKey: LanguageKeys.edit),
-            font:AppFont.getRegularFont(size: 16)
+            font:AppConst.Resource.Font.getRegularFont(size: 16)
         )
         
         self.navigationItem.rightBarButtonItems=[editBtn!]

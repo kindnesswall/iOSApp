@@ -11,9 +11,10 @@ import KeychainSwift
 
 protocol LanguageViewDelegate {
     func show(alert:UIAlertController) -> ()
+    func dismissViewController()
+    
     func setTextOf(label:String,button:String)
     func set(textAlignment:NSTextAlignment)
-    func dismissViewController()
 }
 
 class LanguageViewModel: NSObject {
@@ -49,7 +50,7 @@ class LanguageViewModel: NSObject {
         
         alert.addAction(UIAlertAction(title: okBtn, style: UIAlertAction.Style.default, handler: { (action) in
             
-            if let _=self.keychain.get(AppConstants.Authorization) {
+            if let _=self.keychain.get(AppConst.KeyChain.Authorization) {
                 if AppLanguage.getLanguage() == AppLanguage.English {
                     UIApplication.shared.shortcutItems = [
                         UIApplicationShortcutItem(
@@ -93,7 +94,7 @@ class LanguageViewModel: NSObject {
     }
     
     func selectLanguage(index:Int) {
-        UserDefaults.standard.set(true, forKey: AppConstants.WATCHED_SELECT_LANGUAGE)
+        UserDefaults.standard.set(true, forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
         UserDefaults.standard.synchronize()
         
         if datasource[index] == AppLanguage.getLanguage() {

@@ -9,17 +9,42 @@
 import UIKit
 import KeychainSwift
 import Firebase
+import GoogleSignIn
+import FirebaseAuth
+
+
+extension AppDelegate: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        // ...
+        if let error = error {
+            // ...
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        // ...
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     static let uDStandard = UserDefaults.standard
     let uDStandard = UserDefaults.standard
     let keychain = KeychainSwift()
     var isActiveAfterBioAuth:Bool = false
     var current_time:Time?
-
+    lazy var FIRDB_Ref:DatabaseReference = Database.database().reference().child(AppConst.FIRUrls.KindnessWall)
+    lazy var FIRStorage_Ref:StorageReference = Storage.storage().reference().child(AppConst.FIRUrls.KindnessWall)
+    
     public var tabBarController:UITabBarController?
     
     var tabBarPagesRelaodDelegates = [ReloadablePage]()
@@ -28,22 +53,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var launchedShortcutItem: UIApplicationShortcutItem?
 
     public func clearUserDefaultAuthValues() {
-        
-        let watched_select_language = uDStandard.bool(forKey: AppConstants.WATCHED_SELECT_LANGUAGE)
-        let watched_intro = uDStandard.bool(forKey: AppConstants.WATCHED_INTRO)
-        let appleLanguages = uDStandard.object(forKey: AppConstants.AppleLanguages)
+        let watched_select_language = uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
+        let watched_intro = uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO)
+        let appleLanguages = uDStandard.object(forKey: AppConst.UserDefaults.AppleLanguages)
         
         clearAllUserDefaultValues()
         
-        uDStandard.set(watched_select_language, forKey: AppConstants.WATCHED_SELECT_LANGUAGE)
-        uDStandard.set(watched_intro, forKey: AppConstants.WATCHED_INTRO)
-        uDStandard.set(appleLanguages, forKey: AppConstants.AppleLanguages)
+        uDStandard.set(watched_select_language, forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
+        uDStandard.set(watched_intro, forKey: AppConst.UserDefaults.WATCHED_INTRO)
+        uDStandard.set(appleLanguages, forKey: AppConst.UserDefaults.AppleLanguages)
         
         uDStandard.synchronize()
     }
     
     public func isPasscodeSaved() -> Bool {
-        if let _ = keychain.get(AppConstants.PassCode) {
+        if let _ = keychain.get(AppConst.KeyChain.PassCode) {
             return true
         }
         return false
@@ -79,23 +103,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         controller.isCancelable = false
         self.tabBarController?.present(controller, animated: true, completion: nil)
     }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
-
-        if uDStandard.object(forKey: AppConstants.FirstInstall) == nil {
-            uDStandard.set(false, forKey: AppConstants.FirstInstall)
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        
+        if uDStandard.object(forKey: AppConst.UserDefaults.FirstInstall) == nil {
+            uDStandard.set(false, forKey: AppConst.UserDefaults.FirstInstall)
             uDStandard.synchronize()
             keychain.clear()
         }
         
         FirebaseApp.configure()
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
-
-        if uDStandard.bool(forKey: AppConstants.WATCHED_SELECT_LANGUAGE) {
-            showTabbarIntro()
+        
+        if uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY) == nil {
+            showSelectCountryVC()
         }else{
-            showSelectLanguageVC()
+            checkLanguageSelectedOrNot()
         }
         
         if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
@@ -105,11 +133,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func checkLanguageSelectedOrNot() {
+        if uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE) {
+            showTabbarIntro()
+        }else{
+            showSelectLanguageVC()
+        }
+    }
+    
     func handleShortCut(_ item: UIApplicationShortcutItem) -> Bool {
         if item.type == "ir.kindnesswall.publicusers.DonateGift" {
             // shortcut was triggered!
             //                showTabbarIntro()
-            self.tabBarController?.selectedIndex = TabIndex.RegisterGift
+            self.tabBarController?.selectedIndex = AppConst.TabIndex.RegisterGift
             return true
         }
         return false
@@ -124,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("\n\napplicationDidBecomeActive\n\n")
-
+        
         if isPasscodeSaved(), !isActiveAfterBioAuth {
             showLockVC()
         }
@@ -145,9 +181,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         initializeTabbar()
         
-        if !uDStandard.bool(forKey: AppConstants.WATCHED_INTRO) {
+        if !uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO) {
             showIntro()
-            uDStandard.set(true, forKey: AppConstants.WATCHED_INTRO)
+            uDStandard.set(true, forKey: AppConst.UserDefaults.WATCHED_INTRO)
             uDStandard.synchronize()
         }
     }
@@ -156,8 +192,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let viewController = LanguageViewController()
         viewController.languageViewModel.tabBarIsInitialized = false
-//        let nc = UINavigationController.init(rootViewController: viewController)
+        //        let nc = UINavigationController.init(rootViewController: viewController)
         window!.rootViewController = viewController
+        window!.makeKeyAndVisible()
+    }
+    
+    func showSelectCountryVC() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let vc = SelectCountryVC()
+        vc.vm.tabBarIsInitialized = false
+        //        let nc = UINavigationController.init(rootViewController: viewController)
+        window!.rootViewController = vc
         window!.makeKeyAndVisible()
     }
     
@@ -165,27 +210,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func showIntro() {
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as! IntroViewController
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: IntroViewController.identifier) as! IntroViewController
         self.tabBarController?.present(viewController, animated: true, completion: nil)
-
+        
     }
+    
+    func isIranSelected() -> Bool {
+        let selectedCountry = uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
+        return selectedCountry == AppConst.Country.IRAN
+    }
+    
     func showLoginVC(){
-        let controller=ActivationEnterPhoneViewController(
-            nibName: ActivationEnterPhoneViewController.identifier,
-            bundle: ActivationEnterPhoneViewController.bundle
-        )
-        let nc = UINavigationController.init(rootViewController: controller)
-        self.tabBarController?.present(nc, animated: true, completion: nil)
+        if isIranSelected() {
+            let controller=ActivationEnterPhoneViewController(
+                nibName: ActivationEnterPhoneViewController.identifier,
+                bundle: ActivationEnterPhoneViewController.bundle
+            )
+            let nc = UINavigationController.init(rootViewController: controller)
+            self.tabBarController?.present(nc, animated: true, completion: nil)
+        }else{
+            let vc = FirbaseLoginRegisterVC()
+            self.tabBarController?.present(vc, animated: true, completion: nil)
+        }
     }
     
     func checkForLogin()->Bool{
-        if let _=keychain.get(AppConstants.Authorization) {
+        if let _=keychain.get(AppConst.KeyChain.Authorization) {
             return true
         }
         showLoginVC()
         return false
     }
     
-    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
+        -> Bool {
+            return GIDSignIn.sharedInstance().handle(url,
+                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                                     annotation: [:])
+    }
 }
 

@@ -209,7 +209,7 @@ class RegisterGiftViewController: UIViewController {
         self.priceTextView.text=""
         
         let userDefault=UserDefaults.standard
-        userDefault.set(nil, forKey: AppConstants.RegisterGiftDraft)
+        userDefault.set(nil, forKey: AppConst.UserDefaults.RegisterGiftDraft)
         userDefault.synchronize()
         
     }
@@ -263,9 +263,9 @@ class RegisterGiftViewController: UIViewController {
         
         let label=UILabel()
         label.text=place.name
-        label.backgroundColor=AppColor.greyBgColor
+        label.backgroundColor=AppConst.Resource.Color.GreyBg
         label.textColor=UIColor.black
-        label.font=AppFont.getRegularFont(size: 17)
+        label.font=AppConst.Resource.Font.getRegularFont(size: 17)
         label.textAlignment = .center
         placesLabels.append(label)
         

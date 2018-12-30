@@ -23,8 +23,8 @@ class APICall {
     private static func setRequestHeader(request:URLRequest)->URLRequest {
         var newRequest=request
         newRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        if let authorization=KeychainSwift().get(AppConstants.Authorization) {
-            newRequest.setValue(authorization, forHTTPHeaderField: AppConstants.Authorization)
+        if let authorization=KeychainSwift().get(AppConst.KeyChain.Authorization) {
+            newRequest.setValue(authorization, forHTTPHeaderField: AppConst.KeyChain.Authorization)
 //            print("Authorization: \(authorization)")
         }
         return newRequest

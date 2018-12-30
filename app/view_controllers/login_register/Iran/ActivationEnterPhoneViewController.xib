@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="IRANSansMobile.ttf">
+            <string>IRANSansMobile</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivationEnterPhoneViewController" customModule="app" customModuleProvider="target">
+            <connections>
+                <outlet property="guideLabel" destination="fSO-5M-m2r" id="hyA-hc-Q0S"/>
+                <outlet property="loading" destination="BRE-N9-V0h" id="KV1-AG-a7e"/>
+                <outlet property="phoneNumberTextField" destination="YOh-Db-6C8" id="PlZ-qa-XCJ"/>
+                <outlet property="registerBtn" destination="czN-OU-IcX" id="G6h-2O-AcY"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQL-Cz-QtU">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czN-OU-IcX" userLabel="register Btn">
+                            <rect key="frame" x="62.5" y="293.5" width="250" height="35"/>
+                            <color key="backgroundColor" red="0.47843137254901957" green="0.31372549019607843" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="250" id="Nyk-MW-MDX"/>
+                                <constraint firstAttribute="height" constant="35" id="tPk-6x-9fw"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="14"/>
+                            <state key="normal" title="ارسال کد فعال سازی">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="registerBtnClick:" destination="-1" eventType="touchUpInside" id="sew-MF-6u1"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YOh-Db-6C8" customClass="ShakingTextField" customModule="app" customModuleProvider="target">
+                            <rect key="frame" x="62.5" y="233.5" width="250" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="250" id="OFW-KB-cZF"/>
+                                <constraint firstAttribute="height" constant="40" id="pBY-dC-xQw"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BRE-N9-V0h">
+                            <rect key="frame" x="177.5" y="301" width="20" height="20"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="کد فعالسازی به شماره زیر ارسال می شود. درصورتی که شماره صحیح نیست آن را ویرایش کنید." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSO-5M-m2r">
+                            <rect key="frame" x="20" y="165.5" width="335" height="38"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="czN-OU-IcX" firstAttribute="centerX" secondItem="wQL-Cz-QtU" secondAttribute="centerX" id="0ox-IJ-VUB"/>
+                        <constraint firstAttribute="trailing" secondItem="fSO-5M-m2r" secondAttribute="trailing" constant="20" id="3fP-nZ-Vnf"/>
+                        <constraint firstItem="czN-OU-IcX" firstAttribute="top" secondItem="YOh-Db-6C8" secondAttribute="bottom" constant="20" id="8A1-fv-4KL">
+                            <variation key="heightClass=compact-widthClass=compact" constant="10"/>
+                        </constraint>
+                        <constraint firstItem="YOh-Db-6C8" firstAttribute="top" secondItem="fSO-5M-m2r" secondAttribute="bottom" constant="30" id="Akb-JI-esf"/>
+                        <constraint firstItem="BRE-N9-V0h" firstAttribute="centerY" secondItem="czN-OU-IcX" secondAttribute="centerY" id="Djc-bx-jBw"/>
+                        <constraint firstItem="BRE-N9-V0h" firstAttribute="centerX" secondItem="wQL-Cz-QtU" secondAttribute="centerX" id="EV4-cj-wpm"/>
+                        <constraint firstItem="fSO-5M-m2r" firstAttribute="leading" secondItem="wQL-Cz-QtU" secondAttribute="leading" constant="20" id="JPb-7q-Cz0"/>
+                        <constraint firstItem="YOh-Db-6C8" firstAttribute="centerX" secondItem="wQL-Cz-QtU" secondAttribute="centerX" id="diH-Fw-dpZ"/>
+                        <constraint firstItem="YOh-Db-6C8" firstAttribute="centerY" secondItem="wQL-Cz-QtU" secondAttribute="centerY" constant="-80" id="t5Z-1T-uFo"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="wQL-Cz-QtU" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="3Jo-du-bdi"/>
+                <constraint firstItem="wQL-Cz-QtU" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="YKO-0f-DnI"/>
+                <constraint firstItem="wQL-Cz-QtU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="iMe-bd-drZ"/>
+                <constraint firstItem="wQL-Cz-QtU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="j2u-qU-mm5"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

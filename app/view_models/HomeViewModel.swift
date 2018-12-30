@@ -86,7 +86,7 @@ class HomeViewModel: NSObject {
                 return
             }
             
-            if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+            if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
                 
                 if index==0 {
                     self?.gifts=[]

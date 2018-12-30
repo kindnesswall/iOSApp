@@ -255,7 +255,7 @@ class RegisterGiftViewModel: NSObject {
         }
         
         let userDefault=UserDefaults.standard
-        userDefault.set(data, forKey: AppConstants.RegisterGiftDraft)
+        userDefault.set(data, forKey: AppConst.UserDefaults.RegisterGiftDraft)
         userDefault.synchronize()
         
         FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.draftSavedSuccessfully), theme: .success)
@@ -263,12 +263,8 @@ class RegisterGiftViewModel: NSObject {
     }
     
     
-    
-    
-    
-    
     func readFromDraft(){
-        guard let data = UserDefaults.standard.data(forKey: AppConstants.RegisterGiftDraft) else {
+        guard let data = UserDefaults.standard.data(forKey: AppConst.UserDefaults.RegisterGiftDraft) else {
             return
         }
         guard let draft = try? JSONDecoder().decode(RegisterGiftDraft.self, from: data) else {

@@ -34,7 +34,7 @@ class RequestToAGiftViewController: UIViewController {
         // Do any additional setup after loading the view.
         ApiMethods.getRecievedRequestList(giftId: giftId, startIndex: 0) { [weak self] (data, response, error) in
             
-            APIRequest.logReply(data: data)
+            ApiUtility.watch(data: data)
             if let response = response as? HTTPURLResponse {
                 if response.statusCode < 200 && response.statusCode >= 300 {
                     return
@@ -45,7 +45,7 @@ class RequestToAGiftViewController: UIViewController {
                 return
             }
             
-            if let reply=APIRequest.readJsonData(data: data, outputType: [Request].self) {
+            if let reply=ApiUtility.convert(data: data, to: [Request].self) {
                 
                 self?.requests.append(contentsOf: reply)
                 self?.tableview.reloadData()

@@ -29,7 +29,7 @@ class RegisteredGiftViewModel: GiftViewModel {
             self.delegate?.lazyLoadingAnimation(viewModel:self,isLoading: true)
         }
         
-        guard let userId=KeychainSwift().get(AppConstants.USER_ID) else {
+        guard let userId=KeychainSwift().get(AppConst.KeyChain.USER_ID) else {
             return
         }
         let url=APIURLs.getMyRegisteredGifts+"/"+userId+"/\(index)/\(index+lazyLoadingCount)"
@@ -41,7 +41,7 @@ class RegisteredGiftViewModel: GiftViewModel {
             
             self?.isLoadingGifts = false
             
-            if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+            if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
                 
                 if index==0 {
                     self?.gifts=[]

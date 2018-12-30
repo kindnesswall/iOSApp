@@ -73,11 +73,11 @@ class MyGiftsViewController: UIViewController {
     
     func configRefreshControl(){
         self.registeredRefreshControl.addTarget(self, action: #selector(self.registeredRefreshControlAction), for: .valueChanged)
-        registeredRefreshControl.tintColor=AppColor.tintColor
+        registeredRefreshControl.tintColor=AppConst.Resource.Color.Tint
         self.registeredGiftsTableView.addSubview(registeredRefreshControl)
         
         self.donatedRefreshControl.addTarget(self, action: #selector(self.donatedRefreshControlAction), for: .valueChanged)
-        donatedRefreshControl.tintColor=AppColor.tintColor
+        donatedRefreshControl.tintColor=AppConst.Resource.Color.Tint
         self.donatedGiftsTableView.addSubview(donatedRefreshControl)
     }
     
@@ -192,8 +192,8 @@ class MyGiftsViewController: UIViewController {
     
     
     func configSegmentControl(){
-        self.segmentControl.tintColor=AppColor.tintColor
-        self.segmentControl.setTitleTextAttributes([NSAttributedString.Key.font:AppFont.getLightFont(size: 13)], for: .normal)
+        self.segmentControl.tintColor=AppConst.Resource.Color.Tint
+        self.segmentControl.setTitleTextAttributes([NSAttributedString.Key.font:AppConst.Resource.Font.getLightFont(size: 13)], for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
