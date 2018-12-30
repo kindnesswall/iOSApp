@@ -10,6 +10,11 @@ import UIKit
 
 struct AppConst {
     
+    struct Country {
+        static let IRAN:String = "Iran"
+        static let OTHERS:String = "Others"
+    }
+    
     struct Resource {
         struct Font {
             static func getRegularFont(size:CGFloat)->UIFont {
@@ -52,7 +57,10 @@ struct AppConst {
         static let RegisterGiftDraft="RegisterGiftDraft"
         public static let PHONE_NUMBER:String = "PHONE_NUMBER"
         public static let WATCHED_INTRO:String = "watched_intro"
+        
         public static let WATCHED_SELECT_LANGUAGE:String = "WATCHED_SELECT_LANGUAGE"
+        public static let SELECTED_COUNTRY:String = "SELECTED_COUNTRY"
+        
         public static let FirstInstall:String = "FirstInstall"
         public static let LastTimeISawAd:String = "LastTimeISawAd"
         static let AppleLanguages:String = "AppleLanguages"

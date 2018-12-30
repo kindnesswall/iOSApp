@@ -11,9 +11,10 @@ import KeychainSwift
 
 protocol LanguageViewDelegate {
     func show(alert:UIAlertController) -> ()
+    func dismissViewController()
+    
     func setTextOf(label:String,button:String)
     func set(textAlignment:NSTextAlignment)
-    func dismissViewController()
 }
 
 class LanguageViewModel: NSObject {

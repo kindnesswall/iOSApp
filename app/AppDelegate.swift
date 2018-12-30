@@ -49,8 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var launchedShortcutItem: UIApplicationShortcutItem?
 
     public func clearUserDefaultAuthValues() {
-
-        
         let watched_select_language = uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
         let watched_intro = uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO)
         let appleLanguages = uDStandard.object(forKey: AppConst.UserDefaults.AppleLanguages)
@@ -101,6 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         controller.isCancelable = false
         self.tabBarController?.present(controller, animated: true, completion: nil)
     }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
@@ -117,10 +116,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
         
-        if uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE) {
-            showTabbarIntro()
+        if uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY) == nil {
+            showSelectCountryVC()
         }else{
-            showSelectLanguageVC()
+            checkLanguageSelectedOrNot()
         }
         
         if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
@@ -128,6 +127,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
+    }
+    
+    func checkLanguageSelectedOrNot() {
+        if uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE) {
+            showTabbarIntro()
+        }else{
+            showSelectLanguageVC()
+        }
     }
     
     func handleShortCut(_ item: UIApplicationShortcutItem) -> Bool {
@@ -183,6 +190,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         viewController.languageViewModel.tabBarIsInitialized = false
         //        let nc = UINavigationController.init(rootViewController: viewController)
         window!.rootViewController = viewController
+        window!.makeKeyAndVisible()
+    }
+    
+    func showSelectCountryVC() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let vc = SelectCountryVC()
+        vc.vm.tabBarIsInitialized = false
+        //        let nc = UINavigationController.init(rootViewController: viewController)
+        window!.rootViewController = vc
         window!.makeKeyAndVisible()
     }
     
