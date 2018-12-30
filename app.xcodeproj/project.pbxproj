@@ -485,7 +485,7 @@
 				05BEA43320497AD500147BF5 /* my gifts */,
 				05644DD12000203500B7C853 /* chat */,
 				05029EC71FE33498004D96B1 /* requests */,
-				05BFBBB31FDA653400DBCDDF /* login */,
+				05BFBBB31FDA653400DBCDDF /* login_register */,
 				05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */,
 				522F6B6321D8B173001C67B9 /* SelectCountryVC.swift */,
 			);
@@ -617,15 +617,13 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		05BFBBB31FDA653400DBCDDF /* login */ = {
+		05BFBBB31FDA653400DBCDDF /* login_register */ = {
 			isa = PBXGroup;
 			children = (
-				05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */,
-				05BFBBB61FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib */,
-				05BFBBB71FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift */,
-				05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */,
+				522F6B4E21D81671001C67B9 /* firebase_auth_vc */,
+				522F6B6721D8F61C001C67B9 /* Iran */,
 			);
-			path = login;
+			path = login_register;
 			sourceTree = "<group>";
 		};
 		05BFBBC41FDAA49E00DBCDDF /* app */ = {
@@ -710,7 +708,7 @@
 			path = firebase_related;
 			sourceTree = "<group>";
 		};
-		522F6B4E21D81671001C67B9 /* login_register */ = {
+		522F6B4E21D81671001C67B9 /* firebase_auth_vc */ = {
 			isa = PBXGroup;
 			children = (
 				522F6B5221D81696001C67B9 /* FirbaseLoginRegisterVC.swift */,
@@ -718,13 +716,12 @@
 				522F6B5121D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift */,
 				522F6B5021D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift */,
 			);
-			path = login_register;
+			path = firebase_auth_vc;
 			sourceTree = "<group>";
 		};
 		522F6B5B21D81A86001C67B9 /* vc */ = {
 			isa = PBXGroup;
 			children = (
-				522F6B4E21D81671001C67B9 /* login_register */,
 			);
 			path = vc;
 			sourceTree = "<group>";
@@ -743,6 +740,17 @@
 				522F6B5921D817CB001C67B9 /* Const.swift */,
 			);
 			path = app;
+			sourceTree = "<group>";
+		};
+		522F6B6721D8F61C001C67B9 /* Iran */ = {
+			isa = PBXGroup;
+			children = (
+				05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */,
+				05BFBBB61FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib */,
+				05BFBBB71FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift */,
+				05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */,
+			);
+			path = Iran;
 			sourceTree = "<group>";
 		};
 		52525E2321AEB9C000A7D03E /* appUITests */ = {

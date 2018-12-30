@@ -37,12 +37,19 @@ struct AppConst {
     }
     
     struct FIRUrls {
-        static let IMAGES:String = "ios_profile_images"
-        static let USERS:String = "ios_users"
-        static let MESSAGES:String = "ios_messages"
-        static let USER_MESSAGES:String = "ios_user_messages"
-        static let MESSAGES_MOVIE:String = "ios_message_movies"
-        static let MESSAGES_IMAGE:String = "ios_message_images"
+        
+        struct Storage {
+            static let IMAGES:String = "ios_profile_images"
+        }
+        
+        struct Database {
+            static let USERS:String = "ios_users"
+            static let MESSAGES:String = "ios_messages"
+            static let USER_MESSAGES:String = "ios_user_messages"
+            static let MESSAGES_MOVIE:String = "ios_message_movies"
+            static let MESSAGES_IMAGE:String = "ios_message_images"
+        }
+        
     }
     
     struct KeyChain {
