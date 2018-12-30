@@ -134,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if item.type == "ir.kindnesswall.publicusers.DonateGift" {
             // shortcut was triggered!
             //                showTabbarIntro()
-            self.tabBarController?.selectedIndex = TabIndex.RegisterGift
+            self.tabBarController?.selectedIndex = AppConst.TabIndex.RegisterGift
             return true
         }
         return false
@@ -190,7 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func showIntro() {
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as! IntroViewController
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: IntroViewController.identifier) as! IntroViewController
         self.tabBarController?.present(viewController, animated: true, completion: nil)
         
     }

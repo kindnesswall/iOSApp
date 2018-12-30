@@ -39,43 +39,43 @@ extension AppDelegate : UITabBarControllerDelegate{
             return
         }
         
-        initiateTab(tabIndex: TabIndex.HOME,tabs:tabs)
-        initiateTab(tabIndex: TabIndex.MyGifts,tabs:tabs)
-        initiateTab(tabIndex: TabIndex.RegisterGift,tabs:tabs)
-        initiateTab(tabIndex: TabIndex.Requests,tabs:tabs)
-        initiateTab(tabIndex: TabIndex.MyKindnessWall,tabs:tabs)
+        initiateTab(tabIndex: AppConst.TabIndex.HOME,tabs:tabs)
+        initiateTab(tabIndex: AppConst.TabIndex.MyGifts,tabs:tabs)
+        initiateTab(tabIndex: AppConst.TabIndex.RegisterGift,tabs:tabs)
+        initiateTab(tabIndex: AppConst.TabIndex.Requests,tabs:tabs)
+        initiateTab(tabIndex: AppConst.TabIndex.MyKindnessWall,tabs:tabs)
         
-        self.tabBarController?.selectedIndex = TabIndex.HOME
+        self.tabBarController?.selectedIndex = AppConst.TabIndex.HOME
         
     }
     
     func getTabViewController(tabIndex:Int)->UIViewController{
         var controller:UIViewController
         switch tabIndex {
-        case TabIndex.HOME:
+        case AppConst.TabIndex.HOME:
             controller=HomeViewController(
                 nibName: HomeViewController.identifier,
                 bundle: HomeViewController.bundle
             )
             
-        case TabIndex.MyGifts:
+        case AppConst.TabIndex.MyGifts:
             controller=MyGiftsViewController(
                 nibName: MyGiftsViewController.identifier,
                 bundle: MyGiftsViewController.bundle
             )
             
-        case TabIndex.RegisterGift:
+        case AppConst.TabIndex.RegisterGift:
             controller=RegisterGiftViewController(
                 nibName: RegisterGiftViewController.identifier,
                 bundle: RegisterGiftViewController.bundle
             )
             
-        case TabIndex.Requests:
+        case AppConst.TabIndex.Requests:
             controller=RequestsViewController(
                 nibName: RequestsViewController.identifier,
                 bundle: RequestsViewController.bundle
             )
-        case TabIndex.MyKindnessWall:
+        case AppConst.TabIndex.MyKindnessWall:
             controller=MyKindnessWallViewController(
                 nibName: MyKindnessWallViewController.identifier,
                 bundle: MyKindnessWallViewController.bundle
@@ -105,7 +105,7 @@ extension AppDelegate : UITabBarControllerDelegate{
         
         if (viewController as? UINavigationController)?.viewControllers.first as? RequestsViewController != nil {
             if let tabs = self.tabBarController?.viewControllers as? [UINavigationController] {
-                initiateTab(tabIndex: TabIndex.Requests, tabs: tabs)
+                initiateTab(tabIndex: AppConst.TabIndex.Requests, tabs: tabs)
             }
         }
         

@@ -262,7 +262,7 @@ extension MyGiftsViewController : UITableViewDelegate {
         self.donatedGiftsViewModel.reloadGifts()
     }
     func reloadOtherVCs(){
-        if let home=((self.tabBarController?.viewControllers?[TabIndex.HOME] as? UINavigationController)?.viewControllers.first) as? HomeViewController {
+        if let home=((self.tabBarController?.viewControllers?[AppConst.TabIndex.HOME] as? UINavigationController)?.viewControllers.first) as? HomeViewController {
             home.reloadPage()
         }
     }

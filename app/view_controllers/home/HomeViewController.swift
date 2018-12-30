@@ -331,7 +331,7 @@ extension HomeViewController:UITableViewDelegate {
         reloadOtherVCs()
     }
     func reloadOtherVCs(){
-        if let myGiftsVC=((self.tabBarController?.viewControllers?[TabIndex.MyGifts] as? UINavigationController)?.viewControllers.first) as? MyGiftsViewController {
+        if let myGiftsVC=((self.tabBarController?.viewControllers?[AppConst.TabIndex.MyGifts] as? UINavigationController)?.viewControllers.first) as? MyGiftsViewController {
             myGiftsVC.reloadPage()
         }
     }
