@@ -76,6 +76,7 @@ extension FirbaseLoginRegisterVC {
         
         let ref = AppDelegate.me().FIRDB_Ref
         let usersRef = ref.child(AppConst.FIRUrls.Database.USERS).child(uid)
+        
         usersRef.updateChildValues(
             info
             ,withCompletionBlock: { (err, ref) in
@@ -83,8 +84,12 @@ extension FirbaseLoginRegisterVC {
                     print("update child values error is : \(err)")
                     return
                 }
-                
-                let user = FirebaseUser(dictionary: info)
+//                print(info.description)
+//                print(info.description.data(using: .utf8))
+                if let user=ApiUtility.convert(dic: info, to: FirebaseUser.self) {
+                    print("user: \(user)")
+                }
+//                let user = FirebaseUser(dictionary: info)
 //                self.messagesController?.setupNavBarWithUser(user)
                 
                 self.dismiss(animated: true, completion: {

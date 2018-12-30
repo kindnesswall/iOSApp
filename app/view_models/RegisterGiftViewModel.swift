@@ -263,10 +263,6 @@ class RegisterGiftViewModel: NSObject {
     }
     
     
-    
-    
-    
-    
     func readFromDraft(){
         guard let data = UserDefaults.standard.data(forKey: AppConst.UserDefaults.RegisterGiftDraft) else {
             return

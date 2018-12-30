@@ -212,13 +212,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.tabBarController?.present(viewController, animated: true, completion: nil)
         
     }
+    
+    func isIranSelected() -> Bool {
+        let selectedCountry = uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
+        return selectedCountry == AppConst.Country.IRAN
+    }
+    
     func showLoginVC(){
-        guard let selectedCountry = uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY) else {
-            showSelectCountryVC()
-            return
-        }
-        
-        if selectedCountry == AppConst.Country.IRAN {
+        if isIranSelected() {
             let controller=ActivationEnterPhoneViewController(
                 nibName: ActivationEnterPhoneViewController.identifier,
                 bundle: ActivationEnterPhoneViewController.bundle

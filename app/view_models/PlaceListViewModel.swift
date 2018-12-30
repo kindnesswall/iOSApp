@@ -26,7 +26,7 @@ class PlaceListViewModel: NSObject {
     func getCities(hasDefaultOption:Bool,completionHandler:(()->Void)?) {
         let container_id=0
         APIRequest.requestTestJson(name: "latest") { (data) in
-            if let jsonPlaces=APIRequest.readJsonData(data: data, outputType: PlaceResponse.self)?.places {
+            if let jsonPlaces=ApiUtility.convert(data: data, to: PlaceResponse.self)?.places {
                 
                 self.places=[]
                 if hasDefaultOption {
@@ -50,7 +50,7 @@ class PlaceListViewModel: NSObject {
     func getRegions(hasDefaultOption:Bool,container_id:Int,completionHandler:(()->Void)?) {
         
         APIRequest.requestTestJson(name: "latest") { (data) in
-            if let jsonPlaces=APIRequest.readJsonData(data: data, outputType: PlaceResponse.self)?.places {
+            if let jsonPlaces=ApiUtility.convert(data: data, to: PlaceResponse.self)?.places {
                 
                 for place in jsonPlaces {
                     self.rawPlaces.append(place)

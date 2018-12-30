@@ -119,7 +119,7 @@ class APIRequest {
                 
                 let json=try! JSONSerialization.data(withJSONObject: inputDictionary, options: JSONSerialization.WritingOptions.prettyPrinted)
                 print("input json:")
-                APIRequest.logReply(data: json)
+                ApiUtility.watch(data: json)
                 request.httpBody=json
             }
             
@@ -170,7 +170,7 @@ class APIRequest {
                 
                 let json=try! JSONSerialization.data(withJSONObject: inputDictionary, options: JSONSerialization.WritingOptions.prettyPrinted)
                 print("input json:")
-                APIRequest.logReply(data: json)
+                ApiUtility.watch(data: json)
                 request.httpBody=json
             }
             
@@ -269,20 +269,6 @@ class APIRequest {
         
     }
     
-    
-    //Codable
-    
-    public static func readJsonData<JsonType:Codable>(data:Data?,outputType:JsonType.Type)->JsonType? {
-        
-        if let data=data {
-            let decoder = JSONDecoder()
-            let reply = try? decoder.decode(outputType, from: data)
-            return reply
-        }
-        return nil
-    }
-    
-    
     //Read test Json
     
     public static func requestTestJson(name:String,complitionHandler: @escaping(Data?)->Void){
@@ -307,20 +293,6 @@ class APIRequest {
         tasks=[]
         sessions=[]
     }
-    
-    //MARK: - Else
-    
-    public static func logReply(data:Data?){
-        if let data=data {
-            let log=String(data: data, encoding: .utf8)
-            if let log=log {
-                print(log)
-                
-            }
-            
-        }
-    }
-    
     
     
 }

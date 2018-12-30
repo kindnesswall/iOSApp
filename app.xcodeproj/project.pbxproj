@@ -114,6 +114,7 @@
 		528A2DBD21AD3EBF00DECE0F /* GiftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DBF21AD3EBF00DECE0F /* GiftTableViewCell.xib */; };
 		528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A2DC821ADAA2100DECE0F /* LanguageViewController.swift */; };
 		528A2DCB21ADAA2100DECE0F /* LanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */; };
+		52D1A13B21D92859005EA2F0 /* ApiUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A13A21D92859005EA2F0 /* ApiUtility.swift */; };
 		52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768521C5109B00C2E012 /* InfoPlist.strings */; };
 		52DD768821C6428300C2E012 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768721C6428300C2E012 /* GoogleService-Info.plist */; };
 		52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD768F21C68ECE00C2E012 /* RoundButton.swift */; };
@@ -322,6 +323,7 @@
 		528A2DC521AD3EC600DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/GiftTableViewCell.xib; sourceTree = "<group>"; };
 		528A2DC821ADAA2100DECE0F /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageViewController.xib; sourceTree = "<group>"; };
+		52D1A13A21D92859005EA2F0 /* ApiUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUtility.swift; sourceTree = "<group>"; };
 		52DD768421C5109B00C2E012 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		52DD768621C5109D00C2E012 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		52DD768721C6428300C2E012 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -677,6 +679,7 @@
 				05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */,
 				05AE64721FA93F4800FCCC28 /* ApiMethods.swift */,
 				60FAB83D2064DBE10039BF61 /* APICall.swift */,
+				52D1A13A21D92859005EA2F0 /* ApiUtility.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1316,6 +1319,7 @@
 				05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */,
 				05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */,
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
+				52D1A13B21D92859005EA2F0 /* ApiUtility.swift in Sources */,
 				522F6B5421D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift in Sources */,
 				60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */,
 				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,

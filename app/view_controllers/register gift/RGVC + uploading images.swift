@@ -83,9 +83,9 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
             //                return
             //            }
             
-            APIRequest.logReply(data: data)
+            ApiUtility.watch(data: data)
             
-            if let imageSrc=APIRequest.readJsonData(data: data, outputType: ImageUpload.self)?.imageSrc {
+            if let imageSrc=ApiUtility.convert(data: data, to: ImageUpload.self)?.imageSrc {
                 
                 guard let uploadIndex=self?.findIndexOfUploadedImage(task: uploadedImageView.getTask()) else {
                     return

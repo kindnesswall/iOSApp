@@ -51,7 +51,7 @@ class RequestsViewController: UIViewController {
         isFirstTime = false
         ApiMethods.getRequestsMyGifts(startIndex: 0) { [weak self] (data, response, error) in
             
-            APIRequest.logReply(data: data)
+            ApiUtility.watch(data: data)
             if let response = response as? HTTPURLResponse {
                 if response.statusCode < 200 && response.statusCode >= 300 {
                     return
@@ -63,7 +63,7 @@ class RequestsViewController: UIViewController {
                 return
             }
             
-            if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+            if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
                 
                 
                 self?.loadingIndicator.stopLoading()

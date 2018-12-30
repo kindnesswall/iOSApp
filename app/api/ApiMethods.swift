@@ -55,7 +55,7 @@ class ApiMethods {
             inputDictionary: ["chat_id":chatId, "start_index":startIndex, "last_index":startIndex + offset - 1 ])
         {(data, response, error) in
             
-            APIRequest.logReply(data: data)
+            ApiUtility.watch(data: data)
             
 //            if let reply=APIRequest.readJsonData(
 //                data: data,
@@ -77,7 +77,7 @@ class ApiMethods {
             inputDictionary: ["chat_id":chatId, "message_text":messageText ])
         {(data, response, error) in
             
-            APIRequest.logReply(data: data)
+            ApiUtility.watch(data: data)
             
 //            if let reply=APIRequest.readJsonData(
 //                data: data,
@@ -228,7 +228,7 @@ class ApiMethods {
         
         APIRequest.Request(url: mainURL, httpMethod: .put, complitionHandler: { (data, response, error) in
             
-            APIRequest.logReply(data: data)
+            ApiUtility.watch(data: data)
             guard error == nil else {
                 print("Get error register")
                 return
@@ -245,7 +245,7 @@ class ApiMethods {
         
         APIRequest.Request(url: mainURL, httpMethod: .put, complitionHandler: { (data, response, error) in
             
-            APIRequest.logReply(data: data)
+            ApiUtility.watch(data: data)
             guard error == nil else {
                 print("Get error register")
                 return

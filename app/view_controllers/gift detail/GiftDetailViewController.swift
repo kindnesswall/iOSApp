@@ -67,7 +67,7 @@ class GiftDetailViewController: UIViewController {
         }
         ApiMethods.getGift(giftId: id) { [weak self] (data) in
             
-            if let reply=APIRequest.readJsonData(data: data, outputType: Gift.self) {
+            if let reply=ApiUtility.convert(data: data, to: Gift.self) {
                 
                 self?.loadingIndicator?.stopLoading()
                 

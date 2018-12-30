@@ -137,9 +137,9 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                 return
             }
             
-            APIRequest.logReply(data: data)
+            ApiUtility.watch(data: data)
 
-            if let reply=APIRequest.readJsonData(data: data, outputType: TokenOutput.self) {
+            if let reply=ApiUtility.convert(data: data, to: TokenOutput.self) {
                 
                 if let error = reply.error , error == TokenOutputError.invalid_grant.rawValue {
                     FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeIncorrectError),theme: .warning)

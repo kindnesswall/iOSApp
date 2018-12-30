@@ -41,7 +41,7 @@ class DonatedGiftViewModel: GiftViewModel {
             
             self?.isLoadingGifts = false
             
-            if let reply=APIRequest.readJsonData(data: data, outputType: [Gift].self) {
+            if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
                 
                 if index==0 {
                     self?.gifts=[]
