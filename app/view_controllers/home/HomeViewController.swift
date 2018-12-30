@@ -293,11 +293,11 @@ extension HomeViewController:UITableViewDelegate {
         )
         self.userDefault.set(
             Float(Date().timeIntervalSinceReferenceDate),
-            forKey: AppConstants.LastTimeISawAd)
+            forKey: AppConst.LastTimeISawAd)
     }
     
     func isMoreThanOneDayIDidntSawAd()->Bool {
-        let lastTimeISawAd = userDefault.float(forKey: AppConstants.LastTimeISawAd)
+        let lastTimeISawAd = userDefault.float(forKey: AppConst.LastTimeISawAd)
         let currentDateTime = Float(Date().timeIntervalSinceReferenceDate)
         if currentDateTime > lastTimeISawAd + NumberOfSecondsOfOneDay {
             return true

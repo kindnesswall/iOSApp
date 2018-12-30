@@ -51,7 +51,7 @@ extension LoginRegisterVC {
         guard let imageData = self.profileImageView.image?.jpegData(compressionQuality: 0.1) else { return }
 //        self.profileImageView.image?.jpegData(compressionQuality: 0.1)
         
-        let storageRef = Storage.storage().reference().child(Const.Urls.IMAGES).child("\(uid).jpg")
+        let storageRef = Storage.storage().reference().child(AppConst.FIRUrls.IMAGES).child("\(uid).jpg")
         
         storageRef.putData(imageData, metadata: nil, completion: { (storageMetaData, error) in
             if error != nil {
@@ -76,7 +76,7 @@ extension LoginRegisterVC {
         }
         
         let ref = Database.database().reference()
-        let usersRef = ref.child(Const.Urls.USERS).child(uid)
+        let usersRef = ref.child(AppConst.FIRUrls.USERS).child(uid)
         usersRef.updateChildValues(
             info
             ,withCompletionBlock: { (err, ref) in

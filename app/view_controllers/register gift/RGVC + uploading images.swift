@@ -62,7 +62,7 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     //    }
     
     func uploadImage(selectedImage: UIImage) {
-        //        if let token=UserDefaults.standard.string(forKey: AppConstants.Authorization) {
+        //        if let token=UserDefaults.standard.string(forKey: AppConst.Authorization) {
         
         let uploadedImageView=addUploadImageView(image: selectedImage)
         

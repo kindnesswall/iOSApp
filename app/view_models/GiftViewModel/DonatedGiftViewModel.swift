@@ -28,7 +28,7 @@ class DonatedGiftViewModel: GiftViewModel {
             self.delegate?.lazyLoadingAnimation(viewModel:self,isLoading: true)
         }
         
-        guard let userId=KeychainSwift().get(AppConstants.USER_ID) else {
+        guard let userId=KeychainSwift().get(AppConst.KeyChain.USER_ID) else {
             return
         }
         let url=APIURLs.getMyDonatedGifts+"/"+userId+"/\(index)/\(index+lazyLoadingCount)"

@@ -94,7 +94,7 @@ extension AppDelegate : UITabBarControllerDelegate{
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         
-        let auth=keychain.get(AppConstants.Authorization)
+        let auth=keychain.get(AppConst.KeyChain.Authorization)
         
         if auth==nil,
             authIsMandatory(for: viewController)

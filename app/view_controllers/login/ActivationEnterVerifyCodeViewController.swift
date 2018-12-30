@@ -58,7 +58,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
     }
     
     func setTipLabel(){
-        if let phoneNumber = userDefault.string(forKey: AppConstants.PHONE_NUMBER) {
+        if let phoneNumber = userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) {
             tipLabel.text = LocalizationSystem.getStr(forKey: LanguageKeys.guideOfRegitering_part1) + AppLanguage.getNumberString(number: phoneNumber) + LocalizationSystem.getStr(forKey: LanguageKeys.guideOfRegitering_part2)
         }
     }
@@ -112,7 +112,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
             return
         }
         
-        guard let mobile = userDefault.string(forKey: AppConstants.PHONE_NUMBER) else {
+        guard let mobile = userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) else {
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.phoneNumberTryAgainError), theme: .error)
             return
         }
@@ -147,21 +147,21 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                     return
                 }
                 
-                self?.keychain.set(mobile, forKey: AppConstants.PHONE_NUMBER)
+                self?.keychain.set(mobile, forKey: AppConst.UserDefaults.PHONE_NUMBER)
                 
                 if let userId = reply.userId {
 //                    self.userDefault.set(userId, forKey: AppConstants.USER_ID)
-                    self?.keychain.set(userId, forKey: AppConstants.USER_ID)
+                    self?.keychain.set(userId, forKey: AppConst.KeyChain.USER_ID)
                 }
                 if let userName = reply.userName {
 //                    self.userDefault.set(userName, forKey: AppConstants.USERNAME)
-                    self?.keychain.set(userName, forKey: AppConstants.USER_NAME)
+                    self?.keychain.set(userName, forKey: AppConst.KeyChain.USER_NAME)
                 }
                 if let token = reply.access_token {
 //                    self.userDefault.set(
 //                        AppConstants.BEARER + " " + token, forKey: AppConstants.Authorization)
                     
-                    self?.keychain.set(AppConstants.BEARER + " " + token, forKey: AppConstants.Authorization)
+                    self?.keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
                 }
                 
                 self?.dismiss(animated: true, completion: {
@@ -185,7 +185,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         self.sendAgainBtn.setTitle("", for: [])
         self.resendLoading.startAnimating()
         
-        guard let mobile = userDefault.string(forKey: AppConstants.PHONE_NUMBER) else {
+        guard let mobile = userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) else {
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.phoneNumberTryAgainError), theme: .error)
             self.sendAgainBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.resendActivationCode), for: [])
             self.resendLoading.stopAnimating()

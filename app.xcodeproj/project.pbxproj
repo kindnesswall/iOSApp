@@ -70,7 +70,7 @@
 		05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */; };
 		05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */; };
 		05BFBBD71FE1D6FE00DBCDDF /* String+isNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */; };
-		05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD81FE24C4D00DBCDDF /* AppConstants.swift */; };
+		05BFBBD91FE24C4D00DBCDDF /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */; };
 		05BFBBDB1FE24C6E00DBCDDF /* TabIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBDA1FE24C6E00DBCDDF /* TabIndex.swift */; };
 		05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBDD1FE26A9000DBCDDF /* Gift.swift */; };
 		05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBDF1FE26ADE00DBCDDF /* User.swift */; };
@@ -262,7 +262,7 @@
 		05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewController.swift; sourceTree = "<group>"; };
 		05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isNumber.swift"; sourceTree = "<group>"; };
-		05BFBBD81FE24C4D00DBCDDF /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
 		05BFBBDA1FE24C6E00DBCDDF /* TabIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabIndex.swift; sourceTree = "<group>"; };
 		05BFBBDD1FE26A9000DBCDDF /* Gift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gift.swift; sourceTree = "<group>"; };
 		05BFBBDF1FE26ADE00DBCDDF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -638,7 +638,7 @@
 				05BFBBC91FDAA53900DBCDDF /* AppFont.swift */,
 				05BFBBC71FDAA4EF00DBCDDF /* AppColor.swift */,
 				05BFBBC51FDAA4B100DBCDDF /* AppEnums.swift */,
-				05BFBBD81FE24C4D00DBCDDF /* AppConstants.swift */,
+				05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */,
 				05BFBBDA1FE24C6E00DBCDDF /* TabIndex.swift */,
 				526545F921BF082E00C98821 /* TapSellConstants.swift */,
 			);
@@ -1354,7 +1354,7 @@
 				60FAB8402064EE950039BF61 /* RGVC + uploading images.swift in Sources */,
 				52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */,
 				528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */,
-				05BFBBD91FE24C4D00DBCDDF /* AppConstants.swift in Sources */,
+				05BFBBD91FE24C4D00DBCDDF /* AppConst.swift in Sources */,
 				522F6B5521D81696001C67B9 /* LoginRegisterVC+ImagePicker.swift in Sources */,
 				601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */,
 				05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */,

@@ -19,7 +19,8 @@ class MyKindnessWallViewController: UIViewController {
     @IBOutlet weak var contactUsBtn: UIButton!
     @IBOutlet var loginLogoutBtn: UIButton!
     let keychain = KeychainSwift()
-    
+    let userDefault=UserDefaults.standard
+
     @IBOutlet weak var passcodeTouchIDBtn: UIButton!
     
     @IBAction func shareApp(_ sender: Any) {
@@ -50,7 +51,7 @@ class MyKindnessWallViewController: UIViewController {
     
     @IBAction func logoutBtnClicked(_ sender: Any) {
         
-        if let _=keychain.get(AppConstants.Authorization) { //UserDefaults.standard.string(forKey: AppConstants.Authorization) {
+        if let _=keychain.get(AppConst.KeyChain.Authorization) { //UserDefaults.standard.string(forKey: AppConstants.Authorization) {
             
             let alert = UIAlertController(
                 title:LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_title),
@@ -112,17 +113,18 @@ class MyKindnessWallViewController: UIViewController {
     }
     
     func setLoginLogoutBtnTitle(){
-        if let _=keychain.get(AppConstants.Authorization) {
+        if let _=keychain.get(AppConst.KeyChain.Authorization) {
             loginLogoutBtn.setTitle(
                 LocalizationSystem.getStr(forKey: LanguageKeys.logout) +
-                    AppLanguage.getNumberString(number: (self.keychain.get(AppConstants.PHONE_NUMBER) ?? "")), for: .normal)
+                    AppLanguage.getNumberString(
+                        number: (userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) ?? "")), for: .normal)
         } else {
             loginLogoutBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.login), for: .normal)
         }
     }
     
     func setPasscodeBtnVisiblity()  {
-        if let _=keychain.get(AppConstants.Authorization) {
+        if let _=keychain.get(AppConst.KeyChain.Authorization) {
             passcodeTouchIDBtn.show()
         }else{
             passcodeTouchIDBtn.hide()

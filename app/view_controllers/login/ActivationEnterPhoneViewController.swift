@@ -37,7 +37,7 @@ class ActivationEnterPhoneViewController: UIViewController {
         
         self.phoneNumberTextField.keyboardType = UIKeyboardType.numberPad
         
-        if let phoneNumber = userDefault.string(forKey: AppConstants.PHONE_NUMBER) {
+        if let phoneNumber = userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) {
             phoneNumberTextField.text =  phoneNumber
         }
         
@@ -98,7 +98,7 @@ class ActivationEnterPhoneViewController: UIViewController {
             return
         }
         
-        userDefault.set(mobile, forKey: AppConstants.PHONE_NUMBER)
+        userDefault.set(mobile, forKey: AppConst.UserDefaults.PHONE_NUMBER)
         userDefault.synchronize()
         
         phoneNumberTextField.isUserInteractionEnabled = false

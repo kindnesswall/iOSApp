@@ -54,7 +54,7 @@ class GiftDetailViewController: UIViewController {
         
         setUI()
 
-        if let _=KeychainSwift().get(AppConstants.Authorization) {
+        if let _=KeychainSwift().get(AppConst.KeyChain.Authorization) {
             self.requestBtn.hide()
         }
         
@@ -71,7 +71,7 @@ class GiftDetailViewController: UIViewController {
                 
                 self?.loadingIndicator?.stopLoading()
                 
-                if let myId=KeychainSwift().get(AppConstants.USER_ID) , let userId=reply.userId , myId==userId {
+                if let myId=KeychainSwift().get(AppConst.KeyChain.USER_ID) , let userId=reply.userId , myId==userId {
                     self?.addEditBtn()
 //                    self?.requestBtn.hide()
                     self?.removeBtn.show()

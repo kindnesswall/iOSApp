@@ -208,7 +208,7 @@ class RegisterGiftViewController: UIViewController {
         self.priceTextView.text=""
         
         let userDefault=UserDefaults.standard
-        userDefault.set(nil, forKey: AppConstants.RegisterGiftDraft)
+        userDefault.set(nil, forKey: AppConst.UserDefaults.RegisterGiftDraft)
         userDefault.synchronize()
         
     }
