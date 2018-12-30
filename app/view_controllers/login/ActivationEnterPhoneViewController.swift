@@ -86,7 +86,7 @@ class ActivationEnterPhoneViewController: UIViewController {
         
         self.phoneNumberTextField.attributedPlaceholder = nsAttr
         
-        self.registerBtn.backgroundColor=AppColor.tintColor
+        self.registerBtn.backgroundColor=AppConst.Resource.Color.Tint
         
     }
     

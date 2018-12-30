@@ -132,7 +132,7 @@ class HomeViewController: UIViewController {
     
     func configRefreshControl(){
         self.refreshControl.addTarget(self, action: #selector(self.refreshControlAction), for: .valueChanged)
-        refreshControl.tintColor=AppColor.tintColor
+        refreshControl.tintColor=AppConst.Resource.Color.Tint
         self.tableview.addSubview(refreshControl)
     }
     @objc func refreshControlAction(){

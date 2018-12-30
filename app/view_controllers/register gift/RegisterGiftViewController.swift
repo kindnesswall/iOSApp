@@ -262,7 +262,7 @@ class RegisterGiftViewController: UIViewController {
         
         let label=UILabel()
         label.text=place.name
-        label.backgroundColor=AppColor.greyBgColor
+        label.backgroundColor=AppConst.Resource.Color.GreyBg
         label.textColor=UIColor.black
         label.font=AppConst.Resource.Font.getRegularFont(size: 17)
         label.textAlignment = .center

@@ -21,12 +21,14 @@ struct AppConst {
             static func getBoldFont(size:CGFloat)->UIFont {
                 return UIFont(name: "IRANSansMobile-Bold", size: size)!
             }
-            
             static func getIcomoonFont(size:CGFloat)->UIFont {
                 return UIFont(name: "icomoon" , size:size)!
             }
         }
-        
+        struct Color {
+            static let Tint=UIColor(named: "TintColor")!
+            static let GreyBg=UIColor(named:"GrayBackgroundColor")!
+        }
     }
     
     struct FIRUrls {
@@ -70,7 +72,6 @@ struct AppConst {
         public static let RegisterGift:Int = 2
         public static let Requests:Int = 1
         public static let MyKindnessWall:Int = 0
-        
     }
 }
 

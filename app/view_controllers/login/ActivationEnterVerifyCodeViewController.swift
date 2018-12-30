@@ -225,16 +225,16 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         self.verifyCodeTextField.backgroundColor=UIColor.clear
         self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:LocalizationSystem.getStr(forKey: LanguageKeys.activationCode), attributes: [NSAttributedString.Key.font : AppConst.Resource.Font.getLightFont(size: 13),NSAttributedString.Key.foregroundColor: UIColor.gray])
         
-        self.registerBtn.backgroundColor=AppColor.tintColor
+        self.registerBtn.backgroundColor=AppConst.Resource.Color.Tint
         
-        self.returnBtn.setTitleColor(AppColor.tintColor, for: UIControl.State())
-        self.sendAgainBtn.setTitleColor(AppColor.tintColor, for: UIControl.State())
+        self.returnBtn.setTitleColor(AppConst.Resource.Color.Tint, for: UIControl.State())
+        self.sendAgainBtn.setTitleColor(AppConst.Resource.Color.Tint, for: UIControl.State())
 
-        UIFunctions.setBordersStyle(view: self.registerBtn, radius: 10, width: 1, color: AppColor.tintColor)
+        UIFunctions.setBordersStyle(view: self.registerBtn, radius: 10, width: 1, color: AppConst.Resource.Color.Tint)
         
-        UIFunctions.setBordersStyle(view: self.returnBtn, radius: 10, width: 1, color: AppColor.tintColor)
+        UIFunctions.setBordersStyle(view: self.returnBtn, radius: 10, width: 1, color: AppConst.Resource.Color.Tint)
         
-        UIFunctions.setBordersStyle(view: self.sendAgainBtn, radius: 10, width: 1, color: AppColor.tintColor)
+        UIFunctions.setBordersStyle(view: self.sendAgainBtn, radius: 10, width: 1, color: AppConst.Resource.Color.Tint)
     }
     
 }

@@ -10,8 +10,8 @@ import UIKit
 
 extension UINavigationBar {
     func setDefaultStyle(){
-        self.tintColor=AppColor.tintColor
-        self.titleTextAttributes=[NSAttributedString.Key.font:AppConst.Resource.Font.getBoldFont(size: 17),NSAttributedString.Key.foregroundColor:AppColor.tintColor]
+        self.tintColor=AppConst.Resource.Color.Tint
+        self.titleTextAttributes=[NSAttributedString.Key.font:AppConst.Resource.Font.getBoldFont(size: 17),NSAttributedString.Key.foregroundColor:AppConst.Resource.Color.Tint]
         
     }
 }

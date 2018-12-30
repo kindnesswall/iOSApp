@@ -23,7 +23,7 @@ public class LoadingIndicator {
     }
     
     
-    init(view:UIView,offset:CGFloat=0,color:UIColor=AppColor.tintColor) {
+    init(view:UIView,offset:CGFloat=0,color:UIColor=AppConst.Resource.Color.Tint) {
         
         loadingIndicatorType = .view
         
@@ -44,7 +44,7 @@ public class LoadingIndicator {
         
     }
 
-    init(viewBelowTableView:UIView,cellHeight:CGFloat,color:UIColor=AppColor.tintColor) {
+    init(viewBelowTableView:UIView,cellHeight:CGFloat,color:UIColor=AppConst.Resource.Color.Tint) {
         
         
         loadingIndicatorType = .view
@@ -70,7 +70,7 @@ public class LoadingIndicator {
         
     }
     
-    init(navigationItem:UINavigationItem,type:NavigationItemType,replacedNavigationBarButton:UIBarButtonItem?,color:UIColor=AppColor.tintColor) {
+    init(navigationItem:UINavigationItem,type:NavigationItemType,replacedNavigationBarButton:UIBarButtonItem?,color:UIColor=AppConst.Resource.Color.Tint) {
         
         self.navigationItem=navigationItem
         self.replacedNavigationBarButton=replacedNavigationBarButton
