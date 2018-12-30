@@ -42,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let keychain = KeychainSwift()
     var isActiveAfterBioAuth:Bool = false
     var current_time:Time?
+    lazy var FIRDB_Ref:DatabaseReference = Database.database().reference().child(AppConst.FIRUrls.KindnessWall)
+    lazy var FIRStorage_Ref:StorageReference = Storage.storage().reference().child(AppConst.FIRUrls.KindnessWall)
     
     public var tabBarController:UITabBarController?
     

@@ -47,11 +47,10 @@ extension FirbaseLoginRegisterVC {
             return
         }
         
-//        let resizedImage = self.profileImageView.image?.resizeImage(targetSize: CGSize(width: 300, height: 300))
-        guard let imageData = self.profileImageView.image?.jpegData(compressionQuality: 0.1) else { return }
-//        self.profileImageView.image?.jpegData(compressionQuality: 0.1)
+        guard let imageData = self.profileImageView.image?.jpegData(compressionQuality: 0.1) else
+        { return }
         
-        let storageRef = Storage.storage().reference().child(AppConst.FIRUrls.Storage.IMAGES).child("\(uid).jpg")
+        let storageRef = AppDelegate.me().FIRStorage_Ref.child(AppConst.FIRUrls.Storage.IMAGES).child("\(uid).jpg")
         
         storageRef.putData(imageData, metadata: nil, completion: { (storageMetaData, error) in
             if error != nil {
@@ -75,7 +74,7 @@ extension FirbaseLoginRegisterVC {
             return
         }
         
-        let ref = Database.database().reference()
+        let ref = AppDelegate.me().FIRDB_Ref
         let usersRef = ref.child(AppConst.FIRUrls.Database.USERS).child(uid)
         usersRef.updateChildValues(
             info
@@ -120,6 +119,8 @@ extension FirbaseLoginRegisterVC {
     @objc func handleSegmentedControlChange(){
         let title = loginRegisterSegmentControl.titleForSegment(at: loginRegisterSegmentControl.selectedSegmentIndex)
         loginRegisterBtn.setTitle(title, for: .normal)
+        
+        profileImageView.isHidden = loginRegisterSegmentControl.selectedSegmentIndex == 0 ? true : false
         
         inputContainerViewHeightConstraint?.constant =
             loginRegisterSegmentControl.selectedSegmentIndex == 0 ? 100 : 150

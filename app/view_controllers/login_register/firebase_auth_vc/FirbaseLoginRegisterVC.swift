@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class FirbaseLoginRegisterVC: UIViewController,UITextFieldDelegate {
     
@@ -89,8 +88,8 @@ class FirbaseLoginRegisterVC: UIViewController,UITextFieldDelegate {
     
     lazy var profileImageView:UIImageView = {
         let iv = UIImageView()
-//        iv.image = UIImage(named: "avatar")
-//        iv.contentMode = .scaleAspectFill
+        iv.image = UIImage(named: AppConst.Resource.Image.Blank_Avatar)
+        iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.isUserInteractionEnabled = true
         iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageTap)))
