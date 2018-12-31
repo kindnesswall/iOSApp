@@ -39,7 +39,7 @@ struct AppConst {
         }
     }
     
-    struct FIRUrls {
+    struct FIR {
         
         static let KindnessWall:String = "kindnesswall"
         
@@ -55,6 +55,14 @@ struct AppConst {
             static let MESSAGES_IMAGE:String = "message_images"
         }
         
+        struct Keys {
+            struct User {
+                static let NAME:String = "name"
+                static let EMAIL:String = "email"
+                static let PROFILE_IMG_URL:String = "profileImageURL"
+                static let ID:String = "id"
+            }
+        }
     }
     
     struct KeyChain {
