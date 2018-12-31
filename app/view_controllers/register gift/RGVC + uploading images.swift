@@ -13,28 +13,16 @@ import Kingfisher
 extension RegisterGiftViewController:UIImagePickerControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        
-        let selectedImage = info[.originalImage] as? UIImage
-        
-        
-        if let selectedImage=selectedImage {
-            
-            
-            let cropViewController = CropViewController(image: selectedImage)
-            cropViewController.delegate = self
-            
-            
+        guard let selectedImage = info[.originalImage] as? UIImage else{
             picker.dismiss(animated: true, completion: nil)
-            
-            present(cropViewController, animated: false, completion: nil)
-            
-            
-            
-            
-        } else {
-            picker.dismiss(animated: true, completion: nil)
+            return
         }
         
+        let cropViewController = CropViewController(image: selectedImage)
+        cropViewController.delegate = self
+        
+        picker.dismiss(animated: true, completion: nil)
+        self.present(cropViewController, animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -66,7 +54,12 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         
         let uploadedImageView=addUploadImageView(image: selectedImage)
         
-        APICall.uploadImage(url: APIURLs.Upload, image: selectedImage, sessions: &uploadedImageView.sessions, tasks: &uploadedImageView.tasks, delegate: self) { [weak self] (data, response, error) in
+        APICall.uploadImage(
+            url: APIURLs.Upload,
+            image: selectedImage,
+            sessions: &uploadedImageView.sessions,
+            tasks: &uploadedImageView.tasks,
+            delegate: self) { [weak self] (data, response, error) in
             
             //            if let response = response as? HTTPURLResponse {
             //                print((response).statusCode)
@@ -117,7 +110,10 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     }
     
     func initUploadImageView()-> UploadImageView {
-        let uploadedImageView=NibLoader.loadViewFromNib(name: "UploadImageView", owner: self, nibType: UploadImageView.self) as! UploadImageView
+        let uploadedImageView=NibLoader.loadViewFromNib(
+            name: UploadImageView.identifier,
+            owner: self,
+            nibType: UploadImageView.self) as! UploadImageView
         uploadedImageView.widthAnchor.constraint(equalToConstant: 100).isActive=true
         
         uploadedImageView.delegate=self

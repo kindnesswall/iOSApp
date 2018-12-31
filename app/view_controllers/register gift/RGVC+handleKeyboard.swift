@@ -11,6 +11,12 @@ import XLActionController
 
 extension RegisterGiftViewController {
     
+    @objc func dismissKeyBoard(){
+        self.titleTextView.resignFirstResponder()
+        self.priceTextView.resignFirstResponder()
+        self.descriptionTextView.resignFirstResponder()
+    }
+    
     func removeKeyboardObserver() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -31,7 +37,6 @@ extension RegisterGiftViewController {
             }
             //            print("keyboard:\(keyboardSize.height)")
             self.contentScrollView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
-            
         }
     }
     

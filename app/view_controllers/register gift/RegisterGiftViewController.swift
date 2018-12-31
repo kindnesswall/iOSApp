@@ -13,7 +13,12 @@ class RegisterGiftViewController: UIViewController {
 
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var titleTextView: UITextField!
-    @IBOutlet weak var contentStackView: UIStackView!
+    @IBOutlet weak var contentStackView: UIStackView! {
+        didSet{
+            let tapGesture=UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyBoard))
+            contentStackView.addGestureRecognizer(tapGesture)
+        }
+    }
     
     @IBOutlet weak var categoryBtn: UIButton!
     
@@ -66,10 +71,6 @@ class RegisterGiftViewController: UIViewController {
         
         self.viewModel.delegate = self
         
-        let tapGesture=UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction))
-        
-        contentStackView.addGestureRecognizer(tapGesture)
-        
         self.configNavBar()
         
         self.configSendButtons()
@@ -85,8 +86,6 @@ class RegisterGiftViewController: UIViewController {
         self.configAddressViews()
         
         addKeyboardObserver()
-        
-        // Do any additional setup after loading the view.
     }
     
     func configSendButtons(){
@@ -110,7 +109,7 @@ class RegisterGiftViewController: UIViewController {
     func configNavBar(){
         
         if !isEditMode {
-            self.barClearBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.clearBarBtnAction), text: LocalizationSystem.getStr(forKey: LanguageKeys.clearPage))
+            self.barClearBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.clearAllInput), text: LocalizationSystem.getStr(forKey: LanguageKeys.clearPage))
             self.navigationItem.rightBarButtonItems=[self.barClearBtn!]
             self.barSaveBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.saveBarBtnAction), text: LocalizationSystem.getStr(forKey: LanguageKeys.saveDraft))
             self.navigationItem.leftBarButtonItems=[self.barSaveBtn!]
@@ -123,7 +122,7 @@ class RegisterGiftViewController: UIViewController {
         
     }
     
-    func clearAllInput(){
+    @objc func clearAllInput(){
         
         self.clearUploadedImages()
         self.clearGiftPlaces()
@@ -141,28 +140,14 @@ class RegisterGiftViewController: UIViewController {
         let userDefault=UserDefaults.standard
         userDefault.set(nil, forKey: AppConst.UserDefaults.RegisterGiftDraft)
         userDefault.synchronize()
-        
     }
     
-    @objc func clearBarBtnAction(){
-        self.clearAllInput()
-    }
     @objc func saveBarBtnAction(){
         self.viewModel.saveDraft()
     }
     
     @objc func closeBarBtnAction(){
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func tapGestureAction(){
-        dismissKeyBoard()
-    }
-    
-    func dismissKeyBoard(){
-        self.titleTextView.resignFirstResponder()
-        self.priceTextView.resignFirstResponder()
-        self.descriptionTextView.resignFirstResponder()
     }
     
     func addGiftPlace(place:Place) {
@@ -228,7 +213,6 @@ class RegisterGiftViewController: UIViewController {
             self.dateStatusBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
         }
     }
-    
 }
 
 
