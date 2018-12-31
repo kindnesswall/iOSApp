@@ -136,7 +136,7 @@ class GiftDetailViewController: UIViewController {
         let controller=RegisterGiftViewController()
         
         controller.isEditMode=true
-        controller.viewModel.editedGift=self.gift
+        controller.vm.editedGift=self.gift
         controller.editHandler={ [weak self] in
             
             self?.fillUIWithGift()

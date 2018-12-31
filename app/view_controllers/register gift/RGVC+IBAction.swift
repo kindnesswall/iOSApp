@@ -15,32 +15,32 @@ extension RegisterGiftViewController {
         self.registerBtn.isEnabled=false
         
         if AppDelegate.me().isIranSelected() {
-            viewModel.sendGift(httpMethod: .POST, responseHandler: {
+            vm.sendGift(httpMethod: .POST, responseHandler: {
                 self.registerBtn.isEnabled=true
             }) {
                 self.clearAllInput()
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.giftRegisteredSuccessfully),theme: .success)
             }
         }else{
-            viewModel.createGiftOnFIR()
+            vm.createGiftOnFIR()
         }
         
     }
     
     @IBAction func editBtnAction(_ sender: Any) {
         
-        guard let giftId=self.viewModel.editedGift?.id else {
+        guard let giftId=self.vm.editedGift?.id else {
             return
         }
         
         self.editBtn.isEnabled=false
-        viewModel.sendGift(httpMethod: .PUT,giftId: giftId, responseHandler: {
+        vm.sendGift(httpMethod: .PUT,giftId: giftId, responseHandler: {
             self.editBtn.isEnabled=true
         }) {
             
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.editedSuccessfully), theme: .success)
             
-            self.viewModel.writeChangesToEditedGift()
+            self.vm.writeChangesToEditedGift()
             self.editHandler?()
             
             let when=DispatchTime.now() + 1
@@ -54,7 +54,7 @@ extension RegisterGiftViewController {
     @IBAction func placeBtnAction(_ sender: Any) {
         
         self.clearGiftPlaces()
-        self.viewModel.giftHasNewAddress=true
+        self.vm.giftHasNewAddress=true
         self.configAddressViews()
         
         let controller=OptionsListViewController(
@@ -64,7 +64,7 @@ extension RegisterGiftViewController {
         controller.option = OptionsListViewController.Option.city(showRegion: true)
         controller.completionHandler={ [weak self] (id,name) in
             let place=Place(id: Int(id ?? ""), name: name)
-            self?.viewModel.places.append(place)
+            self?.vm.places.append(place)
             self?.addGiftPlace(place: place)
         }
         controller.closeHandler={ [weak self] in
@@ -83,7 +83,7 @@ extension RegisterGiftViewController {
         controller.option = OptionsListViewController.Option.category
         controller.completionHandler={ [weak self] (id,name) in
             self?.categoryBtn.setTitle(name, for: .normal)
-            self?.viewModel.category=Category(id: id, title: name)
+            self?.vm.category=Category(id: id, title: name)
         }
         let nc=UINavigationController(rootViewController: controller)
         self.present(nc, animated: true, completion: nil)
@@ -97,7 +97,7 @@ extension RegisterGiftViewController {
         controller.option = OptionsListViewController.Option.dateStatus
         controller.completionHandler={ [weak self] (id,name) in
             self?.dateStatusBtn.setTitle(name, for: .normal)
-            self?.viewModel.dateStatus=DateStatus(id: id, title: name)
+            self?.vm.dateStatus=DateStatus(id: id, title: name)
         }
         let nc=UINavigationController(rootViewController: controller)
         self.present(nc, animated: true, completion: nil)

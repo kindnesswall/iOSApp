@@ -47,22 +47,20 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     func uploadImageToFIR(image: UIImage) {
         guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
         
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd"
-        let fileName = NSUUID().uuidString + dateFormatterGet.string(from: Date())
+        let fileName = getUniqeNameWith(fileExtension: ".jpg")
         
         let storage_ref = AppDelegate.me().FIRStorage_Ref
-        let childRef = storage_ref.child(AppConst.FIR.Storage.Gift_Images).child("\(fileName).jpg")
+        let childRef = storage_ref.child(AppConst.FIR.Storage.Gift_Images).child(fileName)
         
         let uploadTask = childRef.putData(imageData, metadata: nil, completion: { [weak self](storageMetaData, error) in
             
             if error != nil {
                 print("storage error : \(error)")
-                self?.uploadFailed()
+                self?.vm.uploadFailed()
                 return
             }
             print("upload successfully!")
-            self?.uploadedSuccessfully()
+            self?.vm.uploadedSuccessfully()
             childRef.downloadURL(completion: { (url, error) in
                 guard let downloadURL = url else {
                     print("Uh-oh, an error occurred in upload!")
@@ -105,21 +103,11 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
                 
                 self?.imageViewUploadingHasFinished(uploadImageView: self?.uploadedImageViews[uploadIndex], imageSrc: imageSrc)
                 
-                self?.uploadedSuccessfully()
+                self?.vm.uploadedSuccessfully()
             } else {
-                self?.uploadFailed()
+                self?.vm.uploadFailed()
             }
-            
         }
-        
-    }
-    
-    func uploadedSuccessfully() {
-        FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.uploadedSuccessfully),theme: .success)
-    }
-    
-    func uploadFailed() {
-        FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
     }
     
     func addUploadImageView(imageSrc:String) -> UploadImageView{
@@ -157,7 +145,6 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         uploadImageView?.imageSrc=imageSrc
     }
     
-    
     func findIndexOfUploadedImage(task:URLSessionTask?)->Int?{
         
         guard let task = task else {
@@ -174,11 +161,16 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     }
     
     func clearUploadedImages(){
-        for uploadedImageView in self.uploadedImageViews {
-            uploadedImageView.cancelUploading()
-            uploadedImageView.removeFromSuperview()
+        if AppDelegate.me().isIranSelected() {
+            for uploadedImageView in self.uploadedImageViews {
+                uploadedImageView.cancelUploading()
+                uploadedImageView.removeFromSuperview()
+            }
+            self.uploadedImageViews=[]
+        }else{
+            
         }
-        self.uploadedImageViews=[]
+        
     }
 }
 

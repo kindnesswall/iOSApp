@@ -28,7 +28,7 @@ class RegisterGiftViewModel: NSObject {
     }
     
     func readGiftInfo() -> RegisterGiftInput? {
-        let input=RegisterGiftInput()
+        var input:RegisterGiftInput = Gift()
         
         let uiProperties = delegate?.getUIInputProperties()
         
@@ -39,7 +39,7 @@ class RegisterGiftViewModel: NSObject {
         }
         input.title=title
         
-        guard let categoryId=Int(self.category?.id ?? "") else {
+        guard let categoryId=self.category?.id else {
             inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.categoryError))
             return nil
         }
@@ -62,7 +62,7 @@ class RegisterGiftViewModel: NSObject {
         }
         input.description=giftDescription
         
-        guard let price=Int(uiProperties?.priceTextViewText?.castNumberToEnglish() ?? "") else {
+        guard let price=uiProperties?.priceTextViewText?.castNumberToEnglish() else {
             inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.priceError))
             return nil
         }
@@ -85,7 +85,7 @@ class RegisterGiftViewModel: NSObject {
             
             input.address=address
             input.cityId=cityId
-            input.regionId=(regionId ?? 0)
+            input.regionId=(regionId ?? "0")
             
         } else {
             
@@ -155,7 +155,7 @@ class RegisterGiftViewModel: NSObject {
         responseHandler:(()->Void)?,
         complitionHandler:(()->Void)?){
         
-        guard let input = readGiftInfo() else {
+        guard let input = readGiftInfo() as? Gift else {
             responseHandler?()
             return
         }
@@ -264,8 +264,8 @@ class RegisterGiftViewModel: NSObject {
         
         self.delegate?.setEditedGiftOriginalAddressLabel(text: gift.address)
         self.editedGiftAddress.address = gift.address
-        self.editedGiftAddress.cityId=Int(gift.cityId ?? "") ?? 0
-        self.editedGiftAddress.regionId=Int(gift.regionId ?? "") ?? 0
+        self.editedGiftAddress.cityId=gift.cityId ?? "0"
+        self.editedGiftAddress.regionId=gift.regionId ?? "0"
         
         if let giftImages = gift.giftImages {
             for giftImage in giftImages {
@@ -342,9 +342,11 @@ class RegisterGiftViewModel: NSObject {
             return nil
         }
         
-        var regionId:Int?
+        var regionId:String?
         if places.count>1 {
-            regionId=places[1].id
+            if let id=places[1].id {
+                regionId=String(id)
+            }
         }
         
         var address=cityName
@@ -354,10 +356,17 @@ class RegisterGiftViewModel: NSObject {
             }
         }
         
-        return Address(address:address,cityId:cityId,regionId:regionId)
+        return Address(address:address,cityId:String(cityId),regionId:regionId)
         
     }
     
+    func uploadedSuccessfully() {
+        FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.uploadedSuccessfully),theme: .success)
+    }
+    
+    func uploadFailed() {
+        FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
+    }
 }
 
 protocol RegisterGiftViewModelDelegate : class {

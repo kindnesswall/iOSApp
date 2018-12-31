@@ -31,8 +31,8 @@ class RegisterGiftViewController: UIViewController {
     @IBOutlet weak var registerBtn: UIButton!
     
     @IBOutlet weak var uploadedImageStack: UIStackView!
-    var uploadedImageViews=[UploadImageView]()
     
+    var uploadedImageViews=[UploadImageView]()
     var imagesUrl:[String] = []
     
     @IBOutlet weak var placesStackView: UIStackView!
@@ -42,7 +42,7 @@ class RegisterGiftViewController: UIViewController {
     
     @IBOutlet var uploadBtn: UIButton!
     
-    var viewModel = RegisterGiftViewModel()
+    var vm = RegisterGiftViewModel()
     
     let imagePicker = UIImagePickerController()
     var isEditMode=false
@@ -71,18 +71,18 @@ class RegisterGiftViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.viewModel.delegate = self
+        self.vm.delegate = self
         
         self.configNavBar()
         
         self.configSendButtons()
         
         if isEditMode {
-            self.viewModel.readFromEditedGift()
-            self.viewModel.giftHasNewAddress=false
+            self.vm.readFromEditedGift()
+            self.vm.giftHasNewAddress=false
         } else {
-            self.viewModel.readFromDraft()
-            self.viewModel.giftHasNewAddress=true
+            self.vm.readFromDraft()
+            self.vm.giftHasNewAddress=true
         }
         
         self.configAddressViews()
@@ -101,7 +101,7 @@ class RegisterGiftViewController: UIViewController {
     }
     
     func configAddressViews(){
-        if self.viewModel.giftHasNewAddress {
+        if self.vm.giftHasNewAddress {
             self.editedGiftOriginalAddress.hide()
         } else {
             self.editedGiftOriginalAddress.show()
@@ -130,10 +130,10 @@ class RegisterGiftViewController: UIViewController {
         self.clearGiftPlaces()
         
         self.categoryBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
-        self.viewModel.category=nil
+        self.vm.category=nil
         
         self.dateStatusBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
-        self.viewModel.dateStatus=nil
+        self.vm.dateStatus=nil
         
         self.titleTextView.text=""
         self.descriptionTextView.text=""
@@ -145,7 +145,7 @@ class RegisterGiftViewController: UIViewController {
     }
     
     @objc func saveBarBtnAction(){
-        self.viewModel.saveDraft()
+        self.vm.saveDraft()
     }
     
     @objc func closeBarBtnAction(){
@@ -173,7 +173,7 @@ class RegisterGiftViewController: UIViewController {
             placeLabel.removeFromSuperview()
         }
         placesLabels=[]
-        self.viewModel.places=[]
+        self.vm.places=[]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -208,10 +208,10 @@ class RegisterGiftViewController: UIViewController {
         
         self.uploadBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.addImage), for: .normal)
         self.placeBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
-        if self.viewModel.category == nil {
+        if self.vm.category == nil {
             self.categoryBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
         }
-        if self.viewModel.dateStatus == nil {
+        if self.vm.dateStatus == nil {
             self.dateStatusBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
         }
     }

@@ -10,14 +10,14 @@ import Foundation
 
 class Address {
     var address:String?
-    var cityId:Int?
-    var regionId:Int?
+    var cityId:String?
+    var regionId:String?
     
     init() {
         
     }
     
-    init(address:String?,cityId:Int?,regionId:Int?){
+    init(address:String?,cityId:String?,regionId:String?){
         self.address=address
         self.cityId=cityId
         self.regionId=regionId

@@ -75,3 +75,8 @@ extension RegisterGiftViewController {
         
     }
 }
+
+extension RegisterGiftViewController:UINavigationControllerDelegate{
+    
+}
+
