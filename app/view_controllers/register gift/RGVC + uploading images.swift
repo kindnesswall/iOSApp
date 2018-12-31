@@ -34,66 +34,58 @@ extension RegisterGiftViewController:UIImagePickerControllerDelegate{
 extension RegisterGiftViewController : CropViewControllerDelegate {
     
     public func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
-        //        self.croppedRect = cropRect
-        //        self.croppedAngle = angle
-        //        updateImageViewWithImage(image, fromCropViewController: cropViewController)
         
         if AppDelegate.me().isIranSelected() {
             uploadImage(selectedImage: image)
         }else{
-            guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
-            
-            let dateFormatterGet = DateFormatter()
-            dateFormatterGet.dateFormat = "yyyy-MM-dd"
-            let fileName = NSUUID().uuidString + dateFormatterGet.string(from: Date())
-            
-            let storage_ref = AppDelegate.me().FIRStorage_Ref
-            let childRef = storage_ref.child(AppConst.FIR.Storage.Gift_Images).child("\(fileName).jpg")
-            
-            let uploadTask = childRef.putData(imageData, metadata: nil, completion: { [weak self](storageMetaData, error) in
-                
-                if error != nil {
-                    print("storage error : \(error)")
-                    self?.uploadFailed()
-                    return
-                }
-                print("upload successfully!")
-                self?.uploadedSuccessfully()
-                childRef.downloadURL(completion: { (url, error) in
-                    guard let downloadURL = url else {
-                        print("Uh-oh, an error occurred in upload!")
-                        return
-                    }
-                    self?.imagesUrl.append(downloadURL.absoluteString)
-                    
-                    print("url: " + downloadURL.absoluteString)
-//                    completionHandler(downloadURL.absoluteString)
-                })
-            })
-            
-            uploadTask.observe(.progress) { (snapshot) in
-                if let fraction = snapshot.progress?.fractionCompleted {
-                    let precent = Int(Double(fraction) * 100)
-                    print(precent)
-                }else{
-                    print("no fraction")
-                }
-            }
+            uploadImageToFIR(image: image)
         }
         
         self.dismiss(animated: false, completion: nil)
     }
     
-    //    public func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
-    ////        self.croppedRect = cropRect
-    ////        self.croppedAngle = angle
-    ////        updateImageViewWithImage(image, fromCropViewController: cropViewController)
-    //        uploadImage(selectedImage: image)
-    //    }
+    func uploadImageToFIR(image: UIImage) {
+        guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        let fileName = NSUUID().uuidString + dateFormatterGet.string(from: Date())
+        
+        let storage_ref = AppDelegate.me().FIRStorage_Ref
+        let childRef = storage_ref.child(AppConst.FIR.Storage.Gift_Images).child("\(fileName).jpg")
+        
+        let uploadTask = childRef.putData(imageData, metadata: nil, completion: { [weak self](storageMetaData, error) in
+            
+            if error != nil {
+                print("storage error : \(error)")
+                self?.uploadFailed()
+                return
+            }
+            print("upload successfully!")
+            self?.uploadedSuccessfully()
+            childRef.downloadURL(completion: { (url, error) in
+                guard let downloadURL = url else {
+                    print("Uh-oh, an error occurred in upload!")
+                    return
+                }
+                self?.imagesUrl.append(downloadURL.absoluteString)
+                
+                print("url: " + downloadURL.absoluteString)
+                //                    completionHandler(downloadURL.absoluteString)
+            })
+        })
+        
+        uploadTask.observe(.progress) { (snapshot) in
+            if let fraction = snapshot.progress?.fractionCompleted {
+                let precent = Int(Double(fraction) * 100)
+                print(precent)
+            }else{
+                print("no fraction")
+            }
+        }
+    }
     
     func uploadImage(selectedImage: UIImage) {
-        //        if let token=UserDefaults.standard.string(forKey: AppConst.Authorization) {
-        
         let uploadedImageView=addUploadImageView(image: selectedImage)
         
         APICall.uploadImage(
@@ -102,21 +94,6 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
             sessions: &uploadedImageView.sessions,
             tasks: &uploadedImageView.tasks,
             delegate: self) { [weak self] (data, response, error) in
-            
-            //            if let response = response as? HTTPURLResponse {
-            //                print((response).statusCode)
-            //
-            //                if response.statusCode >= 200 && response.statusCode <= 300 {
-            //                    FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
-            //                }else{
-            //                    FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
-            //                }
-            //            }
-            //
-            //            guard error==nil else {
-            //                FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
-            //                return
-            //            }
             
             ApiUtility.watch(data: data)
             
@@ -205,8 +182,6 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     }
 }
 
-
-
 extension RegisterGiftViewController:URLSessionTaskDelegate{
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
@@ -227,11 +202,6 @@ extension RegisterGiftViewController:URLSessionTaskDelegate{
         
     }
     
-}
-
-
-extension RegisterGiftViewController:UINavigationControllerDelegate{
-
 }
 
 extension RegisterGiftViewController : UploadImageViewDelegate {
