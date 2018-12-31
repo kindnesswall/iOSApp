@@ -44,7 +44,8 @@ struct AppConst {
         static let KindnessWall:String = "kindnesswall"
         
         struct Storage {
-            static let IMAGES:String = "profile_images"
+            static let Profile_Images:String = "profile_images"
+            static let Gift_Images:String = "gift_images"
         }
         
         struct Database {

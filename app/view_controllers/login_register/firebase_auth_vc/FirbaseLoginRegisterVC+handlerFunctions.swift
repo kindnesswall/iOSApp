@@ -50,7 +50,7 @@ extension FirbaseLoginRegisterVC {
         guard let imageData = self.profileImageView.image?.jpegData(compressionQuality: 0.1) else
         { return }
         
-        let storageRef = AppDelegate.me().FIRStorage_Ref.child(AppConst.FIR.Storage.IMAGES).child("\(uid).jpg")
+        let storageRef = AppDelegate.me().FIRStorage_Ref.child(AppConst.FIR.Storage.Profile_Images).child("\(uid).jpg")
         
         storageRef.putData(imageData, metadata: nil, completion: { (storageMetaData, error) in
             if error != nil {

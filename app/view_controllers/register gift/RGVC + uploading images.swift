@@ -38,7 +38,36 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         //        self.croppedAngle = angle
         //        updateImageViewWithImage(image, fromCropViewController: cropViewController)
         
-        uploadImage(selectedImage: image)
+        if AppDelegate.me().isIranSelected() {
+            uploadImage(selectedImage: image)
+        }else{
+            guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
+            
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "yyyy-MM-dd"
+            let fileName = NSUUID().uuidString + dateFormatterGet.string(from: Date())
+            
+            let storage_ref = AppDelegate.me().FIRStorage_Ref
+            let childRef = storage_ref.child(AppConst.FIR.Storage.Gift_Images).child("\(fileName).jpg")
+            
+            childRef.putData(imageData, metadata: nil, completion: { (storageMetaData, error) in
+                if error != nil {
+                    print("storage error : \(error)")
+                    return
+                }
+                print("upload successfully!")
+                childRef.downloadURL(completion: { (url, error) in
+                    guard let downloadURL = url else {
+                        print("Uh-oh, an error occurred in upload!")
+                        return
+                    }
+                    print("url: " + downloadURL.absoluteString)
+//                    completionHandler(downloadURL.absoluteString)
+                })
+                
+            })
+        }
+        
         self.dismiss(animated: false, completion: nil)
     }
     
@@ -110,7 +139,7 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     }
     
     func initUploadImageView()-> UploadImageView {
-        let uploadedImageView=NibLoader.loadViewFromNib(
+        let uploadedImageView = NibLoader.loadViewFromNib(
             name: UploadImageView.identifier,
             owner: self,
             nibType: UploadImageView.self) as! UploadImageView
