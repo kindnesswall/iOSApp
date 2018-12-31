@@ -233,8 +233,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func checkForLogin()->Bool{
-        if let _=keychain.get(AppConst.KeyChain.Authorization) {
-            return true
+        if isIranSelected() {
+            if let _=keychain.get(AppConst.KeyChain.Authorization) {
+                return true
+            }
+        }else{
+            if let _=Auth.auth().currentUser?.uid{
+                return true
+            }
         }
         showLoginVC()
         return false

@@ -10,7 +10,6 @@ import UIKit
 import KeychainSwift
 
 protocol SelectCountryDelegate {
-//    func show(alert:UIAlertController) -> ()
     func dismissViewController()
 }
 
@@ -39,22 +38,6 @@ extension SelectCountryVM:UIPickerViewDelegate,UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        if datasource[row] == AppLanguage.English {
-            
-//            self.delegate?.setTextOf(
-//                label:"Please select your preferred language:",
-//                button:"OK"
-//            )
-//            self.delegate?.set(textAlignment: .left)
-            
-        }else{
-            
-//            self.delegate?.setTextOf(
-//                label:"لطفا زبان مورد نظر خود را انتخاب کنید:",
-//                button: "تایید"
-//            )
-//            self.delegate?.set(textAlignment: .right)
-        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

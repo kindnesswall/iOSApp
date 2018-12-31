@@ -15,6 +15,14 @@ extension FirbaseLoginRegisterVC {
         setupLoginRegisterBtn()
         setupProfileImageView()
         setupSegmentedControl()
+        setupCloseBtn()
+    }
+    
+    func setupCloseBtn() {
+        closeBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        closeBtn.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        closeBtn.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        closeBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
     
     func setupSegmentedControl() {

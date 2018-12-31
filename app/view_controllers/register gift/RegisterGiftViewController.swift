@@ -48,7 +48,6 @@ class RegisterGiftViewController: UIViewController {
     var barSaveBtn:UIBarButtonItem?
     var barCloseBtn:UIBarButtonItem?
     
-    
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!

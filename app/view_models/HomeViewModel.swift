@@ -119,8 +119,6 @@ class HomeViewModel: NSObject {
                 }
                
                 self?.delegate?.insertNewItemsToTableView(insertedIndexes: insertedIndexes)
-                
-            
             }
             
         }
