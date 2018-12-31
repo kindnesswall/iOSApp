@@ -85,7 +85,6 @@
 		522F6B5521D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5121D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift */; };
 		522F6B5621D81697001C67B9 /* FirbaseLoginRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5221D81696001C67B9 /* FirbaseLoginRegisterVC.swift */; };
 		522F6B5821D816DD001C67B9 /* UIColor+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5721D816DD001C67B9 /* UIColor+init.swift */; };
-		522F6B5A21D817CB001C67B9 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5921D817CB001C67B9 /* Const.swift */; };
 		522F6B5E21D81AA2001C67B9 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5D21D81AA2001C67B9 /* FirebaseUser.swift */; };
 		522F6B6421D8B173001C67B9 /* SelectCountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B6321D8B173001C67B9 /* SelectCountryVC.swift */; };
 		522F6B6621D8B202001C67B9 /* SelectCountryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B6521D8B202001C67B9 /* SelectCountryVM.swift */; };
@@ -115,6 +114,11 @@
 		528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A2DC821ADAA2100DECE0F /* LanguageViewController.swift */; };
 		528A2DCB21ADAA2100DECE0F /* LanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */; };
 		52D1A13B21D92859005EA2F0 /* ApiUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A13A21D92859005EA2F0 /* ApiUtility.swift */; };
+		52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A13C21D93577005EA2F0 /* RGVC+handleKeyboard.swift */; };
+		52D1A13F21D936AD005EA2F0 /* RGVC+IBAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A13E21D936AD005EA2F0 /* RGVC+IBAction.swift */; };
+		52D1A14121D9376E005EA2F0 /* RGVC+vm delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A14021D9376E005EA2F0 /* RGVC+vm delegate.swift */; };
+		52D1A14421DA3C30005EA2F0 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A14321DA3C30005EA2F0 /* Address.swift */; };
+		52D1A14621DAA3BD005EA2F0 /* Public Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A14521DAA3BD005EA2F0 /* Public Functions.swift */; };
 		52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768521C5109B00C2E012 /* InfoPlist.strings */; };
 		52DD768821C6428300C2E012 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768721C6428300C2E012 /* GoogleService-Info.plist */; };
 		52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD768F21C68ECE00C2E012 /* RoundButton.swift */; };
@@ -163,7 +167,6 @@
 		60C972EB21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C972EA21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift */; };
 		60C972ED21C9ACC700A8D1C5 /* GiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C972EC21C9ACC700A8D1C5 /* GiftViewModel.swift */; };
 		60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */; };
-		60FAB83C2064320E0039BF61 /* Request Inputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83B2064320E0039BF61 /* Request Inputs.swift */; };
 		60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83D2064DBE10039BF61 /* APICall.swift */; };
 		60FAB8402064EE950039BF61 /* RGVC + uploading images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */; };
 		60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB842206503AE0039BF61 /* Stored Models.swift */; };
@@ -278,7 +281,6 @@
 		522F6B5121D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FirbaseLoginRegisterVC+ImagePicker.swift"; sourceTree = "<group>"; };
 		522F6B5221D81696001C67B9 /* FirbaseLoginRegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirbaseLoginRegisterVC.swift; sourceTree = "<group>"; };
 		522F6B5721D816DD001C67B9 /* UIColor+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+init.swift"; sourceTree = "<group>"; };
-		522F6B5921D817CB001C67B9 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		522F6B5D21D81AA2001C67B9 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		522F6B6321D8B173001C67B9 /* SelectCountryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryVC.swift; sourceTree = "<group>"; };
 		522F6B6521D8B202001C67B9 /* SelectCountryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryVM.swift; sourceTree = "<group>"; };
@@ -325,6 +327,11 @@
 		528A2DC821ADAA2100DECE0F /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		528A2DC921ADAA2100DECE0F /* LanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageViewController.xib; sourceTree = "<group>"; };
 		52D1A13A21D92859005EA2F0 /* ApiUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUtility.swift; sourceTree = "<group>"; };
+		52D1A13C21D93577005EA2F0 /* RGVC+handleKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGVC+handleKeyboard.swift"; sourceTree = "<group>"; };
+		52D1A13E21D936AD005EA2F0 /* RGVC+IBAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGVC+IBAction.swift"; sourceTree = "<group>"; };
+		52D1A14021D9376E005EA2F0 /* RGVC+vm delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGVC+vm delegate.swift"; sourceTree = "<group>"; };
+		52D1A14321DA3C30005EA2F0 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		52D1A14521DAA3BD005EA2F0 /* Public Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Public Functions.swift"; sourceTree = "<group>"; };
 		52DD768421C5109B00C2E012 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		52DD768621C5109D00C2E012 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		52DD768721C6428300C2E012 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -376,7 +383,6 @@
 		60C972EA21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredGiftViewModel.swift; sourceTree = "<group>"; };
 		60C972EC21C9ACC700A8D1C5 /* GiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftViewModel.swift; sourceTree = "<group>"; };
 		60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem + config.swift"; sourceTree = "<group>"; };
-		60FAB83B2064320E0039BF61 /* Request Inputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request Inputs.swift"; sourceTree = "<group>"; };
 		60FAB83D2064DBE10039BF61 /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGVC + uploading images.swift"; sourceTree = "<group>"; };
 		60FAB842206503AE0039BF61 /* Stored Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stored Models.swift"; sourceTree = "<group>"; };
@@ -450,7 +456,6 @@
 		0507C8611F8C1A920084CDF1 /* app */ = {
 			isa = PBXGroup;
 			children = (
-				522F6B4D21D81623001C67B9 /* firebase_related */,
 				52DD768721C6428300C2E012 /* GoogleService-Info.plist */,
 				05029ED41FE9A663004D96B1 /* custom_classes */,
 				05BFBBCD1FDB112800DBCDDF /* extensions */,
@@ -512,6 +517,7 @@
 				52DD769821C6E19600C2E012 /* CircleDotView.swift */,
 				52DD768F21C68ECE00C2E012 /* RoundButton.swift */,
 				5283174621C906930044B9AD /* TouchIDAuthentication.swift */,
+				52D1A14521DAA3BD005EA2F0 /* Public Functions.swift */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -543,8 +549,8 @@
 		054B1B581FCC44E3007570EF /* models */ = {
 			isa = PBXGroup;
 			children = (
+				52D1A14221DA09F4005EA2F0 /* firebase */,
 				60FAB841206503790039BF61 /* User Default Stored Models */,
-				60FAB83A206431EA0039BF61 /* Request IO */,
 				05644DC31FFEF62300B7C853 /* ChatAbs.swift */,
 				05BFBBC21FDAA45C00DBCDDF /* Time.swift */,
 				05BFBBDD1FE26A9000DBCDDF /* Gift.swift */,
@@ -556,6 +562,7 @@
 				601F83D22037367900F9118B /* Place.swift */,
 				601F83D6203C3CD400F9118B /* ImageUpload.swift */,
 				6009DB9F2130A385002FD769 /* Statistics.swift */,
+				52D1A14321DA3C30005EA2F0 /* Address.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -604,6 +611,9 @@
 				528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */,
 				05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */,
 				60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */,
+				52D1A13C21D93577005EA2F0 /* RGVC+handleKeyboard.swift */,
+				52D1A13E21D936AD005EA2F0 /* RGVC+IBAction.swift */,
+				52D1A14021D9376E005EA2F0 /* RGVC+vm delegate.swift */,
 			);
 			path = "register gift";
 			sourceTree = "<group>";
@@ -704,16 +714,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		522F6B4D21D81623001C67B9 /* firebase_related */ = {
-			isa = PBXGroup;
-			children = (
-				522F6B5F21D88ECC001C67B9 /* app */,
-				522F6B5C21D81A8E001C67B9 /* models */,
-				522F6B5B21D81A86001C67B9 /* vc */,
-			);
-			path = firebase_related;
-			sourceTree = "<group>";
-		};
 		522F6B4E21D81671001C67B9 /* firebase_auth_vc */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,29 +723,6 @@
 				522F6B5021D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift */,
 			);
 			path = firebase_auth_vc;
-			sourceTree = "<group>";
-		};
-		522F6B5B21D81A86001C67B9 /* vc */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = vc;
-			sourceTree = "<group>";
-		};
-		522F6B5C21D81A8E001C67B9 /* models */ = {
-			isa = PBXGroup;
-			children = (
-				522F6B5D21D81AA2001C67B9 /* FirebaseUser.swift */,
-			);
-			path = models;
-			sourceTree = "<group>";
-		};
-		522F6B5F21D88ECC001C67B9 /* app */ = {
-			isa = PBXGroup;
-			children = (
-				522F6B5921D817CB001C67B9 /* Const.swift */,
-			);
-			path = app;
 			sourceTree = "<group>";
 		};
 		522F6B6721D8F61C001C67B9 /* Iran */ = {
@@ -909,6 +886,14 @@
 			path = language;
 			sourceTree = "<group>";
 		};
+		52D1A14221DA09F4005EA2F0 /* firebase */ = {
+			isa = PBXGroup;
+			children = (
+				522F6B5D21D81AA2001C67B9 /* FirebaseUser.swift */,
+			);
+			path = firebase;
+			sourceTree = "<group>";
+		};
 		52DD769321C6BFA200C2E012 /* lock */ = {
 			isa = PBXGroup;
 			children = (
@@ -994,14 +979,6 @@
 				5263D60221BB0CC300B634A8 /* DonatedGiftViewModel.swift */,
 			);
 			path = GiftViewModel;
-			sourceTree = "<group>";
-		};
-		60FAB83A206431EA0039BF61 /* Request IO */ = {
-			isa = PBXGroup;
-			children = (
-				60FAB83B2064320E0039BF61 /* Request Inputs.swift */,
-			);
-			path = "Request IO";
 			sourceTree = "<group>";
 		};
 		60FAB841206503790039BF61 /* User Default Stored Models */ = {
@@ -1285,10 +1262,8 @@
 				05644DBA1FFEF3A500B7C853 /* ChatConversationTableViewCell.swift in Sources */,
 				05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */,
 				52DD769921C6E19600C2E012 /* CircleDotView.swift in Sources */,
-				522F6B5A21D817CB001C67B9 /* Const.swift in Sources */,
 				6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */,
 				5263D60121B93F0000B634A8 /* ProgressBarView.swift in Sources */,
-				60FAB83C2064320E0039BF61 /* Request Inputs.swift in Sources */,
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
 				05644DC21FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift in Sources */,
 				6009DBA02130A385002FD769 /* Statistics.swift in Sources */,
@@ -1299,6 +1274,7 @@
 				05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */,
 				6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */,
 				60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */,
+				52D1A14421DA3C30005EA2F0 /* Address.swift in Sources */,
 				05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */,
 				5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */,
 				05BEA4312049667500147BF5 /* MyKindnessWallViewController.swift in Sources */,
@@ -1308,6 +1284,7 @@
 				6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */,
 				05644DBC1FFEF3A500B7C853 /* ChatListTableViewCell.swift in Sources */,
 				6072E4FA21C05A9200F17205 /* GiftAdCell.swift in Sources */,
+				52D1A14121D9376E005EA2F0 /* RGVC+vm delegate.swift in Sources */,
 				05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */,
 				6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */,
 				60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */,
@@ -1317,6 +1294,7 @@
 				522F6B5821D816DD001C67B9 /* UIColor+init.swift in Sources */,
 				60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */,
 				52DD769C21C7D26700C2E012 /* LockSettingViewController.swift in Sources */,
+				52D1A14621DAA3BD005EA2F0 /* Public Functions.swift in Sources */,
 				526545FA21BF082E00C98821 /* TapSellConstants.swift in Sources */,
 				60C972E921C99BA700A8D1C5 /* HomeViewModel.swift in Sources */,
 				522F6B5E21D81AA2001C67B9 /* FirebaseUser.swift in Sources */,
@@ -1342,6 +1320,7 @@
 				05BEA43E2049919D00147BF5 /* String+numbers.swift in Sources */,
 				054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */,
 				0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */,
+				52D1A13F21D936AD005EA2F0 /* RGVC+IBAction.swift in Sources */,
 				5283174721C906930044B9AD /* TouchIDAuthentication.swift in Sources */,
 				05F6AA551FFEEB8D00CDABC2 /* ChatConversationViewController.swift in Sources */,
 				05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */,
@@ -1377,6 +1356,7 @@
 				601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */,
 				601F83C32036A36500F9118B /* DateStatusListViewModel.swift in Sources */,
 				60302DE02068FC7E0025D397 /* PopUpViewController.swift in Sources */,
+				52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */,
 				05644DCA1FFF02A100B7C853 /* UITableView+isCellVisible.swift in Sources */,
 				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
 				05F6AA541FFEEB8D00CDABC2 /* ChatListTableViewController.swift in Sources */,

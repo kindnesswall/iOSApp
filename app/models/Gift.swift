@@ -18,7 +18,20 @@ protocol GiftPresenter {
     var isAd:Bool? { get }
 }
 
-class Gift: Codable,GiftPresenter {
+protocol RegisterGiftInput {
+    var title:String? { get set }
+    var address:String? { get set }
+    var description:String? { get set }
+    var giftImages : [String]? { get set }
+    
+    var price:String? { get set }
+    var categoryId:String? { get set }
+    var isNew:Bool? { get set }
+    var cityId:String? { get set }
+    var regionId:String? { get set }
+}
+
+class Gift: Codable,GiftPresenter,RegisterGiftInput {
     var isAd:Bool? = false
     
     var requestCount:String?

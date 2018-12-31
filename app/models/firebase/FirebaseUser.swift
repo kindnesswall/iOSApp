@@ -13,10 +13,4 @@ class FirebaseUser: Codable {
     var email:String?
     var name:String?
     var profileImageURL:String?
-    
-//    init(dictionary: [String: Any]) {
-//        self.name = dictionary[Const.Keys.User.NAME] as? String
-//        self.email = dictionary[Const.Keys.User.EMAIL] as? String
-//        self.profileImageURL = dictionary[Const.Keys.User.PROFILE_IMG_URL] as? String
-//    }
 }

@@ -13,28 +13,16 @@ import Kingfisher
 extension RegisterGiftViewController:UIImagePickerControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        
-        let selectedImage = info[.originalImage] as? UIImage
-        
-        
-        if let selectedImage=selectedImage {
-            
-            
-            let cropViewController = CropViewController(image: selectedImage)
-            cropViewController.delegate = self
-            
-            
+        guard let selectedImage = info[.originalImage] as? UIImage else{
             picker.dismiss(animated: true, completion: nil)
-            
-            present(cropViewController, animated: false, completion: nil)
-            
-            
-            
-            
-        } else {
-            picker.dismiss(animated: true, completion: nil)
+            return
         }
         
+        let cropViewController = CropViewController(image: selectedImage)
+        cropViewController.delegate = self
+        
+        picker.dismiss(animated: true, completion: nil)
+        self.present(cropViewController, animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -46,42 +34,64 @@ extension RegisterGiftViewController:UIImagePickerControllerDelegate{
 extension RegisterGiftViewController : CropViewControllerDelegate {
     
     public func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
-        //        self.croppedRect = cropRect
-        //        self.croppedAngle = angle
-        //        updateImageViewWithImage(image, fromCropViewController: cropViewController)
         
-        uploadImage(selectedImage: image)
+        if AppDelegate.me().isIranSelected() {
+            uploadImage(selectedImage: image)
+        }else{
+            uploadImageToFIR(image: image)
+        }
+        
         self.dismiss(animated: false, completion: nil)
     }
     
-    //    public func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
-    ////        self.croppedRect = cropRect
-    ////        self.croppedAngle = angle
-    ////        updateImageViewWithImage(image, fromCropViewController: cropViewController)
-    //        uploadImage(selectedImage: image)
-    //    }
+    func uploadImageToFIR(image: UIImage) {
+        guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
+        
+        let fileName = getUniqeNameWith(fileExtension: ".jpg")
+        
+        let storage_ref = AppDelegate.me().FIRStorage_Ref
+        let childRef = storage_ref.child(AppConst.FIR.Storage.Gift_Images).child(fileName)
+        
+        let uploadTask = childRef.putData(imageData, metadata: nil, completion: { [weak self](storageMetaData, error) in
+            
+            if error != nil {
+                print("storage error : \(error)")
+                self?.vm.uploadFailed()
+                return
+            }
+            print("upload successfully!")
+            self?.vm.uploadedSuccessfully()
+            childRef.downloadURL(completion: { (url, error) in
+                guard let downloadURL = url else {
+                    print("Uh-oh, an error occurred in upload!")
+                    return
+                }
+                self?.imagesUrl.append(downloadURL.absoluteString)
+                
+                print("url: " + downloadURL.absoluteString)
+                //                    completionHandler(downloadURL.absoluteString)
+            })
+        })
+        
+        uploadTask.observe(.progress) { (snapshot) in
+            if let fraction = snapshot.progress?.fractionCompleted {
+                let precent = Int(Double(fraction) * 100)
+                print(precent)
+            }else{
+                print("no fraction")
+            }
+        }
+    }
     
     func uploadImage(selectedImage: UIImage) {
-        //        if let token=UserDefaults.standard.string(forKey: AppConst.Authorization) {
-        
         let uploadedImageView=addUploadImageView(image: selectedImage)
         
-        APICall.uploadImage(url: APIURLs.Upload, image: selectedImage, sessions: &uploadedImageView.sessions, tasks: &uploadedImageView.tasks, delegate: self) { [weak self] (data, response, error) in
-            
-            //            if let response = response as? HTTPURLResponse {
-            //                print((response).statusCode)
-            //
-            //                if response.statusCode >= 200 && response.statusCode <= 300 {
-            //                    FlashMessage.showMessage(body: "آپلود با موفقیت انجام شد",theme: .success)
-            //                }else{
-            //                    FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
-            //                }
-            //            }
-            //
-            //            guard error==nil else {
-            //                FlashMessage.showMessage(body: "آپلود عکس با مشکل روبه‌رو شد",theme: .warning)
-            //                return
-            //            }
+        APICall.uploadImage(
+            url: APIURLs.Upload,
+            image: selectedImage,
+            sessions: &uploadedImageView.sessions,
+            tasks: &uploadedImageView.tasks,
+            delegate: self) { [weak self] (data, response, error) in
             
             ApiUtility.watch(data: data)
             
@@ -93,13 +103,11 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
                 
                 self?.imageViewUploadingHasFinished(uploadImageView: self?.uploadedImageViews[uploadIndex], imageSrc: imageSrc)
                 
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.uploadedSuccessfully),theme: .success)
+                self?.vm.uploadedSuccessfully()
             } else {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
+                self?.vm.uploadFailed()
             }
-            
         }
-        
     }
     
     func addUploadImageView(imageSrc:String) -> UploadImageView{
@@ -117,7 +125,10 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     }
     
     func initUploadImageView()-> UploadImageView {
-        let uploadedImageView=NibLoader.loadViewFromNib(name: "UploadImageView", owner: self, nibType: UploadImageView.self) as! UploadImageView
+        let uploadedImageView = NibLoader.loadViewFromNib(
+            name: UploadImageView.identifier,
+            owner: self,
+            nibType: UploadImageView.self) as! UploadImageView
         uploadedImageView.widthAnchor.constraint(equalToConstant: 100).isActive=true
         
         uploadedImageView.delegate=self
@@ -133,7 +144,6 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         uploadImageView?.progressLabel.hide()
         uploadImageView?.imageSrc=imageSrc
     }
-    
     
     func findIndexOfUploadedImage(task:URLSessionTask?)->Int?{
         
@@ -151,15 +161,18 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     }
     
     func clearUploadedImages(){
-        for uploadedImageView in self.uploadedImageViews {
-            uploadedImageView.cancelUploading()
-            uploadedImageView.removeFromSuperview()
+        if AppDelegate.me().isIranSelected() {
+            for uploadedImageView in self.uploadedImageViews {
+                uploadedImageView.cancelUploading()
+                uploadedImageView.removeFromSuperview()
+            }
+            self.uploadedImageViews=[]
+        }else{
+            
         }
-        self.uploadedImageViews=[]
+        
     }
 }
-
-
 
 extension RegisterGiftViewController:URLSessionTaskDelegate{
     
@@ -181,11 +194,6 @@ extension RegisterGiftViewController:URLSessionTaskDelegate{
         
     }
     
-}
-
-
-extension RegisterGiftViewController:UINavigationControllerDelegate{
-
 }
 
 extension RegisterGiftViewController : UploadImageViewDelegate {

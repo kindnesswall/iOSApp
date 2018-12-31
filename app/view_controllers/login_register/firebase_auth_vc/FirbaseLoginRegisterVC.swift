@@ -46,6 +46,20 @@ class FirbaseLoginRegisterVC: UIViewController,UITextFieldDelegate {
         return btn
     }()
     
+    let closeBtn:UIButton = {
+        var btn = UIButton()
+        btn.backgroundColor = .clear
+        
+        btn.setTitle("", for: .normal)
+        btn.titleLabel?.font = AppConst.Resource.Font.getIcomoonFont(size: 24)
+        
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        btn.addTarget(self, action: #selector(exitBtnAction), for: .touchUpInside)
+        
+        return btn
+    }()
+    
     let nameTF:UITextField = {
         var tf = UITextField()
         tf.backgroundColor = .white
@@ -115,8 +129,13 @@ class FirbaseLoginRegisterVC: UIViewController,UITextFieldDelegate {
         view.addSubview(loginRegisterBtn)
         view.addSubview(profileImageView)
         view.addSubview(loginRegisterSegmentControl)
+        view.addSubview(closeBtn)
     
         setupViews()
+    }
+    
+    @objc func exitBtnAction(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

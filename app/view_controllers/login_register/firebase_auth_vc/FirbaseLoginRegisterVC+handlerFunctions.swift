@@ -33,9 +33,9 @@ extension FirbaseLoginRegisterVC {
             self?.uploadProfileImage(completionHandler: { [weak self](downloadUrl) in
                 self?.saveUserOnFIRDatabase(
                     info: [
-                        Const.Keys.User.NAME : name,
-                        Const.Keys.User.EMAIL : email,
-                        Const.Keys.User.PROFILE_IMG_URL : downloadUrl
+                        AppConst.FIR.Keys.User.NAME : name,
+                        AppConst.FIR.Keys.User.EMAIL : email,
+                        AppConst.FIR.Keys.User.PROFILE_IMG_URL : downloadUrl
                     ]
                 )
             })
@@ -50,7 +50,7 @@ extension FirbaseLoginRegisterVC {
         guard let imageData = self.profileImageView.image?.jpegData(compressionQuality: 0.1) else
         { return }
         
-        let storageRef = AppDelegate.me().FIRStorage_Ref.child(AppConst.FIRUrls.Storage.IMAGES).child("\(uid).jpg")
+        let storageRef = AppDelegate.me().FIRStorage_Ref.child(AppConst.FIR.Storage.Profile_Images).child("\(uid).jpg")
         
         storageRef.putData(imageData, metadata: nil, completion: { (storageMetaData, error) in
             if error != nil {
@@ -75,7 +75,7 @@ extension FirbaseLoginRegisterVC {
         }
         
         let ref = AppDelegate.me().FIRDB_Ref
-        let usersRef = ref.child(AppConst.FIRUrls.Database.USERS).child(uid)
+        let usersRef = ref.child(AppConst.FIR.Database.USERS).child(uid)
         
         usersRef.updateChildValues(
             info

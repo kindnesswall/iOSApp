@@ -42,8 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let keychain = KeychainSwift()
     var isActiveAfterBioAuth:Bool = false
     var current_time:Time?
-    lazy var FIRDB_Ref:DatabaseReference = Database.database().reference().child(AppConst.FIRUrls.KindnessWall)
-    lazy var FIRStorage_Ref:StorageReference = Storage.storage().reference().child(AppConst.FIRUrls.KindnessWall)
+    lazy var FIRDB_Ref:DatabaseReference = Database.database().reference().child(AppConst.FIR.KindnessWall)
+    lazy var FIRStorage_Ref:StorageReference = Storage.storage().reference().child(AppConst.FIR.KindnessWall)
     
     public var tabBarController:UITabBarController?
     
@@ -221,22 +221,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showLoginVC(){
-        if isIranSelected() {
+//        if isIranSelected() {
             let controller=ActivationEnterPhoneViewController(
                 nibName: ActivationEnterPhoneViewController.identifier,
                 bundle: ActivationEnterPhoneViewController.bundle
             )
             let nc = UINavigationController.init(rootViewController: controller)
             self.tabBarController?.present(nc, animated: true, completion: nil)
-        }else{
-            let vc = FirbaseLoginRegisterVC()
-            self.tabBarController?.present(vc, animated: true, completion: nil)
-        }
+//        }else{
+//            let vc = FirbaseLoginRegisterVC()
+//            self.tabBarController?.present(vc, animated: true, completion: nil)
+//        }
     }
     
     func checkForLogin()->Bool{
-        if let _=keychain.get(AppConst.KeyChain.Authorization) {
-            return true
+        if isIranSelected() {
+            if let _=keychain.get(AppConst.KeyChain.Authorization) {
+                return true
+            }
+        }else{
+            if let _=Auth.auth().currentUser?.uid{
+                return true
+            }
         }
         showLoginVC()
         return false

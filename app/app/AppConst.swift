@@ -39,22 +39,28 @@ struct AppConst {
         }
     }
     
-    struct FIRUrls {
+    struct FIR {
         
         static let KindnessWall:String = "kindnesswall"
         
         struct Storage {
-            static let IMAGES:String = "profile_images"
+            static let Profile_Images:String = "profile_images"
+            static let Gift_Images:String = "gift_images"
         }
         
         struct Database {
             static let USERS:String = "users"
-            static let MESSAGES:String = "messages"
-            static let USER_MESSAGES:String = "user_messages"
-            static let MESSAGES_MOVIE:String = "message_movies"
-            static let MESSAGES_IMAGE:String = "message_images"
+            static let Gifts:String = "gifts"
         }
         
+        struct Keys {
+            struct User {
+                static let NAME:String = "name"
+                static let EMAIL:String = "email"
+                static let PROFILE_IMG_URL:String = "profileImageURL"
+                static let ID:String = "id"
+            }
+        }
     }
     
     struct KeyChain {
