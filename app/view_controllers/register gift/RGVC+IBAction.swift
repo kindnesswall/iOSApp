@@ -13,11 +13,16 @@ extension RegisterGiftViewController {
     @IBAction func submitBtnAction(_ sender: Any) {
         
         self.registerBtn.isEnabled=false
-        viewModel.sendGift(httpMethod: .POST, responseHandler: {
-            self.registerBtn.isEnabled=true
-        }) {
-            self.clearAllInput()
-            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.giftRegisteredSuccessfully),theme: .success)
+        
+        if AppDelegate.me().isIranSelected() {
+            viewModel.sendGift(httpMethod: .POST, responseHandler: {
+                self.registerBtn.isEnabled=true
+            }) {
+                self.clearAllInput()
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.giftRegisteredSuccessfully),theme: .success)
+            }
+        }else{
+            viewModel.createGiftOnFIR()
         }
         
     }

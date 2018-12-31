@@ -50,10 +50,7 @@ struct AppConst {
         
         struct Database {
             static let USERS:String = "users"
-            static let MESSAGES:String = "messages"
-            static let USER_MESSAGES:String = "user_messages"
-            static let MESSAGES_MOVIE:String = "message_movies"
-            static let MESSAGES_IMAGE:String = "message_images"
+            static let Gifts:String = "gifts"
         }
         
         struct Keys {

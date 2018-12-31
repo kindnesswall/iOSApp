@@ -27,13 +27,17 @@ extension RegisterGiftViewController : RegisterGiftViewModelDelegate {
     }
     
     func getGiftImages()->[String] {
-        var giftImages=[String]()
-        for uploadedImageView in self.uploadedImageViews {
-            if let src=uploadedImageView.imageSrc {
-                giftImages.append(src)
+        if AppDelegate.me().isIranSelected() {
+            var giftImages=[String]()
+            for uploadedImageView in self.uploadedImageViews {
+                if let src=uploadedImageView.imageSrc {
+                    giftImages.append(src)
+                }
             }
+            return giftImages
+        }else{
+            return imagesUrl
         }
-        return giftImages
     }
     
     

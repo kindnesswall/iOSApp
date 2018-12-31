@@ -50,22 +50,35 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
             let storage_ref = AppDelegate.me().FIRStorage_Ref
             let childRef = storage_ref.child(AppConst.FIR.Storage.Gift_Images).child("\(fileName).jpg")
             
-            childRef.putData(imageData, metadata: nil, completion: { (storageMetaData, error) in
+            let uploadTask = childRef.putData(imageData, metadata: nil, completion: { [weak self](storageMetaData, error) in
+                
                 if error != nil {
                     print("storage error : \(error)")
+                    self?.uploadFailed()
                     return
                 }
                 print("upload successfully!")
+                self?.uploadedSuccessfully()
                 childRef.downloadURL(completion: { (url, error) in
                     guard let downloadURL = url else {
                         print("Uh-oh, an error occurred in upload!")
                         return
                     }
+                    self?.imagesUrl.append(downloadURL.absoluteString)
+                    
                     print("url: " + downloadURL.absoluteString)
 //                    completionHandler(downloadURL.absoluteString)
                 })
-                
             })
+            
+            uploadTask.observe(.progress) { (snapshot) in
+                if let fraction = snapshot.progress?.fractionCompleted {
+                    let precent = Int(Double(fraction) * 100)
+                    print(precent)
+                }else{
+                    print("no fraction")
+                }
+            }
         }
         
         self.dismiss(animated: false, completion: nil)
@@ -115,13 +128,21 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
                 
                 self?.imageViewUploadingHasFinished(uploadImageView: self?.uploadedImageViews[uploadIndex], imageSrc: imageSrc)
                 
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.uploadedSuccessfully),theme: .success)
+                self?.uploadedSuccessfully()
             } else {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
+                self?.uploadFailed()
             }
             
         }
         
+    }
+    
+    func uploadedSuccessfully() {
+        FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.uploadedSuccessfully),theme: .success)
+    }
+    
+    func uploadFailed() {
+        FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
     }
     
     func addUploadImageView(imageSrc:String) -> UploadImageView{

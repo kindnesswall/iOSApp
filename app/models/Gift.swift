@@ -18,6 +18,18 @@ protocol GiftPresenter {
     var isAd:Bool? { get }
 }
 
+class RegisterGiftInput : Codable {
+    var title:String?
+    var address:String?
+    var description:String?
+    var price:Int?
+    var categoryId:Int?
+    var isNew:Bool?
+    var cityId:Int?
+    var regionId:Int?
+    var giftImages : [String]?
+}
+
 class Gift: Codable,GiftPresenter {
     var isAd:Bool? = false
     

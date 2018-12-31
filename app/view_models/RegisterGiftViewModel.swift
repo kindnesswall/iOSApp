@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RegisterGiftViewModel: NSObject {
     
@@ -16,7 +17,8 @@ class RegisterGiftViewModel: NSObject {
     
     var editedGift:Gift?
     var editedGiftAddress=Address()
-    
+    var giftHasNewAddress=false
+
     weak var delegate : RegisterGiftViewModelDelegate?
     
     class UIInputProperties {
@@ -25,46 +27,27 @@ class RegisterGiftViewModel: NSObject {
         var descriptionTextViewText : String?
     }
     
-    var giftHasNewAddress=false
-    
-    class Address {
-        var address:String?
-        var cityId:Int?
-        var regionId:Int?
-        
-        init() {
-            
-        }
-        
-        init(address:String?,cityId:Int?,regionId:Int?){
-            self.address=address
-            self.cityId=cityId
-            self.regionId=regionId
-        }
-    }
-
-    func sendGift(httpMethod:HttpCallMethod,giftId:String?=nil,responseHandler:(()->Void)?,complitionHandler:(()->Void)?){
-        
+    func readGiftInfo() -> RegisterGiftInput? {
         let input=RegisterGiftInput()
         
         let uiProperties = delegate?.getUIInputProperties()
         
         guard let title=uiProperties?.titleTextViewText , title != "" else {
-            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.titleError), responseHandler: responseHandler)
-            return
+            inputErrorOnSendingGift(
+                errorText: LocalizationSystem.getStr(forKey: LanguageKeys.titleError))
+            return nil
         }
         input.title=title
         
         guard let categoryId=Int(self.category?.id ?? "") else {
-            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.categoryError), responseHandler: responseHandler)
-            return
+            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.categoryError))
+            return nil
         }
         input.categoryId=categoryId
         
-        
         guard let dateStatusId=self.dateStatus?.id else {
-            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.newOrUsedError), responseHandler: responseHandler)
-            return
+            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.newOrUsedError))
+            return nil
         }
         if dateStatusId == "0" {
             input.isNew=true
@@ -74,14 +57,14 @@ class RegisterGiftViewModel: NSObject {
         
         
         guard let giftDescription=uiProperties?.descriptionTextViewText , giftDescription != "" else {
-            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.descriptionError), responseHandler: responseHandler)
-            return
+            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.descriptionError))
+            return nil
         }
         input.description=giftDescription
         
         guard let price=Int(uiProperties?.priceTextViewText?.castNumberToEnglish() ?? "") else {
-            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.priceError), responseHandler: responseHandler)
-            return
+            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.priceError))
+            return nil
         }
         input.price=price
         
@@ -90,12 +73,12 @@ class RegisterGiftViewModel: NSObject {
             
             let addressObject=self.getAddress()
             guard let address=addressObject?.address else {
-                inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError), responseHandler: responseHandler)
-                return
+                inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError))
+                return nil
             }
             guard let cityId=addressObject?.cityId else {
-                inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError), responseHandler: responseHandler)
-                return
+                inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError))
+                return nil
             }
             
             let regionId=addressObject?.regionId
@@ -112,14 +95,72 @@ class RegisterGiftViewModel: NSObject {
             
         }
         
-        
-        
         let giftImages=self.delegate?.getGiftImages()
         input.giftImages=giftImages
         
+        return input
+    }
+    
+    func createGiftOnFIR() {
+        guard let gift = readGiftInfo() else {
+            return
+        }
+        
+        let db_ref = AppDelegate.me().FIRDB_Ref
+        let childRef = db_ref.child(AppConst.FIR.Database.Gifts).childByAutoId()
+        
+        guard let title = gift.title,
+            let images = gift.giftImages,
+            let address = gift.address,
+            let description = gift.description,
+            let price = gift.price,
+            let categoryId = gift.categoryId,
+            let isNew = gift.isNew,
+            let cityId = gift.cityId,
+            let regionId = gift.regionId
+            else {
+            return
+        }
+        
+        let info:[String:Any] = [
+            "title":title,
+            "address":address,
+            "description":description,
+            "price":price,
+            "categoryId":categoryId,
+            "isNew":isNew,
+            "cityId":cityId,
+            "regionId":regionId
+        ]
+        
+        childRef.updateChildValues(info) { (error:Error?, dbRef:DatabaseReference) in
+            if let err = error {
+                print("error : \(err)")
+                return
+            }
+            print("gift register!")
+            childRef.child("giftImages").setValue(images) { (error, dbRef) in
+                if let err = error {
+                    print("error : \(err)")
+                    return
+                }
+            }
+        }
+        
+    }
+    
+    func sendGift(
+        httpMethod:HttpCallMethod,
+        giftId:String? = nil,
+        responseHandler:(()->Void)?,
+        complitionHandler:(()->Void)?){
+        
+        guard let input = readGiftInfo() else {
+            responseHandler?()
+            return
+        }
         
         var url=APIURLs.Gift
-        
         if let giftId=giftId {
             url+="/\(giftId)"
         }
@@ -143,9 +184,8 @@ class RegisterGiftViewModel: NSObject {
         }
     }
     
-    func inputErrorOnSendingGift(errorText:String,responseHandler:(()->Void)?){
+    func inputErrorOnSendingGift(errorText:String){
         FlashMessage.showMessage(body: errorText,theme: .warning)
-        responseHandler?()
     }
     
     

@@ -33,6 +33,8 @@ class RegisterGiftViewController: UIViewController {
     @IBOutlet weak var uploadedImageStack: UIStackView!
     var uploadedImageViews=[UploadImageView]()
     
+    var imagesUrl:[String] = []
+    
     @IBOutlet weak var placesStackView: UIStackView!
     var placesLabels=[UILabel]()
     
