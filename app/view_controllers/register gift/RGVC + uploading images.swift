@@ -30,21 +30,14 @@ extension RegisterGiftViewController:UIImagePickerControllerDelegate{
     }
 }
 
-
 extension RegisterGiftViewController : CropViewControllerDelegate {
     
     public func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
         
-        if AppDelegate.me().isIranSelected() {
-            uploadImage(selectedImage: image)
-        }else{
-            vm.uploadImageToFIR(image: image)
-        }
+        uploadImage(selectedImage: image)
         
         self.dismiss(animated: false, completion: nil)
     }
-    
-    
     
     func uploadImage(selectedImage: UIImage) {
         let _=addUploadImageView(image: selectedImage)
@@ -52,7 +45,6 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         
         self.vm.upload(
             image: selectedImage,
-            delegate:self,
             onSuccess: { [weak self] (imageUrl) in
             self?.imageViewUploadingHasFinished(uploadImageView: self?.uploadedImageViews[index], imageSrc: imageUrl)
         }, onFail: nil)
@@ -112,29 +104,6 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         }
         
     }
-}
-
-extension RegisterGiftViewController:URLSessionTaskDelegate{
-    
-    func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
-        print("byte :: \(bytesSent) in : \(totalBytesSent) from : \(totalBytesExpectedToSend)")
-        
-        var percent = Int(Float(totalBytesSent * 100)/Float(totalBytesExpectedToSend))
-        if percent == 100 {
-            percent = 99
-        }
-        
-        guard let uploadIndex=vm.findIndexOf(task: task) else {
-            return
-        }
-        
-        self.uploadedImageViews[uploadIndex].progressLabel.text = "٪" + String(AppLanguage.getNumberString(number: String(percent)))
-    }
-    
-    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        
-    }
-    
 }
 
 extension RegisterGiftViewController : UploadImageViewDelegate {

@@ -12,7 +12,7 @@ import Firebase
 class RegisterGiftViewModel: NSObject {
     
     var imagesUrl:[String] = []
-
+    
     var sessions : [URLSession]=[]
     var tasks : [URLSessionUploadTask]=[]
     
@@ -60,7 +60,6 @@ class RegisterGiftViewModel: NSObject {
             input.isNew=false
         }
         
-        
         guard let giftDescription=uiProperties?.descriptionTextViewText , giftDescription != "" else {
             inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.descriptionError))
             return nil
@@ -90,13 +89,10 @@ class RegisterGiftViewModel: NSObject {
             input.address=address
             input.cityId=cityId
             input.regionId=(regionId ?? "0")
-            
         } else {
-            
             input.address=self.editedGiftAddress.address
             input.cityId=self.editedGiftAddress.cityId
             input.regionId=self.editedGiftAddress.regionId
-            
         }
         
         input.giftImages=imagesUrl
@@ -149,7 +145,6 @@ class RegisterGiftViewModel: NSObject {
                 }
             }
         }
-        
     }
     
     func sendGift(
@@ -171,9 +166,6 @@ class RegisterGiftViewModel: NSObject {
         APICall.request(url: url, httpMethod: httpMethod, input: input) { (data, response, error) in
             
             responseHandler?()
-            
-            //            print("Register Reply")
-            //            APICall.printData(data: data)
             
             if let response = response as? HTTPURLResponse {
                 print((response).statusCode)
@@ -205,13 +197,13 @@ class RegisterGiftViewModel: NSObject {
         return nil
     }
     
-    func upload(image:UIImage,delegate:URLSessionTaskDelegate, onSuccess:@escaping (String)->(), onFail:(()->())?) {
+    func uploadToIranServers(image:UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
         APICall.uploadImage(
             url: APIURLs.Upload,
             image: image,
             sessions: &sessions,
             tasks: &tasks,
-            delegate: delegate) { [weak self] (data, response, error) in
+            delegate: self) { [weak self] (data, response, error) in
                 
                 ApiUtility.watch(data: data)
                 
@@ -223,6 +215,25 @@ class RegisterGiftViewModel: NSObject {
                     onFail?()
                 }
         }
+    }
+    
+    func upload(image:UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
+        
+        if AppDelegate.me().isIranSelected() {
+            uploadToIranServers(image: image, onSuccess: { (url) in
+                onSuccess(url)
+            }) {
+                
+            }
+        }else{
+            uploadImageToFIR(image: image, onSuccess: { (url) in
+                onSuccess(url)
+            }) {
+                
+            }
+        }
+        
+        
     }
     
     func writeChangesToEditedGift(){
@@ -368,8 +379,6 @@ class RegisterGiftViewModel: NSObject {
                 self.delegate?.addGiftPlaceToUIStack(place: draftPlace)
             }
         }
-        
-        
     }
     
     func getAddress()-> Address? {
@@ -403,7 +412,7 @@ class RegisterGiftViewModel: NSObject {
         FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
     }
     
-    func uploadImageToFIR(image: UIImage) {
+    func uploadImageToFIR(image: UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
         guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
         
         let fileName = getUniqeNameWith(fileExtension: ".jpg")
@@ -443,13 +452,4 @@ class RegisterGiftViewModel: NSObject {
     }
 }
 
-protocol RegisterGiftViewModelDelegate : class {
-    func getUIInputProperties() -> RegisterGiftViewModel.UIInputProperties
-    func setUIInputProperties(uiProperties : RegisterGiftViewModel.UIInputProperties)
-    
-    func setCategoryBtnTitle(text:String?)
-    func setDateStatusBtnTitle(text:String?)
-    func setEditedGiftOriginalAddressLabel(text:String?)
-    func addUploadedImageFromEditedGift(giftImage :String)
-    func addGiftPlaceToUIStack(place:Place)
-}
+

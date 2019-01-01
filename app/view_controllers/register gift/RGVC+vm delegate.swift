@@ -9,6 +9,9 @@
 import Foundation
 
 extension RegisterGiftViewController : RegisterGiftViewModelDelegate {
+    func updateUploadImage(index: Int, percent: Int) {
+        self.uploadedImageViews[index].progressLabel.text = "٪" + String(AppLanguage.getNumberString(number: String(percent)))
+    }
     
     func setUIInputProperties(uiProperties: RegisterGiftViewModel.UIInputProperties) {
         descriptionTextView.text = uiProperties.descriptionTextViewText
