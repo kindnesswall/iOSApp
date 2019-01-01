@@ -102,7 +102,6 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         }else{
             
         }
-        
     }
 }
 

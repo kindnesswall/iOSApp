@@ -427,6 +427,7 @@ class RegisterGiftViewModel: NSObject {
                 self?.uploadFailed()
                 return
             }
+            
             print("upload successfully!")
             self?.uploadedSuccessfully()
             childRef.downloadURL(completion: { (url, error) in
@@ -434,17 +435,22 @@ class RegisterGiftViewModel: NSObject {
                     print("Uh-oh, an error occurred in upload!")
                     return
                 }
+                
                 self?.imagesUrl.append(downloadURL.absoluteString)
+                onSuccess(downloadURL.absoluteString)
                 
                 print("url: " + downloadURL.absoluteString)
                 //                    completionHandler(downloadURL.absoluteString)
             })
         })
         
+        let index = imagesUrl.count
         uploadTask.observe(.progress) { (snapshot) in
             if let fraction = snapshot.progress?.fractionCompleted {
-                let precent = Int(Double(fraction) * 100)
-                print(precent)
+                let percent = Int(Double(fraction) * 100)
+                print(percent)
+                
+                self.delegate?.updateUploadImage(index: index, percent: percent)
             }else{
                 print("no fraction")
             }

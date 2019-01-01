@@ -216,26 +216,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func isIranSelected() -> Bool {
-        return true
+        return false
 //        let selectedCountry = uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
 //        return selectedCountry == AppConst.Country.IRAN
     }
     
     func showLoginVC(){
-//        if isIranSelected() {
+        if isIranSelected() {
             let controller=ActivationEnterPhoneViewController(
                 nibName: ActivationEnterPhoneViewController.identifier,
                 bundle: ActivationEnterPhoneViewController.bundle
             )
             let nc = UINavigationController.init(rootViewController: controller)
             self.tabBarController?.present(nc, animated: true, completion: nil)
-//        }else{
-//            let vc = FirbaseLoginRegisterVC()
-//            self.tabBarController?.present(vc, animated: true, completion: nil)
-//        }
+        }else{
+            let vc = FirbaseLoginRegisterVC()
+            self.tabBarController?.present(vc, animated: true, completion: nil)
+        }
     }
     
-    func checkForLogin()->Bool{
+    func isUserLogedIn() -> Bool {
         if isIranSelected() {
             if let _=keychain.get(AppConst.KeyChain.Authorization) {
                 return true
@@ -244,6 +244,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let _=Auth.auth().currentUser?.uid{
                 return true
             }
+        }
+        return false
+    }
+    
+    func checkForLogin()->Bool{
+        if isUserLogedIn() {
+            return true
         }
         showLoginVC()
         return false
