@@ -58,10 +58,7 @@ extension RegisterGiftViewController {
         self.vm.giftHasNewAddress=true
         self.configAddressViews()
         
-        let controller=OptionsListViewController(
-            nibName: OptionsListViewController.identifier,
-            bundle: OptionsListViewController.bundle
-        )
+        let controller=OptionsListViewController()
         controller.option = OptionsListViewController.Option.city(showRegion: true)
         controller.completionHandler={ [weak self] (id,name) in
             let place=Place(id: Int(id ?? ""), name: name)
@@ -77,10 +74,8 @@ extension RegisterGiftViewController {
     
     @IBAction func categoryBtnClicked(_ sender: Any) {
         
-        let controller=OptionsListViewController(
-            nibName: OptionsListViewController.identifier,
-            bundle: OptionsListViewController.bundle
-        )
+        let controller=OptionsListViewController()
+        
         controller.option = OptionsListViewController.Option.category
         controller.completionHandler={ [weak self] (id,name) in
             self?.categoryBtn.setTitle(name, for: .normal)
@@ -91,10 +86,7 @@ extension RegisterGiftViewController {
     }
     
     @IBAction func dateStatusBtnAction(_ sender: Any) {
-        let controller=OptionsListViewController(
-            nibName: OptionsListViewController.identifier,
-            bundle: OptionsListViewController.bundle
-        )
+        let controller=OptionsListViewController()
         controller.option = OptionsListViewController.Option.dateStatus
         controller.completionHandler={ [weak self] (id,name) in
             self?.dateStatusBtn.setTitle(name, for: .normal)

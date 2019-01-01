@@ -223,10 +223,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func showLoginVC(){
         if isIranSelected() {
-            let controller=ActivationEnterPhoneViewController(
-                nibName: ActivationEnterPhoneViewController.identifier,
-                bundle: ActivationEnterPhoneViewController.bundle
-            )
+            let controller=ActivationEnterPhoneViewController()
+            
             let nc = UINavigationController.init(rootViewController: controller)
             self.tabBarController?.present(nc, animated: true, completion: nil)
         }else{

@@ -27,7 +27,7 @@ class OptionsListViewController: UIViewController {
     var completionHandler:((String?,String?)->Void)?
     var closeHandler:(()->Void)?
     
-    var categoryListViewModel:CategoryListViewModel?
+    var categoryListViewModel:CategoryListVM?
     var dateStatusListViewModel:DateStatusListViewModel?
     var placeListViewModel:PlaceListViewModel?
     
@@ -42,7 +42,7 @@ class OptionsListViewController: UIViewController {
                 tableView.register(type: CategoryOptionsTableViewCell.self)
                
                loadingIndicator.startAnimating()
-                categoryListViewModel=CategoryListViewModel(hasDefaultOption:self.hasDefaultOption,completionHandler: {
+                categoryListViewModel=CategoryListVM(hasDefaultOption:self.hasDefaultOption,completionHandler: {
                     [weak self] () in
                 self?.loadingIndicator.stopAnimating()
                 self?.tableView.reloadData()
@@ -197,10 +197,7 @@ extension OptionsListViewController:UITableViewDelegate {
     func pushViewController(option:Option){
         switch option {
         case .region(let cityId):
-            let controller=OptionsListViewController(
-                nibName: OptionsListViewController.identifier,
-                bundle: OptionsListViewController.bundle
-            )
+            let controller=OptionsListViewController()
             controller.option = OptionsListViewController.Option.region(cityId)
             controller.completionHandler=self.completionHandler
             controller.closeHandler=self.closeHandler

@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension LanguageViewController : LanguageViewDelegate {
+extension LanguageViewController : LanguageVMDelegate {
     func dismissViewController() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -33,7 +33,7 @@ class LanguageViewController: UIViewController {
     @IBOutlet weak var lbl: UILabel!
     @IBOutlet weak var okBtn: UIButton!
         
-    let languageViewModel:LanguageViewModel = LanguageViewModel()
+    let languageViewModel:LanguageVM = LanguageVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()

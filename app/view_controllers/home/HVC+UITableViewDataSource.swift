@@ -43,10 +43,7 @@ extension HomeViewController:UITableViewDataSource{
     }
     
     func getGiftDetailVCFor(index:Int) -> UIViewController {
-        let controller = GiftDetailViewController(
-            nibName: GiftDetailViewController.identifier,
-            bundle: GiftDetailViewController.bundle
-        )
+        let controller = GiftDetailViewController()
         
         controller.gift = vm.gifts[index]
         controller.editHandler={ [weak self] in

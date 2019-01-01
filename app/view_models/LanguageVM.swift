@@ -1,5 +1,5 @@
 //
-//  LanguageViewModel.swift
+//  LanguageVM.swift
 //  app
 //
 //  Created by Hamed.Gh on 12/6/18.
@@ -9,7 +9,7 @@
 import UIKit
 import KeychainSwift
 
-protocol LanguageViewDelegate {
+protocol LanguageVMDelegate {
     func show(alert:UIAlertController) -> ()
     func dismissViewController()
     
@@ -17,11 +17,11 @@ protocol LanguageViewDelegate {
     func set(textAlignment:NSTextAlignment)
 }
 
-class LanguageViewModel: NSObject {
+class LanguageVM: NSObject {
     let keychain = KeychainSwift()
     let datasource = [AppLanguage.Persian, AppLanguage.English]
     let datasourceToShow = ["فارسی", "English"]
-    var delegate:LanguageViewDelegate?
+    var delegate:LanguageVMDelegate?
     
     var tabBarIsInitialized : Bool!
 
@@ -116,7 +116,7 @@ class LanguageViewModel: NSObject {
     }
 }
 
-extension LanguageViewModel:UIPickerViewDelegate,UIPickerViewDataSource {
+extension LanguageVM:UIPickerViewDelegate,UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

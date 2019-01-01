@@ -1,5 +1,5 @@
 //
-//  CategoryListViewModel.swift
+//  CategoryListVM.swift
 //  app
 //
 //  Created by AmirHossein on 2/9/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryListViewModel: NSObject {
+class CategoryListVM: NSObject {
     
     let apiMethod=ApiMethods()
     

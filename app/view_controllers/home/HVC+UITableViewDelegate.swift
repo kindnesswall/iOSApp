@@ -31,8 +31,8 @@ extension HomeViewController:UITableViewDelegate {
                 
             }, andClosedCallback:{ (tapsellAd) in
                 print("\n\n andClosedCallback \n\n")
-        }
-        )
+        })
+        
         self.userDefault.set(
             Float(Date().timeIntervalSinceReferenceDate),
             forKey: AppConst.UserDefaults.LastTimeISawAd)
@@ -72,6 +72,7 @@ extension HomeViewController:UITableViewDelegate {
         self.reloadPage()
         reloadOtherVCs()
     }
+    
     func reloadOtherVCs(){
         AppDelegate.me().reloadTabBarPages(currentPage: self)
     }

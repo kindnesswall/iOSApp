@@ -146,10 +146,7 @@ class HomeViewController: UIViewController {
     
     @objc func categoryFilterBtnClicked(){
         
-        let controller=OptionsListViewController(
-            nibName: OptionsListViewController.identifier,
-            bundle: OptionsListViewController.bundle
-        )
+        let controller=OptionsListViewController()
         
         controller.option = OptionsListViewController.Option.category
         controller.hasDefaultOption=true

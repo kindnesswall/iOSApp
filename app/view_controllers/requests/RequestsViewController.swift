@@ -122,10 +122,7 @@ extension RequestsViewController:UITableViewDataSource{
 extension RequestsViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let controller = RequestToAGiftViewController(
-            nibName: RequestToAGiftViewController.identifier,
-            bundle: RequestToAGiftViewController.bundle
-        )
+        let controller = RequestToAGiftViewController()
         
         controller.giftId = gifts[indexPath.row].id!
         controller.onAccept = {

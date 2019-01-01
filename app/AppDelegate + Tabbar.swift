@@ -59,33 +59,20 @@ extension AppDelegate : UITabBarControllerDelegate{
         var controller:UIViewController
         switch tabIndex {
         case AppConst.TabIndex.HOME:
-            controller=HomeViewController(
-                nibName: HomeViewController.identifier,
-                bundle: HomeViewController.bundle
-            )
+            controller=HomeViewController()
             
         case AppConst.TabIndex.MyGifts:
-            controller=MyGiftsViewController(
-                nibName: MyGiftsViewController.identifier,
-                bundle: MyGiftsViewController.bundle
-            )
+            controller=MyGiftsViewController()
             
         case AppConst.TabIndex.RegisterGift:
-            controller=RegisterGiftViewController(
-                nibName: RegisterGiftViewController.identifier,
-                bundle: RegisterGiftViewController.bundle
-            )
+            controller=RegisterGiftViewController()
             
         case AppConst.TabIndex.Requests:
-            controller=RequestsViewController(
-                nibName: RequestsViewController.identifier,
-                bundle: RequestsViewController.bundle
-            )
+            controller=RequestsViewController()
+            
         case AppConst.TabIndex.MyKindnessWall:
-            controller=MyKindnessWallViewController(
-                nibName: MyKindnessWallViewController.identifier,
-                bundle: MyKindnessWallViewController.bundle
-            )
+            controller=MyKindnessWallViewController()
+            
         default:
             fatalError()
         }
