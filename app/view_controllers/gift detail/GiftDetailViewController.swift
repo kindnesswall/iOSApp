@@ -17,8 +17,12 @@ class GiftDetailViewController: UIViewController {
     var gift:Gift?
 //    var sdWebImageSource:[SDWebImageSource] = []
     var profileImages:[String] = []
+    var loadingIndicator:LoadingIndicator?
+    var editBtn:UIBarButtonItem?
     
     var editHandler:(()->Void)?
+    
+    var vm = GiftDetailVM()
     
     @IBOutlet weak var oldOrNewLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
@@ -42,9 +46,6 @@ class GiftDetailViewController: UIViewController {
     
     @IBOutlet weak var removeBtn: UIButton!
     
-    var loadingIndicator:LoadingIndicator?
-    var editBtn:UIBarButtonItem?
-    
     deinit {
         print("GiftDetailViewController deinit")
     }
@@ -65,25 +66,20 @@ class GiftDetailViewController: UIViewController {
         guard let id = gift?.id else {
             return
         }
-        ApiMethods.getGift(giftId: id) { [weak self] (data) in
+        
+        vm.getGift(id: id, onSuccess: { [weak self] (gift) in
+            self?.loadingIndicator?.stopLoading()
             
-            if let reply=ApiUtility.convert(data: data, to: Gift.self) {
-                
-                self?.loadingIndicator?.stopLoading()
-                
-                if let myId=KeychainSwift().get(AppConst.KeyChain.USER_ID) , let userId=reply.userId , myId==userId {
-                    self?.addEditBtn()
-//                    self?.requestBtn.hide()
-                    self?.removeBtn.show()
-                } else {
-//                    self?.requestBtn.show()
-                    self?.removeBtn.hide()
-                }
-                
+            if let myId=KeychainSwift().get(AppConst.KeyChain.USER_ID) , let userId=gift.userId , myId==userId {
+                self?.addEditBtn()
+                //                    self?.requestBtn.hide()
+                self?.removeBtn.show()
+            } else {
+                //                    self?.requestBtn.show()
+                self?.removeBtn.hide()
             }
             
-            
-        }
+        }, onFail: nil)
     }
     
     func fillUIWithGift(){
@@ -138,10 +134,8 @@ class GiftDetailViewController: UIViewController {
         controller.isEditMode=true
         controller.vm.editedGift=self.gift
         controller.editHandler={ [weak self] in
-            
             self?.fillUIWithGift()
             self?.editHandler?()
-            
         }
         
         let nc=UINavigationController(rootViewController: controller)
@@ -154,7 +148,6 @@ class GiftDetailViewController: UIViewController {
         PopUpMessage.showPopUp(nibClass: PromptUser.self, data: LocalizationSystem.getStr(forKey: LanguageKeys.giftRemovingPrompt),animation:.none,declineHandler: nil) { (ـ) in
             self.removeGift()
         }
-        
     }
     
     func removeGift(){
@@ -163,28 +156,14 @@ class GiftDetailViewController: UIViewController {
         guard let giftId=gift?.id else {
             return
         }
-        let input:APIEmptyInput?=nil
-        var url=APIURLs.Gift
-        url+="/\(giftId)"
-        APICall.request(url: url, httpMethod: .DELETE, input: input) { [weak self] (data, response, error) in
+        
+        vm.removeGift(id: giftId, onSuccess: { [weak self] in
             self?.removeBtn.isEnabled=true
-            
-            if error != nil {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
-                return
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                if response.statusCode >= 200 && response.statusCode <= 300 {
-                    
-                    self?.editHandler?()
-                    self?.navigationController?.popViewController(animated: true)
-                    
-                }else{
-                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
-                }
-            }
-        }
+            self?.editHandler?()
+            self?.navigationController?.popViewController(animated: true)
+        }, onFail: { [weak self] in
+            self?.removeBtn.isEnabled=true
+        })
     }
     
     @objc func didTap() {
@@ -232,7 +211,6 @@ class GiftDetailViewController: UIViewController {
         
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(GiftDetailViewController.didTap))
         slideshow.addGestureRecognizer(recognizer)
-        
     }
     
     func addImagesToSlideShows(){

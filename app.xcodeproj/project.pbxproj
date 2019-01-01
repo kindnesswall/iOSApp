@@ -100,6 +100,7 @@
 		52466DE121DB984A0086F327 /* HVC+UIViewControllerPreviewingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52466DE021DB984A0086F327 /* HVC+UIViewControllerPreviewingDelegate.swift */; };
 		52466DE321DB99EC0086F327 /* HomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52466DE221DB99EC0086F327 /* HomeViewModelDelegate.swift */; };
 		52466DE521DB9A360086F327 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52466DE421DB9A360086F327 /* HomeVM.swift */; };
+		52466DE721DBC6E80086F327 /* GiftDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52466DE621DBC6E80086F327 /* GiftDetailVM.swift */; };
 		5263D5AA21B5972800B634A8 /* ShakingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D5A921B5972800B634A8 /* ShakingTextField.swift */; };
 		5263D5FE21B915F400B634A8 /* LanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D5FD21B915F400B634A8 /* LanguageVM.swift */; };
 		5263D60121B93F0000B634A8 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D60021B93F0000B634A8 /* ProgressBarView.swift */; };
@@ -306,6 +307,7 @@
 		52466DE021DB984A0086F327 /* HVC+UIViewControllerPreviewingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HVC+UIViewControllerPreviewingDelegate.swift"; sourceTree = "<group>"; };
 		52466DE221DB99EC0086F327 /* HomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelDelegate.swift; sourceTree = "<group>"; };
 		52466DE421DB9A360086F327 /* HomeVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		52466DE621DBC6E80086F327 /* GiftDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetailVM.swift; sourceTree = "<group>"; };
 		52525E2421AEB9C000A7D03E /* appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appUITests.swift; sourceTree = "<group>"; };
 		52525E2621AEB9C000A7D03E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52525E2C21AEBB1600A7D03E /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
@@ -972,6 +974,7 @@
 				601F83D420373E9E00F9118B /* PlaceListViewModel.swift */,
 				5263D5FD21B915F400B634A8 /* LanguageVM.swift */,
 				522F6B6521D8B202001C67B9 /* SelectCountryVM.swift */,
+				52466DE621DBC6E80086F327 /* GiftDetailVM.swift */,
 			);
 			path = view_models;
 			sourceTree = "<group>";
@@ -1392,6 +1395,7 @@
 				601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */,
 				601F83C32036A36500F9118B /* DateStatusListViewModel.swift in Sources */,
 				60302DE02068FC7E0025D397 /* PopUpViewController.swift in Sources */,
+				52466DE721DBC6E80086F327 /* GiftDetailVM.swift in Sources */,
 				52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */,
 				05644DCA1FFF02A100B7C853 /* UITableView+isCellVisible.swift in Sources */,
 				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
