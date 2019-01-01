@@ -85,22 +85,11 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     }
     
     func clearUploadedImages(){
-        if AppDelegate.me().isIranSelected() {
-            for uploadedImageView in self.uploadedImageViews {
-//                uploadedImageView.cancelUploading()
-                uploadedImageView.removeFromSuperview()
-            }
-            for session in vm.sessions {
-                session.invalidateAndCancel()
-            }
-            for task in vm.tasks {
-                task.cancel()
-            }
-            
-            self.uploadedImageViews=[]
-        }else{
-            
+        for uploadedImageView in uploadedImageViews {
+            uploadedImageView.removeFromSuperview()
         }
+        uploadedImageViews=[]
+        vm.clearUploadImages()
     }
 }
 

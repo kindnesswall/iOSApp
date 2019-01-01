@@ -15,6 +15,7 @@ class RegisterGiftViewModel: NSObject {
     
     var sessions : [URLSession]=[]
     var tasks : [URLSessionUploadTask]=[]
+    var firUploadTasks:[StorageUploadTask] = []
     
     var category:Category?
     var dateStatus:DateStatus?
@@ -104,6 +105,9 @@ class RegisterGiftViewModel: NSObject {
         guard let gift = readGiftInfo() else {
             return
         }
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
         
         let db_ref = AppDelegate.me().FIRDB_Ref
         let childRef = db_ref.child(AppConst.FIR.Database.Gifts).childByAutoId()
@@ -122,6 +126,7 @@ class RegisterGiftViewModel: NSObject {
         }
         
         let info:[String:Any] = [
+            "uid":uid,
             "title":title,
             "address":address,
             "description":description,
@@ -137,13 +142,26 @@ class RegisterGiftViewModel: NSObject {
                 print("error : \(err)")
                 return
             }
+            guard let giftKey = dbRef.key else{
+                return
+            }
             print("gift register!")
-            childRef.child("giftImages").setValue(images) { (error, dbRef) in
+            let gift_images_ref = db_ref.child(AppConst.FIR.Database.Gifts_Images)
+            gift_images_ref.child(giftKey).setValue(images) { (error, dbRef) in
                 if let err = error {
                     print("error : \(err)")
                     return
                 }
+                print("images registered!")
             }
+            let users_gifts_ref = db_ref.child(AppConst.FIR.Database.Users_Gifts)
+            users_gifts_ref.child(uid).updateChildValues([giftKey : true], withCompletionBlock: { (error, dbRef) in
+                if let err = error {
+                    print("error : \(err)")
+                    return
+                }
+                print("users_gifts registered!")
+            })
         }
     }
     
@@ -245,8 +263,6 @@ class RegisterGiftViewModel: NSObject {
                 onFail?()
             }
         }
-        
-        
     }
     
     func writeChangesToEditedGift(){
@@ -401,8 +417,8 @@ class RegisterGiftViewModel: NSObject {
         }
         
         var address=cityName
-        for i in 1..<places.count {
-            if let name=places[i].name {
+        for place in places {
+            if let name=place.name {
                 address += " " + name
             }
         }
@@ -447,13 +463,14 @@ class RegisterGiftViewModel: NSObject {
                 }
                 
                 self?.imagesUrl[index] = downloadURL.absoluteString
+                self?.firUploadTasks.remove(at: index)
+                
                 onSuccess(downloadURL.absoluteString)
                 
                 print("url: " + downloadURL.absoluteString)
                 //                    completionHandler(downloadURL.absoluteString)
             })
         })
-        
         
         uploadTask.observe(.progress) { (snapshot) in
             if let fraction = snapshot.progress?.fractionCompleted {
@@ -465,6 +482,32 @@ class RegisterGiftViewModel: NSObject {
                 print("no fraction")
             }
         }
+        
+        firUploadTasks.append(uploadTask)
+    }
+    
+    func cancelAll_FIRUploadTasks() {
+        for task in firUploadTasks {
+            task.cancel()
+        }
+        firUploadTasks = []
+    }
+    
+    func cancelAll_taskAndSessions() {
+        for session in sessions {
+            session.invalidateAndCancel()
+        }
+        for task in tasks {
+            task.cancel()
+        }
+        sessions = []
+        tasks = []
+    }
+    
+    func clearUploadImages() {
+        cancelAll_FIRUploadTasks()
+        cancelAll_FIRUploadTasks()
+        imagesUrl = []
     }
 }
 

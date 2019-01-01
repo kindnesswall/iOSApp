@@ -75,7 +75,7 @@ extension FirbaseLoginRegisterVC {
         }
         
         let ref = AppDelegate.me().FIRDB_Ref
-        let usersRef = ref.child(AppConst.FIR.Database.USERS).child(uid)
+        let usersRef = ref.child(AppConst.FIR.Database.Users).child(uid)
         
         usersRef.updateChildValues(
             info

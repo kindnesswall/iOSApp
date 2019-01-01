@@ -49,8 +49,10 @@ struct AppConst {
         }
         
         struct Database {
-            static let USERS:String = "users"
-            static let Gifts:String = "gifts"
+            static let Users:String = "Users"
+            static let Gifts:String = "Gifts"
+            static let Gifts_Images:String = "Gifts_Images"
+            static let Users_Gifts:String = "Users_Gifts"
         }
         
         struct Keys {

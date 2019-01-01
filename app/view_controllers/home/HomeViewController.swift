@@ -9,6 +9,7 @@
 import UIKit
 import JGProgressHUD
 import TapsellSDKv3
+import Firebase
 
 class HomeViewController: UIViewController {
 
@@ -115,6 +116,11 @@ class HomeViewController: UIViewController {
         self.tableview.register(type: GiftAdCell.self)
         
         vm.getGifts(index:0)
+        
+        let db_ref = AppDelegate.me().FIRDB_Ref.child(AppConst.FIR.Database.Gifts)
+        db_ref.observe(DataEventType.childAdded) { (snapshot) in
+            print("new gift added: \(snapshot)")
+        }
     }
     
     func configRefreshControl(){
