@@ -38,76 +38,24 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
         if AppDelegate.me().isIranSelected() {
             uploadImage(selectedImage: image)
         }else{
-            uploadImageToFIR(image: image)
+            vm.uploadImageToFIR(image: image)
         }
         
         self.dismiss(animated: false, completion: nil)
     }
     
-    func uploadImageToFIR(image: UIImage) {
-        guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
-        
-        let fileName = getUniqeNameWith(fileExtension: ".jpg")
-        
-        let storage_ref = AppDelegate.me().FIRStorage_Ref
-        let childRef = storage_ref.child(AppConst.FIR.Storage.Gift_Images).child(fileName)
-        
-        let uploadTask = childRef.putData(imageData, metadata: nil, completion: { [weak self](storageMetaData, error) in
-            
-            if error != nil {
-                print("storage error : \(error)")
-                self?.vm.uploadFailed()
-                return
-            }
-            print("upload successfully!")
-            self?.vm.uploadedSuccessfully()
-            childRef.downloadURL(completion: { (url, error) in
-                guard let downloadURL = url else {
-                    print("Uh-oh, an error occurred in upload!")
-                    return
-                }
-                self?.imagesUrl.append(downloadURL.absoluteString)
-                
-                print("url: " + downloadURL.absoluteString)
-                //                    completionHandler(downloadURL.absoluteString)
-            })
-        })
-        
-        uploadTask.observe(.progress) { (snapshot) in
-            if let fraction = snapshot.progress?.fractionCompleted {
-                let precent = Int(Double(fraction) * 100)
-                print(precent)
-            }else{
-                print("no fraction")
-            }
-        }
-    }
+    
     
     func uploadImage(selectedImage: UIImage) {
-        let uploadedImageView=addUploadImageView(image: selectedImage)
+        let _=addUploadImageView(image: selectedImage)
+        let index = uploadedImageViews.count - 1
         
-        APICall.uploadImage(
-            url: APIURLs.Upload,
+        self.vm.upload(
             image: selectedImage,
-            sessions: &uploadedImageView.sessions,
-            tasks: &uploadedImageView.tasks,
-            delegate: self) { [weak self] (data, response, error) in
-            
-            ApiUtility.watch(data: data)
-            
-            if let imageSrc=ApiUtility.convert(data: data, to: ImageUpload.self)?.imageSrc {
-                
-                guard let uploadIndex=self?.findIndexOfUploadedImage(task: uploadedImageView.getTask()) else {
-                    return
-                }
-                
-                self?.imageViewUploadingHasFinished(uploadImageView: self?.uploadedImageViews[uploadIndex], imageSrc: imageSrc)
-                
-                self?.vm.uploadedSuccessfully()
-            } else {
-                self?.vm.uploadFailed()
-            }
-        }
+            delegate:self,
+            onSuccess: { [weak self] (imageUrl) in
+            self?.imageViewUploadingHasFinished(uploadImageView: self?.uploadedImageViews[index], imageSrc: imageUrl)
+        }, onFail: nil)
     }
     
     func addUploadImageView(imageSrc:String) -> UploadImageView{
@@ -140,32 +88,24 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     }
     
     func imageViewUploadingHasFinished(uploadImageView:UploadImageView?,imageSrc:String){
-        uploadImageView?.shadowView.hide()
-        uploadImageView?.progressLabel.hide()
-        uploadImageView?.imageSrc=imageSrc
-    }
-    
-    func findIndexOfUploadedImage(task:URLSessionTask?)->Int?{
+        uploadImageView?.uploadFinished()
         
-        guard let task = task else {
-            return nil
-        }
-        
-        for i in 0..<self.uploadedImageViews.count {
-            if self.uploadedImageViews[i].getTask()==task {
-                return i
-            }
-        }
-        return nil
-        
+        vm.imagesUrl.append(imageSrc)
     }
     
     func clearUploadedImages(){
         if AppDelegate.me().isIranSelected() {
             for uploadedImageView in self.uploadedImageViews {
-                uploadedImageView.cancelUploading()
+//                uploadedImageView.cancelUploading()
                 uploadedImageView.removeFromSuperview()
             }
+            for session in vm.sessions {
+                session.invalidateAndCancel()
+            }
+            for task in vm.tasks {
+                task.cancel()
+            }
+            
             self.uploadedImageViews=[]
         }else{
             
@@ -184,12 +124,13 @@ extension RegisterGiftViewController:URLSessionTaskDelegate{
             percent = 99
         }
         
-        guard let uploadIndex=findIndexOfUploadedImage(task: task) else {
+        guard let uploadIndex=vm.findIndexOf(task: task) else {
             return
         }
         
         self.uploadedImageViews[uploadIndex].progressLabel.text = "٪" + String(AppLanguage.getNumberString(number: String(percent)))
     }
+    
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         
     }

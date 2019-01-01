@@ -11,6 +11,11 @@ import Firebase
 
 class RegisterGiftViewModel: NSObject {
     
+    var imagesUrl:[String] = []
+
+    var sessions : [URLSession]=[]
+    var tasks : [URLSessionUploadTask]=[]
+    
     var category:Category?
     var dateStatus:DateStatus?
     var places=[Place]()
@@ -68,7 +73,6 @@ class RegisterGiftViewModel: NSObject {
         }
         input.price=price
         
-        
         if giftHasNewAddress {
             
             let addressObject=self.getAddress()
@@ -95,8 +99,7 @@ class RegisterGiftViewModel: NSObject {
             
         }
         
-        let giftImages=self.delegate?.getGiftImages()
-        input.giftImages=giftImages
+        input.giftImages=imagesUrl
         
         return input
     }
@@ -188,6 +191,39 @@ class RegisterGiftViewModel: NSObject {
         FlashMessage.showMessage(body: errorText,theme: .warning)
     }
     
+    func findIndexOf(task:URLSessionTask?)->Int?{
+        guard let task = task else {
+            return nil
+        }
+        
+        for (index,t) in tasks.enumerated() {
+            if t == task {
+                return index
+            }
+        }
+        
+        return nil
+    }
+    
+    func upload(image:UIImage,delegate:URLSessionTaskDelegate, onSuccess:@escaping (String)->(), onFail:(()->())?) {
+        APICall.uploadImage(
+            url: APIURLs.Upload,
+            image: image,
+            sessions: &sessions,
+            tasks: &tasks,
+            delegate: delegate) { [weak self] (data, response, error) in
+                
+                ApiUtility.watch(data: data)
+                
+                if let imageSrc=ApiUtility.convert(data: data, to: ImageUpload.self)?.imageSrc {
+                    self?.uploadedSuccessfully()
+                    onSuccess(imageSrc)
+                } else {
+                    self?.uploadFailed()
+                    onFail?()
+                }
+        }
+    }
     
     func writeChangesToEditedGift(){
         
@@ -232,8 +268,7 @@ class RegisterGiftViewModel: NSObject {
             
         }
         
-        let giftImages=self.delegate?.getGiftImages()
-        gift.giftImages=giftImages
+        gift.giftImages=imagesUrl
         
     }
     
@@ -367,12 +402,50 @@ class RegisterGiftViewModel: NSObject {
     func uploadFailed() {
         FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
     }
+    
+    func uploadImageToFIR(image: UIImage) {
+        guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
+        
+        let fileName = getUniqeNameWith(fileExtension: ".jpg")
+        
+        let storage_ref = AppDelegate.me().FIRStorage_Ref
+        let childRef = storage_ref.child(AppConst.FIR.Storage.Gift_Images).child(fileName)
+        
+        let uploadTask = childRef.putData(imageData, metadata: nil, completion: { [weak self](storageMetaData, error) in
+            
+            if error != nil {
+                print("storage error : \(error)")
+                self?.uploadFailed()
+                return
+            }
+            print("upload successfully!")
+            self?.uploadedSuccessfully()
+            childRef.downloadURL(completion: { (url, error) in
+                guard let downloadURL = url else {
+                    print("Uh-oh, an error occurred in upload!")
+                    return
+                }
+                self?.imagesUrl.append(downloadURL.absoluteString)
+                
+                print("url: " + downloadURL.absoluteString)
+                //                    completionHandler(downloadURL.absoluteString)
+            })
+        })
+        
+        uploadTask.observe(.progress) { (snapshot) in
+            if let fraction = snapshot.progress?.fractionCompleted {
+                let precent = Int(Double(fraction) * 100)
+                print(precent)
+            }else{
+                print("no fraction")
+            }
+        }
+    }
 }
 
 protocol RegisterGiftViewModelDelegate : class {
     func getUIInputProperties() -> RegisterGiftViewModel.UIInputProperties
     func setUIInputProperties(uiProperties : RegisterGiftViewModel.UIInputProperties)
-    func getGiftImages()->[String]
     
     func setCategoryBtnTitle(text:String?)
     func setDateStatusBtnTitle(text:String?)

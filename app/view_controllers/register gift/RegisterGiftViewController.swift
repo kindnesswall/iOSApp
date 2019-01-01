@@ -33,7 +33,6 @@ class RegisterGiftViewController: UIViewController {
     @IBOutlet weak var uploadedImageStack: UIStackView!
     
     var uploadedImageViews=[UploadImageView]()
-    var imagesUrl:[String] = []
     
     @IBOutlet weak var placesStackView: UIStackView!
     var placesLabels=[UILabel]()
@@ -186,7 +185,6 @@ class RegisterGiftViewController: UIViewController {
             self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.EditGiftViewController_title)
         } else {
             self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.RegisterGiftViewController_title)
-            
         }
         
         self.barClearBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.clearPage)

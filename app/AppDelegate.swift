@@ -214,8 +214,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func isIranSelected() -> Bool {
-        let selectedCountry = uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
-        return selectedCountry == AppConst.Country.IRAN
+        return true
+//        let selectedCountry = uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
+//        return selectedCountry == AppConst.Country.IRAN
     }
     
     func showLoginVC(){

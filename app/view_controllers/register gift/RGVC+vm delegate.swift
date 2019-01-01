@@ -10,7 +10,6 @@ import Foundation
 
 extension RegisterGiftViewController : RegisterGiftViewModelDelegate {
     
-    
     func setUIInputProperties(uiProperties: RegisterGiftViewModel.UIInputProperties) {
         descriptionTextView.text = uiProperties.descriptionTextViewText
         priceTextView.text = uiProperties.priceTextViewText
@@ -23,23 +22,7 @@ extension RegisterGiftViewController : RegisterGiftViewModelDelegate {
         uiProperties.priceTextViewText = priceTextView.text
         uiProperties.titleTextViewText = titleTextView.text
         return uiProperties
-        
     }
-    
-    func getGiftImages()->[String] {
-        if AppDelegate.me().isIranSelected() {
-            var giftImages=[String]()
-            for uploadedImageView in self.uploadedImageViews {
-                if let src=uploadedImageView.imageSrc {
-                    giftImages.append(src)
-                }
-            }
-            return giftImages
-        }else{
-            return imagesUrl
-        }
-    }
-    
     
     func setCategoryBtnTitle(text: String?) {
         self.categoryBtn.setTitle(text, for: .normal)

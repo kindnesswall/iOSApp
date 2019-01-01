@@ -108,7 +108,7 @@ class APICall {
     }
     
     
-    static func uploadImage(url urlString:String,image:UIImage?,sessions:inout [URLSession?],tasks:inout [URLSessionUploadTask?],delegate:URLSessionDelegate,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
+    static func uploadImage(url urlString:String,image:UIImage?,sessions:inout [URLSession],tasks:inout [URLSessionUploadTask],delegate:URLSessionDelegate,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
         
         guard let url=URL(string:urlString) else {
             return
