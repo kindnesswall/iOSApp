@@ -209,11 +209,24 @@ class RegisterGiftViewModel: NSObject {
                 
                 if let imageSrc=ApiUtility.convert(data: data, to: ImageUpload.self)?.imageSrc {
                     self?.uploadedSuccessfully()
+                    
                     onSuccess(imageSrc)
                 } else {
                     self?.uploadFailed()
                     onFail?()
                 }
+        }
+    }
+    
+    func imageRemovedFromList(index:Int) {
+        if imagesUrl.count > index {
+            imagesUrl.remove(at: index)
+        }
+        if tasks.count > index {
+            tasks.remove(at: index)
+        }
+        if sessions.count > index {
+            sessions.remove(at: index)
         }
     }
     
@@ -223,13 +236,13 @@ class RegisterGiftViewModel: NSObject {
             uploadToIranServers(image: image, onSuccess: { (url) in
                 onSuccess(url)
             }) {
-                
+                onFail?()
             }
         }else{
             uploadImageToFIR(image: image, onSuccess: { (url) in
                 onSuccess(url)
             }) {
-                
+                onFail?()
             }
         }
         
@@ -280,11 +293,9 @@ class RegisterGiftViewModel: NSObject {
         }
         
         gift.giftImages=imagesUrl
-        
     }
     
     func readFromEditedGift(){
-        
         guard let gift=self.editedGift else {
             return
         }
@@ -297,7 +308,6 @@ class RegisterGiftViewModel: NSObject {
         
         self.category=Category(id: gift.categoryId, title: gift.category)
         self.delegate?.setCategoryBtnTitle(text: gift.category)
-        
         
         if let isNew=gift.isNew {
             if isNew {
@@ -318,11 +328,9 @@ class RegisterGiftViewModel: NSObject {
                 self.delegate?.addUploadedImageFromEditedGift(giftImage: giftImage)
             }
         }
-        
     }
     
     func saveDraft(){
-        
         let draft=RegisterGiftDraft()
         
         let uiProperties = delegate?.getUIInputProperties()
@@ -345,7 +353,6 @@ class RegisterGiftViewModel: NSObject {
         userDefault.synchronize()
         
         FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.draftSavedSuccessfully), theme: .success)
-        
     }
     
     
@@ -401,7 +408,6 @@ class RegisterGiftViewModel: NSObject {
         }
         
         return Address(address:address,cityId:String(cityId),regionId:regionId)
-        
     }
     
     func uploadedSuccessfully() {
@@ -419,12 +425,16 @@ class RegisterGiftViewModel: NSObject {
         
         let storage_ref = AppDelegate.me().FIRStorage_Ref
         let childRef = storage_ref.child(AppConst.FIR.Storage.Gift_Images).child(fileName)
+
+        self.imagesUrl.append("not uploaded yet")
+        let index = imagesUrl.count - 1
         
         let uploadTask = childRef.putData(imageData, metadata: nil, completion: { [weak self](storageMetaData, error) in
             
             if error != nil {
                 print("storage error : \(error)")
                 self?.uploadFailed()
+                onFail?()
                 return
             }
             
@@ -436,7 +446,7 @@ class RegisterGiftViewModel: NSObject {
                     return
                 }
                 
-                self?.imagesUrl.append(downloadURL.absoluteString)
+                self?.imagesUrl[index] = downloadURL.absoluteString
                 onSuccess(downloadURL.absoluteString)
                 
                 print("url: " + downloadURL.absoluteString)
@@ -444,7 +454,7 @@ class RegisterGiftViewModel: NSObject {
             })
         })
         
-        let index = imagesUrl.count
+        
         uploadTask.observe(.progress) { (snapshot) in
             if let fraction = snapshot.progress?.fractionCompleted {
                 let percent = Int(Double(fraction) * 100)

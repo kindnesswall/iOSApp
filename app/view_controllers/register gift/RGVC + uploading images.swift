@@ -33,9 +33,7 @@ extension RegisterGiftViewController:UIImagePickerControllerDelegate{
 extension RegisterGiftViewController : CropViewControllerDelegate {
     
     public func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
-        
         uploadImage(selectedImage: image)
-        
         self.dismiss(animated: false, completion: nil)
     }
     
@@ -47,7 +45,10 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
             image: selectedImage,
             onSuccess: { [weak self] (imageUrl) in
             self?.imageViewUploadingHasFinished(uploadImageView: self?.uploadedImageViews[index], imageSrc: imageUrl)
-        }, onFail: nil)
+            }, onFail: { [weak self] in
+                self?.removeImage(index: index)
+                self?.vm.imageRemovedFromList(index: index)
+        })
     }
     
     func addUploadImageView(imageSrc:String) -> UploadImageView{
@@ -111,15 +112,20 @@ extension RegisterGiftViewController : UploadImageViewDelegate {
         guard let index=findIndexOfUploadedImage(imageView:imageView) else {
             return
         }
+        removeImage(index: index)
+        vm.imageRemovedFromList(index: index)
+    }
+    
+    func removeImage(index:Int) {
         self.uploadedImageViews[index].removeFromSuperview()
         self.uploadedImageViews.remove(at: index)
     }
     
     func findIndexOfUploadedImage(imageView: UploadImageView)->Int?{
         
-        for i in 0..<self.uploadedImageViews.count {
-            if self.uploadedImageViews[i]===imageView {
-                return i
+        for (index,view) in uploadedImageViews.enumerated() {
+            if view === imageView {
+                return index
             }
         }
         return nil
