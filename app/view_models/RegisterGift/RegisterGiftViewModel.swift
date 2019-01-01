@@ -209,7 +209,7 @@ class RegisterGiftViewModel: NSObject {
                 
                 if let imageSrc=ApiUtility.convert(data: data, to: ImageUpload.self)?.imageSrc {
                     self?.uploadedSuccessfully()
-                    
+                    self?.imagesUrl.append(imageSrc)
                     onSuccess(imageSrc)
                 } else {
                     self?.uploadFailed()

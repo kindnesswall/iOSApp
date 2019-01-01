@@ -82,7 +82,6 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     
     func imageViewUploadingHasFinished(uploadImageView:UploadImageView?,imageSrc:String){
         uploadImageView?.uploadFinished()
-        vm.imagesUrl.append(imageSrc)
     }
     
     func clearUploadedImages(){
