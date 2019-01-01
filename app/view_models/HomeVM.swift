@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  HomeVM.swift
 //  app
 //
 //  Created by Amir Hossein on 12/19/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewModel: NSObject {
+class HomeVM: NSObject {
     
     let apiMethods=ApiMethods()
     weak var delegate:HomeViewModelDelegate?
@@ -123,14 +123,4 @@ class HomeViewModel: NSObject {
             
         }
     }
-}
-
-protocol HomeViewModelDelegate: class {
-    func pageLoadingAnimation(isLoading:Bool)
-    func lazyLoadingAnimation(isLoading:Bool)
-    func refreshControlAnimation(isLoading:Bool)
-    func showTableView(show:Bool)
-    func reloadTableView()
-    func insertNewItemsToTableView(insertedIndexes:[IndexPath])
-    func presentfailedAlert(alert:UIAlertController)
 }

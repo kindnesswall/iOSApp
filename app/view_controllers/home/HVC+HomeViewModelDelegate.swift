@@ -1,0 +1,56 @@
+//
+//  HVC+HomeViewModelDelegate.swift
+//  app
+//
+//  Created by Hamed.Gh on 1/1/19.
+//  Copyright © 2019 Hamed.Gh. All rights reserved.
+//
+
+import UIKit
+
+extension HomeViewController : HomeViewModelDelegate {
+    
+    func insertNewItemsToTableView(insertedIndexes:[IndexPath]) {
+        //                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
+        UIView.performWithoutAnimation {
+            self.tableview.insertRows(at: insertedIndexes, with: .bottom)
+        }
+        //                })
+    }
+    
+    func reloadTableView() {
+        self.tableview.reloadData()
+    }
+    
+    func pageLoadingAnimation(isLoading:Bool) {
+        if isLoading {
+            hud.show(in: self.view)
+        } else {
+            self.hud.dismiss(afterDelay: 0)
+        }
+    }
+    
+    func lazyLoadingAnimation(isLoading:Bool) {
+        self.setTableViewLazyLoading(isLoading: isLoading)
+    }
+    
+    func refreshControlAnimation(isLoading:Bool) {
+        if isLoading {
+            
+        } else {
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
+    func showTableView(show:Bool){
+        if show {
+            self.tableview.show()
+        } else {
+            self.tableview.hide()
+        }
+    }
+    
+    func presentfailedAlert(alert:UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+    }
+}
