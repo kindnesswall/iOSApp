@@ -45,8 +45,14 @@ extension AppDelegate : UITabBarControllerDelegate{
         initiateTab(tabIndex: AppConst.TabIndex.Requests,tabs:tabs)
         initiateTab(tabIndex: AppConst.TabIndex.MyKindnessWall,tabs:tabs)
         
+        setTabsDelegates(tabs:tabs)
+        
         self.tabBarController?.selectedIndex = AppConst.TabIndex.HOME
         
+    }
+    
+    func initiateTab(tabIndex:Int,tabs:[UINavigationController]) {
+        tabs[tabIndex].setViewControllers([getTabViewController(tabIndex:tabIndex)], animated: false)
     }
     
     func getTabViewController(tabIndex:Int)->UIViewController{
@@ -87,10 +93,6 @@ extension AppDelegate : UITabBarControllerDelegate{
         return controller
     }
     
-    func initiateTab(tabIndex:Int,tabs:[UINavigationController]) {
-        tabs[tabIndex].setViewControllers([getTabViewController(tabIndex:tabIndex)], animated: false)
-    }
-    
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         
@@ -124,5 +126,33 @@ extension AppDelegate : UITabBarControllerDelegate{
         }
         
         return false
+    }
+    
+    func setTabsDelegates(tabs:[UINavigationController]){
+        
+        self.tabBarPagesRelaodDelegates = []
+        
+        for tab in tabs {
+            guard let reloadPageDelegate = tab.viewControllers.first as? ReloadablePage else {
+                continue
+            }
+            
+            if
+                tab.viewControllers.first as? HomeViewController != nil
+                    ||
+                    tab.viewControllers.first as? MyGiftsViewController != nil {
+                
+                self.tabBarPagesRelaodDelegates.append(reloadPageDelegate)
+            }
+        }
+    }
+    
+    func reloadTabBarPages(currentPage: ReloadablePage?){
+        for delegate in self.tabBarPagesRelaodDelegates {
+            if let currentPage=currentPage, delegate === currentPage {
+                continue
+            }
+            delegate.reloadPage()
+        }
     }
 }

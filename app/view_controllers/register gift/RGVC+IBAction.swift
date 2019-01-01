@@ -20,6 +20,7 @@ extension RegisterGiftViewController {
             }) {
                 self.clearAllInput()
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.giftRegisteredSuccessfully),theme: .success)
+                self.reloadOtherPages()
             }
         }else{
             vm.createGiftOnFIR()

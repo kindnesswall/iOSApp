@@ -213,6 +213,11 @@ class RegisterGiftViewController: UIViewController {
             self.dateStatusBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
         }
     }
+    
+    func reloadOtherPages(){
+        AppDelegate.me().reloadTabBarPages(currentPage: nil)
+    }
+    
 }
 
 

@@ -257,14 +257,9 @@ extension MyGiftsViewController : UITableViewDelegate {
         reloadOtherVCs()
     }
     
-    func reloadPage(){
-        self.registeredGiftsViewModel.reloadGifts()
-        self.donatedGiftsViewModel.reloadGifts()
-    }
+    
     func reloadOtherVCs(){
-        if let home=((self.tabBarController?.viewControllers?[AppConst.TabIndex.HOME] as? UINavigationController)?.viewControllers.first) as? HomeViewController {
-            home.reloadPage()
-        }
+        AppDelegate.me().reloadTabBarPages(currentPage: self)
     }
 }
 extension MyGiftsViewController : UITableViewDataSource {
@@ -316,6 +311,13 @@ extension MyGiftsViewController : UITableViewDataSource {
     }
     
     
+}
+
+extension MyGiftsViewController : ReloadablePage {
+    func reloadPage(){
+        self.registeredGiftsViewModel.reloadGifts()
+        self.donatedGiftsViewModel.reloadGifts()
+    }
 }
 
 extension MyGiftsViewController : GiftViewModelDelegate {
