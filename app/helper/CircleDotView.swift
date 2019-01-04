@@ -14,18 +14,16 @@ class CircledDotView: UIView {
     
     @IBInspectable var mainColor: UIColor = .white {
         didSet {
-            print("mainColor was set here")
             self.draw()
         }
     }
     @IBInspectable var ringColor: UIColor = .black {
         didSet {
-            print("bColor was set here")
             self.draw()
         }
     }
     @IBInspectable var ringThickness: CGFloat = 4 {
-        didSet { print("ringThickness was set here")
+        didSet {
             self.draw()
         }
     }

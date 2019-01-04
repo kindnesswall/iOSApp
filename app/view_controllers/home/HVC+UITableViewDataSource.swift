@@ -14,11 +14,12 @@ extension HomeViewController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let index=indexPath.row+1
-        if index==self.vm.gifts.count {
-            if !self.vm.isLoadingGifts {
-                vm.getGifts(index: index)
+        if AppDelegate.me().isIranSelected(){
+            let index=indexPath.row+1
+            if index==self.vm.gifts.count {
+                if !self.vm.isLoadingGifts {
+                    vm.getGifts(index: index)
+                }
             }
         }
         

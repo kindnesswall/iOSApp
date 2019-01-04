@@ -145,14 +145,12 @@ class RegisterGiftViewModel: NSObject {
             guard let giftKey = dbRef.key else{
                 return
             }
-            print("gift register!")
             let gift_images_ref = db_ref.child(AppConst.FIR.Database.Gifts_Images)
             gift_images_ref.child(giftKey).setValue(images) { (error, dbRef) in
                 if let err = error {
                     print("error : \(err)")
                     return
                 }
-                print("images registered!")
             }
             let users_gifts_ref = db_ref.child(AppConst.FIR.Database.Users_Gifts)
             users_gifts_ref.child(uid).updateChildValues([giftKey : true], withCompletionBlock: { (error, dbRef) in
@@ -160,7 +158,6 @@ class RegisterGiftViewModel: NSObject {
                     print("error : \(err)")
                     return
                 }
-                print("users_gifts registered!")
             })
         }
     }
@@ -186,8 +183,6 @@ class RegisterGiftViewModel: NSObject {
             responseHandler?()
             
             if let response = response as? HTTPURLResponse {
-                print((response).statusCode)
-                
                 if response.statusCode >= 200 && response.statusCode <= 300 {
                     
                     complitionHandler?()
@@ -454,7 +449,6 @@ class RegisterGiftViewModel: NSObject {
                 return
             }
             
-            print("upload successfully!")
             self?.uploadedSuccessfully()
             childRef.downloadURL(completion: { (url, error) in
                 guard let downloadURL = url else {
@@ -466,17 +460,12 @@ class RegisterGiftViewModel: NSObject {
                 self?.firUploadTasks.remove(at: index)
                 
                 onSuccess(downloadURL.absoluteString)
-                
-                print("url: " + downloadURL.absoluteString)
-                //                    completionHandler(downloadURL.absoluteString)
             })
         })
         
         uploadTask.observe(.progress) { (snapshot) in
             if let fraction = snapshot.progress?.fractionCompleted {
-                let percent = Int(Double(fraction) * 100)
-                print(percent)
-                
+                let percent = Int(Double(fraction) * 100)                
                 self.delegate?.updateUploadImage(index: index, percent: percent)
             }else{
                 print("no fraction")

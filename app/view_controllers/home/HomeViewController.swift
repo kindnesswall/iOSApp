@@ -115,11 +115,21 @@ class HomeViewController: UIViewController {
         self.tableview.register(type: GiftTableViewCell.self)
         self.tableview.register(type: GiftAdCell.self)
         
-        vm.getGifts(index:0)
-        
-        let db_ref = AppDelegate.me().FIRDB_Ref.child(AppConst.FIR.Database.Gifts)
-        db_ref.observe(DataEventType.childAdded) { (snapshot) in
-            print("new gift added: \(snapshot)")
+        if AppDelegate.me().isIranSelected() {
+            vm.getGifts(index:0)
+        }else{
+            let db_ref = AppDelegate.me().FIRDB_Ref.child(AppConst.FIR.Database.Gifts)
+            db_ref.observe(DataEventType.childAdded) { (snapshot) in
+                print("new gift added: \(snapshot)")
+                if let dic = snapshot.value as? [String:Any] {
+                    if let gift = ApiUtility.convert(dic: dic, to: Gift.self) {
+                        print("gift from FIR: \(gift)")
+                        self.vm.gifts.append(gift)
+                        self.tableview.show()
+                        self.tableview.reloadData()
+                    }
+                }
+            }
         }
     }
     

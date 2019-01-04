@@ -77,9 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let domain = Bundle.main.bundleIdentifier!
         uDStandard.removePersistentDomain(forName: domain)
         uDStandard.synchronize()
-        
-        print("clearUserDefault : ")
-        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
     }
     
     func shareApp() {

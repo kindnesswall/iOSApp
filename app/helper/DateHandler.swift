@@ -142,8 +142,6 @@ public class DateHandler {
     }
     
     public static func timeDifferenceCalculator(startTime: String, endTime: String)-> Int{
-        print(startTime)
-        print(endTime)
         let hoursDiff = getHour(time: endTime)-getHour(time:startTime)
         let minDiff = getMinute(time:endTime)-getMinute(time:startTime)
         let secDiff = getSecond(time: endTime)-getSecond(time:startTime)
