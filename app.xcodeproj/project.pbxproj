@@ -47,7 +47,6 @@
 		05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */; };
 		05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE64721FA93F4800FCCC28 /* ApiMethods.swift */; };
 		05B124CC202DB056007E28CC /* latest.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B124CB202DB056007E28CC /* latest.json */; };
-		05BEA4312049667500147BF5 /* MyKindnessWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA42F2049667400147BF5 /* MyKindnessWallViewController.swift */; };
 		05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43720498EB400147BF5 /* UIView+hide+show.swift */; };
 		05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */; };
 		05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */; };
@@ -101,6 +100,17 @@
 		52466DE321DB99EC0086F327 /* HomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52466DE221DB99EC0086F327 /* HomeViewModelDelegate.swift */; };
 		52466DE521DB9A360086F327 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52466DE421DB9A360086F327 /* HomeVM.swift */; };
 		52466DE721DBC6E80086F327 /* GiftDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52466DE621DBC6E80086F327 /* GiftDetailVM.swift */; };
+		5246724A21E342670086F327 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246724921E342660086F327 /* API.swift */; };
+		5246725321E349A40086F327 /* Users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5246725221E349A40086F327 /* Users.graphql */; };
+		5247C8A721E34D82009E8770 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8A621E34D82009E8770 /* schema.json */; };
+		5247C8AC21E388B2009E8770 /* GithubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8AB21E388B2009E8770 /* GithubConstants.swift */; };
+		5247C8B221E38A19009E8770 /* MyKindnessWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8B121E38A19009E8770 /* MyKindnessWallViewController.swift */; };
+		5247C8B521E38A26009E8770 /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8B321E38A26009E8770 /* MyKindnessWallViewController.xib */; };
+		5247C8B821E38A52009E8770 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8B721E38A52009E8770 /* StatisticViewController.swift */; };
+		5247C8BA21E38A5B009E8770 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8B921E38A5B009E8770 /* StatisticViewController.xib */; };
+		5247C8BC21E38A66009E8770 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8BB21E38A66009E8770 /* ContactUsViewController.swift */; };
+		5247C8BF21E38A74009E8770 /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8BD21E38A74009E8770 /* ContactUsViewController.xib */; };
+		5247C8C221E38A83009E8770 /* ContactUsViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8C021E38A83009E8770 /* ContactUsViewController.strings */; };
 		5263D5AA21B5972800B634A8 /* ShakingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D5A921B5972800B634A8 /* ShakingTextField.swift */; };
 		5263D5FE21B915F400B634A8 /* LanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D5FD21B915F400B634A8 /* LanguageVM.swift */; };
 		5263D60121B93F0000B634A8 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D60021B93F0000B634A8 /* ProgressBarView.swift */; };
@@ -113,7 +123,6 @@
 		5283174821C91B400044B9AD /* LockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5283174A21C91B400044B9AD /* LockViewController.xib */; };
 		5283174D21C91B7F0044B9AD /* LockSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5283174F21C91B7F0044B9AD /* LockSettingViewController.xib */; };
 		528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */; };
-		528A2D8D21ABE04300DECE0F /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D8F21ABE04300DECE0F /* MyKindnessWallViewController.xib */; };
 		528A2D9621AC405D00DECE0F /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D9821AC405D00DECE0F /* MyGiftsViewController.xib */; };
 		528A2D9F21AC40C900DECE0F /* RequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DA121AC40C900DECE0F /* RequestsViewController.xib */; };
 		528A2DA921AD340200DECE0F /* LanguageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A2DA821AD340200DECE0F /* LanguageKeys.swift */; };
@@ -134,9 +143,6 @@
 		52DD769621C6BFC100C2E012 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769421C6BFC100C2E012 /* LockViewController.swift */; };
 		52DD769921C6E19600C2E012 /* CircleDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769821C6E19600C2E012 /* CircleDotView.swift */; };
 		52DD769C21C7D26700C2E012 /* LockSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769A21C7D26600C2E012 /* LockSettingViewController.swift */; };
-		6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */; };
-		6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB972130922C002FD769 /* StatisticViewController.swift */; };
-		6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB982130922C002FD769 /* StatisticViewController.xib */; };
 		6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB9B2130931C002FD769 /* StatisticTableViewCell.swift */; };
 		6009DB9E2130931C002FD769 /* StatisticTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6009DB9C2130931C002FD769 /* StatisticTableViewCell.xib */; };
 		6009DBA02130A385002FD769 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009DB9F2130A385002FD769 /* Statistics.swift */; };
@@ -163,7 +169,6 @@
 		6080700921B3F82A0046F940 /* ContactUsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */; };
 		6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */; };
 		6080700D21B436590046F940 /* URLBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700C21B436590046F940 /* URLBrowser.swift */; };
-		6080700E21B43B1E0046F940 /* ContactUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6080701021B43B1E0046F940 /* ContactUsViewController.xib */; };
 		60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */; };
 		60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861155206E50CD000A42E5 /* AppLanguage.swift */; };
 		6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6092D631204950F700AFDA7B /* MyGiftsViewController.swift */; };
@@ -250,7 +255,6 @@
 		05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiOutputs.swift; sourceTree = "<group>"; };
 		05AE64721FA93F4800FCCC28 /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
 		05B124CB202DB056007E28CC /* latest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = latest.json; path = app/latest.json; sourceTree = "<group>"; };
-		05BEA42F2049667400147BF5 /* MyKindnessWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyKindnessWallViewController.swift; path = "app/view_controllers/New Group/MyKindnessWallViewController.swift"; sourceTree = SOURCE_ROOT; };
 		05BEA43720498EB400147BF5 /* UIView+hide+show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+hide+show.swift"; sourceTree = "<group>"; };
 		05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RegisterationHelp.swift"; sourceTree = "<group>"; };
 		05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterCell.swift"; sourceTree = "<group>"; };
@@ -308,6 +312,19 @@
 		52466DE221DB99EC0086F327 /* HomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelDelegate.swift; sourceTree = "<group>"; };
 		52466DE421DB9A360086F327 /* HomeVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		52466DE621DBC6E80086F327 /* GiftDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetailVM.swift; sourceTree = "<group>"; };
+		5246724921E342660086F327 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		5246725221E349A40086F327 /* Users.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Users.graphql; sourceTree = "<group>"; };
+		5247C8A621E34D82009E8770 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		5247C8AB21E388B2009E8770 /* GithubConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubConstants.swift; sourceTree = "<group>"; };
+		5247C8B121E38A19009E8770 /* MyKindnessWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyKindnessWallViewController.swift; path = app/view_controllers/my_kindnesswall/MyKindnessWall/MyKindnessWallViewController.swift; sourceTree = SOURCE_ROOT; };
+		5247C8B421E38A26009E8770 /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = app/view_controllers/my_kindnesswall/MyKindnessWall/fa.lproj/MyKindnessWallViewController.xib; sourceTree = SOURCE_ROOT; };
+		5247C8B621E38A37009E8770 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = app/view_controllers/my_kindnesswall/MyKindnessWall/en.lproj/MyKindnessWallViewController.xib; sourceTree = SOURCE_ROOT; };
+		5247C8B721E38A52009E8770 /* StatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticViewController.swift; path = app/view_controllers/my_kindnesswall/Statistic/StatisticViewController.swift; sourceTree = SOURCE_ROOT; };
+		5247C8B921E38A5B009E8770 /* StatisticViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatisticViewController.xib; path = app/view_controllers/my_kindnesswall/Statistic/StatisticViewController.xib; sourceTree = SOURCE_ROOT; };
+		5247C8BB21E38A66009E8770 /* ContactUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactUsViewController.swift; path = app/view_controllers/my_kindnesswall/ContactUs/ContactUsViewController.swift; sourceTree = SOURCE_ROOT; };
+		5247C8BE21E38A74009E8770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = app/view_controllers/my_kindnesswall/ContactUs/Base.lproj/ContactUsViewController.xib; sourceTree = SOURCE_ROOT; };
+		5247C8C121E38A83009E8770 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = app/view_controllers/my_kindnesswall/ContactUs/en.lproj/ContactUsViewController.strings; sourceTree = SOURCE_ROOT; };
+		5247C8C321E38A91009E8770 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = app/view_controllers/my_kindnesswall/ContactUs/fa.lproj/ContactUsViewController.strings; sourceTree = SOURCE_ROOT; };
 		52525E2421AEB9C000A7D03E /* appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appUITests.swift; sourceTree = "<group>"; };
 		52525E2621AEB9C000A7D03E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52525E2C21AEBB1600A7D03E /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
@@ -328,8 +345,6 @@
 		528A2D8321ABD83600DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8421ABDC0400DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
 		528A2D8521ABDC0F00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
-		528A2D9221ABE05200DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MyKindnessWallViewController.xib; sourceTree = "<group>"; };
-		528A2D9521ABE05D00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/MyKindnessWallViewController.xib; sourceTree = "<group>"; };
 		528A2D9B21AC406C00DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MyGiftsViewController.xib; sourceTree = "<group>"; };
 		528A2D9E21AC407100DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/MyGiftsViewController.xib; sourceTree = "<group>"; };
 		528A2DA621AC40D200DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RequestsViewController.xib; sourceTree = "<group>"; };
@@ -356,9 +371,6 @@
 		52DD769421C6BFC100C2E012 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
 		52DD769821C6E19600C2E012 /* CircleDotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDotView.swift; sourceTree = "<group>"; };
 		52DD769A21C7D26600C2E012 /* LockSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingViewController.swift; sourceTree = "<group>"; };
-		6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
-		6009DB972130922C002FD769 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
-		6009DB982130922C002FD769 /* StatisticViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticViewController.xib; sourceTree = "<group>"; };
 		6009DB9B2130931C002FD769 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
 		6009DB9C2130931C002FD769 /* StatisticTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticTableViewCell.xib; sourceTree = "<group>"; };
 		6009DB9F2130A385002FD769 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
@@ -385,9 +397,6 @@
 		6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsCollectionViewCell.xib; sourceTree = "<group>"; };
 		6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + RegisterCell.swift"; sourceTree = "<group>"; };
 		6080700C21B436590046F940 /* URLBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBrowser.swift; sourceTree = "<group>"; };
-		6080701321B43DE80046F940 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ContactUsViewController.xib; sourceTree = "<group>"; };
-		6080701821B43EB20046F940 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ContactUsViewController.strings; sourceTree = "<group>"; };
-		6080701A21B43EB50046F940 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/ContactUsViewController.strings; sourceTree = "<group>"; };
 		60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar + config.swift"; sourceTree = "<group>"; };
 		60861155206E50CD000A42E5 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		6092D631204950F700AFDA7B /* MyGiftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGiftsViewController.swift; sourceTree = "<group>"; };
@@ -472,6 +481,9 @@
 		0507C8611F8C1A920084CDF1 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				5247C8A621E34D82009E8770 /* schema.json */,
+				5246724921E342660086F327 /* API.swift */,
+				5246725221E349A40086F327 /* Users.graphql */,
 				52DD768721C6428300C2E012 /* GoogleService-Info.plist */,
 				05029ED41FE9A663004D96B1 /* custom_classes */,
 				05BFBBCD1FDB112800DBCDDF /* extensions */,
@@ -504,7 +516,7 @@
 				5263D5FF21B9272300B634A8 /* options list */,
 				528A2DC721ADA9EE00DECE0F /* language */,
 				60302DE4206953670025D397 /* pop_up */,
-				05BEA441204BFBAB00147BF5 /* my kindnesswall */,
+				05BEA441204BFBAB00147BF5 /* my_kindnesswall */,
 				05BEA43620497B2200147BF5 /* register gift */,
 				05BEA43520497B0A00147BF5 /* gift detail */,
 				05BEA43420497AF100147BF5 /* home */,
@@ -638,17 +650,14 @@
 			path = "register gift";
 			sourceTree = "<group>";
 		};
-		05BEA441204BFBAB00147BF5 /* my kindnesswall */ = {
+		05BEA441204BFBAB00147BF5 /* my_kindnesswall */ = {
 			isa = PBXGroup;
 			children = (
-				528A2D8F21ABE04300DECE0F /* MyKindnessWallViewController.xib */,
-				05BEA42F2049667400147BF5 /* MyKindnessWallViewController.swift */,
-				6009DB93212D6FE5002FD769 /* ContactUsViewController.swift */,
-				6080701021B43B1E0046F940 /* ContactUsViewController.xib */,
-				6009DB972130922C002FD769 /* StatisticViewController.swift */,
-				6009DB982130922C002FD769 /* StatisticViewController.xib */,
+				5247C8AA21E38803009E8770 /* MyKindnessWall */,
+				5247C8A921E387E3009E8770 /* Statistic */,
+				5247C8A821E387C9009E8770 /* ContactUs */,
 			);
-			name = "my kindnesswall";
+			name = my_kindnesswall;
 			path = "New Group";
 			sourceTree = "<group>";
 		};
@@ -667,6 +676,7 @@
 				528A2DAA21AD39C500DECE0F /* language */,
 				05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */,
 				526545F921BF082E00C98821 /* TapSellConstants.swift */,
+				5247C8AB21E388B2009E8770 /* GithubConstants.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -763,6 +773,34 @@
 				52466DD821DB607D0086F327 /* RGVM+URLSessionTaskDelegate.swift */,
 			);
 			path = RegisterGift;
+			sourceTree = "<group>";
+		};
+		5247C8A821E387C9009E8770 /* ContactUs */ = {
+			isa = PBXGroup;
+			children = (
+				5247C8C021E38A83009E8770 /* ContactUsViewController.strings */,
+				5247C8BD21E38A74009E8770 /* ContactUsViewController.xib */,
+				5247C8BB21E38A66009E8770 /* ContactUsViewController.swift */,
+			);
+			path = ContactUs;
+			sourceTree = "<group>";
+		};
+		5247C8A921E387E3009E8770 /* Statistic */ = {
+			isa = PBXGroup;
+			children = (
+				5247C8B921E38A5B009E8770 /* StatisticViewController.xib */,
+				5247C8B721E38A52009E8770 /* StatisticViewController.swift */,
+			);
+			path = Statistic;
+			sourceTree = "<group>";
+		};
+		5247C8AA21E38803009E8770 /* MyKindnessWall */ = {
+			isa = PBXGroup;
+			children = (
+				5247C8B321E38A26009E8770 /* MyKindnessWallViewController.xib */,
+				5247C8B121E38A19009E8770 /* MyKindnessWallViewController.swift */,
+			);
+			path = MyKindnessWall;
 			sourceTree = "<group>";
 		};
 		52525E2321AEB9C000A7D03E /* appUITests */ = {
@@ -1029,13 +1067,14 @@
 			buildConfigurationList = 0507C8711F8C1A920084CDF1 /* Build configuration list for PBXNativeTarget "app" */;
 			buildPhases = (
 				1ACCC8F032A438A3510BB749 /* [CP] Check Pods Manifest.lock */,
+				5246724621E3296E0086F327 /* Generate Apollo GraphQL API */,
 				0507C85B1F8C1A920084CDF1 /* Sources */,
 				0507C85C1F8C1A920084CDF1 /* Frameworks */,
 				0507C85D1F8C1A920084CDF1 /* Resources */,
 				4F2C17FB1F8C5E4205EA5192 /* [CP] Embed Pods Frameworks */,
 				526545F821BE9E7300C98821 /* Embed Frameworks */,
 				BF6AFD1FD54EDF5D7933157E /* [CP] Copy Pods Resources */,
-				52DD768C21C64D3000C2E012 /* ShellScript */,
+				52DD768C21C64D3000C2E012 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -1115,15 +1154,18 @@
 				05644DCE1FFF06BD00B7C853 /* SectionView.xib in Resources */,
 				0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */,
 				5283174821C91B400044B9AD /* LockViewController.xib in Resources */,
+				5247C8A721E34D82009E8770 /* schema.json in Resources */,
 				528A2DBD21AD3EBF00DECE0F /* GiftTableViewCell.xib in Resources */,
 				05644DBD1FFEF3A500B7C853 /* ChatConversationTableViewCell.xib in Resources */,
 				528A2DB421AD3E6400DECE0F /* RequestsTableViewCell.xib in Resources */,
 				602BC8F82034B7CC00ECF6E2 /* UploadImageView.xib in Resources */,
 				054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */,
+				5247C8B521E38A26009E8770 /* MyKindnessWallViewController.xib in Resources */,
 				60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */,
 				6072E4FB21C05A9200F17205 /* GiftAdCell.xib in Resources */,
 				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
 				60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */,
+				5247C8BF21E38A74009E8770 /* ContactUsViewController.xib in Resources */,
 				528A2DAB21AD3D8200DECE0F /* RequestToAGiftTableViewCell.xib in Resources */,
 				6080700921B3F82A0046F940 /* ContactUsCollectionViewCell.xib in Resources */,
 				054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */,
@@ -1132,30 +1174,30 @@
 				054B1B541FCC4101007570EF /* IRANSansMobile_Black.ttf in Resources */,
 				05029ECB1FE334C5004D96B1 /* RequestToAGiftViewController.xib in Resources */,
 				60FAB845206571340039BF61 /* icomoon.ttf in Resources */,
+				5247C8C221E38A83009E8770 /* ContactUsViewController.strings in Resources */,
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
 				05F6AA531FFEEB8D00CDABC2 /* ChatConversationViewController.xib in Resources */,
 				5283174D21C91B7F0044B9AD /* LockSettingViewController.xib in Resources */,
-				6009DB9A2130922C002FD769 /* StatisticViewController.xib in Resources */,
 				52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */,
 				5245922521AB47EA0009824C /* Localizable.strings in Resources */,
+				5246725321E349A40086F327 /* Users.graphql in Resources */,
 				05BFBBBA1FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib in Resources */,
 				05BEA445204C1FFA00147BF5 /* PromptUser.xib in Resources */,
 				05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */,
 				60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */,
 				528A2D9621AC405D00DECE0F /* MyGiftsViewController.xib in Resources */,
 				054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */,
-				6080700E21B43B1E0046F940 /* ContactUsViewController.xib in Resources */,
 				528A2D9F21AC40C900DECE0F /* RequestsViewController.xib in Resources */,
 				05F6AA561FFEEB8D00CDABC2 /* ChatListTableViewController.xib in Resources */,
 				05644DBB1FFEF3A500B7C853 /* OthersChatConversationTableViewCell.xib in Resources */,
+				5247C8BA21E38A5B009E8770 /* StatisticViewController.xib in Resources */,
 				6009DB9E2130931C002FD769 /* StatisticTableViewCell.xib in Resources */,
 				054B1B551FCC4101007570EF /* IRANSansMobile_Medium.ttf in Resources */,
 				05B124CC202DB056007E28CC /* latest.json in Resources */,
 				528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */,
 				5245920F21AAD6BB0009824C /* HomeViewController.xib in Resources */,
 				52DD768821C6428300C2E012 /* GoogleService-Info.plist in Resources */,
-				528A2D8D21ABE04300DECE0F /* MyKindnessWallViewController.xib in Resources */,
 				5245921821AAD7420009824C /* GiftDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1195,6 +1237,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-app/Pods-app-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -1215,6 +1258,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
@@ -1238,7 +1282,25 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-app/Pods-app-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		52DD768C21C64D3000C2E012 /* ShellScript */ = {
+		5246724621E3296E0086F327 /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nAPOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=schema.json API.swift\n";
+		};
+		52DD768C21C64D3000C2E012 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1249,6 +1311,7 @@
 				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
+			name = Fabric;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -1296,7 +1359,6 @@
 				05644DBA1FFEF3A500B7C853 /* ChatConversationTableViewCell.swift in Sources */,
 				05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */,
 				52DD769921C6E19600C2E012 /* CircleDotView.swift in Sources */,
-				6009DB992130922C002FD769 /* StatisticViewController.swift in Sources */,
 				5263D60121B93F0000B634A8 /* ProgressBarView.swift in Sources */,
 				05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */,
 				05644DC21FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift in Sources */,
@@ -1311,9 +1373,7 @@
 				52D1A14421DA3C30005EA2F0 /* Address.swift in Sources */,
 				05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */,
 				5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */,
-				05BEA4312049667500147BF5 /* MyKindnessWallViewController.swift in Sources */,
 				05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */,
-				6009DB95212D6FE5002FD769 /* ContactUsViewController.swift in Sources */,
 				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
 				6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */,
 				05644DBC1FFEF3A500B7C853 /* ChatListTableViewCell.swift in Sources */,
@@ -1326,6 +1386,7 @@
 				05644DC41FFEF62300B7C853 /* ChatAbs.swift in Sources */,
 				60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */,
 				522F6B5621D81697001C67B9 /* FirbaseLoginRegisterVC.swift in Sources */,
+				5246724A21E342670086F327 /* API.swift in Sources */,
 				522F6B5821D816DD001C67B9 /* UIColor+init.swift in Sources */,
 				60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */,
 				52DD769C21C7D26700C2E012 /* LockSettingViewController.swift in Sources */,
@@ -1337,6 +1398,7 @@
 				601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,
 				528A2DA921AD340200DECE0F /* LanguageKeys.swift in Sources */,
+				5247C8B821E38A52009E8770 /* StatisticViewController.swift in Sources */,
 				05029ED21FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift in Sources */,
 				6019F27521B80257003C3E76 /* AppDelegate + Tabbar.swift in Sources */,
 				60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */,
@@ -1377,6 +1439,7 @@
 				05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */,
 				05DDD3E41F921F19006C5E31 /* APIRequest.swift in Sources */,
 				5263D5FE21B915F400B634A8 /* LanguageVM.swift in Sources */,
+				5247C8AC21E388B2009E8770 /* GithubConstants.swift in Sources */,
 				60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */,
 				602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */,
 				52DD769621C6BFC100C2E012 /* LockViewController.swift in Sources */,
@@ -1388,6 +1451,8 @@
 				52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */,
 				528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConst.swift in Sources */,
+				5247C8B221E38A19009E8770 /* MyKindnessWallViewController.swift in Sources */,
+				5247C8BC21E38A66009E8770 /* ContactUsViewController.swift in Sources */,
 				522F6B5521D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift in Sources */,
 				601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */,
 				05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */,
@@ -1473,6 +1538,32 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		5247C8B321E38A26009E8770 /* MyKindnessWallViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5247C8B421E38A26009E8770 /* fa */,
+				5247C8B621E38A37009E8770 /* en */,
+			);
+			name = MyKindnessWallViewController.xib;
+			sourceTree = "<group>";
+		};
+		5247C8BD21E38A74009E8770 /* ContactUsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5247C8BE21E38A74009E8770 /* Base */,
+			);
+			name = ContactUsViewController.xib;
+			sourceTree = "<group>";
+		};
+		5247C8C021E38A83009E8770 /* ContactUsViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5247C8C121E38A83009E8770 /* en */,
+				5247C8C321E38A91009E8770 /* fa */,
+			);
+			name = ContactUsViewController.strings;
+			sourceTree = "<group>";
+		};
 		5283174A21C91B400044B9AD /* LockViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1498,15 +1589,6 @@
 				528A2D8321ABD83600DECE0F /* en */,
 			);
 			name = RegisterGiftViewController.xib;
-			sourceTree = "<group>";
-		};
-		528A2D8F21ABE04300DECE0F /* MyKindnessWallViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				528A2D9221ABE05200DECE0F /* en */,
-				528A2D9521ABE05D00DECE0F /* fa */,
-			);
-			name = MyKindnessWallViewController.xib;
 			sourceTree = "<group>";
 		};
 		528A2D9821AC405D00DECE0F /* MyGiftsViewController.xib */ = {
@@ -1561,16 +1643,6 @@
 				52DD768621C5109D00C2E012 /* fa */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		6080701021B43B1E0046F940 /* ContactUsViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6080701321B43DE80046F940 /* Base */,
-				6080701821B43EB20046F940 /* en */,
-				6080701A21B43EB50046F940 /* fa */,
-			);
-			name = ContactUsViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

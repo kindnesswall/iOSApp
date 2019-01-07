@@ -35,4 +35,6 @@ pod 'Crashlytics', '~> 3.12.0'
 
 pod 'CryptoSwift'
 
+pod "Apollo"
+
 end

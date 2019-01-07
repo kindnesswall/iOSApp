@@ -1,0 +1,19 @@
+query UserInfo {
+    user(login:"kindnesswall") {
+        name
+        repositories(first:10) {
+            edges {
+                node {
+                    name
+                    collaborators(first:10){
+                        totalCount
+                        nodes{
+                            id
+                            name
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
