@@ -1,0 +1,64 @@
+//
+//  URIs.swift
+//  COpenSSL
+//
+//  Created by Amir Hossein on 1/6/19.
+//
+
+import Foundation
+
+class URIs {
+    private let apiRoute:String
+    init() {
+        self.apiRoute="http://localhost:8080/api/v1"
+    }
+    
+    var gifts : String {
+        return "\(apiRoute)/gifts"
+    }
+    var categories : String {
+        return "\(apiRoute)/categories"
+    }
+    var province : String {
+        return "\(apiRoute)/provinces"
+    }
+    var city : String {
+        return "\(apiRoute)/cities"
+    }
+    var register : String {
+        return "\(apiRoute)/register"
+    }
+    var login : String {
+        return "\(apiRoute)/login"
+    }
+    var chat : String {
+        return "\(apiRoute)/chat"
+    }
+    
+    var gifts_register : String {
+        return "\(apiRoute)/gifts/register"
+    }
+    
+    var gifts_owner : String {
+        return "\(apiRoute)/gifts/owner"
+    }
+    var gifts_images : String {
+        return "\(apiRoute)/gifts/images"
+    }
+    
+    var gifts_accept : String {
+        return "\(apiRoute)/gifts/accept"
+    }
+    var gifts_reject : String {
+        return "\(apiRoute)/gifts/reject"
+    }
+    var gifts_review : String {
+        return "\(apiRoute)/gifts/review"
+    }
+    
+    func getSMSUrl(apiKey:String,receptor:String,template:String,token:String)->String?{
+        let rawUrl = "https://saharsms.com/api/\(apiKey)/json/SendVerify?receptor=\(receptor)&template=\(template)&token=\(token)"
+        let encodedURL = rawUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return encodedURL
+    }
+}

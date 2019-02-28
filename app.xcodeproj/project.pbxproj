@@ -154,6 +154,7 @@
 		601F83D32037367900F9118B /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D22037367900F9118B /* Place.swift */; };
 		601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D420373E9E00F9118B /* PlaceListViewModel.swift */; };
 		601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D6203C3CD400F9118B /* ImageUpload.swift */; };
+		6024132322272E7A0094E6E2 /* URIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6024132222272E7A0094E6E2 /* URIs.swift */; };
 		602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */; };
 		602BC8F82034B7CC00ECF6E2 /* UploadImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */; };
 		60302DE02068FC7E0025D397 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DDE2068FC7E0025D397 /* PopUpViewController.swift */; };
@@ -382,6 +383,7 @@
 		601F83D22037367900F9118B /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		601F83D420373E9E00F9118B /* PlaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewModel.swift; sourceTree = "<group>"; };
 		601F83D6203C3CD400F9118B /* ImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUpload.swift; sourceTree = "<group>"; };
+		6024132222272E7A0094E6E2 /* URIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URIs.swift; sourceTree = "<group>"; };
 		602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageView.swift; sourceTree = "<group>"; };
 		602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageView.xib; sourceTree = "<group>"; };
 		60302DDE2068FC7E0025D397 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
@@ -719,6 +721,7 @@
 				05DDD3E11F921E98006C5E31 /* ResponseModel.swift */,
 				6040F3A2206688A800FCD429 /* APIEmptyInput.swift */,
 				056FBB601F91585C0023C9CF /* APIURLs.swift */,
+				6024132222272E7A0094E6E2 /* URIs.swift */,
 				05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */,
 				05AE64721FA93F4800FCCC28 /* ApiMethods.swift */,
 				60FAB83D2064DBE10039BF61 /* APICall.swift */,
@@ -1302,7 +1305,7 @@
 		};
 		52DD768C21C64D3000C2E012 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1409,6 +1412,7 @@
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
 				52D1A13B21D92859005EA2F0 /* ApiUtility.swift in Sources */,
 				522F6B5421D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift in Sources */,
+				6024132322272E7A0094E6E2 /* URIs.swift in Sources */,
 				60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */,
 				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,
 				6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */,

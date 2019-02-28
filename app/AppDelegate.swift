@@ -52,19 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let screenWidth = UIScreen.main.bounds.width
     var launchedShortcutItem: UIApplicationShortcutItem?
 
-    public func clearUserDefaultAuthValues() {
-        let watched_select_language = uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
-        let watched_intro = uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO)
-        let appleLanguages = uDStandard.object(forKey: AppConst.UserDefaults.AppleLanguages)
-        
-        clearAllUserDefaultValues()
-        
-        uDStandard.set(watched_select_language, forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
-        uDStandard.set(watched_intro, forKey: AppConst.UserDefaults.WATCHED_INTRO)
-        uDStandard.set(appleLanguages, forKey: AppConst.UserDefaults.AppleLanguages)
-        
-        uDStandard.synchronize()
-    }
     
     public func isPasscodeSaved() -> Bool {
         if let _ = keychain.get(AppConst.KeyChain.PassCode) {
@@ -213,9 +200,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func isIranSelected() -> Bool {
-        return false
-//        let selectedCountry = uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
-//        return selectedCountry == AppConst.Country.IRAN
+        let selectedCountry = uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
+        return selectedCountry == AppConst.Country.IRAN
     }
     
     func showLoginVC(){

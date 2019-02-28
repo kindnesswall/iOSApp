@@ -106,21 +106,23 @@ class ActivationEnterPhoneViewController: UIViewController {
         registerBtn.setTitle("", for: [])
         loading.startAnimating()
         
-        ApiMethods.register(telephone: mobile) { [weak self] (data, response, error) in
+        let input = User(phoneNumber: mobile)
+        
+        APICall.request(url: URIs().register, httpMethod: .POST, input: input) { [weak self] (_, response, error) in
             
             self?.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: [])
             self?.loading.stopAnimating()
             
-            if let response = response as? HTTPURLResponse {
-                if response.statusCode < 200 && response.statusCode >= 300 {
-                    return
-                }
-            }
-            guard error == nil else {
-                print("Get error register")
+            guard let response = response as? HTTPURLResponse else {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
                 return
             }
-
+            
+            if response.statusCode != APICall.OKStatus{
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeTryAgainOneMinuteLater), theme: .error)
+                return
+            }
+            
             let controller=ActivationEnterVerifyCodeViewController()
             
             controller.setCloseComplition(closeComplition: self?.closeComplition)
@@ -130,6 +132,7 @@ class ActivationEnterPhoneViewController: UIViewController {
             self?.navigationController?.pushViewController(controller, animated: true)
             
         }
+        
     }
     
 }

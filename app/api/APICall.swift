@@ -20,6 +20,8 @@ class APICall {
     
     //MARK: - Requests
     
+    public static let OKStatus = 200
+    
     private static func setRequestHeader(request:URLRequest)->URLRequest {
         var newRequest=request
         newRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")

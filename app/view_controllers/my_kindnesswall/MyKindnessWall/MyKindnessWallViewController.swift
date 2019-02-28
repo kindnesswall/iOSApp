@@ -60,7 +60,6 @@ class MyKindnessWallViewController: UIViewController {
                 preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
-                AppDelegate.me().clearUserDefaultAuthValues()
                 self.keychain.clear()
                 UIApplication.shared.shortcutItems = []
                 self.setLoginLogoutBtnTitle()

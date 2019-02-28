@@ -67,7 +67,6 @@ struct AppConst {
     
     struct KeyChain {
         static let Authorization:String = "Authorization"
-        public static let USER_NAME:String = "USER_NAME"
         public static let USER_ID:String = "USER_ID"
         public static let BEARER:String = "bearer"
         public static let PassCode:String = "PassCode"
@@ -86,12 +85,6 @@ struct AppConst {
         static let AppleLanguages:String = "AppleLanguages"
     }
     
-    struct APIMethodDictionaryKey {
-        static let Username:String = "username"
-        static let Password:String = "password"
-        static let DeviceId:String = "deviceId"
-        static let RegisterationId:String = "registerationId"
-    }
     
     struct TabIndex {
         //    public static let CHAT:Int = 4

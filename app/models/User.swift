@@ -9,7 +9,17 @@
 import Foundation
 
 class User: Codable {
-    var userName:String?
-    var id:String?
+    
+    var phoneNumber:String
+    var activationCode:String?
+    
+    init(phoneNumber:String) {
+        self.phoneNumber=phoneNumber
+    }
+}
+
+class Token: Codable {
+    var userID:Int?
+    var token:String?
 }
 

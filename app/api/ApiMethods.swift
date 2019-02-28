@@ -29,24 +29,6 @@ class ApiMethods {
         }
     }
         
-    public static func login(mobile:String, verificationCode:String, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
-        
-        let regId:String = "eoFH_ujJBxU:APA91bEEEAv1RpiP4RHzwJLEa9bRFdAi1sTIgFV9GScwfDNcmDucVFkWG0EstL5I5zNVaFqCVT3NMiBUjhtyQEFUM89S9tXf44u0N4LhozYv1KWNcGkyCMeUEmcOYRYEiu5gud18h_A"
-        let deviceId:String = "352136066349321"
-        
-        let formKeyValue:[String:String] = [
-            AppConst.APIMethodDictionaryKey.Username:mobile,
-            AppConst.APIMethodDictionaryKey.Password:verificationCode,
-            AppConst.APIMethodDictionaryKey.RegisterationId:regId,
-            AppConst.APIMethodDictionaryKey.DeviceId:deviceId,
-            "grant_type":"password"]
-        
-        let url:String = APIURLs.login
-        
-        APIRequest.requestFormUrlEncoded(url: url, formKeyValueInput: formKeyValue, httpMethod: .post) { (data, response, error) in
-            completionHandler(data, response, error)
-        }
-    }
     
     static func getChatConversation(chatId:Int,startIndex:Int, complitionHandler:@escaping (ChatConversationOutput)->Void) {
         
@@ -109,16 +91,6 @@ class ApiMethods {
             APIURLs.getRecievedRequestList + "/\(giftId)/\(startIndex)/\(startIndex+offset)"
         
         APIRequest.Request(url: mainURL, httpMethod: .get, complitionHandler: { (data, response, error) in
-            
-            completionHandler(data, response, error)
-        })
-    }
-    
-    public static func register(telephone:String, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
-        
-        let mainURL: String = APIURLs.register + telephone
-        
-        APIRequest.Request(url: mainURL, httpMethod: .post, complitionHandler: { (data, response, error) in
             
             completionHandler(data, response, error)
         })

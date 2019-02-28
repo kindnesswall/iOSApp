@@ -106,7 +106,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
             return
         }
         
-        if activationCode.count < 4 {
+        if activationCode.count < 5 {
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeIncorrectError),theme: .warning)
             self.verifyCodeTextField.shake()
             return
@@ -120,64 +120,55 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         registerBtn.setTitle("", for: [])
         registerLoading.startAnimating()
         
-        ApiMethods.login(mobile: mobile, verificationCode: activationCode) { [weak self] (data, urlResponse, error) in
+        let input = User(phoneNumber: mobile)
+        input.activationCode = activationCode
+        APICall.request(url: URIs().login, httpMethod: .POST, input: input) { [weak self] (data, resposne, error) in
             
             DispatchQueue.main.async {
                 self?.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.registeringActivationCode), for: [])
                 self?.registerLoading.stopAnimating()
             }
             
-            if let response = urlResponse as? HTTPURLResponse {
-                if response.statusCode < 200 && response.statusCode >= 300 {
-                    return
-                }
+            guard let response = resposne as? HTTPURLResponse else {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+                return
             }
-            guard error == nil else {
-                print("Get error register")
+            if response.statusCode != APICall.OKStatus {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeIncorrectError),theme: .warning)
+                self?.verifyCodeTextField.shake()
                 return
             }
             
-            ApiUtility.watch(data: data)
-
-            if let reply=ApiUtility.convert(data: data, to: TokenOutput.self) {
-                
-                if let error = reply.error , error == TokenOutputError.invalid_grant.rawValue {
-                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeIncorrectError),theme: .warning)
-                    self?.verifyCodeTextField.shake()
-                    return
-                }
-                
-                self?.keychain.set(mobile, forKey: AppConst.UserDefaults.PHONE_NUMBER)
-                
-                if let userId = reply.userId {
-//                    self.userDefault.set(userId, forKey: AppConstants.USER_ID)
-                    self?.keychain.set(userId, forKey: AppConst.KeyChain.USER_ID)
-                }
-                if let userName = reply.userName {
-//                    self.userDefault.set(userName, forKey: AppConstants.USERNAME)
-                    self?.keychain.set(userName, forKey: AppConst.KeyChain.USER_NAME)
-                }
-                if let token = reply.access_token {
-//                    self.userDefault.set(
-//                        AppConstants.BEARER + " " + token, forKey: AppConstants.Authorization)
-                    
-                    self?.keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
-                }
-                
-                self?.dismiss(animated: true, completion: {
-                    UIApplication.shared.shortcutItems = [
-                        UIApplicationShortcutItem(
+            guard let token = APICall.readJsonData(data:data , outputType: Token.self) else {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+                return
+            }
+            
+            self?.keychain.set(mobile, forKey: AppConst.UserDefaults.PHONE_NUMBER)
+            
+            if let userID = token.userID?.description {
+                self?.keychain.set(userID, forKey: AppConst.KeyChain.USER_ID)
+            }
+            
+            if let token = token.token {
+                self?.keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
+            }
+            
+            self?.dismiss(animated: true, completion: {
+                UIApplication.shared.shortcutItems = [
+                    UIApplicationShortcutItem(
                         type: "ir.kindnesswall.publicusers.DonateGift",
                         localizedTitle: LocalizationSystem.getStr(forKey: LanguageKeys.DonateGift),
                         localizedSubtitle: "",
                         icon: UIApplicationShortcutIcon(type: .favorite),
                         userInfo: nil)
-                    ]
-                    self?.submitComplition?("")
-                    
-                })
-            }
+                ]
+                self?.submitComplition?("")
+                
+            })
+            
         }
+    
     }
     
     @IBAction func sendAgainBtnClick(_ sender: Any) {
@@ -192,23 +183,23 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
             return
         }
         
-        ApiMethods.register(telephone: mobile) { (data, response, error) in
+        let input = User(phoneNumber: mobile)
+        APICall.request(url: URIs().register, httpMethod: .POST, input: input) { [weak self] (_, response, error) in
             
-            self.sendAgainBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.resendActivationCode), for: [])
-            self.resendLoading.stopAnimating()
+            self?.sendAgainBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.resendActivationCode), for: [])
+            self?.resendLoading.stopAnimating()
             
-            if let response = response as? HTTPURLResponse {
-                if response.statusCode < 200 && response.statusCode >= 300 {
-                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeSendSuccessfully), theme: .success)
-                    return
-                }else{
-                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeTryAgainOneMinuteLater), theme: .error)
-                    return
-                }
-            }
-            guard error == nil else {
+            
+            guard let response = response as? HTTPURLResponse else {
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
-                print("Get error register")
+                return
+            }
+            
+            if response.statusCode == APICall.OKStatus {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeSendSuccessfully), theme: .success)
+                return
+            }else{
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeTryAgainOneMinuteLater), theme: .error)
                 return
             }
             
