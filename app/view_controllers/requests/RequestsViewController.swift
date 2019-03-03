@@ -134,18 +134,18 @@ extension RequestsViewController:UITableViewDelegate {
             self.showViewsBasedOnNumberOfGifts()
         }
         controller.onReject = {
-            if let requestCount = self.gifts[indexPath.row].requestCount, var count = Int(requestCount) {
-                count = count - 1
-                
-                if count <= 0 {
-                    self.showViewsBasedOnNumberOfGifts()
-                }else{
-                    self.gifts[indexPath.row].requestCount = String(count)
-                
-                    let indexPath = IndexPath(item: indexPath.row, section: 0)
-                    self.tableview.reloadRows(at: [indexPath], with: .top)
-                }
-            }
+//            if let requestCount = self.gifts[indexPath.row].requestCount, var count = Int(requestCount) {
+//                count = count - 1
+//                
+//                if count <= 0 {
+//                    self.showViewsBasedOnNumberOfGifts()
+//                }else{
+//                    self.gifts[indexPath.row].requestCount = String(count)
+//                
+//                    let indexPath = IndexPath(item: indexPath.row, section: 0)
+//                    self.tableview.reloadRows(at: [indexPath], with: .top)
+//                }
+//            }
         }
 
         self.navigationController?.pushViewController(controller, animated: true)

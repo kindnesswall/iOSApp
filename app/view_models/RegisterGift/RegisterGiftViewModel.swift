@@ -80,20 +80,22 @@ class RegisterGiftViewModel: NSObject {
                 inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError))
                 return nil
             }
+            guard let provinceId=addressObject?.provinceId else {
+                inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError))
+                return nil
+            }
             guard let cityId=addressObject?.cityId else {
                 inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError))
                 return nil
             }
             
-            let regionId=addressObject?.regionId
-            
             input.address=address
+            input.provinceId=provinceId
             input.cityId=cityId
-            input.regionId=(regionId ?? "0")
         } else {
             input.address=self.editedGiftAddress.address
+            input.provinceId=self.editedGiftAddress.provinceId
             input.cityId=self.editedGiftAddress.cityId
-            input.regionId=self.editedGiftAddress.regionId
         }
         
         input.giftImages=imagesUrl
@@ -119,8 +121,8 @@ class RegisterGiftViewModel: NSObject {
             let price = gift.price,
             let categoryId = gift.categoryId,
             let isNew = gift.isNew,
-            let cityId = gift.cityId,
-            let regionId = gift.regionId
+            let cityId = gift.cityId
+//            let regionId = gift.regionId
             else {
             return
         }
@@ -134,7 +136,7 @@ class RegisterGiftViewModel: NSObject {
             "categoryId":categoryId,
             "isNew":isNew,
             "cityId":cityId,
-            "regionId":regionId
+//            "regionId":regionId
         ]
         
         childRef.updateChildValues(info) { (error:Error?, dbRef:DatabaseReference) in
@@ -287,19 +289,15 @@ class RegisterGiftViewModel: NSObject {
             
             let addressObject=self.getAddress()
             
-            let address=addressObject?.address
-            let cityId=addressObject?.cityId
-            let regionId=addressObject?.regionId
-            
-            gift.address=address
-            gift.cityId=cityId?.description ?? "0"
-            gift.regionId=regionId?.description ?? "0"
+            gift.address=addressObject?.address
+            gift.provinceId=addressObject?.provinceId
+            gift.cityId=addressObject?.cityId
             
         } else {
             
             gift.address=self.editedGiftAddress.address
-            gift.cityId=self.editedGiftAddress.cityId?.description
-            gift.regionId=self.editedGiftAddress.regionId?.description
+            gift.provinceId=self.editedGiftAddress.provinceId
+            gift.cityId=self.editedGiftAddress.cityId
             
         }
         
@@ -331,8 +329,8 @@ class RegisterGiftViewModel: NSObject {
         
         self.delegate?.setEditedGiftOriginalAddressLabel(text: gift.address)
         self.editedGiftAddress.address = gift.address
-        self.editedGiftAddress.cityId=gift.cityId ?? "0"
-        self.editedGiftAddress.regionId=gift.regionId ?? "0"
+        self.editedGiftAddress.provinceId=gift.provinceId
+        self.editedGiftAddress.cityId=gift.cityId
         
         if let giftImages = gift.giftImages {
             for giftImage in giftImages {
@@ -400,25 +398,23 @@ class RegisterGiftViewModel: NSObject {
     }
     
     func getAddress()-> Address? {
-        guard let cityId=self.places.first?.id , let cityName=self.places.first?.name else {
+        
+        guard let provinceId=self.places.first?.id , let provinceName=self.places.first?.name else {
             return nil
         }
         
-        var regionId:String?
-        if places.count>1 {
-            if let id=places[1].id {
-                regionId=String(id)
-            }
+        guard self.places.count > 1 else {
+            return nil
         }
         
-        var address=cityName
-        for place in places {
-            if let name=place.name {
-                address += " " + name
-            }
+        guard let cityId=self.places[1].id , let cityName=self.places[1].name else {
+            return nil
         }
         
-        return Address(address:address,cityId:String(cityId),regionId:regionId)
+        
+        let address="\(provinceName) \(cityName)"
+        
+        return Address(address:address,provinceId:provinceId,cityId:cityId)
     }
     
     func uploadedSuccessfully() {
