@@ -27,8 +27,8 @@ class HomeVM: NSObject {
         }
     }
     
-    var categoryId="0"
-    var cityId="0"
+    var categoryId=0
+    var provinceId=0
     
     func handleError(index:Int) {
         self.delegate?.pageLoadingAnimation(isLoading: false)
@@ -109,25 +109,25 @@ class HomeVM: NSObject {
             self.delegate?.lazyLoadingAnimation(isLoading: true)
         }
         
-        apiMethods.getGifts(
-            cityId: self.cityId,
-            regionId: "0",
-            categoryId: self.categoryId,
-            startIndex: index,
-            lastIndex: index+lazyLoadingCount,
-            searchText: "") { [weak self] (data, response, error) in
-            //            APIRequest.logReply(data: data)
-            
-            guard error == nil, let response = response as? HTTPURLResponse, response.statusCode>=200,response.statusCode<300 else {
-                print("Get error register")
-                self?.handleError(index: index)
-                return
-            }
-            
-            if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
-                self?.handleResponse(index:index, recieveGifts:reply)
-            }
-            
-        }
+//        apiMethods.getGifts(
+//            cityId: self.provinceId.description,
+//            regionId: "0",
+//            categoryId: self.categoryId.description,
+//            startIndex: index,
+//            lastIndex: index+lazyLoadingCount,
+//            searchText: "") { [weak self] (data, response, error) in
+//            //            APIRequest.logReply(data: data)
+//
+//            guard error == nil, let response = response as? HTTPURLResponse, response.statusCode>=200,response.statusCode<300 else {
+//                print("Get error register")
+//                self?.handleError(index: index)
+//                return
+//            }
+//
+//            if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
+//                self?.handleResponse(index:index, recieveGifts:reply)
+//            }
+//
+//        }
     }
 }

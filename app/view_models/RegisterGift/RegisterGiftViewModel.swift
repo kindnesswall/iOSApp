@@ -55,7 +55,7 @@ class RegisterGiftViewModel: NSObject {
             inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.newOrUsedError))
             return nil
         }
-        if dateStatusId == "0" {
+        if dateStatusId == 0 {
             input.isNew=true
         } else {
             input.isNew=false
@@ -278,7 +278,7 @@ class RegisterGiftViewModel: NSObject {
         gift.categoryId=self.category?.id
         
         if let dateStatusId=self.dateStatus?.id {
-            if dateStatusId == "0" {
+            if dateStatusId == 0 {
                 gift.isNew=true
             } else {
                 gift.isNew=false
@@ -320,9 +320,9 @@ class RegisterGiftViewModel: NSObject {
         
         if let isNew=gift.isNew {
             if isNew {
-                self.dateStatus=DateStatus(id:"0",title:LocalizationSystem.getStr(forKey: LanguageKeys.new))
+                self.dateStatus=DateStatus(id:0,title:LocalizationSystem.getStr(forKey: LanguageKeys.new))
             } else {
-                self.dateStatus=DateStatus(id: "1" , title: LocalizationSystem.getStr(forKey: LanguageKeys.used))
+                self.dateStatus=DateStatus(id: 1 , title: LocalizationSystem.getStr(forKey: LanguageKeys.used))
             }
             self.delegate?.setDateStatusBtnTitle(text: self.dateStatus?.title)
         }
@@ -491,7 +491,7 @@ class RegisterGiftViewModel: NSObject {
     
     func clearUploadImages() {
         cancelAll_FIRUploadTasks()
-        cancelAll_FIRUploadTasks()
+        cancelAll_taskAndSessions()
         imagesUrl = []
     }
 }

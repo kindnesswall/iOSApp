@@ -24,7 +24,7 @@ protocol RegisterGiftInput {
     var description:String? { get set }
     var giftImages : [String]? { get set }
     var price:String? { get set }
-    var categoryId:String? { get set }
+    var categoryId:Int? { get set }
     var isNew:Bool? { get set }
     var provinceId:Int? { get set }
     var cityId:Int? { get set }
@@ -50,7 +50,7 @@ class Gift: Codable,GiftPresenter,RegisterGiftInput {
 //    var user:String?
 //    var receivedUserId:String?
 //    var receivedUser:String?
-    var categoryId:String?
+    var categoryId:Int?
     var category:String?
 //    var location:String?
 //    var regionId:String?

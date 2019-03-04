@@ -10,9 +10,9 @@ import Foundation
 
 class DateStatus : Codable {
     var title:String?
-    var id:String?
+    var id:Int?
     
-    init(id:String?,title:String?) {
+    init(id:Int?,title:String?) {
         self.id=id
         self.title=title
     }

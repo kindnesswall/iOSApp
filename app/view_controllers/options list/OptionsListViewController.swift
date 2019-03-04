@@ -13,70 +13,33 @@ class OptionsListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    enum Option {
-        case category
-        case dateStatus
-        case city(showRegion:Bool)
-        case region(Int)
-    }
-    var option:Option?
-    
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    var hasDefaultOption=false
     
-    var completionHandler:((String?,String?)->Void)?
+    var completionHandler:((Int?,String?)->Void)?
     var closeHandler:(()->Void)?
     
-    var categoryListViewModel:CategoryListVM?
-    var dateStatusListViewModel:DateStatusListViewModel?
-    var placeListViewModel:PlaceListViewModel?
+    var viewModel : OptionsListViewModelProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let option=option {
-            switch option {
-            case .category:
-                
-                self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.category)
-                tableView.register(type: CategoryOptionsTableViewCell.self)
-               
-               loadingIndicator.startAnimating()
-                categoryListViewModel=CategoryListVM(hasDefaultOption:self.hasDefaultOption,completionHandler: {
-                    [weak self] () in
-                self?.loadingIndicator.stopAnimating()
-                self?.tableView.reloadData()
-                    
-                })
-            case .dateStatus:
-                self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.newOrUsed)
-                tableView.register(type: GenericOptionsTableViewCell.self)
-                dateStatusListViewModel=DateStatusListViewModel()
-                
-            case .city:
-                self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.placeOfTheGift)
-                tableView.register(type: GenericOptionsTableViewCell.self)
-                loadingIndicator.startAnimating()
-                placeListViewModel=PlaceListViewModel(hasDefaultOption:self.hasDefaultOption,completionHandler: {
-                    [weak self] () in
-                    self?.loadingIndicator.stopAnimating()
-                    self?.tableView.reloadData()
-                })
-            case .region(let cityId):
-                self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.placeOfTheGift)
-                tableView.register(type: GenericOptionsTableViewCell.self)
-                loadingIndicator.startAnimating()
-                placeListViewModel=PlaceListViewModel(hasDefaultOption:self.hasDefaultOption,cityId: cityId, completionHandler: {
-                    [weak self] () in
-                    self?.loadingIndicator.stopAnimating()
-                    self?.tableView.reloadData()
-                })
-            }
-        }
+        self.navigationItem.title=viewModel?.titleName
+        self.viewModel?.registerCell(tableView: tableView)
+        
+        loadingIndicator.startAnimating()
+        viewModel?.fetchElements(completionHandler: {
+            [weak self] () in
+            self?.loadingIndicator.stopAnimating()
+            self?.tableView.reloadData()
+        })
         
         self.setNavbar()
         
         // Do any additional setup after loading the view.
+    }
+    
+    deinit {
+        print("OptionsListViewController deinit")
     }
     
     func setNavbar(){
@@ -99,57 +62,19 @@ class OptionsListViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension OptionsListViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let option=option else {
-            return 0
-        }
-        switch option {
-        case .category:
-            return categoryListViewModel?.categories.count ?? 0
-        case .dateStatus:
-            return dateStatusListViewModel?.dateStatus.count ?? 0
-
-        case .city,.region:
-            return placeListViewModel?.places.count ?? 0
-        }
+        return viewModel?.getElementsCount() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let option=option else {
-            fatalError()
+        guard let viewModel=viewModel else {
+            return UITableViewCell()
         }
-        
-        switch option {
-        case .category:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryOptionsTableViewCell", for: indexPath) as! CategoryOptionsTableViewCell
-            categoryListViewModel?.setCell(cell: cell, indexPath: indexPath)
-            return cell
-        case .dateStatus:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "GenericOptionsTableViewCell", for: indexPath) as! GenericOptionsTableViewCell
-            dateStatusListViewModel?.setCell(cell: cell, indexPath: indexPath)
-            return cell
-
-        case .city,.region:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "GenericOptionsTableViewCell", for: indexPath) as! GenericOptionsTableViewCell
-            placeListViewModel?.setCell(cell: cell, indexPath: indexPath)
-            return cell
-        }
-        
-        
+        return viewModel.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
         
     }
     
@@ -158,57 +83,27 @@ extension OptionsListViewController:UITableViewDataSource {
 extension OptionsListViewController:UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let option=option else {
-            return
-        }
-        switch option {
-        case .category:
-            let category=categoryListViewModel?.returnCellData(indexPath: indexPath)
-            completionHandler?(category?.id,category?.title)
+        
+        let cellData=viewModel?.returnCellData(indexPath: indexPath)
+        completionHandler?(cellData?.0,cellData?.1)
+        
+        if let nestedViewModel = viewModel?.getNestedViewModel(indexPath: indexPath) {
+            self.pushViewController(viewModel: nestedViewModel)
+        } else {
             self.dismiss(animated: true, completion: nil)
-        case .dateStatus:
-            let dateStatus=dateStatusListViewModel?.returnCellData(indexPath: indexPath)
-            completionHandler?(dateStatus?.id,dateStatus?.title)
-            self.dismiss(animated: true, completion: nil)
-
-        case .city(let showRegion):
-            let place=placeListViewModel?.returnCellData(indexPath: indexPath)
-            completionHandler?(place?.id?.description,place?.name)
-            
-            if showRegion && placeListViewModel?.hasAnyRegion(container_id: place?.id ?? -1) ?? false {
-                self.pushViewController(option: .region(place?.id ?? -1))
-            } else {
-                self.dismiss(animated: true, completion: nil)
-            }
-            
-        case .region:
-            let place=placeListViewModel?.returnCellData(indexPath: indexPath)
-            completionHandler?(place?.id?.description,place?.name)
-            
-            self.dismiss(animated: true, completion: nil)
-            
-
         }
         
     }
     
     
-    
-    func pushViewController(option:Option){
-        switch option {
-        case .region(let cityId):
-            let controller=OptionsListViewController()
-            controller.option = OptionsListViewController.Option.region(cityId)
-            controller.completionHandler=self.completionHandler
-            controller.closeHandler=self.closeHandler
-            controller.hasDefaultOption=self.hasDefaultOption
-            self.navigationController?.pushViewController(controller, animated: true)
-        default:
-            break
-        }
+    func pushViewController(viewModel:OptionsListViewModelProtocol){
+       
+        let controller=OptionsListViewController()
+        controller.viewModel = viewModel
+        controller.completionHandler=self.completionHandler
+        controller.closeHandler=self.closeHandler
+        self.navigationController?.pushViewController(controller, animated: true)
         
     }
-    
-    
     
 }

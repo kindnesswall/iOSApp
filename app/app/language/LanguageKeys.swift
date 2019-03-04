@@ -45,7 +45,7 @@ struct LanguageKeys {
     
     static let allGifts : String = "allGifts"
     static let allCities : String = "allCities"
-    static let allRegions : String = "allRegions"
+    static let allProvinces : String = "allProvinces"
     static let category : String = "category"
     static let giftCategory : String = "giftCategory"
     static let newOrUsed : String = "newOrUsed"

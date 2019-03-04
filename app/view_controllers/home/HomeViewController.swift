@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
     var refreshControl=UIRefreshControl()
     
     var categotyBarBtn:UIBarButtonItem?
-    var cityBarBtn:UIBarButtonItem?
+    var provinceBarBtn:UIBarButtonItem?
     
     var previewRowIndex:Int?
     var videoInterstitialAd:TapsellAd?
@@ -156,20 +156,19 @@ class HomeViewController: UIViewController {
         categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts),font:AppConst.Resource.Font.getRegularFont(size: 16))
         self.navigationItem.rightBarButtonItems=[categotyBarBtn!]
         
-        cityBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allCities),font:AppConst.Resource.Font.getRegularFont(size: 16))
-        self.navigationItem.leftBarButtonItems=[cityBarBtn!]
+        provinceBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces),font:AppConst.Resource.Font.getRegularFont(size: 16))
+        self.navigationItem.leftBarButtonItems=[provinceBarBtn!]
     }
     
     @objc func categoryFilterBtnClicked(){
         
         let controller=OptionsListViewController()
-        
-        controller.option = OptionsListViewController.Option.category
-        controller.hasDefaultOption=true
+        let viewModel = CategoryListVM(hasDefaultOption: true)
+        controller.viewModel=viewModel
         controller.completionHandler={ [weak self] (id,name) in
             
-            print("Selected Category id: \(id ?? "")")
-            self?.vm.categoryId=id ?? "0"
+            print("Selected Category id: \(id ?? 0)")
+            self?.vm.categoryId=id ?? 0
             self?.categotyBarBtn?.title=name
             self?.reloadPage()
     
@@ -182,13 +181,13 @@ class HomeViewController: UIViewController {
     @objc func cityFilterBtnClicked(){
         
         let controller=OptionsListViewController()
-        controller.option = OptionsListViewController.Option.city(showRegion: false)
-        controller.hasDefaultOption=true
+        let viewModel = PlaceListViewModel(placeType:.province, showCities: false, hasDefaultOption: true)
+        controller.viewModel=viewModel
         controller.completionHandler={ [weak self] (id,name) in
             
-            print("Selected City id: \(id ?? "")")
-            self?.vm.cityId=id ?? "0"
-            self?.cityBarBtn?.title=name
+            print("Selected province id: \(id ?? 0)")
+            self?.vm.provinceId=id ?? 0
+            self?.provinceBarBtn?.title=name
             self?.reloadPage()
             
         }
@@ -205,11 +204,11 @@ class HomeViewController: UIViewController {
     
     func setAllTextsInView(){
         self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.home)
-        if self.vm.categoryId=="0" {
+        if self.vm.categoryId==0 {
             self.categotyBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allGifts)
         }
-        if self.vm.cityId=="0" {
-            self.cityBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allCities)
+        if self.vm.provinceId==0 {
+            self.provinceBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces)
         }
     }
 }

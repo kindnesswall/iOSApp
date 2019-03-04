@@ -16,19 +16,6 @@ class ApiMethods {
     var tasks:[URLSessionDataTask?]=[]
     
     
-    public func getCategories(completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
-        
-        var url=APIURLs.getCategories
-        url+="/0/1000/1"
-        
-        APIRequest.requestFormUrlEncoded(url: url, formKeyValueInput: [:], httpMethod: .get) { (data, response, error) in
-            DispatchQueue.main.async {
-                completionHandler(data, response, error)
-            }
-            
-        }
-    }
-        
     
     static func getChatConversation(chatId:Int,startIndex:Int, complitionHandler:@escaping (ChatConversationOutput)->Void) {
         

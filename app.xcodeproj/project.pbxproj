@@ -166,6 +166,9 @@
 		6072E4FB21C05A9200F17205 /* GiftAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6072E4F921C05A9200F17205 /* GiftAdCell.xib */; };
 		60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */; };
 		60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1821D7CFA60058421A /* ReloadablePage.swift */; };
+		607EEA7B222C383A00637A93 /* OptionsListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607EEA7A222C383A00637A93 /* OptionsListViewModelProtocol.swift */; };
+		607EEA7E222C632400637A93 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607EEA7C222C632300637A93 /* City.swift */; };
+		607EEA7F222C632400637A93 /* Province.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607EEA7D222C632300637A93 /* Province.swift */; };
 		6080700821B3F82A0046F940 /* ContactUsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700621B3F82A0046F940 /* ContactUsCollectionViewCell.swift */; };
 		6080700921B3F82A0046F940 /* ContactUsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */; };
 		6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */; };
@@ -395,6 +398,9 @@
 		6072E4F921C05A9200F17205 /* GiftAdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftAdCell.xib; sourceTree = "<group>"; };
 		60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewModel.swift; sourceTree = "<group>"; };
 		60749B1821D7CFA60058421A /* ReloadablePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadablePage.swift; sourceTree = "<group>"; };
+		607EEA7A222C383A00637A93 /* OptionsListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsListViewModelProtocol.swift; sourceTree = "<group>"; };
+		607EEA7C222C632300637A93 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		607EEA7D222C632300637A93 /* Province.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Province.swift; sourceTree = "<group>"; };
 		6080700621B3F82A0046F940 /* ContactUsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsCollectionViewCell.swift; sourceTree = "<group>"; };
 		6080700721B3F82A0046F940 /* ContactUsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsCollectionViewCell.xib; sourceTree = "<group>"; };
 		6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + RegisterCell.swift"; sourceTree = "<group>"; };
@@ -590,6 +596,8 @@
 				05644DBF1FFEF44A00B7C853 /* Message.swift */,
 				601F83D02036A8BE00F9118B /* DateStatus.swift */,
 				601F83D22037367900F9118B /* Place.swift */,
+				607EEA7C222C632300637A93 /* City.swift */,
+				607EEA7D222C632300637A93 /* Province.swift */,
 				601F83D6203C3CD400F9118B /* ImageUpload.swift */,
 				6009DB9F2130A385002FD769 /* Statistics.swift */,
 				52D1A14321DA3C30005EA2F0 /* Address.swift */,
@@ -996,6 +1004,17 @@
 			path = protocols;
 			sourceTree = "<group>";
 		};
+		607EEA79222C380A00637A93 /* OptionsListViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				60AE9C85202DB9B100F246CD /* CategoryListVM.swift */,
+				601F83C22036A36400F9118B /* DateStatusListViewModel.swift */,
+				601F83D420373E9E00F9118B /* PlaceListViewModel.swift */,
+				607EEA7A222C383A00637A93 /* OptionsListViewModelProtocol.swift */,
+			);
+			path = OptionsListViewModel;
+			sourceTree = "<group>";
+		};
 		6080700521B3F8110046F940 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1010,9 +1029,7 @@
 				52466DD521DB60190086F327 /* RegisterGift */,
 				60C972EE21C9C16500A8D1C5 /* GiftViewModel */,
 				52466DE421DB9A360086F327 /* HomeVM.swift */,
-				60AE9C85202DB9B100F246CD /* CategoryListVM.swift */,
-				601F83C22036A36400F9118B /* DateStatusListViewModel.swift */,
-				601F83D420373E9E00F9118B /* PlaceListViewModel.swift */,
+				607EEA79222C380A00637A93 /* OptionsListViewModel */,
 				5263D5FD21B915F400B634A8 /* LanguageVM.swift */,
 				522F6B6521D8B202001C67B9 /* SelectCountryVM.swift */,
 				52466DE621DBC6E80086F327 /* GiftDetailVM.swift */,
@@ -1447,6 +1464,7 @@
 				60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */,
 				602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */,
 				52DD769621C6BFC100C2E012 /* LockViewController.swift in Sources */,
+				607EEA7F222C632400637A93 /* Province.swift in Sources */,
 				52466DE321DB99EC0086F327 /* HomeViewModelDelegate.swift in Sources */,
 				60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */,
 				60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */,
@@ -1459,10 +1477,12 @@
 				5247C8BC21E38A66009E8770 /* ContactUsViewController.swift in Sources */,
 				522F6B5521D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift in Sources */,
 				601F83D7203C3CD400F9118B /* ImageUpload.swift in Sources */,
+				607EEA7B222C383A00637A93 /* OptionsListViewModelProtocol.swift in Sources */,
 				05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */,
 				522F6B6421D8B173001C67B9 /* SelectCountryVC.swift in Sources */,
 				601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */,
 				601F83C32036A36500F9118B /* DateStatusListViewModel.swift in Sources */,
+				607EEA7E222C632400637A93 /* City.swift in Sources */,
 				60302DE02068FC7E0025D397 /* PopUpViewController.swift in Sources */,
 				52466DE721DBC6E80086F327 /* GiftDetailVM.swift in Sources */,
 				52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */,
