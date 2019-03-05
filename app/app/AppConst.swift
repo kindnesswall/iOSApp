@@ -68,7 +68,7 @@ struct AppConst {
     struct KeyChain {
         static let Authorization:String = "Authorization"
         public static let USER_ID:String = "USER_ID"
-        public static let BEARER:String = "bearer"
+        public static let BEARER:String = "Bearer"
         public static let PassCode:String = "PassCode"
     }
     

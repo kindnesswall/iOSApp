@@ -110,7 +110,7 @@ class APICall {
     }
     
     
-    static func uploadImage(url urlString:String,image:UIImage?,sessions:inout [URLSession],tasks:inout [URLSessionUploadTask],delegate:URLSessionDelegate,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
+    static func uploadImage(url urlString:String,input:ImageInput?,sessions:inout [URLSession],tasks:inout [URLSessionUploadTask],delegate:URLSessionDelegate,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
         
         guard let url=URL(string:urlString) else {
             return
@@ -120,17 +120,9 @@ class APICall {
         request.httpMethod=HttpCallMethod.POST.rawValue
         request=self.setRequestHeader(request: request)
         
-        request.setValue("file.jpg", forHTTPHeaderField: "fileName")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        
-        var imageData:Data?
-        if let image=image {
-            imageData=image.jpegData(compressionQuality: 1)
-        }
-        guard let dataToSend=imageData else {
+        guard let input=input, let dataToSend=try? JSONEncoder().encode(input) else{
             return
         }
-        
         
         let config=URLSessionConfiguration.default
         let session=URLSession(configuration: config, delegate: delegate, delegateQueue: OperationQueue.main)

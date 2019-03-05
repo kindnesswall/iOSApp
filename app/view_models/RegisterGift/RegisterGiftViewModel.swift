@@ -45,7 +45,7 @@ class RegisterGiftViewModel: NSObject {
         }
         input.title=title
         
-        guard let categoryId=self.category?.id else {
+        guard let categoryId=self.category?.id, categoryId != 0 else {
             inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.categoryError))
             return nil
         }
@@ -80,11 +80,11 @@ class RegisterGiftViewModel: NSObject {
                 inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError))
                 return nil
             }
-            guard let provinceId=addressObject?.provinceId else {
+            guard let provinceId=addressObject?.provinceId, provinceId != 0 else {
                 inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError))
                 return nil
             }
-            guard let cityId=addressObject?.cityId else {
+            guard let cityId=addressObject?.cityId, cityId != 0 else {
                 inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError))
                 return nil
             }
@@ -175,22 +175,28 @@ class RegisterGiftViewModel: NSObject {
             return
         }
         
-        var url=APIURLs.Gift
-        if let giftId=giftId {
-            url+="/\(giftId)"
-        }
+        let url:String = {
+            if let giftId=giftId {
+                return "\(URIs().gifts)/\(giftId)"
+            } else {
+                return URIs().gifts_register
+            }
+        }()
         
         APICall.request(url: url, httpMethod: httpMethod, input: input) { (data, response, error) in
             
             responseHandler?()
             
-            if let response = response as? HTTPURLResponse {
-                if response.statusCode >= 200 && response.statusCode <= 300 {
-                    
-                    complitionHandler?()
-                    
-                }
+            guard let response = response as? HTTPURLResponse else {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+                return
             }
+            if response.statusCode == APICall.OKStatus {
+                complitionHandler?()
+            } else {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+            }
+            
         }
     }
     
@@ -213,16 +219,20 @@ class RegisterGiftViewModel: NSObject {
     }
     
     func uploadToIranServers(image:UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
+        
+        let imageData = image.jpegData(compressionQuality: 1)
+        let imageInput = ImageInput(image: imageData!, imageFormat: .jpeg)
+        
         APICall.uploadImage(
-            url: APIURLs.Upload,
-            image: image,
+            url: URIs().gifts_images,
+            input: imageInput,
             sessions: &sessions,
             tasks: &tasks,
             delegate: self) { [weak self] (data, response, error) in
                 
                 ApiUtility.watch(data: data)
                 
-                if let imageSrc=ApiUtility.convert(data: data, to: ImageUpload.self)?.imageSrc {
+                if let imageSrc=ApiUtility.convert(data: data, to: ImageOutput.self)?.address {
                     self?.uploadedSuccessfully()
                     self?.imagesUrl.append(imageSrc)
                     onSuccess(imageSrc)
