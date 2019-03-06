@@ -166,7 +166,7 @@ class RegisterGiftViewModel: NSObject {
     
     func sendGift(
         httpMethod:HttpCallMethod,
-        giftId:String? = nil,
+        giftId:Int? = nil,
         responseHandler:(()->Void)?,
         complitionHandler:(()->Void)?){
         

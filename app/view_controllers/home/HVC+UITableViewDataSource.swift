@@ -18,7 +18,9 @@ extension HomeViewController:UITableViewDataSource{
             let index=indexPath.row+1
             if index==self.vm.gifts.count {
                 if !self.vm.isLoadingGifts {
-                    vm.getGifts(index: index)
+                    if let beforeId = self.vm.gifts[indexPath.row].id {
+                        vm.getGifts(beforeId: beforeId)
+                    }
                 }
             }
         }
@@ -50,7 +52,7 @@ extension HomeViewController:UITableViewDataSource{
         controller.editHandler={ [weak self] in
             self?.editHandler()
         }
-        print("Gift_id: \(controller.gift?.id ?? "")")
+        print("Gift_id: \(controller.gift?.id?.description ?? "")")
         
         return controller
     }

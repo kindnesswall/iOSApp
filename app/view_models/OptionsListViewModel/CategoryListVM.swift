@@ -34,7 +34,7 @@ class CategoryListVM: NSObject, OptionsListViewModelProtocol {
                 if let reply=ApiUtility.convert(data: data, to: [Category].self) {
                     self?.categories=[]
                     if self?.hasDefaultOption ?? false {
-                        let defaultOption=Category(id: 0, title: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts))
+                        let defaultOption=Category(id: nil, title: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts))
                         self?.categories.append(defaultOption)
                     }
                     self?.categories.append(contentsOf: reply)

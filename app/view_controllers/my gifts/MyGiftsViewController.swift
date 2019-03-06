@@ -244,7 +244,7 @@ extension MyGiftsViewController : UITableViewDelegate {
             self?.editHandler()
         }
         
-        print("Gift_id: \(controller.gift?.id ?? "")")
+        print("Gift_id: \(controller.gift?.id?.description ?? "")")
         
         self.navigationController?.pushViewController(controller, animated: true)
     }

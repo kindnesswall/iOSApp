@@ -10,7 +10,7 @@ import Foundation
 
 protocol GiftPresenter {
     var title:String? { get }
-    var createdAt: Date? { get }
+    var createdAt: String? { get }
     var description:String? { get }
     var address:String? { get }
     var giftImages:[String]? { get }
@@ -33,8 +33,8 @@ protocol RegisterGiftInput {
 class Gift: Codable,GiftPresenter,RegisterGiftInput {
     var isAd:Bool? = false
     
-    var createdAt: Date?
-    var updatedAt: Date?
+    var createdAt: String?
+    var updatedAt: String?
     
     var provinceId:Int?
     var cityId:Int?
@@ -46,7 +46,7 @@ class Gift: Codable,GiftPresenter,RegisterGiftInput {
     var description:String?
     var price:String?
     var status:String?
-    var userId:String?
+    var userId:Int?
 //    var user:String?
 //    var receivedUserId:String?
 //    var receivedUser:String?
@@ -56,7 +56,10 @@ class Gift: Codable,GiftPresenter,RegisterGiftInput {
 //    var regionId:String?
 //    var region:String?
     var giftImages:[String]?
-    var id:String?
+    var id:Int?
     var isNew:Bool?
 //    var forWho:Int?
+    
+//    private enum CodingKeys : String, CodingKey {
+//    }
 }

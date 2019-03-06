@@ -75,7 +75,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
                     
                     self?.provinces=[]
                     if self?.hasDefaultOption ?? false {
-                        let defaultOption=Province(id: 0, name: LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces))
+                        let defaultOption=Province(id: nil, name: LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces))
                         self?.provinces.append(defaultOption)
                     }
                     
@@ -96,7 +96,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
                     
                     self?.cities=[]
                     if self?.hasDefaultOption ?? false {
-                        let defaultOption=City(id: 0, name:LocalizationSystem.getStr(forKey: LanguageKeys.allCities))
+                        let defaultOption=City(id: nil, name:LocalizationSystem.getStr(forKey: LanguageKeys.allCities))
                         self?.cities.append(defaultOption)
                     }
                     

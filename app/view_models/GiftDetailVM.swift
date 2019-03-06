@@ -9,22 +9,12 @@
 import Foundation
 
 class GiftDetailVM: NSObject {
-    func getGift(id:String, onSuccess:@escaping (Gift)->(), onFail:(()->())?) {
-        ApiMethods.getGift(giftId: id) { [weak self] (data) in
-            if let reply=ApiUtility.convert(data: data, to: Gift.self) {
-                
-                onSuccess(reply)
-            }else{
-                onFail?()
-            }
-        }
-    }
     
-    func removeGift(id:String, onSuccess:@escaping ()->(), onFail:(()->())?) {
+    func removeGift(id:Int, onSuccess:@escaping ()->(), onFail:(()->())?) {
         let input:APIEmptyInput?=nil
-        var url=APIURLs.Gift
+        var url=URIs().gifts
         url+="/\(id)"
-        APICall.request(url: url, httpMethod: .DELETE, input: input) { [weak self] (data, response, error) in
+        APICall.request(url: url, httpMethod: .DELETE, input: input) {(data, response, error) in
             
             if error != nil {
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
@@ -32,14 +22,13 @@ class GiftDetailVM: NSObject {
                 return
             }
             
-            if let response = response as? HTTPURLResponse {
-                if response.statusCode >= 200 && response.statusCode <= 300 {
-                    onSuccess()
-                }else{
-                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
-                    onFail?()
-                }
+            guard let response = response as? HTTPURLResponse , response.statusCode == APICall.OKStatus else {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
+                onFail?()
+                return
             }
+            
+            onSuccess()
         }
     }
 }

@@ -10,7 +10,8 @@ import UIKit
 
 class HomeVM: NSObject {
     
-    let apiMethods=ApiMethods()
+    var giftsSessions:[URLSession?]=[]
+    var giftsTasks:[URLSessionDataTask?]=[]
     weak var delegate:HomeViewModelDelegate?
 
     var gifts:[Gift] = []
@@ -21,16 +22,16 @@ class HomeVM: NSObject {
     
     func reloadPage(){
         if initialGiftsLoadingHasOccurred {
-            apiMethods.clearAllTasksAndSessions()
+            APICall.stopAndClearRequests(sessions: &giftsSessions, tasks: &giftsTasks)
             isLoadingGifts=false
-            getGifts(index:0)
+            getGifts(beforeId: nil)
         }
     }
     
-    var categoryId=0
-    var provinceId=0
+    var categoryId:Int?
+    var provinceId:Int?
     
-    func handleError(index:Int) {
+    func handleError(beforeId:Int?) {
         self.delegate?.pageLoadingAnimation(isLoading: false)
         self.delegate?.lazyLoadingAnimation(isLoading: false)
         self.delegate?.refreshControlAnimation(isLoading: false)
@@ -42,7 +43,7 @@ class HomeVM: NSObject {
         
         alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { [weak self] (action) in
             self?.isLoadingGifts=false
-            self?.getGifts(index:index)
+            self?.getGifts(beforeId:beforeId)
         }))
         
         if self.gifts.count > 0 {
@@ -61,8 +62,8 @@ class HomeVM: NSObject {
         self.delegate?.presentfailedAlert(alert: alert)
     }
     
-    func handleResponse(index:Int, recieveGifts reply:[Gift]) {
-        if index==0 {
+    func handleResponse(beforeId:Int?, recieveGifts reply:[Gift]) {
+        if beforeId==nil {
             self.gifts=[]
             self.delegate?.showTableView(show: true)
             self.delegate?.reloadTableView()
@@ -95,7 +96,7 @@ class HomeVM: NSObject {
         self.delegate?.insertNewItemsToTableView(insertedIndexes: insertedIndexes)
     }
     
-    func getGifts(index:Int){
+    func getGifts(beforeId:Int?){
         
         self.initialGiftsLoadingHasOccurred=true
         if isLoadingGifts {
@@ -103,31 +104,29 @@ class HomeVM: NSObject {
         }
         isLoadingGifts=true
         
-        if index==0 {
+        if beforeId==nil {
             self.delegate?.pageLoadingAnimation(isLoading: true)
         } else {
             self.delegate?.lazyLoadingAnimation(isLoading: true)
         }
         
-//        apiMethods.getGifts(
-//            cityId: self.provinceId.description,
-//            regionId: "0",
-//            categoryId: self.categoryId.description,
-//            startIndex: index,
-//            lastIndex: index+lazyLoadingCount,
-//            searchText: "") { [weak self] (data, response, error) in
-//            //            APIRequest.logReply(data: data)
-//
-//            guard error == nil, let response = response as? HTTPURLResponse, response.statusCode>=200,response.statusCode<300 else {
-//                print("Get error register")
-//                self?.handleError(index: index)
-//                return
-//            }
-//
-//            if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
-//                self?.handleResponse(index:index, recieveGifts:reply)
-//            }
-//
-//        }
+        let input = RequestInput()
+        input.beforeId = beforeId
+        input.count = self.lazyLoadingCount
+        input.provinceId = self.provinceId
+        input.categoryId = self.categoryId
+        
+        APICall.request(url: URIs().gifts, httpMethod: .POST, input: input, sessions: &giftsSessions, tasks: &giftsTasks) { [weak self] (data, response, error) in
+            guard error == nil, let response = response as? HTTPURLResponse, response.statusCode == APICall.OKStatus else {
+                print("Get error register")
+                self?.handleError(beforeId: beforeId)
+                return
+            }
+            
+            if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
+                self?.handleResponse(beforeId:beforeId, recieveGifts:reply)
+            }
+        }
+        
     }
 }

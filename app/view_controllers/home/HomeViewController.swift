@@ -116,7 +116,7 @@ class HomeViewController: UIViewController {
         self.tableview.register(type: GiftAdCell.self)
         
         if AppDelegate.me().isIranSelected() {
-            vm.getGifts(index:0)
+            vm.getGifts(beforeId:nil)
         }else{
             let db_ref = AppDelegate.me().FIRDB_Ref.child(AppConst.FIR.Database.Gifts)
             db_ref.observe(DataEventType.childAdded) { (snapshot) in
@@ -167,8 +167,8 @@ class HomeViewController: UIViewController {
         controller.viewModel=viewModel
         controller.completionHandler={ [weak self] (id,name) in
             
-            print("Selected Category id: \(id ?? 0)")
-            self?.vm.categoryId=id ?? 0
+            print("Selected Category id: \(id?.description ?? "")")
+            self?.vm.categoryId=id
             self?.categotyBarBtn?.title=name
             self?.reloadPage()
     
@@ -185,8 +185,8 @@ class HomeViewController: UIViewController {
         controller.viewModel=viewModel
         controller.completionHandler={ [weak self] (id,name) in
             
-            print("Selected province id: \(id ?? 0)")
-            self?.vm.provinceId=id ?? 0
+            print("Selected province id: \(id?.description ?? "")")
+            self?.vm.provinceId=id
             self?.provinceBarBtn?.title=name
             self?.reloadPage()
             
@@ -204,10 +204,10 @@ class HomeViewController: UIViewController {
     
     func setAllTextsInView(){
         self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.home)
-        if self.vm.categoryId==0 {
+        if self.vm.categoryId==nil {
             self.categotyBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allGifts)
         }
-        if self.vm.provinceId==0 {
+        if self.vm.provinceId==nil {
             self.provinceBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces)
         }
     }

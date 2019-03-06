@@ -14,7 +14,7 @@ class RequestToAGiftViewController: UIViewController {
     let userDefault = UserDefaults.standard
     var requests:[Request] = []
     @IBOutlet var tableview: UITableView!
-    var giftId:String = "-1"
+    var giftId:Int = -1
     
     let hud = JGProgressHUD(style: .dark)
     
@@ -32,29 +32,29 @@ class RequestToAGiftViewController: UIViewController {
         self.tableview.register(type: RequestToAGiftTableViewCell.self)
         
         // Do any additional setup after loading the view.
-        ApiMethods.getRecievedRequestList(giftId: giftId, startIndex: 0) { [weak self] (data, response, error) in
-            
-            ApiUtility.watch(data: data)
-            if let response = response as? HTTPURLResponse {
-                if response.statusCode < 200 && response.statusCode >= 300 {
-                    return
-                }
-            }
-            guard error == nil else {
-                print("Get error register")
-                return
-            }
-            
-            if let reply=ApiUtility.convert(data: data, to: [Request].self) {
-                
-                self?.requests.append(contentsOf: reply)
-                self?.tableview.reloadData()
-                
-                print("count:")
-                print(reply.count)
-                
-            }
-        }
+//        ApiMethods.getRecievedRequestList(giftId: giftId, startIndex: 0) { [weak self] (data, response, error) in
+//            
+//            ApiUtility.watch(data: data)
+//            if let response = response as? HTTPURLResponse {
+//                if response.statusCode < 200 && response.statusCode >= 300 {
+//                    return
+//                }
+//            }
+//            guard error == nil else {
+//                print("Get error register")
+//                return
+//            }
+//            
+//            if let reply=ApiUtility.convert(data: data, to: [Request].self) {
+//                
+//                self?.requests.append(contentsOf: reply)
+//                self?.tableview.reloadData()
+//                
+//                print("count:")
+//                print(reply.count)
+//                
+//            }
+//        }
     }
     
     @IBAction func onCallClicked(_ sender: ButtonWithData) {

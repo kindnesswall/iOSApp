@@ -72,16 +72,16 @@ class ApiMethods {
         })
     }
     
-    public static func getRecievedRequestList(giftId:String, startIndex:Int, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
-        
-        let mainURL: String =
-            APIURLs.getRecievedRequestList + "/\(giftId)/\(startIndex)/\(startIndex+offset)"
-        
-        APIRequest.Request(url: mainURL, httpMethod: .get, complitionHandler: { (data, response, error) in
-            
-            completionHandler(data, response, error)
-        })
-    }
+//    public static func getRecievedRequestList(giftId:String, startIndex:Int, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
+//        
+//        let mainURL: String =
+//            APIURLs.getRecievedRequestList + "/\(giftId)/\(startIndex)/\(startIndex+offset)"
+//        
+//        APIRequest.Request(url: mainURL, httpMethod: .get, complitionHandler: { (data, response, error) in
+//            
+//            completionHandler(data, response, error)
+//        })
+//    }
     
 //    public static func logout(completionHandler:@escaping(Data?)->Void) {
 //
@@ -110,27 +110,6 @@ class ApiMethods {
 //        }
 //    }
     
-    public func getGifts(
-        cityId:String,
-        regionId:String?,
-        categoryId:String?,
-        startIndex:Int,
-        lastIndex:Int,
-        searchText:String?,
-        completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
-        
-        let regionId = regionId ?? "0"
-        let categoryId = categoryId ?? "0"
-//        let lastIndex = startIndex + offset
-        let searchText = "/?searchText=" + (searchText ?? "")
-        let mainURL: String = APIURLs.Gift + "/" + cityId + "/" + regionId + "/" + categoryId + "/" + "\(startIndex)/" + "\(lastIndex)" + searchText
-        
-        APIRequest.request(url: mainURL, httpMethod: .get, appendToSessions: &self.sessions, appendToTasks: &self.tasks, inputDictionary: nil) { (data, response, error) in
-            
-            completionHandler(data,response, error)
-        }
-        
-    }
     
     public static func getGift(
         giftId:String,

@@ -17,7 +17,7 @@ class GiftDetailViewController: UIViewController {
     var gift:Gift?
 //    var sdWebImageSource:[SDWebImageSource] = []
     var profileImages:[String] = []
-    var loadingIndicator:LoadingIndicator?
+//    var loadingIndicator:LoadingIndicator?
     var editBtn:UIBarButtonItem?
     
     var editHandler:(()->Void)?
@@ -63,29 +63,25 @@ class GiftDetailViewController: UIViewController {
         
         fillUIWithGift()
         
-        guard let id = gift?.id else {
-            return
+        
+//        self.loadingIndicator?.stopLoading()
+        
+        if let myIdString=KeychainSwift().get(AppConst.KeyChain.USER_ID), let myId=Int(myIdString), let userId=gift?.userId, myId==userId {
+            self.addEditBtn()
+            //                    self?.requestBtn.hide()
+            self.removeBtn.show()
+        } else {
+            //                    self?.requestBtn.show()
+            self.removeBtn.hide()
         }
         
-        vm.getGift(id: id, onSuccess: { [weak self] (gift) in
-            self?.loadingIndicator?.stopLoading()
-            
-            if let myId=KeychainSwift().get(AppConst.KeyChain.USER_ID) , let userId=gift.userId , myId==userId {
-                self?.addEditBtn()
-                //                    self?.requestBtn.hide()
-                self?.removeBtn.show()
-            } else {
-                //                    self?.requestBtn.show()
-                self?.removeBtn.hide()
-            }
-            
-        }, onFail: nil)
+        
     }
     
     func fillUIWithGift(){
         
         giftNamelbl.text = gift?.title
-        if let date = gift?.createdAt?.description {
+        if let date = gift?.createdAt?.getGregorianDate() {
             giftDatelbl.text = AppLanguage.getNumberString(number: date)
         }
         giftCategory.text = gift?.category
@@ -116,8 +112,8 @@ class GiftDetailViewController: UIViewController {
         self.removeBtn.hide()
 //        self.requestBtn.hide()
         
-        self.loadingIndicator=LoadingIndicator(navigationItem: self.navigationItem, type: .right, replacedNavigationBarButton: nil)
-        self.loadingIndicator?.startLoading()
+//        self.loadingIndicator=LoadingIndicator(navigationItem: self.navigationItem, type: .right, replacedNavigationBarButton: nil)
+//        self.loadingIndicator?.startLoading()
         
     }
     
