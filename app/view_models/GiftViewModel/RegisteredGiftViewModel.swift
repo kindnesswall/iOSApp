@@ -11,10 +11,7 @@ import KeychainSwift
 
 class RegisteredGiftViewModel: GiftViewModel {
 
-   
-   
-   
-    func getGifts(index:Int){
+    func getGifts(beforeId:Int?){
         
         self.initialGiftsLoadingHasOccurred=true
         
@@ -23,27 +20,26 @@ class RegisteredGiftViewModel: GiftViewModel {
         }
         isLoadingGifts_ForLazyLoading=true
         
-        if index==0 {
+        if beforeId==nil {
             self.delegate?.pageLoadingAnimation(viewModel:self,isLoading: true)
         } else {
             self.delegate?.lazyLoadingAnimation(viewModel:self,isLoading: true)
         }
         
-        guard let userId=KeychainSwift().get(AppConst.KeyChain.USER_ID) else {
-            return
-        }
-        let url=APIURLs.getMyRegisteredGifts+"/"+userId+"/\(index)/\(index+lazyLoadingCount)"
+        let url=URIs().gifts_owner
         
-        let input:APIEmptyInput?=nil
+        let input=RequestInput()
+        input.beforeId = beforeId
+        input.count = self.lazyLoadingCount
         
         isLoadingGifts = true
-        APICall.request(url: url, httpMethod: .GET, input: input , sessions: &giftsSessions, tasks: &giftsTasks) { [weak self] (data, response, error) in
+        APICall.request(url: url, httpMethod: .POST, input: input , sessions: &giftsSessions, tasks: &giftsTasks) { [weak self] (data, response, error) in
             
             self?.isLoadingGifts = false
             
             if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
                 
-                if index==0 {
+                if beforeId==nil {
                     self?.gifts=[]
                     if let strongSelf = self {
                         self?.delegate?.reloadTableView(viewModel:strongSelf)
@@ -88,7 +84,7 @@ class RegisteredGiftViewModel: GiftViewModel {
         if self.initialGiftsLoadingHasOccurred {
             APICall.stopAndClearRequests(sessions: &giftsSessions, tasks: &giftsTasks)
             isLoadingGifts_ForLazyLoading=false
-            getGifts(index: 0)
+            getGifts(beforeId: nil)
         }
         
     }

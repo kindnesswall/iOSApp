@@ -67,8 +67,8 @@ class MyGiftsViewController: UIViewController {
         
         configSegmentControl()
         
-        self.registeredGiftsViewModel.getGifts(index:0)
-        self.donatedGiftsViewModel.getGifts(index:0)
+        self.registeredGiftsViewModel.getGifts(beforeId: nil)
+//        self.donatedGiftsViewModel.getGifts(index:0)
     }
     
     func configRefreshControl(){
@@ -87,7 +87,7 @@ class MyGiftsViewController: UIViewController {
     }
     
     @objc func donatedRefreshControlAction(){
-        self.donatedGiftsViewModel.reloadGifts()
+//        self.donatedGiftsViewModel.reloadGifts()
         self.donatedInitialLoadingIndicator?.stopLoading()
     }
     
@@ -283,7 +283,10 @@ extension MyGiftsViewController : UITableViewDataSource {
             let index=indexPath.row+1
             if index==self.registeredGiftsViewModel.gifts.count {
                 if !self.registeredGiftsViewModel.isLoadingGifts_ForLazyLoading {
-                    registeredGiftsViewModel.getGifts(index: index)
+                    if let beforeId = self.registeredGiftsViewModel.gifts[indexPath.row].id {
+                        registeredGiftsViewModel.getGifts(beforeId: beforeId)
+                    }
+                    
                 }
             }
             
@@ -296,7 +299,7 @@ extension MyGiftsViewController : UITableViewDataSource {
             let index=indexPath.row+1
             if index==self.donatedGiftsViewModel.gifts.count {
                 if !self.donatedGiftsViewModel.isLoadingGifts_ForLazyLoading {
-                    donatedGiftsViewModel.getGifts(index: index)
+//                    donatedGiftsViewModel.getGifts(index: index)
                 }
             }
             
@@ -313,7 +316,7 @@ extension MyGiftsViewController : UITableViewDataSource {
 extension MyGiftsViewController : ReloadablePage {
     func reloadPage(){
         self.registeredGiftsViewModel.reloadGifts()
-        self.donatedGiftsViewModel.reloadGifts()
+//        self.donatedGiftsViewModel.reloadGifts()
     }
 }
 
