@@ -84,7 +84,7 @@ class GiftDetailViewController: UIViewController {
         if let date = gift?.createdAt?.getGregorianDate() {
             giftDatelbl.text = AppLanguage.getNumberString(number: date)
         }
-        giftCategory.text = gift?.category
+        giftCategory.text = gift?.categoryTitle
         giftAddress.text = gift?.address
         if let isNew = gift?.isNew, isNew {
             oldOrNew.text = LocalizationSystem.getStr(forKey: LanguageKeys.new)

@@ -284,7 +284,7 @@ class RegisterGiftViewModel: NSObject {
         gift.description=uiProperties?.descriptionTextViewText
         gift.price=uiProperties?.priceTextViewText?.castNumberToEnglish()
         
-        gift.category=self.category?.title
+        gift.categoryTitle=self.category?.title
         gift.categoryId=self.category?.id
         
         if let dateStatusId=self.dateStatus?.id {
@@ -325,8 +325,8 @@ class RegisterGiftViewModel: NSObject {
         uiProperties.priceTextViewText=gift.price
         self.delegate?.setUIInputProperties(uiProperties: uiProperties)
         
-        self.category=Category(id: gift.categoryId, title: gift.category)
-        self.delegate?.setCategoryBtnTitle(text: gift.category)
+        self.category=Category(id: gift.categoryId, title: gift.categoryTitle)
+        self.delegate?.setCategoryBtnTitle(text: gift.categoryTitle)
         
         if let isNew=gift.isNew {
             if isNew {

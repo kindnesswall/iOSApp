@@ -51,7 +51,7 @@ class Gift: Codable,GiftPresenter,RegisterGiftInput {
 //    var receivedUserId:String?
 //    var receivedUser:String?
     var categoryId:Int?
-    var category:String?
+    var categoryTitle:String?
 //    var location:String?
 //    var regionId:String?
 //    var region:String?
