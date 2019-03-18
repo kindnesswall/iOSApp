@@ -42,6 +42,13 @@ class URIs {
     var gifts_owner : String {
         return "\(apiRoute)/gifts/owner"
     }
+    var gifts_donated: String {
+        return "\(apiRoute)/gifts/donated"
+    }
+    var gifts_received : String {
+        return "\(apiRoute)/gifts/received"
+    }
+    
     var gifts_images : String {
         return "\(apiRoute)/gifts/images"
     }
@@ -54,6 +61,10 @@ class URIs {
     }
     var gifts_review : String {
         return "\(apiRoute)/gifts/review"
+    }
+    
+    var donate : String {
+        return "\(apiRoute)/donate"
     }
     
     func getSMSUrl(apiKey:String,receptor:String,template:String,token:String)->String?{

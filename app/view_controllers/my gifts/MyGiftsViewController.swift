@@ -50,6 +50,9 @@ class MyGiftsViewController: UIViewController {
         self.registeredGiftsViewModel.delegate = self
         self.donatedGiftsViewModel.delegate = self
         
+        self.registeredGiftsTableView.dataSource = self.registeredGiftsViewModel
+        self.donatedGiftsTableView.dataSource = self.donatedGiftsViewModel
+        
         self.registeredGiftsTableView.hide()
         self.donatedGiftsTableView.hide()
         
@@ -68,7 +71,7 @@ class MyGiftsViewController: UIViewController {
         configSegmentControl()
         
         self.registeredGiftsViewModel.getGifts(beforeId: nil)
-//        self.donatedGiftsViewModel.getGifts(index:0)
+        self.donatedGiftsViewModel.getGifts(beforeId: nil)
     }
     
     func configRefreshControl(){
@@ -87,7 +90,7 @@ class MyGiftsViewController: UIViewController {
     }
     
     @objc func donatedRefreshControlAction(){
-//        self.donatedGiftsViewModel.reloadGifts()
+        self.donatedGiftsViewModel.reloadGifts()
         self.donatedInitialLoadingIndicator?.stopLoading()
     }
     
@@ -259,64 +262,12 @@ extension MyGiftsViewController : UITableViewDelegate {
         AppDelegate.me().reloadTabBarPages(currentPage: self)
     }
 }
-extension MyGiftsViewController : UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch tableView {
-        case registeredGiftsTableView:
-            return registeredGiftsViewModel.gifts.count
-        case donatedGiftsTableView:
-            return donatedGiftsViewModel.gifts.count
-        default:
-            return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell=tableView.dequeueReusableCell(withIdentifier: GiftTableViewCell.identifier, for: indexPath) as! GiftTableViewCell
-        
-        switch tableView {
-        case registeredGiftsTableView:
-            
-            cell.filViews(gift: registeredGiftsViewModel.gifts[indexPath.row])
-            
-            let index=indexPath.row+1
-            if index==self.registeredGiftsViewModel.gifts.count {
-                if !self.registeredGiftsViewModel.isLoadingGifts_ForLazyLoading {
-                    if let beforeId = self.registeredGiftsViewModel.gifts[indexPath.row].id {
-                        registeredGiftsViewModel.getGifts(beforeId: beforeId)
-                    }
-                    
-                }
-            }
-            
-            return cell
-            
-        case donatedGiftsTableView:
-            
-            cell.filViews(gift: donatedGiftsViewModel.gifts[indexPath.row])
-            
-            let index=indexPath.row+1
-            if index==self.donatedGiftsViewModel.gifts.count {
-                if !self.donatedGiftsViewModel.isLoadingGifts_ForLazyLoading {
-//                    donatedGiftsViewModel.getGifts(index: index)
-                }
-            }
-            
-            return cell
-            
-        default:
-            fatalError()
-        }
-    }
-    
-    
-}
+
 
 extension MyGiftsViewController : ReloadablePage {
     func reloadPage(){
         self.registeredGiftsViewModel.reloadGifts()
-//        self.donatedGiftsViewModel.reloadGifts()
+        self.donatedGiftsViewModel.reloadGifts()
     }
 }
 
