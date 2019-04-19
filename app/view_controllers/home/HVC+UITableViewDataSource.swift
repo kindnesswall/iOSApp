@@ -25,23 +25,10 @@ extension HomeViewController:UITableViewDataSource{
             }
         }
         
-        if let isAd = vm.gifts[indexPath.row].isAd, isAd {
-            let cell=tableView.dequeueReusableCell(
-                withIdentifier: GiftAdCell.identifier) as! GiftAdCell
+        let cell=tableView.dequeueReusableCell(withIdentifier: GiftTableViewCell.identifier) as! GiftTableViewCell
             
-            cell.setOnClickBtn {
-                AppDelegate.me().shareApp()
-            }
-            
-            cell.showAd()//index: index, vc: self)
-            
+        cell.filViews(gift: vm.gifts[indexPath.row])
             return cell
-        }else{
-            let cell=tableView.dequeueReusableCell(withIdentifier: GiftTableViewCell.identifier) as! GiftTableViewCell
-            
-            cell.filViews(gift: vm.gifts[indexPath.row])
-            return cell
-        }
         
     }
     

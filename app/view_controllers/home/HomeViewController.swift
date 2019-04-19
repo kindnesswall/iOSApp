@@ -8,13 +8,9 @@
 
 import UIKit
 import JGProgressHUD
-import TapsellSDKv3
 import Firebase
 
 class HomeViewController: UIViewController {
-
-//    var nativeBanner : TSNativeBannerAdView!
-//    var nativeBannerBundle:TSNativeBannerBundle?
 
     let vm = HomeVM()
     
@@ -33,57 +29,11 @@ class HomeViewController: UIViewController {
     var provinceBarBtn:UIBarButtonItem?
     
     var previewRowIndex:Int?
-    var videoInterstitialAd:TapsellAd?
-    var rewardBasedAd:TapsellAd?
-    
+
     @IBOutlet var tableview: UITableView!
     
     deinit {
         print("HomeViewController deinit")
-    }
-    
-    func requestRewardBasedAd() {
-        let requestOptions = TSAdRequestOptions()
-        requestOptions.setCacheType(CacheTypeCached)
-        
-        Tapsell.requestAd(
-            forZone: TapSellConstants.ZoneID.RewardBased,
-            andOptions: requestOptions,
-            onAdAvailable:{ [weak self](tapsellAd) in
-                print("\n\n onAdAvailable \n\n")
-                
-                self?.rewardBasedAd = tapsellAd
-                
-            }, onNoAdAvailable: {
-                print("onNoAdAvailable")
-        }, onError: { (error) in
-            print("onError")
-        }, onExpiring: { (ad) in
-            print("onExpiring")
-        }
-        )
-    }
-    
-    func requestVideoInterstitialAd() {
-        let requestOptions = TSAdRequestOptions()
-        requestOptions.setCacheType(CacheTypeCached)
-        
-        Tapsell.requestAd(
-            forZone: TapSellConstants.ZoneID.VideoInterstitial,
-            andOptions: requestOptions,
-            onAdAvailable:{ [weak self](tapsellAd) in
-                print("\n\n onAdAvailable \n\n")
-                
-                self?.videoInterstitialAd = tapsellAd
-                
-            }, onNoAdAvailable: {
-                print("onNoAdAvailable")
-            }, onError: { (error) in
-                print("onError")
-            }, onExpiring: { (ad) in
-                print("onExpiring")
-            }
-        )
     }
     
     override func viewDidLoad() {
@@ -92,11 +42,6 @@ class HomeViewController: UIViewController {
         self.vm.delegate = self
         
         registerForPreviewing(with: self, sourceView: tableview)
-        
-        Tapsell.initialize(withAppKey: TapSellConstants.KEY)
-        
-        self.requestVideoInterstitialAd()
-//        self.requestRewardBasedAd()
         
         self.tableview.hide()
         

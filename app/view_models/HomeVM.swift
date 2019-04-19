@@ -80,13 +80,8 @@ class HomeVM: NSObject {
         var insertedIndexes=[IndexPath]()
         let firstIndex = self.gifts.count
         
-        let chunkedGifts = reply.chunked(into: 10)
-        for chunk in chunkedGifts {
-            let ad = Gift()
-            ad.isAd = true
-            self.gifts.append(ad)
-            self.gifts.append(contentsOf: chunk)
-        }
+        self.gifts.append(contentsOf: reply)
+
         let lastIndex = self.gifts.count
         
         for i in firstIndex..<lastIndex{

@@ -13,9 +13,6 @@ extension HomeViewController:UIViewControllerPreviewingDelegate{
         
         if let indexPath = tableview.indexPathForRow(at: location) {
             previewRowIndex = indexPath.row
-            guard !(vm.gifts[indexPath.row].isAd ?? false) else {
-                return nil
-            }
             
             previewingContext.sourceRect = tableview.rectForRow(at: indexPath)
             return getGiftDetailVCFor(index: indexPath.row)
@@ -25,15 +22,6 @@ extension HomeViewController:UIViewControllerPreviewingDelegate{
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        
-        if let index = previewRowIndex, vm.gifts[index].isAd == nil || vm.gifts[index].isAd == false {
-            previewRowIndex = nil
-            if let ad = self.videoInterstitialAd, self.isMoreThanOneDayIDidntSawAd()
-            {
-                self.show(ad:ad)
-                return
-            }
-        }
         self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
     }
 }

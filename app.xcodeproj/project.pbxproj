@@ -114,8 +114,6 @@
 		5263D5FE21B915F400B634A8 /* LanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D5FD21B915F400B634A8 /* LanguageVM.swift */; };
 		5263D60121B93F0000B634A8 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D60021B93F0000B634A8 /* ProgressBarView.swift */; };
 		5263D60321BB0CC300B634A8 /* DonatedGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D60221BB0CC300B634A8 /* DonatedGiftViewModel.swift */; };
-		526545F521BE9DB900C98821 /* TapsellSDKv3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526545F421BE9DB900C98821 /* TapsellSDKv3.framework */; };
-		526545F721BE9E7300C98821 /* TapsellSDKv3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 526545F421BE9DB900C98821 /* TapsellSDKv3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		526545FA21BF082E00C98821 /* TapSellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526545F921BF082E00C98821 /* TapSellConstants.swift */; };
 		526545FC21BF2CD200C98821 /* Array+chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526545FB21BF2CD200C98821 /* Array+chunked.swift */; };
 		5283174721C906930044B9AD /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283174621C906930044B9AD /* TouchIDAuthentication.swift */; };
@@ -160,8 +158,6 @@
 		60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DE22069018C0025D397 /* PopUpMessage.swift */; };
 		6032F61C205287ED00975C23 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032F61B205287ED00975C23 /* LoadingIndicator.swift */; };
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
-		6072E4FA21C05A9200F17205 /* GiftAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6072E4F821C05A9200F17205 /* GiftAdCell.swift */; };
-		6072E4FB21C05A9200F17205 /* GiftAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6072E4F921C05A9200F17205 /* GiftAdCell.xib */; };
 		60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */; };
 		60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1821D7CFA60058421A /* ReloadablePage.swift */; };
 		607EEA7B222C383A00637A93 /* OptionsListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607EEA7A222C383A00637A93 /* OptionsListViewModelProtocol.swift */; };
@@ -209,7 +205,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				526545F721BE9E7300C98821 /* TapsellSDKv3.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +332,6 @@
 		5263D5FD21B915F400B634A8 /* LanguageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVM.swift; sourceTree = "<group>"; };
 		5263D60021B93F0000B634A8 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		5263D60221BB0CC300B634A8 /* DonatedGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatedGiftViewModel.swift; sourceTree = "<group>"; };
-		526545F421BE9DB900C98821 /* TapsellSDKv3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TapsellSDKv3.framework; sourceTree = "<group>"; };
 		526545F921BF082E00C98821 /* TapSellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSellConstants.swift; sourceTree = "<group>"; };
 		526545FB21BF2CD200C98821 /* Array+chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+chunked.swift"; sourceTree = "<group>"; };
 		5283174621C906930044B9AD /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
@@ -393,8 +387,6 @@
 		60302DE22069018C0025D397 /* PopUpMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMessage.swift; sourceTree = "<group>"; };
 		6032F61B205287ED00975C23 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		6040F3A2206688A800FCD429 /* APIEmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyInput.swift; sourceTree = "<group>"; };
-		6072E4F821C05A9200F17205 /* GiftAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAdCell.swift; sourceTree = "<group>"; };
-		6072E4F921C05A9200F17205 /* GiftAdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftAdCell.xib; sourceTree = "<group>"; };
 		60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewModel.swift; sourceTree = "<group>"; };
 		60749B1821D7CFA60058421A /* ReloadablePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadablePage.swift; sourceTree = "<group>"; };
 		607EEA7A222C383A00637A93 /* OptionsListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsListViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -430,7 +422,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				526545F521BE9DB900C98821 /* TapsellSDKv3.framework in Frameworks */,
 				F7BCA4F8A441C01D89E9B782 /* Pods_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,7 +460,6 @@
 		0507C8561F8C1A920084CDF1 = {
 			isa = PBXGroup;
 			children = (
-				526545F421BE9DB900C98821 /* TapsellSDKv3.framework */,
 				05B124CB202DB056007E28CC /* latest.json */,
 				0507C8611F8C1A920084CDF1 /* app */,
 				52525E2321AEB9C000A7D03E /* appUITests */,
@@ -836,21 +826,11 @@
 			path = "options list";
 			sourceTree = "<group>";
 		};
-		526545FD21BFB38E00C98821 /* ad */ = {
-			isa = PBXGroup;
-			children = (
-				6072E4F821C05A9200F17205 /* GiftAdCell.swift */,
-				6072E4F921C05A9200F17205 /* GiftAdCell.xib */,
-			);
-			path = ad;
-			sourceTree = "<group>";
-		};
 		526545FE21BFB3A900C98821 /* gift */ = {
 			isa = PBXGroup;
 			children = (
 				054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */,
 				528A2DBF21AD3EBF00DECE0F /* GiftTableViewCell.xib */,
-				526545FD21BFB38E00C98821 /* ad */,
 			);
 			path = gift;
 			sourceTree = "<group>";
@@ -1184,7 +1164,6 @@
 				054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */,
 				5247C8B521E38A26009E8770 /* MyKindnessWallViewController.xib in Resources */,
 				60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */,
-				6072E4FB21C05A9200F17205 /* GiftAdCell.xib in Resources */,
 				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
 				60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */,
 				5247C8BF21E38A74009E8770 /* ContactUsViewController.xib in Resources */,
@@ -1380,7 +1359,6 @@
 				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
 				6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */,
 				05644DBC1FFEF3A500B7C853 /* ChatListTableViewCell.swift in Sources */,
-				6072E4FA21C05A9200F17205 /* GiftAdCell.swift in Sources */,
 				52D1A14121D9376E005EA2F0 /* RGVC+vm delegate.swift in Sources */,
 				05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */,
 				6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */,

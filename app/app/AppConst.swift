@@ -81,7 +81,6 @@ struct AppConst {
         public static let SELECTED_COUNTRY:String = "SELECTED_COUNTRY"
         
         public static let FirstInstall:String = "FirstInstall"
-        public static let LastTimeISawAd:String = "LastTimeISawAd"
         static let AppleLanguages:String = "AppleLanguages"
     }
     

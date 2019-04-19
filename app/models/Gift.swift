@@ -15,7 +15,6 @@ protocol GiftPresenter {
     var address:String? { get }
     var giftImages:[String]? { get }
 //    var requestCount:String? { get }
-    var isAd:Bool? { get }
 }
 
 protocol RegisterGiftInput {
@@ -31,7 +30,7 @@ protocol RegisterGiftInput {
 }
 
 class Gift: Codable,GiftPresenter,RegisterGiftInput {
-    var isAd:Bool? = false
+//    var isAd:Bool? = false
     
     var createdAt: String?
     var updatedAt: String?
