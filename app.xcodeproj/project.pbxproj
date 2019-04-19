@@ -114,7 +114,6 @@
 		5263D5FE21B915F400B634A8 /* LanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D5FD21B915F400B634A8 /* LanguageVM.swift */; };
 		5263D60121B93F0000B634A8 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D60021B93F0000B634A8 /* ProgressBarView.swift */; };
 		5263D60321BB0CC300B634A8 /* DonatedGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263D60221BB0CC300B634A8 /* DonatedGiftViewModel.swift */; };
-		526545FA21BF082E00C98821 /* TapSellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526545F921BF082E00C98821 /* TapSellConstants.swift */; };
 		526545FC21BF2CD200C98821 /* Array+chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526545FB21BF2CD200C98821 /* Array+chunked.swift */; };
 		5283174721C906930044B9AD /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5283174621C906930044B9AD /* TouchIDAuthentication.swift */; };
 		5283174821C91B400044B9AD /* LockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5283174A21C91B400044B9AD /* LockViewController.xib */; };
@@ -332,7 +331,6 @@
 		5263D5FD21B915F400B634A8 /* LanguageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVM.swift; sourceTree = "<group>"; };
 		5263D60021B93F0000B634A8 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		5263D60221BB0CC300B634A8 /* DonatedGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatedGiftViewModel.swift; sourceTree = "<group>"; };
-		526545F921BF082E00C98821 /* TapSellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSellConstants.swift; sourceTree = "<group>"; };
 		526545FB21BF2CD200C98821 /* Array+chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+chunked.swift"; sourceTree = "<group>"; };
 		5283174621C906930044B9AD /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
 		5283174921C91B400044B9AD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LockViewController.xib; sourceTree = "<group>"; };
@@ -678,7 +676,6 @@
 			children = (
 				528A2DAA21AD39C500DECE0F /* language */,
 				05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */,
-				526545F921BF082E00C98821 /* TapSellConstants.swift */,
 				5247C8AB21E388B2009E8770 /* GithubConstants.swift */,
 			);
 			path = app;
@@ -1375,7 +1372,6 @@
 				52466DDB21DB94810086F327 /* HVC+UITableViewDelegate.swift in Sources */,
 				52466DDF21DB95820086F327 /* HVC+UITableViewDataSource.swift in Sources */,
 				52D1A14621DAA3BD005EA2F0 /* Public Functions.swift in Sources */,
-				526545FA21BF082E00C98821 /* TapSellConstants.swift in Sources */,
 				522F6B5E21D81AA2001C67B9 /* FirebaseUser.swift in Sources */,
 				601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,
