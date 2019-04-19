@@ -8,30 +8,6 @@
 
 import UIKit
 import KeychainSwift
-import Firebase
-import GoogleSignIn
-import FirebaseAuth
-
-
-extension AppDelegate: GIDSignInDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        // ...
-        if let error = error {
-            // ...
-            return
-        }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        // ...
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
-}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,9 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let keychain = KeychainSwift()
     var isActiveAfterBioAuth:Bool = false
     var current_time:Time?
-    lazy var FIRDB_Ref:DatabaseReference = Database.database().reference().child(AppConst.FIR.KindnessWall)
-    lazy var FIRStorage_Ref:StorageReference = Storage.storage().reference().child(AppConst.FIR.KindnessWall)
-    
+
     public var tabBarController:UITabBarController?
     
     var tabBarPagesRelaodDelegates = [ReloadablePage]()
@@ -92,16 +66,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
         
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
-        
         if uDStandard.object(forKey: AppConst.UserDefaults.FirstInstall) == nil {
             uDStandard.set(false, forKey: AppConst.UserDefaults.FirstInstall)
             uDStandard.synchronize()
             keychain.clear()
         }
         
-        FirebaseApp.configure()
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
         
         if uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY) == nil {
@@ -205,26 +175,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showLoginVC(){
-        if isIranSelected() {
-            let controller=ActivationEnterPhoneViewController()
+        let controller=ActivationEnterPhoneViewController()
             
-            let nc = UINavigationController.init(rootViewController: controller)
-            self.tabBarController?.present(nc, animated: true, completion: nil)
-        }else{
-            let vc = FirbaseLoginRegisterVC()
-            self.tabBarController?.present(vc, animated: true, completion: nil)
-        }
+        let nc = UINavigationController.init(rootViewController: controller)
+        self.tabBarController?.present(nc, animated: true, completion: nil)
     }
     
     func isUserLogedIn() -> Bool {
-        if isIranSelected() {
-            if let _=keychain.get(AppConst.KeyChain.Authorization) {
-                return true
-            }
-        }else{
-            if let _=Auth.auth().currentUser?.uid{
-                return true
-            }
+
+        if let _=keychain.get(AppConst.KeyChain.Authorization) {
+            return true
         }
         return false
     }
@@ -237,12 +197,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
     
-    @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
-        -> Bool {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: [:])
-    }
 }
 

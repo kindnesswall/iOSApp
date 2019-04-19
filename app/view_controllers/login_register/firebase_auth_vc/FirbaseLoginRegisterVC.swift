@@ -41,8 +41,8 @@ class FirbaseLoginRegisterVC: UIViewController,UITextFieldDelegate {
         
         btn.translatesAutoresizingMaskIntoConstraints = false
         
-        btn.addTarget(self, action: #selector(handleLoginRegisterBtnClicked), for: .touchUpInside)
-        
+//        btn.addTarget(self, action: #selector(handleLoginRegisterBtnClicked), for: .touchUpInside)
+//        
         return btn
     }()
     
@@ -117,7 +117,7 @@ class FirbaseLoginRegisterVC: UIViewController,UITextFieldDelegate {
         sc.selectedSegmentIndex = 1
         sc.translatesAutoresizingMaskIntoConstraints = false
         
-        sc.addTarget(self, action: #selector(handleSegmentedControlChange), for: .valueChanged)
+//        sc.addTarget(self, action: #selector(handleSegmentedControlChange), for: .valueChanged)
         return sc
     }()
     
@@ -143,7 +143,7 @@ class FirbaseLoginRegisterVC: UIViewController,UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        handleLoginRegisterBtnClicked()
+//        handleLoginRegisterBtnClicked()
         return true
     }
 }

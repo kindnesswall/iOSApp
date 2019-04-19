@@ -14,7 +14,7 @@ extension RegisterGiftViewController {
         
         self.registerBtn.isEnabled=false
         
-        if AppDelegate.me().isIranSelected() {
+//        if AppDelegate.me().isIranSelected() {
             vm.sendGift(httpMethod: .POST, responseHandler: {
                 self.registerBtn.isEnabled=true
             }) {
@@ -22,9 +22,9 @@ extension RegisterGiftViewController {
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.giftRegisteredSuccessfully),theme: .success)
                 self.reloadOtherPages()
             }
-        }else{
-            vm.createGiftOnFIR()
-        }
+//        }else{
+//            vm.createGiftOnFIR()
+//        }
         
     }
     

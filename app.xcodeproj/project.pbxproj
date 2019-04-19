@@ -79,7 +79,6 @@
 		05F6AA541FFEEB8D00CDABC2 /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6AA501FFEEB8C00CDABC2 /* ChatListTableViewController.swift */; };
 		05F6AA551FFEEB8D00CDABC2 /* ChatConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6AA511FFEEB8D00CDABC2 /* ChatConversationViewController.swift */; };
 		05F6AA561FFEEB8D00CDABC2 /* ChatListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */; };
-		522F6B5321D81696001C67B9 /* FirbaseLoginRegisterVC+handlerFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B4F21D81696001C67B9 /* FirbaseLoginRegisterVC+handlerFunctions.swift */; };
 		522F6B5421D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5021D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift */; };
 		522F6B5521D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5121D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift */; };
 		522F6B5621D81697001C67B9 /* FirbaseLoginRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5221D81696001C67B9 /* FirbaseLoginRegisterVC.swift */; };
@@ -294,7 +293,6 @@
 		05F6AA511FFEEB8D00CDABC2 /* ChatConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConversationViewController.swift; sourceTree = "<group>"; };
 		05F6AA521FFEEB8D00CDABC2 /* ChatListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatListTableViewController.xib; sourceTree = "<group>"; };
 		34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
-		522F6B4F21D81696001C67B9 /* FirbaseLoginRegisterVC+handlerFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FirbaseLoginRegisterVC+handlerFunctions.swift"; sourceTree = "<group>"; };
 		522F6B5021D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FirbaseLoginRegisterVC+setupviews.swift"; sourceTree = "<group>"; };
 		522F6B5121D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FirbaseLoginRegisterVC+ImagePicker.swift"; sourceTree = "<group>"; };
 		522F6B5221D81696001C67B9 /* FirbaseLoginRegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirbaseLoginRegisterVC.swift; sourceTree = "<group>"; };
@@ -765,7 +763,6 @@
 			isa = PBXGroup;
 			children = (
 				522F6B5221D81696001C67B9 /* FirbaseLoginRegisterVC.swift */,
-				522F6B4F21D81696001C67B9 /* FirbaseLoginRegisterVC+handlerFunctions.swift */,
 				522F6B5121D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift */,
 				522F6B5021D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift */,
 			);
@@ -1099,7 +1096,6 @@
 				0507C85D1F8C1A920084CDF1 /* Resources */,
 				4F2C17FB1F8C5E4205EA5192 /* [CP] Embed Pods Frameworks */,
 				526545F821BE9E7300C98821 /* Embed Frameworks */,
-				BF6AFD1FD54EDF5D7933157E /* [CP] Copy Pods Resources */,
 				52DD768C21C64D3000C2E012 /* Fabric */,
 			);
 			buildRules = (
@@ -1142,7 +1138,7 @@
 				TargetAttributes = {
 					0507C85E1F8C1A920084CDF1 = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					5263D59E21B4425B00B634A8 = {
 						CreatedOnToolsVersion = 10.1;
@@ -1279,7 +1275,6 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 				"${BUILT_PRODUCTS_DIR}/XLActionController/XLActionController.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1300,7 +1295,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLActionController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1345,24 +1339,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
-		};
-		BF6AFD1FD54EDF5D7933157E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-app/Pods-app-resources.sh",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-app/Pods-app-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1460,7 +1436,6 @@
 				05BFBBEC1FE29F7C00DBCDDF /* IntroViewController.swift in Sources */,
 				05644DC81FFF01C300B7C853 /* ChatConversationResult.swift in Sources */,
 				52466DD921DB607D0086F327 /* RGVM+URLSessionTaskDelegate.swift in Sources */,
-				522F6B5321D81696001C67B9 /* FirbaseLoginRegisterVC+handlerFunctions.swift in Sources */,
 				05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */,
 				056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */,
 				601F83D32037367900F9118B /* Place.swift in Sources */,
@@ -1802,9 +1777,9 @@
 			baseConfigurationReference = 006A9055ED7D4288198332F6 /* Pods-app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Taghi Kiany Fard (Q85XTDNN3B)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = K6W5A74537;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WV7G3G5SGX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1812,9 +1787,9 @@
 				INFOPLIST_FILE = app/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ir.kindnesswall.publicusers;
+				PRODUCT_BUNDLE_IDENTIFIER = "ir.hamed-gh.publicusers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "KindnessWall For Public Users";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1825,9 +1800,9 @@
 			baseConfigurationReference = 34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Taghi Kiany Fard (K6W5A74537)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = K6W5A74537;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WV7G3G5SGX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1835,9 +1810,9 @@
 				INFOPLIST_FILE = app/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ir.kindnesswall.publicusers;
+				PRODUCT_BUNDLE_IDENTIFIER = "ir.hamed-gh.publicusers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "KindnessWall For Public Users Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

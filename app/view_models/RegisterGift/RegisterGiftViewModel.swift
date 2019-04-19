@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class RegisterGiftViewModel: NSObject {
     
@@ -15,7 +14,6 @@ class RegisterGiftViewModel: NSObject {
     
     var sessions : [URLSession]=[]
     var tasks : [URLSessionUploadTask]=[]
-    var firUploadTasks:[StorageUploadTask] = []
     
     var category:Category?
     var dateStatus:DateStatus?
@@ -101,67 +99,6 @@ class RegisterGiftViewModel: NSObject {
         input.giftImages=imagesUrl
         
         return input
-    }
-    
-    func createGiftOnFIR() {
-        guard let gift = readGiftInfo() else {
-            return
-        }
-        guard let uid = Auth.auth().currentUser?.uid else {
-            return
-        }
-        
-        let db_ref = AppDelegate.me().FIRDB_Ref
-        let childRef = db_ref.child(AppConst.FIR.Database.Gifts).childByAutoId()
-        
-        guard let title = gift.title,
-            let images = gift.giftImages,
-            let address = gift.address,
-            let description = gift.description,
-            let price = gift.price,
-            let categoryId = gift.categoryId,
-            let isNew = gift.isNew,
-            let cityId = gift.cityId
-//            let regionId = gift.regionId
-            else {
-            return
-        }
-        
-        let info:[String:Any] = [
-            "uid":uid,
-            "title":title,
-            "address":address,
-            "description":description,
-            "price":price,
-            "categoryId":categoryId,
-            "isNew":isNew,
-            "cityId":cityId,
-//            "regionId":regionId
-        ]
-        
-        childRef.updateChildValues(info) { (error:Error?, dbRef:DatabaseReference) in
-            if let err = error {
-                print("error : \(err)")
-                return
-            }
-            guard let giftKey = dbRef.key else{
-                return
-            }
-            let gift_images_ref = db_ref.child(AppConst.FIR.Database.Gifts_Images)
-            gift_images_ref.child(giftKey).setValue(images) { (error, dbRef) in
-                if let err = error {
-                    print("error : \(err)")
-                    return
-                }
-            }
-            let users_gifts_ref = db_ref.child(AppConst.FIR.Database.Users_Gifts)
-            users_gifts_ref.child(uid).updateChildValues([giftKey : true], withCompletionBlock: { (error, dbRef) in
-                if let err = error {
-                    print("error : \(err)")
-                    return
-                }
-            })
-        }
     }
     
     func sendGift(
@@ -256,18 +193,10 @@ class RegisterGiftViewModel: NSObject {
     
     func upload(image:UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
         
-        if AppDelegate.me().isIranSelected() {
-            uploadToIranServers(image: image, onSuccess: { (url) in
-                onSuccess(url)
-            }) {
-                onFail?()
-            }
-        }else{
-            uploadImageToFIR(image: image, onSuccess: { (url) in
-                onSuccess(url)
-            }) {
-                onFail?()
-            }
+        uploadToIranServers(image: image, onSuccess: { (url) in
+            onSuccess(url)
+        }) {
+            onFail?()
         }
     }
     
@@ -434,59 +363,6 @@ class RegisterGiftViewModel: NSObject {
         FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
     }
     
-    func uploadImageToFIR(image: UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
-        guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
-        
-        let fileName = getUniqeNameWith(fileExtension: ".jpg")
-        
-        let storage_ref = AppDelegate.me().FIRStorage_Ref
-        let childRef = storage_ref.child(AppConst.FIR.Storage.Gift_Images).child(fileName)
-
-        self.imagesUrl.append("not uploaded yet")
-        let index = imagesUrl.count - 1
-        
-        let uploadTask = childRef.putData(imageData, metadata: nil, completion: { [weak self](storageMetaData, error) in
-            
-            if error != nil {
-                print("storage error : \(error)")
-                self?.uploadFailed()
-                onFail?()
-                return
-            }
-            
-            self?.uploadedSuccessfully()
-            childRef.downloadURL(completion: { (url, error) in
-                guard let downloadURL = url else {
-                    print("Uh-oh, an error occurred in upload!")
-                    return
-                }
-                
-                self?.imagesUrl[index] = downloadURL.absoluteString
-                self?.firUploadTasks.remove(at: index)
-                
-                onSuccess(downloadURL.absoluteString)
-            })
-        })
-        
-        uploadTask.observe(.progress) { (snapshot) in
-            if let fraction = snapshot.progress?.fractionCompleted {
-                let percent = Int(Double(fraction) * 100)                
-                self.delegate?.updateUploadImage(index: index, percent: percent)
-            }else{
-                print("no fraction")
-            }
-        }
-        
-        firUploadTasks.append(uploadTask)
-    }
-    
-    func cancelAll_FIRUploadTasks() {
-        for task in firUploadTasks {
-            task.cancel()
-        }
-        firUploadTasks = []
-    }
-    
     func cancelAll_taskAndSessions() {
         for session in sessions {
             session.invalidateAndCancel()
@@ -499,7 +375,6 @@ class RegisterGiftViewModel: NSObject {
     }
     
     func clearUploadImages() {
-        cancelAll_FIRUploadTasks()
         cancelAll_taskAndSessions()
         imagesUrl = []
     }
