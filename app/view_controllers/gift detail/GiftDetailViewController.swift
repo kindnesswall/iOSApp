@@ -81,7 +81,7 @@ class GiftDetailViewController: UIViewController {
     func fillUIWithGift(){
         
         giftNamelbl.text = gift?.title
-        if let date = gift?.createdAt?.getGregorianDate() {
+        if let date = gift?.createdAt?.convertToDate()?.getPersianDate() {
             giftDatelbl.text = AppLanguage.getNumberString(number: date)
         }
         giftCategory.text = gift?.categoryTitle

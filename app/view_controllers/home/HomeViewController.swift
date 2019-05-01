@@ -58,7 +58,6 @@ class HomeViewController: UIViewController {
         tableview.delegate = self
         
         self.tableview.register(type: GiftTableViewCell.self)
-        self.tableview.register(type: GiftAdCell.self)
         
         vm.getGifts(beforeId:nil)
 
