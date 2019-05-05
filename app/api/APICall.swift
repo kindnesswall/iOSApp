@@ -22,7 +22,7 @@ class APICall {
     
     public static let OKStatus = 200
     
-    private static func setRequestHeader(request:URLRequest)->URLRequest {
+    static func setRequestHeader(request:URLRequest)->URLRequest {
         var newRequest=request
         newRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         if let authorization=KeychainSwift().get(AppConst.KeyChain.Authorization) {

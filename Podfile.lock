@@ -99,6 +99,8 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
+  - Spring (1.0.6)
+  - Starscream (3.0.6)
   - SwiftMessages (6.0.2):
     - SwiftMessages/App (= 6.0.2)
   - SwiftMessages/App (6.0.2)
@@ -122,6 +124,8 @@ DEPENDENCIES:
   - KeychainSwift (~> 10.0)
   - Kingfisher (~> 4.0)
   - MGSwipeTableCell
+  - Spring (from `https://github.com/MengTo/Spring.git`)
+  - Starscream (~> 3.0.2)
   - SwiftMessages
   - SwiftyOnboard
   - UICircularProgressRing
@@ -152,10 +156,20 @@ SPEC REPOS:
     - MGSwipeTableCell
     - nanopb
     - Protobuf
+    - Starscream
     - SwiftMessages
     - SwiftyOnboard
     - UICircularProgressRing
     - XLActionController
+
+EXTERNAL SOURCES:
+  Spring:
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: fafd0b2e8d4d46405bd86fa7ba84bb7f73a20b13
+    :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
   Apollo: 4d690a9b2e48e8820182df4b988d7a253e1ee589
@@ -181,11 +195,13 @@ SPEC CHECKSUMS:
   MGSwipeTableCell: dc4eca3212ed38a563b27d6aa7b3c01ce656c1e2
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
   SwiftyOnboard: de60e90c2af23dd61b01ec0c6a8d0be3370f857b
   UICircularProgressRing: b3eba859a515e4d9d38503eec913f09c28450785
   XLActionController: d7dea0b162bd3977311bcba7d377b88d6b87a7b4
 
-PODFILE CHECKSUM: 6f877da4c184d46911e18ebc1f06996cdcc2af99
+PODFILE CHECKSUM: 39b5964fd62ad30a34f91c59401ac5190875446b
 
 COCOAPODS: 1.5.3
