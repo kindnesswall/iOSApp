@@ -42,7 +42,7 @@ extension AppDelegate : UITabBarControllerDelegate{
         initiateTab(tabIndex: AppConst.TabIndex.HOME,tabs:tabs)
         initiateTab(tabIndex: AppConst.TabIndex.MyGifts,tabs:tabs)
         initiateTab(tabIndex: AppConst.TabIndex.RegisterGift,tabs:tabs)
-        initiateTab(tabIndex: AppConst.TabIndex.Requests,tabs:tabs)
+        initiateTab(tabIndex: AppConst.TabIndex.Chat,tabs:tabs)
         initiateTab(tabIndex: AppConst.TabIndex.MyKindnessWall,tabs:tabs)
         
         setTabsDelegates(tabs:tabs)
@@ -67,8 +67,10 @@ extension AppDelegate : UITabBarControllerDelegate{
         case AppConst.TabIndex.RegisterGift:
             controller=RegisterGiftViewController()
             
-        case AppConst.TabIndex.Requests:
-            controller=RequestsViewController()
+        case AppConst.TabIndex.Chat:
+            let chatViewController = ChatViewController()
+            self.startNewChatProtocol = chatViewController.viewModel
+            controller = chatViewController
             
         case AppConst.TabIndex.MyKindnessWall:
             controller=MyKindnessWallViewController()
@@ -89,11 +91,6 @@ extension AppDelegate : UITabBarControllerDelegate{
             return false
         }
         
-        if (viewController as? UINavigationController)?.viewControllers.first as? RequestsViewController != nil {
-            if let tabs = self.tabBarController?.viewControllers as? [UINavigationController] {
-                initiateTab(tabIndex: AppConst.TabIndex.Requests, tabs: tabs)
-            }
-        }
         
         return true
         
@@ -105,7 +102,7 @@ extension AppDelegate : UITabBarControllerDelegate{
             ||
             (viewController as? UINavigationController)?.viewControllers.first as? MyGiftsViewController != nil
             ||
-            (viewController as? UINavigationController)?.viewControllers.first as? RequestsViewController != nil  {
+            (viewController as? UINavigationController)?.viewControllers.first as? ChatViewController != nil  {
             return true
         }
         

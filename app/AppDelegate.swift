@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var current_time:Time?
 
     public var tabBarController:UITabBarController?
+    weak var startNewChatProtocol:StartNewChatProtocol?
     
     var tabBarPagesRelaodDelegates = [ReloadablePage]()
 

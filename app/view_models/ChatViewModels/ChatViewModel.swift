@@ -8,14 +8,22 @@
 
 import UIKit
 import Starscream
+import KeychainSwift
 
 class ChatViewModel: NSObject {
     
     var socket:WebSocket?
-    var userId = -1
+    var userId :Int
     var allChats = [MessagesViewModel]()
     
     weak var delegate : ChatViewModelProtocol?
+    
+    override init() {
+        let userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
+        self.userId = userId ?? -1
+        super.init()
+        self.connect()
+    }
     
     deinit {
         print("ChatViewModel deinit")
@@ -23,6 +31,9 @@ class ChatViewModel: NSObject {
     
     func connect() {
         guard let url = URL(string: URIs().chat) else {
+            return
+        }
+        guard AppDelegate.me().isUserLogedIn() else {
             return
         }
         var request = URLRequest(url: url)
@@ -60,20 +71,28 @@ class ChatViewModel: NSObject {
         self.sendMessage(message: message)
     }
     
-    func addMessage(message:TextMessage,isSending:Bool,chatId:Int) {
+    func addMessage(message:TextMessage,isSending:Bool) -> MessagesViewModel {
         
         let messagesViewModel : MessagesViewModel = {
-            if let messagesViewModel = MessagesViewModel.find(chatId: chatId, list: self.allChats) {
+            if let messagesViewModel = MessagesViewModel.find(chatId: message.chatId, list: self.allChats) {
                 return messagesViewModel
             } else {
-                let messagesViewModel = MessagesViewModel(chatId: chatId)
+                let messagesViewModel = MessagesViewModel(userId: self.userId, chatId: message.chatId)
                 self.allChats.append(messagesViewModel)
                 return messagesViewModel
             }
         }()
         
+        self.addMessage(message: message, isSending: isSending, messagesViewModel: messagesViewModel)
+        
+        return messagesViewModel
+    }
+    
+    func addMessage(message:TextMessage,isSending:Bool,messagesViewModel:MessagesViewModel){
+        
         messagesViewModel.addMessage(message: message,isSending: isSending)
         self.delegate?.reload()
+        
     }
     
     
@@ -82,7 +101,7 @@ class ChatViewModel: NSObject {
             return
         }
         for textMessage in textMessages {
-            self.addMessage(message: textMessage, isSending: false, chatId: textMessage.chatId)
+            let _ = self.addMessage(message: textMessage, isSending: false)
             self.sendAck(textMessage: textMessage)
         }
         
@@ -193,9 +212,11 @@ extension ChatViewModel : WebSocketDelegate{
 
 extension ChatViewModel : MessagesViewControllerDelegate {
     
-    func writeMessage(message:TextMessage){
+    func writeMessage(text:String,messagesViewModel:MessagesViewModel){
         
-        self.addMessage(message: message, isSending: true, chatId: message.chatId)
+        let message = TextMessage(text: text, senderId: self.userId, chatId: messagesViewModel.chatId)
+        
+        self.addMessage(message: message, isSending: true, messagesViewModel: messagesViewModel)
         
         self.sendTextMessage(textMessage: message)
         
@@ -206,8 +227,31 @@ extension ChatViewModel : MessagesViewControllerDelegate {
     }
 }
 
+extension ChatViewModel : StartNewChatProtocol {
+    
+    func writeMessage(text:String,chatId:Int)->MessagesViewModel{
+        
+        let message = TextMessage(text: text, senderId: self.userId, chatId: chatId)
+        
+        let messagesViewModel = self.addMessage(message: message, isSending: true)
+        
+        self.sendTextMessage(textMessage: message)
+        
+        return messagesViewModel
+    }
+    
+    func getMessagesViewControllerDelegate() -> MessagesViewControllerDelegate {
+        return self
+    }
+}
+
 protocol ChatViewModelProtocol : class {
     func reload()
     func socketConnected()
     func socketDisConnected()
+}
+
+protocol StartNewChatProtocol : class {
+    func writeMessage(text:String,chatId:Int)->MessagesViewModel
+    func getMessagesViewControllerDelegate()->MessagesViewControllerDelegate
 }

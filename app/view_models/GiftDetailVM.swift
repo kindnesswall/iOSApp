@@ -31,5 +31,26 @@ class GiftDetailVM: NSObject {
             onSuccess()
         }
     }
+    
+    func requestGift(id:Int,onSuccess:@escaping (Int)->(), onFail:(()->())?) {
+        let input:APIEmptyInput? = nil
+        let url = "\(URIs().gifts_request)/\(id)"
+        
+        APICall.request(url: url, httpMethod: .GET, input: input) { (data, response, error) in
+            guard error == nil,
+                let response = response as? HTTPURLResponse,
+                response.statusCode == APICall.OKStatus,
+                let chat = APICall.readJsonData(data: data, outputType: Chat.self),
+                let chatId = chat.id
+                else {
+                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
+                    onFail?()
+                    return
+            }
+            
+            onSuccess(chatId)
+            
+        }
+    }
 }
 

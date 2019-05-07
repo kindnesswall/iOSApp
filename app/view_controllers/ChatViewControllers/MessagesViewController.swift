@@ -13,7 +13,6 @@ class MessagesViewController: UIViewController,MessagesDelegate {
     @IBOutlet weak var messageInput: UITextView!
     
     @IBOutlet weak var tableView: UITableView!
-    var userId:Int = -1
     var viewModel:MessagesViewModel?
     
     weak var delegate:MessagesViewControllerDelegate?
@@ -28,6 +27,8 @@ class MessagesViewController: UIViewController,MessagesDelegate {
         self.tableView.reloadData()
         
         self.configureMessageInput()
+        
+        self.viewModel?.delegate = self
     }
     
     func configureMessageInput(){
@@ -45,11 +46,12 @@ class MessagesViewController: UIViewController,MessagesDelegate {
             return
         }
         self.messageInput.text = ""
-        guard let chatId = self.viewModel?.chatId else {
+        
+        guard let viewModel = self.viewModel else {
             return
         }
-        let textMessage = TextMessage(text: messageText, senderId:self.userId, chatId: chatId)
-        self.delegate?.writeMessage(message: textMessage)
+        
+        self.delegate?.writeMessage(text: messageText, messagesViewModel: viewModel)
         
     }
     
@@ -84,7 +86,7 @@ extension MessagesViewController : UITableViewDataSource {
         message.hasSeen = true
         
         let messageType:MessagesTableViewCell.MessageUserType
-        if message.senderId == userId {
+        if message.senderId == viewModel.userId {
             messageType = .user
         } else {
             messageType = .others
@@ -123,6 +125,6 @@ extension MessagesViewController : UITableViewDelegate {
 }
 
 protocol MessagesViewControllerDelegate : class{
-    func writeMessage(message:TextMessage)
+    func writeMessage(text:String,messagesViewModel:MessagesViewModel)
     func loadMoreMessages(chatId:Int,beforeId:Int?)
 }

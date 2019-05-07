@@ -90,7 +90,7 @@ struct AppConst {
         public static let HOME:Int = 4
         public static let MyGifts:Int = 3
         public static let RegisterGift:Int = 2
-        public static let Requests:Int = 1
+        public static let Chat:Int = 1
         public static let MyKindnessWall:Int = 0
     }
 }

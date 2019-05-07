@@ -10,6 +10,7 @@ import Foundation
 
 
 class MessagesViewModel {
+    var userId:Int
     var chatId:Int
     private var messages = [TextMessage]() {
         didSet {
@@ -21,7 +22,8 @@ class MessagesViewModel {
     weak var delegate:MessagesDelegate?
     var noMoreOldMessages = false
     
-    init(chatId:Int) {
+    init(userId:Int,chatId:Int) {
+        self.userId=userId
         self.chatId=chatId
     }
     
@@ -52,21 +54,21 @@ class MessagesViewModel {
         curatedMessages.append(sameDateMessages)
     }
     
-    func numberOfNotifications(userId:Int)->Int{
+    func numberOfNotifications()->Int{
         var number = 0
         for each in self.messages {
-            if each.senderId != userId, each.ack == false, each.hasSeen ?? false == false {
+            if each.senderId != self.userId, each.ack == false, each.hasSeen ?? false == false {
                 number+=1
             }
         }
         return number
     }
     
-    func getContactId(userId:Int)->Int?{
+    func getContactId()->Int?{
         guard let firstMessage = self.messages.first else {
             return nil
         }
-        if firstMessage.senderId != userId {
+        if firstMessage.senderId != self.userId {
             return firstMessage.senderId
         }
         return firstMessage.receiverId

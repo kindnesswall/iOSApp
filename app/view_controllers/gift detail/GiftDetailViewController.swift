@@ -55,9 +55,6 @@ class GiftDetailViewController: UIViewController {
         
         setUI()
 
-        if let _=KeychainSwift().get(AppConst.KeyChain.Authorization) {
-            self.requestBtn.hide()
-        }
         
         createSlideShow()
         
@@ -121,6 +118,9 @@ class GiftDetailViewController: UIViewController {
         guard AppDelegate.me().checkForLogin() else {
             return
         }
+        
+        self.requestGift()
+        
     }
     
     @objc func editBtnClicked(){
@@ -146,12 +146,28 @@ class GiftDetailViewController: UIViewController {
         }
     }
     
+    func requestGift(){
+        guard let giftId = gift?.id else {
+            return
+        }
+        self.requestBtn.isEnabled = false
+        
+        vm.requestGift(id: giftId, onSuccess: { [weak self] (chatId) in
+            self?.sendRequestMessage(chatId: chatId)
+            self?.requestBtn.isEnabled = true
+            
+        }) { [weak self] in
+            self?.requestBtn.isEnabled = true
+        }
+        
+    }
+    
     func removeGift(){
         
-        self.removeBtn.isEnabled=false
         guard let giftId=gift?.id else {
             return
         }
+        self.removeBtn.isEnabled=false
         
         vm.removeGift(id: giftId, onSuccess: { [weak self] in
             self?.removeBtn.isEnabled=true
@@ -160,6 +176,31 @@ class GiftDetailViewController: UIViewController {
         }, onFail: { [weak self] in
             self?.removeBtn.isEnabled=true
         })
+    }
+    
+    func sendRequestMessage(chatId:Int){
+        
+        let text = "درخواست هدیه \(self.gift?.title ?? "")"
+        
+        let startNewChatProtocol = AppDelegate.me().startNewChatProtocol
+        guard let messagesViewModel = startNewChatProtocol?.writeMessage(text: text, chatId: chatId) else {
+            return
+        }
+        guard let messagesViewControllerDelegate = startNewChatProtocol?.getMessagesViewControllerDelegate() else {
+            return
+        }
+        
+        self.pushMessagesViewController(messagesViewModel: messagesViewModel, messagesViewControllerDelegate: messagesViewControllerDelegate)
+    }
+    
+    func pushMessagesViewController(messagesViewModel: MessagesViewModel,
+                                    messagesViewControllerDelegate:MessagesViewControllerDelegate){
+        
+        let controller = MessagesViewController()
+        controller.viewModel = messagesViewModel
+        controller.delegate = messagesViewControllerDelegate
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc func didTap() {

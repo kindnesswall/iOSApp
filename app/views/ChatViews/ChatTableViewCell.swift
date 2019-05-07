@@ -37,9 +37,9 @@ class ChatTableViewCell: UITableViewCell {
         self.layoutNotificationLabel()
     }
     
-    func fillUI(model:MessagesViewModel,userId:Int){
-        self.userNameLabel.text = "The user with id: \(model.getContactId(userId:userId)?.description ?? "")"
-        let numberOfNotification = model.numberOfNotifications(userId:userId)
+    func fillUI(viewModel:MessagesViewModel){
+        self.userNameLabel.text = "The user with id: \(viewModel.getContactId()?.description ?? "")"
+        let numberOfNotification = viewModel.numberOfNotifications()
         self.notificationLabel.text = numberOfNotification.description
         if numberOfNotification == 0 {
             self.notificationLabel.isHidden = true

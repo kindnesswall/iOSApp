@@ -18,7 +18,6 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel.delegate = self
         self.tableView.register(ChatTableViewCell.self, forCellReuseIdentifier: ChatTableViewCell.identifier)
-        self.viewModel.connect()
         // Do any additional setup after loading the view.
     }
     deinit {
@@ -39,7 +38,7 @@ extension ChatViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChatTableViewCell.identifier, for: indexPath) as! ChatTableViewCell
         let messagesViewModel = self.viewModel.allChats[indexPath.row]
-        cell.fillUI(model: messagesViewModel,userId: self.viewModel.userId)
+        cell.fillUI(viewModel: messagesViewModel)
         return cell
     }
     
@@ -50,9 +49,8 @@ extension ChatViewController : UITableViewDelegate {
         let messagesViewModel = self.viewModel.allChats[indexPath.row]
         let controller = MessagesViewController()
         controller.viewModel = messagesViewModel
-        controller.userId = self.viewModel.userId
         controller.delegate = self.viewModel
-        messagesViewModel.delegate = controller
+        controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }
