@@ -175,28 +175,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return selectedCountry == AppConst.Country.IRAN
     }
     
-    func showLoginVC(){
-        let controller=ActivationEnterPhoneViewController()
-            
-        let nc = UINavigationController.init(rootViewController: controller)
-        self.tabBarController?.present(nc, animated: true, completion: nil)
-    }
-    
-    func isUserLogedIn() -> Bool {
-
-        if let _=keychain.get(AppConst.KeyChain.Authorization) {
-            return true
-        }
-        return false
-    }
-    
-    func checkForLogin()->Bool{
-        if isUserLogedIn() {
-            return true
-        }
-        showLoginVC()
-        return false
-    }
-    
 }
 

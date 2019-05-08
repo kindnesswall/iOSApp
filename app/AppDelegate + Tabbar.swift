@@ -51,6 +51,12 @@ extension AppDelegate : UITabBarControllerDelegate{
         
     }
     
+    func resetAppAfterSwitchUser(){
+        guard let tabs = self.tabBarController?.viewControllers as? [UINavigationController] else { return }
+        
+        initiateTab(tabIndex: AppConst.TabIndex.Chat,tabs:tabs)
+    }
+    
     func initiateTab(tabIndex:Int,tabs:[UINavigationController]) {
         tabs[tabIndex].setViewControllers([getTabViewController(tabIndex:tabIndex)], animated: false)
     }

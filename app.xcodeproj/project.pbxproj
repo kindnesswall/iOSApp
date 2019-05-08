@@ -146,6 +146,7 @@
 		6032F61C205287ED00975C23 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032F61B205287ED00975C23 /* LoadingIndicator.swift */; };
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
 		604FB576228234AD00795CE2 /* MessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604FB578228234AD00795CE2 /* MessagesViewController.xib */; };
+		604FB57E2283616500795CE2 /* AppDelegate + Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604FB57D2283616500795CE2 /* AppDelegate + Login.swift */; };
 		60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */; };
 		60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1821D7CFA60058421A /* ReloadablePage.swift */; };
 		607E78752279D6CA00FF0008 /* String + ConvertToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78742279D6CA00FF0008 /* String + ConvertToDate.swift */; };
@@ -385,6 +386,7 @@
 		604FB577228234AD00795CE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MessagesViewController.xib; sourceTree = "<group>"; };
 		604FB57A228234F000795CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MessagesViewController.strings; sourceTree = "<group>"; };
 		604FB57C228234F400795CE2 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/MessagesViewController.strings; sourceTree = "<group>"; };
+		604FB57D2283616500795CE2 /* AppDelegate + Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate + Login.swift"; sourceTree = "<group>"; };
 		60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewModel.swift; sourceTree = "<group>"; };
 		60749B1821D7CFA60058421A /* ReloadablePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadablePage.swift; sourceTree = "<group>"; };
 		607E78742279D6CA00FF0008 /* String + ConvertToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + ConvertToDate.swift"; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 				52DD768521C5109B00C2E012 /* InfoPlist.strings */,
 				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
 				6019F27421B80257003C3E76 /* AppDelegate + Tabbar.swift */,
+				604FB57D2283616500795CE2 /* AppDelegate + Login.swift */,
 				0507C8641F8C1A920084CDF1 /* ViewController.swift */,
 				0507C8661F8C1A920084CDF1 /* Main.storyboard */,
 				0507C86B1F8C1A920084CDF1 /* LaunchScreen.storyboard */,
@@ -1435,6 +1438,7 @@
 				05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */,
 				607E789E2279E28D00FF0008 /* MessageSendingState.swift in Sources */,
 				05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */,
+				604FB57E2283616500795CE2 /* AppDelegate + Login.swift in Sources */,
 				05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */,
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
 				52D1A13B21D92859005EA2F0 /* ApiUtility.swift in Sources */,

@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import KeychainSwift
 
 class ActivationEnterVerifyCodeViewController: UIViewController {
 
     var requestId:String!
     var session:URLSession?
-    let keychain = KeychainSwift()
     
     let userDefault = UserDefaults.standard
     
@@ -144,14 +142,10 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                 return
             }
             
-            self?.keychain.set(mobile, forKey: AppConst.UserDefaults.PHONE_NUMBER)
-            
-            if let userID = token.userID?.description {
-                self?.keychain.set(userID, forKey: AppConst.KeyChain.USER_ID)
-            }
-            
-            if let token = token.token {
-                self?.keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
+            if let userID = token.userID?.description,
+               let token = token.token
+                {
+                AppDelegate.me().login(userID: userID, token: token, mobile: mobile)
             }
             
             self?.dismiss(animated: true, completion: {
