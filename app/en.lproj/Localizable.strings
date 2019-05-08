@@ -136,3 +136,9 @@
 "tabBar_give_gift" = "Give Gift";
 "tabBar_requests" = "Requests";
 "tabBar_my_wall" = "My Wall";
+
+"chats" = "Chats";
+
+"descriptionOfUserOnChatList" = "User With ID";
+"giftRequestChatMessage" = "Requestion of gift";
+"giftDonateChatMessage" = "Donation of gift";

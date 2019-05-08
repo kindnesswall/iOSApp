@@ -145,13 +145,13 @@
 		60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DE22069018C0025D397 /* PopUpMessage.swift */; };
 		6032F61C205287ED00975C23 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032F61B205287ED00975C23 /* LoadingIndicator.swift */; };
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
+		604FB576228234AD00795CE2 /* MessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604FB578228234AD00795CE2 /* MessagesViewController.xib */; };
 		60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */; };
 		60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1821D7CFA60058421A /* ReloadablePage.swift */; };
 		607E78752279D6CA00FF0008 /* String + ConvertToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78742279D6CA00FF0008 /* String + ConvertToDate.swift */; };
 		607E78772279DDB900FF0008 /* Date + PersianDate + Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78762279DDB800FF0008 /* Date + PersianDate + Clock.swift */; };
 		607E787F2279E21F00FF0008 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607E787B2279E21D00FF0008 /* ChatViewController.xib */; };
 		607E78802279E21F00FF0008 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E787C2279E21E00FF0008 /* MessagesViewController.swift */; };
-		607E78812279E21F00FF0008 /* MessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607E787D2279E21E00FF0008 /* MessagesViewController.xib */; };
 		607E78822279E21F00FF0008 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E787E2279E21E00FF0008 /* ChatViewController.swift */; };
 		607E78852279E23600FF0008 /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78832279E23500FF0008 /* MessagesViewModel.swift */; };
 		607E78862279E23600FF0008 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78842279E23600FF0008 /* ChatViewModel.swift */; };
@@ -382,13 +382,15 @@
 		60302DE22069018C0025D397 /* PopUpMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMessage.swift; sourceTree = "<group>"; };
 		6032F61B205287ED00975C23 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		6040F3A2206688A800FCD429 /* APIEmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyInput.swift; sourceTree = "<group>"; };
+		604FB577228234AD00795CE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MessagesViewController.xib; sourceTree = "<group>"; };
+		604FB57A228234F000795CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MessagesViewController.strings; sourceTree = "<group>"; };
+		604FB57C228234F400795CE2 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/MessagesViewController.strings; sourceTree = "<group>"; };
 		60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewModel.swift; sourceTree = "<group>"; };
 		60749B1821D7CFA60058421A /* ReloadablePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadablePage.swift; sourceTree = "<group>"; };
 		607E78742279D6CA00FF0008 /* String + ConvertToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + ConvertToDate.swift"; sourceTree = "<group>"; };
 		607E78762279DDB800FF0008 /* Date + PersianDate + Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date + PersianDate + Clock.swift"; sourceTree = "<group>"; };
 		607E787B2279E21D00FF0008 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		607E787C2279E21E00FF0008 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		607E787D2279E21E00FF0008 /* MessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessagesViewController.xib; sourceTree = "<group>"; };
 		607E787E2279E21E00FF0008 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		607E78832279E23500FF0008 /* MessagesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		607E78842279E23600FF0008 /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
@@ -995,7 +997,7 @@
 				607E787E2279E21E00FF0008 /* ChatViewController.swift */,
 				607E787B2279E21D00FF0008 /* ChatViewController.xib */,
 				607E787C2279E21E00FF0008 /* MessagesViewController.swift */,
-				607E787D2279E21E00FF0008 /* MessagesViewController.xib */,
+				604FB578228234AD00795CE2 /* MessagesViewController.xib */,
 			);
 			path = ChatViewControllers;
 			sourceTree = "<group>";
@@ -1216,7 +1218,7 @@
 				60FAB845206571340039BF61 /* icomoon.ttf in Resources */,
 				5247C8C221E38A83009E8770 /* ContactUsViewController.strings in Resources */,
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
-				607E78812279E21F00FF0008 /* MessagesViewController.xib in Resources */,
+				604FB576228234AD00795CE2 /* MessagesViewController.xib in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
 				5283174D21C91B7F0044B9AD /* LockSettingViewController.xib in Resources */,
 				52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */,
@@ -1680,6 +1682,16 @@
 				52DD768621C5109D00C2E012 /* fa */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		604FB578228234AD00795CE2 /* MessagesViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				604FB577228234AD00795CE2 /* Base */,
+				604FB57A228234F000795CE2 /* en */,
+				604FB57C228234F400795CE2 /* fa */,
+			);
+			name = MessagesViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -36,9 +36,8 @@ class GiftTableViewCell: UITableViewCell {
     func filViews(gift:GiftPresenter) {
         
         giftTitle.text = gift.title
-        if let date = gift.createdAt?.convertToDate()?.getPersianDate() {
-            giftDate.text = AppLanguage.getNumberString(number: date)
-        }
+        giftDate.text = AppLanguage.getNumberString(number: gift.createdAt?.convertToDate()?.getPersianDate() ?? "")
+        
         giftDescription.text = gift.description
         giftCity.text=gift.address
         

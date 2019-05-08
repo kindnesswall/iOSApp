@@ -25,7 +25,7 @@ class MessagesDateTableViewCell: UITableViewCell {
     }
     
     func configDateLabel(){
-        dateLabel.font = UIFont(name: "Arial", size: 14)
+        dateLabel.font = AppConst.Resource.Font.getRegularFont(size: 14)
         dateLabel.textColor = UIColor.gray
         dateLabel.textAlignment = .center
         self.contentView.addSubview(dateLabel)
@@ -33,7 +33,7 @@ class MessagesDateTableViewCell: UITableViewCell {
     }
     
     func updateUI(date:String?){
-        self.dateLabel.text = date
+        self.dateLabel.text = AppLanguage.getNumberString(number: date ?? "")
     }
 
     required init?(coder aDecoder: NSCoder) {

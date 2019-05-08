@@ -136,3 +136,9 @@
 "tabBar_give_gift" = "ثبت هدیه";
 "tabBar_requests" = "درخواستها";
 "tabBar_my_wall" = "دیوار من";
+
+"chats" = "گفتگوها";
+
+"descriptionOfUserOnChatList" = "کاربر با شناسه";
+"giftRequestChatMessage" = "درخواست هدیه";
+"giftDonateChatMessage" = "اهدا هدیه";

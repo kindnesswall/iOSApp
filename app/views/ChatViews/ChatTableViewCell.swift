@@ -24,6 +24,8 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     func configUserNameLabel(){
+        self.userNameLabel.font = AppConst.Resource.Font.getRegularFont(size: 17)
+        self.userNameLabel.textAlignment = .right
         self.contentView.addSubview(self.userNameLabel)
         self.layoutUserNameLabel()
     }
@@ -31,6 +33,7 @@ class ChatTableViewCell: UITableViewCell {
         self.notificationLabel.backgroundColor = UIColor.blue
         self.notificationLabel.textColor = UIColor.white
         self.notificationLabel.textAlignment = .center
+        self.notificationLabel.font = AppConst.Resource.Font.getRegularFont(size: 15)
         self.notificationLabel.layer.cornerRadius = 10
         self.notificationLabel.layer.masksToBounds = true
         self.contentView.addSubview(self.notificationLabel)
@@ -38,9 +41,13 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     func fillUI(viewModel:MessagesViewModel){
-        self.userNameLabel.text = "The user with id: \(viewModel.getContactId()?.description ?? "")"
+        let descriptionOfUserOnChatList = LocalizationSystem.getStr(forKey: LanguageKeys.descriptionOfUserOnChatList)
+        let contactId = AppLanguage.getNumberString(number: viewModel.getContactId()?.description ?? "")
+        self.userNameLabel.text = "\(descriptionOfUserOnChatList) \(contactId)"
+        
         let numberOfNotification = viewModel.numberOfNotifications()
-        self.notificationLabel.text = numberOfNotification.description
+        self.notificationLabel.text = AppLanguage.getNumberString(number: numberOfNotification.description)
+        
         if numberOfNotification == 0 {
             self.notificationLabel.isHidden = true
         } else {

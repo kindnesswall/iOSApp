@@ -137,4 +137,11 @@ struct LanguageKeys {
     static let popup_request_accepted : String = "popup_request_accepted"
  
     static let loading : String = "loading"
+    
+    static let chats : String = "chats"
+    
+    static let descriptionOfUserOnChatList : String = "descriptionOfUserOnChatList"
+    
+    static let giftRequestChatMessage : String = "giftRequestChatMessage"
+    static let giftDonateChatMessage : String = "giftDonateChatMessage"
 }

@@ -12,10 +12,10 @@ extension MessagesTableViewCell {
     func layoutMessageContentView(type: MessageUserType){
         let autoLayout = AutoLayoutHelper(view: self.messageContentView)
         switch type {
-        case .user:
+        case .others:
             autoLayout.addConstraints(firstView: self.messageContentView, secondView: self.contentView, leading: margin, trailing: nil, top: margin, bottom: -margin)
             autoLayout.addConstantConstraint(firstAnchor: self.messageContentView.trailingAnchor, secondAnchor: self.contentView.trailingAnchor, equationType: .lessThan, constant: -userMargin)
-        case .others:
+        case .user:
             autoLayout.addConstraints(firstView: self.messageContentView, secondView: self.contentView, leading: nil, trailing: -margin, top: margin, bottom: -margin)
             autoLayout.addConstantConstraint(firstAnchor: self.messageContentView.leadingAnchor, secondAnchor: self.contentView.leadingAnchor, equationType: .greaterThan, constant: userMargin)
         }

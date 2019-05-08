@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="IRANSansMobile.ttf">
+            <string>IRANSansMobile</string>
+        </array>
+    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessagesViewController" customModule="KindnessWallChat" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessagesViewController" customModule="app" customModuleProvider="target">
             <connections>
                 <outlet property="messageInput" destination="EXt-Kb-gfv" id="yfZ-yE-976"/>
                 <outlet property="tableView" destination="udf-VT-x7G" id="U5t-sy-iYB"/>
@@ -34,22 +39,23 @@
                     <rect key="frame" x="0.0" y="619" width="375" height="48"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhY-zU-PdF">
-                            <rect key="frame" x="325" y="9" width="50" height="30"/>
+                            <rect key="frame" x="315" y="7" width="50" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="XoQ-tm-EMj"/>
                             </constraints>
-                            <state key="normal" title="Send"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                            <state key="normal" title="ارسال"/>
                             <connections>
                                 <action selector="sendMessage:" destination="-1" eventType="touchUpInside" id="qxs-Al-k3D"/>
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EXt-Kb-gfv">
-                            <rect key="frame" x="10" y="4" width="305" height="40"/>
+                            <rect key="frame" x="10" y="4" width="295" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="um6-Xa-vkS"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
@@ -60,7 +66,7 @@
                         <constraint firstItem="VhY-zU-PdF" firstAttribute="centerY" secondItem="01z-6Z-8lL" secondAttribute="centerY" id="Zbc-0f-LnH"/>
                         <constraint firstItem="EXt-Kb-gfv" firstAttribute="top" secondItem="01z-6Z-8lL" secondAttribute="top" constant="4" id="a8s-AB-1j9"/>
                         <constraint firstAttribute="bottom" secondItem="EXt-Kb-gfv" secondAttribute="bottom" constant="4" id="bfr-Zx-e0H"/>
-                        <constraint firstAttribute="trailing" secondItem="VhY-zU-PdF" secondAttribute="trailing" id="ooG-c9-b00"/>
+                        <constraint firstAttribute="trailing" secondItem="VhY-zU-PdF" secondAttribute="trailing" constant="10" id="ooG-c9-b00"/>
                     </constraints>
                 </view>
             </subviews>

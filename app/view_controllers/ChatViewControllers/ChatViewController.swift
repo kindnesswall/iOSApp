@@ -18,6 +18,7 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel.delegate = self
         self.tableView.register(ChatTableViewCell.self, forCellReuseIdentifier: ChatTableViewCell.identifier)
+        self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.chats)
         // Do any additional setup after loading the view.
     }
     deinit {

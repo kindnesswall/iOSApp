@@ -78,9 +78,8 @@ class GiftDetailViewController: UIViewController {
     func fillUIWithGift(){
         
         giftNamelbl.text = gift?.title
-        if let date = gift?.createdAt?.convertToDate()?.getPersianDate() {
-            giftDatelbl.text = AppLanguage.getNumberString(number: date)
-        }
+        giftDatelbl.text = AppLanguage.getNumberString(number: gift?.createdAt?.convertToDate()?.getPersianDate() ?? "")
+        
         giftCategory.text = gift?.categoryTitle
         giftAddress.text = gift?.address
         if let isNew = gift?.isNew, isNew {
@@ -180,7 +179,8 @@ class GiftDetailViewController: UIViewController {
     
     func sendRequestMessage(chatId:Int){
         
-        let text = "درخواست هدیه \(self.gift?.title ?? "")"
+        let giftRequestChatMessage = LocalizationSystem.getStr(forKey: LanguageKeys.giftRequestChatMessage)
+        let text = "\(giftRequestChatMessage) '\(self.gift?.title ?? "")'"
         
         let startNewChatProtocol = AppDelegate.me().startNewChatProtocol
         guard let messagesViewModel = startNewChatProtocol?.writeMessage(text: text, chatId: chatId) else {
