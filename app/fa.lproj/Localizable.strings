@@ -144,3 +144,5 @@
 "giftDonateChatMessage" = "اهدا هدیه";
 
 "giftDonationPrompt" = "آیا از اهدا این هدیه اطمینان دارید؟";
+
+"connecting" = "در حال اتصال...";

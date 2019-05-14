@@ -147,4 +147,5 @@ struct LanguageKeys {
     
     static let giftDonationPrompt : String = "giftDonationPrompt"
     
+    static let connecting : String = "connecting"
 }

@@ -59,9 +59,11 @@ extension ChatViewController : UITableViewDelegate {
 
 extension ChatViewController : ChatViewModelProtocol {
     func socketConnected() {
+        self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.chats)
     }
     
     func socketDisConnected() {
+        self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.connecting)
     }
     
     func reload() {
