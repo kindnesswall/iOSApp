@@ -14,7 +14,7 @@
 "TurnPasscodeOn" = "فعال کردن گذرواژه";
 "TurnPasscodeOff" = "غیرفعال کردن گذرواژه";
 
-"DonateGift" = "ثبت هدیه";
+"DonateGift" = "اهدا هدیه";
 
 "AppVersion" = "نسخه برنامه: ";
 
@@ -142,3 +142,5 @@
 "descriptionOfUserOnChatList" = "کاربر با شناسه";
 "giftRequestChatMessage" = "درخواست هدیه";
 "giftDonateChatMessage" = "اهدا هدیه";
+
+"giftDonationPrompt" = "آیا از اهدا این هدیه اطمینان دارید؟";

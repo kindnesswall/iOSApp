@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KeychainSwift
 
 class RegisteredGiftViewModel: GiftViewModel {
     

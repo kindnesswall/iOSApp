@@ -144,4 +144,7 @@ struct LanguageKeys {
     
     static let giftRequestChatMessage : String = "giftRequestChatMessage"
     static let giftDonateChatMessage : String = "giftDonateChatMessage"
+    
+    static let giftDonationPrompt : String = "giftDonationPrompt"
+    
 }

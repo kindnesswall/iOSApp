@@ -27,6 +27,10 @@ class MessagesViewModel {
         self.chatId=chatId
     }
     
+    deinit {
+        print("MessagesViewModel deinit")
+    }
+    
     func updateCuratedMessages(){
         curatedMessages = [[TextMessage]]()
         var lastDate:String? = nil

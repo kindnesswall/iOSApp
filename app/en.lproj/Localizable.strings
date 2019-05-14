@@ -142,3 +142,7 @@
 "descriptionOfUserOnChatList" = "User With ID";
 "giftRequestChatMessage" = "Requestion of gift";
 "giftDonateChatMessage" = "Donation of gift";
+
+"giftDonationPrompt" = "Are you sure that you want to donate the gift?";
+
+

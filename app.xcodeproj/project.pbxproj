@@ -147,6 +147,10 @@
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
 		604FB576228234AD00795CE2 /* MessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604FB578228234AD00795CE2 /* MessagesViewController.xib */; };
 		604FB57E2283616500795CE2 /* AppDelegate + Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604FB57D2283616500795CE2 /* AppDelegate + Login.swift */; };
+		604FB58222860B8100795CE2 /* GiftsToDonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604FB58022860B8100795CE2 /* GiftsToDonateViewController.swift */; };
+		604FB58322860B8100795CE2 /* GiftsToDonateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604FB58122860B8100795CE2 /* GiftsToDonateViewController.xib */; };
+		604FB58522860C5700795CE2 /* GiftsToDonateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604FB58422860C5700795CE2 /* GiftsToDonateViewModel.swift */; };
+		604FB5BF228B6DBE00795CE2 /* Donate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604FB5BE228B6DBE00795CE2 /* Donate.swift */; };
 		60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */; };
 		60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1821D7CFA60058421A /* ReloadablePage.swift */; };
 		607E78752279D6CA00FF0008 /* String + ConvertToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78742279D6CA00FF0008 /* String + ConvertToDate.swift */; };
@@ -387,6 +391,10 @@
 		604FB57A228234F000795CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MessagesViewController.strings; sourceTree = "<group>"; };
 		604FB57C228234F400795CE2 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/MessagesViewController.strings; sourceTree = "<group>"; };
 		604FB57D2283616500795CE2 /* AppDelegate + Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate + Login.swift"; sourceTree = "<group>"; };
+		604FB58022860B8100795CE2 /* GiftsToDonateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftsToDonateViewController.swift; sourceTree = "<group>"; };
+		604FB58122860B8100795CE2 /* GiftsToDonateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftsToDonateViewController.xib; sourceTree = "<group>"; };
+		604FB58422860C5700795CE2 /* GiftsToDonateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftsToDonateViewModel.swift; sourceTree = "<group>"; };
+		604FB5BE228B6DBE00795CE2 /* Donate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Donate.swift; sourceTree = "<group>"; };
 		60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewModel.swift; sourceTree = "<group>"; };
 		60749B1821D7CFA60058421A /* ReloadablePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadablePage.swift; sourceTree = "<group>"; };
 		607E78742279D6CA00FF0008 /* String + ConvertToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + ConvertToDate.swift"; sourceTree = "<group>"; };
@@ -533,6 +541,7 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
+				604FB57F22860ADE00795CE2 /* GiftsToDonateViewController */,
 				607E78792279E1DE00FF0008 /* ChatViewControllers */,
 				52DD769321C6BFA200C2E012 /* lock */,
 				5263D5FF21B9272300B634A8 /* options list */,
@@ -604,6 +613,7 @@
 				52D1A14221DA09F4005EA2F0 /* firebase */,
 				60FAB841206503790039BF61 /* User Default Stored Models */,
 				05BFBBC21FDAA45C00DBCDDF /* Time.swift */,
+				604FB5BE228B6DBE00795CE2 /* Donate.swift */,
 				05BFBBDD1FE26A9000DBCDDF /* Gift.swift */,
 				05BFBBDF1FE26ADE00DBCDDF /* User.swift */,
 				05BFBBE11FE26B0500DBCDDF /* Category.swift */,
@@ -975,6 +985,15 @@
 			path = pop_up;
 			sourceTree = "<group>";
 		};
+		604FB57F22860ADE00795CE2 /* GiftsToDonateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				604FB58022860B8100795CE2 /* GiftsToDonateViewController.swift */,
+				604FB58122860B8100795CE2 /* GiftsToDonateViewController.xib */,
+			);
+			path = GiftsToDonateViewController;
+			sourceTree = "<group>";
+		};
 		60749B1721D7CE020058421A /* protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1095,6 +1114,7 @@
 				60C972EC21C9ACC700A8D1C5 /* GiftViewModel.swift */,
 				60C972EA21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift */,
 				5263D60221BB0CC300B634A8 /* DonatedGiftViewModel.swift */,
+				604FB58422860C5700795CE2 /* GiftsToDonateViewModel.swift */,
 			);
 			path = GiftViewModel;
 			sourceTree = "<group>";
@@ -1213,6 +1233,7 @@
 				60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */,
 				5247C8BF21E38A74009E8770 /* ContactUsViewController.xib in Resources */,
 				528A2DAB21AD3D8200DECE0F /* RequestToAGiftTableViewCell.xib in Resources */,
+				604FB58322860B8100795CE2 /* GiftsToDonateViewController.xib in Resources */,
 				6080700921B3F82A0046F940 /* ContactUsCollectionViewCell.xib in Resources */,
 				054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */,
 				528A2DCB21ADAA2100DECE0F /* LanguageViewController.xib in Resources */,
@@ -1407,6 +1428,7 @@
 				5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */,
 				607E78802279E21F00FF0008 /* MessagesViewController.swift in Sources */,
 				05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */,
+				604FB58222860B8100795CE2 /* GiftsToDonateViewController.swift in Sources */,
 				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
 				6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */,
 				52D1A14121D9376E005EA2F0 /* RGVC+vm delegate.swift in Sources */,
@@ -1433,6 +1455,7 @@
 				5247C8B821E38A52009E8770 /* StatisticViewController.swift in Sources */,
 				05029ED21FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift in Sources */,
 				607E789D2279E28D00FF0008 /* Message.swift in Sources */,
+				604FB58522860C5700795CE2 /* GiftsToDonateViewModel.swift in Sources */,
 				6019F27521B80257003C3E76 /* AppDelegate + Tabbar.swift in Sources */,
 				60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */,
 				05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */,
@@ -1483,6 +1506,7 @@
 				52466DE321DB99EC0086F327 /* HomeViewModelDelegate.swift in Sources */,
 				60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */,
 				607E78922279E25600FF0008 /* MessagesTableViewCell + Layout.swift in Sources */,
+				604FB5BF228B6DBE00795CE2 /* Donate.swift in Sources */,
 				607E78912279E25600FF0008 /* ChatTableViewCell + Layout.swift in Sources */,
 				60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */,
 				607E788D2279E25600FF0008 /* MessagesDateTableViewCell + Layout.swift in Sources */,

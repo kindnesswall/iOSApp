@@ -15,10 +15,14 @@ class MessagesViewController: UIViewController,MessagesDelegate {
     @IBOutlet weak var tableView: UITableView!
     var viewModel:MessagesViewModel?
     
+    var donateGiftBarBtn: UIBarButtonItem?
+    
     weak var delegate:MessagesViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.configBarButtons()
         
         self.tableView.register(MessagesTableViewCell.self, forCellReuseIdentifier: MessagesTableViewCell.MessageUserType.user.rawValue)
         self.tableView.register(MessagesTableViewCell.self, forCellReuseIdentifier: MessagesTableViewCell.MessageUserType.others.rawValue)
@@ -29,6 +33,49 @@ class MessagesViewController: UIViewController,MessagesDelegate {
         self.configureMessageInput()
         
         self.viewModel?.delegate = self
+        
+    }
+    
+    func configBarButtons(){
+        donateGiftBarBtn = UINavigationItem.getNavigationItem(
+            target: self,
+            action: #selector(self.donateGiftBtnTapped),
+            text:LocalizationSystem.getStr(forKey: LanguageKeys.DonateGift),
+            font:AppConst.Resource.Font.getRegularFont(size: 16)
+        )
+        
+        self.navigationItem.rightBarButtonItems=[donateGiftBarBtn!]
+    }
+    
+    @objc func donateGiftBtnTapped(){
+        let controller = GiftsToDonateViewController()
+        controller.toUserId = viewModel?.getContactId()
+        controller.donateGiftHandler = { [weak self] gift in
+            self?.sendGiftDonationMessage(gift: gift)
+        }
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func sendGiftDonationMessage(gift:Gift){
+        
+        let giftDonateChatMessage = LocalizationSystem.getStr(forKey: LanguageKeys.giftDonateChatMessage)
+        let text = "\(giftDonateChatMessage) '\(gift.title ?? "")'"
+        
+        guard let viewModel = self.viewModel else {
+            return
+        }
+        
+        self.delegate?.writeMessage(text: text, messagesViewModel: viewModel)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.setDefaultStyle()
+        self.setAllTextsInView()
+    }
+    
+    func setAllTextsInView(){
+        self.donateGiftBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.DonateGift)
     }
     
     func configureMessageInput(){

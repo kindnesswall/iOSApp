@@ -27,6 +27,7 @@ class ChatViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.setDefaultStyle()
         self.reload()
     }
 }
