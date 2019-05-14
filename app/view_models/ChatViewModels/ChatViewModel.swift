@@ -102,7 +102,6 @@ class ChatViewModel: NSObject {
         }
         for textMessage in textMessages {
             let _ = self.addMessage(message: textMessage, isSending: false)
-            self.sendAck(textMessage: textMessage)
         }
         
     }
@@ -224,6 +223,10 @@ extension ChatViewModel : MessagesViewControllerDelegate {
     
     func loadMoreMessages(chatId:Int,beforeId:Int?){
         self.fetchMoreMessages(chatId: chatId, beforeId: beforeId)
+    }
+    
+    func sendAckMessage(textMessage:TextMessage) {
+        self.sendAck(textMessage: textMessage)
     }
 }
 

@@ -131,6 +131,7 @@ extension MessagesViewController : UITableViewDataSource {
         }
         let message = viewModel.curatedMessages[indexPath.section][indexPath.row]
         message.hasSeen = true
+        self.delegate?.sendAckMessage(textMessage: message)
         
         let messageType:MessagesTableViewCell.MessageUserType
         if message.senderId == viewModel.userId {
@@ -174,4 +175,5 @@ extension MessagesViewController : UITableViewDelegate {
 protocol MessagesViewControllerDelegate : class{
     func writeMessage(text:String,messagesViewModel:MessagesViewModel)
     func loadMoreMessages(chatId:Int,beforeId:Int?)
+    func sendAckMessage(textMessage:TextMessage)
 }
