@@ -183,11 +183,13 @@ class RegisterGiftViewModel: NSObject {
         if imagesUrl.count > index {
             imagesUrl.remove(at: index)
         }
-        if tasks.count > index {
-            tasks.remove(at: index)
-        }
         if sessions.count > index {
+            sessions[index].invalidateAndCancel()
             sessions.remove(at: index)
+        }
+        if tasks.count > index {
+            tasks[index].cancel()
+            tasks.remove(at: index)
         }
     }
     
