@@ -74,9 +74,9 @@ extension AppDelegate : UITabBarControllerDelegate{
             controller=RegisterGiftViewController()
             
         case AppConst.TabIndex.Chat:
-            let chatViewController = ChatViewController()
-            self.startNewChatProtocol = chatViewController.viewModel
-            controller = chatViewController
+            let contactsLastMsgesViewController = ContactsLastMessageViewController()
+            self.startNewChatProtocol = contactsLastMsgesViewController.viewModel
+            controller = contactsLastMsgesViewController
             
         case AppConst.TabIndex.MyKindnessWall:
             controller=MyKindnessWallViewController()
@@ -108,7 +108,7 @@ extension AppDelegate : UITabBarControllerDelegate{
             ||
             (viewController as? UINavigationController)?.viewControllers.first as? MyGiftsViewController != nil
             ||
-            (viewController as? UINavigationController)?.viewControllers.first as? ChatViewController != nil  {
+            (viewController as? UINavigationController)?.viewControllers.first as? ContactsLastMessageViewController != nil  {
             return true
         }
         
