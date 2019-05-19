@@ -24,6 +24,7 @@ struct LanguageKeys {
     
     static let noGiftRegistered : String = "noGiftRegistered"
     static let noGiftDonated : String = "noGiftDonated"
+    static let noGiftReceived: String = "noGiftReceived"
     
     static let ok : String = "ok"
     

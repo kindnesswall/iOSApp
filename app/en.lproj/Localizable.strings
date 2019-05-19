@@ -26,6 +26,7 @@
 
 "noGiftRegistered" = "There is no gift that registered by you";
 "noGiftDonated" = "There is no gift that donated by you";
+"noGiftReceived" = "There is no gift that received by you";
 
 "intro_culture" = "KindnessWall's Culture";
 "intro_donate_platform" = "2nate.com";

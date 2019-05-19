@@ -1,0 +1,9 @@
+
+/* Class = "UISegmentedControl"; DEa-fe-m5I.segmentTitles[0] = "Donated"; ObjectID = "DEa-fe-m5I"; */
+"DEa-fe-m5I.segmentTitles[0]" = "اهدا شده";
+
+/* Class = "UISegmentedControl"; DEa-fe-m5I.segmentTitles[1] = "Received"; ObjectID = "DEa-fe-m5I"; */
+"DEa-fe-m5I.segmentTitles[1]" = "دریافت شده";
+
+/* Class = "UISegmentedControl"; DEa-fe-m5I.segmentTitles[2] = "Registered"; ObjectID = "DEa-fe-m5I"; */
+"DEa-fe-m5I.segmentTitles[2]" = "ثبت شده";
