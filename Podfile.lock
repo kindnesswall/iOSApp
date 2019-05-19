@@ -98,6 +98,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - PanModal (1.2.2)
   - Protobuf (3.7.0)
   - Spring (1.0.6)
   - Starscream (3.0.6)
@@ -124,6 +125,7 @@ DEPENDENCIES:
   - KeychainSwift (~> 10.0)
   - Kingfisher (~> 4.0)
   - MGSwipeTableCell
+  - PanModal
   - Spring (from `https://github.com/MengTo/Spring.git`)
   - Starscream (~> 3.0.2)
   - SwiftMessages
@@ -155,6 +157,7 @@ SPEC REPOS:
     - Kingfisher
     - MGSwipeTableCell
     - nanopb
+    - PanModal
     - Protobuf
     - Starscream
     - SwiftMessages
@@ -194,6 +197,7 @@ SPEC CHECKSUMS:
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   MGSwipeTableCell: dc4eca3212ed38a563b27d6aa7b3c01ce656c1e2
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  PanModal: db200380a267634f746f8dea550dc3d1df017fc0
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
@@ -202,6 +206,6 @@ SPEC CHECKSUMS:
   UICircularProgressRing: b3eba859a515e4d9d38503eec913f09c28450785
   XLActionController: d7dea0b162bd3977311bcba7d377b88d6b87a7b4
 
-PODFILE CHECKSUM: 39b5964fd62ad30a34f91c59401ac5190875446b
+PODFILE CHECKSUM: 1d666e934123660deb2591d4971257d5aa341992
 
 COCOAPODS: 1.6.0

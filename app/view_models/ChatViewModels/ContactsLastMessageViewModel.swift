@@ -170,8 +170,6 @@ class ContactsLastMessageViewModel: NSObject {
             }
         }
     }
-    
-    
 }
 
 extension ContactsLastMessageViewModel : WebSocketDelegate{
