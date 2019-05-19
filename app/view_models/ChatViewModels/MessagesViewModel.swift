@@ -36,7 +36,13 @@ class MessagesViewModel {
         var lastDate:String? = nil
         var sameDateMessages:[TextMessage] = []
         for message in messages {
-            guard let date = message.createdAt?.getPersianDate() else {
+            
+            var sendDate = message.createdAt
+            if sendDate == nil, message.sendingState == .sending {
+                sendDate = Date()
+            }
+            
+            guard let date = sendDate?.getPersianDate() else {
                 continue
             }
             
