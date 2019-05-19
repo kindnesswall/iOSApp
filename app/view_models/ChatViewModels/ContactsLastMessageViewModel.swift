@@ -1,5 +1,5 @@
 //
-//  ChatViewModel.swift
+//  ContactsLastMessageViewModel.swift
 //  KindnessWallChat
 //
 //  Created by Amir Hossein on 3/11/19.
@@ -10,7 +10,7 @@ import UIKit
 import Starscream
 import KeychainSwift
 
-class ChatViewModel: NSObject {
+class ContactsLastMessageViewModel: NSObject {
     
     var socket:WebSocket?
     var userId :Int
@@ -26,7 +26,7 @@ class ChatViewModel: NSObject {
     }
     
     deinit {
-        print("ChatViewModel deinit")
+        print("ContactsLastMessageViewModel deinit")
     }
     
     func connect() {
@@ -174,7 +174,7 @@ class ChatViewModel: NSObject {
     
 }
 
-extension ChatViewModel : WebSocketDelegate{
+extension ContactsLastMessageViewModel : WebSocketDelegate{
     
     func websocketDidConnect(socket: WebSocketClient) {
         print("websocketDidConnect")
@@ -209,7 +209,7 @@ extension ChatViewModel : WebSocketDelegate{
     }
 }
 
-extension ChatViewModel : MessagesViewControllerDelegate {
+extension ContactsLastMessageViewModel : MessagesViewControllerDelegate {
     
     func writeMessage(text:String,messagesViewModel:MessagesViewModel){
         
@@ -230,7 +230,7 @@ extension ChatViewModel : MessagesViewControllerDelegate {
     }
 }
 
-extension ChatViewModel : StartNewChatProtocol {
+extension ContactsLastMessageViewModel : StartNewChatProtocol {
     
     func writeMessage(text:String,chatId:Int)->MessagesViewModel{
         

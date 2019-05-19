@@ -55,18 +55,6 @@ class ChatTableViewCell: UITableViewCell {
         }
     }
     
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         print("init(coder:) has not been implemented")
         return nil

@@ -1,5 +1,5 @@
 //
-//  ChatViewController.swift
+//  ContactsLastMessageViewController.swift
 //  KindnessWallChat
 //
 //  Created by Amir Hossein on 3/11/19.
@@ -9,10 +9,10 @@
 import UIKit
 
 
-class ChatViewController: UIViewController {
+class ContactsLastMessageViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    let viewModel = ChatViewModel()
+    let viewModel = ContactsLastMessageViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class ChatViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     deinit {
-        print("ChatViewController deinit")
+        print("ContactsLastMessageViewController deinit")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,7 +32,7 @@ class ChatViewController: UIViewController {
     }
 }
 
-extension ChatViewController : UITableViewDataSource {
+extension ContactsLastMessageViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.allChats.count
     }
@@ -46,7 +46,7 @@ extension ChatViewController : UITableViewDataSource {
     
 }
 
-extension ChatViewController : UITableViewDelegate {
+extension ContactsLastMessageViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let messagesViewModel = self.viewModel.allChats[indexPath.row]
         let controller = MessagesViewController()
@@ -57,7 +57,7 @@ extension ChatViewController : UITableViewDelegate {
     }
 }
 
-extension ChatViewController : ChatViewModelProtocol {
+extension ContactsLastMessageViewController : ChatViewModelProtocol {
     func socketConnected() {
         self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.chats)
     }
