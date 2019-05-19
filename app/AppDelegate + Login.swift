@@ -18,6 +18,9 @@ extension AppDelegate {
         keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
         keychain.set(mobile, forKey: AppConst.KeyChain.PHONE_NUMBER)
         
+        //Test
+        keychain.set(true, forKey: AppConst.KeyChain.IsAdmin)
+        
         resetAppAfterSwitchUser()
     }
     
@@ -27,6 +30,7 @@ extension AppDelegate {
         keychain.delete(AppConst.KeyChain.USER_ID)
         keychain.delete(AppConst.KeyChain.Authorization)
         keychain.delete(AppConst.KeyChain.PHONE_NUMBER)
+        keychain.delete(AppConst.KeyChain.IsAdmin)
         
         resetAppAfterSwitchUser()
     }
