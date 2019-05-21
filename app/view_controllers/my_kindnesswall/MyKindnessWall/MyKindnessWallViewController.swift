@@ -105,7 +105,7 @@ class MyKindnessWallViewController: UIViewController {
     }
     
     @IBAction func bugReportBtnAction(_ sender: Any) {
-        let urlAddress = APIURLs.telegramLink
+        let urlAddress = URIs.telegramLink
         URLBrowser(urlAddress: urlAddress).openURL()
     }
     

@@ -49,36 +49,36 @@ class RequestsViewController: UIViewController {
             return
         }
         isFirstTime = false
-        ApiMethods.getRequestsMyGifts(startIndex: 0) { [weak self] (data, response, error) in
-            
-            ApiUtility.watch(data: data)
-            if let response = response as? HTTPURLResponse {
-                if response.statusCode < 200 && response.statusCode >= 300 {
-                    return
-                }
-            }
-            
-            guard error == nil else {
-                print("Get error register")
-                return
-            }
-            
-            if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
-                
-                
-                self?.loadingIndicator.stopLoading()
-                
-                self?.gifts.append(contentsOf: reply)
-                self?.tableview.reloadData()
-                
-                self?.showViewsBasedOnNumberOfGifts()
-                
-                print("count:")
-                print(reply.count)
-                
-            }
-            
-        }
+//        ApiMethods.getRequestsMyGifts(startIndex: 0) { [weak self] (data, response, error) in
+//
+//            ApiUtility.watch(data: data)
+//            if let response = response as? HTTPURLResponse {
+//                if response.statusCode < 200 && response.statusCode >= 300 {
+//                    return
+//                }
+//            }
+//
+//            guard error == nil else {
+//                print("Get error register")
+//                return
+//            }
+//
+//            if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
+//
+//
+//                self?.loadingIndicator.stopLoading()
+//
+//                self?.gifts.append(contentsOf: reply)
+//                self?.tableview.reloadData()
+//
+//                self?.showViewsBasedOnNumberOfGifts()
+//
+//                print("count:")
+//                print(reply.count)
+//
+//            }
+//
+//        }
     }
     
     func showViewsBasedOnNumberOfGifts() {

@@ -63,24 +63,24 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
         startLoadingPage()
         
         let input : APIEmptyInput? = nil
-        APICall.request(url: APIURLs.getStatistics, httpMethod: .GET, input: input) { [weak self] (data, response, error)  in
-//            APICall.printData(data: data)
-            
-            self?.statisticsKeys = []
-            self?.statisticsValues = []
-            self?.stopLoadingPage()
-            
-            if let statisticsData = APICall.readJsonData(data: data, outputType: Statistics.self) {
-                if let statistics = statisticsData.statistics {
-                    for (key , value) in statistics {
-                        self?.statisticsKeys.append(key)
-                        self?.statisticsValues.append(value)
-                    }
-                    self?.tableView.reloadData()
-                }
-                
-            }
-        }
+//        APICall.request(url: APIURLs.getStatistics, httpMethod: .GET, input: input) { [weak self] (data, response, error)  in
+////            APICall.printData(data: data)
+//            
+//            self?.statisticsKeys = []
+//            self?.statisticsValues = []
+//            self?.stopLoadingPage()
+//            
+//            if let statisticsData = APICall.readJsonData(data: data, outputType: Statistics.self) {
+//                if let statistics = statisticsData.statistics {
+//                    for (key , value) in statistics {
+//                        self?.statisticsKeys.append(key)
+//                        self?.statisticsValues.append(value)
+//                    }
+//                    self?.tableView.reloadData()
+//                }
+//                
+//            }
+//        }
         
     }
 

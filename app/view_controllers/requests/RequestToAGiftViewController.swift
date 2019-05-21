@@ -108,24 +108,24 @@ class RequestToAGiftViewController: UIViewController {
                 if req === clickedRequest {
                     
                     self.hud.show(in: self.view)
-                    if let fromUserID = self.requests[index].fromUserId,
-                        let giftId = self.requests[index].giftId{
-                        ApiMethods.acceptRequest(
-                            giftId: giftId,
-                            fromUserId: fromUserID
-                        ) { [weak self] (data) in
-                            
-                            self?.hud.dismiss(afterDelay: 0)
-                            
-                            FlashMessage.showMessage(
-                                body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_accepted),
-                                theme: .success
-                            )
-                            self?.onAccept?()
-                            
-                            self?.navigationController?.popViewController(animated: true)
-                        }
-                    }
+//                    if let fromUserID = self.requests[index].fromUserId,
+//                        let giftId = self.requests[index].giftId{
+//                        ApiMethods.acceptRequest(
+//                            giftId: giftId,
+//                            fromUserId: fromUserID
+//                        ) { [weak self] (data) in
+//
+//                            self?.hud.dismiss(afterDelay: 0)
+//
+//                            FlashMessage.showMessage(
+//                                body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_accepted),
+//                                theme: .success
+//                            )
+//                            self?.onAccept?()
+//
+//                            self?.navigationController?.popViewController(animated: true)
+//                        }
+//                    }
                     
                 }
             }
@@ -154,23 +154,23 @@ class RequestToAGiftViewController: UIViewController {
                         
                         self.hud.show(in: self.view)
                         
-                        ApiMethods.denyRequest(
-                            giftId: giftId,
-                            fromUserId: fromUserID) { [weak self] (data) in
-                            
-                                self?.hud.dismiss(afterDelay: 0)
-                                
-                                FlashMessage.showMessage(
-                                body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_rejected)
-                                ,theme: .warning)
-                            
-                                self?.requests.remove(at: index)
-                            
-                                self?.tableview.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
-                                self?.tableview.reloadData()
-                                
-                                self?.onReject?()
-                        }
+//                        ApiMethods.denyRequest(
+//                            giftId: giftId,
+//                            fromUserId: fromUserID) { [weak self] (data) in
+//
+//                                self?.hud.dismiss(afterDelay: 0)
+//
+//                                FlashMessage.showMessage(
+//                                body:LocalizationSystem.getStr(forKey: LanguageKeys.popup_request_rejected)
+//                                ,theme: .warning)
+//
+//                                self?.requests.remove(at: index)
+//
+//                                self?.tableview.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+//                                self?.tableview.reloadData()
+//
+//                                self?.onReject?()
+//                        }
                     }
                 }
             }

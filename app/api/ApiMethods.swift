@@ -17,60 +17,60 @@ class ApiMethods {
     
     
     
-    static func getChatConversation(chatId:Int,startIndex:Int, complitionHandler:@escaping (ChatConversationOutput)->Void) {
-        
-        APIRequest.request(
-            url: APIURLs.getChatConversation,
-            inputDictionary: ["chat_id":chatId, "start_index":startIndex, "last_index":startIndex + offset - 1 ])
-        {(data, response, error) in
-            
-            ApiUtility.watch(data: data)
-            
-//            if let reply=APIRequest.readJsonData(
-//                data: data,
-//                outputType: ChatConversationOutput.self) {
-//                
-//                if let status=reply.status,status==APIStatus.DONE {
+//    static func getChatConversation(chatId:Int,startIndex:Int, complitionHandler:@escaping (ChatConversationOutput)->Void) {
 //
-//                    complitionHandler(reply)
+//        APIRequest.request(
+//            url: APIURLs.getChatConversation,
+//            inputDictionary: ["chat_id":chatId, "start_index":startIndex, "last_index":startIndex + offset - 1 ])
+//        {(data, response, error) in
 //
-//                }
-//            }
-        }
-    }
+//            ApiUtility.watch(data: data)
+//
+////            if let reply=APIRequest.readJsonData(
+////                data: data,
+////                outputType: ChatConversationOutput.self) {
+////
+////                if let status=reply.status,status==APIStatus.DONE {
+////
+////                    complitionHandler(reply)
+////
+////                }
+////            }
+//        }
+//    }
     
-    static func sendMessage(chatId:Int, messageText:String, complitionHandler:@escaping (Int)->Void){
-        
-        APIRequest.request(
-            url: APIURLs.sendMessage,
-            inputDictionary: ["chat_id":chatId, "message_text":messageText ])
-        {(data, response, error) in
-            
-            ApiUtility.watch(data: data)
-            
-//            if let reply=APIRequest.readJsonData(
-//                data: data,
-//                outputType: StatusOutput.self) {
-//                
-//                if let status=reply.status {
-//                    
-//                    complitionHandler(status)
-//                    
-//                }
-//            }
-        }
-        
-    }
+//    static func sendMessage(chatId:Int, messageText:String, complitionHandler:@escaping (Int)->Void){
+//
+//        APIRequest.request(
+//            url: APIURLs.sendMessage,
+//            inputDictionary: ["chat_id":chatId, "message_text":messageText ])
+//        {(data, response, error) in
+//
+//            ApiUtility.watch(data: data)
+//
+////            if let reply=APIRequest.readJsonData(
+////                data: data,
+////                outputType: StatusOutput.self) {
+////
+////                if let status=reply.status {
+////
+////                    complitionHandler(status)
+////
+////                }
+////            }
+//        }
+//
+//    }
     
-    public static func getRequestsMyGifts(startIndex:Int, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
-        
-        let mainURL: String = APIURLs.getRequestsMyGifts + "/" + "\(startIndex)/\(startIndex+offset)"
-        
-        APIRequest.Request(url: mainURL, httpMethod: .get, complitionHandler: { (data, response, error) in
-            
-            completionHandler(data, response, error)
-        })
-    }
+//    public static func getRequestsMyGifts(startIndex:Int, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
+//
+//        let mainURL: String = APIURLs.getRequestsMyGifts + "/" + "\(startIndex)/\(startIndex+offset)"
+//
+//        APIRequest.Request(url: mainURL, httpMethod: .get, complitionHandler: { (data, response, error) in
+//
+//            completionHandler(data, response, error)
+//        })
+//    }
     
 //    public static func getRecievedRequestList(giftId:String, startIndex:Int, completionHandler:@escaping(Data?,URLResponse?,Error?)->Void) {
 //        
@@ -111,21 +111,21 @@ class ApiMethods {
 //    }
     
     
-    public static func getGift(
-        giftId:String,
-        completionHandler:@escaping(Data?)->Void) {
-        
-        let mainURL: String = APIURLs.Gift + "/" + giftId
-        
-        APIRequest.Request(url: mainURL, httpMethod: .get, complitionHandler: { (data, response, error) in
-            
-            guard error == nil else {
-                print("Get error register")
-                return
-            }
-            completionHandler(data)
-        })
-    }
+//    public static func getGift(
+//        giftId:String,
+//        completionHandler:@escaping(Data?)->Void) {
+//
+//        let mainURL: String = APIURLs.Gift + "/" + giftId
+//
+//        APIRequest.Request(url: mainURL, httpMethod: .get, complitionHandler: { (data, response, error) in
+//
+//            guard error == nil else {
+//                print("Get error register")
+//                return
+//            }
+//            completionHandler(data)
+//        })
+//    }
     
     
 //    public static func deleteGift(giftId: String,
@@ -158,39 +158,39 @@ class ApiMethods {
 //        })
 //    }
     
-    public static func acceptRequest(giftId: String,
-                                     fromUserId : String,
-                                       completionHandler:@escaping(Data?)->Void) {
-        
-        let mainURL: String = APIURLs.acceptRequest + giftId + "/" + fromUserId
-        
-        APIRequest.Request(url: mainURL, httpMethod: .put, complitionHandler: { (data, response, error) in
-            
-            ApiUtility.watch(data: data)
-            guard error == nil else {
-                print("Get error register")
-                return
-            }
-            completionHandler(data)
-        })
-    }
+//    public static func acceptRequest(giftId: String,
+//                                     fromUserId : String,
+//                                       completionHandler:@escaping(Data?)->Void) {
+//
+//        let mainURL: String = APIURLs.acceptRequest + giftId + "/" + fromUserId
+//
+//        APIRequest.Request(url: mainURL, httpMethod: .put, complitionHandler: { (data, response, error) in
+//
+//            ApiUtility.watch(data: data)
+//            guard error == nil else {
+//                print("Get error register")
+//                return
+//            }
+//            completionHandler(data)
+//        })
+//    }
     
-    public static func denyRequest(giftId: String,
-                                     fromUserId : String,
-                                     completionHandler:@escaping(Data?)->Void) {
-        
-        let mainURL: String = APIURLs.denyRequest + giftId + "/" + fromUserId
-        
-        APIRequest.Request(url: mainURL, httpMethod: .put, complitionHandler: { (data, response, error) in
-            
-            ApiUtility.watch(data: data)
-            guard error == nil else {
-                print("Get error register")
-                return
-            }
-            completionHandler(data)
-        })
-    }
+//    public static func denyRequest(giftId: String,
+//                                     fromUserId : String,
+//                                     completionHandler:@escaping(Data?)->Void) {
+//        
+//        let mainURL: String = APIURLs.denyRequest + giftId + "/" + fromUserId
+//        
+//        APIRequest.Request(url: mainURL, httpMethod: .put, complitionHandler: { (data, response, error) in
+//            
+//            ApiUtility.watch(data: data)
+//            guard error == nil else {
+//                print("Get error register")
+//                return
+//            }
+//            completionHandler(data)
+//        })
+//    }
     
 //    public static func bookmark(giftId: String, completionHandler:@escaping(Data?)->Void) {
 //        

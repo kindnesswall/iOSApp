@@ -40,7 +40,6 @@
 		05644DCE1FFF06BD00B7C853 /* SectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05644DCC1FFF06BC00B7C853 /* SectionView.xib */; };
 		05644DD01FFF06F900B7C853 /* NibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DCF1FFF06F900B7C853 /* NibLoader.swift */; };
 		056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FBB581F9135EA0023C9CF /* HomeViewController.swift */; };
-		056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FBB601F91585C0023C9CF /* APIURLs.swift */; };
 		05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */; };
 		05AE64731FA93F4800FCCC28 /* ApiMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE64721FA93F4800FCCC28 /* ApiMethods.swift */; };
 		05B124CC202DB056007E28CC /* latest.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B124CB202DB056007E28CC /* latest.json */; };
@@ -267,7 +266,6 @@
 		05644DCC1FFF06BC00B7C853 /* SectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionView.xib; sourceTree = "<group>"; };
 		05644DCF1FFF06F900B7C853 /* NibLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoader.swift; sourceTree = "<group>"; };
 		056FBB581F9135EA0023C9CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = app/view_controllers/home/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
-		056FBB601F91585C0023C9CF /* APIURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLs.swift; sourceTree = "<group>"; };
 		05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiOutputs.swift; sourceTree = "<group>"; };
 		05AE64721FA93F4800FCCC28 /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
 		05B124CB202DB056007E28CC /* latest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = latest.json; path = app/latest.json; sourceTree = "<group>"; };
@@ -776,7 +774,6 @@
 				05DDD3E31F921F19006C5E31 /* APIRequest.swift */,
 				05DDD3E11F921E98006C5E31 /* ResponseModel.swift */,
 				6040F3A2206688A800FCD429 /* APIEmptyInput.swift */,
-				056FBB601F91585C0023C9CF /* APIURLs.swift */,
 				6024132222272E7A0094E6E2 /* URIs.swift */,
 				05DDD3DF1F921DCD006C5E31 /* ApiInput.swift */,
 				05AE64721FA93F4800FCCC28 /* ApiMethods.swift */,
@@ -1336,7 +1333,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-app/Pods-app-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-app/Pods-app-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
@@ -1383,7 +1380,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-app/Pods-app-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-app/Pods-app-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5246724621E3296E0086F327 /* Generate Apollo GraphQL API */ = {
@@ -1533,7 +1530,6 @@
 				05644DC81FFF01C300B7C853 /* ChatConversationResult.swift in Sources */,
 				52466DD921DB607D0086F327 /* RGVM+URLSessionTaskDelegate.swift in Sources */,
 				05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */,
-				056FBB611F91585C0023C9CF /* APIURLs.swift in Sources */,
 				601F83D32037367900F9118B /* Place.swift in Sources */,
 				52466DE521DB9A360086F327 /* HomeVM.swift in Sources */,
 				053C46F42291D28100074761 /* Profile + URLSessionDelegate.swift in Sources */,
