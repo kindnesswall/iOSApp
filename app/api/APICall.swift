@@ -145,16 +145,6 @@ class APICall {
         task.resume()
     }
     
-    //MARK: - Utilities
-    
-    static func readJsonData<JsonType:Codable>(data:Data?,outputType:JsonType.Type)->JsonType? {
-        guard let data=data else {
-            return nil
-        }
-        let output=try? JSONDecoder().decode(outputType, from: data)
-        return output
-    }
-    
     static func stopAndClearRequests(sessions:inout [URLSession?],tasks: inout [URLSessionDataTask?]){
         
         for task in tasks {
@@ -179,13 +169,4 @@ class APICall {
         sessions=[]
     }
     
-    
-    static func printData(data:Data?) {
-        guard let data=data else {
-            return
-        }
-        if let dataString=String(data: data, encoding: .utf8) {
-            print(dataString)
-        }
-    }
 }

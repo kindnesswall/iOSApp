@@ -137,7 +137,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                 return
             }
             
-            guard let token = APICall.readJsonData(data:data , outputType: Token.self) else {
+            guard let token = ApiUtility.convert(data:data , to: Token.self) else {
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
                 return
             }

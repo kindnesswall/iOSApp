@@ -23,27 +23,19 @@ class ApiUtility {
     
     public static func convert<JsonType:Codable>(data:Data?,to outputType:JsonType.Type)->JsonType? {
         
-        if let data=data {
-            let decoder = JSONDecoder()
-            do{
-                let reply = try decoder.decode(outputType, from: data)
-                return reply
-            }catch let err {
-                print("decoding error: \(err)")
-            }
+        guard let data=data else {
+            return nil
         }
-        return nil
-        
+        let output=try? JSONDecoder().decode(outputType, from: data)
+        return output
     }
     
     public static func watch(data:Data?){
-        if let data=data {
-            let log=String(data: data, encoding: .utf8)
-            if let log=log {
-                print(log)
-                
-            }
-            
+        guard let data=data else {
+            return
+        }
+        if let dataString=String(data: data, encoding: .utf8) {
+            print(dataString)
         }
     }
 }

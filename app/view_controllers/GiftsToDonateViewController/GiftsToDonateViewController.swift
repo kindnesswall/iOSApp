@@ -55,7 +55,7 @@ class GiftsToDonateViewController: UIViewController {
         
         let input = Donate(giftId: giftId, donatedToUserId: toUserId)
         APICall.request(url: URIs().donate, httpMethod: .POST, input: input) { [weak self] (data, response, error) in
-            guard let _ = APICall.readJsonData(data: data, outputType: Gift.self) else {
+            guard let _ = ApiUtility.convert(data: data, to: Gift.self) else {
                 return
             }
             

@@ -40,7 +40,7 @@ class GiftDetailVM: NSObject {
             guard error == nil,
                 let response = response as? HTTPURLResponse,
                 response.statusCode == APICall.OKStatus,
-                let chat = APICall.readJsonData(data: data, outputType: Chat.self),
+                let chat = ApiUtility.convert(data:data , to: Chat.self),
                 let chatId = chat.id
                 else {
                     FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
