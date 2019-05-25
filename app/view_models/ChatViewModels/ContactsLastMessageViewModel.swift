@@ -44,7 +44,8 @@ class ContactsLastMessageViewModel: NSObject {
     }
     
     private func sendTextMessage(textMessage:TextMessage) {
-        let message = Message(textMessages: [textMessage])
+        let contactMessage = ContactMessage(textMessages: [textMessage])
+        let message = Message(contactMessage: contactMessage)
         sendMessage(message: message)
     }
     private func sendMessage(message:Message){
@@ -71,22 +72,6 @@ class ContactsLastMessageViewModel: NSObject {
         self.sendMessage(message: message)
     }
     
-    func addMessage(message:TextMessage,isSending:Bool) -> MessagesViewModel {
-        
-        let messagesViewModel : MessagesViewModel = {
-            if let messagesViewModel = MessagesViewModel.find(chatId: message.chatId, list: self.allChats) {
-                return messagesViewModel
-            } else {
-                let messagesViewModel = MessagesViewModel(userId: self.userId, chatId: message.chatId)
-                self.allChats.append(messagesViewModel)
-                return messagesViewModel
-            }
-        }()
-        
-        self.addMessage(message: message, isSending: isSending, messagesViewModel: messagesViewModel)
-        
-        return messagesViewModel
-    }
     
     func addMessage(message:TextMessage,isSending:Bool,messagesViewModel:MessagesViewModel){
         
@@ -96,14 +81,39 @@ class ContactsLastMessageViewModel: NSObject {
     }
     
     
-    func textMessageIsReceived(message:Message){
-        guard let textMessages = message.textMessages else {
+    func contactMessageIsReceived(message:Message){
+        
+        guard let chatId = message.contactMessage?.chat?.id  else {
             return
         }
-        for textMessage in textMessages {
-            let _ = self.addMessage(message: textMessage, isSending: false)
+        
+        let messagesViewModel = addContact(chatId: chatId, contactInfo: message.contactMessage?.contactInfo)
+        
+        guard let textMessages = message.contactMessage?.textMessages else {
+            return
         }
         
+        for textMessage in textMessages {
+            self.addMessage(message: textMessage, isSending: false, messagesViewModel: messagesViewModel)
+        }
+    }
+    
+    func addContact(chatId:Int,contactInfo:ContactInfo?)->MessagesViewModel{
+        let messagesViewModel : MessagesViewModel = {
+            if let messagesViewModel = MessagesViewModel.find(chatId: chatId, list: self.allChats) {
+                return messagesViewModel
+            } else {
+                let messagesViewModel = MessagesViewModel(userId: self.userId, chatId: chatId)
+                self.allChats.append(messagesViewModel)
+                return messagesViewModel
+            }
+        }()
+        
+        if let contactInfo = contactInfo {
+            messagesViewModel.contactInfo = contactInfo
+        }
+        
+        return messagesViewModel
     }
     
     
@@ -114,13 +124,13 @@ class ContactsLastMessageViewModel: NSObject {
         switch controlMessage.type {
         case .ready:
             self.tryAgainAllSendingMessages()
-            self.fetchMessages()
+            self.fetchContacts()
             
         case .noMoreOldMessages:
-            guard let fetchMoreMessagesInput = controlMessage.fetchMoreMessagesInput else {
+            guard let fetchMessagesInput = controlMessage.fetchMessagesInput else {
                 break
             }
-            self.noMoreOldMessagesIsReceived(chatId: fetchMoreMessagesInput.chatId)
+            self.noMoreOldMessagesIsReceived(chatId: fetchMessagesInput.chatId)
         case .ack:
             guard let ackMessage = controlMessage.ackMessage else {
                 break
@@ -132,15 +142,15 @@ class ContactsLastMessageViewModel: NSObject {
         
     }
     
-    func fetchMessages(){
-        let controlMessage = ControlMessage(type: .fetch)
+    func fetchContacts(){
+        let controlMessage = ControlMessage(type: .fetchContact)
         let message = Message(controlMessage: controlMessage)
         sendMessage(message: message)
     }
     
-    func fetchMoreMessages(chatId:Int,beforeId:Int?){
-        let fetchMoreMessagesInput = FetchMoreMessagesInput(chatId: chatId, beforeId: beforeId)
-        let controlMessage = ControlMessage(type: .fetchMore, fetchMoreMessagesInput: fetchMoreMessagesInput)
+    func fetchMessages(chatId:Int,beforeId:Int?){
+        let fetchMessagesInput = FetchMessagesInput(chatId: chatId, beforeId: beforeId)
+        let controlMessage = ControlMessage(type: .fetchMessage, fetchMessagesInput: fetchMessagesInput)
         let message = Message(controlMessage: controlMessage)
         sendMessage(message: message)
     }
@@ -194,11 +204,12 @@ extension ContactsLastMessageViewModel : WebSocketDelegate{
         }
         
         switch message.type {
-        case .text:
-            self.textMessageIsReceived(message: message)
             
         case .control:
             self.controlMessageIsReceived(message: message)
+            
+        case .contact:
+            self.contactMessageIsReceived(message: message)
         }
     }
     
@@ -219,8 +230,8 @@ extension ContactsLastMessageViewModel : MessagesViewControllerDelegate {
         
     }
     
-    func loadMoreMessages(chatId:Int,beforeId:Int?){
-        self.fetchMoreMessages(chatId: chatId, beforeId: beforeId)
+    func loadMessages(chatId:Int,beforeId:Int?){
+        self.fetchMessages(chatId: chatId, beforeId: beforeId)
     }
     
     func sendAckMessage(textMessage:TextMessage) {
@@ -234,7 +245,9 @@ extension ContactsLastMessageViewModel : StartNewChatProtocol {
         
         let message = TextMessage(text: text, senderId: self.userId, chatId: chatId)
         
-        let messagesViewModel = self.addMessage(message: message, isSending: true)
+        let messagesViewModel = self.addContact(chatId: chatId, contactInfo: nil)
+        
+        self.addMessage(message: message, isSending: true, messagesViewModel: messagesViewModel)
         
         self.sendTextMessage(textMessage: message)
         

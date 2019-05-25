@@ -9,15 +9,15 @@ import Foundation
 
 final class ControlMessage : Codable {
     var type:ControlMessageType
-    var fetchMoreMessagesInput:FetchMoreMessagesInput?
+    var fetchMessagesInput:FetchMessagesInput?
     var ackMessage:AckMessage?
     
     init(type:ControlMessageType) {
         self.type=type
     }
-    init(type:ControlMessageType,fetchMoreMessagesInput:FetchMoreMessagesInput) {
+    init(type:ControlMessageType,fetchMessagesInput:FetchMessagesInput) {
         self.type = type
-        self.fetchMoreMessagesInput=fetchMoreMessagesInput
+        self.fetchMessagesInput=fetchMessagesInput
     }
     init(ackMessage:AckMessage) {
         self.type = .ack
@@ -27,8 +27,8 @@ final class ControlMessage : Codable {
 
 enum ControlMessageType : String,Codable {
     case ready
-    case fetch
-    case fetchMore
+    case fetchContact
+    case fetchMessage
     case noMoreOldMessages
     case ack
 }

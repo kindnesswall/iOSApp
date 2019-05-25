@@ -12,6 +12,7 @@ import Foundation
 class MessagesViewModel {
     var userId:Int
     var chatId:Int
+    var contactInfo:ContactInfo?
     private var messages = [TextMessage]() {
         didSet {
             updateCuratedMessages()

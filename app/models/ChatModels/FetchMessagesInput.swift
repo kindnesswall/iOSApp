@@ -1,5 +1,5 @@
 //
-//  FetchMoreMessagesInput.swift
+//  FetchMessagesInput.swift
 //  App
 //
 //  Created by Amir Hossein on 1/29/19.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FetchMoreMessagesInput: Codable {
+class FetchMessagesInput: Codable {
     var chatId:Int
     var beforeId:Int?
     

@@ -102,9 +102,9 @@ PODS:
   - Protobuf (3.7.0)
   - Spring (1.0.6)
   - Starscream (3.0.6)
-  - SwiftMessages (6.0.2):
-    - SwiftMessages/App (= 6.0.2)
-  - SwiftMessages/App (6.0.2)
+  - SwiftMessages (7.0.0):
+    - SwiftMessages/App (= 7.0.0)
+  - SwiftMessages/App (7.0.0)
   - SwiftyOnboard (1.3.8)
   - UICircularProgressRing (6.1.0)
   - XLActionController/Core (5.0.0)
@@ -201,11 +201,11 @@ SPEC CHECKSUMS:
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
-  SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
+  SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
   SwiftyOnboard: de60e90c2af23dd61b01ec0c6a8d0be3370f857b
   UICircularProgressRing: b3eba859a515e4d9d38503eec913f09c28450785
   XLActionController: d7dea0b162bd3977311bcba7d377b88d6b87a7b4
 
 PODFILE CHECKSUM: 1d666e934123660deb2591d4971257d5aa341992
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.5.3

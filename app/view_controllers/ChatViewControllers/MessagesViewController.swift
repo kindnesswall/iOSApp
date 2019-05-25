@@ -147,7 +147,7 @@ extension MessagesViewController : UITableViewDataSource {
         indexPath.row == viewModel.curatedMessages[indexPath.section].count-1 {
             if !viewModel.noMoreOldMessages {
                 if let beforeId = message.id {
-                    self.delegate?.loadMoreMessages(chatId: viewModel.chatId, beforeId: beforeId)
+                    self.delegate?.loadMessages(chatId: viewModel.chatId, beforeId: beforeId)
                 }
             }
         }
@@ -174,6 +174,6 @@ extension MessagesViewController : UITableViewDelegate {
 
 protocol MessagesViewControllerDelegate : class{
     func writeMessage(text:String,messagesViewModel:MessagesViewModel)
-    func loadMoreMessages(chatId:Int,beforeId:Int?)
+    func loadMessages(chatId:Int,beforeId:Int?)
     func sendAckMessage(textMessage:TextMessage)
 }
