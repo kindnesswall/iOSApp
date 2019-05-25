@@ -76,13 +76,7 @@ class MessagesViewModel {
     }
     
     func getContactId()->Int?{
-        guard let firstMessage = self.messages.first else {
-            return nil
-        }
-        if firstMessage.senderId != self.userId {
-            return firstMessage.senderId
-        }
-        return firstMessage.receiverId
+        return contactInfo?.id
     }
     
     func addMessage(message:TextMessage,isSending:Bool) {

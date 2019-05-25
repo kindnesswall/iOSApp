@@ -34,6 +34,11 @@ class MessagesViewController: UIViewController,MessagesDelegate {
         
         self.viewModel?.delegate = self
         
+        guard let viewModel = viewModel else {
+            return
+        }
+        self.delegate?.loadMessages(chatId: viewModel.chatId, beforeId: nil)
+        
     }
     
     func configBarButtons(){
