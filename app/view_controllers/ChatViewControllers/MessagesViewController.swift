@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import PanModal
 
 class MessagesViewController: UIViewController,MessagesDelegate {
     
+    @IBAction func donateGift(_ sender: Any) {
+        donateGiftBtnTapped()
+    }
     @IBOutlet weak var messageInput: UITextView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -42,14 +46,14 @@ class MessagesViewController: UIViewController,MessagesDelegate {
     }
     
     func configBarButtons(){
-        donateGiftBarBtn = UINavigationItem.getNavigationItem(
-            target: self,
-            action: #selector(self.donateGiftBtnTapped),
-            text:LocalizationSystem.getStr(forKey: LanguageKeys.DonateGift),
-            font:AppConst.Resource.Font.getRegularFont(size: 16)
-        )
+//        donateGiftBarBtn = UINavigationItem.getNavigationItem(
+//            target: self,
+//            action: #selector(self.donateGiftBtnTapped),
+//            text:LocalizationSystem.getStr(forKey: LanguageKeys.DonateGift),
+//            font:AppConst.Resource.Font.getRegularFont(size: 16)
+//        )
         
-        self.navigationItem.rightBarButtonItems=[donateGiftBarBtn!]
+//        self.navigationItem.rightBarButtonItems=[donateGiftBarBtn!]
     }
     
     @objc func donateGiftBtnTapped(){
@@ -58,7 +62,8 @@ class MessagesViewController: UIViewController,MessagesDelegate {
         controller.donateGiftHandler = { [weak self] gift in
             self?.sendGiftDonationMessage(gift: gift)
         }
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController?.presentPanModal(controller)
+//        pushViewController(controller, animated: true)
     }
     
     func sendGiftDonationMessage(gift:Gift){
@@ -88,6 +93,9 @@ class MessagesViewController: UIViewController,MessagesDelegate {
         self.messageInput.layer.borderWidth = 1
         self.messageInput.layer.cornerRadius = 10
         self.messageInput.layer.masksToBounds = true
+        
+        self.messageInput.isScrollEnabled = false
+        self.messageInput.sizeToFit()
     }
     
     deinit {

@@ -27,61 +27,70 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="udf-VT-x7G">
-                    <rect key="frame" x="0.0" y="20" width="375" height="599"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="udf-VT-x7G">
+                    <rect key="frame" x="0.0" y="20" width="375" height="597"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="6wK-gm-LC7"/>
                         <outlet property="delegate" destination="-1" id="lZy-b3-kwL"/>
                     </connections>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="01z-6Z-8lL">
-                    <rect key="frame" x="0.0" y="619" width="375" height="48"/>
+                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oeD-lF-th6">
+                    <rect key="frame" x="66" y="617" width="249" height="50"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhY-zU-PdF">
-                            <rect key="frame" x="315" y="7" width="50" height="34"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="50" id="XoQ-tm-EMj"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
-                            <state key="normal" title="ارسال"/>
-                            <connections>
-                                <action selector="sendMessage:" destination="-1" eventType="touchUpInside" id="qxs-Al-k3D"/>
-                            </connections>
-                        </button>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EXt-Kb-gfv">
-                            <rect key="frame" x="10" y="4" width="295" height="40"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EXt-Kb-gfv">
+                            <rect key="frame" x="0.0" y="0.0" width="249" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="um6-Xa-vkS"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="hzw-SF-XnV"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhY-zU-PdF">
+                    <rect key="frame" x="315" y="625" width="60" height="34"/>
                     <constraints>
-                        <constraint firstItem="EXt-Kb-gfv" firstAttribute="leading" secondItem="01z-6Z-8lL" secondAttribute="leading" constant="10" id="MaE-ZB-TaM"/>
-                        <constraint firstItem="VhY-zU-PdF" firstAttribute="leading" secondItem="EXt-Kb-gfv" secondAttribute="trailing" constant="10" id="Xow-Lt-CqP"/>
-                        <constraint firstItem="VhY-zU-PdF" firstAttribute="centerY" secondItem="01z-6Z-8lL" secondAttribute="centerY" id="Zbc-0f-LnH"/>
-                        <constraint firstItem="EXt-Kb-gfv" firstAttribute="top" secondItem="01z-6Z-8lL" secondAttribute="top" constant="4" id="a8s-AB-1j9"/>
-                        <constraint firstAttribute="bottom" secondItem="EXt-Kb-gfv" secondAttribute="bottom" constant="4" id="bfr-Zx-e0H"/>
-                        <constraint firstAttribute="trailing" secondItem="VhY-zU-PdF" secondAttribute="trailing" constant="10" id="ooG-c9-b00"/>
+                        <constraint firstAttribute="width" constant="60" id="XoQ-tm-EMj"/>
                     </constraints>
-                </view>
+                    <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                    <state key="normal" title="ارسال"/>
+                    <connections>
+                        <action selector="sendMessage:" destination="-1" eventType="touchUpInside" id="qxs-Al-k3D"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9c-Fl-8i5" userLabel="donateGiftBtn">
+                    <rect key="frame" x="8" y="619" width="50" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="gUg-KC-iaI"/>
+                        <constraint firstAttribute="width" constant="50" id="tPW-bU-L6l"/>
+                    </constraints>
+                    <state key="normal" image="gift-hand"/>
+                    <connections>
+                        <action selector="donateGift:" destination="-1" eventType="touchUpInside" id="uNG-dG-Eyq"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="oeD-lF-th6" firstAttribute="leading" secondItem="e9c-Fl-8i5" secondAttribute="trailing" constant="8" id="V5k-wT-26C"/>
+                <constraint firstItem="VhY-zU-PdF" firstAttribute="leading" secondItem="oeD-lF-th6" secondAttribute="trailing" id="XHB-pn-th4"/>
+                <constraint firstItem="VhY-zU-PdF" firstAttribute="bottom" secondItem="oeD-lF-th6" secondAttribute="bottom" id="ZFL-NC-Z2C"/>
                 <constraint firstItem="udf-VT-x7G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cID-0e-qVc"/>
+                <constraint firstItem="e9c-Fl-8i5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="dn5-gq-Lqj"/>
                 <constraint firstItem="udf-VT-x7G" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="iO4-BQ-aPI"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="01z-6Z-8lL" secondAttribute="bottom" id="lW4-9H-XZW" customClass="KeyboardLayoutConstraint" customModule="Spring"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="oeD-lF-th6" secondAttribute="bottom" constant="8" id="jga-EC-55U" customClass="KeyboardLayoutConstraint" customModule="Spring"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="udf-VT-x7G" secondAttribute="trailing" id="mIg-zS-AIo"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="01z-6Z-8lL" secondAttribute="trailing" id="nnv-aY-MLW"/>
-                <constraint firstItem="01z-6Z-8lL" firstAttribute="top" secondItem="udf-VT-x7G" secondAttribute="bottom" id="pGi-in-1LZ"/>
-                <constraint firstItem="01z-6Z-8lL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tei-WT-phg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VhY-zU-PdF" secondAttribute="trailing" id="msa-us-8yv"/>
+                <constraint firstItem="udf-VT-x7G" firstAttribute="bottom" secondItem="oeD-lF-th6" secondAttribute="top" id="ojT-UO-e3y"/>
+                <constraint firstItem="e9c-Fl-8i5" firstAttribute="bottom" secondItem="oeD-lF-th6" secondAttribute="bottom" id="sTm-Gi-QSl"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
         </view>
     </objects>
+    <resources>
+        <image name="gift-hand" width="42.666667938232422" height="42.666667938232422"/>
+    </resources>
 </document>

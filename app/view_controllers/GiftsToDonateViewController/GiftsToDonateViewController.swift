@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PanModal
 
 class GiftsToDonateViewController: UIViewController {
 
@@ -126,5 +127,13 @@ extension GiftsToDonateViewController : GiftViewModelDelegate {
     func presentfailedAlert(viewModel: GiftViewModel, alert: UIAlertController) {
     }
     
+    
+}
+
+extension GiftsToDonateViewController:PanModalPresentable {
+    
+    var panScrollable: UIScrollView? {
+        return tableView
+    }
     
 }
