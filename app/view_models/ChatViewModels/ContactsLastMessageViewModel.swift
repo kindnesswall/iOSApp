@@ -22,7 +22,7 @@ class ContactsLastMessageViewModel: NSObject {
         let userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
         self.userId = userId ?? -1
         super.init()
-        self.connect()
+//        self.connect()
     }
     
     deinit {

@@ -161,7 +161,7 @@ class RegisterGiftViewModel: NSObject {
         let imageInput = ImageInput(image: imageData!, imageFormat: .jpeg)
         
         APICall.uploadImage(
-            url: URIs().gifts_images,
+            url: URIs().image_upload,
             input: imageInput,
             sessions: &sessions,
             tasks: &tasks,

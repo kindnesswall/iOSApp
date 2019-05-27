@@ -53,8 +53,8 @@ class URIs {
         return "\(apiRoute)/gifts/todonate"
     }
     
-    var gifts_images : String {
-        return "\(apiRoute)/gifts/images"
+    var image_upload : String {
+        return "\(apiRoute)/image/upload"
     }
     
     var gifts_accept : String {
@@ -79,6 +79,10 @@ class URIs {
     var donate : String {
         return "\(apiRoute)/donate"
     }
+    var profile : String {
+        return "\(apiRoute)/profile"
+    }
+    
     
     func getSMSUrl(apiKey:String,receptor:String,template:String,token:String)->String?{
         let rawUrl = "https://saharsms.com/api/\(apiKey)/json/SendVerify?receptor=\(receptor)&template=\(template)&token=\(token)"
