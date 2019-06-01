@@ -103,13 +103,18 @@ extension AppDelegate : UITabBarControllerDelegate{
     }
     
     private func authIsMandatory(for viewController:UIViewController)->Bool {
+        guard let vc = (viewController as? UINavigationController)?.viewControllers.first else {
+            return false
+        }
+        
         if
-            (viewController as? UINavigationController)?.viewControllers.first as? RegisterGiftViewController != nil
+            vc as? RegisterGiftViewController != nil
             ||
-            (viewController as? UINavigationController)?.viewControllers.first as? MyGiftsViewController != nil
+            vc as? MyGiftsViewController != nil
             ||
 //            (viewController as? UINavigationController)?.viewControllers.first as? ContactsLastMessageViewController != nil  {
-        (viewController as? UINavigationController)?.viewControllers.first as? MessagesViewController != nil  {
+            vc as? MessagesViewController != nil
+        {
             return true
         }
         

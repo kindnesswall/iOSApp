@@ -29,11 +29,15 @@ class MyKindnessWallViewController: UIViewController {
     }
     
     @IBAction func showMyProfile(_ sender: Any) {
-        if let _=keychain.get(AppConst.KeyChain.Authorization) {
-            let controller = ProfileViewController ()
-            let nc = UINavigationController.init(rootViewController: controller)
-            self.tabBarController?.present(nc, animated: true, completion: nil)
+        guard let _=keychain.get(AppConst.KeyChain.Authorization) else {
+            AppDelegate.me().showLoginVC()
+            return
         }
+        
+        let controller = ProfileViewController ()
+        let nc = UINavigationController.init(rootViewController: controller)
+        self.tabBarController?.present(nc, animated: true, completion: nil)
+        
     }
     
     @IBAction func passcodeTouchIDBtnClicked(_ sender: Any) {
