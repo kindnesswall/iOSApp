@@ -43,11 +43,9 @@ extension HomeViewController : HomeViewModelDelegate {
     }
     
     func insertNewItemsToTableView(insertedIndexes:[IndexPath]) {
-        
         UIView.performWithoutAnimation {
             self.tableview.insertRows(at: insertedIndexes, with: .bottom)
         }
-        
     }
     
     func reloadTableView() {

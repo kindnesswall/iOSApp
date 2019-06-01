@@ -18,8 +18,6 @@ enum HttpCallMethod :String{
 
 class APICall {
     
-    //MARK: - Requests
-    
     public static let OKStatus = 200
     
     static func setRequestHeader(request:URLRequest)->URLRequest {

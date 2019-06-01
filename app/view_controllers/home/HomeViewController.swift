@@ -54,7 +54,7 @@ class HomeViewController: UIViewController {
         
         setNavigationBar()
         
-        tableview.dataSource = self
+        tableview.dataSource = vm
         tableview.delegate = self
         
         self.tableview.register(type: GiftTableViewCell.self)
@@ -140,6 +140,18 @@ class HomeViewController: UIViewController {
         if self.vm.provinceId==nil {
             self.provinceBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces)
         }
+    }
+    
+    func getGiftDetailVCFor(index:Int) -> UIViewController {
+        let controller = GiftDetailViewController()
+        
+        controller.gift = vm.gifts[index]
+        controller.editHandler={ [weak self] in
+            self?.editHandler()
+        }
+        print("Gift_id: \(controller.gift?.id?.description ?? "")")
+        
+        return controller
     }
 }
 
