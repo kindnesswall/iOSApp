@@ -28,6 +28,10 @@ class MyKindnessWallViewController: UIViewController {
         AppDelegate.me().shareApp()
     }
     
+    @IBAction func showReviewQueue(_ sender: Any) {
+        
+    }
+    
     @IBAction func showMyProfile(_ sender: Any) {
         guard let _=keychain.get(AppConst.KeyChain.Authorization) else {
             AppDelegate.me().showLoginVC()

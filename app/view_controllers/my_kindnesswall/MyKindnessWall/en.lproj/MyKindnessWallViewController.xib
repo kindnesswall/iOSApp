@@ -56,11 +56,12 @@
                             <rect key="frame" x="0.0" y="58" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
-                            <state key="normal" title="My Profile">
+                            <state key="normal" title="Gift's review queue">
                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="showMyProfile:" destination="-1" eventType="touchUpInside" id="ec0-NF-PhW"/>
+                                <action selector="showReviewQueue:" destination="-1" eventType="touchUpInside" id="deW-gj-a6o"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFI-WB-1C2">
