@@ -150,15 +150,26 @@ class GiftDetailViewController: UIViewController {
             return
         }
         self.requestBtn.isEnabled = false
-        
-        vm.requestGift(id: giftId, onSuccess: { [weak self] (chatId) in
-            self?.sendRequestMessage(chatId: chatId)
-            self?.requestBtn.isEnabled = true
-            
-        }) { [weak self] in
-            self?.requestBtn.isEnabled = true
+
+        vm.requestGift(id: giftId) { [weak self](result) in
+            DispatchQueue.main.async {
+                self?.handleRequestGift(result: result)
+            }
         }
+
+    }
+    
+    func handleRequestGift(result:Result<Chat>) {
+        self.requestBtn.isEnabled = true
         
+        switch result {
+        case .failure(let error):
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
+        case .success(let chat):
+            if let id = chat.id {
+                self.sendRequestMessage(chatId: id)
+            }
+        }
     }
     
     func removeGift(){
@@ -168,13 +179,23 @@ class GiftDetailViewController: UIViewController {
         }
         self.removeBtn.isEnabled=false
         
-        vm.removeGift(id: giftId, onSuccess: { [weak self] in
-            self?.removeBtn.isEnabled=true
-            self?.editHandler?()
-            self?.navigationController?.popViewController(animated: true)
-        }, onFail: { [weak self] in
-            self?.removeBtn.isEnabled=true
-        })
+        vm.removeGift(id: giftId) { [weak self](result) in
+            DispatchQueue.main.async {
+                self?.handleRemoveGift(result)
+            }
+        }
+    }
+    
+    func handleRemoveGift(_ result:Result<Void>) {
+        self.removeBtn.isEnabled=true
+        
+        switch result {
+        case .failure(_):
+            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
+        case .success(_):
+            self.editHandler?()
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func sendRequestMessage(chatId:Int){

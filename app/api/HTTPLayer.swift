@@ -58,6 +58,7 @@ class HTTPLayer:HTTPLayerProtocol {
             
             self?.handleResponse(data, response, error, completion: completion)
         }
+        
         task.resume()
     }
     

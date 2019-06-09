@@ -76,9 +76,6 @@
 		05BFBBE21FE26B0500DBCDDF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBE11FE26B0500DBCDDF /* Category.swift */; };
 		05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBE31FE26B4C00DBCDDF /* Request.swift */; };
 		05BFBBEC1FE29F7C00DBCDDF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */; };
-		522F6B5421D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5021D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift */; };
-		522F6B5521D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5121D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift */; };
-		522F6B5621D81697001C67B9 /* FirbaseLoginRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5221D81696001C67B9 /* FirbaseLoginRegisterVC.swift */; };
 		522F6B5821D816DD001C67B9 /* UIColor+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5721D816DD001C67B9 /* UIColor+init.swift */; };
 		522F6B5E21D81AA2001C67B9 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5D21D81AA2001C67B9 /* FirebaseUser.swift */; };
 		522F6B6421D8B173001C67B9 /* SelectCountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B6321D8B173001C67B9 /* SelectCountryVC.swift */; };
@@ -309,9 +306,6 @@
 		05BFBBE31FE26B4C00DBCDDF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
-		522F6B5021D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FirbaseLoginRegisterVC+setupviews.swift"; sourceTree = "<group>"; };
-		522F6B5121D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FirbaseLoginRegisterVC+ImagePicker.swift"; sourceTree = "<group>"; };
-		522F6B5221D81696001C67B9 /* FirbaseLoginRegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirbaseLoginRegisterVC.swift; sourceTree = "<group>"; };
 		522F6B5721D816DD001C67B9 /* UIColor+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+init.swift"; sourceTree = "<group>"; };
 		522F6B5D21D81AA2001C67B9 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		522F6B6321D8B173001C67B9 /* SelectCountryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryVC.swift; sourceTree = "<group>"; };
@@ -759,8 +753,10 @@
 		05BFBBB31FDA653400DBCDDF /* login_register */ = {
 			isa = PBXGroup;
 			children = (
-				522F6B4E21D81671001C67B9 /* firebase_auth_vc */,
-				522F6B6721D8F61C001C67B9 /* Iran */,
+				05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */,
+				05BFBBB61FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib */,
+				05BFBBB71FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift */,
+				05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */,
 			);
 			path = login_register;
 			sourceTree = "<group>";
@@ -839,27 +835,6 @@
 				34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		522F6B4E21D81671001C67B9 /* firebase_auth_vc */ = {
-			isa = PBXGroup;
-			children = (
-				522F6B5221D81696001C67B9 /* FirbaseLoginRegisterVC.swift */,
-				522F6B5121D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift */,
-				522F6B5021D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift */,
-			);
-			path = firebase_auth_vc;
-			sourceTree = "<group>";
-		};
-		522F6B6721D8F61C001C67B9 /* Iran */ = {
-			isa = PBXGroup;
-			children = (
-				05BFBBB41FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift */,
-				05BFBBB61FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib */,
-				05BFBBB71FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift */,
-				05BFBBB51FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib */,
-			);
-			path = Iran;
 			sourceTree = "<group>";
 		};
 		52466DD521DB60190086F327 /* RegisterGift */ = {
@@ -1522,7 +1497,6 @@
 				60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */,
 				0523117922A3EABB00A22157 /* Result.swift in Sources */,
 				60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */,
-				522F6B5621D81697001C67B9 /* FirbaseLoginRegisterVC.swift in Sources */,
 				5246724A21E342670086F327 /* API.swift in Sources */,
 				522F6B5821D816DD001C67B9 /* UIColor+init.swift in Sources */,
 				607E78822279E21F00FF0008 /* ContactsLastMessageViewController.swift in Sources */,
@@ -1549,7 +1523,6 @@
 				05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */,
 				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
 				52D1A13B21D92859005EA2F0 /* ApiUtility.swift in Sources */,
-				522F6B5421D81696001C67B9 /* FirbaseLoginRegisterVC+setupviews.swift in Sources */,
 				6024132322272E7A0094E6E2 /* URIs.swift in Sources */,
 				60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */,
 				607EEA83222EACDA00637A93 /* RequestInput.swift in Sources */,
@@ -1602,7 +1575,6 @@
 				05BFBBD91FE24C4D00DBCDDF /* AppConst.swift in Sources */,
 				5247C8B221E38A19009E8770 /* MyKindnessWallViewController.swift in Sources */,
 				5247C8BC21E38A66009E8770 /* ContactUsViewController.swift in Sources */,
-				522F6B5521D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift in Sources */,
 				607EEA7B222C383A00637A93 /* OptionsListViewModelProtocol.swift in Sources */,
 				0523117D22A3EBA600A22157 /* HTTPMethod.swift in Sources */,
 				05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */,

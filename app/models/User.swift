@@ -16,6 +16,11 @@ class User: Codable {
     init(phoneNumber:String) {
         self.phoneNumber=phoneNumber
     }
+    
+    init(phoneNumber:String,activationCode:String) {
+        self.phoneNumber = phoneNumber
+        self.activationCode = activationCode
+    }
 }
 
 class Token: Codable {

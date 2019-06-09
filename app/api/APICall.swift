@@ -23,43 +23,6 @@ class APICall {
         return newRequest
     }
     
-    static func request<InputCodable:Codable>(url urlString:String,httpMethod:HttpMethod,input:InputCodable?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
-        
-        guard let url=URL(string:urlString) else {
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod=httpMethod.rawValue
-        request=self.setRequestHeader(request: request)
-        
-        if let input=input {
-            let json=try? JSONEncoder().encode(input)
-            if let json=json {
-//                print("Input json : \(json)")
-//                printData(data: json)
-                request.httpBody=json
-            }
-        }
-        
-        let config=URLSessionConfiguration.default
-        let session=URLSession(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
-        let task=session.dataTask(with: request) { (data, response, error) in
-            
-            if let error = error as NSError? {
-                if error.code == NSURLErrorCancelled {
-                    //cancelled
-                    print("Request Cancelled")
-                    return
-                }
-            }
-            
-            complitionHandler(data,response,error)
-            
-        }
-        task.resume()
-    }
-    
     static func request<InputCodable:Codable>(url urlString:String,httpMethod:HttpMethod,input:InputCodable?,sessions:inout [URLSession?],tasks:inout [URLSessionDataTask?],complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
         
         guard let url=URL(string:urlString) else {

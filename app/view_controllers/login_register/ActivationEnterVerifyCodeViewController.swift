@@ -12,7 +12,8 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
 
     var requestId:String!
     var session:URLSession?
-    
+    lazy var apiRequest = ApiRequest(httpLayer: HTTPLayer())
+
     let userDefault = UserDefaults.standard
     
     @IBOutlet weak var verifyCodeTextField: ShakingTextField!
@@ -118,37 +119,37 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         registerBtn.setTitle("", for: [])
         registerLoading.startAnimating()
         
-        let input = User(phoneNumber: mobile)
-        input.activationCode = activationCode
-        APICall.request(url: URIs().login, httpMethod: .POST, input: input) { [weak self] (data, resposne, error) in
-            
+        apiRequest.login(phoneNumber: mobile, activationCode: activationCode) { [weak self] (result) in
             DispatchQueue.main.async {
-                self?.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.registeringActivationCode), for: [])
-                self?.registerLoading.stopAnimating()
+                self?.handleLogin(result)
             }
-            
-            guard let response = resposne as? HTTPURLResponse else {
+        }
+    }
+    
+    func handleLogin(_ result:Result<Token>) {
+        self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.registeringActivationCode), for: [])
+        self.registerLoading.stopAnimating()
+        
+        switch(result){
+        case .failure(let error):
+            var msg = "Error"
+            switch(error){
+            case .ServerError:
+                msg = LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeIncorrectError)
+                
+                FlashMessage.showMessage(body: msg,theme: .warning)
+                self.verifyCodeTextField.shake()
+                
+            default:
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
-                return
-            }
-            if response.statusCode != APICall.OKStatus {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeIncorrectError),theme: .warning)
-                self?.verifyCodeTextField.shake()
-                return
             }
             
-            guard let token = ApiUtility.convert(data:data , to: Token.self) else {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
-                return
+        case .success(let token):
+            if let userID = token.userID?.description, let token = token.token {
+                AppDelegate.me().login(userID: userID, token: token)
             }
             
-            if let userID = token.userID?.description,
-               let token = token.token
-                {
-                AppDelegate.me().login(userID: userID, token: token, mobile: mobile)
-            }
-            
-            self?.dismiss(animated: true, completion: {
+            self.dismiss(animated: true, completion: {
                 UIApplication.shared.shortcutItems = [
                     UIApplicationShortcutItem(
                         type: "ir.kindnesswall.publicusers.DonateGift",
@@ -157,12 +158,32 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                         icon: UIApplicationShortcutIcon(type: .favorite),
                         userInfo: nil)
                 ]
-                self?.submitComplition?("")
-                
+                self.submitComplition?("")
             })
+        }
+    }
+    
+    func handleRegisterUser(_ result:Result<Void>) {
+        self.sendAgainBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.resendActivationCode), for: [])
+        self.resendLoading.stopAnimating()
+        
+        switch(result){
+        case .failure(let error):
+            var errorMsg = "Error"
+            switch(error){
+            case .ServerError:
+                errorMsg = LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeTryAgainOneMinuteLater)
+                
+            default:
+                errorMsg = LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain)
+            }
+            FlashMessage.showMessage(body: errorMsg, theme: .error)
+
+        case .success(_):
+            let msg = LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeSendSuccessfully)
+            FlashMessage.showMessage(body: msg, theme: .success)
             
         }
-    
     }
     
     @IBAction func sendAgainBtnClick(_ sender: Any) {
@@ -177,28 +198,11 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
             return
         }
         
-        let input = User(phoneNumber: mobile)
-        APICall.request(url: URIs().register, httpMethod: .POST, input: input) { [weak self] (_, response, error) in
-            
-            self?.sendAgainBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.resendActivationCode), for: [])
-            self?.resendLoading.stopAnimating()
-            
-            
-            guard let response = response as? HTTPURLResponse else {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
-                return
+        apiRequest.registerUser(phoneNumber: mobile) { [weak self] (result) in
+            DispatchQueue.main.async {
+                self?.handleRegisterUser(result)
             }
-            
-            if response.statusCode == APICall.OKStatus {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeSendSuccessfully), theme: .success)
-                return
-            }else{
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeTryAgainOneMinuteLater), theme: .error)
-                return
-            }
-            
         }
-        
     }
     
     @IBAction func returnBtnClick(_ sender: Any) {

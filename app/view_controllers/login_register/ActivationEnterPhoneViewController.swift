@@ -11,7 +11,8 @@ import UIKit
 class ActivationEnterPhoneViewController: UIViewController {
     
     let userDefault=UserDefaults.standard
-    
+    lazy var apiRequest = ApiRequest(httpLayer: HTTPLayer())
+
     @IBOutlet weak var guideLabel: UILabel!
     @IBOutlet weak var phoneNumberTextField: ShakingTextField!
     @IBOutlet weak var registerBtn: UIButton!
@@ -106,33 +107,39 @@ class ActivationEnterPhoneViewController: UIViewController {
         registerBtn.setTitle("", for: [])
         loading.startAnimating()
         
-        let input = User(phoneNumber: mobile)
-        
-        APICall.request(url: URIs().register, httpMethod: .POST, input: input) { [weak self] (_, response, error) in
-            
-            self?.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: [])
-            self?.loading.stopAnimating()
-            
-            guard let response = response as? HTTPURLResponse else {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
-                return
-            }
-            
-            if response.statusCode != APICall.OKStatus{
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeTryAgainOneMinuteLater), theme: .error)
-                return
-            }
-            
-            let controller=ActivationEnterVerifyCodeViewController()
-            
-            controller.setCloseComplition(closeComplition: self?.closeComplition)
-            controller.setSubmitComplition(submitComplition: self?.submitComplition)
-            
-            
-            self?.navigationController?.pushViewController(controller, animated: true)
-            
-        }
+        registerUser(with: mobile)
         
     }
     
+    func registerUser(with phoneNumber:String) {
+        apiRequest.registerUser(phoneNumber: phoneNumber) { [weak self] (result) in
+            
+            DispatchQueue.main.async {
+                self?.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: [])
+                self?.loading.stopAnimating()
+            }
+            
+            switch(result){
+            case .failure(let error):
+                var bodyString:String = "Error"
+                switch(error){
+                case .ServerError:
+                    bodyString = LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeTryAgainOneMinuteLater)
+                default:
+                    bodyString = LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain)
+                }
+                DispatchQueue.main.async {
+                    FlashMessage.showMessage(body: bodyString, theme: .error)
+                }
+                
+            case .success(_):
+                let controller=ActivationEnterVerifyCodeViewController()
+                controller.setCloseComplition(closeComplition: self?.closeComplition)
+                controller.setSubmitComplition(submitComplition: self?.submitComplition)
+                DispatchQueue.main.async {
+                    self?.navigationController?.pushViewController(controller, animated: true)
+                }
+            }
+        }
+    }
 }

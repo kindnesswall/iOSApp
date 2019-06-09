@@ -12,8 +12,8 @@ class CategoryListVM: NSObject, OptionsListViewModelProtocol {
     
     let titleName:String
     let hasDefaultOption:Bool
-    
     var categories=[Category]()
+    lazy var apiRequest = ApiRequest(httpLayer: HTTPLayer())
     
     func getElementsCount()->Int{
         return self.categories.count
@@ -26,23 +26,22 @@ class CategoryListVM: NSObject, OptionsListViewModelProtocol {
     }
 
     func fetchElements(completionHandler:(()->Void)?){
-        
-        let input:APIEmptyInput?=nil
-        APICall.request(url: URIs().categories, httpMethod: .GET, input: input) { [weak self] (data, response, error) in
-            DispatchQueue.main.async {
-                ApiUtility.watch(data: data)
-                if let reply=ApiUtility.convert(data: data, to: [Category].self) {
-                    self?.categories=[]
-                    if self?.hasDefaultOption ?? false {
-                        let defaultOption=Category(id: nil, title: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts))
-                        self?.categories.append(defaultOption)
-                    }
-                    self?.categories.append(contentsOf: reply)
+        apiRequest.getCategories { [weak self](result) in
+            switch result{
+            case .failure(let appError):
+                print(appError)
+            case .success(let categories):
+                self?.categories=[]
+                if self?.hasDefaultOption ?? false {
+                    let defaultOption=Category(id: nil, title: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts))
+                    self?.categories.append(defaultOption)
+                }
+                self?.categories.append(contentsOf: categories)
+                DispatchQueue.main.async {
                     completionHandler?()
                 }
             }
         }
-        
     }
     
     func registerCell(tableView:UITableView){

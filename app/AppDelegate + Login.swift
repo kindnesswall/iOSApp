@@ -11,12 +11,11 @@ import KeychainSwift
 
 extension AppDelegate {
     
-    func login(userID:String,token:String,mobile:String){
+    func login(userID:String,token:String){
         let keychain = KeychainSwift()
         
         keychain.set(userID, forKey: AppConst.KeyChain.USER_ID)
         keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
-        keychain.set(mobile, forKey: AppConst.KeyChain.PHONE_NUMBER)
         
         //Test
         keychain.set(true, forKey: AppConst.KeyChain.IsAdmin)

@@ -13,6 +13,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
     let titleName:String
     let hasDefaultOption:Bool
     let showCities:Bool
+    lazy var apiRequest = ApiRequest(httpLayer: HTTPLayer())
     
     enum PlaceType {
         case province
@@ -61,53 +62,57 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
     func fetchElements(completionHandler:(()->Void)?) {
         switch placeType {
         case .province:
-            fetchProvinces(completionHandler: completionHandler)
+            getProvinces(completionHandler)
         case .city(let province_id):
-            fetchCities(province_id: province_id, completionHandler: completionHandler)
+            getCitieOfProvince(id: province_id, completionHandler)
         }
     }
     
-    func fetchProvinces(completionHandler:(()->Void)?){
-        let input : APIEmptyInput? = nil
-        APICall.request(url: URIs().province, httpMethod: .GET, input: input) { [weak self] (data,response,error) in
-            DispatchQueue.main.async {
-                if let jsonPlaces=ApiUtility.convert(data: data, to: [Province].self) {
-                    
-                    self?.provinces=[]
-                    if self?.hasDefaultOption ?? false {
-                        let defaultOption=Province(id: nil, name: LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces))
-                        self?.provinces.append(defaultOption)
-                    }
-                    
-                    self?.provinces.append(contentsOf: jsonPlaces)
-                    
+    func getProvinces(_ completionHandler:(()->Void)?) {
+        apiRequest.getProvinces { [weak self](result) in
+            switch(result){
+            case .failure(let error):
+                // FIXME: Plz Handle me
+                print(error)
+            case .success(let provinces):
+                
+                self?.provinces = []
+                if self?.hasDefaultOption ?? false {
+                    let defaultOption=Province(id: nil, name: LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces))
+                    self?.provinces.append(defaultOption)
+                }
+                
+                self?.provinces.append(contentsOf: provinces)
+                
+                DispatchQueue.main.async {
                     completionHandler?()
                 }
             }
         }
     }
     
-    func fetchCities(province_id:Int,completionHandler:(()->Void)?){
-        let input : APIEmptyInput? = nil
-        let url = "\(URIs().city)/\(province_id)"
-        APICall.request(url: url, httpMethod: .GET, input: input) { [weak self] (data, response, error) in
-            DispatchQueue.main.async {
-                if let jsonPlaces=ApiUtility.convert(data: data, to: [City].self) {
-                    
-                    self?.cities=[]
-                    if self?.hasDefaultOption ?? false {
-                        let defaultOption=City(id: nil, name:LocalizationSystem.getStr(forKey: LanguageKeys.allCities))
-                        self?.cities.append(defaultOption)
-                    }
-                    
-                    self?.cities.append(contentsOf: jsonPlaces)
-                    
+    func getCitieOfProvince(id: Int, _ completionHandler:(()->Void)?) {
+        apiRequest.getCitieOfProvince(id: id) { [weak self](result) in
+            switch(result){
+            case .failure(let error):
+                // FIXME: Plz Handle me
+                print(error)
+            case .success(let cities):
+                
+                self?.cities=[]
+                if self?.hasDefaultOption ?? false {
+                    let defaultOption=City(id: nil, name:LocalizationSystem.getStr(forKey: LanguageKeys.allCities))
+                    self?.cities.append(defaultOption)
+                }
+                
+                self?.cities.append(contentsOf: cities)
+                
+                DispatchQueue.main.async {
                     completionHandler?()
                 }
             }
         }
     }
-    
     
     func returnCellData(indexPath:IndexPath)->(Int?,String?) {
         switch placeType {

@@ -17,38 +17,27 @@ class URIs {
     var gifts : String {
         return "\(apiRoute)/gifts"
     }
-    var categories : String {
-        return "\(apiRoute)/categories"
-    }
-    var province : String {
-        return "\(apiRoute)/provinces"
-    }
-    var city : String {
-        return "\(apiRoute)/cities"
-    }
-    var register : String {
-        return "\(apiRoute)/register"
-    }
-    var login : String {
-        return "\(apiRoute)/login"
-    }
+    
     var chat : String {
         return "\(apiRoute)/chat"
     }
     
-    var gifts_register : String {
-        return "/api/v1/gifts/register"
-    }
+//    var gifts_register : String {
+//        return "/api/v1/gifts/register"
+//    }
     
-    var gifts_owner : String {
-        return "\(apiRoute)/gifts/owner"
-    }
+//    var gifts_owner : String {
+//        return "\(apiRoute)/gifts/owner"
+//    }
+    
     var gifts_donated: String {
         return "\(apiRoute)/gifts/donated"
     }
+    
     var gifts_received : String {
         return "\(apiRoute)/gifts/received"
     }
+    
     var gifts_todonate : String {
         return "\(apiRoute)/gifts/todonate"
     }

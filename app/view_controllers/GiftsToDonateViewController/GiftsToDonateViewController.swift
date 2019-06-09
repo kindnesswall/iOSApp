@@ -14,7 +14,8 @@ class GiftsToDonateViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var viewModel:GiftsToDonateViewModel?
     var toUserId:Int?
-    
+    lazy var apiRequest = ApiRequest(httpLayer: HTTPLayer())
+
     var donateGiftHandler:((Gift)->Void)?
     
     var initialLoadingIndicator:LoadingIndicator?
@@ -54,14 +55,16 @@ class GiftsToDonateViewController: UIViewController {
         ,let toUserId = self.toUserId
             else { return }
         
-        let input = Donate(giftId: giftId, donatedToUserId: toUserId)
-        APICall.request(url: URIs().donate, httpMethod: .POST, input: input) { [weak self] (data, response, error) in
-            guard let _ = ApiUtility.convert(data: data, to: Gift.self) else {
-                return
+        apiRequest.donateGift(id: giftId, toUserId: toUserId) { [weak self](result) in
+            DispatchQueue.main.async {
+                switch(result){
+                case .failure(let error):
+                    print(error)
+                case .success(let gift):
+                    self?.donateGiftHandler?(gift)
+                    self?.navigationController?.popViewController(animated: true)
+                }
             }
-            
-            self?.donateGiftHandler?(gift)
-            self?.navigationController?.popViewController(animated: true)
         }
         
     }
@@ -104,6 +107,7 @@ extension GiftsToDonateViewController : GiftViewModelDelegate {
     }
     
     func refreshControlAnimation(viewModel: GiftViewModel, isLoading: Bool) {
+    
     }
     
     func showTableView(viewModel: GiftViewModel, show: Bool) {
@@ -125,6 +129,7 @@ extension GiftsToDonateViewController : GiftViewModelDelegate {
     }
     
     func presentfailedAlert(viewModel: GiftViewModel, alert: UIAlertController) {
+    
     }
     
     

@@ -11,6 +11,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "HTTPLayer.handleResponse(_:_:_:completion:):HTTPLayer.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "httpResponse.statusCode">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Endpoint.path.getter:Endpoint.swift">
       </ContextState>
       <ContextState
@@ -45,6 +53,11 @@
       </ContextState>
       <ContextState
          contextName = "closure #1 in HTTPLayer.request(at:completion:):HTTPLayer.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(response as? HTTPURLResponse).statusCode">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "RegisterGiftViewModel.editGift(completion:):RegisterGiftViewModel.swift">
