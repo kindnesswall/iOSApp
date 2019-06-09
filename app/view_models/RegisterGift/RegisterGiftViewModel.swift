@@ -11,6 +11,7 @@ import UIKit
 class RegisterGiftViewModel: NSObject {
     
     var imagesUrl:[String] = []
+    var apiRequest = ApiRequest(httpLayer: HTTPLayer())
     
     var sessions : [URLSession]=[]
     var tasks : [URLSessionUploadTask]=[]
@@ -31,8 +32,8 @@ class RegisterGiftViewModel: NSObject {
         var descriptionTextViewText : String?
     }
     
-    func readGiftInfo() -> RegisterGiftInput? {
-        var input:RegisterGiftInput = Gift()
+    func readGiftInfo(_ giftInput:Gift) -> Gift? {
+        let input:Gift = giftInput
         
         let uiProperties = delegate?.getUIInputProperties()
         
@@ -101,41 +102,66 @@ class RegisterGiftViewModel: NSObject {
         return input
     }
     
-    func sendGift(
-        httpMethod:HttpCallMethod,
-        giftId:Int? = nil,
-        responseHandler:(()->Void)?,
-        complitionHandler:(()->Void)?){
-        
-        guard let input = readGiftInfo() as? Gift else {
-            responseHandler?()
+    func editGift(completion: @escaping (Result<Gift>) -> Void) {
+        guard let gift = readGiftInfo(editedGift ?? Gift()) else {
+            completion(.failure(AppError.NoData))
+            return
+        }
+        apiRequest.editGift(gift) { (result) in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let gift):
+                self.editedGift = gift
+                completion(.success(gift))
+            }
+        }
+    }
+    
+    func registerGift(completion: @escaping (Result<Gift>) -> Void) {
+        guard let gift = readGiftInfo(Gift()) else {
+            completion(.failure(AppError.NoData))
             return
         }
         
-        let url:String = {
-            if let giftId=giftId {
-                return "\(URIs().gifts)/\(giftId)"
-            } else {
-                return URIs().gifts_register
-            }
-        }()
-        
-        APICall.request(url: url, httpMethod: httpMethod, input: input) { (data, response, error) in
-            
-            responseHandler?()
-            
-            guard let response = response as? HTTPURLResponse else {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
-                return
-            }
-            if response.statusCode == APICall.OKStatus {
-                complitionHandler?()
-            } else {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
-            }
-            
-        }
+        apiRequest.registerGift(gift, completion: completion)
     }
+    
+//    func sendGift(
+//        httpMethod:HttpMethod,
+//        giftId:Int? = nil,
+//        responseHandler:(()->Void)?,
+//        complitionHandler:(()->Void)?){
+//        
+//        guard let input = readGiftInfo() as? Gift else {
+//            responseHandler?()
+//            return
+//        }
+//        
+//        let url:String = {
+//            if let giftId=giftId {
+//                return "\(URIs().gifts)/\(giftId)"
+//            } else {
+//                return URIs().gifts_register
+//            }
+//        }()
+//        
+//        APICall.request(url: url, httpMethod: httpMethod, input: input) { (data, response, error) in
+//            
+//            responseHandler?()
+//            
+//            guard let response = response as? HTTPURLResponse else {
+//                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+//                return
+//            }
+//            if response.statusCode == APICall.OKStatus {
+//                complitionHandler?()
+//            } else {
+//                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+//            }
+//            
+//        }
+//    }
     
     func inputErrorOnSendingGift(errorText:String){
         FlashMessage.showMessage(body: errorText,theme: .warning)

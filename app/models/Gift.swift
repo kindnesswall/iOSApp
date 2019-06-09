@@ -29,9 +29,7 @@ protocol RegisterGiftInput {
     var cityId:Int? { get set }
 }
 
-class Gift: Codable,GiftPresenter,RegisterGiftInput {
-//    var isAd:Bool? = false
-    
+class Gift: Codable,GiftPresenter,RegisterGiftInput {    
     var createdAt: String?
     var updatedAt: String?
     
@@ -58,7 +56,4 @@ class Gift: Codable,GiftPresenter,RegisterGiftInput {
     var id:Int?
     var isNew:Bool?
 //    var forWho:Int?
-    
-//    private enum CodingKeys : String, CodingKey {
-//    }
 }

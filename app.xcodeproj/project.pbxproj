@@ -18,8 +18,14 @@
 		0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8661F8C1A920084CDF1 /* Main.storyboard */; };
 		0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8691F8C1A920084CDF1 /* Assets.xcassets */; };
 		0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0507C86B1F8C1A920084CDF1 /* LaunchScreen.storyboard */; };
-		0523117122A327B700A22157 /* APIMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523117022A327B700A22157 /* APIMethod.swift */; };
 		0523117422A33A4800A22157 /* HomeVM+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523117322A33A4800A22157 /* HomeVM+UITableViewDataSource.swift */; };
+		0523117622A3DA4A00A22157 /* EmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523117522A3DA4A00A22157 /* EmptyInput.swift */; };
+		0523117922A3EABB00A22157 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523117822A3EABB00A22157 /* Result.swift */; };
+		0523117B22A3EAF600A22157 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523117A22A3EAF600A22157 /* AppError.swift */; };
+		0523117D22A3EBA600A22157 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523117C22A3EBA600A22157 /* HTTPMethod.swift */; };
+		0523117F22A3ED0800A22157 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523117E22A3ED0800A22157 /* Endpoint.swift */; };
+		0523118322A4198100A22157 /* HTTPLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523118222A4198100A22157 /* HTTPLayer.swift */; };
+		0523118522A4203F00A22157 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523118422A4203F00A22157 /* ApiRequest.swift */; };
 		05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05335D431FD0D0A800601115 /* GiftDetailViewController.swift */; };
 		05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05335D481FD0DDA200601115 /* SDWebImageSource.swift */; };
 		053C46EC2291273900074761 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C46EA2291273900074761 /* ProfileViewController.swift */; };
@@ -244,8 +250,14 @@
 		0507C8691F8C1A920084CDF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0507C86C1F8C1A920084CDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0507C86E1F8C1A920084CDF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0523117022A327B700A22157 /* APIMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMethod.swift; sourceTree = "<group>"; };
 		0523117322A33A4800A22157 /* HomeVM+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVM+UITableViewDataSource.swift"; sourceTree = "<group>"; };
+		0523117522A3DA4A00A22157 /* EmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyInput.swift; sourceTree = "<group>"; };
+		0523117822A3EABB00A22157 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		0523117A22A3EAF600A22157 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		0523117C22A3EBA600A22157 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		0523117E22A3ED0800A22157 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		0523118222A4198100A22157 /* HTTPLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPLayer.swift; sourceTree = "<group>"; };
+		0523118422A4203F00A22157 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		05335D431FD0D0A800601115 /* GiftDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetailViewController.swift; sourceTree = "<group>"; };
 		05335D481FD0DDA200601115 /* SDWebImageSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDWebImageSource.swift; sourceTree = "<group>"; };
 		053C46EA2291273900074761 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -558,6 +570,16 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		0523117722A3EAA900A22157 /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				0523117822A3EABB00A22157 /* Result.swift */,
+				0523117C22A3EBA600A22157 /* HTTPMethod.swift */,
+				0523117E22A3ED0800A22157 /* Endpoint.swift */,
+			);
+			path = enums;
+			sourceTree = "<group>";
+		};
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -675,6 +697,7 @@
 				607EEA80222D88C200637A93 /* Image.swift */,
 				607EEA82222EACDA00637A93 /* RequestInput.swift */,
 				60E30D48229C967500619E9E /* Profile.swift */,
+				0523117522A3DA4A00A22157 /* EmptyInput.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -748,6 +771,7 @@
 				528A2DAA21AD39C500DECE0F /* language */,
 				05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */,
 				5247C8AB21E388B2009E8770 /* GithubConstants.swift */,
+				0523117A22A3EAF600A22157 /* AppError.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -788,12 +812,14 @@
 		05DDD3DC1F921D03006C5E31 /* api */ = {
 			isa = PBXGroup;
 			children = (
+				0523117722A3EAA900A22157 /* enums */,
 				053C46FA2294AB8B00074761 /* input */,
 				05BFBBDC1FE26A3300DBCDDF /* output */,
 				6024132222272E7A0094E6E2 /* URIs.swift */,
 				60FAB83D2064DBE10039BF61 /* APICall.swift */,
 				52D1A13A21D92859005EA2F0 /* ApiUtility.swift */,
-				0523117022A327B700A22157 /* APIMethod.swift */,
+				0523118222A4198100A22157 /* HTTPLayer.swift */,
+				0523118422A4203F00A22157 /* ApiRequest.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1472,13 +1498,13 @@
 				05644DCD1FFF06BD00B7C853 /* SectionView.swift in Sources */,
 				0523117422A33A4800A22157 /* HomeVM+UITableViewDataSource.swift in Sources */,
 				607E78A12279E28D00FF0008 /* AckMessage.swift in Sources */,
-				0523117122A327B700A22157 /* APIMethod.swift in Sources */,
 				053C46F12291D11200074761 /* ProfileViewModel.swift in Sources */,
 				60C972ED21C9ACC700A8D1C5 /* GiftViewModel.swift in Sources */,
 				05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */,
 				6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */,
 				60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */,
 				52D1A14421DA3C30005EA2F0 /* Address.swift in Sources */,
+				0523118322A4198100A22157 /* HTTPLayer.swift in Sources */,
 				05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */,
 				5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */,
 				607E78802279E21F00FF0008 /* MessagesViewController.swift in Sources */,
@@ -1487,12 +1513,14 @@
 				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
 				6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */,
 				52D1A14121D9376E005EA2F0 /* RGVC+vm delegate.swift in Sources */,
+				0523117F22A3ED0800A22157 /* Endpoint.swift in Sources */,
 				05BFBBE41FE26B4C00DBCDDF /* Request.swift in Sources */,
 				60E7E4BF22999D6E0047344D /* ContactMessage.swift in Sources */,
 				6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */,
 				52466DDD21DB95250086F327 /* HVC+HomeViewModelDelegate.swift in Sources */,
 				607E789B2279E28D00FF0008 /* ControlMessage.swift in Sources */,
 				60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */,
+				0523117922A3EABB00A22157 /* Result.swift in Sources */,
 				60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */,
 				522F6B5621D81697001C67B9 /* FirbaseLoginRegisterVC.swift in Sources */,
 				5246724A21E342670086F327 /* API.swift in Sources */,
@@ -1550,6 +1578,7 @@
 				053C46F42291D28100074761 /* Profile + URLSessionDelegate.swift in Sources */,
 				60C972EB21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift in Sources */,
 				05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */,
+				0523118522A4203F00A22157 /* ApiRequest.swift in Sources */,
 				5263D5FE21B915F400B634A8 /* LanguageVM.swift in Sources */,
 				5247C8AC21E388B2009E8770 /* GithubConstants.swift in Sources */,
 				60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */,
@@ -1560,11 +1589,13 @@
 				60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */,
 				607E78922279E25600FF0008 /* MessagesTableViewCell + Layout.swift in Sources */,
 				604FB5BF228B6DBE00795CE2 /* Donate.swift in Sources */,
+				0523117B22A3EAF600A22157 /* AppError.swift in Sources */,
 				607E78912279E25600FF0008 /* ChatTableViewCell + Layout.swift in Sources */,
 				60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */,
 				607E788D2279E25600FF0008 /* MessagesDateTableViewCell + Layout.swift in Sources */,
 				05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */,
 				60FAB8402064EE950039BF61 /* RGVC + uploading images.swift in Sources */,
+				0523117622A3DA4A00A22157 /* EmptyInput.swift in Sources */,
 				52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */,
 				528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */,
 				607E78862279E23600FF0008 /* ContactsLastMessageViewModel.swift in Sources */,
@@ -1573,6 +1604,7 @@
 				5247C8BC21E38A66009E8770 /* ContactUsViewController.swift in Sources */,
 				522F6B5521D81696001C67B9 /* FirbaseLoginRegisterVC+ImagePicker.swift in Sources */,
 				607EEA7B222C383A00637A93 /* OptionsListViewModelProtocol.swift in Sources */,
+				0523117D22A3EBA600A22157 /* HTTPMethod.swift in Sources */,
 				05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */,
 				522F6B6421D8B173001C67B9 /* SelectCountryVC.swift in Sources */,
 				601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */,

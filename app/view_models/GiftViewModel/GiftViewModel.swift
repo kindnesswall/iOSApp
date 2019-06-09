@@ -49,12 +49,15 @@ class GiftViewModel: NSObject {
         let input=RequestInput()
         input.beforeId = beforeId
         input.count = self.lazyLoadingCount
-        
         isLoadingGifts = true
+        
         APICall.request(url: url, httpMethod: .POST, input: input , sessions: &giftsSessions, tasks: &giftsTasks) { [weak self] (data, response, error) in
             
             self?.isLoadingGifts = false
+            let response = response as? HTTPURLResponse
             
+            print(self?.url)
+            print("\(response?.statusCode)")
             if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
                 
                 if beforeId==nil {

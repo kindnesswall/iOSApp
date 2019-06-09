@@ -37,7 +37,7 @@ class URIs {
     }
     
     var gifts_register : String {
-        return "\(apiRoute)/gifts/register"
+        return "/api/v1/gifts/register"
     }
     
     var gifts_owner : String {
@@ -60,18 +60,18 @@ class URIs {
     var gifts_accept : String {
         return "\(apiRoute)/gifts/accept"
     }
-    var gifts_reject : String {
-        return "\(apiRoute)/gifts/reject"
-    }
+//    var gifts_reject : String {
+//        return "\(apiRoute)/gifts/reject"
+//    }
     var gifts_review : String {
         return "\(apiRoute)/gifts/review"
     }
-    var users_allowAccess : String {
-        return "\(apiRoute)/users/allowAccess"
-    }
-    var users_denyAccess : String {
-        return "\(apiRoute)/users/denyAccess"
-    }
+//    var users_allowAccess : String {
+//        return "\(apiRoute)/users/allowAccess"
+//    }
+//    var users_denyAccess : String {
+//        return "\(apiRoute)/users/denyAccess"
+//    }
     
     var gifts_request : String {
         return "\(apiRoute)/gifts/request"

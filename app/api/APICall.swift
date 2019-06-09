@@ -9,13 +9,6 @@
 import UIKit
 import KeychainSwift
 
-enum HttpCallMethod :String{
-    case POST="POST"
-    case GET="GET"
-    case PUT="PUT"
-    case DELETE="DELETE"
-}
-
 class APICall {
     
     public static let OKStatus = 200
@@ -30,7 +23,7 @@ class APICall {
         return newRequest
     }
     
-    static func request<InputCodable:Codable>(url urlString:String,httpMethod:HttpCallMethod,input:InputCodable?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
+    static func request<InputCodable:Codable>(url urlString:String,httpMethod:HttpMethod,input:InputCodable?,complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
         
         guard let url=URL(string:urlString) else {
             return
@@ -67,7 +60,7 @@ class APICall {
         task.resume()
     }
     
-    static func request<InputCodable:Codable>(url urlString:String,httpMethod:HttpCallMethod,input:InputCodable?,sessions:inout [URLSession?],tasks:inout [URLSessionDataTask?],complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
+    static func request<InputCodable:Codable>(url urlString:String,httpMethod:HttpMethod,input:InputCodable?,sessions:inout [URLSession?],tasks:inout [URLSessionDataTask?],complitionHandler:@escaping (Data?,URLResponse?,Error?)->Void) {
         
         guard let url=URL(string:urlString) else {
             return
@@ -115,7 +108,7 @@ class APICall {
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod=HttpCallMethod.POST.rawValue
+        request.httpMethod=HttpMethod.POST.rawValue
         request=self.setRequestHeader(request: request)
         
         guard let input=input, let dataToSend=try? JSONEncoder().encode(input) else{

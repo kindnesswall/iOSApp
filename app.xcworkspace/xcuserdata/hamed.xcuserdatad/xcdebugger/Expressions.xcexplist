@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "RegisterGiftViewController.viewDidLoad():RegisterGiftViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.vm">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Endpoint.path.getter:Endpoint.swift">
+      </ContextState>
+      <ContextState
+         contextName = "HomeViewController.getGiftDetailVCFor(index:):HomeViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "controller.gift">
+            </PersistentString>
+            <PersistentString
+               value = "vm.gifts">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ApiRequest.registerGift(_:completion:):ApiRequest.swift">
+      </ContextState>
+      <ContextState
+         contextName = "GiftDetailViewController.editBtnClicked():GiftDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "controller.vm.editedGift">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in HomeVM.getGifts(beforeId:):HomeVM.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.statusCode">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in HTTPLayer.request(at:completion:):HTTPLayer.swift">
+      </ContextState>
+      <ContextState
+         contextName = "RegisterGiftViewModel.editGift(completion:):RegisterGiftViewModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ApiRequest.registerEditGift(endPoint:_:):ApiRequest.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Endpoint.url.getter:Endpoint.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "urlComponent.url">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

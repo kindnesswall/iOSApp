@@ -10,6 +10,8 @@ import UIKit
 
 class HomeVM: NSObject {
     
+    var isAdmin:Bool = true
+    
     var giftsSessions:[URLSession?]=[]
     var giftsTasks:[URLSessionDataTask?]=[]
     weak var delegate:HomeViewModelDelegate?
@@ -111,7 +113,14 @@ class HomeVM: NSObject {
         input.provinceId = self.provinceId
         input.categoryId = self.categoryId
         
-        APICall.request(url: URIs().gifts, httpMethod: .POST, input: input, sessions: &giftsSessions, tasks: &giftsTasks) { [weak self] (data, response, error) in
+        var url:String!
+        if isAdmin {
+            url = URIs().gifts_review
+        }else{
+            url = URIs().gifts
+        }
+        url = URIs().gifts
+        APICall.request(url: url, httpMethod: .POST, input: input, sessions: &giftsSessions, tasks: &giftsTasks) { [weak self] (data, response, error) in
             guard error == nil, let response = response as? HTTPURLResponse, response.statusCode == APICall.OKStatus else {
                 print("Get error register")
                 self?.handleError(beforeId: beforeId)

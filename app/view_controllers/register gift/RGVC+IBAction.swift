@@ -14,42 +14,48 @@ extension RegisterGiftViewController {
         
         self.registerBtn.isEnabled=false
         
-//        if AppDelegate.me().isIranSelected() {
-            vm.sendGift(httpMethod: .POST, responseHandler: {
+        vm.registerGift { (result) in
+            DispatchQueue.main.async {
                 self.registerBtn.isEnabled=true
-            }) {
+            }
+
+            switch result {
+            case .failure:
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+            case .success:
                 self.clearAllInput()
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.giftRegisteredSuccessfully),theme: .success)
                 self.reloadOtherPages()
             }
-//        }else{
-//            vm.createGiftOnFIR()
-//        }
+        }
         
     }
     
     @IBAction func editBtnAction(_ sender: Any) {
         
-        guard let giftId=self.vm.editedGift?.id else {
-            return
+        self.editBtn.isEnabled=false
+        
+        vm.editGift { (result) in
+            DispatchQueue.main.async {
+                self.editBtn.isEnabled=true
+                
+                switch result {
+                case .failure:
+                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+                case .success:
+                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.editedSuccessfully), theme: .success)
+                    
+                    self.vm.writeChangesToEditedGift()
+                    self.editHandler?()
+                    
+                    let when=DispatchTime.now() + 1
+                    DispatchQueue.main.asyncAfter(deadline: when, execute: {
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                }
+            }
         }
         
-        self.editBtn.isEnabled=false
-        vm.sendGift(httpMethod: .PUT,giftId: giftId, responseHandler: {
-            self.editBtn.isEnabled=true
-        }) {
-            
-            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.editedSuccessfully), theme: .success)
-            
-            self.vm.writeChangesToEditedGift()
-            self.editHandler?()
-            
-            let when=DispatchTime.now() + 1
-            DispatchQueue.main.asyncAfter(deadline: when, execute: {
-                self.dismiss(animated: true, completion: nil)
-            })
-            
-        }
     }
     
     @IBAction func placeBtnAction(_ sender: Any) {

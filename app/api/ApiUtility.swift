@@ -30,6 +30,10 @@ class ApiUtility {
         return output
     }
     
+    public static func convert<InputModel:Encodable>(input:InputModel)->Data?{
+        return try? JSONEncoder().encode(input)
+    }
+    
     public static func watch(data:Data?){
         guard let data=data else {
             return
