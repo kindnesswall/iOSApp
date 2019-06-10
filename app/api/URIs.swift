@@ -14,10 +14,10 @@ class URIs {
         self.apiRoute="http://185.211.58.168:8080/api/v1"
     }
     
-    var gifts : String {
-        return "\(apiRoute)/gifts"
-    }
-    
+//    var gifts : String {
+//        return "\(apiRoute)/gifts"
+//    }
+//
     var chat : String {
         return "\(apiRoute)/chat"
     }
@@ -30,31 +30,31 @@ class URIs {
 //        return "\(apiRoute)/gifts/owner"
 //    }
     
-    var gifts_donated: String {
-        return "\(apiRoute)/gifts/donated"
-    }
-    
-    var gifts_received : String {
-        return "\(apiRoute)/gifts/received"
-    }
-    
-    var gifts_todonate : String {
-        return "\(apiRoute)/gifts/todonate"
-    }
-    
+//    var gifts_donated: String {
+//        return "\(apiRoute)/gifts/donated"
+//    }
+//
+//    var gifts_received : String {
+//        return "\(apiRoute)/gifts/received"
+//    }
+//
+//    var gifts_todonate : String {
+//        return "\(apiRoute)/gifts/todonate"
+//    }
+//
     var image_upload : String {
         return "\(apiRoute)/image/upload"
     }
     
-    var gifts_accept : String {
-        return "\(apiRoute)/gifts/accept"
-    }
+//    var gifts_accept : String {
+//        return "\(apiRoute)/gifts/accept"
+//    }
 //    var gifts_reject : String {
 //        return "\(apiRoute)/gifts/reject"
 //    }
-    var gifts_review : String {
-        return "\(apiRoute)/gifts/review"
-    }
+//    var gifts_review : String {
+//        return "\(apiRoute)/gifts/review"
+//    }
 //    var users_allowAccess : String {
 //        return "\(apiRoute)/users/allowAccess"
 //    }
@@ -62,15 +62,15 @@ class URIs {
 //        return "\(apiRoute)/users/denyAccess"
 //    }
     
-    var gifts_request : String {
-        return "\(apiRoute)/gifts/request"
-    }
-    var donate : String {
-        return "\(apiRoute)/donate"
-    }
-    var profile : String {
-        return "\(apiRoute)/profile"
-    }
+//    var gifts_request : String {
+//        return "\(apiRoute)/gifts/request"
+//    }
+//    var donate : String {
+//        return "\(apiRoute)/donate"
+//    }
+//    var profile : String {
+//        return "\(apiRoute)/profile"
+//    }
     
     
     func getSMSUrl(apiKey:String,receptor:String,template:String,token:String)->String?{

@@ -11,7 +11,7 @@ import UIKit
 class RegisterGiftViewModel: NSObject {
     
     var imagesUrl:[String] = []
-    var apiRequest = ApiRequest(httpLayer: HTTPLayer())
+    var apiRequest = ApiRequest(HTTPLayer())
     
     var sessions : [URLSession]=[]
     var tasks : [URLSessionUploadTask]=[]

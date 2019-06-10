@@ -9,7 +9,7 @@
 import Foundation
 
 class GiftDetailVM: NSObject {
-    lazy var apiRequest = ApiRequest(httpLayer: HTTPLayer())
+    lazy var apiRequest = ApiRequest(HTTPLayer())
 
     func removeGift(id:Int, completion: @escaping (Result<Void>)-> Void) {
         apiRequest.removeGift(id: id, completion: completion)

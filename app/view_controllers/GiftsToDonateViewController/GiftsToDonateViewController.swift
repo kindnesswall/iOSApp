@@ -14,7 +14,7 @@ class GiftsToDonateViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var viewModel:GiftsToDonateViewModel?
     var toUserId:Int?
-    lazy var apiRequest = ApiRequest(httpLayer: HTTPLayer())
+    lazy var apiRequest = ApiRequest(HTTPLayer())
 
     var donateGiftHandler:((Gift)->Void)?
     

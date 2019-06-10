@@ -13,7 +13,7 @@ class CategoryListVM: NSObject, OptionsListViewModelProtocol {
     let titleName:String
     let hasDefaultOption:Bool
     var categories=[Category]()
-    lazy var apiRequest = ApiRequest(httpLayer: HTTPLayer())
+    lazy var apiRequest = ApiRequest(HTTPLayer())
     
     func getElementsCount()->Int{
         return self.categories.count

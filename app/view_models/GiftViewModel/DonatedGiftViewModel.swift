@@ -11,8 +11,7 @@ import Foundation
 class DonatedGiftViewModel: GiftViewModel {
     
     init() {
-        let url=URIs().gifts_donated
-        super.init(url: url)
+        super.init(giftListType: .Donated)
     }
     
 }

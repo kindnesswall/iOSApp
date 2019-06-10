@@ -13,7 +13,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
     let titleName:String
     let hasDefaultOption:Bool
     let showCities:Bool
-    lazy var apiRequest = ApiRequest(httpLayer: HTTPLayer())
+    lazy var apiRequest = ApiRequest(HTTPLayer())
     
     enum PlaceType {
         case province

@@ -11,13 +11,10 @@ import UIKit
 
 class GiftViewModel: NSObject {
     
-    let url:String
+    let giftListType:GiftListType
     var gifts=[Gift]()
     
     weak var delegate : GiftViewModelDelegate?
-    
-    var giftsSessions:[URLSession?]=[]
-    var giftsTasks:[URLSessionDataTask?]=[]
     
     var isLoadingGifts_ForLazyLoading=false
     var initialGiftsLoadingHasOccurred=false
@@ -25,11 +22,49 @@ class GiftViewModel: NSObject {
     
     var lazyLoadingCount=20
     
-    init(url:String) {
-        self.url = url
+    lazy var httpLayer = HTTPLayer()
+    lazy var apiRequest = ApiRequest(httpLayer)
+    
+    init(giftListType:GiftListType) {
+        self.giftListType = giftListType
     }
     
-     
+    func handleGetGift(_ result:Result<[Gift]>,_ beforeId:Int?) {
+        self.isLoadingGifts = false
+        
+        switch result {
+        case .failure(let error):
+            print(error)
+        case .success(let gifts):
+            if beforeId==nil {
+                self.gifts=[]
+                self.delegate?.reloadTableView(viewModel:self)
+                
+            }
+            self.delegate?.refreshControlAnimation(viewModel:self,isLoading: false)
+        
+            self.delegate?.pageLoadingAnimation(viewModel:self,isLoading: false)
+        
+            self.delegate?.lazyLoadingAnimation(viewModel:self,isLoading: false)
+            
+            if gifts.count == self.lazyLoadingCount {
+                self.isLoadingGifts_ForLazyLoading=false
+            }
+            
+            var insertedIndexes=[IndexPath]()
+            let minCount = self.gifts.count
+            for i in minCount..<minCount+gifts.count {
+                insertedIndexes.append(IndexPath(item: i, section: 0))
+            }
+            
+            self.gifts.append(contentsOf: gifts)
+            
+            self.delegate?.insertNewItemsToTableView(viewModel:self,insertedIndexes: insertedIndexes)
+            
+        }
+        
+    }
+    
     func getGifts(beforeId:Int?){
         
         self.initialGiftsLoadingHasOccurred=true
@@ -45,65 +80,25 @@ class GiftViewModel: NSObject {
             self.delegate?.lazyLoadingAnimation(viewModel:self,isLoading: true)
         }
         
-        
         let input=RequestInput()
         input.beforeId = beforeId
         input.count = self.lazyLoadingCount
         isLoadingGifts = true
         
-        APICall.request(url: url, httpMethod: .POST, input: input , sessions: &giftsSessions, tasks: &giftsTasks) { [weak self] (data, response, error) in
+        let param = GiftListRequestParameters(input: input, type: giftListType)
+        
+        apiRequest.getGifts(params: param) { [weak self] (result) in
             
-            self?.isLoadingGifts = false
-            let response = response as? HTTPURLResponse
-            
-            print(self?.url)
-            print("\(response?.statusCode)")
-            if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
-                
-                if beforeId==nil {
-                    self?.gifts=[]
-                    if let strongSelf = self {
-                        self?.delegate?.reloadTableView(viewModel:strongSelf)
-                    }
-                }
-                
-                if let strongSelf = self {
-                    self?.delegate?.refreshControlAnimation(viewModel:strongSelf,isLoading: false)
-                    self?.delegate?.pageLoadingAnimation(viewModel:strongSelf,isLoading: false)
-                    self?.delegate?.lazyLoadingAnimation(viewModel:strongSelf,isLoading: false)
-                }
-                
-                
-                
-                if reply.count == self?.lazyLoadingCount {
-                    self?.isLoadingGifts_ForLazyLoading=false
-                }
-                
-                var insertedIndexes=[IndexPath]()
-                if let minCount = self?.gifts.count {
-                    for i in minCount..<minCount+reply.count {
-                        insertedIndexes.append(IndexPath(item: i, section: 0))
-                    }
-                }
-                
-                self?.gifts.append(contentsOf: reply)
-                
-                
-                //                self?.showMessage()
-                
-                if let strongSelf = self {
-                    self?.delegate?.insertNewItemsToTableView(viewModel:strongSelf,insertedIndexes: insertedIndexes)
-                }
-                
+            DispatchQueue.main.async {
+                self?.handleGetGift(result, beforeId)
             }
         }
         
     }
     
     func reloadGifts(){
-        
         if self.initialGiftsLoadingHasOccurred {
-            APICall.stopAndClearRequests(sessions: &giftsSessions, tasks: &giftsTasks)
+            self.httpLayer.cancelRequests()
             isLoadingGifts_ForLazyLoading=false
             getGifts(beforeId: nil)
         }

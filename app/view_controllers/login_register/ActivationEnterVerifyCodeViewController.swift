@@ -12,7 +12,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
 
     var requestId:String!
     var session:URLSession?
-    lazy var apiRequest = ApiRequest(httpLayer: HTTPLayer())
+    lazy var apiRequest = ApiRequest(HTTPLayer())
 
     let userDefault = UserDefaults.standard
     

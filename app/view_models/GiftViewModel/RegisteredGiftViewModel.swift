@@ -11,7 +11,6 @@ import UIKit
 class RegisteredGiftViewModel: GiftViewModel {
     
     init() {
-        let url=URIs().gifts_review //gifts_owner
-        super.init(url: url)
+        super.init(giftListType: .Owner)
     }
 }

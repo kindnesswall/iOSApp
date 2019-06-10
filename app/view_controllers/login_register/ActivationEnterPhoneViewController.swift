@@ -11,7 +11,7 @@ import UIKit
 class ActivationEnterPhoneViewController: UIViewController {
     
     let userDefault=UserDefaults.standard
-    lazy var apiRequest = ApiRequest(httpLayer: HTTPLayer())
+    lazy var apiRequest = ApiRequest(HTTPLayer())
 
     @IBOutlet weak var guideLabel: UILabel!
     @IBOutlet weak var phoneNumberTextField: ShakingTextField!

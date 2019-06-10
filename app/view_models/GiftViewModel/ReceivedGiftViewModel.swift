@@ -11,8 +11,7 @@ import Foundation
 class ReceivedGiftViewModel: GiftViewModel {
     
     init() {
-        let url=URIs().gifts_received
-        super.init(url: url)
+        super.init(giftListType: .Received)
     }
     
 }

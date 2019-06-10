@@ -10,10 +10,6 @@ import UIKit
 
 class HomeVM: NSObject {
     
-    var isAdmin:Bool = true
-    
-    var giftsSessions:[URLSession?]=[]
-    var giftsTasks:[URLSessionDataTask?]=[]
     weak var delegate:HomeViewModelDelegate?
 
     var gifts:[Gift] = []
@@ -22,9 +18,13 @@ class HomeVM: NSObject {
     var initialGiftsLoadingHasOccurred=false
     var lazyLoadingCount=20
     
+    lazy var httpLayer = HTTPLayer()
+    lazy var apiRequest = ApiRequest(httpLayer)
+    
     func reloadPage(){
         if initialGiftsLoadingHasOccurred {
-            APICall.stopAndClearRequests(sessions: &giftsSessions, tasks: &giftsTasks)
+            httpLayer.cancelRequests()
+            
             isLoadingGifts=false
             getGifts(beforeId: nil)
         }
@@ -113,24 +113,26 @@ class HomeVM: NSObject {
         input.provinceId = self.provinceId
         input.categoryId = self.categoryId
         
-        var url:String!
-        if isAdmin {
-            url = URIs().gifts_review
-        }else{
-            url = URIs().gifts
-        }
-        url = URIs().gifts
-        APICall.request(url: url, httpMethod: .POST, input: input, sessions: &giftsSessions, tasks: &giftsTasks) { [weak self] (data, response, error) in
-            guard error == nil, let response = response as? HTTPURLResponse, response.statusCode == APICall.OKStatus else {
-                print("Get error register")
-                self?.handleError(beforeId: beforeId)
-                return
-            }
-            
-            if let reply=ApiUtility.convert(data: data, to: [Gift].self) {
-                self?.handleResponse(beforeId:beforeId, recieveGifts:reply)
-            }
-        }
+        let param = GiftListRequestParameters(input: input, type: .Gifts)
         
+        apiRequest.getGifts(params: param) { [weak self] (result) in
+            
+            DispatchQueue.main.async {
+                self?.handleGetGift(result, beforeId)
+            }
+        }
+    }
+    
+    func handleGetGift(_ result:Result<[Gift]>,_ beforeId:Int?) {
+        self.isLoadingGifts = false
+        
+        switch result {
+        case .failure(let error):
+            print(error)
+            self.handleError(beforeId: beforeId)
+
+        case .success(let gifts):
+            self.handleResponse(beforeId:beforeId, recieveGifts:gifts)
+        }
     }
 }

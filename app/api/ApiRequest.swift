@@ -14,7 +14,7 @@ protocol ApiRequestProtocol {
 
 class ApiRequest:ApiRequestProtocol {
     let httpLayer: HTTPLayerProtocol
-    init(httpLayer: HTTPLayerProtocol) {
+    init(_ httpLayer: HTTPLayerProtocol) {
         self.httpLayer = httpLayer
     }
     
@@ -168,7 +168,23 @@ class ApiRequest:ApiRequestProtocol {
             }
             
         }
+    }
+    
+    func getGifts(params: GiftListRequestParameters, completion: @escaping (Result<[Gift]>)-> Void) {
         
+        self.httpLayer.request(at: Endpoint.GetGifts(param: params)) {(result) in
+            
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let gifts = ApiUtility.convert(data: data, to: [Gift].self){
+                    completion(.success(gifts))
+                }else{
+                    completion(.failure(AppError.DataDecoding))
+                }
+            }
+        }
     }
 }
 

@@ -11,11 +11,14 @@ import KeychainSwift
 
 protocol HTTPLayerProtocol {
     func request(at endpoint: EndpointProtocol, completion: @escaping (Result<Data>) -> Void)
+    func cancelRequests()
 }
 
 class HTTPLayer:HTTPLayerProtocol {
     
     var urlSession:URLSession
+    var tasks:[URLSessionDataTask] = []
+    
     init(urlSession:URLSession = .shared) {
         self.urlSession = urlSession
     }
@@ -59,6 +62,7 @@ class HTTPLayer:HTTPLayerProtocol {
             self?.handleResponse(data, response, error, completion: completion)
         }
         
+        self.tasks.append(task)
         task.resume()
     }
     
@@ -84,6 +88,14 @@ class HTTPLayer:HTTPLayerProtocol {
         }else{
             completion(.failure(AppError.Unknown))
         }
+    }
+    
+    func cancelRequests() {
+        self.urlSession.invalidateAndCancel()
+        for task in self.tasks {
+            task.cancel()
+        }
+        tasks = []
     }
     
 }

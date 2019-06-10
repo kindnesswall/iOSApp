@@ -29,7 +29,8 @@ enum Endpoint:EndpointProtocol {
     case RemoveGift(id:Int)
     case RequestGift(id:Int)
     case DonateGift(id:Int,toUserId:Int)
-
+    case GetGifts(param: GiftListRequestParameters)
+    
     var url:URL? {
         var urlComponent = URLComponents()
         urlComponent.scheme = self.scheme
@@ -57,6 +58,8 @@ enum Endpoint:EndpointProtocol {
         case .RequestGift: return nil
         case .DonateGift(let id, let toUserId):
             return ApiUtility.convert(input: Donate(giftId: id, donatedToUserId: toUserId))
+        case .GetGifts(let param):
+            return ApiUtility.convert(input: param.input)
         }
     }
     
@@ -82,31 +85,37 @@ enum Endpoint:EndpointProtocol {
             return HttpMethod.GET.rawValue
         case .DonateGift(_,_):
             return HttpMethod.POST.rawValue
+        case .GetGifts(_):
+            return HttpMethod.POST.rawValue
         }
     }
+    
+    var basePathUrl:String{ return "/api/v1/"}
     
     var path:String {
         switch self {
         case .RegisterGift:
-            return "/api/v1/gifts/register"
+            return basePathUrl+"gifts/register"
         case .EditGift(let gift):
-            return "/api/v1/gifts/\(gift.id!)"
+            return basePathUrl+"gifts/\(gift.id!)"
         case .GetProvinces:
-            return "/api/v1/provinces"
+            return basePathUrl+"provinces"
         case .GetCitiesOfProvince(let id):
-            return "/api/v1/cities/\(id)"
+            return basePathUrl+"cities/\(id)"
         case .GetCategories:
-            return "/api/v1/categories"
+            return basePathUrl+"categories"
         case .RegisterUser(_):
-            return "/api/v1/register"
+            return basePathUrl+"register"
         case .Login(_):
-            return "/api/v1/login"
+            return basePathUrl+"login"
         case .RemoveGift(let id):
-            return "/api/v1/gifts/\(id)"
+            return basePathUrl+"gifts/\(id)"
         case .RequestGift(let id):
-            return "/api/v1/gifts/request/\(id)"
+            return basePathUrl+"gifts/request/\(id)"
         case .DonateGift(_,_):
-            return "/api/v1/donate"
+            return basePathUrl+"donate"
+        case .GetGifts(let param):
+            return basePathUrl+param.type.path
         }
     }
     
@@ -124,6 +133,7 @@ enum Endpoint:EndpointProtocol {
         case .RemoveGift: break
         case .RequestGift: break
         case .DonateGift: break
+        case .GetGifts: break
         }
         
         return queryItems

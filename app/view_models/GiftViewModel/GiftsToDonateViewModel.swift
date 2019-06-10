@@ -11,8 +11,6 @@ import Foundation
 class GiftsToDonateViewModel: GiftViewModel {
     
     init(toUserId:Int) {
-        let url="\(URIs().gifts_todonate)/\(toUserId)"
-        super.init(url: url)
+        super.init(giftListType: .ToDonate(toUserId: toUserId))
     }
-    
 }
