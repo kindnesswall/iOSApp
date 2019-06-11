@@ -14,8 +14,8 @@ class ContactsSocketViewModel: NSObject {
     var socket:WebSocket?
     
     weak var delegate : ContactsViewModelNetworkInterface?
-
     override init() {
+        super.init()
         //        self.connect()
     }
     
@@ -37,11 +37,7 @@ class ContactsSocketViewModel: NSObject {
         socket?.connect()
     }
     
-    func sendTextMessage(textMessage:TextMessage) {
-        let contactMessage = ContactMessage(textMessages: [textMessage])
-        let message = Message(contactMessages: [contactMessage])
-        sendMessage(message: message)
-    }
+    
     func sendMessage(message:Message){
         
         guard let outputData = try? JSONEncoder().encode(message),
@@ -53,13 +49,6 @@ class ContactsSocketViewModel: NSObject {
         
     }
     
-    func sendAck(messageId:Int){
-        
-        let ackMessage = AckMessage(messageId: messageId)
-        let controlMessage = ControlMessage(ackMessage: ackMessage)
-        let message = Message(controlMessage: controlMessage)
-        self.sendMessage(message: message)
-    }
     
     func controlMessageIsReceived(message:Message){
         guard let controlMessage = message.controlMessage else {
@@ -86,6 +75,27 @@ class ContactsSocketViewModel: NSObject {
         
     }
     
+    
+    
+    
+}
+
+extension ContactsSocketViewModel : ContactsViewModelNetwork {
+    
+    func sendTextMessage(textMessage:TextMessage) {
+        let contactMessage = ContactMessage(textMessages: [textMessage])
+        let message = Message(contactMessages: [contactMessage])
+        sendMessage(message: message)
+    }
+    
+    func sendAck(messageId:Int){
+        
+        let ackMessage = AckMessage(messageId: messageId)
+        let controlMessage = ControlMessage(ackMessage: ackMessage)
+        let message = Message(controlMessage: controlMessage)
+        self.sendMessage(message: message)
+    }
+    
     func fetchContacts(){
         let controlMessage = ControlMessage(type: .fetchContact)
         let message = Message(controlMessage: controlMessage)
@@ -98,8 +108,6 @@ class ContactsSocketViewModel: NSObject {
         let message = Message(controlMessage: controlMessage)
         sendMessage(message: message)
     }
-    
-    
 }
 
 extension ContactsSocketViewModel : WebSocketDelegate{

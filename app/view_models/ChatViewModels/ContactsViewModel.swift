@@ -18,14 +18,17 @@ class ContactsViewModel: NSObject {
     
     weak var delegate : ContactsViewModelProtocol?
     
-    var contactsSocketViewModel = ContactsSocketViewModel()
+    var network: ContactsViewModelNetwork
     
     override init() {
         let userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
         self.userId = userId ?? -1
+        
+        network = ContactsSocketViewModel()
         super.init()
         
-        contactsSocketViewModel.delegate = self
+        network.delegate = self
+        
     }
     
     deinit {
@@ -68,7 +71,7 @@ class ContactsViewModel: NSObject {
             return
         }
         
-        contactsSocketViewModel.sendAck(messageId: messageId)
+        network.sendAck(messageId: messageId)
     }
 }
 
@@ -118,7 +121,7 @@ extension ContactsViewModel : ContactsViewModelNetworkInterface {
     func tryAgainAllSendingMessages(){
         for eachChat in allChats {
             for eachMessage in eachChat.sendingQueue {
-                contactsSocketViewModel.sendTextMessage(textMessage: eachMessage)
+                network.sendTextMessage(textMessage: eachMessage)
             }
         }
     }
@@ -133,12 +136,12 @@ extension ContactsViewModel : MessagesViewControllerDelegate {
         
         self.addMessage(message: message, isSending: true, messagesViewModel: messagesViewModel)
         
-        contactsSocketViewModel.sendTextMessage(textMessage: message)
+        network.sendTextMessage(textMessage: message)
         
     }
     
     func loadMessages(chatId:Int,beforeId:Int?){
-        contactsSocketViewModel.fetchMessages(chatId: chatId, beforeId: beforeId)
+        network.fetchMessages(chatId: chatId, beforeId: beforeId)
     }
     
     func sendAckMessage(textMessage:TextMessage) {
@@ -156,7 +159,7 @@ extension ContactsViewModel : StartNewChatProtocol {
         
         self.addMessage(message: message, isSending: true, messagesViewModel: messagesViewModel)
         
-        contactsSocketViewModel.sendTextMessage(textMessage: message)
+        network.sendTextMessage(textMessage: message)
         
         return messagesViewModel
     }
@@ -170,6 +173,14 @@ protocol ContactsViewModelProtocol : class {
     func reload()
     func socketConnected()
     func socketDisConnected()
+}
+
+protocol ContactsViewModelNetwork : class {
+    var delegate : ContactsViewModelNetworkInterface? { get set }
+    func sendTextMessage(textMessage:TextMessage)
+    func sendAck(messageId:Int)
+    func fetchContacts()
+    func fetchMessages(chatId:Int,beforeId:Int?)
 }
 
 protocol ContactsViewModelNetworkInterface : class {
