@@ -148,6 +148,8 @@
 		60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60302DDF2068FC7E0025D397 /* PopUpViewController.xib */; };
 		60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DE22069018C0025D397 /* PopUpMessage.swift */; };
 		6032F61C205287ED00975C23 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032F61B205287ED00975C23 /* LoadingIndicator.swift */; };
+		6033DA9622AF69BD00D43738 /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6033DA9522AF69BC00D43738 /* ContactsViewController.xib */; };
+		6033DA9822AF6B3800D43738 /* ContactsSocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033DA9722AF6B3800D43738 /* ContactsSocketViewModel.swift */; };
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
 		604A31DD2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604A31DC2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift */; };
 		604A31E42291FA5900E2C5B6 /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604A31E22291FA5900E2C5B6 /* MyGiftsViewController.xib */; };
@@ -161,11 +163,10 @@
 		60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1821D7CFA60058421A /* ReloadablePage.swift */; };
 		607E78752279D6CA00FF0008 /* String + ConvertToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78742279D6CA00FF0008 /* String + ConvertToDate.swift */; };
 		607E78772279DDB900FF0008 /* Date + PersianDate + Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78762279DDB800FF0008 /* Date + PersianDate + Clock.swift */; };
-		607E787F2279E21F00FF0008 /* ContactsLastMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607E787B2279E21D00FF0008 /* ContactsLastMessageViewController.xib */; };
 		607E78802279E21F00FF0008 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E787C2279E21E00FF0008 /* MessagesViewController.swift */; };
-		607E78822279E21F00FF0008 /* ContactsLastMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E787E2279E21E00FF0008 /* ContactsLastMessageViewController.swift */; };
+		607E78822279E21F00FF0008 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E787E2279E21E00FF0008 /* ContactsViewController.swift */; };
 		607E78852279E23600FF0008 /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78832279E23500FF0008 /* MessagesViewModel.swift */; };
-		607E78862279E23600FF0008 /* ContactsLastMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78842279E23600FF0008 /* ContactsLastMessageViewModel.swift */; };
+		607E78862279E23600FF0008 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78842279E23600FF0008 /* ContactsViewModel.swift */; };
 		607E788D2279E25600FF0008 /* MessagesDateTableViewCell + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78872279E25300FF0008 /* MessagesDateTableViewCell + Layout.swift */; };
 		607E788E2279E25600FF0008 /* MessagesDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78882279E25400FF0008 /* MessagesDateTableViewCell.swift */; };
 		607E788F2279E25600FF0008 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78892279E25400FF0008 /* ChatTableViewCell.swift */; };
@@ -397,6 +398,8 @@
 		60302DDF2068FC7E0025D397 /* PopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpViewController.xib; sourceTree = "<group>"; };
 		60302DE22069018C0025D397 /* PopUpMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMessage.swift; sourceTree = "<group>"; };
 		6032F61B205287ED00975C23 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		6033DA9522AF69BC00D43738 /* ContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsViewController.xib; sourceTree = "<group>"; };
+		6033DA9722AF6B3800D43738 /* ContactsSocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsSocketViewModel.swift; sourceTree = "<group>"; };
 		6040F3A2206688A800FCD429 /* APIEmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyInput.swift; sourceTree = "<group>"; };
 		604A31DC2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedGiftViewModel.swift; sourceTree = "<group>"; };
 		604A31E32291FA5900E2C5B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyGiftsViewController.xib; sourceTree = "<group>"; };
@@ -414,11 +417,10 @@
 		60749B1821D7CFA60058421A /* ReloadablePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadablePage.swift; sourceTree = "<group>"; };
 		607E78742279D6CA00FF0008 /* String + ConvertToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + ConvertToDate.swift"; sourceTree = "<group>"; };
 		607E78762279DDB800FF0008 /* Date + PersianDate + Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date + PersianDate + Clock.swift"; sourceTree = "<group>"; };
-		607E787B2279E21D00FF0008 /* ContactsLastMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsLastMessageViewController.xib; sourceTree = "<group>"; };
 		607E787C2279E21E00FF0008 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		607E787E2279E21E00FF0008 /* ContactsLastMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsLastMessageViewController.swift; sourceTree = "<group>"; };
+		607E787E2279E21E00FF0008 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		607E78832279E23500FF0008 /* MessagesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
-		607E78842279E23600FF0008 /* ContactsLastMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsLastMessageViewModel.swift; sourceTree = "<group>"; };
+		607E78842279E23600FF0008 /* ContactsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		607E78872279E25300FF0008 /* MessagesDateTableViewCell + Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessagesDateTableViewCell + Layout.swift"; sourceTree = "<group>"; };
 		607E78882279E25400FF0008 /* MessagesDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesDateTableViewCell.swift; sourceTree = "<group>"; };
 		607E78892279E25400FF0008 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
@@ -1053,7 +1055,8 @@
 		607E78782279E1B200FF0008 /* ChatViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				607E78842279E23600FF0008 /* ContactsLastMessageViewModel.swift */,
+				607E78842279E23600FF0008 /* ContactsViewModel.swift */,
+				6033DA9722AF6B3800D43738 /* ContactsSocketViewModel.swift */,
 				607E78832279E23500FF0008 /* MessagesViewModel.swift */,
 			);
 			path = ChatViewModels;
@@ -1062,8 +1065,8 @@
 		607E78792279E1DE00FF0008 /* ChatViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				607E787E2279E21E00FF0008 /* ContactsLastMessageViewController.swift */,
-				607E787B2279E21D00FF0008 /* ContactsLastMessageViewController.xib */,
+				607E787E2279E21E00FF0008 /* ContactsViewController.swift */,
+				6033DA9522AF69BC00D43738 /* ContactsViewController.xib */,
 				607E787C2279E21E00FF0008 /* MessagesViewController.swift */,
 				604FB578228234AD00795CE2 /* MessagesViewController.xib */,
 			);
@@ -1275,7 +1278,6 @@
 				528A2DBD21AD3EBF00DECE0F /* GiftTableViewCell.xib in Resources */,
 				528A2DB421AD3E6400DECE0F /* RequestsTableViewCell.xib in Resources */,
 				602BC8F82034B7CC00ECF6E2 /* UploadImageView.xib in Resources */,
-				607E787F2279E21F00FF0008 /* ContactsLastMessageViewController.xib in Resources */,
 				054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */,
 				5247C8B521E38A26009E8770 /* MyKindnessWallViewController.xib in Resources */,
 				60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */,
@@ -1291,6 +1293,7 @@
 				05029ECB1FE334C5004D96B1 /* RequestToAGiftViewController.xib in Resources */,
 				60FAB845206571340039BF61 /* icomoon.ttf in Resources */,
 				5247C8C221E38A83009E8770 /* ContactUsViewController.strings in Resources */,
+				6033DA9622AF69BD00D43738 /* ContactsViewController.xib in Resources */,
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
 				604FB576228234AD00795CE2 /* MessagesViewController.xib in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
@@ -1499,7 +1502,7 @@
 				60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */,
 				5246724A21E342670086F327 /* API.swift in Sources */,
 				522F6B5821D816DD001C67B9 /* UIColor+init.swift in Sources */,
-				607E78822279E21F00FF0008 /* ContactsLastMessageViewController.swift in Sources */,
+				607E78822279E21F00FF0008 /* ContactsViewController.swift in Sources */,
 				60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */,
 				52DD769C21C7D26700C2E012 /* LockSettingViewController.swift in Sources */,
 				52466DDB21DB94810086F327 /* HVC+UITableViewDelegate.swift in Sources */,
@@ -1528,6 +1531,7 @@
 				607EEA83222EACDA00637A93 /* RequestInput.swift in Sources */,
 				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,
 				6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */,
+				6033DA9822AF6B3800D43738 /* ContactsSocketViewModel.swift in Sources */,
 				05029ECE1FE9381E004D96B1 /* RequestsTableViewCell.swift in Sources */,
 				05BFBBBB1FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift in Sources */,
 				05644DD01FFF06F900B7C853 /* NibLoader.swift in Sources */,
@@ -1571,7 +1575,7 @@
 				0523117622A3DA4A00A22157 /* EmptyInput.swift in Sources */,
 				52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */,
 				528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */,
-				607E78862279E23600FF0008 /* ContactsLastMessageViewModel.swift in Sources */,
+				607E78862279E23600FF0008 /* ContactsViewModel.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConst.swift in Sources */,
 				5247C8B221E38A19009E8770 /* MyKindnessWallViewController.swift in Sources */,
 				5247C8BC21E38A66009E8770 /* ContactUsViewController.swift in Sources */,

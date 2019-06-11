@@ -19,7 +19,7 @@ pod 'UICircularProgressRing'
 pod 'MGSwipeTableCell'
 pod 'KeychainSwift', '~> 10.0'
 pod 'JGProgressHUD'
-pod 'Kingfisher', '~> 4.0'
+pod 'Kingfisher'
 pod "ImageSlideshow/Kingfisher"
 
 pod 'Firebase/Core'
