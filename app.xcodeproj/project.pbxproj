@@ -150,6 +150,7 @@
 		6032F61C205287ED00975C23 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032F61B205287ED00975C23 /* LoadingIndicator.swift */; };
 		6033DA9622AF69BD00D43738 /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6033DA9522AF69BC00D43738 /* ContactsViewController.xib */; };
 		6033DA9822AF6B3800D43738 /* ContactsSocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033DA9722AF6B3800D43738 /* ContactsSocketViewModel.swift */; };
+		6033DA9A22AF7E2200D43738 /* ContactsRestfulViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033DA9922AF7E2200D43738 /* ContactsRestfulViewModel.swift */; };
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
 		604A31DD2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604A31DC2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift */; };
 		604A31E42291FA5900E2C5B6 /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604A31E22291FA5900E2C5B6 /* MyGiftsViewController.xib */; };
@@ -400,6 +401,7 @@
 		6032F61B205287ED00975C23 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		6033DA9522AF69BC00D43738 /* ContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsViewController.xib; sourceTree = "<group>"; };
 		6033DA9722AF6B3800D43738 /* ContactsSocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsSocketViewModel.swift; sourceTree = "<group>"; };
+		6033DA9922AF7E2200D43738 /* ContactsRestfulViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRestfulViewModel.swift; sourceTree = "<group>"; };
 		6040F3A2206688A800FCD429 /* APIEmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyInput.swift; sourceTree = "<group>"; };
 		604A31DC2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedGiftViewModel.swift; sourceTree = "<group>"; };
 		604A31E32291FA5900E2C5B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyGiftsViewController.xib; sourceTree = "<group>"; };
@@ -1057,6 +1059,7 @@
 			children = (
 				607E78842279E23600FF0008 /* ContactsViewModel.swift */,
 				6033DA9722AF6B3800D43738 /* ContactsSocketViewModel.swift */,
+				6033DA9922AF7E2200D43738 /* ContactsRestfulViewModel.swift */,
 				607E78832279E23500FF0008 /* MessagesViewModel.swift */,
 			);
 			path = ChatViewModels;
@@ -1472,6 +1475,7 @@
 				6009DBA02130A385002FD769 /* Statistics.swift in Sources */,
 				05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */,
 				607EEA81222D88C200637A93 /* Image.swift in Sources */,
+				6033DA9A22AF7E2200D43738 /* ContactsRestfulViewModel.swift in Sources */,
 				05644DC61FFEFA2E00B7C853 /* DateHandler.swift in Sources */,
 				05644DCD1FFF06BD00B7C853 /* SectionView.swift in Sources */,
 				0523117422A33A4800A22157 /* HomeVM+UITableViewDataSource.swift in Sources */,

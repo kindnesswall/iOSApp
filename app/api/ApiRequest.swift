@@ -186,5 +186,38 @@ class ApiRequest:ApiRequestProtocol {
             }
         }
     }
+    
+    func fetchContacts(completion: @escaping (Result<[ContactMessage]>)-> Void){
+        
+        self.httpLayer.request(at: Endpoint.fetchContacts) { result in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let object = ApiUtility.convert(data: data, to: [ContactMessage].self){
+                    completion(.success(object))
+                }else{
+                    completion(.failure(AppError.DataDecoding))
+                }
+            }
+        }
+    }
+    
+    func fetchMessages(input: FetchMessagesInput, completion: @escaping (Result<ContactMessage>)-> Void){
+        
+        self.httpLayer.request(at: Endpoint.fetchMessages(input: input)) { result in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let object = ApiUtility.convert(data: data, to: ContactMessage.self){
+                    completion(.success(object))
+                }else{
+                    completion(.failure(AppError.DataDecoding))
+                }
+            }
+        }
+        
+    }
 }
 

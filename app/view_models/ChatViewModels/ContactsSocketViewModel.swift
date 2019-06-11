@@ -140,7 +140,9 @@ extension ContactsSocketViewModel : WebSocketDelegate{
             guard let contactMessages = message.contactMessages else {
                 break
             }
-            self.delegate?.contactMessagesIsReceived(contactMessages: contactMessages)
+            for contactMessage in contactMessages {
+                self.delegate?.contactMessageIsReceived(contactMessage: contactMessage)
+            }
         }
     }
     

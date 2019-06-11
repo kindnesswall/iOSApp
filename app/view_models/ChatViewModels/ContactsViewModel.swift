@@ -24,7 +24,8 @@ class ContactsViewModel: NSObject {
         let userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
         self.userId = userId ?? -1
         
-        network = ContactsSocketViewModel()
+//        network = ContactsSocketViewModel()
+        network = ContactsRestfulViewModel()
         super.init()
         
         network.delegate = self
@@ -76,12 +77,6 @@ class ContactsViewModel: NSObject {
 }
 
 extension ContactsViewModel : ContactsViewModelNetworkInterface {
-    
-    func contactMessagesIsReceived(contactMessages:[ContactMessage]){
-        for contactMessage in contactMessages {
-            contactMessageIsReceived(contactMessage: contactMessage)
-        }
-    }
     
     func contactMessageIsReceived(contactMessage:ContactMessage){
         
@@ -184,7 +179,7 @@ protocol ContactsViewModelNetwork : class {
 }
 
 protocol ContactsViewModelNetworkInterface : class {
-    func contactMessagesIsReceived(contactMessages:[ContactMessage])
+    func contactMessageIsReceived(contactMessage:ContactMessage)
     func ackMessageIsReceived(ackMessage:AckMessage)
     func noMoreOldMessagesIsReceived(chatId:Int)
     func tryAgainAllSendingMessages()

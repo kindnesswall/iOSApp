@@ -31,6 +31,9 @@ enum Endpoint:EndpointProtocol {
     case DonateGift(id:Int,toUserId:Int)
     case GetGifts(param: GiftListRequestParameters)
     
+    case fetchContacts
+    case fetchMessages(input:FetchMessagesInput)
+    
     var url:URL? {
         var urlComponent = URLComponents()
         urlComponent.scheme = self.scheme
@@ -60,6 +63,9 @@ enum Endpoint:EndpointProtocol {
             return ApiUtility.convert(input: Donate(giftId: id, donatedToUserId: toUserId))
         case .GetGifts(let param):
             return ApiUtility.convert(input: param.input)
+        case .fetchContacts: return nil
+        case .fetchMessages(let input):
+            return ApiUtility.convert(input: input)
         }
     }
     
@@ -86,6 +92,10 @@ enum Endpoint:EndpointProtocol {
         case .DonateGift(_,_):
             return HttpMethod.POST.rawValue
         case .GetGifts(_):
+            return HttpMethod.POST.rawValue
+        case .fetchContacts:
+            return HttpMethod.GET.rawValue
+        case .fetchMessages(input: _):
             return HttpMethod.POST.rawValue
         }
     }
@@ -116,6 +126,10 @@ enum Endpoint:EndpointProtocol {
             return basePathUrl+"donate"
         case .GetGifts(let param):
             return basePathUrl+param.type.path
+        case .fetchContacts:
+            return "\(basePathUrl)/chat/contacts"
+        case .fetchMessages(_):
+            return "\(basePathUrl)/chat/messages"
         }
     }
     
@@ -134,13 +148,16 @@ enum Endpoint:EndpointProtocol {
         case .RequestGift: break
         case .DonateGift: break
         case .GetGifts: break
+        case .fetchContacts: break
+        case .fetchMessages: break
         }
         
         return queryItems
     }
     
     var host:String{
-        return "185.211.58.168"
+//        return "185.211.58.168"
+        return "localhost"
     }
     
     var scheme:String {
