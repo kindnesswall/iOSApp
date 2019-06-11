@@ -16,7 +16,7 @@ class ContactsViewModel: NSObject {
     var userId :Int
     var allChats = [MessagesViewModel]()
     
-    weak var delegate : ChatViewModelProtocol?
+    weak var delegate : ContactsViewModelProtocol?
     
     var contactsSocketViewModel = ContactsSocketViewModel()
     
@@ -24,6 +24,8 @@ class ContactsViewModel: NSObject {
         let userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
         self.userId = userId ?? -1
         super.init()
+        
+        contactsSocketViewModel.delegate = self
     }
     
     deinit {
@@ -39,22 +41,6 @@ class ContactsViewModel: NSObject {
     }
     
     
-    func contactMessageIsReceived(contactMessage:ContactMessage){
-        
-        guard let chatId = contactMessage.chat?.id  else {
-            return
-        }
-        
-        let messagesViewModel = addContact(chatId: chatId, contactInfo: contactMessage.contactInfo)
-        
-        guard let textMessages = contactMessage.textMessages else {
-            return
-        }
-        
-        for textMessage in textMessages {
-            self.addMessage(message: textMessage, isSending: false, messagesViewModel: messagesViewModel)
-        }
-    }
     
     private func addContact(chatId:Int,contactInfo:ContactInfo?)->MessagesViewModel{
         let messagesViewModel : MessagesViewModel = {
@@ -83,6 +69,32 @@ class ContactsViewModel: NSObject {
         }
         
         contactsSocketViewModel.sendAck(messageId: messageId)
+    }
+}
+
+extension ContactsViewModel : ContactsViewModelNetworkInterface {
+    
+    func contactMessagesIsReceived(contactMessages:[ContactMessage]){
+        for contactMessage in contactMessages {
+            contactMessageIsReceived(contactMessage: contactMessage)
+        }
+    }
+    
+    func contactMessageIsReceived(contactMessage:ContactMessage){
+        
+        guard let chatId = contactMessage.chat?.id  else {
+            return
+        }
+        
+        let messagesViewModel = addContact(chatId: chatId, contactInfo: contactMessage.contactInfo)
+        
+        guard let textMessages = contactMessage.textMessages else {
+            return
+        }
+        
+        for textMessage in textMessages {
+            self.addMessage(message: textMessage, isSending: false, messagesViewModel: messagesViewModel)
+        }
     }
     
     func ackMessageIsReceived(ackMessage:AckMessage){
@@ -154,14 +166,14 @@ extension ContactsViewModel : StartNewChatProtocol {
     }
 }
 
-protocol ChatViewModelProtocol : class {
+protocol ContactsViewModelProtocol : class {
     func reload()
     func socketConnected()
     func socketDisConnected()
 }
 
 protocol ContactsViewModelNetworkInterface : class {
-    func contactMessageIsReceived(contactMessage:ContactMessage)
+    func contactMessagesIsReceived(contactMessages:[ContactMessage])
     func ackMessageIsReceived(ackMessage:AckMessage)
     func noMoreOldMessagesIsReceived(chatId:Int)
     func tryAgainAllSendingMessages()

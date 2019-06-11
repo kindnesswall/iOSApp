@@ -10,12 +10,12 @@ import Foundation
 final class Message : Codable {
     var type: MessageType
     
-    var contactMessage: ContactMessage?
+    var contactMessages: [ContactMessage]?
     var controlMessage: ControlMessage?
     
-    init(contactMessage: ContactMessage) {
+    init(contactMessages: [ContactMessage]) {
         self.type = .contact
-        self.contactMessage=contactMessage
+        self.contactMessages=contactMessages
     }
     init(controlMessage: ControlMessage) {
         self.type = .control

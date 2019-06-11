@@ -12,6 +12,8 @@ class ContactMessage: Codable {
     var chat: Chat?
     var contactInfo: ContactInfo?
     var textMessages: [TextMessage]?
+    var notificationCount: Int?
+    
     init(textMessages: [TextMessage]?) {
         self.textMessages = textMessages
     }

@@ -39,7 +39,7 @@ class ContactsSocketViewModel: NSObject {
     
     func sendTextMessage(textMessage:TextMessage) {
         let contactMessage = ContactMessage(textMessages: [textMessage])
-        let message = Message(contactMessage: contactMessage)
+        let message = Message(contactMessages: [contactMessage])
         sendMessage(message: message)
     }
     func sendMessage(message:Message){
@@ -129,10 +129,10 @@ extension ContactsSocketViewModel : WebSocketDelegate{
             self.controlMessageIsReceived(message: message)
             
         case .contact:
-            guard let contactMessage = message.contactMessage else {
+            guard let contactMessages = message.contactMessages else {
                 break
             }
-            self.delegate?.contactMessageIsReceived(contactMessage: contactMessage)
+            self.delegate?.contactMessagesIsReceived(contactMessages: contactMessages)
         }
     }
     

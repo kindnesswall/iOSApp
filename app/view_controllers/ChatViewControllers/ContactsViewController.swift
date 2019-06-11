@@ -57,7 +57,7 @@ extension ContactsViewController : UITableViewDelegate {
     }
 }
 
-extension ContactsViewController : ChatViewModelProtocol {
+extension ContactsViewController : ContactsViewModelProtocol {
     func socketConnected() {
         self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.chats)
     }
