@@ -15,7 +15,7 @@ final class TextMessage : Codable {
     var receiverId:Int?
     var text:String
     var ack:Bool?
-    var createdAt:Date?
+    var createdAt:String?
     
     var sendingState:MessageSendingState?
     var hasSeen:Bool?

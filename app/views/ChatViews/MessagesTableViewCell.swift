@@ -76,7 +76,7 @@ class MessagesTableViewCell: UITableViewCell {
             return
         }
         self.messageText.text = message.text
-        self.timeLabel.text = AppLanguage.getNumberString(number: message.createdAt?.getClock() ?? "")
+        self.timeLabel.text = AppLanguage.getNumberString(number: message.createdAt?.convertToDate()?.getClock() ?? "")
         
         switch messageType {
         case .user:

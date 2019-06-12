@@ -176,7 +176,7 @@ extension MessagesViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let message = self.viewModel?.curatedMessages[section].first
         let messagesDateTableViewCell = MessagesDateTableViewCell(style: .default, reuseIdentifier: MessagesDateTableViewCell.identifier)
-        messagesDateTableViewCell.updateUI(date: message?.createdAt?.getPersianDate())
+        messagesDateTableViewCell.updateUI(date: message?.createdAt?.convertToDate()?.getPersianDate())
         return messagesDateTableViewCell
     }
     

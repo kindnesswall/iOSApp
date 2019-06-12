@@ -27,11 +27,18 @@ class ContactsRestfulViewModel: NSObject {
 
 extension ContactsRestfulViewModel : ContactsViewModelNetwork {
     func sendTextMessage(textMessage: TextMessage) {
-        
+        apiRequest.sendTextMessage(textMessage: textMessage) { result in
+            switch result {
+            case .success(let ackMessage):
+                self.delegate?.ackMessageIsReceived(ackMessage: ackMessage)
+            default:
+                break
+            }
+        }
     }
     
-    func sendAck(messageId: Int) {
-        
+    func sendAck(ackMessage:AckMessage) {
+        apiRequest.sendAck(ackMessage: ackMessage) {_ in}
     }
     
     func fetchContacts() {

@@ -88,9 +88,8 @@ extension ContactsSocketViewModel : ContactsViewModelNetwork {
         sendMessage(message: message)
     }
     
-    func sendAck(messageId:Int){
+    func sendAck(ackMessage:AckMessage){
         
-        let ackMessage = AckMessage(messageId: messageId)
         let controlMessage = ControlMessage(ackMessage: ackMessage)
         let message = Message(controlMessage: controlMessage)
         self.sendMessage(message: message)

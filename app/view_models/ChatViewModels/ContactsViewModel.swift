@@ -71,8 +71,8 @@ class ContactsViewModel: NSObject {
         guard let messageId=textMessage.id else {
             return
         }
-        
-        network.sendAck(messageId: messageId)
+        let ackMessage = AckMessage(messageId: messageId)
+        network.sendAck(ackMessage: ackMessage)
     }
 }
 
@@ -173,7 +173,7 @@ protocol ContactsViewModelProtocol : class {
 protocol ContactsViewModelNetwork : class {
     var delegate : ContactsViewModelNetworkInterface? { get set }
     func sendTextMessage(textMessage:TextMessage)
-    func sendAck(messageId:Int)
+    func sendAck(ackMessage:AckMessage)
     func fetchContacts()
     func fetchMessages(chatId:Int,beforeId:Int?)
 }

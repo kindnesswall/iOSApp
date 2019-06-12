@@ -187,6 +187,34 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
     
+    func sendTextMessage(textMessage: TextMessage, completion: @escaping (Result<AckMessage>)-> Void) {
+        self.httpLayer.request(at: Endpoint.sendTextMessage(textMessage: textMessage)) { result in
+            
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let object = ApiUtility.convert(data: data, to: AckMessage.self){
+                    completion(.success(object))
+                }else{
+                    completion(.failure(AppError.DataDecoding))
+                }
+            }
+        }
+    }
+    
+    func sendAck(ackMessage:AckMessage, completion: @escaping (Result<Void>)-> Void) {
+        self.httpLayer.request(at: Endpoint.sendAck(ackMessage: ackMessage)) { result in
+            
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
+    
     func fetchContacts(completion: @escaping (Result<[ContactMessage]>)-> Void){
         
         self.httpLayer.request(at: Endpoint.fetchContacts) { result in

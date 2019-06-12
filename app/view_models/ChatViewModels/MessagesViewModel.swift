@@ -38,7 +38,7 @@ class MessagesViewModel {
         var sameDateMessages:[TextMessage] = []
         for message in messages {
             
-            var sendDate = message.createdAt
+            var sendDate = message.createdAt?.convertToDate()
             if sendDate == nil, message.sendingState == .sending {
                 sendDate = Date()
             }
