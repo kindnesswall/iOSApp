@@ -33,7 +33,7 @@ class MessagesViewModel {
     }
     
     func updateCuratedMessages(){
-        curatedMessages = [[TextMessage]]()
+        var curatedMessagesStorage = [[TextMessage]]()
         var lastDate:String? = nil
         var sameDateMessages:[TextMessage] = []
         for message in messages {
@@ -53,7 +53,7 @@ class MessagesViewModel {
             }
             
             if lastDate != date {
-                curatedMessages.append(sameDateMessages)
+                curatedMessagesStorage.append(sameDateMessages)
                 sameDateMessages = []
                 lastDate = date
             }
@@ -62,7 +62,9 @@ class MessagesViewModel {
             
         }
         
-        curatedMessages.append(sameDateMessages)
+        curatedMessagesStorage.append(sameDateMessages)
+        
+        self.curatedMessages = curatedMessagesStorage
     }
     
     func numberOfNotifications()->Int{

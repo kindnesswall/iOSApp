@@ -30,7 +30,9 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
         apiRequest.sendTextMessage(textMessage: textMessage) { result in
             switch result {
             case .success(let ackMessage):
-                self.delegate?.ackMessageIsReceived(ackMessage: ackMessage)
+                DispatchQueue.main.async {
+                    self.delegate?.ackMessageIsReceived(ackMessage: ackMessage)
+                }
             default:
                 break
             }
@@ -45,12 +47,18 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
         apiRequest.fetchContacts { result in
             switch result {
             case .success(let contactMessages):
-                for contactMessage in contactMessages {
-                    self.delegate?.contactMessageIsReceived(contactMessage: contactMessage)
+                DispatchQueue.main.async {
+                    self.fetchContactsIsCompleted(contactMessages: contactMessages)
                 }
             default:
                 break
             }
+        }
+    }
+    
+    func fetchContactsIsCompleted(contactMessages:[ContactMessage]){
+        for contactMessage in contactMessages {
+            self.delegate?.contactMessageIsReceived(contactMessage: contactMessage)
         }
     }
     
@@ -60,22 +68,28 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
             switch result {
             case .success(let contactMessage):
                 
-                guard let textMessages = contactMessage.textMessages,
-                    let chatId = contactMessage.chat?.id
-                else { break }
-                
-                if textMessages.count != 0 {
-                    self.delegate?.contactMessageIsReceived(contactMessage: contactMessage)
-                } else {
-                    self.delegate?.noMoreOldMessagesIsReceived(chatId: chatId)
+                DispatchQueue.main.async {
+                    self.fetchMessagesIsCompleted(contactMessage: contactMessage)
                 }
-                
+            
             default:
                 break
             }
         }
         
         
+    }
+    
+    func fetchMessagesIsCompleted(contactMessage:ContactMessage){
+        guard let textMessages = contactMessage.textMessages,
+            let chatId = contactMessage.chat?.id
+            else { return }
+        
+        if textMessages.count != 0 {
+            self.delegate?.contactMessageIsReceived(contactMessage: contactMessage)
+        } else {
+            self.delegate?.noMoreOldMessagesIsReceived(chatId: chatId)
+        }
     }
     
     
