@@ -45,7 +45,7 @@ class ChatTableViewCell: UITableViewCell {
         let contactId = AppLanguage.getNumberString(number: viewModel.getContactId()?.description ?? "")
         self.userNameLabel.text = "\(descriptionOfUserOnChatList) \(contactId)"
         
-        let numberOfNotification = viewModel.numberOfNotifications()
+        let numberOfNotification = viewModel.notificationCount
         self.notificationLabel.text = AppLanguage.getNumberString(number: numberOfNotification.description)
         
         if numberOfNotification == 0 {

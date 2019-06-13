@@ -13,14 +13,40 @@ class ContactsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     let viewModel = ContactsViewModel()
+    var loadingIndicator: LoadingIndicator?
+    let refreshControl = UIRefreshControl()
+    @IBOutlet weak var onEmptyListMessage: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.delegate = self
-        self.tableView.register(ChatTableViewCell.self, forCellReuseIdentifier: ChatTableViewCell.identifier)
+        
         self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.chats)
-        // Do any additional setup after loading the view.
+        
+        self.tableView.register(ChatTableViewCell.self, forCellReuseIdentifier: ChatTableViewCell.identifier)
+        self.loadingIndicator=LoadingIndicator(view: self.view)
+        configRefreshControl()
+        
+        self.viewModel.delegate = self
+        
+        if self.viewModel.initialContactsHasLoaded {
+            self.pageLoadingAnimation(pageLoadingSate: .hasLoaded(showEmptyListMessage: self.viewModel.allChats.count == 0))
+        } else {
+            self.pageLoadingAnimation(pageLoadingSate: .isLoading)
+        }
+        
     }
+    
+    func configRefreshControl(){
+        refreshControl.addTarget(self, action: #selector(self.refreshControlAction), for: .valueChanged)
+        refreshControl.tintColor=AppConst.Resource.Color.Tint
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc func refreshControlAction(){
+        self.viewModel.reloadData()
+    }
+    
     deinit {
         print("ContactsViewController deinit")
     }
@@ -28,7 +54,6 @@ class ContactsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.setDefaultStyle()
-        self.reload()
     }
 }
 
@@ -58,6 +83,23 @@ extension ContactsViewController : UITableViewDelegate {
 }
 
 extension ContactsViewController : ContactsViewModelProtocol {
+    
+    func reloadTableView() {
+        self.tableView.reloadData()
+    }
+    
+    func pageLoadingAnimation(pageLoadingSate: PageLoadingSate) {
+        switch pageLoadingSate {
+        case .isLoading:
+            self.loadingIndicator?.startLoading()
+            self.onEmptyListMessage.hide()
+        case .hasLoaded(let showEmptyListMessage):
+            self.loadingIndicator?.stopLoading()
+            self.refreshControl.endRefreshing()
+            self.onEmptyListMessage.isHidden = !showEmptyListMessage
+        }
+    }
+    
     func socketConnected() {
         self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.chats)
     }
@@ -66,9 +108,11 @@ extension ContactsViewController : ContactsViewModelProtocol {
         self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.connecting)
     }
     
-    func reload() {
-        self.tableView.reloadData()
-    }
+}
+
+enum PageLoadingSate {
+    case isLoading
+    case hasLoaded(showEmptyListMessage:Bool)
 }
 
 

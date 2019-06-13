@@ -13,6 +13,7 @@ class MessagesViewModel {
     var userId:Int
     var chatId:Int
     var contactInfo:ContactInfo?
+    var serverNotificationCount: Int?
     private var messages = [TextMessage]() {
         didSet {
             updateCuratedMessages()
@@ -30,6 +31,24 @@ class MessagesViewModel {
     
     deinit {
         print("MessagesViewModel deinit")
+    }
+    
+    var notificationCount: Int {
+        if self.messages.count == 0 {
+            return serverNotificationCount ?? 0
+        } else {
+            return localNotificationCount
+        }
+    }
+    
+    private var localNotificationCount: Int {
+        var number = 0
+        for each in self.messages {
+            if each.senderId != self.userId, each.ack == false, each.hasSeen ?? false == false {
+                number+=1
+            }
+        }
+        return number
     }
     
     func updateCuratedMessages(){
@@ -67,15 +86,6 @@ class MessagesViewModel {
         self.curatedMessages = curatedMessagesStorage
     }
     
-    func numberOfNotifications()->Int{
-        var number = 0
-        for each in self.messages {
-            if each.senderId != self.userId, each.ack == false, each.hasSeen ?? false == false {
-                number+=1
-            }
-        }
-        return number
-    }
     
     func getContactId()->Int?{
         return contactInfo?.id

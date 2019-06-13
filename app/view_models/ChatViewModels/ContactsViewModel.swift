@@ -14,11 +14,16 @@ class ContactsViewModel: NSObject {
     
     
     var userId :Int
-    var allChats = [MessagesViewModel]()
+    var allChats = [MessagesViewModel]() {
+        didSet {
+            self.delegate?.reloadTableView()
+        }
+    }
     
     weak var delegate : ContactsViewModelProtocol?
     
-    var network: ContactsViewModelNetwork
+    private var network: ContactsViewModelNetwork
+    var initialContactsHasLoaded = false
     
     override init() {
         let userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
@@ -36,17 +41,21 @@ class ContactsViewModel: NSObject {
         print("ContactsViewModel deinit")
     }
     
+    func reloadData(){
+        self.allChats = []
+        network.fetchContacts()
+    }
+    
     
     func addMessage(message:TextMessage,isSending:Bool,messagesViewModel:MessagesViewModel){
         
         messagesViewModel.addMessage(message: message,isSending: isSending)
-        self.delegate?.reload()
         
     }
     
     
     
-    private func addContact(chatId:Int,contactInfo:ContactInfo?)->MessagesViewModel{
+    private func addContact(chatId:Int,contactInfo:ContactInfo?,notificationCount:Int?)->MessagesViewModel{
         let messagesViewModel : MessagesViewModel = {
             if let messagesViewModel = MessagesViewModel.find(chatId: chatId, list: self.allChats) {
                 return messagesViewModel
@@ -60,6 +69,9 @@ class ContactsViewModel: NSObject {
         if let contactInfo = contactInfo {
             messagesViewModel.contactInfo = contactInfo
         }
+        if let notificationCount = notificationCount {
+            messagesViewModel.serverNotificationCount = notificationCount
+        }
         
         return messagesViewModel
     }
@@ -71,6 +83,10 @@ class ContactsViewModel: NSObject {
         guard let messageId=textMessage.id else {
             return
         }
+        
+        //Updating notification's count
+        self.delegate?.reloadTableView()
+        
         let ackMessage = AckMessage(messageId: messageId)
         network.sendAck(ackMessage: ackMessage)
     }
@@ -78,13 +94,27 @@ class ContactsViewModel: NSObject {
 
 extension ContactsViewModel : ContactsViewModelNetworkInterface {
     
-    func contactMessageIsReceived(contactMessage:ContactMessage){
+    func allContactMessagesAreReceived(contactMessages:[ContactMessage]){
+        self.initialContactsHasLoaded = true
+        self.delegate?.pageLoadingAnimation(pageLoadingSate: .hasLoaded(showEmptyListMessage: contactMessages.count == 0))
+        for contactMessage in contactMessages {
+            self.contactMessageIsReceived(contactMessage: contactMessage)
+        }
+    }
+    func singleContactMessageIsReceived(contactMessage:ContactMessage){
+        self.contactMessageIsReceived(contactMessage: contactMessage)
+    }
+    
+    private func contactMessageIsReceived(contactMessage:ContactMessage){
+        
         
         guard let chatId = contactMessage.chat?.id  else {
             return
         }
         
-        let messagesViewModel = addContact(chatId: chatId, contactInfo: contactMessage.contactInfo)
+        let messagesViewModel = addContact(chatId: chatId, contactInfo: contactMessage.contactInfo, notificationCount:contactMessage.notificationCount)
+        
+        
         
         guard let textMessages = contactMessage.textMessages else {
             return
@@ -150,7 +180,7 @@ extension ContactsViewModel : StartNewChatProtocol {
         
         let message = TextMessage(text: text, senderId: self.userId, chatId: chatId)
         
-        let messagesViewModel = self.addContact(chatId: chatId, contactInfo: nil)
+        let messagesViewModel = self.addContact(chatId: chatId, contactInfo: nil, notificationCount: nil)
         
         self.addMessage(message: message, isSending: true, messagesViewModel: messagesViewModel)
         
@@ -165,7 +195,8 @@ extension ContactsViewModel : StartNewChatProtocol {
 }
 
 protocol ContactsViewModelProtocol : class {
-    func reload()
+    func reloadTableView()
+    func pageLoadingAnimation(pageLoadingSate: PageLoadingSate)
     func socketConnected()
     func socketDisConnected()
 }
@@ -179,7 +210,8 @@ protocol ContactsViewModelNetwork : class {
 }
 
 protocol ContactsViewModelNetworkInterface : class {
-    func contactMessageIsReceived(contactMessage:ContactMessage)
+    func allContactMessagesAreReceived(contactMessages:[ContactMessage])
+    func singleContactMessageIsReceived(contactMessage:ContactMessage)
     func ackMessageIsReceived(ackMessage:AckMessage)
     func noMoreOldMessagesIsReceived(chatId:Int)
     func tryAgainAllSendingMessages()

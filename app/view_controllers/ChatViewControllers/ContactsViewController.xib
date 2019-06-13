@@ -9,9 +9,15 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="IRANSansMobile.ttf">
+            <string>IRANSansMobile</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactsViewController" customModule="app" customModuleProvider="target">
             <connections>
+                <outlet property="onEmptyListMessage" destination="z1b-RO-kdp" id="qoK-K3-i60"/>
                 <outlet property="tableView" destination="9QL-YD-XrN" id="Rw0-SN-mEN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,11 +35,33 @@
                         <outlet property="delegate" destination="-1" id="mkV-hc-QfB"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1b-RO-kdp">
+                    <rect key="frame" x="0.0" y="313.5" width="375" height="60"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="شما هیچ پیغامی ندارید." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CK-zD-U3r">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="4CK-zD-U3r" secondAttribute="bottom" id="44M-vU-bpj"/>
+                        <constraint firstItem="4CK-zD-U3r" firstAttribute="top" secondItem="z1b-RO-kdp" secondAttribute="top" id="MQv-PO-cZp"/>
+                        <constraint firstAttribute="trailing" secondItem="4CK-zD-U3r" secondAttribute="trailing" id="Rbi-dg-GRr"/>
+                        <constraint firstAttribute="height" constant="60" id="tBc-yv-lS2"/>
+                        <constraint firstItem="4CK-zD-U3r" firstAttribute="leading" secondItem="z1b-RO-kdp" secondAttribute="leading" id="ygL-w9-XY7"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="z1b-RO-kdp" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="19S-qQ-NaJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9QL-YD-XrN" secondAttribute="trailing" id="5om-VJ-MJU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="z1b-RO-kdp" secondAttribute="trailing" id="DoL-L7-pOa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9QL-YD-XrN" secondAttribute="bottom" id="KFn-CN-dcS"/>
+                <constraint firstItem="z1b-RO-kdp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NaH-Z7-O5u"/>
                 <constraint firstItem="9QL-YD-XrN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uLm-sj-pd7"/>
                 <constraint firstItem="9QL-YD-XrN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="yWf-nD-BVR"/>
             </constraints>

@@ -57,9 +57,7 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
     }
     
     func fetchContactsIsCompleted(contactMessages:[ContactMessage]){
-        for contactMessage in contactMessages {
-            self.delegate?.contactMessageIsReceived(contactMessage: contactMessage)
-        }
+        self.delegate?.allContactMessagesAreReceived(contactMessages: contactMessages)
     }
     
     func fetchMessages(chatId: Int, beforeId: Int?) {
@@ -86,7 +84,7 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
             else { return }
         
         if textMessages.count != 0 {
-            self.delegate?.contactMessageIsReceived(contactMessage: contactMessage)
+            self.delegate?.singleContactMessageIsReceived(contactMessage: contactMessage)
         } else {
             self.delegate?.noMoreOldMessagesIsReceived(chatId: chatId)
         }
