@@ -12,6 +12,7 @@ class ChatTableViewCell: UITableViewCell {
     
     static let cellHeight:CGFloat = 80
     let userImageSize:CGFloat = 40
+    let imagePlaceholder = UIImage(named: "blank_avatar")
     
     var userNameLabel = UILabel()
     var notificationLabel = UILabel()
@@ -53,14 +54,19 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     func fillUI(viewModel:MessagesViewModel){
-        let descriptionOfUserOnChatList = LocalizationSystem.getStr(forKey: LanguageKeys.descriptionOfUserOnChatList)
-        let contactId = AppLanguage.getNumberString(number: viewModel.getContactId()?.description ?? "")
-        self.userNameLabel.text = "\(descriptionOfUserOnChatList) \(contactId)"
+        
+        let defaultName = LocalizationSystem.getStr(forKey: LanguageKeys.contact)
+        self.userNameLabel.text = viewModel.contactInfo?.name ?? defaultName
         
         let numberOfNotification = viewModel.notificationCount
         self.notificationLabel.text = AppLanguage.getNumberString(number: numberOfNotification.description)
         
-        self.userImage.image = UIImage(named: "blank_avatar")
+        if let imageAddr = viewModel.contactInfo?.image,
+            let url = URL(string: imageAddr) {
+            self.userImage.kf.setImage(with: url, placeholder: imagePlaceholder)
+        } else {
+            self.userImage.image = imagePlaceholder
+        }
         
         if numberOfNotification == 0 {
             self.notificationLabel.isHidden = true

@@ -152,4 +152,5 @@ struct LanguageKeys {
     
     static let connecting : String = "connecting"
     static let newMessage : String = "newMessage"
+    static let contact = "contact"
 }
