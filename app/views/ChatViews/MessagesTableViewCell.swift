@@ -104,7 +104,7 @@ class MessagesTableViewCell: UITableViewCell {
     func configIsNewMessageLabels(){
         self.isNewMessageLabel.font = AppConst.Resource.Font.getRegularFont(size: 17)
         self.isNewMessageLabel.textAlignment = .center
-        self.isNewMessageLabel.text = "پیغام جدید"
+        self.isNewMessageLabel.text = LocalizationSystem.getStr(forKey: LanguageKeys.newMessage)
         
         let lineColor = UIColor.gray
         self.isNewMessageLLineLabel.backgroundColor = lineColor
@@ -127,7 +127,7 @@ class MessagesTableViewCell: UITableViewCell {
         }
         self.messageText.text = message.text
         self.timeLabel.text = AppLanguage.getNumberString(number: message.createdAt?.convertToDate()?.getClock() ?? "")
-        self.isNewMessageView.isHidden = true
+        self.isNewMessageView.isHidden = !(message.isNewMessage ?? false)
         
         switch messageType {
         case .user:

@@ -55,6 +55,7 @@ class MessagesViewModel {
         var curatedMessagesStorage = [[TextMessage]]()
         var lastDate:String? = nil
         var sameDateMessages:[TextMessage] = []
+        var newMessage:TextMessage?
         for message in messages {
             
             var sendDate = message.createdAt?.convertToDate()
@@ -79,11 +80,25 @@ class MessagesViewModel {
             
             sameDateMessages.append(message)
             
+            message.isNewMessage = false
+             if isNewMessage(message: message){
+                newMessage = message
+            }
+            
         }
         
         curatedMessagesStorage.append(sameDateMessages)
         
+        newMessage?.isNewMessage = true
+        
         self.curatedMessages = curatedMessagesStorage
+    }
+    
+    func isNewMessage(message:TextMessage)->Bool {
+        if message.receiverId == userId, !(message.ack ?? false), !(message.hasSeen ?? false) {
+            return true
+        }
+        return false
     }
     
     

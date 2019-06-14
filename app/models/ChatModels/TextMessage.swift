@@ -19,6 +19,7 @@ final class TextMessage : Codable {
     
     var sendingState:MessageSendingState?
     var hasSeen:Bool?
+    var isNewMessage:Bool? = false
     
     init(text:String,senderId:Int,chatId:Int) {
         self.text=text
