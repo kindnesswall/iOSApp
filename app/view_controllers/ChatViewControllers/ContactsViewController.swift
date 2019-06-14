@@ -80,6 +80,10 @@ extension ContactsViewController : UITableViewDelegate {
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return ChatTableViewCell.cellHeight
+    }
 }
 
 extension ContactsViewController : ContactsViewModelProtocol {

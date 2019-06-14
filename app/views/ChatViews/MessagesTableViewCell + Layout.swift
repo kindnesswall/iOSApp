@@ -58,14 +58,14 @@ extension MessagesTableViewCell {
     func layoutIsNewMessageLabel(){
         let autoLayout = AutoLayoutHelper(view: self.isNewMessageLabel)
         autoLayout.addConstraints(firstView: self.isNewMessageLabel, secondView: self.isNewMessageView, leading: nil, trailing: nil, top: 0, bottom: 0)
-        autoLayout.addXAxisMultiplierConstraint(viewAnchor: self.isNewMessageLabel.centerXAnchor, superViewAnchor: self.isNewMessageView.centerXAnchor, equationType: .equal, multiplier: 0)
+        autoLayout.addXAxisMultiplierConstraint(viewAnchor: self.isNewMessageLabel.centerXAnchor, superViewAnchor: self.isNewMessageView.centerXAnchor)
         autoLayout.addDimension(dimension: self.isNewMessageLabel.widthAnchor, equationType: .equal, constant: self.isNewMessageLabelWidth)
     }
     
     func layoutIsNewMessageLineLabel(line:UILabel,isLeft:Bool){
         let autoLayout = AutoLayoutHelper(view: line)
         autoLayout.addDimension(dimension: line.heightAnchor, equationType: .equal, constant: 1)
-        autoLayout.addYAxisMultiplierConstraint(viewAnchor: line.centerYAnchor, superViewAnchor: self.isNewMessageView.centerYAnchor, equationType: .equal, multiplier: 0)
+        autoLayout.addYAxisMultiplierConstraint(viewAnchor: line.centerYAnchor, superViewAnchor: self.isNewMessageView.centerYAnchor)
         
         let superViewAnchor = isLeft ? self.isNewMessageView.leadingAnchor : self.isNewMessageView.trailingAnchor
         autoLayout.addConstantConstraint(

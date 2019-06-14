@@ -10,8 +10,12 @@ import UIKit
 
 class ChatTableViewCell: UITableViewCell {
     
+    static let cellHeight:CGFloat = 80
+    let userImageSize:CGFloat = 40
+    
     var userNameLabel = UILabel()
     var notificationLabel = UILabel()
+    var userImage = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -20,7 +24,15 @@ class ChatTableViewCell: UITableViewCell {
     
     func createElements(){
         configUserNameLabel()
+        configUserImage()
         configNotificationLabel()
+    }
+    
+    func configUserImage(){
+        self.userImage.clipsToBounds = true
+        self.userImage.layer.cornerRadius = userImageSize/2
+        self.contentView.addSubview(self.userImage)
+        self.layoutUserImage()
     }
     
     func configUserNameLabel(){
@@ -48,6 +60,8 @@ class ChatTableViewCell: UITableViewCell {
         let numberOfNotification = viewModel.notificationCount
         self.notificationLabel.text = AppLanguage.getNumberString(number: numberOfNotification.description)
         
+        self.userImage.image = UIImage(named: "blank_avatar")
+        
         if numberOfNotification == 0 {
             self.notificationLabel.isHidden = true
         } else {
@@ -58,6 +72,9 @@ class ChatTableViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         print("init(coder:) has not been implemented")
         return nil
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
     }
 
 

@@ -62,8 +62,8 @@ class AutoLayoutHelper {
     
     func addXAxisMultiplierConstraint(viewAnchor:NSLayoutXAxisAnchor,
                                    superViewAnchor:NSLayoutXAxisAnchor,
-                                   equationType:EquationType,
-                                   multiplier:CGFloat,
+                                   equationType:EquationType = .equal,
+                                   multiplier:CGFloat = 1,
                                    priority:UILayoutPriority? = nil){
         
         let constraint : NSLayoutConstraint
@@ -84,8 +84,8 @@ class AutoLayoutHelper {
     
     func addYAxisMultiplierConstraint(viewAnchor:NSLayoutYAxisAnchor,
                                    superViewAnchor:NSLayoutYAxisAnchor,
-                                   equationType:EquationType,
-                                   multiplier:CGFloat,
+                                   equationType:EquationType = .equal,
+                                   multiplier:CGFloat = 1,
                                    priority:UILayoutPriority? = nil){
         
         let constraint : NSLayoutConstraint
