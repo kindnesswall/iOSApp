@@ -64,11 +64,9 @@ class ContactsViewModel: NSObject {
         }
     }
     
-    func sendAck(textMessage:TextMessage){
-        guard textMessage.receiverId == userId, textMessage.ack == false else {
-            return
-        }
-        guard let messageId=textMessage.id else {
+    func sendAck(message:TextMessage){
+        
+        guard let messageId=message.id else {
             return
         }
         
@@ -161,8 +159,8 @@ extension ContactsViewModel : MessagesViewControllerDelegate {
         network.fetchMessages(chatId: chatId, beforeId: beforeId)
     }
     
-    func sendAckMessage(textMessage:TextMessage) {
-        self.sendAck(textMessage: textMessage)
+    func sendAckMessage(message:TextMessage) {
+        self.sendAck(message: message)
     }
 }
 
