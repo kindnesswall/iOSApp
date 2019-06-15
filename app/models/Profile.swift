@@ -8,14 +8,18 @@
 import Foundation
 
 final class UserProfile : Codable {
+    var id: Int
     var name:String?
     var image:String?
     
-    init() {}
-    
-    init(name:String?,image:String?) {
-        self.name=name
-        self.image=image
+    final class Input: Codable {
+        var name:String?
+        var image:String?
+        
+        init(name:String?,image:String?) {
+            self.name=name
+            self.image=image
+        }
     }
 }
 

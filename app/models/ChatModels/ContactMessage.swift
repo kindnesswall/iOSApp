@@ -10,23 +10,11 @@ import Foundation
 
 class ContactMessage: Codable {
     var chat: Chat?
-    var contactInfo: ContactInfo?
+    var contactInfo: UserProfile?
     var textMessages: [TextMessage]?
     var notificationCount: Int?
     
     init(textMessages: [TextMessage]?) {
         self.textMessages = textMessages
-    }
-}
-
-class ContactInfo: Codable {
-    var id: Int
-    var name: String?
-    var image: String?
-    
-    init(id: Int,name: String?,image: String?) {
-        self.id=id
-        self.name=name
-        self.image=image
     }
 }

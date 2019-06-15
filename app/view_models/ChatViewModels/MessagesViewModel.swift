@@ -12,13 +12,9 @@ import Foundation
 class MessagesViewModel {
     var userId:Int
     var chatId:Int
-    var contactInfo:ContactInfo?
+    var contactInfo:UserProfile?
     var serverNotificationCount: Int?
-    private var messages = [TextMessage]() {
-        didSet {
-            updateCuratedMessages()
-        }
-    }
+    private var messages = [TextMessage]()
     var curatedMessages = [[TextMessage]]()
     var sendingQueue = [TextMessage]()
     weak var delegate:MessagesDelegate?
@@ -51,7 +47,41 @@ class MessagesViewModel {
         return number
     }
     
-    func updateCuratedMessages(){
+    func addMessages(messages:[TextMessage],isSending:Bool) {
+        
+        var scrollToTop = false
+        for message in messages {
+            let index = addMessage(message: message, isSending: isSending)
+            if !scrollToTop, let index=index, index == 0 {
+                scrollToTop = true
+            }
+        }
+        
+        updateCuratedMessages()
+        
+        if scrollToTop{
+            self.delegate?.updateTableViewAndScrollToTop()
+        } else {
+            self.delegate?.updateTableView()
+        }
+    }
+    
+    func ackMessageIsReceived(message:TextMessage) {
+        self.updateAckedMessage(message: message)
+    }
+    
+    private func addMessage(message:TextMessage,isSending:Bool)->Int? {
+        if isSending {
+            let index = 0
+            self.messages.insert(message, at: index)
+            self.sendingQueue.append(message)
+            return index
+        } else {
+            return self.addMessage(message: message)
+        }
+    }
+    
+    private func updateCuratedMessages(){
         var curatedMessagesStorage = [[TextMessage]]()
         var lastDate:String? = nil
         var sameDateMessages:[TextMessage] = []
@@ -94,7 +124,7 @@ class MessagesViewModel {
         self.curatedMessages = curatedMessagesStorage
     }
     
-    func isNewMessage(message:TextMessage)->Bool {
+    private func isNewMessage(message:TextMessage)->Bool {
         if message.receiverId == userId, !(message.ack ?? false), !(message.hasSeen ?? false) {
             return true
         }
@@ -106,23 +136,14 @@ class MessagesViewModel {
         return contactInfo?.id
     }
     
-    func addMessage(message:TextMessage,isSending:Bool) {
-        if isSending {
-            self.insertToMessages(message, at: 0)
-            self.sendingQueue.append(message)
-        } else {
-            self.addServerMessage(message: message)
-        }
-    }
-    
-    func ackMessageIsReceived(message:TextMessage) {
-        self.updateAckedMessage(message: message)
-    }
     
     private func updateAckedMessage(message:TextMessage){
         self.removeSendingMessageFromMessages(message: message)
         self.removeSendingMessageFromSendingQueue(message: message)
-        self.addServerMessage(message: message)
+        let _ = self.addMessage(message: message)
+        
+        updateCuratedMessages()
+        self.delegate?.updateTableViewAndScrollToTop()
     }
     
     private func removeSendingMessageFromMessages(message:TextMessage){
@@ -136,7 +157,7 @@ class MessagesViewModel {
         guard let sendingMessageIndex = optionalSendingMessageIndex else{
             return
         }
-        self.removeFromMessages(at: sendingMessageIndex)
+        self.messages.remove(at: sendingMessageIndex)
     }
     
     private func removeSendingMessageFromSendingQueue(message:TextMessage){
@@ -153,51 +174,29 @@ class MessagesViewModel {
         self.sendingQueue.remove(at: sendingMessageIndex)
     }
     
-    private func addServerMessage(message:TextMessage){
+    private func addMessage(message:TextMessage)->Int?{
         guard let messageId = message.id else {
-            return
+            return nil
         }
         guard !messages.contains(where: { each -> Bool in
             return messageId == each.id
         }) else {
-            return
+            return nil
         }
         
-        var isInserted = false
         for i in 0..<messages.count {
             guard let eachId = messages[i].id else {
                 continue
             }
             if messageId > eachId {
-                self.insertToMessages(message, at: i)
-                isInserted = true
-                break
+                self.messages.insert(message, at: i)
+                return i
             }
         }
         
-        if !isInserted {
-            self.insertToMessages(message, at: nil)
-        }
+        messages.append(message)
+        return nil
         
-    }
-    
-    private func insertToMessages(_ message:TextMessage,at index:Int?) {
-        if let index = index {
-            self.messages.insert(message, at: index)
-        } else {
-            messages.append(message)
-        }
-        
-        if let index=index, index == 0 {
-            self.delegate?.updateTableViewAndScrollToTop()
-        } else {
-            self.delegate?.updateTableView()
-        }
-        
-    }
-    private func removeFromMessages(at index:Int) {
-        self.messages.remove(at: index)
-        self.delegate?.updateTableView()
     }
 }
 

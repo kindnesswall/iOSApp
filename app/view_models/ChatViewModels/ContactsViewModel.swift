@@ -47,33 +47,21 @@ class ContactsViewModel: NSObject {
     }
     
     
-    func addMessage(message:TextMessage,isSending:Bool,messagesViewModel:MessagesViewModel){
+    func addMessages(messages:[TextMessage],isSending:Bool,messagesViewModel:MessagesViewModel){
         
-        messagesViewModel.addMessage(message: message,isSending: isSending)
+        messagesViewModel.addMessages(messages: messages,isSending: isSending)
         
     }
     
     
-    
-    private func addContact(chatId:Int,contactInfo:ContactInfo?,notificationCount:Int?)->MessagesViewModel{
-        let messagesViewModel : MessagesViewModel = {
-            if let messagesViewModel = MessagesViewModel.find(chatId: chatId, list: self.allChats) {
-                return messagesViewModel
-            } else {
-                let messagesViewModel = MessagesViewModel(userId: self.userId, chatId: chatId)
-                self.allChats.append(messagesViewModel)
-                return messagesViewModel
-            }
-        }()
-        
-        if let contactInfo = contactInfo {
-            messagesViewModel.contactInfo = contactInfo
+    private func addContact(chatId:Int) -> MessagesViewModel{
+        if let messagesViewModel = MessagesViewModel.find(chatId: chatId, list: self.allChats) {
+            return messagesViewModel
+        } else {
+            let messagesViewModel = MessagesViewModel(userId: self.userId, chatId: chatId)
+            self.allChats.append(messagesViewModel)
+            return messagesViewModel
         }
-        if let notificationCount = notificationCount {
-            messagesViewModel.serverNotificationCount = notificationCount
-        }
-        
-        return messagesViewModel
     }
     
     func sendAck(textMessage:TextMessage){
@@ -112,17 +100,21 @@ extension ContactsViewModel : ContactsViewModelNetworkInterface {
             return
         }
         
-        let messagesViewModel = addContact(chatId: chatId, contactInfo: contactMessage.contactInfo, notificationCount:contactMessage.notificationCount)
+        let messagesViewModel = addContact(chatId: chatId)
         
-        
+        if let contactInfo = contactMessage.contactInfo {
+            messagesViewModel.contactInfo = contactInfo
+        }
+        if let notificationCount = contactMessage.notificationCount {
+            messagesViewModel.serverNotificationCount = notificationCount
+        }
         
         guard let textMessages = contactMessage.textMessages else {
             return
         }
         
-        for textMessage in textMessages {
-            self.addMessage(message: textMessage, isSending: false, messagesViewModel: messagesViewModel)
-        }
+        self.addMessages(messages: textMessages, isSending: false, messagesViewModel: messagesViewModel)
+        
     }
     
     func ackMessageIsReceived(ackMessage:AckMessage){
@@ -159,7 +151,7 @@ extension ContactsViewModel : MessagesViewControllerDelegate {
         
         let message = TextMessage(text: text, senderId: self.userId, chatId: messagesViewModel.chatId)
         
-        self.addMessage(message: message, isSending: true, messagesViewModel: messagesViewModel)
+        self.addMessages(messages: [message], isSending: true, messagesViewModel: messagesViewModel)
         
         network.sendTextMessage(textMessage: message)
         
@@ -180,11 +172,12 @@ extension ContactsViewModel : StartNewChatProtocol {
         
         let message = TextMessage(text: text, senderId: self.userId, chatId: chatId)
         
-        let messagesViewModel = self.addContact(chatId: chatId, contactInfo: nil, notificationCount: nil)
+        let messagesViewModel = self.addContact(chatId: chatId)
         
-        self.addMessage(message: message, isSending: true, messagesViewModel: messagesViewModel)
+        self.addMessages(messages: [message], isSending: true, messagesViewModel: messagesViewModel)
         
         network.sendTextMessage(textMessage: message)
+        
         
         return messagesViewModel
     }
