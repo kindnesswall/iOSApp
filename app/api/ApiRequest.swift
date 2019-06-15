@@ -104,7 +104,7 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
     
-    func login(phoneNumber: String, activationCode: String, completion: @escaping (Result<Token>)-> Void) {
+    func login(phoneNumber: String, activationCode: String, completion: @escaping (Result<AuthOutput>)-> Void) {
         
         let input = User(phoneNumber: phoneNumber,activationCode: activationCode)
         self.httpLayer.request(at: Endpoint.Login(user: input)) {(result) in
@@ -113,8 +113,8 @@ class ApiRequest:ApiRequestProtocol {
             case .failure(let appError):
                 completion(.failure(appError))
             case .success(let data):
-                if let token = ApiUtility.convert(data:data , to: Token.self) {
-                    completion(.success(token))
+                if let authOutput = ApiUtility.convert(data:data , to: AuthOutput.self) {
+                    completion(.success(authOutput))
                 }else{
                     completion(.failure(AppError.DataDecoding))
                 }

@@ -126,7 +126,7 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
         }
     }
     
-    func handleLogin(_ result:Result<Token>) {
+    func handleLogin(_ result:Result<AuthOutput>) {
         self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.registeringActivationCode), for: [])
         self.registerLoading.stopAnimating()
         
@@ -144,9 +144,9 @@ class ActivationEnterVerifyCodeViewController: UIViewController {
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
             }
             
-        case .success(let token):
-            if let userID = token.userID?.description, let token = token.token {
-                AppDelegate.me().login(userID: userID, token: token)
+        case .success(let authOutput):
+            if let userID = authOutput.token.userID?.description, let token = authOutput.token.token {
+                AppDelegate.me().login(userID: userID, token: token, isAdmin: authOutput.isAdmin)
             }
             
             self.dismiss(animated: true, completion: {

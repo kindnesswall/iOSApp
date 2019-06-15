@@ -11,14 +11,12 @@ import KeychainSwift
 
 extension AppDelegate {
     
-    func login(userID:String,token:String){
+    func login(userID:String,token:String,isAdmin:Bool){
         let keychain = KeychainSwift()
         
         keychain.set(userID, forKey: AppConst.KeyChain.USER_ID)
         keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
-        
-        //Test
-        keychain.set(true, forKey: AppConst.KeyChain.IsAdmin)
+        keychain.set(isAdmin, forKey: AppConst.KeyChain.IsAdmin)
         
         resetAppAfterSwitchUser()
     }

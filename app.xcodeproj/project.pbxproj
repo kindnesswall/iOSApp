@@ -151,6 +151,7 @@
 		6033DA9622AF69BD00D43738 /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6033DA9522AF69BC00D43738 /* ContactsViewController.xib */; };
 		6033DA9822AF6B3800D43738 /* ContactsSocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033DA9722AF6B3800D43738 /* ContactsSocketViewModel.swift */; };
 		6033DA9A22AF7E2200D43738 /* ContactsRestfulViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033DA9922AF7E2200D43738 /* ContactsRestfulViewModel.swift */; };
+		6033DA9E22B4F62300D43738 /* AuthOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033DA9D22B4F62300D43738 /* AuthOutput.swift */; };
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
 		604A31DD2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604A31DC2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift */; };
 		604A31E42291FA5900E2C5B6 /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604A31E22291FA5900E2C5B6 /* MyGiftsViewController.xib */; };
@@ -402,6 +403,7 @@
 		6033DA9522AF69BC00D43738 /* ContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsViewController.xib; sourceTree = "<group>"; };
 		6033DA9722AF6B3800D43738 /* ContactsSocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsSocketViewModel.swift; sourceTree = "<group>"; };
 		6033DA9922AF7E2200D43738 /* ContactsRestfulViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRestfulViewModel.swift; sourceTree = "<group>"; };
+		6033DA9D22B4F62300D43738 /* AuthOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthOutput.swift; sourceTree = "<group>"; };
 		6040F3A2206688A800FCD429 /* APIEmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyInput.swift; sourceTree = "<group>"; };
 		604A31DC2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedGiftViewModel.swift; sourceTree = "<group>"; };
 		604A31E32291FA5900E2C5B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyGiftsViewController.xib; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 				604FB5BE228B6DBE00795CE2 /* Donate.swift */,
 				05BFBBDD1FE26A9000DBCDDF /* Gift.swift */,
 				05BFBBDF1FE26ADE00DBCDDF /* User.swift */,
+				6033DA9D22B4F62300D43738 /* AuthOutput.swift */,
 				05BFBBE11FE26B0500DBCDDF /* Category.swift */,
 				05BFBBE31FE26B4C00DBCDDF /* Request.swift */,
 				601F83D02036A8BE00F9118B /* DateStatus.swift */,
@@ -1597,6 +1600,7 @@
 				053C46F82294A82A00074761 /* ResponseModel.swift in Sources */,
 				52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */,
 				607E78A02279E28D00FF0008 /* Chat.swift in Sources */,
+				6033DA9E22B4F62300D43738 /* AuthOutput.swift in Sources */,
 				05644DCA1FFF02A100B7C853 /* UITableView+isCellVisible.swift in Sources */,
 				056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */,
 				526545FC21BF2CD200C98821 /* Array+chunked.swift in Sources */,
