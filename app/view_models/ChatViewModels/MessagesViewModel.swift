@@ -29,6 +29,10 @@ class MessagesViewModel {
         print("MessagesViewModel deinit")
     }
     
+    func getContactId()->Int?{
+        return contactInfo?.id
+    }
+    
     var notificationCount: Int {
         if self.messages.count == 0 {
             return serverNotificationCount ?? 0
@@ -52,22 +56,21 @@ class MessagesViewModel {
         var scrollToTop = false
         for message in messages {
             let index = addMessage(message: message, isSending: isSending)
-            if !scrollToTop, let index=index, index == 0 {
+            if !scrollToTop, index == 0 {
                 scrollToTop = true
             }
         }
         
-        updateCuratedMessages()
-        
-        if scrollToTop{
-            self.delegate?.updateTableViewAndScrollToTop()
-        } else {
-            self.delegate?.updateTableView()
-        }
+        updateUI(scrollToTop: scrollToTop)
     }
     
     func ackMessageIsReceived(message:TextMessage) {
-        self.updateAckedMessage(message: message)
+        self.removeSendingMessageFromMessages(message: message)
+        self.removeSendingMessageFromSendingQueue(message: message)
+        let index = self.addMessage(message: message)
+        let scrollToTop = index == 0 ? true : false
+        
+        updateUI(scrollToTop: scrollToTop)
     }
     
     private func addMessage(message:TextMessage,isSending:Bool)->Int? {
@@ -78,6 +81,16 @@ class MessagesViewModel {
             return index
         } else {
             return self.addMessage(message: message)
+        }
+    }
+    
+    private func updateUI(scrollToTop:Bool){
+        updateCuratedMessages()
+        
+        if scrollToTop{
+            self.delegate?.updateTableViewAndScrollToTop()
+        } else {
+            self.delegate?.updateTableView()
         }
     }
     
@@ -132,46 +145,26 @@ class MessagesViewModel {
     }
     
     
-    func getContactId()->Int?{
-        return contactInfo?.id
-    }
-    
-    
-    private func updateAckedMessage(message:TextMessage){
-        self.removeSendingMessageFromMessages(message: message)
-        self.removeSendingMessageFromSendingQueue(message: message)
-        let _ = self.addMessage(message: message)
-        
-        updateCuratedMessages()
-        self.delegate?.updateTableViewAndScrollToTop()
-    }
-    
     private func removeSendingMessageFromMessages(message:TextMessage){
-        //#Caution: it only considers text of message for compare! (because sending message has no id)
-        let optionalSendingMessageIndex = self.messages.firstIndex { each -> Bool in
-            if each.sendingState == .sending, each.text == message.text {
-                return true
-            }
-            return false
+        
+        if let index = self.messages.firstIndex(where: {each in findSameText(message: message, each: each)}) {
+            self.messages.remove(at: index)
         }
-        guard let sendingMessageIndex = optionalSendingMessageIndex else{
-            return
-        }
-        self.messages.remove(at: sendingMessageIndex)
     }
     
     private func removeSendingMessageFromSendingQueue(message:TextMessage){
+        
+        if let index = self.sendingQueue.firstIndex (where: {each in findSameText(message: message, each: each)}) {
+            self.sendingQueue.remove(at: index)
+        }
+    }
+    
+    private func findSameText(message:TextMessage,each:TextMessage)->Bool {
         //#Caution: it only considers text of message for compare! (because sending message has no id)
-        let optionalSendingMessageIndex = self.sendingQueue.firstIndex { each -> Bool in
-            if each.sendingState == .sending, each.text == message.text {
-                return true
-            }
-            return false
+        if each.sendingState == .sending, each.text == message.text {
+            return true
         }
-        guard let sendingMessageIndex = optionalSendingMessageIndex else{
-            return
-        }
-        self.sendingQueue.remove(at: sendingMessageIndex)
+        return false
     }
     
     private func addMessage(message:TextMessage)->Int?{
