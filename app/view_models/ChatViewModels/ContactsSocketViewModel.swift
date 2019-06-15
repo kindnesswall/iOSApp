@@ -88,7 +88,9 @@ extension ContactsSocketViewModel : ContactsViewModelNetwork {
         sendMessage(message: message)
     }
     
-    func sendAck(ackMessage:AckMessage){
+    func sendAck(ackMessage:AckMessage,completionHandler:(()->Void)?){
+        
+        //Note: In socket, completionHandler hasn't been used!
         
         let controlMessage = ControlMessage(ackMessage: ackMessage)
         let message = Message(controlMessage: controlMessage)

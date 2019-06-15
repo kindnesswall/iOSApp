@@ -39,8 +39,15 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
         }
     }
     
-    func sendAck(ackMessage:AckMessage) {
-        apiRequest.sendAck(ackMessage: ackMessage) {_ in}
+    func sendAck(ackMessage:AckMessage,completionHandler:(()->Void)?) {
+        apiRequest.sendAck(ackMessage: ackMessage) { result in
+            switch result {
+            case .success(_):
+                completionHandler?()
+            default:
+                break
+            }
+        }
     }
     
     func fetchContacts() {

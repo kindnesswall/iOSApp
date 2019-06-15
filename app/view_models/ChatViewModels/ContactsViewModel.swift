@@ -64,18 +64,6 @@ class ContactsViewModel: NSObject {
         }
     }
     
-    func sendAck(message:TextMessage){
-        
-        guard let messageId=message.id else {
-            return
-        }
-        
-        //Updating notification's count
-        self.delegate?.reloadTableView()
-        
-        let ackMessage = AckMessage(messageId: messageId)
-        network.sendAck(ackMessage: ackMessage)
-    }
 }
 
 extension ContactsViewModel : ContactsViewModelNetworkInterface {
@@ -159,8 +147,16 @@ extension ContactsViewModel : MessagesViewControllerDelegate {
         network.fetchMessages(chatId: chatId, beforeId: beforeId)
     }
     
-    func sendAckMessage(message:TextMessage) {
-        self.sendAck(message: message)
+    func sendAckMessage(message:TextMessage,completionHandler:(()->Void)?) {
+        guard let messageId=message.id else {
+            return
+        }
+        
+        //Updating notification's count
+        self.delegate?.reloadTableView()
+        
+        let ackMessage = AckMessage(messageId: messageId)
+        network.sendAck(ackMessage: ackMessage, completionHandler: completionHandler)
     }
 }
 
@@ -195,7 +191,7 @@ protocol ContactsViewModelProtocol : class {
 protocol ContactsViewModelNetwork : class {
     var delegate : ContactsViewModelNetworkInterface? { get set }
     func sendTextMessage(textMessage:TextMessage)
-    func sendAck(ackMessage:AckMessage)
+    func sendAck(ackMessage:AckMessage,completionHandler:(()->Void)?)
     func fetchContacts()
     func fetchMessages(chatId:Int,beforeId:Int?)
 }

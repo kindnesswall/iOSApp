@@ -175,7 +175,9 @@ extension MessagesViewController : UITableViewDataSource {
         guard message.receiverId == userId, message.ack == false else {
             return
         }
-        self.delegate?.sendAckMessage(message: message)
+        self.delegate?.sendAckMessage(message: message) {
+            message.ack = true
+        }
     }
     
     
@@ -198,5 +200,5 @@ extension MessagesViewController : UITableViewDelegate {
 protocol MessagesViewControllerDelegate : class{
     func writeMessage(text:String,messagesViewModel:MessagesViewModel)
     func loadMessages(chatId:Int,beforeId:Int?)
-    func sendAckMessage(message:TextMessage)
+    func sendAckMessage(message:TextMessage,completionHandler:(()->Void)?)
 }
