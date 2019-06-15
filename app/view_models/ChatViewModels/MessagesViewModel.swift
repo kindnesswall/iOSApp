@@ -53,12 +53,22 @@ class MessagesViewModel {
     
     func addMessages(messages:[TextMessage],isSending:Bool) {
         
+        var uiHasChanged = false
         var scrollToTop = false
         for message in messages {
-            let index = addMessage(message: message, isSending: isSending)
-            if !scrollToTop, index == 0 {
-                scrollToTop = true
+            if let index = addMessage(message: message, isSending: isSending) {
+                if !uiHasChanged {
+                    uiHasChanged = true
+                }
+                if !scrollToTop, index == 0 {
+                    scrollToTop = true
+                }
             }
+            
+        }
+        
+        guard uiHasChanged else {
+            return
         }
         
         updateUI(scrollToTop: scrollToTop)
@@ -67,7 +77,9 @@ class MessagesViewModel {
     func ackMessageIsReceived(message:TextMessage) {
         self.removeSendingMessageFromMessages(message: message)
         self.removeSendingMessageFromSendingQueue(message: message)
-        let index = self.addMessage(message: message)
+        guard let index = self.addMessage(message: message) else {
+            return
+        }
         let scrollToTop = index == 0 ? true : false
         
         updateUI(scrollToTop: scrollToTop)
@@ -188,7 +200,8 @@ class MessagesViewModel {
         }
         
         messages.append(message)
-        return nil
+        let index = messages.count - 1
+        return index
         
     }
 }
