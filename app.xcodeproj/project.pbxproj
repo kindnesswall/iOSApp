@@ -161,6 +161,7 @@
 		604FB58322860B8100795CE2 /* GiftsToDonateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604FB58122860B8100795CE2 /* GiftsToDonateViewController.xib */; };
 		604FB58522860C5700795CE2 /* GiftsToDonateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604FB58422860C5700795CE2 /* GiftsToDonateViewModel.swift */; };
 		604FB5BF228B6DBE00795CE2 /* Donate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604FB5BE228B6DBE00795CE2 /* Donate.swift */; };
+		6066C3BB22C7B23400BCB50A /* AppDelegate + Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066C3BA22C7B23400BCB50A /* AppDelegate + Notification.swift */; };
 		60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */; };
 		60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1821D7CFA60058421A /* ReloadablePage.swift */; };
 		607E78752279D6CA00FF0008 /* String + ConvertToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78742279D6CA00FF0008 /* String + ConvertToDate.swift */; };
@@ -417,6 +418,8 @@
 		604FB58122860B8100795CE2 /* GiftsToDonateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftsToDonateViewController.xib; sourceTree = "<group>"; };
 		604FB58422860C5700795CE2 /* GiftsToDonateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftsToDonateViewModel.swift; sourceTree = "<group>"; };
 		604FB5BE228B6DBE00795CE2 /* Donate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Donate.swift; sourceTree = "<group>"; };
+		6066C3BA22C7B23400BCB50A /* AppDelegate + Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate + Notification.swift"; sourceTree = "<group>"; };
+		6066C3BC22C9098E00BCB50A /* app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = app.entitlements; sourceTree = "<group>"; };
 		60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewModel.swift; sourceTree = "<group>"; };
 		60749B1821D7CFA60058421A /* ReloadablePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadablePage.swift; sourceTree = "<group>"; };
 		607E78742279D6CA00FF0008 /* String + ConvertToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + ConvertToDate.swift"; sourceTree = "<group>"; };
@@ -532,6 +535,7 @@
 		0507C8611F8C1A920084CDF1 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				6066C3BC22C9098E00BCB50A /* app.entitlements */,
 				5247C8A621E34D82009E8770 /* schema.json */,
 				5246724921E342660086F327 /* API.swift */,
 				5246725221E349A40086F327 /* Users.graphql */,
@@ -551,6 +555,7 @@
 				0507C86E1F8C1A920084CDF1 /* Info.plist */,
 				52DD768521C5109B00C2E012 /* InfoPlist.strings */,
 				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
+				6066C3BA22C7B23400BCB50A /* AppDelegate + Notification.swift */,
 				6019F27421B80257003C3E76 /* AppDelegate + Tabbar.swift */,
 				604FB57D2283616500795CE2 /* AppDelegate + Login.swift */,
 				0507C8641F8C1A920084CDF1 /* ViewController.swift */,
@@ -1243,6 +1248,11 @@
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					5263D59E21B4425B00B634A8 = {
 						CreatedOnToolsVersion = 10.1;
@@ -1537,6 +1547,7 @@
 				60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */,
 				607EEA83222EACDA00637A93 /* RequestInput.swift in Sources */,
 				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,
+				6066C3BB22C7B23400BCB50A /* AppDelegate + Notification.swift in Sources */,
 				6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */,
 				6033DA9822AF6B3800D43738 /* ContactsSocketViewModel.swift in Sources */,
 				05029ECE1FE9381E004D96B1 /* RequestsTableViewCell.swift in Sources */,
@@ -1920,6 +1931,7 @@
 			baseConfigurationReference = 006A9055ED7D4288198332F6 /* Pods-app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WV7G3G5SGX;
@@ -1943,6 +1955,7 @@
 			baseConfigurationReference = 34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WV7G3G5SGX;

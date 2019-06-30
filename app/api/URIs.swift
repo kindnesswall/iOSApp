@@ -10,8 +10,8 @@ import Foundation
 class URIs {
     private let apiRoute:String
     init() {
-        self.apiRoute="http://localhost:8080/api/v1"
-//        self.apiRoute="http://185.211.58.168:8080/api/v1"
+//        self.apiRoute="http://localhost:8080/api/v1"
+        self.apiRoute="http://185.211.58.168:8080/api/v1"
     }
     
 //    var gifts : String {

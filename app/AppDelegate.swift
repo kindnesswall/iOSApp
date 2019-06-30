@@ -8,6 +8,7 @@
 
 import UIKit
 import KeychainSwift
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -84,6 +85,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
             _ = handleShortCut(shortcutItem)
         }
+        
+        registerForPushNotifications()
         
         return true
     }
