@@ -27,7 +27,9 @@ struct LanguageKeys {
     static let noGiftReceived: String = "noGiftReceived"
     
     static let ok : String = "ok"
-    
+    static let tryAgain : String = "tryAgain"
+    static let closeThisPage : String = "closeThisPage"
+
     static let TurnPasscodeOff : String = "TurnPasscodeOff"
     static let TurnPasscodeOn : String = "TurnPasscodeOn"
     

@@ -21,6 +21,8 @@
 
 "requestfail_dialog_title" = "Connection Fail";
 "requestfail_dialog_text" = "Please try again :(";
+"tryAgain" = "Try Again";
+"closeThisPage" = "Close This Page";
 
 "operationFailed" = "We encounter error at our server!";
 "weEncounterErrorTryAgain" = "We encounter error, please try again!";

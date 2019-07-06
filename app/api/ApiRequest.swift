@@ -187,6 +187,23 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
     
+    func getUserProfile(userId: Int, completion: @escaping (Result<UserProfile>)-> Void) {
+        self.httpLayer.request(at: Endpoint.GetProfile(userId: userId)) {(result) in
+            
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let profile = ApiUtility.convert(data: data, to: UserProfile.self){
+                    completion(.success(profile))
+                }else{
+                    completion(.failure(AppError.DataDecoding))
+                }
+            }
+        }
+    }
+    
+    
     func sendTextMessage(textMessage: TextMessage, completion: @escaping (Result<AckMessage>)-> Void) {
         self.httpLayer.request(at: Endpoint.SendTextMessage(textMessage: textMessage)) { result in
             

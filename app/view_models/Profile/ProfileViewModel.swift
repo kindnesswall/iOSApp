@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 protocol ProfileViewModelDelegate : class {
     func updateUploadImage(percent:Int)
+    
 }
 
 class ProfileViewModel:NSObject {
@@ -18,6 +20,24 @@ class ProfileViewModel:NSObject {
     var tasks : [URLSessionUploadTask]=[]
     weak var delegate : ProfileViewModelDelegate?
     var imageUrl:String?
+    lazy var apiRequest = ApiRequest(HTTPLayer())
+
+    override init() {
+        
+    }
+    
+    func getProfile(completion: @escaping (Result<UserProfile>)-> Void) {
+        if let userId = KeychainSwift().get(AppConst.KeyChain.USER_ID), let id = Int(userId) {
+            apiRequest.getUserProfile(userId: id) { (result) in
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(let userProfile):
+                    completion(.success(userProfile))
+                }
+            }
+        }
+    }
     
     func upload(image:UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
         
