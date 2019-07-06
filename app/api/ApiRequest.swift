@@ -188,7 +188,7 @@ class ApiRequest:ApiRequestProtocol {
     }
     
     func sendTextMessage(textMessage: TextMessage, completion: @escaping (Result<AckMessage>)-> Void) {
-        self.httpLayer.request(at: Endpoint.sendTextMessage(textMessage: textMessage)) { result in
+        self.httpLayer.request(at: Endpoint.SendTextMessage(textMessage: textMessage)) { result in
             
             switch result{
             case .failure(let appError):
@@ -204,7 +204,7 @@ class ApiRequest:ApiRequestProtocol {
     }
     
     func sendAck(ackMessage:AckMessage, completion: @escaping (Result<Void>)-> Void) {
-        self.httpLayer.request(at: Endpoint.sendAck(ackMessage: ackMessage)) { result in
+        self.httpLayer.request(at: Endpoint.SendAck(ackMessage: ackMessage)) { result in
             
             switch result{
             case .failure(let appError):
@@ -217,7 +217,7 @@ class ApiRequest:ApiRequestProtocol {
     
     func fetchContacts(completion: @escaping (Result<[ContactMessage]>)-> Void){
         
-        self.httpLayer.request(at: Endpoint.fetchContacts) { result in
+        self.httpLayer.request(at: Endpoint.FetchContacts) { result in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -233,7 +233,7 @@ class ApiRequest:ApiRequestProtocol {
     
     func fetchMessages(input: FetchMessagesInput, completion: @escaping (Result<ContactMessage>)-> Void){
         
-        self.httpLayer.request(at: Endpoint.fetchMessages(input: input)) { result in
+        self.httpLayer.request(at: Endpoint.FetchMessages(input: input)) { result in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))

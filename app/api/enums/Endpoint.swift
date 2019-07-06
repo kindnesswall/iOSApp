@@ -31,10 +31,10 @@ enum Endpoint:EndpointProtocol {
     case DonateGift(id:Int,toUserId:Int)
     case GetGifts(param: GiftListRequestParameters)
     
-    case sendTextMessage(textMessage: TextMessage)
-    case sendAck(ackMessage: AckMessage)
-    case fetchContacts
-    case fetchMessages(input: FetchMessagesInput)
+    case SendTextMessage(textMessage: TextMessage)
+    case SendAck(ackMessage: AckMessage)
+    case FetchContacts
+    case FetchMessages(input: FetchMessagesInput)
     
     var url:URL? {
         var urlComponent = URLComponents()
@@ -65,12 +65,12 @@ enum Endpoint:EndpointProtocol {
             return ApiUtility.convert(input: Donate(giftId: id, donatedToUserId: toUserId))
         case .GetGifts(let param):
             return ApiUtility.convert(input: param.input)
-        case .sendTextMessage(let textMessage):
+        case .SendTextMessage(let textMessage):
             return ApiUtility.convert(input: textMessage)
-        case .sendAck(let ackMessage):
+        case .SendAck(let ackMessage):
             return ApiUtility.convert(input: ackMessage)
-        case .fetchContacts: return nil
-        case .fetchMessages(let input):
+        case .FetchContacts: return nil
+        case .FetchMessages(let input):
             return ApiUtility.convert(input: input)
         }
     }
@@ -99,13 +99,13 @@ enum Endpoint:EndpointProtocol {
             return HttpMethod.POST.rawValue
         case .GetGifts(_):
             return HttpMethod.POST.rawValue
-        case .sendTextMessage(_):
+        case .SendTextMessage(_):
             return HttpMethod.POST.rawValue
-        case .sendAck(_):
+        case .SendAck(_):
             return HttpMethod.POST.rawValue
-        case .fetchContacts:
+        case .FetchContacts:
             return HttpMethod.GET.rawValue
-        case .fetchMessages(_):
+        case .FetchMessages(_):
             return HttpMethod.POST.rawValue
         }
     }
@@ -136,13 +136,13 @@ enum Endpoint:EndpointProtocol {
             return basePathUrl+"donate"
         case .GetGifts(let param):
             return basePathUrl+param.type.path
-        case .sendTextMessage:
+        case .SendTextMessage:
             return "\(basePathUrl)/chat/send"
-        case .sendAck:
+        case .SendAck:
             return "\(basePathUrl)/chat/ack"
-        case .fetchContacts:
+        case .FetchContacts:
             return "\(basePathUrl)/chat/contacts"
-        case .fetchMessages(_):
+        case .FetchMessages(_):
             return "\(basePathUrl)/chat/messages"
         }
     }
@@ -162,10 +162,10 @@ enum Endpoint:EndpointProtocol {
         case .RequestGift: break
         case .DonateGift: break
         case .GetGifts: break
-        case .sendTextMessage: break
-        case .sendAck: break
-        case .fetchContacts: break
-        case .fetchMessages: break
+        case .SendTextMessage: break
+        case .SendAck: break
+        case .FetchContacts: break
+        case .FetchMessages: break
         }
         
         return queryItems
