@@ -187,6 +187,17 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
     
+    func updateUser(profile: UserProfile.Input, completion: @escaping (Result<Void>)-> Void) {
+        self.httpLayer.request(at: Endpoint.UpdateUser(profile: profile)) {(result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
+    
     func getUserProfile(userId: Int, completion: @escaping (Result<UserProfile>)-> Void) {
         self.httpLayer.request(at: Endpoint.GetProfile(userId: userId)) {(result) in
             

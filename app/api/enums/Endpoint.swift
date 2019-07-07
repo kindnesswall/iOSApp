@@ -37,7 +37,8 @@ enum Endpoint:EndpointProtocol {
     case FetchMessages(input: FetchMessagesInput)
     
     case GetProfile(userId: Int)
-    
+    case UpdateUser(profile: UserProfile.Input)
+
     var url:URL? {
         var urlComponent = URLComponents()
         urlComponent.scheme = self.scheme
@@ -75,6 +76,8 @@ enum Endpoint:EndpointProtocol {
         case .FetchMessages(let input):
             return ApiUtility.convert(input: input)
         case .GetProfile: return nil
+        case .UpdateUser(let profile):
+            return ApiUtility.convert(input: profile)
         }
     }
     
@@ -112,6 +115,8 @@ enum Endpoint:EndpointProtocol {
             return HttpMethod.POST.rawValue
         case .GetProfile(_):
             return HttpMethod.GET.rawValue
+        case .UpdateUser:
+            return HttpMethod.POST.rawValue
         }
     }
     
@@ -151,6 +156,8 @@ enum Endpoint:EndpointProtocol {
             return "\(basePathUrl)/chat/messages"
         case .GetProfile(let userId):
             return basePathUrl+"profile/\(userId)"
+        case .UpdateUser(_):
+            return basePathUrl+"profile"
         }
     }
     
@@ -174,6 +181,7 @@ enum Endpoint:EndpointProtocol {
         case .FetchContacts: break
         case .FetchMessages: break
         case .GetProfile: break
+        case .UpdateUser: break
         }
         
         return queryItems
