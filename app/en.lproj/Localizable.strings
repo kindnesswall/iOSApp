@@ -24,6 +24,9 @@
 "tryAgain" = "Try Again";
 "closeThisPage" = "Close This Page";
 
+"warning" = "Warning!";
+"AreYouSure" = "Are you sure?";
+
 "operationFailed" = "We encounter error at our server!";
 "weEncounterErrorTryAgain" = "We encounter error, please try again!";
 

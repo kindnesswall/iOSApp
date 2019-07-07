@@ -11,8 +11,8 @@ import UIKit
 class HomeVM: NSObject {
     
     weak var delegate:HomeViewModelDelegate?
-
     var gifts:[Gift] = []
+    var isReview: Bool = false
     
     var isLoadingGifts=false
     var initialGiftsLoadingHasOccurred=false
@@ -32,6 +32,30 @@ class HomeVM: NSObject {
     
     var categoryId:Int?
     var provinceId:Int?
+    
+    func giftApprovedAfterReview(rowNumber: Int,completion: @escaping (Result<Void>)-> Void) {
+        defer {
+            gifts.remove(at: rowNumber)
+        }
+        guard let giftId = gifts[rowNumber].id else {
+            return
+        }
+        apiRequest.giftApprovedAfterReview(giftId: giftId) { (result) in
+            completion(result)
+        }
+    }
+    
+    func giftRejectedAfterReview(rowNumber: Int,completion: @escaping (Result<Void>)-> Void) {
+        defer {
+            gifts.remove(at: rowNumber)
+        }
+        guard let giftId = gifts[rowNumber].id else {
+            return
+        }
+        apiRequest.giftRejectedAfterReview(giftId: giftId) { (result) in
+            completion(result)
+        }
+    }
     
     func handleError(beforeId:Int?) {
         self.delegate?.pageLoadingAnimation(isLoading: false)
@@ -113,7 +137,12 @@ class HomeVM: NSObject {
         input.provinceId = self.provinceId
         input.categoryId = self.categoryId
         
-        let param = GiftListRequestParameters(input: input, type: .Gifts)
+        var param: GiftListRequestParameters!
+        if isReview {
+            param = GiftListRequestParameters(input: input, type: .Review)
+        } else {
+            param = GiftListRequestParameters(input: input, type: .Gifts)
+        }
         
         apiRequest.getGifts(params: param) { [weak self] (result) in
             

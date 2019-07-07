@@ -30,6 +30,9 @@ struct LanguageKeys {
     static let tryAgain : String = "tryAgain"
     static let closeThisPage : String = "closeThisPage"
 
+    static let warning : String = "warning"
+    static let areYouSure : String = "AreYouSure"
+
     static let TurnPasscodeOff : String = "TurnPasscodeOff"
     static let TurnPasscodeOn : String = "TurnPasscodeOn"
     

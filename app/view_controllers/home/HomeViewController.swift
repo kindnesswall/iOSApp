@@ -12,8 +12,7 @@ import Firebase
 
 class HomeViewController: UIViewController {
 
-    let vm = HomeVM()
-    
+    let vm: HomeVM
     let userDefault=UserDefaults.standard
 
     let NumberOfSecondsOfOneDay:Float = 26*60*60
@@ -30,6 +29,15 @@ class HomeViewController: UIViewController {
     
     var previewRowIndex:Int?
 
+    init(vm: HomeVM) {
+        self.vm = vm
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @IBOutlet var tableview: UITableView!
     
     deinit {

@@ -65,7 +65,7 @@ extension AppDelegate : UITabBarControllerDelegate{
         var controller:UIViewController
         switch tabIndex {
         case AppConst.TabIndex.HOME:
-            controller=HomeViewController()
+            controller=HomeViewController(vm: HomeVM())
             
         case AppConst.TabIndex.MyGifts:
             controller=MyGiftsViewController()

@@ -39,6 +39,9 @@ enum Endpoint:EndpointProtocol {
     case GetProfile(userId: Int)
     case UpdateUser(profile: UserProfile.Input)
 
+    case GiftReviewRejected(giftId: Int)
+    case GiftReviewApproved(giftId: Int)
+    
     var url:URL? {
         var urlComponent = URLComponents()
         urlComponent.scheme = self.scheme
@@ -78,6 +81,8 @@ enum Endpoint:EndpointProtocol {
         case .GetProfile: return nil
         case .UpdateUser(let profile):
             return ApiUtility.convert(input: profile)
+        case .GiftReviewRejected: return nil
+        case .GiftReviewApproved: return nil
         }
     }
     
@@ -117,6 +122,10 @@ enum Endpoint:EndpointProtocol {
             return HttpMethod.GET.rawValue
         case .UpdateUser:
             return HttpMethod.POST.rawValue
+        case .GiftReviewRejected:
+            return HttpMethod.DELETE.rawValue
+        case .GiftReviewApproved:
+            return HttpMethod.PUT.rawValue
         }
     }
     
@@ -158,32 +167,15 @@ enum Endpoint:EndpointProtocol {
             return basePathUrl+"profile/\(userId)"
         case .UpdateUser(_):
             return basePathUrl+"profile"
+        case .GiftReviewRejected(let giftId):
+            return basePathUrl + "gifts/reject/\(giftId)"
+        case .GiftReviewApproved(let giftId):
+            return basePathUrl + "gifts/accept/\(giftId)"
         }
     }
     
     var queryItems: [URLQueryItem] {
         let queryItems:[URLQueryItem] = []
-        
-        switch self {
-        case .RegisterGift: break
-        case .EditGift: break
-        case .GetProvinces: break
-        case .GetCitiesOfProvince: break
-        case .GetCategories: break
-        case .RegisterUser: break
-        case .Login: break
-        case .RemoveGift: break
-        case .RequestGift: break
-        case .DonateGift: break
-        case .GetGifts: break
-        case .SendTextMessage: break
-        case .SendAck: break
-        case .FetchContacts: break
-        case .FetchMessages: break
-        case .GetProfile: break
-        case .UpdateUser: break
-        }
-        
         return queryItems
     }
     

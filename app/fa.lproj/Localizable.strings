@@ -24,6 +24,9 @@
 "tryAgain" = "تلاش مجدد";
 "closeThisPage" = "بستن صفحه";
 
+"warning" = "هشدار!";
+"AreYouSure" = "آیا مطمئن هستید؟";
+
 "activationCodeTryAgainOneMinuteLater" = "یک دقیقه دیگر مجددا تلاش کنید!";
 "activationCodeSendSuccessfully" = "کد فعالسازی با موفقیت ارسال شد!";
 

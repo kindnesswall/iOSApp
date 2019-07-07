@@ -42,6 +42,28 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
     
+    func giftRejectedAfterReview(giftId: Int,completion: @escaping (Result<Void>) -> Void) {
+        self.httpLayer.request(at: Endpoint.GiftReviewRejected(giftId: giftId)) { (result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
+    
+    func giftApprovedAfterReview(giftId: Int,completion: @escaping (Result<Void>) -> Void) {
+        self.httpLayer.request(at: Endpoint.GiftReviewApproved(giftId: giftId)) { (result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
+    
     func getProvinces(completion: @escaping (Result<[Province]>) -> Void){
         
         self.httpLayer.request(at: Endpoint.GetProvinces) {(result) in
@@ -171,18 +193,20 @@ class ApiRequest:ApiRequestProtocol {
     }
     
     func getGifts(params: GiftListRequestParameters, completion: @escaping (Result<[Gift]>)-> Void) {
-        
-        self.httpLayer.request(at: Endpoint.GetGifts(param: params)) {(result) in
-            
-            switch result{
-            case .failure(let appError):
-                completion(.failure(appError))
-            case .success(let data):
-                if let gifts = ApiUtility.convert(data: data, to: [Gift].self){
-                    completion(.success(gifts))
-                }else{
-                    completion(.failure(AppError.DataDecoding))
-                }
+        self.httpLayer.request(at: Endpoint.GetGifts(param: params)) {[weak self] (result) in
+            self?.handleGiftList(result: result, completion: completion)
+        }
+    }
+    
+    func handleGiftList(result: Result<Data>, completion: @escaping (Result<[Gift]>)-> Void) {
+        switch result{
+        case .failure(let appError):
+            completion(.failure(appError))
+        case .success(let data):
+            if let gifts = ApiUtility.convert(data: data, to: [Gift].self){
+                completion(.success(gifts))
+            }else{
+                completion(.failure(AppError.DataDecoding))
             }
         }
     }
