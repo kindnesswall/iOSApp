@@ -21,6 +21,11 @@
 
 "requestfail_dialog_title" = "خطا در ارتباط";
 "requestfail_dialog_text" = "لطفا مجددا تلاش نمایید :(";
+"tryAgain" = "تلاش مجدد";
+"closeThisPage" = "بستن صفحه";
+
+"warning" = "هشدار!";
+"AreYouSure" = "آیا مطمئن هستید؟";
 
 "activationCodeTryAgainOneMinuteLater" = "یک دقیقه دیگر مجددا تلاش کنید!";
 "activationCodeSendSuccessfully" = "کد فعالسازی با موفقیت ارسال شد!";
@@ -113,7 +118,7 @@
 "loading" = "بارگذاری";
 
 "giftRegisteredSuccessfully" = "ثبت هدیه با موفقیت انجام شد";
-"editedSuccessfully" =  "هدیه با موفقیت ویرایش شد";
+"giftEditedSuccessfully" =  "هدیه با موفقیت ویرایش شد";
 "draftSavedSuccessfully" = "پیش‌نویس با موفقیت ذخیره شد";
 "uploadedSuccessfully" = "آپلود عکس با موفقیت انجام شد";
 "gettingPriceReason" = " (صرفا جهت برآورد و نمایش در قسمت آمار است و برای دیگران نمایش داده نمیشود) ";
@@ -132,6 +137,8 @@
 "guideOfSendingActivationCode" = "کد فعالسازی به شماره زیر ارسال می شود. درصورتی که شماره صحیح نیست آن را ویرایش کنید.";
 "guideOfRegitering_part1" = "تا لحظاتی دیگر پیامی حاوی کد فعالسازی به شماره ";
 "guideOfRegitering_part2" = " ارسال خواهد شد. در صورتیکه کد را دریافت نکردید می توانید پس از ۱ دقیقه مجددا سعی کنید.";
+
+"profileUpdatedSuccessfully" = "پروفایل به روزرسانی شد";
 
 "tabBar_home" = "خانه";
 "tabBar_my_gifts" = "هدیه‌های من";

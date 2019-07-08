@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+import KeychainSwift
 import XLActionController
 
 class ProfileViewController: UIViewController {
@@ -42,9 +44,12 @@ class ProfileViewController: UIViewController {
         
         usernameBtn.setImage(nil, for: .normal)
         usernameBtnLoader.startAnimating()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.usernameBtnLoader.stopAnimating()
-            self.username = self.usernameTextField.text
+        
+        updateProfile {
+            DispatchQueue.main.async {
+                self.usernameBtnLoader.stopAnimating()
+                self.username = self.usernameTextField.text
+            }
         }
         
     }
@@ -59,8 +64,7 @@ class ProfileViewController: UIViewController {
         
         vm = ProfileViewModel()
         vm?.delegate = self
-        
-        username = usernameTextField.text
+        getProfile()
         
         usernameBtnLoader.centerXAnchor.constraint(equalTo: self.usernameBtn.centerXAnchor).isActive = true
         usernameBtnLoader.centerYAnchor.constraint(equalTo: self.usernameBtn.centerYAnchor).isActive = true
@@ -70,6 +74,64 @@ class ProfileViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.selectImage(_:)))
         uploadView.addGestureRecognizer(tap)
         setDefaultViews()
+    }
+    
+    func updateProfile(completion: (()->Void)?) {
+        vm?.updateUser(name: usernameTextField.text, completion: { [weak self](result) in
+            switch result {
+            case .failure(_):
+                self?.showDialogFailed {
+                    self?.updateProfile(completion: completion)
+                }
+            case .success(_):
+                completion?()
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.profileUpdatedSuccessfully), theme: .success)
+            }
+        })
+    }
+    
+    func showDialogFailed(tryAgainHandler: @escaping ()-> Void) {
+        let alert = UIAlertController(
+            title:LocalizationSystem.getStr(forKey: LanguageKeys.requestfail_dialog_title),
+            message: LocalizationSystem.getStr(forKey: LanguageKeys.requestfail_dialog_text),
+            preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(
+            UIAlertAction(
+                title: LocalizationSystem.getStr(forKey: LanguageKeys.tryAgain),
+                style: UIAlertAction.Style.default, handler: { (action) in
+                    tryAgainHandler()
+            }))
+        
+        alert.addAction(
+            UIAlertAction(
+                title: LocalizationSystem.getStr(forKey: LanguageKeys.closeThisPage),
+                style: UIAlertAction.Style.default, handler: { [weak self] (action) in
+                    self?.dismiss(animated: true, completion: nil)
+            }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func getProfile() {
+        vm?.getProfile(completion: { [weak self](result) in
+            guard let self = self else {return}
+            switch result {
+            case .failure(_):
+                self.showDialogFailed {
+                    self.getProfile()
+                }
+            case .success(let myProfile):
+                DispatchQueue.main.async {
+                    self.username = myProfile.name
+                    self.phoneLabel.text = UserDefaults.standard.string(forKey: AppConst.UserDefaults.PHONE_NUMBER)
+                    self.usernameTextField.text = myProfile.name
+                    if let path = myProfile.image {
+                        self.avatarImageView.kf.setImage(with: URL(string: path), placeholder: UIImage(named: "blank_avatar"))
+                    }
+                }
+            }
+        })
     }
     
     func setDefaultViews() {

@@ -46,17 +46,17 @@ extension ProfileViewController:CropViewControllerDelegate{
         
         self.vm?.upload(
             image: selectedImage,
-            onSuccess: { [weak self] (imageUrl) in
-                self?.imageViewUploadingHasFinished(imageSrc: imageUrl)
-            }, onFail: {
-                self.setDefaultViews()
+            onSuccess: { [weak self] in
+                DispatchQueue.main.async {
+                    self?.setDefaultViews()
+                }
+            }, onFail: { [weak self] in
+                DispatchQueue.main.async {
+                    self?.setDefaultViews()
+                }
         })
     }
     
-    func imageViewUploadingHasFinished(imageSrc:String){
-        self.vm?.imageUrl = imageSrc
-        self.setDefaultViews()
-    }
 }
 
 extension ProfileViewController:UINavigationControllerDelegate{

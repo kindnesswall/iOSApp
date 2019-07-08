@@ -29,7 +29,20 @@ class MyKindnessWallViewController: UIViewController {
     }
     
     @IBAction func showReviewQueue(_ sender: Any) {
+        guard let _=keychain.get(AppConst.KeyChain.Authorization) else {
+            AppDelegate.me().showLoginVC()
+            return
+        }
         
+        guard let isAdmin = keychain.getBool(AppConst.KeyChain.IsAdmin), isAdmin
+             else {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .error)
+                return
+        }
+        let vm = HomeVM()
+        vm.isReview = true
+        let controller = HomeViewController(vm: vm)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func showMyProfile(_ sender: Any) {

@@ -43,7 +43,7 @@ extension RegisterGiftViewController {
                 case .failure:
                     FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
                 case .success:
-                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.editedSuccessfully), theme: .success)
+                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.giftEditedSuccessfully), theme: .success)
                     
                     self.vm.writeChangesToEditedGift()
                     self.editHandler?()

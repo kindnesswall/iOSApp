@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 protocol ProfileViewModelDelegate : class {
     func updateUploadImage(percent:Int)
+    
 }
 
 class ProfileViewModel:NSObject {
@@ -17,18 +19,59 @@ class ProfileViewModel:NSObject {
     var sessions : [URLSession]=[]
     var tasks : [URLSessionUploadTask]=[]
     weak var delegate : ProfileViewModelDelegate?
-    var imageUrl:String?
+    var imageUrl: String?
+    var username: String?
     
-    func upload(image:UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
+    lazy var apiRequest = ApiRequest(HTTPLayer())
+
+    override init() {
         
-        uploadToIranServers(image: image, onSuccess: { (url) in
-            onSuccess(url)
+    }
+    
+    func updateUser(name: String?, completion: @escaping (Result<Void>)-> Void) {
+        let profile = UserProfile.Input(name: name, image: imageUrl)
+        apiRequest.updateUser(profile: profile) { (result) in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
+    
+    func getProfile(completion: @escaping (Result<UserProfile>)-> Void) {
+        if let userId = KeychainSwift().get(AppConst.KeyChain.USER_ID), let id = Int(userId) {
+            apiRequest.getUserProfile(userId: id) { [weak self](result) in
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(let userProfile):
+                    self?.imageUrl = userProfile.image
+                    self?.username = userProfile.name
+                    completion(.success(userProfile))
+                }
+            }
+        }
+    }
+    
+    func upload(image:UIImage, onSuccess:@escaping ()->(), onFail:(()->())?) {
+        
+        uploadToIranServers(image: image, onSuccess: { [weak self] in
+            self?.updateUser(name: self?.username, completion: { (result) in
+                switch result {
+                case .failure(_):
+                    onFail?()
+                case .success(_):
+                    onSuccess()
+                }
+            })
         }) {
             onFail?()
         }
     }
     
-    func uploadToIranServers(image:UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
+    func uploadToIranServers(image:UIImage, onSuccess:@escaping ()->(), onFail:(()->())?) {
         
         let imageData = image.jpegData(compressionQuality: 1)
         let imageInput = ImageInput(image: imageData!, imageFormat: .jpeg)
@@ -44,7 +87,8 @@ class ProfileViewModel:NSObject {
                 
                 if let imageSrc=ApiUtility.convert(data: data, to: ImageOutput.self)?.address {
                     self?.uploadedSuccessfully()
-                    onSuccess(imageSrc)
+                    self?.imageUrl = imageSrc
+                    onSuccess()
                 } else {
                     self?.uploadFailed()
                     onFail?()

@@ -21,6 +21,11 @@
 
 "requestfail_dialog_title" = "Connection Fail";
 "requestfail_dialog_text" = "Please try again :(";
+"tryAgain" = "Try Again";
+"closeThisPage" = "Close This Page";
+
+"warning" = "Warning!";
+"AreYouSure" = "Are you sure?";
 
 "operationFailed" = "We encounter error at our server!";
 "weEncounterErrorTryAgain" = "We encounter error, please try again!";
@@ -110,7 +115,7 @@
 "home" = "Home";
 
 "giftRegisteredSuccessfully" = "The gift has been registered successfully";
-"editedSuccessfully" = "The gift edited successfully";
+"giftEditedSuccessfully" = "The gift edited successfully";
 "draftSavedSuccessfully" = "The draft saved successfully";
 "uploadedSuccessfully" = "The Image uploaded successfully";
 "gettingPriceReason" = "";
@@ -129,6 +134,8 @@
 "guideOfSendingActivationCode" = "The activation code will be sent to the following phone number. If the phone number is not correct, please edit it.";
 "guideOfRegitering_part1" = "After few seconds, the message containing activation code will be sent to the phone number ";
 "guideOfRegitering_part2" = ". If you didn't receive the message, you can resend the activation code after 1 minutes.";
+
+"profileUpdatedSuccessfully" = "Profile Updated Successfully";
 
 "activationCodeSendSuccessfully" = "Activation Code Send Successfully";
 "activationCodeTryAgainOneMinuteLater" = "Try Again One Minute Later!";

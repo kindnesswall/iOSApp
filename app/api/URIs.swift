@@ -14,10 +14,6 @@ class URIs {
         self.apiRoute="http://185.211.58.168:8080/api/v1"
     }
     
-//    var gifts : String {
-//        return "\(apiRoute)/gifts"
-//    }
-//
     var chat : String {
         return "\(apiRoute)/chat"
     }
@@ -45,16 +41,7 @@ class URIs {
     var image_upload : String {
         return "\(apiRoute)/image/upload"
     }
-    
-//    var gifts_accept : String {
-//        return "\(apiRoute)/gifts/accept"
-//    }
-//    var gifts_reject : String {
-//        return "\(apiRoute)/gifts/reject"
-//    }
-//    var gifts_review : String {
-//        return "\(apiRoute)/gifts/review"
-//    }
+
 //    var users_allowAccess : String {
 //        return "\(apiRoute)/users/allowAccess"
 //    }

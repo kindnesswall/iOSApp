@@ -27,7 +27,6 @@ extension AppDelegate {
         
         keychain.delete(AppConst.KeyChain.USER_ID)
         keychain.delete(AppConst.KeyChain.Authorization)
-        keychain.delete(AppConst.KeyChain.PHONE_NUMBER)
         keychain.delete(AppConst.KeyChain.IsAdmin)
         
         resetAppAfterSwitchUser()

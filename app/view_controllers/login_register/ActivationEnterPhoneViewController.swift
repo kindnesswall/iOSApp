@@ -30,7 +30,6 @@ class ActivationEnterPhoneViewController: UIViewController {
         self.submitComplition=submitComplition
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

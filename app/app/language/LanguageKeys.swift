@@ -27,7 +27,12 @@ struct LanguageKeys {
     static let noGiftReceived: String = "noGiftReceived"
     
     static let ok : String = "ok"
-    
+    static let tryAgain : String = "tryAgain"
+    static let closeThisPage : String = "closeThisPage"
+
+    static let warning : String = "warning"
+    static let areYouSure : String = "AreYouSure"
+
     static let TurnPasscodeOff : String = "TurnPasscodeOff"
     static let TurnPasscodeOn : String = "TurnPasscodeOn"
     
@@ -69,6 +74,8 @@ struct LanguageKeys {
     static let myWall : String = "myWall"
     static let profile : String = "profile"
 
+    static let profileUpdatedSuccessfully : String = "profileUpdatedSuccessfully"
+    
     static let PasscodeLock : String = "PasscodeLock"
     
     static let EnterAPasscode : String = "EnterAPasscode"
@@ -91,7 +98,7 @@ struct LanguageKeys {
     static let AppVersion : String = "AppVersion"
     
     static let giftRegisteredSuccessfully : String = "giftRegisteredSuccessfully"
-    static let editedSuccessfully : String = "editedSuccessfully"
+    static let giftEditedSuccessfully : String = "giftEditedSuccessfully"
     static let draftSavedSuccessfully : String = "draftSavedSuccessfully"
     static let uploadedSuccessfully : String = "uploadedSuccessfully"
     static let gettingPriceReason : String = "gettingPriceReason"
