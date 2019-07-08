@@ -35,6 +35,7 @@ enum Endpoint:EndpointProtocol {
     case sendAck(ackMessage: AckMessage)
     case fetchContacts
     case fetchMessages(input: FetchMessagesInput)
+    case registerPush(input: PushNotificationRegister)
     
     var url:URL? {
         var urlComponent = URLComponents()
@@ -72,6 +73,8 @@ enum Endpoint:EndpointProtocol {
         case .fetchContacts: return nil
         case .fetchMessages(let input):
             return ApiUtility.convert(input: input)
+        case .registerPush(let input):
+            return ApiUtility.convert(input: input)
         }
     }
     
@@ -106,6 +109,8 @@ enum Endpoint:EndpointProtocol {
         case .fetchContacts:
             return HttpMethod.GET.rawValue
         case .fetchMessages(_):
+            return HttpMethod.POST.rawValue
+        case .registerPush(_):
             return HttpMethod.POST.rawValue
         }
     }
@@ -144,6 +149,8 @@ enum Endpoint:EndpointProtocol {
             return "\(basePathUrl)/chat/contacts"
         case .fetchMessages(_):
             return "\(basePathUrl)/chat/messages"
+        case .registerPush(_):
+            return "\(basePathUrl)/push/register"
         }
     }
     
@@ -166,6 +173,7 @@ enum Endpoint:EndpointProtocol {
         case .sendAck: break
         case .fetchContacts: break
         case .fetchMessages: break
+        case .registerPush: break
         }
         
         return queryItems

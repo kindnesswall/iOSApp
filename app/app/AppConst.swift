@@ -72,6 +72,8 @@ struct AppConst {
         public static let BEARER:String = "Bearer"
         public static let PassCode:String = "PassCode"
         public static let IsAdmin:String = "IsAdmin"
+        public static let PushToken = "PushToken"
+        public static let DeviceIdentifier = "DeviceIdentifier"
     }
     
     struct UserDefaults {

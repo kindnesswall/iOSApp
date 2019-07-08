@@ -18,6 +18,7 @@ extension AppDelegate {
         keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
         keychain.set(isAdmin, forKey: AppConst.KeyChain.IsAdmin)
         
+        registerPush()
         resetAppAfterSwitchUser()
     }
     

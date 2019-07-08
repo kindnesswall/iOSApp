@@ -247,5 +247,17 @@ class ApiRequest:ApiRequestProtocol {
         }
         
     }
+    
+    func registerPush(input:PushNotificationRegister, completion: @escaping (Result<Void>)-> Void) {
+        self.httpLayer.request(at: Endpoint.registerPush(input: input)) { result in
+            
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
 }
 

@@ -38,12 +38,49 @@ extension AppDelegate {
         ) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
-        print("Device Token: \(token)")
+        saveDeviceIdentifierAndPushToken(pushToken: token)
     }
     
     func application(
         _ application: UIApplication,
         didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register: \(error)")
+        saveDeviceIdentifierAndPushToken(pushToken: nil)
+    }
+    
+    private func saveDeviceIdentifierAndPushToken(pushToken:String?){
+        
+        let deviceIdentifier = UIDevice.current.identifierForVendor?.uuidString
+        saveOrDelete(value: deviceIdentifier, key: AppConst.KeyChain.DeviceIdentifier)
+        saveOrDelete(value: pushToken, key: AppConst.KeyChain.PushToken)
+        
+        print("Device Identifier: \(deviceIdentifier ?? "")")
+        print("Push Token: \(pushToken ?? "")")
+        
+        registerPush(deviceIdentifier: deviceIdentifier, pushToken: pushToken)
+        
+    }
+    
+    
+    private func saveOrDelete(value:String?,key:String) {
+        if let value = value {
+            keychain.set(value, forKey: key)
+        } else {
+            keychain.delete(key)
+        }
+    }
+    
+    func registerPush(){
+        registerPush(deviceIdentifier: keychain.get(AppConst.KeyChain.DeviceIdentifier),pushToken: keychain.get(AppConst.KeyChain.PushToken))
+    }
+    func registerPush(deviceIdentifier:String?,pushToken:String?){
+        guard isUserLogedIn(),
+            let deviceIdentifier = deviceIdentifier,
+            let pushToken = pushToken
+        else { return }
+        
+        let input = PushNotificationRegister(deviceIdentifier: deviceIdentifier, devicePushToken: pushToken)
+        
+        self.apiRequest.registerPush(input: input) { _ in }
     }
 }

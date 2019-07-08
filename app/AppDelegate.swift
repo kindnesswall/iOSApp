@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let keychain = KeychainSwift()
     var isActiveAfterBioAuth:Bool = false
     var current_time:Time?
+    var apiRequest = ApiRequest(HTTPLayer())
 
     public var tabBarController:UITabBarController?
     weak var startNewChatProtocol:StartNewChatProtocol?
