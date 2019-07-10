@@ -49,6 +49,13 @@
 		05644DCE1FFF06BD00B7C853 /* SectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05644DCC1FFF06BC00B7C853 /* SectionView.xib */; };
 		05644DD01FFF06F900B7C853 /* NibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DCF1FFF06F900B7C853 /* NibLoader.swift */; };
 		056FBB5A1F9135EA0023C9CF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FBB581F9135EA0023C9CF /* HomeViewController.swift */; };
+		0593E50222D54ADF00C3B046 /* Charity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593E50122D54ADF00C3B046 /* Charity.swift */; };
+		0593E50922D54FCB00C3B046 /* CharityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593E50722D54FCB00C3B046 /* CharityListViewController.swift */; };
+		0593E50A22D54FCB00C3B046 /* CharityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0593E50822D54FCB00C3B046 /* CharityListViewController.xib */; };
+		0593E50D22D54FDE00C3B046 /* CharityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593E50B22D54FDE00C3B046 /* CharityDetailViewController.swift */; };
+		0593E50E22D54FDE00C3B046 /* CharityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0593E50C22D54FDE00C3B046 /* CharityDetailViewController.xib */; };
+		0593E51122D5502200C3B046 /* CharitySignupEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593E50F22D5502200C3B046 /* CharitySignupEditViewController.swift */; };
+		0593E51222D5502200C3B046 /* CharitySignupEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0593E51022D5502200C3B046 /* CharitySignupEditViewController.xib */; };
 		05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */; };
 		05B124CC202DB056007E28CC /* latest.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B124CB202DB056007E28CC /* latest.json */; };
 		05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43720498EB400147BF5 /* UIView+hide+show.swift */; };
@@ -283,6 +290,13 @@
 		05644DCC1FFF06BC00B7C853 /* SectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionView.xib; sourceTree = "<group>"; };
 		05644DCF1FFF06F900B7C853 /* NibLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoader.swift; sourceTree = "<group>"; };
 		056FBB581F9135EA0023C9CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = app/view_controllers/home/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		0593E50122D54ADF00C3B046 /* Charity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charity.swift; sourceTree = "<group>"; };
+		0593E50722D54FCB00C3B046 /* CharityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityListViewController.swift; sourceTree = "<group>"; };
+		0593E50822D54FCB00C3B046 /* CharityListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityListViewController.xib; sourceTree = "<group>"; };
+		0593E50B22D54FDE00C3B046 /* CharityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityDetailViewController.swift; sourceTree = "<group>"; };
+		0593E50C22D54FDE00C3B046 /* CharityDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityDetailViewController.xib; sourceTree = "<group>"; };
+		0593E50F22D5502200C3B046 /* CharitySignupEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharitySignupEditViewController.swift; sourceTree = "<group>"; };
+		0593E51022D5502200C3B046 /* CharitySignupEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharitySignupEditViewController.xib; sourceTree = "<group>"; };
 		05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiOutputs.swift; sourceTree = "<group>"; };
 		05B124CB202DB056007E28CC /* latest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = latest.json; path = app/latest.json; sourceTree = "<group>"; };
 		05BEA43720498EB400147BF5 /* UIView+hide+show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+hide+show.swift"; sourceTree = "<group>"; };
@@ -590,6 +604,7 @@
 		05335D421FD0D05C00601115 /* view_controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0593E50322D54F2D00C3B046 /* Charity */,
 				053C46E9229126CE00074761 /* Profile */,
 				604FB57F22860ADE00795CE2 /* GiftsToDonateViewController */,
 				607E78792279E1DE00FF0008 /* ChatViewControllers */,
@@ -707,8 +722,46 @@
 				60E30D48229C967500619E9E /* UserProfile.swift */,
 				0523117522A3DA4A00A22157 /* EmptyInput.swift */,
 				6066C3C422D0B8CF00BCB50A /* PushNotificationRegister.swift */,
+				0593E50122D54ADF00C3B046 /* Charity.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		0593E50322D54F2D00C3B046 /* Charity */ = {
+			isa = PBXGroup;
+			children = (
+				0593E50622D54F4D00C3B046 /* signup_edit */,
+				0593E50522D54F4500C3B046 /* detail */,
+				0593E50422D54F3D00C3B046 /* list */,
+			);
+			path = Charity;
+			sourceTree = "<group>";
+		};
+		0593E50422D54F3D00C3B046 /* list */ = {
+			isa = PBXGroup;
+			children = (
+				0593E50722D54FCB00C3B046 /* CharityListViewController.swift */,
+				0593E50822D54FCB00C3B046 /* CharityListViewController.xib */,
+			);
+			path = list;
+			sourceTree = "<group>";
+		};
+		0593E50522D54F4500C3B046 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				0593E50B22D54FDE00C3B046 /* CharityDetailViewController.swift */,
+				0593E50C22D54FDE00C3B046 /* CharityDetailViewController.xib */,
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
+		0593E50622D54F4D00C3B046 /* signup_edit */ = {
+			isa = PBXGroup;
+			children = (
+				0593E50F22D5502200C3B046 /* CharitySignupEditViewController.swift */,
+				0593E51022D5502200C3B046 /* CharitySignupEditViewController.xib */,
+			);
+			path = signup_edit;
 			sourceTree = "<group>";
 		};
 		05BEA43320497AD500147BF5 /* my gifts */ = {
@@ -1302,6 +1355,7 @@
 				60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */,
 				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
 				60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */,
+				0593E50A22D54FCB00C3B046 /* CharityListViewController.xib in Resources */,
 				5247C8BF21E38A74009E8770 /* ContactUsViewController.xib in Resources */,
 				528A2DAB21AD3D8200DECE0F /* RequestToAGiftTableViewCell.xib in Resources */,
 				604FB58322860B8100795CE2 /* GiftsToDonateViewController.xib in Resources */,
@@ -1309,6 +1363,7 @@
 				054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */,
 				528A2DCB21ADAA2100DECE0F /* LanguageViewController.xib in Resources */,
 				054B1B541FCC4101007570EF /* IRANSansMobile_Black.ttf in Resources */,
+				0593E51222D5502200C3B046 /* CharitySignupEditViewController.xib in Resources */,
 				05029ECB1FE334C5004D96B1 /* RequestToAGiftViewController.xib in Resources */,
 				60FAB845206571340039BF61 /* icomoon.ttf in Resources */,
 				5247C8C221E38A83009E8770 /* ContactUsViewController.strings in Resources */,
@@ -1321,6 +1376,7 @@
 				5245922521AB47EA0009824C /* Localizable.strings in Resources */,
 				5246725321E349A40086F327 /* Users.graphql in Resources */,
 				05BFBBBA1FDA654D00DBCDDF /* ActivationEnterPhoneViewController.xib in Resources */,
+				0593E50E22D54FDE00C3B046 /* CharityDetailViewController.xib in Resources */,
 				05BEA445204C1FFA00147BF5 /* PromptUser.xib in Resources */,
 				05BFBBB91FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.xib in Resources */,
 				60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */,
@@ -1474,6 +1530,7 @@
 				05BFBBB21FDA5DBF00DBCDDF /* UIFunctions.swift in Sources */,
 				05BFBBBF1FDA9FCF00DBCDDF /* NavigationBarStyle.swift in Sources */,
 				60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */,
+				0593E50D22D54FDE00C3B046 /* CharityDetailViewController.swift in Sources */,
 				05029ED61FE9A683004D96B1 /* ButtonWithData.swift in Sources */,
 				6080700821B3F82A0046F940 /* ContactUsCollectionViewCell.swift in Sources */,
 				52466DD721DB60520086F327 /* RegisterGiftViewModelDelegate.swift in Sources */,
@@ -1506,6 +1563,7 @@
 				05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */,
 				5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */,
 				607E78802279E21F00FF0008 /* MessagesViewController.swift in Sources */,
+				0593E50222D54ADF00C3B046 /* Charity.swift in Sources */,
 				05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */,
 				604FB58222860B8100795CE2 /* GiftsToDonateViewController.swift in Sources */,
 				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
@@ -1521,6 +1579,7 @@
 				0523117922A3EABB00A22157 /* Result.swift in Sources */,
 				60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */,
 				5246724A21E342670086F327 /* API.swift in Sources */,
+				0593E50922D54FCB00C3B046 /* CharityListViewController.swift in Sources */,
 				522F6B5821D816DD001C67B9 /* UIColor+init.swift in Sources */,
 				607E78822279E21F00FF0008 /* ContactsViewController.swift in Sources */,
 				60AE9C91202DF97100F246CD /* CategoryOptionsTableViewCell.swift in Sources */,
@@ -1573,6 +1632,7 @@
 				05BFBBB81FDA654D00DBCDDF /* ActivationEnterPhoneViewController.swift in Sources */,
 				601F83D32037367900F9118B /* Place.swift in Sources */,
 				52466DE521DB9A360086F327 /* HomeVM.swift in Sources */,
+				0593E51122D5502200C3B046 /* CharitySignupEditViewController.swift in Sources */,
 				053C46F42291D28100074761 /* Profile + URLSessionDelegate.swift in Sources */,
 				60C972EB21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift in Sources */,
 				05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */,
