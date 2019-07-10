@@ -17,6 +17,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MoreViewController.viewDidLoad():MoreViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "versionNoLbl">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in HTTPLayer.request(at:completion:):HTTPLayer.swift">
          <PersistentStrings>
             <PersistentString

@@ -104,7 +104,7 @@
 		5247C8A721E34D82009E8770 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8A621E34D82009E8770 /* schema.json */; };
 		5247C8AC21E388B2009E8770 /* GithubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8AB21E388B2009E8770 /* GithubConstants.swift */; };
 		5247C8B221E38A19009E8770 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8B121E38A19009E8770 /* MoreViewController.swift */; };
-		5247C8B521E38A26009E8770 /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8B321E38A26009E8770 /* MyKindnessWallViewController.xib */; };
+		5247C8B521E38A26009E8770 /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8B321E38A26009E8770 /* MoreViewController.xib */; };
 		5247C8B821E38A52009E8770 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8B721E38A52009E8770 /* StatisticViewController.swift */; };
 		5247C8BA21E38A5B009E8770 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8B921E38A5B009E8770 /* StatisticViewController.xib */; };
 		5247C8BC21E38A66009E8770 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8BB21E38A66009E8770 /* ContactUsViewController.swift */; };
@@ -349,8 +349,8 @@
 		5247C8A621E34D82009E8770 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		5247C8AB21E388B2009E8770 /* GithubConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubConstants.swift; sourceTree = "<group>"; };
 		5247C8B121E38A19009E8770 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreViewController.swift; path = app/view_controllers/my_kindnesswall/MyKindnessWall/MoreViewController.swift; sourceTree = SOURCE_ROOT; };
-		5247C8B421E38A26009E8770 /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = app/view_controllers/my_kindnesswall/MyKindnessWall/fa.lproj/MyKindnessWallViewController.xib; sourceTree = SOURCE_ROOT; };
-		5247C8B621E38A37009E8770 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = app/view_controllers/my_kindnesswall/MyKindnessWall/en.lproj/MyKindnessWallViewController.xib; sourceTree = SOURCE_ROOT; };
+		5247C8B421E38A26009E8770 /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = app/view_controllers/my_kindnesswall/MyKindnessWall/fa.lproj/MoreViewController.xib; sourceTree = SOURCE_ROOT; };
+		5247C8B621E38A37009E8770 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = app/view_controllers/my_kindnesswall/MyKindnessWall/en.lproj/MoreViewController.xib; sourceTree = SOURCE_ROOT; };
 		5247C8B721E38A52009E8770 /* StatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticViewController.swift; path = app/view_controllers/my_kindnesswall/Statistic/StatisticViewController.swift; sourceTree = SOURCE_ROOT; };
 		5247C8B921E38A5B009E8770 /* StatisticViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatisticViewController.xib; path = app/view_controllers/my_kindnesswall/Statistic/StatisticViewController.xib; sourceTree = SOURCE_ROOT; };
 		5247C8BB21E38A66009E8770 /* ContactUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactUsViewController.swift; path = app/view_controllers/my_kindnesswall/ContactUs/ContactUsViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -936,7 +936,7 @@
 		5247C8AA21E38803009E8770 /* main */ = {
 			isa = PBXGroup;
 			children = (
-				5247C8B321E38A26009E8770 /* MyKindnessWallViewController.xib */,
+				5247C8B321E38A26009E8770 /* MoreViewController.xib */,
 				5247C8B121E38A19009E8770 /* MoreViewController.swift */,
 			);
 			path = main;
@@ -1351,7 +1351,7 @@
 				528A2DB421AD3E6400DECE0F /* RequestsTableViewCell.xib in Resources */,
 				602BC8F82034B7CC00ECF6E2 /* UploadImageView.xib in Resources */,
 				054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */,
-				5247C8B521E38A26009E8770 /* MyKindnessWallViewController.xib in Resources */,
+				5247C8B521E38A26009E8770 /* MoreViewController.xib in Resources */,
 				60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */,
 				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
 				60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */,
@@ -1752,13 +1752,13 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		5247C8B321E38A26009E8770 /* MyKindnessWallViewController.xib */ = {
+		5247C8B321E38A26009E8770 /* MoreViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5247C8B421E38A26009E8770 /* fa */,
 				5247C8B621E38A37009E8770 /* en */,
 			);
-			name = MyKindnessWallViewController.xib;
+			name = MoreViewController.xib;
 			sourceTree = "<group>";
 		};
 		5247C8BD21E38A74009E8770 /* ContactUsViewController.xib */ = {
