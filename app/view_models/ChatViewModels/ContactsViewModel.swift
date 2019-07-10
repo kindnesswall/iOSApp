@@ -101,6 +101,9 @@ extension ContactsViewModel : ContactsViewModelNetworkInterface {
         
         self.addMessages(messages: textMessages, isSending: false, messagesViewModel: messagesViewModel)
         
+        //Updating notification's count
+        self.delegate?.reloadTableView()
+        
     }
     
     func ackMessageIsReceived(ackMessage:AckMessage){

@@ -45,6 +45,11 @@ class MessagesViewController: UIViewController,MessagesDelegate {
         
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.viewModel?.updateIsNewMessageForAll()
+    }
+    
     func configBarButtons(){
 //        donateGiftBarBtn = UINavigationItem.getNavigationItem(
 //            target: self,
@@ -124,6 +129,9 @@ class MessagesViewController: UIViewController,MessagesDelegate {
     }
     
     func scrollToTop(){
+        guard self.viewModel?.curatedMessages.count ?? 0 > 0,
+            self.viewModel?.curatedMessages[0].count ?? 0 > 0
+        else { return }
         self.tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
     }
 }

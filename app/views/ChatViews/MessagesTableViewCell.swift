@@ -127,7 +127,7 @@ class MessagesTableViewCell: UITableViewCell {
         }
         self.messageText.text = message.text
         self.timeLabel.text = AppLanguage.getNumberString(number: message.createdAt?.convertToDate()?.getClock() ?? "")
-        self.isNewMessageView.isHidden = !(message.isNewMessage ?? false)
+        self.isNewMessageView.isHidden = !(message.isFirstNewMessage ?? false)
         
         switch messageType {
         case .user:

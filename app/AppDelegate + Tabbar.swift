@@ -76,6 +76,7 @@ extension AppDelegate : UITabBarControllerDelegate{
         case AppConst.TabIndex.Chat:
             let contactsViewController = ContactsViewController()
             self.startNewChatProtocol = contactsViewController.viewModel
+            self.refreshChatProtocol = contactsViewController
             controller = contactsViewController
             
         case AppConst.TabIndex.MyKindnessWall:

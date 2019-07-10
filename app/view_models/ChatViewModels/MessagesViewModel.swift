@@ -57,21 +57,16 @@ class MessagesViewModel {
         var scrollToTop = false
         for message in messages {
             if let index = addMessage(message: message, isSending: isSending) {
-                if !uiHasChanged {
-                    uiHasChanged = true
-                }
-                if !scrollToTop, index == 0 {
+                uiHasChanged = true
+                if index == 0 {
                     scrollToTop = true
                 }
             }
-            
         }
         
-        guard uiHasChanged else {
-            return
+        if uiHasChanged {
+            updateUI(scrollToTop: scrollToTop)
         }
-        
-        updateUI(scrollToTop: scrollToTop)
     }
     
     func ackMessageIsReceived(message:TextMessage) {
@@ -92,6 +87,7 @@ class MessagesViewModel {
             self.sendingQueue.append(message)
             return index
         } else {
+            message.updateIsNewMessage(userId: self.userId)
             return self.addMessage(message: message)
         }
     }
@@ -110,7 +106,7 @@ class MessagesViewModel {
         var curatedMessagesStorage = [[TextMessage]]()
         var lastDate:String? = nil
         var sameDateMessages:[TextMessage] = []
-        var newMessage:TextMessage?
+        var firstNewMessage:TextMessage?
         for message in messages {
             
             var sendDate = message.createdAt?.convertToDate()
@@ -135,26 +131,27 @@ class MessagesViewModel {
             
             sameDateMessages.append(message)
             
-            message.isNewMessage = false
-             if isNewMessage(message: message){
-                newMessage = message
+            message.isFirstNewMessage = false
+            if message.isNewMessage == true {
+                firstNewMessage = message
             }
             
         }
         
         curatedMessagesStorage.append(sameDateMessages)
         
-        newMessage?.isNewMessage = true
+        firstNewMessage?.isFirstNewMessage = true
         
         self.curatedMessages = curatedMessagesStorage
     }
     
-    private func isNewMessage(message:TextMessage)->Bool {
-        if message.receiverId == userId, !(message.ack ?? false), !(message.hasSeen ?? false) {
-            return true
+    func updateIsNewMessageForAll() {
+        for message in messages {
+            message.updateIsNewMessage(userId: self.userId)
         }
-        return false
+        self.updateCuratedMessages()
     }
+    
     
     
     private func removeSendingMessageFromMessages(message:TextMessage){

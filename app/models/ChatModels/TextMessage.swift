@@ -19,12 +19,24 @@ final class TextMessage : Codable {
     
     var sendingState:MessageSendingState?
     var hasSeen:Bool?
-    var isNewMessage:Bool? = false
+    private(set) var isNewMessage:Bool? = false
+    var isFirstNewMessage:Bool? = false
     
     init(text:String,senderId:Int,chatId:Int) {
         self.text=text
         self.senderId=senderId
         self.chatId=chatId
         self.sendingState = .sending
+    }
+    
+    func updateIsNewMessage(userId:Int) {
+        self.isNewMessage = isNewMessage(userId:userId)
+    }
+    
+    private func isNewMessage(userId:Int)->Bool {
+        if self.receiverId == userId, !(self.ack == true), !(self.hasSeen == true) {
+            return true
+        }
+        return false
     }
 }

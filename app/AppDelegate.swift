@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     public var tabBarController:UITabBarController?
     weak var startNewChatProtocol:StartNewChatProtocol?
+    weak var refreshChatProtocol:RefreshChatProtocol?
     
     var tabBarPagesRelaodDelegates = [ReloadablePage]()
 

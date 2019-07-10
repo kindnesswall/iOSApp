@@ -84,3 +84,20 @@ extension AppDelegate {
         self.apiRequest.registerPush(input: input) { _ in }
     }
 }
+
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        
+        guard let data = (userInfo["data"] as? String)?.data(using: .utf8),
+            let message = ApiUtility.convert(data:data , to: TextMessage.self)
+        else {
+            completionHandler(.failed)
+            return
+        }
+        
+        self.refreshChatProtocol?.fetchChat(chatId: message.chatId)
+    }
+}

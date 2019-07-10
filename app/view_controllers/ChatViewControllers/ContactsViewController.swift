@@ -44,7 +44,7 @@ class ContactsViewController: UIViewController {
     }
     
     @objc func refreshControlAction(){
-        self.viewModel.reloadData()
+        self.refreshChat()
     }
     
     deinit {
@@ -114,9 +114,21 @@ extension ContactsViewController : ContactsViewModelProtocol {
     
 }
 
+extension ContactsViewController: RefreshChatProtocol {
+    func refreshChat() {
+        self.viewModel.reloadData()
+    }
+    func fetchChat(chatId:Int) {
+        self.viewModel.loadMessages(chatId: chatId, beforeId: nil)
+    }
+}
+
 enum PageLoadingSate {
     case isLoading
     case hasLoaded(showEmptyListMessage:Bool)
 }
 
-
+protocol RefreshChatProtocol : class {
+    func refreshChat()
+    func fetchChat(chatId:Int)
+}
