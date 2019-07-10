@@ -91,10 +91,10 @@ struct AppConst {
     struct TabIndex {
         //    public static let CHAT:Int = 4
         public static let HOME:Int = 4
-        public static let MyGifts:Int = 3
+        public static let MyWall:Int = 3
         public static let RegisterGift:Int = 2
         public static let Chat:Int = 1
-        public static let MyKindnessWall:Int = 0
+        public static let More:Int = 0
     }
 }
 

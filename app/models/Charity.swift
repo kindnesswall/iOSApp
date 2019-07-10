@@ -9,6 +9,7 @@
 import Foundation
 
 class Charity: Codable {
+    var id: Int?
     var imageUrl: String?
     var name: String?
     var registerId: String?

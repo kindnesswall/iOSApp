@@ -103,7 +103,7 @@
 		5246725321E349A40086F327 /* Users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5246725221E349A40086F327 /* Users.graphql */; };
 		5247C8A721E34D82009E8770 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8A621E34D82009E8770 /* schema.json */; };
 		5247C8AC21E388B2009E8770 /* GithubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8AB21E388B2009E8770 /* GithubConstants.swift */; };
-		5247C8B221E38A19009E8770 /* MyKindnessWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8B121E38A19009E8770 /* MyKindnessWallViewController.swift */; };
+		5247C8B221E38A19009E8770 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8B121E38A19009E8770 /* MoreViewController.swift */; };
 		5247C8B521E38A26009E8770 /* MyKindnessWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8B321E38A26009E8770 /* MyKindnessWallViewController.xib */; };
 		5247C8B821E38A52009E8770 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8B721E38A52009E8770 /* StatisticViewController.swift */; };
 		5247C8BA21E38A5B009E8770 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8B921E38A5B009E8770 /* StatisticViewController.xib */; };
@@ -202,7 +202,7 @@
 		6080700D21B436590046F940 /* URLBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700C21B436590046F940 /* URLBrowser.swift */; };
 		60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */; };
 		60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861155206E50CD000A42E5 /* AppLanguage.swift */; };
-		6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6092D631204950F700AFDA7B /* MyGiftsViewController.swift */; };
+		6092D633204950F700AFDA7B /* MyWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6092D631204950F700AFDA7B /* MyWallViewController.swift */; };
 		60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */; };
 		60AE9C86202DB9B100F246CD /* CategoryListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C85202DB9B100F246CD /* CategoryListVM.swift */; };
 		60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C87202DE87100F246CD /* OptionsListViewController.swift */; };
@@ -348,7 +348,7 @@
 		5246725221E349A40086F327 /* Users.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Users.graphql; sourceTree = "<group>"; };
 		5247C8A621E34D82009E8770 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		5247C8AB21E388B2009E8770 /* GithubConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubConstants.swift; sourceTree = "<group>"; };
-		5247C8B121E38A19009E8770 /* MyKindnessWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyKindnessWallViewController.swift; path = app/view_controllers/my_kindnesswall/MyKindnessWall/MyKindnessWallViewController.swift; sourceTree = SOURCE_ROOT; };
+		5247C8B121E38A19009E8770 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreViewController.swift; path = app/view_controllers/my_kindnesswall/MyKindnessWall/MoreViewController.swift; sourceTree = SOURCE_ROOT; };
 		5247C8B421E38A26009E8770 /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = app/view_controllers/my_kindnesswall/MyKindnessWall/fa.lproj/MyKindnessWallViewController.xib; sourceTree = SOURCE_ROOT; };
 		5247C8B621E38A37009E8770 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = app/view_controllers/my_kindnesswall/MyKindnessWall/en.lproj/MyKindnessWallViewController.xib; sourceTree = SOURCE_ROOT; };
 		5247C8B721E38A52009E8770 /* StatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticViewController.swift; path = app/view_controllers/my_kindnesswall/Statistic/StatisticViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -468,7 +468,7 @@
 		6080700C21B436590046F940 /* URLBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBrowser.swift; sourceTree = "<group>"; };
 		60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar + config.swift"; sourceTree = "<group>"; };
 		60861155206E50CD000A42E5 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
-		6092D631204950F700AFDA7B /* MyGiftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGiftsViewController.swift; sourceTree = "<group>"; };
+		6092D631204950F700AFDA7B /* MyWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWallViewController.swift; sourceTree = "<group>"; };
 		60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsListViewController.xib; sourceTree = "<group>"; };
 		60AE9C85202DB9B100F246CD /* CategoryListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListVM.swift; sourceTree = "<group>"; };
 		60AE9C87202DE87100F246CD /* OptionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsListViewController.swift; sourceTree = "<group>"; };
@@ -612,11 +612,11 @@
 				5263D5FF21B9272300B634A8 /* options list */,
 				528A2DC721ADA9EE00DECE0F /* language */,
 				60302DE4206953670025D397 /* pop_up */,
-				05BEA441204BFBAB00147BF5 /* my_kindnesswall */,
+				05BEA441204BFBAB00147BF5 /* more */,
 				05BEA43620497B2200147BF5 /* register gift */,
 				05BEA43520497B0A00147BF5 /* gift detail */,
 				05BEA43420497AF100147BF5 /* home */,
-				05BEA43320497AD500147BF5 /* my gifts */,
+				05BEA43320497AD500147BF5 /* my wall */,
 				05029EC71FE33498004D96B1 /* requests */,
 				05BFBBB31FDA653400DBCDDF /* login_register */,
 				05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */,
@@ -764,13 +764,13 @@
 			path = signup_edit;
 			sourceTree = "<group>";
 		};
-		05BEA43320497AD500147BF5 /* my gifts */ = {
+		05BEA43320497AD500147BF5 /* my wall */ = {
 			isa = PBXGroup;
 			children = (
-				6092D631204950F700AFDA7B /* MyGiftsViewController.swift */,
+				6092D631204950F700AFDA7B /* MyWallViewController.swift */,
 				604A31E22291FA5900E2C5B6 /* MyGiftsViewController.xib */,
 			);
-			path = "my gifts";
+			path = "my wall";
 			sourceTree = "<group>";
 		};
 		05BEA43420497AF100147BF5 /* home */ = {
@@ -807,14 +807,14 @@
 			path = "register gift";
 			sourceTree = "<group>";
 		};
-		05BEA441204BFBAB00147BF5 /* my_kindnesswall */ = {
+		05BEA441204BFBAB00147BF5 /* more */ = {
 			isa = PBXGroup;
 			children = (
-				5247C8AA21E38803009E8770 /* MyKindnessWall */,
+				5247C8AA21E38803009E8770 /* main */,
 				5247C8A921E387E3009E8770 /* Statistic */,
 				5247C8A821E387C9009E8770 /* ContactUs */,
 			);
-			name = my_kindnesswall;
+			name = more;
 			path = "New Group";
 			sourceTree = "<group>";
 		};
@@ -933,13 +933,13 @@
 			path = Statistic;
 			sourceTree = "<group>";
 		};
-		5247C8AA21E38803009E8770 /* MyKindnessWall */ = {
+		5247C8AA21E38803009E8770 /* main */ = {
 			isa = PBXGroup;
 			children = (
 				5247C8B321E38A26009E8770 /* MyKindnessWallViewController.xib */,
-				5247C8B121E38A19009E8770 /* MyKindnessWallViewController.swift */,
+				5247C8B121E38A19009E8770 /* MoreViewController.swift */,
 			);
-			path = MyKindnessWall;
+			path = main;
 			sourceTree = "<group>";
 		};
 		52525E2321AEB9C000A7D03E /* appUITests */ = {
@@ -1556,7 +1556,7 @@
 				053C46F12291D11200074761 /* ProfileViewModel.swift in Sources */,
 				60C972ED21C9ACC700A8D1C5 /* GiftViewModel.swift in Sources */,
 				05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */,
-				6092D633204950F700AFDA7B /* MyGiftsViewController.swift in Sources */,
+				6092D633204950F700AFDA7B /* MyWallViewController.swift in Sources */,
 				60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */,
 				52D1A14421DA3C30005EA2F0 /* Address.swift in Sources */,
 				0523118322A4198100A22157 /* HTTPLayer.swift in Sources */,
@@ -1658,7 +1658,7 @@
 				528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */,
 				607E78862279E23600FF0008 /* ContactsViewModel.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConst.swift in Sources */,
-				5247C8B221E38A19009E8770 /* MyKindnessWallViewController.swift in Sources */,
+				5247C8B221E38A19009E8770 /* MoreViewController.swift in Sources */,
 				5247C8BC21E38A66009E8770 /* ContactUsViewController.swift in Sources */,
 				607EEA7B222C383A00637A93 /* OptionsListViewModelProtocol.swift in Sources */,
 				0523117D22A3EBA600A22157 /* HTTPMethod.swift in Sources */,

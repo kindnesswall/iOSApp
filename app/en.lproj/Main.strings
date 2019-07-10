@@ -2,8 +2,8 @@
 /* Class = "UITabBarItem"; title = "گفتگوها"; ObjectID = "5uA-Tn-CJs"; */
 "5uA-Tn-CJs.title" = "Chats";
 
-/* Class = "UITabBarItem"; title = "دیوار من"; ObjectID = "Giq-yA-iw8"; */
-"Giq-yA-iw8.title" = "My Wall";
+/* Class = "UITabBarItem"; title = ""; ObjectID = "Giq-yA-iw8"; */
+"Giq-yA-iw8.title" = "More";
 
 /* Class = "UITabBarItem"; title = "ثبت هدیه"; ObjectID = "QMD-IL-3h9"; */
 "QMD-IL-3h9.title" = "Give Gift";
@@ -11,5 +11,5 @@
 /* Class = "UITabBarItem"; title = "خانه"; ObjectID = "XSi-Od-cG1"; */
 "XSi-Od-cG1.title" = "Home";
 
-/* Class = "UITabBarItem"; title = "هدیه‌های من"; ObjectID = "hwT-SD-rgX"; */
-"hwT-SD-rgX.title" = "My Gifts";
+/* Class = "UITabBarItem"; title = ""; ObjectID = "hwT-SD-rgX"; */
+"hwT-SD-rgX.title" = "My Wall";

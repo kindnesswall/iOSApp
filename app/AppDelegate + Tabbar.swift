@@ -40,10 +40,10 @@ extension AppDelegate : UITabBarControllerDelegate{
         }
         
         initiateTab(tabIndex: AppConst.TabIndex.HOME,tabs:tabs)
-        initiateTab(tabIndex: AppConst.TabIndex.MyGifts,tabs:tabs)
+        initiateTab(tabIndex: AppConst.TabIndex.MyWall,tabs:tabs)
         initiateTab(tabIndex: AppConst.TabIndex.RegisterGift,tabs:tabs)
         initiateTab(tabIndex: AppConst.TabIndex.Chat,tabs:tabs)
-        initiateTab(tabIndex: AppConst.TabIndex.MyKindnessWall,tabs:tabs)
+        initiateTab(tabIndex: AppConst.TabIndex.More,tabs:tabs)
         
         setTabsDelegates(tabs:tabs)
         
@@ -67,8 +67,8 @@ extension AppDelegate : UITabBarControllerDelegate{
         case AppConst.TabIndex.HOME:
             controller=HomeViewController(vm: HomeVM())
             
-        case AppConst.TabIndex.MyGifts:
-            controller=MyGiftsViewController()
+        case AppConst.TabIndex.MyWall:
+            controller=MyWallViewController()
             
         case AppConst.TabIndex.RegisterGift:
             controller=RegisterGiftViewController()
@@ -79,8 +79,8 @@ extension AppDelegate : UITabBarControllerDelegate{
             self.refreshChatProtocol = contactsViewController
             controller = contactsViewController
             
-        case AppConst.TabIndex.MyKindnessWall:
-            controller=MyKindnessWallViewController()
+        case AppConst.TabIndex.More:
+            controller=MoreViewController()
             
         default:
             fatalError()
@@ -111,7 +111,7 @@ extension AppDelegate : UITabBarControllerDelegate{
         if
             vc as? RegisterGiftViewController != nil
             ||
-            vc as? MyGiftsViewController != nil
+            vc as? MyWallViewController != nil
             ||
 //            (viewController as? UINavigationController)?.viewControllers.first as? ContactsViewController != nil  {
             vc as? ContactsViewController != nil
@@ -134,7 +134,7 @@ extension AppDelegate : UITabBarControllerDelegate{
             if
                 tab.viewControllers.first as? HomeViewController != nil
                     ||
-                    tab.viewControllers.first as? MyGiftsViewController != nil {
+                    tab.viewControllers.first as? MyWallViewController != nil {
                 
                 self.tabBarPagesRelaodDelegates.append(reloadPageDelegate)
             }

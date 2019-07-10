@@ -1,5 +1,5 @@
 //
-//  MyGiftsViewController.swift
+//  MyWallViewController.swift
 //  app
 //
 //  Created by AmirHossein on 3/2/18.
@@ -9,7 +9,7 @@
 import UIKit
 import KeychainSwift
 
-class MyGiftsViewController: UIViewController {
+class MyWallViewController: UIViewController {
 
     @IBOutlet weak var noGiftMsg: UILabel!
     
@@ -66,7 +66,7 @@ class MyGiftsViewController: UIViewController {
     
     
     deinit {
-        print("MyGiftsViewController deinit")
+        print("MyWallViewController deinit")
     }
     
     override func viewDidLoad() {
@@ -274,7 +274,7 @@ class MyGiftsViewController: UIViewController {
     
 }
 
-extension MyGiftsViewController : UITableViewDelegate {
+extension MyWallViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let viewModel: GiftViewModel
@@ -313,7 +313,7 @@ extension MyGiftsViewController : UITableViewDelegate {
 }
 
 
-extension MyGiftsViewController : ReloadablePage {
+extension MyWallViewController : ReloadablePage {
     func reloadPage(){
         self.reloadViewModel(type: .registered)
         self.reloadViewModel(type: .donated)
@@ -321,7 +321,7 @@ extension MyGiftsViewController : ReloadablePage {
     }
 }
 
-extension MyGiftsViewController : GiftViewModelDelegate {
+extension MyWallViewController : GiftViewModelDelegate {
     func pageLoadingAnimation(viewModel: GiftViewModel, isLoading: Bool) {
         switch viewModel {
         case registeredGiftsViewModel:
