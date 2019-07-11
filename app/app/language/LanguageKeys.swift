@@ -104,6 +104,8 @@ struct LanguageKeys {
     static let gettingPriceReason : String = "gettingPriceReason"
     
     static let imageUploadingError : String = "imageUploadingError"
+    
+    static let accessError : String = "accessError"
     static let titleError : String = "titleError"
     static let categoryError : String = "categoryError"
     static let newOrUsedError : String = "newOrUsedError"

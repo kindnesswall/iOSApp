@@ -119,6 +119,8 @@
 "draftSavedSuccessfully" = "The draft saved successfully";
 "uploadedSuccessfully" = "The Image uploaded successfully";
 "gettingPriceReason" = "";
+
+"accessError" = "You don't have a access to this page.";
 "imageUploadingError" = "An error occurred while uploading the image";
 "titleError" = "Please write the title of the gift";
 "categoryError" = "Please select the category of the gift";

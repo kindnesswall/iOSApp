@@ -101,6 +101,7 @@ PODS:
   - PanModal (1.2.4)
   - Protobuf (3.8.0)
   - Spring (1.0.6)
+  - SPStorkController (1.6.9)
   - Starscream (3.0.6)
   - SwiftMessages (7.0.0):
     - SwiftMessages/App (= 7.0.0)
@@ -127,6 +128,7 @@ DEPENDENCIES:
   - MGSwipeTableCell
   - PanModal
   - Spring (from `https://github.com/MengTo/Spring.git`)
+  - SPStorkController
   - Starscream (~> 3.0.2)
   - SwiftMessages
   - SwiftyOnboard
@@ -159,6 +161,7 @@ SPEC REPOS:
     - nanopb
     - PanModal
     - Protobuf
+    - SPStorkController
     - Starscream
     - SwiftMessages
     - SwiftyOnboard
@@ -200,12 +203,13 @@ SPEC CHECKSUMS:
   PanModal: 275f6d4d07565ddf4ed16d7be5d9cd275682d80d
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
+  SPStorkController: 5648a8dd356ea26493001706d4150e46cb672d69
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
   SwiftyOnboard: de60e90c2af23dd61b01ec0c6a8d0be3370f857b
   UICircularProgressRing: 0ff679b05a17f15ad6301a7886686837b8c301a9
   XLActionController: d7dea0b162bd3977311bcba7d377b88d6b87a7b4
 
-PODFILE CHECKSUM: bd280e2e32edffe81faeb90725bc5bd3f6294857
+PODFILE CHECKSUM: ac797b3bc5efc1b7f334a15c1f91f4c95f8bca63
 
 COCOAPODS: 1.6.0

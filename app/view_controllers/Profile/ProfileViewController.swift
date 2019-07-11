@@ -65,12 +65,12 @@ class ProfileViewController: UIViewController {
         vm = ProfileViewModel()
         vm?.delegate = self
         getProfile()
-        
+
         usernameBtnLoader.centerXAnchor.constraint(equalTo: self.usernameBtn.centerXAnchor).isActive = true
         usernameBtnLoader.centerYAnchor.constraint(equalTo: self.usernameBtn.centerYAnchor).isActive = true
-        
+
         usernameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.selectImage(_:)))
         uploadView.addGestureRecognizer(tap)
         setDefaultViews()

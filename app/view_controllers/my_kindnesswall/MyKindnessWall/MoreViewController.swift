@@ -9,6 +9,7 @@
 import UIKit
 import KeychainSwift
 import Apollo
+import SPStorkController
 
 class MoreViewController: UIViewController {
 
@@ -36,7 +37,7 @@ class MoreViewController: UIViewController {
         
         guard let isAdmin = keychain.getBool(AppConst.KeyChain.IsAdmin), isAdmin
              else {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .error)
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.accessError),theme: .error)
                 return
         }
         let vm = HomeVM()
@@ -53,7 +54,8 @@ class MoreViewController: UIViewController {
         
         let controller = ProfileViewController ()
         let nc = UINavigationController.init(rootViewController: controller)
-        self.tabBarController?.present(nc, animated: true, completion: nil)
+        self.presentAsStork(nc)
+//        self.tabBarController?.present(nc, animated: true, completion: nil)
         
     }
     
