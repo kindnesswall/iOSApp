@@ -30,12 +30,12 @@ class GiftViewModel: NSObject {
     }
     
     func handleGetGift(_ result:Result<[Gift]>,_ beforeId:Int?) {
-        self.isLoadingGifts = false
         
         switch result {
         case .failure(let error):
             print(error)
         case .success(let gifts):
+            self.isLoadingGifts = false
             if beforeId==nil {
                 self.gifts=[]
                 self.delegate?.reloadTableView(viewModel:self)

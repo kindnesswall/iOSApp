@@ -161,7 +161,7 @@
 		6033DA9E22B4F62300D43738 /* AuthOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033DA9D22B4F62300D43738 /* AuthOutput.swift */; };
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
 		604A31DD2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604A31DC2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift */; };
-		604A31E42291FA5900E2C5B6 /* MyGiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604A31E22291FA5900E2C5B6 /* MyGiftsViewController.xib */; };
+		604A31E42291FA5900E2C5B6 /* MyWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604A31E22291FA5900E2C5B6 /* MyWallViewController.xib */; };
 		604FB576228234AD00795CE2 /* MessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 604FB578228234AD00795CE2 /* MessagesViewController.xib */; };
 		604FB57E2283616500795CE2 /* AppDelegate + Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604FB57D2283616500795CE2 /* AppDelegate + Login.swift */; };
 		604FB58222860B8100795CE2 /* GiftsToDonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604FB58022860B8100795CE2 /* GiftsToDonateViewController.swift */; };
@@ -422,9 +422,9 @@
 		6033DA9D22B4F62300D43738 /* AuthOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthOutput.swift; sourceTree = "<group>"; };
 		6040F3A2206688A800FCD429 /* APIEmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyInput.swift; sourceTree = "<group>"; };
 		604A31DC2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedGiftViewModel.swift; sourceTree = "<group>"; };
-		604A31E32291FA5900E2C5B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyGiftsViewController.xib; sourceTree = "<group>"; };
-		604A31E52291FA6400E2C5B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MyGiftsViewController.strings; sourceTree = "<group>"; };
-		604A31E62291FA6600E2C5B6 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/MyGiftsViewController.strings; sourceTree = "<group>"; };
+		604A31E32291FA5900E2C5B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyWallViewController.xib; sourceTree = "<group>"; };
+		604A31E52291FA6400E2C5B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MyWallViewController.strings; sourceTree = "<group>"; };
+		604A31E62291FA6600E2C5B6 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/MyWallViewController.strings; sourceTree = "<group>"; };
 		604FB577228234AD00795CE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MessagesViewController.xib; sourceTree = "<group>"; };
 		604FB57A228234F000795CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MessagesViewController.strings; sourceTree = "<group>"; };
 		604FB57C228234F400795CE2 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/MessagesViewController.strings; sourceTree = "<group>"; };
@@ -768,7 +768,7 @@
 			isa = PBXGroup;
 			children = (
 				6092D631204950F700AFDA7B /* MyWallViewController.swift */,
-				604A31E22291FA5900E2C5B6 /* MyGiftsViewController.xib */,
+				604A31E22291FA5900E2C5B6 /* MyWallViewController.xib */,
 			);
 			path = "my wall";
 			sourceTree = "<group>";
@@ -1385,7 +1385,7 @@
 				528A2D9F21AC40C900DECE0F /* RequestsViewController.xib in Resources */,
 				5247C8BA21E38A5B009E8770 /* StatisticViewController.xib in Resources */,
 				6009DB9E2130931C002FD769 /* StatisticTableViewCell.xib in Resources */,
-				604A31E42291FA5900E2C5B6 /* MyGiftsViewController.xib in Resources */,
+				604A31E42291FA5900E2C5B6 /* MyWallViewController.xib in Resources */,
 				054B1B551FCC4101007570EF /* IRANSansMobile_Medium.ttf in Resources */,
 				05B124CC202DB056007E28CC /* latest.json in Resources */,
 				528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */,
@@ -1852,14 +1852,14 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		604A31E22291FA5900E2C5B6 /* MyGiftsViewController.xib */ = {
+		604A31E22291FA5900E2C5B6 /* MyWallViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				604A31E32291FA5900E2C5B6 /* Base */,
 				604A31E52291FA6400E2C5B6 /* en */,
 				604A31E62291FA6600E2C5B6 /* fa */,
 			);
-			name = MyGiftsViewController.xib;
+			name = MyWallViewController.xib;
 			sourceTree = "<group>";
 		};
 		604FB578228234AD00795CE2 /* MessagesViewController.xib */ = {

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import KeychainSwift
 
 extension AppDelegate : UITabBarControllerDelegate{
     
@@ -54,6 +55,7 @@ extension AppDelegate : UITabBarControllerDelegate{
     func resetAppAfterSwitchUser(){
         guard let tabs = self.tabBarController?.viewControllers as? [UINavigationController] else { return }
         
+        initiateTab(tabIndex: AppConst.TabIndex.MyWall,tabs:tabs)
         initiateTab(tabIndex: AppConst.TabIndex.Chat,tabs:tabs)
     }
     
@@ -68,7 +70,9 @@ extension AppDelegate : UITabBarControllerDelegate{
             controller=HomeViewController(vm: HomeVM())
             
         case AppConst.TabIndex.MyWall:
-            controller=MyWallViewController()
+            let myWallViewController = MyWallViewController()
+            myWallViewController.userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
+            controller = myWallViewController
             
         case AppConst.TabIndex.RegisterGift:
             controller=RegisterGiftViewController()
@@ -113,7 +117,6 @@ extension AppDelegate : UITabBarControllerDelegate{
             ||
             vc as? MyWallViewController != nil
             ||
-//            (viewController as? UINavigationController)?.viewControllers.first as? ContactsViewController != nil  {
             vc as? ContactsViewController != nil
         {
             return true

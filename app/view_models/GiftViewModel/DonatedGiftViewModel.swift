@@ -10,8 +10,8 @@ import Foundation
 
 class DonatedGiftViewModel: GiftViewModel {
     
-    init() {
-        super.init(giftListType: .Donated)
+    init(userId:Int) {
+        super.init(giftListType: .Donated(userId: userId))
     }
     
 }

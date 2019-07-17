@@ -23,9 +23,10 @@ class MyWallViewController: UIViewController {
     @IBOutlet weak var donatedGiftsTableView: UITableView!
     @IBOutlet weak var receivedGiftsTableView: UITableView!
     
-    let registeredGiftsViewModel = RegisteredGiftViewModel()
-    let donatedGiftsViewModel = DonatedGiftViewModel()
-    let receivedGiftsViewModel = ReceivedGiftViewModel()
+    var userId:Int?
+    var registeredGiftsViewModel: RegisteredGiftViewModel?
+    var donatedGiftsViewModel: DonatedGiftViewModel?
+    var receivedGiftsViewModel: ReceivedGiftViewModel?
     
     var registeredInitialLoadingIndicator:LoadingIndicator?
     var donatedInitialLoadingIndicator:LoadingIndicator?
@@ -72,9 +73,16 @@ class MyWallViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.registeredGiftsViewModel.delegate = self
-        self.donatedGiftsViewModel.delegate = self
-        self.receivedGiftsViewModel.delegate = self
+        guard let userId = self.userId else {
+            return
+        }
+        self.registeredGiftsViewModel = RegisteredGiftViewModel(userId: userId)
+        self.donatedGiftsViewModel = DonatedGiftViewModel(userId: userId)
+        self.receivedGiftsViewModel = ReceivedGiftViewModel(userId: userId)
+        
+        self.registeredGiftsViewModel?.delegate = self
+        self.donatedGiftsViewModel?.delegate = self
+        self.receivedGiftsViewModel?.delegate = self
         
         self.registeredGiftsTableView.dataSource = self.registeredGiftsViewModel
         self.donatedGiftsTableView.dataSource = self.donatedGiftsViewModel
@@ -89,11 +97,11 @@ class MyWallViewController: UIViewController {
         configLoadingAnimations()
         configSegmentControl()
         
-        self.updateUI()
+        self.registeredGiftsViewModel?.getGifts(beforeId: nil)
+        self.donatedGiftsViewModel?.getGifts(beforeId: nil)
+        self.receivedGiftsViewModel?.getGifts(beforeId: nil)
         
-        self.registeredGiftsViewModel.getGifts(beforeId: nil)
-        self.donatedGiftsViewModel.getGifts(beforeId: nil)
-        self.receivedGiftsViewModel.getGifts(beforeId: nil)
+        self.updateUI()
     }
     
     func configTableView(tableView:UITableView){
@@ -132,8 +140,8 @@ class MyWallViewController: UIViewController {
         self.segmentControl.setTitleTextAttributes([NSAttributedString.Key.font:AppConst.Resource.Font.getLightFont(size: 13)], for: .normal)
     }
     
-    func getViewModel(type:GiftType)->GiftViewModel{
-        let viewModel : GiftViewModel
+    func getViewModel(type:GiftType)->GiftViewModel?{
+        let viewModel : GiftViewModel?
         switch type {
         case .registered:
             viewModel = self.registeredGiftsViewModel
@@ -147,7 +155,7 @@ class MyWallViewController: UIViewController {
     
     func reloadViewModel(type:GiftType) {
         let viewModel = getViewModel(type: type)
-        viewModel.reloadGifts()
+        viewModel?.reloadGifts()
     }
     
     @objc func registeredRefreshControlAction(){
@@ -231,7 +239,9 @@ class MyWallViewController: UIViewController {
     
     func hideOrShowNoGiftMsgLabel(type: GiftType) {
         
-        let viewModel = getViewModel(type: type)
+        guard let viewModel = getViewModel(type: type) else {
+            return
+        }
         
         let count = viewModel.gifts.count
         let isLoading = viewModel.isLoadingGifts
@@ -277,15 +287,7 @@ class MyWallViewController: UIViewController {
 extension MyWallViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let viewModel: GiftViewModel
-        switch tableView {
-        case registeredGiftsTableView:
-            viewModel = self.registeredGiftsViewModel
-        case donatedGiftsTableView:
-            viewModel = self.donatedGiftsViewModel
-        case receivedGiftsTableView:
-            viewModel = self.receivedGiftsViewModel
-        default:
+        guard let viewModel = getViewModel(tableView: tableView) else {
             return
         }
         
@@ -390,6 +392,21 @@ extension MyWallViewController : GiftViewModelDelegate {
             tableView = nil
         }
         return tableView
+    }
+    
+    func getViewModel(tableView:UITableView) -> GiftViewModel? {
+        let viewModel: GiftViewModel?
+        switch tableView {
+        case registeredGiftsTableView:
+            viewModel = self.registeredGiftsViewModel
+        case donatedGiftsTableView:
+            viewModel = self.donatedGiftsViewModel
+        case receivedGiftsTableView:
+            viewModel = self.receivedGiftsViewModel
+        default:
+            viewModel = nil
+        }
+        return viewModel
     }
     
     func showTableView(viewModel: GiftViewModel, show: Bool) {
