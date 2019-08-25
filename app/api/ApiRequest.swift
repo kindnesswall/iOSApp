@@ -64,6 +64,35 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
     
+    func registerDeviceForPushNotification(devicePushToken: String, deviceIdentifier: String,completion: @escaping (Result<Void>) -> Void) {
+        
+        let input = PushRegisterInput(devicePushToken,deviceIdentifier)
+        
+        self.httpLayer.request(at: Endpoint.PushRegister(input: input)) { (result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
+    
+    func sendPushNotification(to userId: Int, bodyMessage: String,completion: @escaping (Result<Void>) -> Void) {
+        
+        let input = SendPushInput(userId: userId, body: bodyMessage)
+        
+        self.httpLayer.request(at: Endpoint.SendPushNotif(input: input)) { (result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
+
+    
     func getProvinces(completion: @escaping (Result<[Province]>) -> Void){
         
         self.httpLayer.request(at: Endpoint.GetProvinces) {(result) in

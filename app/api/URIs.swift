@@ -18,47 +18,9 @@ class URIs {
         return "\(apiRoute)/chat"
     }
     
-//    var gifts_register : String {
-//        return "/api/v1/gifts/register"
-//    }
-    
-//    var gifts_owner : String {
-//        return "\(apiRoute)/gifts/owner"
-//    }
-    
-//    var gifts_donated: String {
-//        return "\(apiRoute)/gifts/donated"
-//    }
-//
-//    var gifts_received : String {
-//        return "\(apiRoute)/gifts/received"
-//    }
-//
-//    var gifts_todonate : String {
-//        return "\(apiRoute)/gifts/todonate"
-//    }
-//
     var image_upload : String {
         return "\(apiRoute)/image/upload"
     }
-
-//    var users_allowAccess : String {
-//        return "\(apiRoute)/users/allowAccess"
-//    }
-//    var users_denyAccess : String {
-//        return "\(apiRoute)/users/denyAccess"
-//    }
-    
-//    var gifts_request : String {
-//        return "\(apiRoute)/gifts/request"
-//    }
-//    var donate : String {
-//        return "\(apiRoute)/donate"
-//    }
-//    var profile : String {
-//        return "\(apiRoute)/profile"
-//    }
-    
     
     func getSMSUrl(apiKey:String,receptor:String,template:String,token:String)->String?{
         let rawUrl = "https://saharsms.com/api/\(apiKey)/json/SendVerify?receptor=\(receptor)&template=\(template)&token=\(token)"

@@ -31,7 +31,6 @@ enum Endpoint:EndpointProtocol {
     case DonateGift(id:Int,toUserId:Int)
     case GetGifts(param: GiftListRequestParameters)
     
-
     case SendTextMessage(textMessage: TextMessage)
     case SendAck(ackMessage: AckMessage)
     case FetchContacts
@@ -43,6 +42,9 @@ enum Endpoint:EndpointProtocol {
 
     case GiftReviewRejected(giftId: Int)
     case GiftReviewApproved(giftId: Int)
+
+    case PushRegister(input: PushRegisterInput)
+    case SendPushNotif(input: SendPushInput)
 
     
     var url:URL? {
@@ -90,7 +92,10 @@ enum Endpoint:EndpointProtocol {
             return ApiUtility.convert(input: profile)
         case .GiftReviewRejected: return nil
         case .GiftReviewApproved: return nil
-
+        case .PushRegister(let input):
+            return ApiUtility.convert(input: input)
+        case .SendPushNotif(let input):
+            return ApiUtility.convert(input: input)
         }
     }
     
@@ -136,7 +141,10 @@ enum Endpoint:EndpointProtocol {
             return HttpMethod.DELETE.rawValue
         case .GiftReviewApproved:
             return HttpMethod.PUT.rawValue
-
+        case .PushRegister:
+            return HttpMethod.POST.rawValue
+        case .SendPushNotif:
+            return HttpMethod.POST.rawValue
         }
     }
     
@@ -184,6 +192,10 @@ enum Endpoint:EndpointProtocol {
             return basePathUrl + "gifts/reject/\(giftId)"
         case .GiftReviewApproved(let giftId):
             return basePathUrl + "gifts/accept/\(giftId)"
+        case .PushRegister(_):
+            return basePathUrl + "push/register"
+        case .SendPushNotif(_):
+            return basePathUrl + "sendPush"
         }
     }
     
