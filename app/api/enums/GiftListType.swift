@@ -16,20 +16,22 @@ enum GiftListType {
     case registered(userId:Int)
     case ToDonate(toUserId:Int)
     
+    var basePathUrl:String{ return "/gifts/" }
+    
     var path:String{
         switch self {
         case .Review:
-            return "/gifts/review"
+            return basePathUrl + "review"
         case .Donated(let userId):
-            return "/gifts/userDonated/\(userId)"
+            return basePathUrl + "userDonated/\(userId)"
         case .Received(let userId):
-            return "/gifts/userReceived/\(userId)"
+            return basePathUrl + "userReceived/\(userId)"
         case .registered(let userId):
-            return "/gifts/userRegistered/\(userId)"
+            return basePathUrl + "userRegistered/\(userId)"
         case .Gifts:
-            return "/gifts/"
+            return basePathUrl
         case .ToDonate(let toUserId):
-            return "/gifts/todonate/\(toUserId)"
+            return basePathUrl + "todonate/\(toUserId)"
         }
     }
 }

@@ -29,7 +29,6 @@
 		05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05335D431FD0D0A800601115 /* GiftDetailViewController.swift */; };
 		05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05335D481FD0DDA200601115 /* SDWebImageSource.swift */; };
 		053892CF231314F600828372 /* GiftListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892CE231314F600828372 /* GiftListType.swift */; };
-		053892D22313223F00828372 /* PushRegisterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892D12313223F00828372 /* PushRegisterInput.swift */; };
 		053892D4231322BE00828372 /* SendPushInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892D3231322BE00828372 /* SendPushInput.swift */; };
 		053C46EC2291273900074761 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C46EA2291273900074761 /* ProfileViewController.swift */; };
 		053C46ED2291273900074761 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053C46EB2291273900074761 /* ProfileViewController.xib */; };
@@ -273,7 +272,6 @@
 		05335D431FD0D0A800601115 /* GiftDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetailViewController.swift; sourceTree = "<group>"; };
 		05335D481FD0DDA200601115 /* SDWebImageSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDWebImageSource.swift; sourceTree = "<group>"; };
 		053892CE231314F600828372 /* GiftListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListType.swift; sourceTree = "<group>"; };
-		053892D12313223F00828372 /* PushRegisterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushRegisterInput.swift; sourceTree = "<group>"; };
 		053892D3231322BE00828372 /* SendPushInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPushInput.swift; sourceTree = "<group>"; };
 		053C46EA2291273900074761 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		053C46EB2291273900074761 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
@@ -656,7 +654,7 @@
 		053892D02313221400828372 /* Push */ = {
 			isa = PBXGroup;
 			children = (
-				053892D12313223F00828372 /* PushRegisterInput.swift */,
+				6066C3C422D0B8CF00BCB50A /* PushNotificationRegister.swift */,
 				053892D3231322BE00828372 /* SendPushInput.swift */,
 			);
 			path = Push;
@@ -748,7 +746,6 @@
 				607EEA82222EACDA00637A93 /* RequestInput.swift */,
 				60E30D48229C967500619E9E /* UserProfile.swift */,
 				0523117522A3DA4A00A22157 /* EmptyInput.swift */,
-				6066C3C422D0B8CF00BCB50A /* PushNotificationRegister.swift */,
 				0593E50122D54ADF00C3B046 /* Charity.swift */,
 			);
 			path = models;
@@ -1654,7 +1651,6 @@
 				05BFBBCC1FDB101700DBCDDF /* UIFont+printAllFonts.swift in Sources */,
 				60AE9C86202DB9B100F246CD /* CategoryListVM.swift in Sources */,
 				607E78A32279E37A00FF0008 /* AutoLayoutHelper.swift in Sources */,
-				053892D22313223F00828372 /* PushRegisterInput.swift in Sources */,
 				6080700D21B436590046F940 /* URLBrowser.swift in Sources */,
 				05BFBBEC1FE29F7C00DBCDDF /* IntroViewController.swift in Sources */,
 				05644DC81FFF01C300B7C853 /* ChatConversationResult.swift in Sources */,
