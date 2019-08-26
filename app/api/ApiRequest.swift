@@ -92,6 +92,21 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
 
+    func getCharityList(completion: @escaping (Result<[Charity]>) -> Void){
+        
+        self.httpLayer.request(at: Endpoint.CharityList) {(result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let charities = ApiUtility.convert(data: data, to: [Charity].self){
+                    completion(.success(charities))
+                }else{
+                    completion(.failure(AppError.DataDecoding))
+                }
+            }
+        }
+    }
     
     func getProvinces(completion: @escaping (Result<[Province]>) -> Void){
         

@@ -46,6 +46,7 @@ enum Endpoint:EndpointProtocol {
     case PushRegister(input: PushRegisterInput)
     case SendPushNotif(input: SendPushInput)
 
+    case CharityList
     
     var url:URL? {
         var urlComponent = URLComponents()
@@ -96,6 +97,7 @@ enum Endpoint:EndpointProtocol {
             return ApiUtility.convert(input: input)
         case .SendPushNotif(let input):
             return ApiUtility.convert(input: input)
+        case .CharityList: return nil
         }
     }
     
@@ -145,6 +147,8 @@ enum Endpoint:EndpointProtocol {
             return HttpMethod.POST.rawValue
         case .SendPushNotif:
             return HttpMethod.POST.rawValue
+        case .CharityList:
+            return HttpMethod.GET.rawValue
         }
     }
     
@@ -196,6 +200,8 @@ enum Endpoint:EndpointProtocol {
             return basePathUrl + "push/register"
         case .SendPushNotif(_):
             return basePathUrl + "sendPush"
+        case .CharityList:
+            return basePathUrl + "charity/list"
         }
     }
     

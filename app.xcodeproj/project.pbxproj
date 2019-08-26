@@ -662,6 +662,15 @@
 			path = Push;
 			sourceTree = "<group>";
 		};
+		053892D52314942400828372 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				05BFBBDC1FE26A3300DBCDDF /* output */,
+				053C46FA2294AB8B00074761 /* input */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
 		053C46E9229126CE00074761 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -717,6 +726,7 @@
 		054B1B581FCC44E3007570EF /* models */ = {
 			isa = PBXGroup;
 			children = (
+				053892D52314942400828372 /* api */,
 				053892D02313221400828372 /* Push */,
 				607E78932279E27500FF0008 /* ChatModels */,
 				52D1A14221DA09F4005EA2F0 /* firebase */,
@@ -894,8 +904,6 @@
 			isa = PBXGroup;
 			children = (
 				0523117722A3EAA900A22157 /* enums */,
-				053C46FA2294AB8B00074761 /* input */,
-				05BFBBDC1FE26A3300DBCDDF /* output */,
 				6024132222272E7A0094E6E2 /* URIs.swift */,
 				60FAB83D2064DBE10039BF61 /* APICall.swift */,
 				52D1A13A21D92859005EA2F0 /* ApiUtility.swift */,
