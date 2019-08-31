@@ -30,6 +30,10 @@
 		05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05335D481FD0DDA200601115 /* SDWebImageSource.swift */; };
 		053892CF231314F600828372 /* GiftListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892CE231314F600828372 /* GiftListType.swift */; };
 		053892D4231322BE00828372 /* SendPushInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892D3231322BE00828372 /* SendPushInput.swift */; };
+		053892D723186C9C00828372 /* UnblockUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892D623186C9C00828372 /* UnblockUserInput.swift */; };
+		053892D92318745100828372 /* ChatMessagesInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892D82318745100828372 /* ChatMessagesInput.swift */; };
+		053892DB231874DE00828372 /* SendMessageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892DA231874DE00828372 /* SendMessageInput.swift */; };
+		053892DD2318754B00828372 /* ChatAckMessageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892DC2318754B00828372 /* ChatAckMessageInput.swift */; };
 		053C46EC2291273900074761 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C46EA2291273900074761 /* ProfileViewController.swift */; };
 		053C46ED2291273900074761 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053C46EB2291273900074761 /* ProfileViewController.xib */; };
 		053C46EF2291C91800074761 /* ProfileVC + uploading image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C46EE2291C91800074761 /* ProfileVC + uploading image.swift */; };
@@ -273,6 +277,10 @@
 		05335D481FD0DDA200601115 /* SDWebImageSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDWebImageSource.swift; sourceTree = "<group>"; };
 		053892CE231314F600828372 /* GiftListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListType.swift; sourceTree = "<group>"; };
 		053892D3231322BE00828372 /* SendPushInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPushInput.swift; sourceTree = "<group>"; };
+		053892D623186C9C00828372 /* UnblockUserInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnblockUserInput.swift; sourceTree = "<group>"; };
+		053892D82318745100828372 /* ChatMessagesInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessagesInput.swift; sourceTree = "<group>"; };
+		053892DA231874DE00828372 /* SendMessageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageInput.swift; sourceTree = "<group>"; };
+		053892DC2318754B00828372 /* ChatAckMessageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAckMessageInput.swift; sourceTree = "<group>"; };
 		053C46EA2291273900074761 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		053C46EB2291273900074761 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		053C46EE2291C91800074761 /* ProfileVC + uploading image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileVC + uploading image.swift"; sourceTree = "<group>"; };
@@ -692,6 +700,10 @@
 			isa = PBXGroup;
 			children = (
 				6040F3A2206688A800FCD429 /* APIEmptyInput.swift */,
+				053892D623186C9C00828372 /* UnblockUserInput.swift */,
+				053892D82318745100828372 /* ChatMessagesInput.swift */,
+				053892DA231874DE00828372 /* SendMessageInput.swift */,
+				053892DC2318754B00828372 /* ChatAckMessageInput.swift */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -1614,11 +1626,13 @@
 				522F6B5E21D81AA2001C67B9 /* FirebaseUser.swift in Sources */,
 				601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,
+				053892D92318745100828372 /* ChatMessagesInput.swift in Sources */,
 				528A2DA921AD340200DECE0F /* LanguageKeys.swift in Sources */,
 				5247C8B821E38A52009E8770 /* StatisticViewController.swift in Sources */,
 				05029ED21FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift in Sources */,
 				607E789D2279E28D00FF0008 /* Message.swift in Sources */,
 				604FB58522860C5700795CE2 /* GiftsToDonateViewModel.swift in Sources */,
+				053892DD2318754B00828372 /* ChatAckMessageInput.swift in Sources */,
 				6019F27521B80257003C3E76 /* AppDelegate + Tabbar.swift in Sources */,
 				604A31DD2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift in Sources */,
 				053C46EC2291273900074761 /* ProfileViewController.swift in Sources */,
@@ -1635,6 +1649,7 @@
 				607EEA83222EACDA00637A93 /* RequestInput.swift in Sources */,
 				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,
 				053892CF231314F600828372 /* GiftListType.swift in Sources */,
+				053892DB231874DE00828372 /* SendMessageInput.swift in Sources */,
 				6066C3BB22C7B23400BCB50A /* AppDelegate + Notification.swift in Sources */,
 				6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */,
 				6033DA9822AF6B3800D43738 /* ContactsSocketViewModel.swift in Sources */,
@@ -1674,6 +1689,7 @@
 				607E78922279E25600FF0008 /* MessagesTableViewCell + Layout.swift in Sources */,
 				604FB5BF228B6DBE00795CE2 /* Donate.swift in Sources */,
 				0523117B22A3EAF600A22157 /* AppError.swift in Sources */,
+				053892D723186C9C00828372 /* UnblockUserInput.swift in Sources */,
 				607E78912279E25600FF0008 /* ChatTableViewCell + Layout.swift in Sources */,
 				60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */,
 				607E788D2279E25600FF0008 /* MessagesDateTableViewCell + Layout.swift in Sources */,

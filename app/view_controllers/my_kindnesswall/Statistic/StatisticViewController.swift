@@ -16,6 +16,8 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
     @IBOutlet weak var tableView: UITableView!
     var initialLoadingIndicator:LoadingIndicator?
     
+    lazy var apiRequest = ApiRequest(HTTPLayer())
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,13 +65,34 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
         startLoadingPage()
         
         let input : APIEmptyInput? = nil
+        
+        apiRequest.getStatistics { [weak self](result) in
+            
+            self?.statisticsKeys = []
+            self?.statisticsValues = []
+            self?.stopLoadingPage()
+            
+            switch result{
+            case .failure(let appError):
+                print("Error")
+            case .success(let statisticsData):
+                print(statisticsData)
+                if let statistics = statisticsData.statistics {
+                    for (key , value) in statistics {
+                        self?.statisticsKeys.append(key)
+                        self?.statisticsValues.append(value)
+                    }
+                    self?.tableView.reloadData()
+                }
+            }
+        }
 //        APICall.request(url: APIURLs.getStatistics, httpMethod: .GET, input: input) { [weak self] (data, response, error)  in
-////            APICall.printData(data: data)
-//            
+//            APICall.printData(data: data)
+            
 //            self?.statisticsKeys = []
 //            self?.statisticsValues = []
 //            self?.stopLoadingPage()
-//            
+//
 //            if let statisticsData = APICall.readJsonData(data: data, outputType: Statistics.self) {
 //                if let statistics = statisticsData.statistics {
 //                    for (key , value) in statistics {
@@ -78,10 +101,10 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
 //                    }
 //                    self?.tableView.reloadData()
 //                }
-//                
+//
 //            }
 //        }
-        
+    
     }
 
     /*

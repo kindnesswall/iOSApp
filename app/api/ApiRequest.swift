@@ -78,6 +78,82 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
 
+    
+    func getUserStatistics(id userId: Int, completion: @escaping (Result<Statistics>) -> Void){
+        self.httpLayer.request(at: Endpoint.GetUserStatistics(userId: userId)) {(result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let statistics = ApiUtility.convert(data: data, to: Statistics.self){
+                    completion(.success(statistics))
+                }else{
+                    completion(.failure(AppError.DataDecoding))
+                }
+            }
+        }
+    }
+    
+    func unblockUser(id userId: Int,completion: @escaping (Result<Void>) -> Void) {
+        self.httpLayer.request(at: Endpoint.UnBlockUserAccess(input: UnblockUserInput(userId: userId))) { (result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
+    
+    func blockUser(id userId: Int,completion: @escaping (Result<Void>) -> Void) {
+        self.httpLayer.request(at: Endpoint.BlockUserAccess(userId: userId)) { (result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
+    
+    func acceptCharity(id charityId: Int,completion: @escaping (Result<Void>) -> Void) {
+        self.httpLayer.request(at: Endpoint.AcceptCharity(charityId: charityId)) { (result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
+    
+    func rejectCharity(id charityId: Int,completion: @escaping (Result<Void>) -> Void) {
+        self.httpLayer.request(at: Endpoint.RejectCharity(charityId: charityId)) { (result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
+    
+    func getStatistics(completion: @escaping (Result<Statistics>) -> Void){
+        
+        self.httpLayer.request(at: Endpoint.Statistics) {(result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let statistics = ApiUtility.convert(data: data, to: Statistics.self){
+                    completion(.success(statistics))
+                }else{
+                    completion(.failure(AppError.DataDecoding))
+                }
+            }
+        }
+    }
+    
     func getCharityList(completion: @escaping (Result<[Charity]>) -> Void){
         
         self.httpLayer.request(at: Endpoint.CharityList) {(result) in

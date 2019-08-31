@@ -46,6 +46,23 @@ enum Endpoint:EndpointProtocol {
     case GiftReviewApproved(giftId: Int)
 //        ---------------------------------------
     case CharityList
+    case AcceptCharity(charityId: Int)
+    case RejectCharity(charityId: Int)
+//        ---------------------------------------
+    case Statistics
+//        ---------------------------------------
+    case BlockUserAccess(userId:Int)
+    case GetUserStatistics(userId:Int)
+    case UnBlockUserAccess(input: UnblockUserInput)
+//        ---------------------------------------
+    case GetContacts
+    case GetBlockContacts
+//        ---------------------------------------
+    case ChatMessages(input: ChatMessagesInput)
+    case ChatSendMessage(input: SendMessageInput)
+    case ChatAckMessage(input: ChatAckMessageInput)
+    case BlockChat(id: Int)
+    case UnBlockChat(id: Int)
     
     var url:URL? {
         var urlComponent = URLComponents()
@@ -101,6 +118,24 @@ enum Endpoint:EndpointProtocol {
         case .GiftReviewApproved: return nil
 //        ---------------------------------------
         case .CharityList: return nil
+        case .AcceptCharity: return nil
+        case .RejectCharity: return nil
+//        ---------------------------------------
+        case .Statistics: return nil
+//        ---------------------------------------
+        case .BlockUserAccess: return nil
+        case .UnBlockUserAccess(let input): return ApiUtility.convert(input: input)
+        case .GetUserStatistics: return nil
+//        ---------------------------------------
+        case .GetContacts: return nil
+        case .GetBlockContacts: return nil
+//        ---------------------------------------
+        case .ChatMessages(let input): return ApiUtility.convert(input: input)
+        case .ChatSendMessage(let input): return ApiUtility.convert(input: input)
+        case .ChatAckMessage(let input): return ApiUtility.convert(input: input)
+        case .BlockChat: return nil
+        case .UnBlockChat: return nil
+//        ---------------------------------------
         }
     }
     
@@ -158,6 +193,23 @@ enum Endpoint:EndpointProtocol {
 //        ---------------------------------------
         case .CharityList:
             return HttpMethod.GET.rawValue
+        case .AcceptCharity: return HttpMethod.PUT.rawValue
+        case .RejectCharity: return HttpMethod.PUT.rawValue
+//        ---------------------------------------
+        case .Statistics: return HttpMethod.GET.rawValue
+//        ---------------------------------------
+        case .BlockUserAccess: return HttpMethod.DELETE.rawValue
+        case .UnBlockUserAccess: return HttpMethod.PUT.rawValue
+        case .GetUserStatistics: return HttpMethod.GET.rawValue
+//        ---------------------------------------
+        case .GetContacts: return HttpMethod.GET.rawValue
+        case .GetBlockContacts: return HttpMethod.GET.rawValue
+//        ---------------------------------------
+        case .ChatMessages: return HttpMethod.POST.rawValue
+        case .ChatSendMessage: return HttpMethod.POST.rawValue
+        case .ChatAckMessage: return HttpMethod.POST.rawValue
+        case .BlockChat: return HttpMethod.PUT.rawValue
+        case .UnBlockChat: return HttpMethod.PUT.rawValue
         }
     }
     
@@ -217,6 +269,30 @@ enum Endpoint:EndpointProtocol {
 //        ---------------------------------------
         case .CharityList:
             return basePathUrl + "charity/list"
+        case .AcceptCharity(let charityId):
+            return basePathUrl + "charity/accept/\(charityId)"
+        case .RejectCharity(let charityId):
+            return basePathUrl + "charity/reject/\(charityId)"
+//        ---------------------------------------
+        case .Statistics:
+            return basePathUrl + "statistics"
+//        ---------------------------------------
+        case .BlockUserAccess(let userId):
+            return basePathUrl + "users/denyAccess/\(userId)"
+        case .UnBlockUserAccess(let input):
+            return basePathUrl + "users/allowAccess"
+        case .GetUserStatistics(let userId):
+            return basePathUrl + "users/statistics/\(userId)"
+//        ---------------------------------------
+        case .GetContacts: return basePathUrl + "chat/contacts"
+        case .GetBlockContacts: return basePathUrl + "chat/contacts/block"
+//        ---------------------------------------
+        case .ChatMessages: return basePathUrl + "chat/messages"
+        case .ChatSendMessage: return basePathUrl + "chat/send"
+        case .ChatAckMessage: return basePathUrl + "chat/ack"
+        case .BlockChat(let chatId): return basePathUrl + "chat/block/\(chatId)"
+        case .UnBlockChat(let chatId): return basePathUrl + "chat/unblock/\(chatId)"
+            
         }
     }
     
