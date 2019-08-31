@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActivationEnterVerifyCodeViewController: UIViewController {
+class VerificationCodeViewController: UIViewController {
 
     var requestId:String!
     var session:URLSession?

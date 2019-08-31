@@ -34,7 +34,7 @@ extension AppDelegate {
     
     
     func showLoginVC(){
-        let controller=ActivationEnterPhoneViewController()
+        let controller=LoginRegisterViewController()
         
         let nc = UINavigationController.init(rootViewController: controller)
         self.tabBarController?.present(nc, animated: true, completion: nil)

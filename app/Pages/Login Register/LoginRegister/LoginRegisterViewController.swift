@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActivationEnterPhoneViewController: UIViewController {
+class LoginRegisterViewController: UIViewController {
     
     let userDefault=UserDefaults.standard
     lazy var apiRequest = ApiRequest(HTTPLayer())
@@ -132,7 +132,7 @@ class ActivationEnterPhoneViewController: UIViewController {
                 }
                 
             case .success(_):
-                let controller=ActivationEnterVerifyCodeViewController()
+                let controller=VerificationCodeViewController()
                 controller.setCloseComplition(closeComplition: self?.closeComplition)
                 controller.setSubmitComplition(submitComplition: self?.submitComplition)
                 DispatchQueue.main.async {
