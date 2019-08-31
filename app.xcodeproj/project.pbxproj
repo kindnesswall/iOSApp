@@ -43,6 +43,8 @@
 		053C46EF2291C91800074761 /* ProfileVC + uploading image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C46EE2291C91800074761 /* ProfileVC + uploading image.swift */; };
 		053C46F12291D11200074761 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C46F02291D11200074761 /* ProfileViewModel.swift */; };
 		053C46F82294A82A00074761 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C46F72294A82A00074761 /* ResponseModel.swift */; };
+		05444E39231B010C006E5E09 /* CharityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05444E37231B010C006E5E09 /* CharityTableViewCell.swift */; };
+		05444E3A231B010C006E5E09 /* CharityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05444E38231B010C006E5E09 /* CharityTableViewCell.xib */; };
 		054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */; };
 		054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */; };
 		054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */; };
@@ -68,7 +70,7 @@
 		05B124CC202DB056007E28CC /* latest.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B124CB202DB056007E28CC /* latest.json */; };
 		05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43720498EB400147BF5 /* UIView+hide+show.swift */; };
 		05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */; };
-		05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */; };
+		05BEA43C20498F1900147BF5 /* UITableView+RegisterDequeueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43B20498F1900147BF5 /* UITableView+RegisterDequeueCell.swift */; };
 		05BEA43E2049919D00147BF5 /* String+numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43D2049919D00147BF5 /* String+numbers.swift */; };
 		05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA442204C1FFA00147BF5 /* PromptUser.swift */; };
 		05BEA445204C1FFA00147BF5 /* PromptUser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BEA443204C1FFA00147BF5 /* PromptUser.xib */; };
@@ -289,6 +291,8 @@
 		053C46EE2291C91800074761 /* ProfileVC + uploading image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileVC + uploading image.swift"; sourceTree = "<group>"; };
 		053C46F02291D11200074761 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		053C46F72294A82A00074761 /* ResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		05444E37231B010C006E5E09 /* CharityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityTableViewCell.swift; sourceTree = "<group>"; };
+		05444E38231B010C006E5E09 /* CharityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityTableViewCell.xib; sourceTree = "<group>"; };
 		054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftTableViewCell.swift; sourceTree = "<group>"; };
 		054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Light.ttf; sourceTree = "<group>"; };
 		054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Bold.ttf; sourceTree = "<group>"; };
@@ -314,7 +318,7 @@
 		05B124CB202DB056007E28CC /* latest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = latest.json; path = app/latest.json; sourceTree = "<group>"; };
 		05BEA43720498EB400147BF5 /* UIView+hide+show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+hide+show.swift"; sourceTree = "<group>"; };
 		05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RegisterationHelp.swift"; sourceTree = "<group>"; };
-		05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterCell.swift"; sourceTree = "<group>"; };
+		05BEA43B20498F1900147BF5 /* UITableView+RegisterDequeueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterDequeueCell.swift"; sourceTree = "<group>"; };
 		05BEA43D2049919D00147BF5 /* String+numbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+numbers.swift"; sourceTree = "<group>"; };
 		05BEA442204C1FFA00147BF5 /* PromptUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptUser.swift; sourceTree = "<group>"; };
 		05BEA443204C1FFA00147BF5 /* PromptUser.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptUser.xib; sourceTree = "<group>"; };
@@ -732,6 +736,15 @@
 			path = input;
 			sourceTree = "<group>";
 		};
+		05444E36231B00DC006E5E09 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				05444E37231B010C006E5E09 /* CharityTableViewCell.swift */,
+				05444E38231B010C006E5E09 /* CharityTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		054B1B461FCC29B3007570EF /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -800,6 +813,7 @@
 		0593E50422D54F3D00C3B046 /* list */ = {
 			isa = PBXGroup;
 			children = (
+				05444E36231B00DC006E5E09 /* Cell */,
 				0593E50722D54FCB00C3B046 /* CharityListViewController.swift */,
 				0593E50822D54FCB00C3B046 /* CharityListViewController.xib */,
 			);
@@ -912,7 +926,7 @@
 				607E78762279DDB800FF0008 /* Date + PersianDate + Clock.swift */,
 				60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */,
 				60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */,
-				05BEA43B20498F1900147BF5 /* UITableView+RegisterCell.swift */,
+				05BEA43B20498F1900147BF5 /* UITableView+RegisterDequeueCell.swift */,
 				6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */,
 				05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */,
 				05BEA43720498EB400147BF5 /* UIView+hide+show.swift */,
@@ -1391,6 +1405,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05444E3A231B010C006E5E09 /* CharityTableViewCell.xib in Resources */,
 				601F83CF2036A50600F9118B /* GenericOptionsTableViewCell.xib in Resources */,
 				05644DCE1FFF06BD00B7C853 /* SectionView.xib in Resources */,
 				0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */,
@@ -1651,6 +1666,7 @@
 				60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */,
 				05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */,
 				607E789E2279E28D00FF0008 /* MessageSendingState.swift in Sources */,
+				05444E39231B010C006E5E09 /* CharityTableViewCell.swift in Sources */,
 				05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */,
 				604FB57E2283616500795CE2 /* AppDelegate + Login.swift in Sources */,
 				05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */,
@@ -1689,7 +1705,7 @@
 				52466DE521DB9A360086F327 /* HomeVM.swift in Sources */,
 				0593E51122D5502200C3B046 /* CharitySignupEditViewController.swift in Sources */,
 				60C972EB21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift in Sources */,
-				05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */,
+				05BEA43C20498F1900147BF5 /* UITableView+RegisterDequeueCell.swift in Sources */,
 				0523118522A4203F00A22157 /* ApiRequest.swift in Sources */,
 				5263D5FE21B915F400B634A8 /* LanguageVM.swift in Sources */,
 				5247C8AC21E388B2009E8770 /* GithubConstants.swift in Sources */,

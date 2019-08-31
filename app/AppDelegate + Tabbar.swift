@@ -41,7 +41,7 @@ extension AppDelegate : UITabBarControllerDelegate{
         }
         
         initiateTab(tabIndex: AppConst.TabIndex.HOME,tabs:tabs)
-        initiateTab(tabIndex: AppConst.TabIndex.MyWall,tabs:tabs)
+        initiateTab(tabIndex: AppConst.TabIndex.Charities,tabs:tabs)
         initiateTab(tabIndex: AppConst.TabIndex.RegisterGift,tabs:tabs)
         initiateTab(tabIndex: AppConst.TabIndex.Chat,tabs:tabs)
         initiateTab(tabIndex: AppConst.TabIndex.More,tabs:tabs)
@@ -68,6 +68,10 @@ extension AppDelegate : UITabBarControllerDelegate{
         switch tabIndex {
         case AppConst.TabIndex.HOME:
             controller=HomeViewController(vm: HomeVM())
+        
+        case AppConst.TabIndex.Charities:
+            let charitiesViewController = CharityListViewController()
+            controller = charitiesViewController
             
         case AppConst.TabIndex.MyWall:
             let myWallViewController = MyWallViewController()

@@ -12,6 +12,7 @@ class Charity: Codable {
     var id: Int?
     var imageUrl: String?
     var name: String?
+    var manager: String?
     var registerId: String?
     var registerDate: String?
     var address: String?
