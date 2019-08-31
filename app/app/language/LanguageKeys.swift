@@ -14,7 +14,6 @@ struct LanguageKeys {
     static let RegisterGiftViewController_title : String = "RegisterGiftViewController_title"
     static let MyGiftsViewController_title : String = "MyGiftsViewController_title"
     static let EditGiftViewController_title : String = "EditGiftViewController_title"
-    static let RequestsViewController_title : String = "RequestsViewController_title"
     
     static let tabBar_home = "tabBar_home"
     static let tabBar_my_gifts = "tabBar_my_gifts"

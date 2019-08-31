@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */; };
-		05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029EC81FE334C5004D96B1 /* RequestToAGiftViewController.swift */; };
-		05029ECB1FE334C5004D96B1 /* RequestToAGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05029EC91FE334C5004D96B1 /* RequestToAGiftViewController.xib */; };
 		05029ECE1FE9381E004D96B1 /* RequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029ECC1FE9381E004D96B1 /* RequestsTableViewCell.swift */; };
 		05029ED21FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029ED01FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift */; };
 		05029ED61FE9A683004D96B1 /* ButtonWithData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029ED51FE9A683004D96B1 /* ButtonWithData.swift */; };
@@ -85,7 +83,6 @@
 		05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBC21FDAA45C00DBCDDF /* Time.swift */; };
 		05BFBBCC1FDB101700DBCDDF /* UIFont+printAllFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */; };
 		05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */; };
-		05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */; };
 		05BFBBD71FE1D6FE00DBCDDF /* String+isNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */; };
 		05BFBBD91FE24C4D00DBCDDF /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */; };
 		05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBDD1FE26A9000DBCDDF /* Gift.swift */; };
@@ -126,7 +123,6 @@
 		5283174821C91B400044B9AD /* LockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5283174A21C91B400044B9AD /* LockViewController.xib */; };
 		5283174D21C91B7F0044B9AD /* LockSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5283174F21C91B7F0044B9AD /* LockSettingViewController.xib */; };
 		528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2D7C21ABD72500DECE0F /* RegisterGiftViewController.xib */; };
-		528A2D9F21AC40C900DECE0F /* RequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DA121AC40C900DECE0F /* RequestsViewController.xib */; };
 		528A2DA921AD340200DECE0F /* LanguageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A2DA821AD340200DECE0F /* LanguageKeys.swift */; };
 		528A2DAB21AD3D8200DECE0F /* RequestToAGiftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DAD21AD3D8200DECE0F /* RequestToAGiftTableViewCell.xib */; };
 		528A2DB421AD3E6400DECE0F /* RequestsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528A2DB621AD3E6400DECE0F /* RequestsTableViewCell.xib */; };
@@ -254,8 +250,6 @@
 /* Begin PBXFileReference section */
 		006A9055ED7D4288198332F6 /* Pods-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.debug.xcconfig"; sourceTree = "<group>"; };
 		05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+getMe.swift"; sourceTree = "<group>"; };
-		05029EC81FE334C5004D96B1 /* RequestToAGiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestToAGiftViewController.swift; sourceTree = "<group>"; };
-		05029EC91FE334C5004D96B1 /* RequestToAGiftViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestToAGiftViewController.xib; sourceTree = "<group>"; };
 		05029ECC1FE9381E004D96B1 /* RequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsTableViewCell.swift; sourceTree = "<group>"; };
 		05029ED01FE93EC9004D96B1 /* RequestToAGiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestToAGiftTableViewCell.swift; sourceTree = "<group>"; };
 		05029ED51FE9A683004D96B1 /* ButtonWithData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithData.swift; sourceTree = "<group>"; };
@@ -335,7 +329,6 @@
 		05BFBBC21FDAA45C00DBCDDF /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		05BFBBCB1FDB101700DBCDDF /* UIFont+printAllFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+printAllFonts.swift"; sourceTree = "<group>"; };
 		05BFBBCE1FE0703500DBCDDF /* RegisterGiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewController.swift; sourceTree = "<group>"; };
-		05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isNumber.swift"; sourceTree = "<group>"; };
 		05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
 		05BFBBDD1FE26A9000DBCDDF /* Gift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gift.swift; sourceTree = "<group>"; };
@@ -390,8 +383,6 @@
 		528A2D8321ABD83600DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RegisterGiftViewController.xib; sourceTree = "<group>"; };
 		528A2D8421ABDC0400DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
 		528A2D8521ABDC0F00DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/GiftDetailViewController.xib; sourceTree = "<group>"; };
-		528A2DA621AC40D200DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RequestsViewController.xib; sourceTree = "<group>"; };
-		528A2DA721AC40D600DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/RequestsViewController.xib; sourceTree = "<group>"; };
 		528A2DA821AD340200DECE0F /* LanguageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageKeys.swift; sourceTree = "<group>"; };
 		528A2DB021AD3D8D00DECE0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RequestToAGiftTableViewCell.xib; sourceTree = "<group>"; };
 		528A2DB321AD3D9300DECE0F /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/RequestToAGiftTableViewCell.xib; sourceTree = "<group>"; };
@@ -521,17 +512,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05029EC71FE33498004D96B1 /* Requests */ = {
-			isa = PBXGroup;
-			children = (
-				05BFBBD21FE1C4EE00DBCDDF /* RequestsViewController.swift */,
-				528A2DA121AC40C900DECE0F /* RequestsViewController.xib */,
-				05029EC81FE334C5004D96B1 /* RequestToAGiftViewController.swift */,
-				05029EC91FE334C5004D96B1 /* RequestToAGiftViewController.xib */,
-			);
-			path = Requests;
-			sourceTree = "<group>";
-		};
 		05029ED41FE9A663004D96B1 /* custom_classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -625,7 +605,6 @@
 				05BEA43520497B0A00147BF5 /* GiftDetail */,
 				05BEA43420497AF100147BF5 /* Home */,
 				05BEA43320497AD500147BF5 /* MyWall */,
-				05029EC71FE33498004D96B1 /* Requests */,
 				05BFBBB31FDA653400DBCDDF /* Login Register */,
 				05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */,
 			);
@@ -1433,7 +1412,6 @@
 				528A2DCB21ADAA2100DECE0F /* LanguageViewController.xib in Resources */,
 				054B1B541FCC4101007570EF /* IRANSansMobile_Black.ttf in Resources */,
 				0593E51222D5502200C3B046 /* CharitySignupEditViewController.xib in Resources */,
-				05029ECB1FE334C5004D96B1 /* RequestToAGiftViewController.xib in Resources */,
 				60FAB845206571340039BF61 /* icomoon.ttf in Resources */,
 				5247C8C221E38A83009E8770 /* ContactUsViewController.strings in Resources */,
 				6033DA9622AF69BD00D43738 /* ContactsViewController.xib in Resources */,
@@ -1452,7 +1430,6 @@
 				60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */,
 				053C46ED2291273900074761 /* ProfileViewController.xib in Resources */,
 				054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */,
-				528A2D9F21AC40C900DECE0F /* RequestsViewController.xib in Resources */,
 				5247C8BA21E38A5B009E8770 /* StatisticViewController.xib in Resources */,
 				6009DB9E2130931C002FD769 /* StatisticTableViewCell.xib in Resources */,
 				604A31E42291FA5900E2C5B6 /* MyWallViewController.xib in Resources */,
@@ -1633,7 +1610,6 @@
 				60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */,
 				52D1A14421DA3C30005EA2F0 /* Address.swift in Sources */,
 				0523118322A4198100A22157 /* HTTPLayer.swift in Sources */,
-				05BFBBD41FE1C4EE00DBCDDF /* RequestsViewController.swift in Sources */,
 				5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */,
 				607E78802279E21F00FF0008 /* MessagesViewController.swift in Sources */,
 				0593E50222D54ADF00C3B046 /* Charity.swift in Sources */,
@@ -1742,7 +1718,6 @@
 				053892F9231AE9F500828372 /* MoreViewController.swift in Sources */,
 				607EEA7B222C383A00637A93 /* OptionsListViewModelProtocol.swift in Sources */,
 				0523117D22A3EBA600A22157 /* HTTPMethod.swift in Sources */,
-				05029ECA1FE334C5004D96B1 /* RequestToAGiftViewController.swift in Sources */,
 				522F6B6421D8B173001C67B9 /* SelectCountryVC.swift in Sources */,
 				601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */,
 				601F83C32036A36500F9118B /* DateStatusListViewModel.swift in Sources */,
@@ -1882,15 +1857,6 @@
 				528A2D8321ABD83600DECE0F /* en */,
 			);
 			name = RegisterGiftViewController.xib;
-			sourceTree = "<group>";
-		};
-		528A2DA121AC40C900DECE0F /* RequestsViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				528A2DA621AC40D200DECE0F /* en */,
-				528A2DA721AC40D600DECE0F /* fa */,
-			);
-			name = RequestsViewController.xib;
 			sourceTree = "<group>";
 		};
 		528A2DAD21AD3D8200DECE0F /* RequestToAGiftTableViewCell.xib */ = {
