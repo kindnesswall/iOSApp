@@ -18,11 +18,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoreViewController" customModule="app" customModuleProvider="target">
             <connections>
                 <outlet property="aboutKindnessWallBtn" destination="Lkc-mO-68e" id="yiF-Lm-oZy"/>
+                <outlet property="addNewCharityBtn" destination="Dtn-EF-Gw1" id="xxX-AJ-9za"/>
                 <outlet property="bugReportBtn" destination="Lzg-Yj-27L" id="F8r-hr-f0L"/>
                 <outlet property="contactUsBtn" destination="qlv-fg-nyn" id="hoq-rp-Iew"/>
                 <outlet property="loginLogoutBtn" destination="nQK-i4-MHV" id="1ay-22-6vj"/>
                 <outlet property="passcodeTouchIDBtn" destination="CIW-xi-jGN" id="cCQ-cf-XId"/>
-                <outlet property="statisticBtn" destination="Dtn-EF-Gw1" id="cNT-K6-9ZW"/>
                 <outlet property="versionNoLbl" destination="I7P-9g-ZhZ" id="Bgq-kA-wbh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,7 +33,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zJL-MM-Knh">
-                    <rect key="frame" x="16" y="36" width="343" height="470"/>
+                    <rect key="frame" x="16" y="36" width="343" height="512"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7P-9g-ZhZ">
                             <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -45,15 +45,26 @@
                             <rect key="frame" x="0.0" y="58" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137254901957" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                            <state key="normal" title="Add New Charity">
+                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="addNewCharity:" destination="-1" eventType="touchUpInside" id="oUe-mP-MPf"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46c-F9-pKq">
+                            <rect key="frame" x="0.0" y="100" width="343" height="34"/>
+                            <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                             <state key="normal" title="Statistics">
                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="statisticBtnAction:" destination="-1" eventType="touchUpInside" id="o2V-Or-KNT"/>
+                                <action selector="statisticBtnAction:" destination="-1" eventType="touchUpInside" id="Zkz-zZ-0Kc"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gpc-Pd-APL">
-                            <rect key="frame" x="0.0" y="100" width="343" height="34"/>
+                            <rect key="frame" x="0.0" y="142" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                             <state key="normal" title="Gift's review queue">
@@ -64,7 +75,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6Z-Tf-im4">
-                            <rect key="frame" x="0.0" y="142" width="343" height="34"/>
+                            <rect key="frame" x="0.0" y="184" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                             <state key="normal" title="My profile">
@@ -75,7 +86,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFI-WB-1C2">
-                            <rect key="frame" x="0.0" y="184" width="343" height="34"/>
+                            <rect key="frame" x="0.0" y="226" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                             <state key="normal" title="Share the App with friends :)">
@@ -86,7 +97,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlv-fg-nyn" userLabel="Contact Us">
-                            <rect key="frame" x="0.0" y="226" width="343" height="34"/>
+                            <rect key="frame" x="0.0" y="268" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                             <state key="normal" title="Contact Us">
@@ -97,7 +108,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lkc-mO-68e">
-                            <rect key="frame" x="0.0" y="268" width="343" height="34"/>
+                            <rect key="frame" x="0.0" y="310" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137254901957" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                             <state key="normal" title="About KindnessWall">
@@ -108,7 +119,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzg-Yj-27L">
-                            <rect key="frame" x="0.0" y="310" width="343" height="34"/>
+                            <rect key="frame" x="0.0" y="352" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137254901957" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                             <state key="normal" title="Report Bugs">
@@ -119,7 +130,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcu-43-RBy" userLabel="SwitchLanguage">
-                            <rect key="frame" x="0.0" y="352" width="343" height="34"/>
+                            <rect key="frame" x="0.0" y="394" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <accessibility key="accessibilityConfiguration" label="تغییر زبان"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
@@ -131,7 +142,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQK-i4-MHV">
-                            <rect key="frame" x="0.0" y="394" width="343" height="34"/>
+                            <rect key="frame" x="0.0" y="436" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                             <state key="normal">
@@ -142,7 +153,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIW-xi-jGN">
-                            <rect key="frame" x="0.0" y="436" width="343" height="34"/>
+                            <rect key="frame" x="0.0" y="478" width="343" height="34"/>
                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                             <state key="normal" title="Passcode &amp; Touch ID">

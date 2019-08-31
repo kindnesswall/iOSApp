@@ -44,7 +44,7 @@ extension ProfileViewController:CropViewControllerDelegate{
         uploadProgressView.isHidden = false
         uploadView.isHidden = true
         
-        self.vm?.upload(
+        self.vm?.uploadThe(
             image: selectedImage,
             onSuccess: { [weak self] in
                 DispatchQueue.main.async {
@@ -63,7 +63,7 @@ extension ProfileViewController:UINavigationControllerDelegate{
     
 }
 
-extension ProfileViewController:ProfileViewModelDelegate{
+extension ProfileViewController:UploadImageVMDelegate{
     func updateUploadImage(percent: Int) {
         uploadProgressLbl.text = "٪" + String(AppLanguage.getNumberString(number: String(percent)))
     }

@@ -34,11 +34,12 @@
 		053892D92318745100828372 /* ChatMessagesInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892D82318745100828372 /* ChatMessagesInput.swift */; };
 		053892DB231874DE00828372 /* SendMessageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892DA231874DE00828372 /* SendMessageInput.swift */; };
 		053892DD2318754B00828372 /* ChatAckMessageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892DC2318754B00828372 /* ChatAckMessageInput.swift */; };
+		053892DF231AD75200828372 /* UploadImageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892DE231AD75200828372 /* UploadImageVM.swift */; };
+		053892E2231AE07C00828372 /* CharitySignupEditVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892E1231AE07C00828372 /* CharitySignupEditVM.swift */; };
 		053C46EC2291273900074761 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C46EA2291273900074761 /* ProfileViewController.swift */; };
 		053C46ED2291273900074761 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053C46EB2291273900074761 /* ProfileViewController.xib */; };
 		053C46EF2291C91800074761 /* ProfileVC + uploading image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C46EE2291C91800074761 /* ProfileVC + uploading image.swift */; };
 		053C46F12291D11200074761 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C46F02291D11200074761 /* ProfileViewModel.swift */; };
-		053C46F42291D28100074761 /* Profile + URLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C46F32291D28100074761 /* Profile + URLSessionDelegate.swift */; };
 		053C46F82294A82A00074761 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C46F72294A82A00074761 /* ResponseModel.swift */; };
 		054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */; };
 		054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */; };
@@ -281,11 +282,12 @@
 		053892D82318745100828372 /* ChatMessagesInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessagesInput.swift; sourceTree = "<group>"; };
 		053892DA231874DE00828372 /* SendMessageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageInput.swift; sourceTree = "<group>"; };
 		053892DC2318754B00828372 /* ChatAckMessageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAckMessageInput.swift; sourceTree = "<group>"; };
+		053892DE231AD75200828372 /* UploadImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageVM.swift; sourceTree = "<group>"; };
+		053892E1231AE07C00828372 /* CharitySignupEditVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharitySignupEditVM.swift; sourceTree = "<group>"; };
 		053C46EA2291273900074761 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		053C46EB2291273900074761 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		053C46EE2291C91800074761 /* ProfileVC + uploading image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileVC + uploading image.swift"; sourceTree = "<group>"; };
 		053C46F02291D11200074761 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		053C46F32291D28100074761 /* Profile + URLSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile + URLSessionDelegate.swift"; sourceTree = "<group>"; };
 		053C46F72294A82A00074761 /* ResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftTableViewCell.swift; sourceTree = "<group>"; };
 		054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Light.ttf; sourceTree = "<group>"; };
@@ -677,6 +679,14 @@
 			path = api;
 			sourceTree = "<group>";
 		};
+		053892E0231AE05C00828372 /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				053892E1231AE07C00828372 /* CharitySignupEditVM.swift */,
+			);
+			path = VM;
+			sourceTree = "<group>";
+		};
 		053C46E9229126CE00074761 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,7 +701,6 @@
 			isa = PBXGroup;
 			children = (
 				053C46F02291D11200074761 /* ProfileViewModel.swift */,
-				053C46F32291D28100074761 /* Profile + URLSessionDelegate.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -794,6 +803,7 @@
 		0593E50622D54F4D00C3B046 /* signup_edit */ = {
 			isa = PBXGroup;
 			children = (
+				053892E0231AE05C00828372 /* VM */,
 				0593E50F22D5502200C3B046 /* CharitySignupEditViewController.swift */,
 				0593E51022D5502200C3B046 /* CharitySignupEditViewController.xib */,
 			);
@@ -1233,6 +1243,7 @@
 				5263D5FD21B915F400B634A8 /* LanguageVM.swift */,
 				522F6B6521D8B202001C67B9 /* SelectCountryVM.swift */,
 				52466DE621DBC6E80086F327 /* GiftDetailVM.swift */,
+				053892DE231AD75200828372 /* UploadImageVM.swift */,
 			);
 			path = view_models;
 			sourceTree = "<group>";
@@ -1655,6 +1666,7 @@
 				6033DA9822AF6B3800D43738 /* ContactsSocketViewModel.swift in Sources */,
 				05029ECE1FE9381E004D96B1 /* RequestsTableViewCell.swift in Sources */,
 				05BFBBBB1FDA654D00DBCDDF /* ActivationEnterVerifyCodeViewController.swift in Sources */,
+				053892E2231AE07C00828372 /* CharitySignupEditVM.swift in Sources */,
 				05644DD01FFF06F900B7C853 /* NibLoader.swift in Sources */,
 				05BEA43E2049919D00147BF5 /* String+numbers.swift in Sources */,
 				053C46EF2291C91800074761 /* ProfileVC + uploading image.swift in Sources */,
@@ -1674,7 +1686,6 @@
 				601F83D32037367900F9118B /* Place.swift in Sources */,
 				52466DE521DB9A360086F327 /* HomeVM.swift in Sources */,
 				0593E51122D5502200C3B046 /* CharitySignupEditViewController.swift in Sources */,
-				053C46F42291D28100074761 /* Profile + URLSessionDelegate.swift in Sources */,
 				60C972EB21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift in Sources */,
 				05BEA43C20498F1900147BF5 /* UITableView+RegisterCell.swift in Sources */,
 				0523118522A4203F00A22157 /* ApiRequest.swift in Sources */,
@@ -1689,6 +1700,7 @@
 				607E78922279E25600FF0008 /* MessagesTableViewCell + Layout.swift in Sources */,
 				604FB5BF228B6DBE00795CE2 /* Donate.swift in Sources */,
 				0523117B22A3EAF600A22157 /* AppError.swift in Sources */,
+				053892DF231AD75200828372 /* UploadImageVM.swift in Sources */,
 				053892D723186C9C00828372 /* UnblockUserInput.swift in Sources */,
 				607E78912279E25600FF0008 /* ChatTableViewCell + Layout.swift in Sources */,
 				60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */,

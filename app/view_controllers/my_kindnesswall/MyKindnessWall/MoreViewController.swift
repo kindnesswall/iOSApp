@@ -20,6 +20,8 @@ class MoreViewController: UIViewController {
     @IBOutlet weak var statisticBtn: UIButton!
     @IBOutlet weak var contactUsBtn: UIButton!
     @IBOutlet var loginLogoutBtn: UIButton!
+    @IBOutlet var addNewCharityBtn: UIButton!
+    
     let keychain = KeychainSwift()
     let userDefault=UserDefaults.standard
 
@@ -27,6 +29,22 @@ class MoreViewController: UIViewController {
     
     @IBAction func shareApp(_ sender: Any) {
         AppDelegate.me().shareApp()
+    }
+    
+    @IBAction func addNewCharity(_ sender: Any) {
+        guard let _=keychain.get(AppConst.KeyChain.Authorization) else {
+            AppDelegate.me().showLoginVC()
+            return
+        }
+        
+        guard let isAdmin = keychain.getBool(AppConst.KeyChain.IsAdmin), isAdmin
+            else {
+                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.accessError),theme: .error)
+                return
+        }
+        
+        let controller = CharitySignupEditViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func showReviewQueue(_ sender: Any) {
