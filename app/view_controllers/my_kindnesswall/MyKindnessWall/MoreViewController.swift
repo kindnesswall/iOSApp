@@ -43,8 +43,8 @@ class MoreViewController: UIViewController {
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.accessError),theme: .error)
                 return
         }
-        
-        let controller = CharitySignupEditViewController()
+        let vm = CharitySignupEditVM()
+        let controller = CharitySignupEditViewController(vm: vm)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

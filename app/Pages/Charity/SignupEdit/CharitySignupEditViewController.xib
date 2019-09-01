@@ -45,17 +45,17 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="1043"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DyK-Sf-C0z">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="864.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="832.5"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="vky-hZ-fMe">
-                                    <rect key="frame" x="147" y="48" width="120" height="120"/>
+                                    <rect key="frame" x="147" y="16" width="120" height="120"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="120" id="4h3-dx-4WP"/>
                                         <constraint firstAttribute="width" constant="120" id="YDN-IP-rnp"/>
                                     </constraints>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0u6-RO-jNl">
-                                    <rect key="frame" x="147" y="48" width="120" height="120"/>
+                                    <rect key="frame" x="147" y="16" width="120" height="120"/>
                                     <subviews>
                                         <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uxl-Rn-PhQ">
                                             <rect key="frame" x="0.0" y="74" width="120" height="46"/>
@@ -79,7 +79,7 @@
                                     </constraints>
                                 </view>
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0tR-iC-lbf">
-                                    <rect key="frame" x="147" y="48" width="120" height="120"/>
+                                    <rect key="frame" x="147" y="16" width="120" height="120"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Acs-Zk-FlI">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
@@ -115,7 +115,7 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pwM-RS-oXt">
-                                    <rect key="frame" x="10" y="200" width="394" height="656.5"/>
+                                    <rect key="frame" x="10" y="168" width="394" height="656.5"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bPs-ES-pF2">
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="30"/>
@@ -382,7 +382,7 @@
                                 <constraint firstAttribute="bottom" secondItem="pwM-RS-oXt" secondAttribute="bottom" constant="8" id="SFY-Gs-03E"/>
                                 <constraint firstItem="0u6-RO-jNl" firstAttribute="centerX" secondItem="vky-hZ-fMe" secondAttribute="centerX" id="Say-yE-dej"/>
                                 <constraint firstItem="0tR-iC-lbf" firstAttribute="height" secondItem="vky-hZ-fMe" secondAttribute="height" id="d6d-HI-ntX"/>
-                                <constraint firstItem="vky-hZ-fMe" firstAttribute="top" secondItem="DyK-Sf-C0z" secondAttribute="top" constant="48" id="gIx-Fs-6Xc"/>
+                                <constraint firstItem="vky-hZ-fMe" firstAttribute="top" secondItem="DyK-Sf-C0z" secondAttribute="top" constant="16" id="gIx-Fs-6Xc"/>
                                 <constraint firstItem="pwM-RS-oXt" firstAttribute="top" secondItem="vky-hZ-fMe" secondAttribute="bottom" constant="32" id="hSy-Bh-WIB"/>
                                 <constraint firstItem="0u6-RO-jNl" firstAttribute="centerY" secondItem="vky-hZ-fMe" secondAttribute="centerY" id="kGW-Xp-FcE"/>
                                 <constraint firstItem="pwM-RS-oXt" firstAttribute="leading" secondItem="DyK-Sf-C0z" secondAttribute="leading" constant="10" id="rKu-5t-zGv"/>

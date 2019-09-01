@@ -270,6 +270,9 @@
                                                 <constraint firstAttribute="height" constant="40" id="ZXG-9A-8Pe"/>
                                             </constraints>
                                             <state key="normal" title="Edit"/>
+                                            <connections>
+                                                <action selector="onEditBtnClicked:" destination="-1" eventType="touchUpInside" id="xBu-YR-lGv"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>

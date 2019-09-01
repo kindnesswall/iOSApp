@@ -65,6 +65,13 @@ class CharityDetailViewController: UIViewController {
         vm.openTwitter()
     }
     
+    @IBAction func onEditBtnClicked(_ sender: Any) {
+        let charitySignupEditVM = CharitySignupEditVM(charity: self.vm.charity)
+        let controller = CharitySignupEditViewController(vm: charitySignupEditVM)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
