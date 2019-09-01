@@ -45,6 +45,8 @@
 		05444E3A231B010C006E5E09 /* CharityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05444E38231B010C006E5E09 /* CharityTableViewCell.xib */; };
 		05444E49231B3F07006E5E09 /* ContactUsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05444E47231B3F06006E5E09 /* ContactUsCollectionViewCell.swift */; };
 		05444E4A231B3F07006E5E09 /* ContactUsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05444E48231B3F06006E5E09 /* ContactUsCollectionViewCell.xib */; };
+		05444E4C231BBD0C006E5E09 /* CharityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05444E4B231BBD0C006E5E09 /* CharityDetailViewModel.swift */; };
+		05444E50231BBD5E006E5E09 /* CharityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05444E4F231BBD5E006E5E09 /* CharityListViewModel.swift */; };
 		054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */; };
 		054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */; };
 		054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */; };
@@ -287,6 +289,8 @@
 		05444E38231B010C006E5E09 /* CharityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityTableViewCell.xib; sourceTree = "<group>"; };
 		05444E47231B3F06006E5E09 /* ContactUsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactUsCollectionViewCell.swift; path = ContactUs/Cell/ContactUsCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		05444E48231B3F06006E5E09 /* ContactUsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactUsCollectionViewCell.xib; path = ContactUs/Cell/ContactUsCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		05444E4B231BBD0C006E5E09 /* CharityDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityDetailViewModel.swift; sourceTree = "<group>"; };
+		05444E4F231BBD5E006E5E09 /* CharityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityListViewModel.swift; sourceTree = "<group>"; };
 		054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftTableViewCell.swift; sourceTree = "<group>"; };
 		054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Light.ttf; sourceTree = "<group>"; };
 		054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Bold.ttf; sourceTree = "<group>"; };
@@ -808,6 +812,22 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		05444E4D231BBD13006E5E09 /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				05444E4B231BBD0C006E5E09 /* CharityDetailViewModel.swift */,
+			);
+			path = VM;
+			sourceTree = "<group>";
+		};
+		05444E4E231BBD46006E5E09 /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				05444E4F231BBD5E006E5E09 /* CharityListViewModel.swift */,
+			);
+			path = VM;
+			sourceTree = "<group>";
+		};
 		054B1B461FCC29B3007570EF /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,6 +893,7 @@
 		0593E50422D54F3D00C3B046 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				05444E4E231BBD46006E5E09 /* VM */,
 				05444E36231B00DC006E5E09 /* Cell */,
 				0593E50722D54FCB00C3B046 /* CharityListViewController.swift */,
 				0593E50822D54FCB00C3B046 /* CharityListViewController.xib */,
@@ -883,6 +904,7 @@
 		0593E50522D54F4500C3B046 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				05444E4D231BBD13006E5E09 /* VM */,
 				0593E50B22D54FDE00C3B046 /* CharityDetailViewController.swift */,
 				0593E50C22D54FDE00C3B046 /* CharityDetailViewController.xib */,
 			);
@@ -1603,6 +1625,7 @@
 				05BEA447204C21E800147BF5 /* PopUpView.swift in Sources */,
 				522F6B6621D8B202001C67B9 /* SelectCountryVM.swift in Sources */,
 				607E788E2279E25600FF0008 /* MessagesDateTableViewCell.swift in Sources */,
+				05444E4C231BBD0C006E5E09 /* CharityDetailViewModel.swift in Sources */,
 				607E78772279DDB900FF0008 /* Date + PersianDate + Clock.swift in Sources */,
 				05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */,
 				52DD769921C6E19600C2E012 /* CircleDotView.swift in Sources */,
@@ -1681,6 +1704,7 @@
 				6033DA9822AF6B3800D43738 /* ContactsSocketViewModel.swift in Sources */,
 				05BFBBBB1FDA654D00DBCDDF /* VerificationCodeViewController.swift in Sources */,
 				053892E2231AE07C00828372 /* CharitySignupEditVM.swift in Sources */,
+				05444E50231BBD5E006E5E09 /* CharityListViewModel.swift in Sources */,
 				05644DD01FFF06F900B7C853 /* NibLoader.swift in Sources */,
 				05BEA43E2049919D00147BF5 /* String+numbers.swift in Sources */,
 				053C46EF2291C91800074761 /* ProfileVC + uploading image.swift in Sources */,

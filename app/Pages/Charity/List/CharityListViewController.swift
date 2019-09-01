@@ -11,6 +11,7 @@ import UIKit
 class CharityListViewController: UIViewController {
 
     @IBOutlet weak var tableview: UITableView!
+    var vm = CharityListViewModel()
     
     @IBAction func addNewCharityClicked(_ sender: Any) {
         //Todo: should browse to the telegram account to contact us or charity app in app store
@@ -22,7 +23,7 @@ class CharityListViewController: UIViewController {
 
         self.tableview.register(type: CharityTableViewCell.self)
         
-        tableview.dataSource = self
+        tableview.dataSource = vm
         tableview.delegate = self
         
     }
@@ -39,15 +40,4 @@ extension CharityListViewController: UITableViewDelegate {
     }
 }
 
-extension CharityListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableview.dequeue(type: CharityTableViewCell.self, for: indexPath)
-        cell.titleLabel.text = "test"
-        return cell
-    }
 
-}

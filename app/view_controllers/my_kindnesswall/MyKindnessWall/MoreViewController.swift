@@ -13,6 +13,7 @@ import SPStorkController
 
 class MoreViewController: UIViewController {
 
+    @IBOutlet weak var blackListBtn: UIButton!
     @IBOutlet weak var versionNoLbl: UILabel!
     
     @IBOutlet weak var bugReportBtn: UIButton!

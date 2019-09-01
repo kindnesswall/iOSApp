@@ -14,6 +14,7 @@ class CharityDetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var editCharityInfoButton: UIButton!
+    @IBOutlet weak var managerNameLabel: UILabel!
     
     @IBAction func onTelephoneClicked(_ sender: Any) {
     }

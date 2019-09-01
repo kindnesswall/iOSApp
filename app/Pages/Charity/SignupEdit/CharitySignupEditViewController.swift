@@ -13,6 +13,7 @@ class CharitySignupEditViewController: UIViewController {
     
     @IBOutlet weak var charityImageView: UIImageView!
     
+    @IBOutlet weak var managerNameTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var telephoneTextField: UITextField!
