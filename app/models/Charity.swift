@@ -22,5 +22,6 @@ class Charity: Codable {
     var email: String?
     var instagram: String?
     var telegram: String?
+    var twitter:String?
     var description: String?
 }

@@ -26,13 +26,20 @@ class CharityListViewController: UIViewController {
         tableview.dataSource = vm
         tableview.delegate = self
         
+        vm.getList {[weak self] in
+            DispatchQueue.main.async {
+                self?.tableview.reloadData()
+            }
+        }
     }
 
 }
 
 extension CharityListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        let charityDetailVM = CharityDetailViewModel(charity: vm.charities[indexPath.row])
+        let controller = CharityDetailViewController(vm: charityDetailVM)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

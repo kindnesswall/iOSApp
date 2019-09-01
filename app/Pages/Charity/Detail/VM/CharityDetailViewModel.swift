@@ -8,6 +8,9 @@
 
 import Foundation
 
-class CharityDetailViewModel {
-    
+class CharityDetailViewModel:NSObject {
+    var charity:Charity
+    init(charity:Charity) {
+        self.charity = charity
+    }
 }

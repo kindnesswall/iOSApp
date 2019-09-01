@@ -821,13 +821,6 @@
 			path = VM;
 			sourceTree = "<group>";
 		};
-		05444E51231BD4F9006E5E09 /* ReviewList */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ReviewList;
-			sourceTree = "<group>";
-		};
 		05444E52231BD5BB006E5E09 /* appDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -894,7 +887,6 @@
 		0593E50322D54F2D00C3B046 /* Charity */ = {
 			isa = PBXGroup;
 			children = (
-				05444E51231BD4F9006E5E09 /* ReviewList */,
 				0593E50622D54F4D00C3B046 /* SignupEdit */,
 				0593E50522D54F4500C3B046 /* Detail */,
 				0593E50422D54F3D00C3B046 /* List */,

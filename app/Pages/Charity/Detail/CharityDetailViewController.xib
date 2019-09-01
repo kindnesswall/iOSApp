@@ -15,10 +15,18 @@
             <connections>
                 <outlet property="addressLabel" destination="iP4-Qo-3KW" id="0HG-qW-JU5"/>
                 <outlet property="charityImage" destination="FSR-Ed-Q4m" id="PiF-Jq-baI"/>
+                <outlet property="descriptionTextView" destination="bLt-aX-REA" id="dq1-dR-dNY"/>
                 <outlet property="editCharityInfoButton" destination="qix-G7-Jjo" id="h9r-wu-hsp"/>
+                <outlet property="emailBtn" destination="pM0-Zf-cPZ" id="eHw-Ix-1XK"/>
+                <outlet property="instagramBtn" destination="1EN-sq-mJU" id="0oI-9o-FpQ"/>
                 <outlet property="managerNameLabel" destination="6SU-LG-A7Y" id="uA7-pw-IH9"/>
+                <outlet property="mobileBtn" destination="NvX-Od-yi7" id="0uS-Kc-FWX"/>
                 <outlet property="nameLabel" destination="4BQ-0r-Dry" id="T0u-6W-daI"/>
+                <outlet property="telegramBtn" destination="g25-6J-7gV" id="e1N-zz-lIy"/>
+                <outlet property="telephoneBtn" destination="dz6-Ii-ATJ" id="v1Z-Ge-lH2"/>
+                <outlet property="twitterBtn" destination="OwV-w3-tYJ" id="Zq1-KX-mqy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="websiteBtn" destination="lBW-mP-rvO" id="xq8-dq-gWD"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -53,7 +61,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4BQ-0r-Dry">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4BQ-0r-Dry">
                                                     <rect key="frame" x="110" y="0.0" width="284" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -73,7 +81,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SU-LG-A7Y">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SU-LG-A7Y">
                                                     <rect key="frame" x="110" y="0.0" width="284" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -93,7 +101,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iP4-Qo-3KW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iP4-Qo-3KW">
                                                     <rect key="frame" x="110" y="0.0" width="284" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -273,6 +281,7 @@
                                         <constraint firstItem="bLt-aX-REA" firstAttribute="leading" secondItem="VZt-aw-FXw" secondAttribute="leading" id="VXe-R7-VyZ"/>
                                         <constraint firstItem="kLZ-EB-xfB" firstAttribute="leading" secondItem="VZt-aw-FXw" secondAttribute="leading" id="Z70-i1-vEm"/>
                                         <constraint firstItem="88A-hN-16E" firstAttribute="leading" secondItem="VZt-aw-FXw" secondAttribute="leading" id="cBW-rS-CpF"/>
+                                        <constraint firstItem="cXI-GM-YKB" firstAttribute="leading" secondItem="VZt-aw-FXw" secondAttribute="leading" id="d40-cs-HCT"/>
                                         <constraint firstAttribute="trailing" secondItem="ncF-ib-Y5O" secondAttribute="trailing" id="h3y-JY-vcP"/>
                                         <constraint firstAttribute="trailing" secondItem="Unk-3e-Jeu" secondAttribute="trailing" id="l82-hU-8r4"/>
                                         <constraint firstAttribute="trailing" secondItem="qix-G7-Jjo" secondAttribute="trailing" id="nBC-Yo-KE9"/>
@@ -280,6 +289,7 @@
                                         <constraint firstAttribute="trailing" secondItem="YV9-Iy-tog" secondAttribute="trailing" id="nVu-W1-00c"/>
                                         <constraint firstItem="PTk-lw-TdE" firstAttribute="leading" secondItem="VZt-aw-FXw" secondAttribute="leading" id="pFx-V4-mGR"/>
                                         <constraint firstAttribute="trailing" secondItem="Goy-Wd-fop" secondAttribute="trailing" id="pJy-iP-rNe"/>
+                                        <constraint firstAttribute="trailing" secondItem="cXI-GM-YKB" secondAttribute="trailing" id="pXS-ef-9vD"/>
                                         <constraint firstAttribute="trailing" secondItem="k91-oA-VW3" secondAttribute="trailing" id="rbQ-k2-L2Y"/>
                                         <constraint firstItem="SB1-wm-4DN" firstAttribute="leading" secondItem="VZt-aw-FXw" secondAttribute="leading" id="xY3-Fm-c8b"/>
                                         <constraint firstItem="Unk-3e-Jeu" firstAttribute="leading" secondItem="VZt-aw-FXw" secondAttribute="leading" id="yAI-ng-lcP"/>
