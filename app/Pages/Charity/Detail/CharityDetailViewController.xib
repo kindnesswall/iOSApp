@@ -223,6 +223,9 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g25-6J-7gV">
                                                     <rect key="frame" x="110" y="0.0" width="284" height="30"/>
+                                                    <connections>
+                                                        <action selector="onTelegramClicked:" destination="-1" eventType="touchUpInside" id="FOk-M4-TOB"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -240,6 +243,9 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwV-w3-tYJ">
                                                     <rect key="frame" x="110" y="0.0" width="284" height="30"/>
+                                                    <connections>
+                                                        <action selector="onTwitterClicked:" destination="-1" eventType="touchUpInside" id="Y8o-lo-5Wy"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>

@@ -38,28 +38,36 @@ class CharityDetailViewController: UIViewController {
     }
     
     @IBAction func onTelephoneClicked(_ sender: Any) {
+        vm.callTelephone()
     }
     
     @IBAction func onMobileClicked(_ sender: Any) {
-        
+        vm.callMobile()
     }
     
     @IBAction func onWebsiteClicked(_ sender: Any) {
-        
+        vm.openWebsite()
     }
     
     @IBAction func onEmailClicked(_ sender: Any) {
-        
+        vm.openEmail()
     }
     
     @IBAction func onInstagramClicked(_ sender: Any) {
-        
+        vm.openInstagram()
+    }
+    
+    @IBAction func onTelegramClicked(_ sender: Any) {
+        vm.openTelegram()
+    }
+    
+    @IBAction func onTwitterClicked(_ sender: Any) {
+        vm.openTwitter()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         fillUIWith(charity: vm.charity)
     }
     

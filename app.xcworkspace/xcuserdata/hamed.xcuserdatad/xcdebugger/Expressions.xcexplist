@@ -53,6 +53,20 @@
          contextName = "HTTPLayer.createURLRequestFrom(endpoint:):HTTPLayer.swift">
       </ContextState>
       <ContextState
+         contextName = "CharityListViewController.tableView(_:cellForRowAt:):CharityListViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CharityDetailViewModel.dialNumber(number:):CharityDetailViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIApplication.shared.canOpenURL(url)">
+            </PersistentString>
+            <PersistentString
+               value = "UIApplication.shared.canOpenURL(phoneCallURL)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "GiftDetailViewController.editBtnClicked():GiftDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
