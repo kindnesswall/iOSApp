@@ -10,7 +10,6 @@
 		05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */; };
 		05029ED61FE9A683004D96B1 /* ButtonWithData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029ED51FE9A683004D96B1 /* ButtonWithData.swift */; };
 		0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0507C8621F8C1A920084CDF1 /* AppDelegate.swift */; };
-		0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0507C8641F8C1A920084CDF1 /* ViewController.swift */; };
 		0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8661F8C1A920084CDF1 /* Main.storyboard */; };
 		0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8691F8C1A920084CDF1 /* Assets.xcassets */; };
 		0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0507C86B1F8C1A920084CDF1 /* LaunchScreen.storyboard */; };
@@ -251,7 +250,6 @@
 		05029ED51FE9A683004D96B1 /* ButtonWithData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithData.swift; sourceTree = "<group>"; };
 		0507C85F1F8C1A920084CDF1 /* app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0507C8621F8C1A920084CDF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0507C8641F8C1A920084CDF1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0507C8671F8C1A920084CDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0507C8691F8C1A920084CDF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0507C86C1F8C1A920084CDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -558,11 +556,6 @@
 				0507C8691F8C1A920084CDF1 /* Assets.xcassets */,
 				0507C86E1F8C1A920084CDF1 /* Info.plist */,
 				52DD768521C5109B00C2E012 /* InfoPlist.strings */,
-				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
-				6066C3BA22C7B23400BCB50A /* AppDelegate + Notification.swift */,
-				6019F27421B80257003C3E76 /* AppDelegate + Tabbar.swift */,
-				604FB57D2283616500795CE2 /* AppDelegate + Login.swift */,
-				0507C8641F8C1A920084CDF1 /* ViewController.swift */,
 				0507C8661F8C1A920084CDF1 /* Main.storyboard */,
 				0507C86B1F8C1A920084CDF1 /* LaunchScreen.storyboard */,
 				5245922721AB47EA0009824C /* Localizable.strings */,
@@ -828,6 +821,24 @@
 			path = VM;
 			sourceTree = "<group>";
 		};
+		05444E51231BD4F9006E5E09 /* ReviewList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ReviewList;
+			sourceTree = "<group>";
+		};
+		05444E52231BD5BB006E5E09 /* appDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
+				6066C3BA22C7B23400BCB50A /* AppDelegate + Notification.swift */,
+				6019F27421B80257003C3E76 /* AppDelegate + Tabbar.swift */,
+				604FB57D2283616500795CE2 /* AppDelegate + Login.swift */,
+			);
+			path = appDelegate;
+			sourceTree = "<group>";
+		};
 		054B1B461FCC29B3007570EF /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -883,6 +894,7 @@
 		0593E50322D54F2D00C3B046 /* Charity */ = {
 			isa = PBXGroup;
 			children = (
+				05444E51231BD4F9006E5E09 /* ReviewList */,
 				0593E50622D54F4D00C3B046 /* SignupEdit */,
 				0593E50522D54F4500C3B046 /* Detail */,
 				0593E50422D54F3D00C3B046 /* List */,
@@ -992,6 +1004,7 @@
 		05BFBBC41FDAA49E00DBCDDF /* app */ = {
 			isa = PBXGroup;
 			children = (
+				05444E52231BD5BB006E5E09 /* appDelegate */,
 				528A2DAA21AD39C500DECE0F /* language */,
 				05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */,
 				5247C8AB21E388B2009E8770 /* GithubConstants.swift */,
@@ -1691,7 +1704,6 @@
 				05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */,
 				604FB57E2283616500795CE2 /* AppDelegate + Login.swift in Sources */,
 				05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */,
-				0507C8651F8C1A920084CDF1 /* ViewController.swift in Sources */,
 				52D1A13B21D92859005EA2F0 /* ApiUtility.swift in Sources */,
 				6024132322272E7A0094E6E2 /* URIs.swift in Sources */,
 				60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */,
