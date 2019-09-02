@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */; };
-		05029ED61FE9A683004D96B1 /* ButtonWithData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029ED51FE9A683004D96B1 /* ButtonWithData.swift */; };
 		0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0507C8621F8C1A920084CDF1 /* AppDelegate.swift */; };
 		0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8661F8C1A920084CDF1 /* Main.storyboard */; };
 		0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8691F8C1A920084CDF1 /* Assets.xcassets */; };
@@ -22,7 +21,6 @@
 		0523118322A4198100A22157 /* HTTPLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523118222A4198100A22157 /* HTTPLayer.swift */; };
 		0523118522A4203F00A22157 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523118422A4203F00A22157 /* ApiRequest.swift */; };
 		05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05335D431FD0D0A800601115 /* GiftDetailViewController.swift */; };
-		05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05335D481FD0DDA200601115 /* SDWebImageSource.swift */; };
 		053892CF231314F600828372 /* GiftListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892CE231314F600828372 /* GiftListType.swift */; };
 		053892D4231322BE00828372 /* SendPushInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892D3231322BE00828372 /* SendPushInput.swift */; };
 		053892D723186C9C00828372 /* UnblockUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892D623186C9C00828372 /* UnblockUserInput.swift */; };
@@ -245,7 +243,6 @@
 /* Begin PBXFileReference section */
 		006A9055ED7D4288198332F6 /* Pods-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.debug.xcconfig"; sourceTree = "<group>"; };
 		05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+getMe.swift"; sourceTree = "<group>"; };
-		05029ED51FE9A683004D96B1 /* ButtonWithData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithData.swift; sourceTree = "<group>"; };
 		0507C85F1F8C1A920084CDF1 /* app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0507C8621F8C1A920084CDF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0507C8671F8C1A920084CDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -261,7 +258,6 @@
 		0523118222A4198100A22157 /* HTTPLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPLayer.swift; sourceTree = "<group>"; };
 		0523118422A4203F00A22157 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		05335D431FD0D0A800601115 /* GiftDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetailViewController.swift; sourceTree = "<group>"; };
-		05335D481FD0DDA200601115 /* SDWebImageSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDWebImageSource.swift; sourceTree = "<group>"; };
 		053892CE231314F600828372 /* GiftListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListType.swift; sourceTree = "<group>"; };
 		053892D3231322BE00828372 /* SendPushInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPushInput.swift; sourceTree = "<group>"; };
 		053892D623186C9C00828372 /* UnblockUserInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnblockUserInput.swift; sourceTree = "<group>"; };
@@ -503,7 +499,6 @@
 		05029ED41FE9A663004D96B1 /* custom_classes */ = {
 			isa = PBXGroup;
 			children = (
-				05029ED51FE9A683004D96B1 /* ButtonWithData.swift */,
 				5263D5A921B5972800B634A8 /* ShakingTextField.swift */,
 				5263D60021B93F0000B634A8 /* ProgressBarView.swift */,
 			);
@@ -603,7 +598,6 @@
 				05BFBBBD1FDA9FCE00DBCDDF /* FlashMessage.swift */,
 				05BFBBBC1FDA9FCE00DBCDDF /* NavigationBarStyle.swift */,
 				05BFBBB11FDA5DBE00DBCDDF /* UIFunctions.swift */,
-				05335D481FD0DDA200601115 /* SDWebImageSource.swift */,
 				6080700C21B436590046F940 /* URLBrowser.swift */,
 				52DD769821C6E19600C2E012 /* CircleDotView.swift */,
 				52DD768F21C68ECE00C2E012 /* RoundButton.swift */,
@@ -1608,7 +1602,6 @@
 				05BFBBBF1FDA9FCF00DBCDDF /* NavigationBarStyle.swift in Sources */,
 				60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */,
 				0593E50D22D54FDE00C3B046 /* CharityDetailViewController.swift in Sources */,
-				05029ED61FE9A683004D96B1 /* ButtonWithData.swift in Sources */,
 				053892D4231322BE00828372 /* SendPushInput.swift in Sources */,
 				52466DD721DB60520086F327 /* RegisterGiftViewModelDelegate.swift in Sources */,
 				5263D60321BB0CC300B634A8 /* DonatedGiftViewModel.swift in Sources */,
@@ -1642,7 +1635,6 @@
 				0593E50222D54ADF00C3B046 /* Charity.swift in Sources */,
 				05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */,
 				604FB58222860B8100795CE2 /* GiftsToDonateViewController.swift in Sources */,
-				05335D491FD0DDA200601115 /* SDWebImageSource.swift in Sources */,
 				6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */,
 				52D1A14121D9376E005EA2F0 /* RGVC+vm delegate.swift in Sources */,
 				0523117F22A3ED0800A22157 /* Endpoint.swift in Sources */,
