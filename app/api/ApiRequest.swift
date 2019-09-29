@@ -373,9 +373,9 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
     
-    func fetchContacts(completion: @escaping (Result<[ContactMessage]>)-> Void){
+    func getContacts(completion: @escaping (Result<[ContactMessage]>)-> Void){
         
-        self.httpLayer.request(at: Endpoint.FetchContacts) { result in
+        self.httpLayer.request(at: Endpoint.GetContacts) { result in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))

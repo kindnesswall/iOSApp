@@ -51,7 +51,7 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
     }
     
     func fetchContacts() {
-        apiRequest.fetchContacts { result in
+        apiRequest.getContacts { result in
             switch result {
             case .success(let contactMessages):
                 DispatchQueue.main.async {

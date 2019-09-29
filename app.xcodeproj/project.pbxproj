@@ -24,7 +24,6 @@
 		053892CF231314F600828372 /* GiftListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892CE231314F600828372 /* GiftListType.swift */; };
 		053892D4231322BE00828372 /* SendPushInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892D3231322BE00828372 /* SendPushInput.swift */; };
 		053892D723186C9C00828372 /* UnblockUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892D623186C9C00828372 /* UnblockUserInput.swift */; };
-		053892D92318745100828372 /* ChatMessagesInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892D82318745100828372 /* ChatMessagesInput.swift */; };
 		053892DB231874DE00828372 /* SendMessageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892DA231874DE00828372 /* SendMessageInput.swift */; };
 		053892DD2318754B00828372 /* ChatAckMessageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892DC2318754B00828372 /* ChatAckMessageInput.swift */; };
 		053892DF231AD75200828372 /* UploadImageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892DE231AD75200828372 /* UploadImageVM.swift */; };
@@ -261,7 +260,6 @@
 		053892CE231314F600828372 /* GiftListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListType.swift; sourceTree = "<group>"; };
 		053892D3231322BE00828372 /* SendPushInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPushInput.swift; sourceTree = "<group>"; };
 		053892D623186C9C00828372 /* UnblockUserInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnblockUserInput.swift; sourceTree = "<group>"; };
-		053892D82318745100828372 /* ChatMessagesInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessagesInput.swift; sourceTree = "<group>"; };
 		053892DA231874DE00828372 /* SendMessageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageInput.swift; sourceTree = "<group>"; };
 		053892DC2318754B00828372 /* ChatAckMessageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAckMessageInput.swift; sourceTree = "<group>"; };
 		053892DE231AD75200828372 /* UploadImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageVM.swift; sourceTree = "<group>"; };
@@ -611,7 +609,6 @@
 			isa = PBXGroup;
 			children = (
 				6066C3C422D0B8CF00BCB50A /* PushNotificationRegister.swift */,
-				053892D3231322BE00828372 /* SendPushInput.swift */,
 			);
 			path = Push;
 			sourceTree = "<group>";
@@ -700,9 +697,10 @@
 			children = (
 				6040F3A2206688A800FCD429 /* APIEmptyInput.swift */,
 				053892D623186C9C00828372 /* UnblockUserInput.swift */,
-				053892D82318745100828372 /* ChatMessagesInput.swift */,
 				053892DA231874DE00828372 /* SendMessageInput.swift */,
 				053892DC2318754B00828372 /* ChatAckMessageInput.swift */,
+				60E7E4BC22999D160047344D /* FetchMessagesInput.swift */,
+				053892D3231322BE00828372 /* SendPushInput.swift */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -1250,7 +1248,6 @@
 				607E789A2279E28D00FF0008 /* AckMessage.swift */,
 				607E78992279E28D00FF0008 /* Chat.swift */,
 				607E78942279E28B00FF0008 /* ControlMessage.swift */,
-				60E7E4BC22999D160047344D /* FetchMessagesInput.swift */,
 				607E78962279E28C00FF0008 /* Message.swift */,
 				607E78972279E28C00FF0008 /* MessageSendingState.swift */,
 				607E78952279E28B00FF0008 /* TextMessage.swift */,
@@ -1656,7 +1653,6 @@
 				522F6B5E21D81AA2001C67B9 /* FirebaseUser.swift in Sources */,
 				601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,
-				053892D92318745100828372 /* ChatMessagesInput.swift in Sources */,
 				528A2DA921AD340200DECE0F /* LanguageKeys.swift in Sources */,
 				5247C8B821E38A52009E8770 /* StatisticViewController.swift in Sources */,
 				607E789D2279E28D00FF0008 /* Message.swift in Sources */,
