@@ -11,6 +11,6 @@ import UIKit
 class RegisteredGiftViewModel: GiftViewModel {
     
     init(userId:Int) {
-        super.init(giftListType: .registered(userId: userId))
+        super.init(giftListType: .UserRegisteredGifts(userId: userId))
     }
 }

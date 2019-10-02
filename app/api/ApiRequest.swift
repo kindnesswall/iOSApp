@@ -298,8 +298,8 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
     
-    func getGifts(params: GiftListRequestParameters, completion: @escaping (Result<[Gift]>)-> Void) {
-        self.httpLayer.request(at: Endpoint.GetGifts(param: params)) {[weak self] (result) in
+    func getGifts(endPoint: Endpoint, completion: @escaping (Result<[Gift]>)-> Void) {
+        self.httpLayer.request(at: endPoint) {[weak self] (result) in
             self?.handleGiftList(result: result, completion: completion)
         }
     }

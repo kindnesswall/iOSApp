@@ -192,7 +192,7 @@
 		607EEA7E222C632400637A93 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607EEA7C222C632300637A93 /* City.swift */; };
 		607EEA7F222C632400637A93 /* Province.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607EEA7D222C632300637A93 /* Province.swift */; };
 		607EEA81222D88C200637A93 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607EEA80222D88C200637A93 /* Image.swift */; };
-		607EEA83222EACDA00637A93 /* RequestInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607EEA82222EACDA00637A93 /* RequestInput.swift */; };
+		607EEA83222EACDA00637A93 /* GiftsRequestInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607EEA82222EACDA00637A93 /* GiftsRequestInput.swift */; };
 		6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */; };
 		6080700D21B436590046F940 /* URLBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080700C21B436590046F940 /* URLBrowser.swift */; };
 		60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */; };
@@ -451,7 +451,7 @@
 		607EEA7C222C632300637A93 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		607EEA7D222C632300637A93 /* Province.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Province.swift; sourceTree = "<group>"; };
 		607EEA80222D88C200637A93 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		607EEA82222EACDA00637A93 /* RequestInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestInput.swift; sourceTree = "<group>"; };
+		607EEA82222EACDA00637A93 /* GiftsRequestInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiftsRequestInput.swift; sourceTree = "<group>"; };
 		6080700A21B40F800046F940 /* UICollectionView + RegisterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + RegisterCell.swift"; sourceTree = "<group>"; };
 		6080700C21B436590046F940 /* URLBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBrowser.swift; sourceTree = "<group>"; };
 		60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar + config.swift"; sourceTree = "<group>"; };
@@ -864,7 +864,7 @@
 				6009DB9F2130A385002FD769 /* Statistics.swift */,
 				52D1A14321DA3C30005EA2F0 /* Address.swift */,
 				607EEA80222D88C200637A93 /* Image.swift */,
-				607EEA82222EACDA00637A93 /* RequestInput.swift */,
+				607EEA82222EACDA00637A93 /* GiftsRequestInput.swift */,
 				60E30D48229C967500619E9E /* UserProfile.swift */,
 				0523117522A3DA4A00A22157 /* EmptyInput.swift */,
 				0593E50122D54ADF00C3B046 /* Charity.swift */,
@@ -1671,7 +1671,7 @@
 				52D1A13B21D92859005EA2F0 /* ApiUtility.swift in Sources */,
 				6024132322272E7A0094E6E2 /* URIs.swift in Sources */,
 				60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */,
-				607EEA83222EACDA00637A93 /* RequestInput.swift in Sources */,
+				607EEA83222EACDA00637A93 /* GiftsRequestInput.swift in Sources */,
 				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,
 				053892CF231314F600828372 /* GiftListType.swift in Sources */,
 				053892DB231874DE00828372 /* SendMessageInput.swift in Sources */,

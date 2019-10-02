@@ -11,7 +11,7 @@ import Foundation
 class DonatedGiftViewModel: GiftViewModel {
     
     init(userId:Int) {
-        super.init(giftListType: .Donated(userId: userId))
+        super.init(giftListType: .UserDonatedGifts(userId: userId))
     }
     
 }

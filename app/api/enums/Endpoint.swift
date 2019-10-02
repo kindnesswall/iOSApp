@@ -30,7 +30,14 @@ enum Endpoint:EndpointProtocol {
     case RemoveGift(id:Int)
     case RequestGift(id:Int)
     case DonateGift(id:Int,toUserId:Int)
-    case GetGifts(param: GiftListRequestParameters)
+//    case GetGifts(param: GiftListRequestParameters)
+    
+    case GiftsToReview(input: GiftsRequestInput)
+    case UserDonatedGifts(userId: Int, input: GiftsRequestInput)
+    case UserReceivedGifts(userId: Int, input: GiftsRequestInput)
+    case UserRegisteredGifts(userId: Int, input: GiftsRequestInput)
+    case GetGifts(input: GiftsRequestInput)
+    case GiftsToDonate(toUserId: Int, input: GiftsRequestInput)
 //        ---------------------------------------
     case SendTextMessage(textMessage: TextMessage)
     case SendAck(ackMessage: AckMessage)
@@ -96,8 +103,9 @@ enum Endpoint:EndpointProtocol {
         
         case .DonateGift(let id, let toUserId):
             return ApiUtility.convert(input: Donate(giftId: id, donatedToUserId: toUserId))
-        case .GetGifts(let param):
-            return ApiUtility.convert(input: param.input)
+
+        case .GiftsToReview(let input), .UserDonatedGifts(_ , let input), .UserReceivedGifts(_ , let input), .UserRegisteredGifts(_, let input), .GiftsToDonate(_ , let input), .GetGifts(let input):
+            return ApiUtility.convert(input: input)
 //        ---------------------------------------
         case .SendTextMessage(let textMessage):
             return ApiUtility.convert(input: textMessage)
@@ -117,16 +125,16 @@ enum Endpoint:EndpointProtocol {
         case .UnBlockUserAccess(let input): return ApiUtility.convert(input: input)
 //        ---------------------------------------
         case .ChatSendMessage(let input): return ApiUtility.convert(input: input)
-        case .ChatAckMessage(let input): return ApiUtility.convert(input: input)      
+        case .ChatAckMessage(let input): return ApiUtility.convert(input: input)
         }
     }
     
     var httpMethod: String {
         switch self {
-        case .GetProvinces, .GetCitiesOfProvince(_), .GetCategories, .GetRegions(_), .RequestGift(_), .GetProfile(_), .CharityList, .Statistics, .GetUserStatistics, .GetContacts, .GetBlockContacts:
+        case .GetProvinces, .GetCitiesOfProvince(_), .GetCategories, .GetRegions(_), .RequestGift(_), .GetProfile(_), .CharityList, .Statistics, .GetUserStatistics, .GetContacts, .GetBlockContacts, .GetGifts(_):
             return HttpMethod.GET.rawValue
 
-        case .RegisterUser(_), .Login(_), .RegisterGift, .DonateGift(_,_), .GetGifts(_), .SendTextMessage(_), .SendAck(_), .FetchMessages(_), .RegisterPush(_), .SendPushNotif, .UpdateUser, .ChatSendMessage, .ChatAckMessage:
+        case .RegisterUser(_), .Login(_), .RegisterGift, .DonateGift(_,_), .GiftsToDonate(_,_), .UserRegisteredGifts(_,_), .UserReceivedGifts(_,_), .UserDonatedGifts(_,_), .SendTextMessage(_), .SendAck(_), .FetchMessages(_), .RegisterPush(_), .GiftsToReview(_), .SendPushNotif, .UpdateUser, .ChatSendMessage, .ChatAckMessage:
             return HttpMethod.POST.rawValue
             
         case .EditGift(_), .GiftReviewApproved, .AcceptCharity, .RejectCharity, .UnBlockUserAccess, .UnBlockChat, .BlockChat:
@@ -165,8 +173,19 @@ enum Endpoint:EndpointProtocol {
             return giftsBaseURL+"request/\(id)"
         case .DonateGift(_,_):
             return basePathUrl+"donate"
-        case .GetGifts(let param):
-            return basePathUrl+param.type.path
+            
+        case .GiftsToReview:
+            return giftsBaseURL + "review"
+        case .UserDonatedGifts(let userId):
+            return giftsBaseURL + "userDonated/\(userId)"
+        case .UserReceivedGifts(let userId):
+            return giftsBaseURL + "userReceived/\(userId)"
+        case .UserRegisteredGifts(let userId):
+            return giftsBaseURL + "userRegistered/\(userId)"
+        case .GetGifts:
+            return giftsBaseURL
+        case .GiftsToDonate(let toUserId):
+            return giftsBaseURL + "todonate/\(toUserId)"
 //        ---------------------------------------
         case .SendTextMessage:
             return chatBaseURL + "send"

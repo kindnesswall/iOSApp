@@ -7,12 +7,7 @@
 
 import Foundation
 
-struct GiftListRequestParameters {
-    var input:RequestInput
-    var type:GiftListType
-}
-
-class RequestInput: Codable {
+class GiftsRequestInput: Codable {
     var beforeId:Int?
     var count:Int?
     var categoryId:Int?

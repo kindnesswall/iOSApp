@@ -131,21 +131,20 @@ class HomeVM: NSObject {
             self.delegate?.lazyLoadingAnimation(isLoading: true)
         }
         
-        let input = RequestInput()
+        let input = GiftsRequestInput()
         input.beforeId = beforeId
         input.count = self.lazyLoadingCount
         input.provinceId = self.provinceId
         input.categoryId = self.categoryId
         
-        var param: GiftListRequestParameters!
+        var endPoint:Endpoint
         if isReview {
-            param = GiftListRequestParameters(input: input, type: .Review)
+            endPoint = Endpoint.GiftsToReview(input: input)
         } else {
-            param = GiftListRequestParameters(input: input, type: .Gifts)
+            endPoint = Endpoint.GetGifts(input: input)
         }
         
-        apiRequest.getGifts(params: param) { [weak self] (result) in
-            
+        apiRequest.getGifts(endPoint: endPoint) { [weak self] (result) in
             DispatchQueue.main.async {
                 self?.handleGetGift(result, beforeId)
             }

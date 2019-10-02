@@ -80,14 +80,24 @@ class GiftViewModel: NSObject {
             self.delegate?.lazyLoadingAnimation(viewModel:self,isLoading: true)
         }
         
-        let input=RequestInput()
+        let input=GiftsRequestInput()
         input.beforeId = beforeId
         input.count = self.lazyLoadingCount
         isLoadingGifts = true
         
-        let param = GiftListRequestParameters(input: input, type: giftListType)
+        var endPoint:Endpoint!
+        switch giftListType {
+        case .GiftsToDonate(let toUserId):
+            endPoint = Endpoint.GiftsToDonate(toUserId: toUserId, input: input)
+        case .UserDonatedGifts(let userId):
+            endPoint = Endpoint.UserDonatedGifts(userId: userId, input: input)
+        case .UserReceivedGifts(let userId):
+            endPoint = Endpoint.UserReceivedGifts(userId: userId, input: input)
+        case .UserRegisteredGifts(let userId):
+            endPoint = Endpoint.UserRegisteredGifts(userId: userId, input: input)
+        }
         
-        apiRequest.getGifts(params: param) { [weak self] (result) in
+        apiRequest.getGifts(endPoint:endPoint) { [weak self] (result) in
             
             DispatchQueue.main.async {
                 self?.handleGetGift(result, beforeId)
