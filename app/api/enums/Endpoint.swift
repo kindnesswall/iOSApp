@@ -30,7 +30,6 @@ enum Endpoint:EndpointProtocol {
     case RemoveGift(id:Int)
     case RequestGift(id:Int)
     case DonateGift(id:Int,toUserId:Int)
-//    case GetGifts(param: GiftListRequestParameters)
     
     case GiftsToReview(input: GiftsRequestInput)
     case UserDonatedGifts(userId: Int, input: GiftsRequestInput)
@@ -70,13 +69,13 @@ enum Endpoint:EndpointProtocol {
     case BlockChat(id: Int)
     case UnBlockChat(id: Int)
     
-    var basePathUrl:String{ return "/api/v1/"}
-    var usersBaseURL:String { return basePathUrl + "users/" }
-    var chatBaseURL:String { return basePathUrl + "chat/" }
-    var contactsBaseURL:String { return chatBaseURL + "contacts/" }
-    var giftsBaseURL:String{ return basePathUrl + "gifts/" }
-    var charityBaseURL:String{ return basePathUrl + "charity/" }
-    var profileBaseURL:String{ return basePathUrl + "profile/" }
+    private var basePathUrl:String{ return "/api/v1/"}
+    private var usersBaseURL:String { return basePathUrl + "users/" }
+    private var chatBaseURL:String { return basePathUrl + "chat/" }
+    private var contactsBaseURL:String { return chatBaseURL + "contacts/" }
+    private var giftsBaseURL:String{ return basePathUrl + "gifts/" }
+    private var charityBaseURL:String{ return basePathUrl + "charity/" }
+    private var profileBaseURL:String{ return basePathUrl + "profile/" }
     
     var url:URL? {
         var urlComponent = URLComponents()
@@ -146,7 +145,7 @@ enum Endpoint:EndpointProtocol {
     }
     
     
-    var path:String {
+    private var path:String {
         switch self {
 //        ---------------------------------------
         case .GetProvinces:
@@ -237,17 +236,17 @@ enum Endpoint:EndpointProtocol {
         }
     }
     
-    var queryItems: [URLQueryItem] {
+    private var queryItems: [URLQueryItem] {
         let queryItems:[URLQueryItem] = []
         return queryItems
     }
     
-    var host:String{
+    private var host:String{
         return "185.211.58.168"
 //        return "localhost"
     }
     
-    var scheme:String {
+    private var scheme:String {
         return "http"
     }
 }
