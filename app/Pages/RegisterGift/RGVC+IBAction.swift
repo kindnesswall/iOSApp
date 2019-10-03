@@ -65,7 +65,7 @@ extension RegisterGiftViewController {
         self.configAddressViews()
         
         let controller=OptionsListViewController()
-        let viewModel = PlaceListViewModel(placeType:.province,showCities: true, hasDefaultOption: false)
+        let viewModel = PlaceListViewModel(placeType:.province,showCities: true, showRegions: true, hasDefaultOption: false)
         controller.viewModel=viewModel
         controller.completionHandler={ [weak self] (id,name) in
             let place=Place(id: id, name: name)

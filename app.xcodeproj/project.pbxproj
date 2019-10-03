@@ -50,6 +50,7 @@
 		054B1B551FCC4101007570EF /* IRANSansMobile_Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4F1FCC4100007570EF /* IRANSansMobile_Medium.ttf */; };
 		054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B501FCC4100007570EF /* IRANSansMobile_UltraLight.ttf */; };
 		054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B511FCC4100007570EF /* IRANSansMobile.ttf */; };
+		05632774234665EC00545CAF /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05632773234665EC00545CAF /* Region.swift */; };
 		05644DC21FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DC11FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift */; };
 		05644DC61FFEFA2E00B7C853 /* DateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DC51FFEFA2E00B7C853 /* DateHandler.swift */; };
 		05644DC81FFF01C300B7C853 /* ChatConversationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DC71FFF01C200B7C853 /* ChatConversationResult.swift */; };
@@ -287,6 +288,7 @@
 		054B1B4F1FCC4100007570EF /* IRANSansMobile_Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Medium.ttf; sourceTree = "<group>"; };
 		054B1B501FCC4100007570EF /* IRANSansMobile_UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_UltraLight.ttf; sourceTree = "<group>"; };
 		054B1B511FCC4100007570EF /* IRANSansMobile.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile.ttf; sourceTree = "<group>"; };
+		05632773234665EC00545CAF /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		05644DC11FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+widthAndHeightOfLabel.swift"; sourceTree = "<group>"; };
 		05644DC51FFEFA2E00B7C853 /* DateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
 		05644DC71FFF01C200B7C853 /* ChatConversationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConversationResult.swift; sourceTree = "<group>"; };
@@ -865,6 +867,7 @@
 				60E30D48229C967500619E9E /* UserProfile.swift */,
 				0523117522A3DA4A00A22157 /* EmptyInput.swift */,
 				0593E50122D54ADF00C3B046 /* Charity.swift */,
+				05632773234665EC00545CAF /* Region.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -1635,6 +1638,7 @@
 				6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */,
 				52466DDD21DB95250086F327 /* HVC+HomeViewModelDelegate.swift in Sources */,
 				607E789B2279E28D00FF0008 /* ControlMessage.swift in Sources */,
+				05632774234665EC00545CAF /* Region.swift in Sources */,
 				60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */,
 				0523117922A3EABB00A22157 /* Result.swift in Sources */,
 				60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */,

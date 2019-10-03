@@ -13,16 +13,20 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
     let titleName:String
     let hasDefaultOption:Bool
     let showCities:Bool
+    let showRegions:Bool
+    
     lazy var apiRequest = ApiRequest(HTTPLayer())
     
     enum PlaceType {
         case province
         case city(province_id:Int)
+        case region(cityId:Int)
     }
     let placeType:PlaceType
     
     var provinces=[Province]()
     var cities=[City]()
+    var regions=[Region]()
     
     func getElementsCount()->Int{
         switch placeType {
@@ -30,6 +34,8 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
             return self.provinces.count
         case .city:
             return self.cities.count
+        case .region:
+            return regions.count
         }
     }
     
@@ -44,16 +50,19 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
             cell.setValue(name: provinces[indexPath.row].name)
         case .city:
             cell.setValue(name: cities[indexPath.row].name)
+        case .region:
+            cell.setValue(name: regions[indexPath.row].name)
         }
         return cell
     }
     
-    init(placeType:PlaceType,showCities:Bool,hasDefaultOption:Bool) {
+    init(placeType:PlaceType, showCities:Bool, showRegions:Bool, hasDefaultOption:Bool) {
         
         self.titleName = LocalizationSystem.getStr(forKey: LanguageKeys.placeOfTheGift)
         self.placeType=placeType
         self.hasDefaultOption=hasDefaultOption
         self.showCities=showCities
+        self.showRegions = showRegions
         
         super.init()
         
@@ -65,6 +74,31 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
             getProvinces(completionHandler)
         case .city(let province_id):
             getCitieOfProvince(id: province_id, completionHandler)
+        case .region(let cityId):
+            getRegions(cityId,completionHandler)
+        }
+    }
+    
+    func getRegions(_ cityId:Int, _ completionHandler:(()->Void)?) {
+        apiRequest.getRegions(cityId) { [weak self](result) in
+            switch(result){
+            case .failure(let error):
+                // FIXME: Plz Handle me
+                print(error)
+            case .success(let regions):
+                
+                self?.regions = []
+//                if self?.hasDefaultOption ?? false {
+//                    let defaultOption=Province(id: nil, name: LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces))
+//                    self?.provinces.append(defaultOption)
+//                }
+                
+                self?.regions.append(contentsOf: regions)
+                
+                DispatchQueue.main.async {
+                    completionHandler?()
+                }
+            }
         }
     }
     
@@ -122,6 +156,9 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
         case .city:
             let city = cities[indexPath.row]
             return (city.id,city.name)
+        case .region:
+            let region = regions[indexPath.row]
+            return (region.id, region.name)
         }
         
     }
@@ -135,11 +172,19 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
             guard let province_id = provinces[indexPath.row].id else {
                 return nil
             }
-            let viewModel = PlaceListViewModel(placeType: .city(province_id: province_id),showCities: self.showCities, hasDefaultOption: self.hasDefaultOption)
+            let viewModel = PlaceListViewModel(placeType: .city(province_id: province_id),showCities: self.showCities,showRegions: self.showRegions, hasDefaultOption: self.hasDefaultOption)
             return viewModel
         case .city:
+            guard showRegions else {
+                return nil
+            }
+            guard let cityId = cities[indexPath.row].id else {
+                return nil
+            }
+            let viewModel = PlaceListViewModel(placeType: .region(cityId: cityId),showCities: self.showCities,showRegions: self.showRegions, hasDefaultOption: self.hasDefaultOption)
+            return viewModel
+        case .region:
             return nil
-            
         }
     }
     

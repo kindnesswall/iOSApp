@@ -69,6 +69,7 @@ class HomeViewController: UIViewController {
         
         vm.getGifts(beforeId:nil)
 
+        
     }
     
     func configRefreshControl(){
@@ -119,7 +120,7 @@ class HomeViewController: UIViewController {
     @objc func cityFilterBtnClicked(){
         
         let controller=OptionsListViewController()
-        let viewModel = PlaceListViewModel(placeType:.province, showCities: false, hasDefaultOption: true)
+        let viewModel = PlaceListViewModel(placeType:.province, showCities: false, showRegions: true, hasDefaultOption: true)
         controller.viewModel=viewModel
         controller.completionHandler={ [weak self] (id,name) in
             

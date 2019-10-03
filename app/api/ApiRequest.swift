@@ -78,7 +78,6 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
 
-    
     func getUserStatistics(id userId: Int, completion: @escaping (Result<[String:Int]?>) -> Void){
         self.httpLayer.request(at: Endpoint.GetUserStatistics(userId: userId)) {(result) in
             switch result{
@@ -179,6 +178,21 @@ class ApiRequest:ApiRequestProtocol {
                 completion(.failure(appError))
             case .success(let data):
                 if let provinces = ApiUtility.convert(data: data, to: [Province].self){
+                    completion(.success(provinces))
+                }else{
+                    completion(.failure(AppError.DataDecoding))
+                }
+            }
+        }
+    }
+    
+    func getRegions(_ cityId: Int, completion: @escaping (Result<[Region]>) -> Void){
+        self.httpLayer.request(at: Endpoint.GetRegions(cityId)) {(result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let provinces = ApiUtility.convert(data: data, to: [Region].self){
                     completion(.success(provinces))
                 }else{
                     completion(.failure(AppError.DataDecoding))
