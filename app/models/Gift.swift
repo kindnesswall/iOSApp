@@ -14,7 +14,6 @@ protocol GiftPresenter {
     var description:String? { get }
     var address:String? { get }
     var giftImages:[String]? { get }
-//    var requestCount:String? { get }
 }
 
 protocol RegisterGiftInput {
@@ -22,38 +21,40 @@ protocol RegisterGiftInput {
     var address:String? { get set }
     var description:String? { get set }
     var giftImages : [String]? { get set }
-    var price:String? { get set }
+    var price:Int? { get set }
     var categoryId:Int? { get set }
     var isNew:Bool? { get set }
     var provinceId:Int? { get set }
     var cityId:Int? { get set }
 }
 
-class Gift: Codable,GiftPresenter,RegisterGiftInput {    
-    var createdAt: String?
-    var updatedAt: String?
+class Gift: Codable,GiftPresenter,RegisterGiftInput {
     
+    
+    var address: String?
+                    
+    var id:Int?
+    var userId:Int?
+    var donatedToUserId:String?
+    var isReviewed:Bool?
+    var isRejected:Bool?
+    var isDeleted:Bool?
+    var categoryTitle:String?
+    
+    var title:String?
+    var description:String?
+    var price:Int?
+    var categoryId:Int?
+    var giftImages:[String]?
+    var isNew:Bool?
     var provinceId:Int?
     var cityId:Int?
+    var regionId:Int?
+    var provinceName:String?
+    var cityName:String?
+    var regionName:String?
     
-//    var requestCount:String?
-    var title:String?
-    var address:String?
-//    var bookmark:Bool?
-    var description:String?
-    var price:String?
-    var status:String?
-    var userId:Int?
-//    var user:String?
-//    var receivedUserId:String?
-//    var receivedUser:String?
-    var categoryId:Int?
-    var categoryTitle:String?
-//    var location:String?
-//    var regionId:String?
-//    var region:String?
-    var giftImages:[String]?
-    var id:Int?
-    var isNew:Bool?
-//    var forWho:Int?
+    var createdAt: String?
+    var updatedAt: String?
+    var deletedAt: String?
 }

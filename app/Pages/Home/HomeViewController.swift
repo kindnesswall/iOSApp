@@ -67,7 +67,7 @@ class HomeViewController: UIViewController {
         
         self.tableview.register(type: GiftTableViewCell.self)
         
-//        vm.getGifts(beforeId:nil)
+        vm.getGifts(beforeId:nil)
 
     }
     

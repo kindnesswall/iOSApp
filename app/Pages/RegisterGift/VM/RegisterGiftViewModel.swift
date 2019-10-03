@@ -66,11 +66,11 @@ class RegisterGiftViewModel: NSObject {
         }
         input.description=giftDescription
         
-        guard let price=uiProperties?.priceTextViewText?.castNumberToEnglish() else {
+        guard let price=uiProperties?.priceTextViewText?.castNumberToEnglish(), let priceInt = Int(price) else {
             inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.priceError))
             return nil
         }
-        input.price=price
+        input.price=priceInt
         
         if giftHasNewAddress {
             
@@ -238,7 +238,9 @@ class RegisterGiftViewModel: NSObject {
         
         gift.title=uiProperties?.titleTextViewText
         gift.description=uiProperties?.descriptionTextViewText
-        gift.price=uiProperties?.priceTextViewText?.castNumberToEnglish()
+        if let price = Int(uiProperties?.priceTextViewText?.castNumberToEnglish() ?? "0"){
+            gift.price = price
+        }
         
         gift.categoryTitle=self.category?.title
         gift.categoryId=self.category?.id
@@ -278,7 +280,12 @@ class RegisterGiftViewModel: NSObject {
         let uiProperties = UIInputProperties()
         uiProperties.titleTextViewText=gift.title
         uiProperties.descriptionTextViewText=gift.description
-        uiProperties.priceTextViewText=gift.price
+        if let price = gift.price {
+            uiProperties.priceTextViewText="\(price)"
+        }else{
+            uiProperties.priceTextViewText="0"
+        }
+        
         self.delegate?.setUIInputProperties(uiProperties: uiProperties)
         
         self.category=Category(id: gift.categoryId, title: gift.categoryTitle)
