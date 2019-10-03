@@ -3,7 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "RegisterGiftViewModel.editGift(completion:):RegisterGiftViewModel.swift">
+         contextName = "ApiRequest.registerGift(_:completion:):ApiRequest.swift">
+      </ContextState>
+      <ContextState
+         contextName = "HomeVM.getGifts(beforeId:):HomeVM.swift">
       </ContextState>
       <ContextState
          contextName = "HomeViewController.getGiftDetailVCFor(index:):HomeViewController.swift">
@@ -15,6 +18,9 @@
                value = "vm.gifts">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ApiRequest.getStatistics(completion:):ApiRequest.swift">
       </ContextState>
       <ContextState
          contextName = "MoreViewController.viewDidLoad():MoreViewController.swift">
@@ -56,6 +62,14 @@
          contextName = "CharityListViewController.tableView(_:cellForRowAt:):CharityListViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "closure #1 in StatisticViewController.fetchStatistics():StatisticViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self?.statisticsKeys">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CharityDetailViewModel.dialNumber(number:):CharityDetailViewModel.swift">
          <PersistentStrings>
             <PersistentString
@@ -75,6 +89,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in ApiRequest.registerEditGift(endPoint:_:):ApiRequest.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Endpoint.path.getter:Endpoint.swift">
+      </ContextState>
+      <ContextState
          contextName = "RegisterGiftViewController.viewDidLoad():RegisterGiftViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -83,10 +103,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Endpoint.path.getter:Endpoint.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in ApiRequest.registerEditGift(endPoint:_:):ApiRequest.swift">
+         contextName = "RegisterGiftViewModel.editGift(completion:):RegisterGiftViewModel.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in HomeVM.getGifts(beforeId:):HomeVM.swift">
@@ -103,9 +120,6 @@
                value = "httpResponse.statusCode">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ApiRequest.registerGift(_:completion:):ApiRequest.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

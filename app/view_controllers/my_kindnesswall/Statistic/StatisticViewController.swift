@@ -27,7 +27,6 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
         self.initialLoadingIndicator=LoadingIndicator(view: self.view)
         
         fetchStatistics()
-        // Do any additional setup after loading the view.
     }
     
     func startLoadingPage(){
@@ -64,57 +63,29 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
         
         startLoadingPage()
         
-        let input : APIEmptyInput? = nil
-        
         apiRequest.getStatistics { [weak self](result) in
             
             self?.statisticsKeys = []
             self?.statisticsValues = []
-            self?.stopLoadingPage()
+            DispatchQueue.main.async {
+                self?.stopLoadingPage()
+            }
             
             switch result{
             case .failure(let appError):
-                print("Error")
+                print("Error \(appError)")
             case .success(let statisticsData):
-                print(statisticsData)
-                if let statistics = statisticsData.statistics {
+                
+                if let statistics = statisticsData {
                     for (key , value) in statistics {
                         self?.statisticsKeys.append(key)
                         self?.statisticsValues.append(value)
                     }
-                    self?.tableView.reloadData()
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
                 }
             }
         }
-//        APICall.request(url: APIURLs.getStatistics, httpMethod: .GET, input: input) { [weak self] (data, response, error)  in
-//            APICall.printData(data: data)
-            
-//            self?.statisticsKeys = []
-//            self?.statisticsValues = []
-//            self?.stopLoadingPage()
-//
-//            if let statisticsData = APICall.readJsonData(data: data, outputType: Statistics.self) {
-//                if let statistics = statisticsData.statistics {
-//                    for (key , value) in statistics {
-//                        self?.statisticsKeys.append(key)
-//                        self?.statisticsValues.append(value)
-//                    }
-//                    self?.tableView.reloadData()
-//                }
-//
-//            }
-//        }
-    
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

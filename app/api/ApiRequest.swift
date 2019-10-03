@@ -79,13 +79,13 @@ class ApiRequest:ApiRequestProtocol {
     }
 
     
-    func getUserStatistics(id userId: Int, completion: @escaping (Result<Statistics>) -> Void){
+    func getUserStatistics(id userId: Int, completion: @escaping (Result<[String:Int]?>) -> Void){
         self.httpLayer.request(at: Endpoint.GetUserStatistics(userId: userId)) {(result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
             case .success(let data):
-                if let statistics = ApiUtility.convert(data: data, to: Statistics.self){
+                if let statistics = ApiUtility.convert(data: data, to: [String:Int]?.self){
                     completion(.success(statistics))
                 }else{
                     completion(.failure(AppError.DataDecoding))
@@ -138,14 +138,15 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
     
-    func getStatistics(completion: @escaping (Result<Statistics>) -> Void){
+    func getStatistics(completion: @escaping (Result<[String:Int]?>) -> Void){
         
         self.httpLayer.request(at: Endpoint.Statistics) {(result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
             case .success(let data):
-                if let statistics = ApiUtility.convert(data: data, to: Statistics.self){
+                
+                if let statistics = ApiUtility.convert(data: data, to: [String:Int]?.self){
                     completion(.success(statistics))
                 }else{
                     completion(.failure(AppError.DataDecoding))
