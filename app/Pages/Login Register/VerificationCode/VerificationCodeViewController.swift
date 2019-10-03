@@ -119,7 +119,20 @@ class VerificationCodeViewController: UIViewController {
         registerBtn.setTitle("", for: [])
         registerLoading.startAnimating()
         
-        apiRequest.login(phoneNumber: mobile, activationCode: activationCode) { [weak self] (result) in
+        login(mobile, activationCode)
+        
+    }
+    
+    func login(_ phoneNumber: String,_ activationCode: String) {
+        apiRequest.login(phoneNumber: phoneNumber, activationCode: activationCode) { [weak self] (result) in
+            DispatchQueue.main.async {
+                self?.handleLogin(result)
+            }
+        }
+    }
+    
+    func validatePhoneNumberChange(_ phoneNumber: String,_ activationCode: String) {
+        apiRequest.validatePhoneNumberChange(to: phoneNumber, with: activationCode) { [weak self] (result) in
             DispatchQueue.main.async {
                 self?.handleLogin(result)
             }

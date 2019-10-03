@@ -24,6 +24,8 @@ enum Endpoint:EndpointProtocol {
 //        ---------------------------------------
     case RegisterUser(_ user:User)
     case Login(user:User)
+    case RequestPhoneNumberChange(toNewNumber:String)
+    case ValidatePhoneNumberChange(input: ValidatePhoneNumberChangeIntput)
 //        ---------------------------------------
     case RegisterGift(_ gift:Gift)
     case EditGift(_ gift:Gift)
@@ -76,6 +78,8 @@ enum Endpoint:EndpointProtocol {
     private var giftsBaseURL:String{ return basePathUrl + "gifts/" }
     private var charityBaseURL:String{ return basePathUrl + "charity/" }
     private var profileBaseURL:String{ return basePathUrl + "profile/" }
+    private var registerBaseURL:String{ return basePathUrl + "register/" }
+    private var phoneNumberChangeBaseURL:String{ return registerBaseURL + "phoneNumberChange/" }
     
     var url:URL? {
         var urlComponent = URLComponents()
@@ -125,6 +129,11 @@ enum Endpoint:EndpointProtocol {
 //        ---------------------------------------
         case .ChatSendMessage(let input): return ApiUtility.convert(input: input)
         case .ChatAckMessage(let input): return ApiUtility.convert(input: input)
+        
+        case .RequestPhoneNumberChange(let toNewNumber):
+            return ApiUtility.convert(input: toNewNumber)
+        case .ValidatePhoneNumberChange(let input):
+            return ApiUtility.convert(input: input)
         }
     }
     
@@ -133,7 +142,7 @@ enum Endpoint:EndpointProtocol {
         case .GetProvinces, .GetCitiesOfProvince(_), .GetCategories, .GetRegions(_), .RequestGift(_), .GetProfile(_), .CharityList, .Statistics, .GetUserStatistics, .GetContacts, .GetBlockContacts:
             return HttpMethod.GET.rawValue
 
-        case .RegisterUser(_), .Login(_), .RegisterGift, .DonateGift(_,_), .GiftsToDonate(_,_), .UserRegisteredGifts(_,_), .UserReceivedGifts(_,_), .UserDonatedGifts(_,_), .SendTextMessage(_), .SendAck(_), .FetchMessages(_), .RegisterPush(_), .GiftsToReview(_), .SendPushNotif, .UpdateUser, .ChatSendMessage, .ChatAckMessage, .GetGifts(_):
+        case .RegisterUser(_), .Login(_), .RegisterGift, .DonateGift(_,_), .GiftsToDonate(_,_), .UserRegisteredGifts(_,_), .UserReceivedGifts(_,_), .UserDonatedGifts(_,_), .SendTextMessage(_), .SendAck(_), .FetchMessages(_), .RegisterPush(_), .GiftsToReview(_), .SendPushNotif, .UpdateUser, .ChatSendMessage, .ChatAckMessage, .GetGifts(_), .RequestPhoneNumberChange(_), .ValidatePhoneNumberChange(_):
             return HttpMethod.POST.rawValue
             
         case .EditGift(_), .GiftReviewApproved, .AcceptCharity, .RejectCharity, .UnBlockUserAccess, .UnBlockChat, .BlockChat:
@@ -158,7 +167,7 @@ enum Endpoint:EndpointProtocol {
             return basePathUrl+"regions/\(cityId)"
 //        ---------------------------------------
         case .RegisterUser(_):
-            return basePathUrl+"register"
+            return registerBaseURL
         case .Login(_):
             return basePathUrl+"login"
 //        ---------------------------------------
@@ -233,6 +242,10 @@ enum Endpoint:EndpointProtocol {
         case .BlockChat(let chatId): return chatBaseURL + "block/\(chatId)"
         case .UnBlockChat(let chatId): return chatBaseURL + "unblock/\(chatId)"
             
+        case .RequestPhoneNumberChange:
+            return phoneNumberChangeBaseURL + "request"
+        case .ValidatePhoneNumberChange:
+            return phoneNumberChangeBaseURL + "validate"
         }
     }
     

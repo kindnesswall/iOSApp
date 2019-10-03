@@ -51,6 +51,7 @@
 		054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B501FCC4100007570EF /* IRANSansMobile_UltraLight.ttf */; };
 		054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B511FCC4100007570EF /* IRANSansMobile.ttf */; };
 		05632774234665EC00545CAF /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05632773234665EC00545CAF /* Region.swift */; };
+		0563277623466DE700545CAF /* ValidatePhoneNumberChangeIntput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563277523466DE700545CAF /* ValidatePhoneNumberChangeIntput.swift */; };
 		05644DC21FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DC11FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift */; };
 		05644DC61FFEFA2E00B7C853 /* DateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DC51FFEFA2E00B7C853 /* DateHandler.swift */; };
 		05644DC81FFF01C300B7C853 /* ChatConversationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DC71FFF01C200B7C853 /* ChatConversationResult.swift */; };
@@ -289,6 +290,7 @@
 		054B1B501FCC4100007570EF /* IRANSansMobile_UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_UltraLight.ttf; sourceTree = "<group>"; };
 		054B1B511FCC4100007570EF /* IRANSansMobile.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile.ttf; sourceTree = "<group>"; };
 		05632773234665EC00545CAF /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
+		0563277523466DE700545CAF /* ValidatePhoneNumberChangeIntput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePhoneNumberChangeIntput.swift; sourceTree = "<group>"; };
 		05644DC11FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+widthAndHeightOfLabel.swift"; sourceTree = "<group>"; };
 		05644DC51FFEFA2E00B7C853 /* DateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
 		05644DC71FFF01C200B7C853 /* ChatConversationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConversationResult.swift; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 				053892DC2318754B00828372 /* ChatAckMessageInput.swift */,
 				60E7E4BC22999D160047344D /* FetchMessagesInput.swift */,
 				053892D3231322BE00828372 /* SendPushInput.swift */,
+				0563277523466DE700545CAF /* ValidatePhoneNumberChangeIntput.swift */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -1715,6 +1718,7 @@
 				607E78922279E25600FF0008 /* MessagesTableViewCell + Layout.swift in Sources */,
 				604FB5BF228B6DBE00795CE2 /* Donate.swift in Sources */,
 				0523117B22A3EAF600A22157 /* AppError.swift in Sources */,
+				0563277623466DE700545CAF /* ValidatePhoneNumberChangeIntput.swift in Sources */,
 				053892DF231AD75200828372 /* UploadImageVM.swift in Sources */,
 				053892D723186C9C00828372 /* UnblockUserInput.swift in Sources */,
 				607E78912279E25600FF0008 /* ChatTableViewCell + Layout.swift in Sources */,

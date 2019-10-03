@@ -234,6 +234,33 @@ class ApiRequest:ApiRequestProtocol {
         }
     }
     
+    func requestPhoneNumberChange(to newPhoneNumber: String, completion: @escaping (Result<Void>)-> Void) {
+        self.httpLayer.request(at: Endpoint.RequestPhoneNumberChange(toNewNumber: newPhoneNumber)) {(result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(_):
+                completion(.success(Void()))
+            }
+        }
+    }
+    
+    func validatePhoneNumberChange(to newPhoneNumber: String, with activationCode:String, completion: @escaping (Result<AuthOutput>)-> Void) {
+        let input = ValidatePhoneNumberChangeIntput(phoneNumber: newPhoneNumber, activationCode: activationCode)
+        self.httpLayer.request(at: Endpoint.ValidatePhoneNumberChange(input: input)) {(result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let authOutput = ApiUtility.convert(data:data , to: AuthOutput.self) {
+                    completion(.success(authOutput))
+                }else{
+                    completion(.failure(AppError.DataDecoding))
+                }
+            }
+        }
+    }
+    
     func registerUser(phoneNumber: String, completion: @escaping (Result<Void>)-> Void) {
         
         self.httpLayer.request(at: Endpoint.RegisterUser(User(phoneNumber: phoneNumber))) {(result) in
