@@ -23,6 +23,7 @@ class MoreViewController: UIViewController {
     @IBOutlet var loginLogoutBtn: UIButton!
     @IBOutlet var addNewCharityBtn: UIButton!
     
+    @IBOutlet weak var scrollview: UIScrollView!
     let keychain = KeychainSwift()
     let userDefault=UserDefaults.standard
 
@@ -196,6 +197,8 @@ class MoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        scrollview.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        
         versionNoLbl.text = LocalizationSystem.getStr(forKey: LanguageKeys.AppVersion) + AppLanguage.getNumberString(number: getVersionBuildNo())
         
         getRepoInfo()
