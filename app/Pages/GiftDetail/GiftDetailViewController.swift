@@ -54,12 +54,8 @@ class GiftDetailViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
-
-        
         createSlideShow()
-        
         fillUIWithGift()
-        
         
 //        self.loadingIndicator?.stopLoading()
         

@@ -34,35 +34,6 @@ struct AppConst {
             static let Tint=UIColor(named: "TintColor")!
             static let GreyBg=UIColor(named:"GrayBackgroundColor")!
         }
-        struct Image {
-            static let Blank_Avatar:String = "blank_avatar"
-        }
-    }
-    
-    struct FIR {
-        
-        static let KindnessWall:String = "kindnesswall"
-        
-        struct Storage {
-            static let Profile_Images:String = "profile_images"
-            static let Gift_Images:String = "gift_images"
-        }
-        
-        struct Database {
-            static let Users:String = "Users"
-            static let Gifts:String = "Gifts"
-            static let Gifts_Images:String = "Gifts_Images"
-            static let Users_Gifts:String = "Users_Gifts"
-        }
-        
-        struct Keys {
-            struct User {
-                static let NAME:String = "name"
-                static let EMAIL:String = "email"
-                static let PROFILE_IMG_URL:String = "profileImageURL"
-                static let ID:String = "id"
-            }
-        }
     }
     
     struct KeyChain {

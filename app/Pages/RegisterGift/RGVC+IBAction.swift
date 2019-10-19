@@ -22,10 +22,13 @@ extension RegisterGiftViewController {
             switch result {
             case .failure:
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
-            case .success:
-                self.clearAllInput()
+            case .success:                
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.giftRegisteredSuccessfully),theme: .success)
-                self.reloadOtherPages()
+                
+                DispatchQueue.main.async {
+                    self.clearAllInput()
+                    self.reloadOtherPages()
+                }
             }
         }
         
@@ -65,7 +68,7 @@ extension RegisterGiftViewController {
         self.configAddressViews()
         
         let controller=OptionsListViewController()
-        let viewModel = PlaceListViewModel(placeType:.province,showCities: true, showRegions: true, hasDefaultOption: false)
+        let viewModel = PlaceListViewModel(placeType:.province,showCities: true, showRegions: false, hasDefaultOption: false)
         controller.viewModel=viewModel
         controller.completionHandler={ [weak self] (id,name) in
             let place=Place(id: id, name: name)
