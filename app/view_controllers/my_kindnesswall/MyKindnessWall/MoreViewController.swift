@@ -13,6 +13,9 @@ import SPStorkController
 
 class MoreViewController: UIViewController {
 
+    @IBOutlet weak var AdminStackView: UIStackView!
+    @IBOutlet weak var UserStackView: UIStackView!
+    
     @IBOutlet weak var blackListBtn: UIButton!
     @IBOutlet weak var versionNoLbl: UILabel!
     
@@ -33,8 +36,15 @@ class MoreViewController: UIViewController {
         AppDelegate.me().shareApp()
     }
     
+    func isLogedin() -> Bool {
+        if let _=keychain.get(AppConst.KeyChain.Authorization){
+            return true
+        }
+        return false
+    }
+    
     @IBAction func addNewCharity(_ sender: Any) {
-        guard let _=keychain.get(AppConst.KeyChain.Authorization) else {
+        guard isLogedin() else {
             AppDelegate.me().showLoginVC()
             return
         }
@@ -50,7 +60,7 @@ class MoreViewController: UIViewController {
     }
     
     @IBAction func showReviewQueue(_ sender: Any) {
-        guard let _=keychain.get(AppConst.KeyChain.Authorization) else {
+        guard isLogedin() else {
             AppDelegate.me().showLoginVC()
             return
         }
@@ -67,7 +77,7 @@ class MoreViewController: UIViewController {
     }
     
     @IBAction func showMyProfile(_ sender: Any) {
-        guard let _=keychain.get(AppConst.KeyChain.Authorization) else {
+        guard isLogedin() else {
             AppDelegate.me().showLoginVC()
             return
         }
@@ -103,32 +113,31 @@ class MoreViewController: UIViewController {
     
     @IBAction func logoutBtnClicked(_ sender: Any) {
         
-        if let _=keychain.get(AppConst.KeyChain.Authorization) { //UserDefaults.standard.string(forKey: AppConstants.Authorization) {
-            
-            let alert = UIAlertController(
-                title:LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_title),
-                message: LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_text),
-                preferredStyle: UIAlertController.Style.alert)
-            
-            alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
-                AppDelegate.me().logout()
-                UIApplication.shared.shortcutItems = []
-                self.setLoginLogoutBtnTitle()
-            }))
-            
-            alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.cancel), style: UIAlertAction.Style.default, handler: { (action) in
-                alert.dismiss(animated: true, completion: {
-                    
-                })
-            }))
-            
-            self.present(alert, animated: true, completion: nil)
-
-        } else {
+        guard isLogedin() else{
             AppDelegate.me().showLoginVC()
             setLoginLogoutBtnTitle()
+            return
         }
+        //UserDefaults.standard.string(forKey: AppConstants.Authorization) {
+            
+        let alert = UIAlertController(
+            title:LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_title),
+            message: LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_text),
+            preferredStyle: UIAlertController.Style.alert)
         
+        alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
+            AppDelegate.me().logout()
+            UIApplication.shared.shortcutItems = []
+            self.setLoginLogoutBtnTitle()
+        }))
+        
+        alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.cancel), style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: {
+                
+            })
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func contactUsBtnClicked(_ sender: Any) {
@@ -164,21 +173,13 @@ class MoreViewController: UIViewController {
     }
     
     func setLoginLogoutBtnTitle(){
-        if let _=keychain.get(AppConst.KeyChain.Authorization) {
+        if isLogedin() {
             loginLogoutBtn.setTitle(
                 LocalizationSystem.getStr(forKey: LanguageKeys.logout) +
                     AppLanguage.getNumberString(
                         number: (userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) ?? "")), for: .normal)
         } else {
             loginLogoutBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.login), for: .normal)
-        }
-    }
-    
-    func setPasscodeBtnVisiblity()  {
-        if let _=keychain.get(AppConst.KeyChain.Authorization) {
-            passcodeTouchIDBtn.show()
-        }else{
-            passcodeTouchIDBtn.hide()
         }
     }
     
@@ -208,8 +209,8 @@ class MoreViewController: UIViewController {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
         
         setAllTextsInView()
-        
-        setPasscodeBtnVisiblity()
+        AdminStackView.isHidden = !(keychain.getBool(AppConst.KeyChain.IsAdmin) ?? false)
+        UserStackView.isHidden = !isLogedin()
     }
     
     //MARK:: GraphQL

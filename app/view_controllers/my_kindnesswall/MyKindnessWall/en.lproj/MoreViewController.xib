@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +15,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoreViewController" customModule="app" customModuleProvider="target">
             <connections>
+                <outlet property="AdminStackView" destination="Ru8-zB-5OU" id="Tvw-aD-ilm"/>
+                <outlet property="UserStackView" destination="zJL-MM-Knh" id="KmR-mw-wno"/>
                 <outlet property="aboutKindnessWallBtn" destination="Lkc-mO-68e" id="yiF-Lm-oZy"/>
                 <outlet property="addNewCharityBtn" destination="Dtn-EF-Gw1" id="xxX-AJ-9za"/>
                 <outlet property="bugReportBtn" destination="Lzg-Yj-27L" id="F8r-hr-f0L"/>
@@ -102,8 +104,24 @@
                                                 <action selector="bugReportBtnAction:" destination="-1" eventType="touchUpInside" id="QMe-ET-19T"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIW-xi-jGN">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQK-i4-MHV">
                                             <rect key="frame" x="0.0" y="268" width="359" height="34"/>
+                                            <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                                            <state key="normal">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="logoutBtnClicked:" destination="-1" eventType="touchUpInside" id="NGe-YS-dls"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zJL-MM-Knh" userLabel="UserStack">
+                                    <rect key="frame" x="0.0" y="310" width="359" height="118"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIW-xi-jGN">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="34"/>
                                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                                             <state key="normal" title="Passcode &amp; Touch ID">
@@ -113,13 +131,8 @@
                                                 <action selector="passcodeTouchIDBtnClicked:" destination="-1" eventType="touchUpInside" id="bAP-h0-Wi2"/>
                                             </connections>
                                         </button>
-                                    </subviews>
-                                </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zJL-MM-Knh" userLabel="UserStack">
-                                    <rect key="frame" x="0.0" y="310" width="359" height="118"/>
-                                    <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6W-ZE-gWu">
-                                            <rect key="frame" x="0.0" y="0.0" width="359" height="34"/>
+                                            <rect key="frame" x="0.0" y="42" width="359" height="34"/>
                                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                                             <state key="normal" title="Black List">
@@ -130,7 +143,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6Z-Tf-im4">
-                                            <rect key="frame" x="0.0" y="42" width="359" height="34"/>
+                                            <rect key="frame" x="0.0" y="84" width="359" height="34"/>
                                             <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                                             <state key="normal" title="My profile">
@@ -138,17 +151,6 @@
                                             </state>
                                             <connections>
                                                 <action selector="showMyProfile:" destination="-1" eventType="touchUpInside" id="1ij-px-5ko"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQK-i4-MHV">
-                                            <rect key="frame" x="0.0" y="84" width="359" height="34"/>
-                                            <color key="backgroundColor" red="0.47843137250000001" green="0.31372549020000001" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
-                                            <state key="normal">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="logoutBtnClicked:" destination="-1" eventType="touchUpInside" id="NGe-YS-dls"/>
                                             </connections>
                                         </button>
                                     </subviews>
