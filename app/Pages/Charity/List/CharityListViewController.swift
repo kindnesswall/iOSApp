@@ -14,8 +14,8 @@ class CharityListViewController: UIViewController {
     var vm = CharityListViewModel()
     
     @IBAction func addNewCharityClicked(_ sender: Any) {
-        //Todo: should browse to the telegram account to contact us or charity app in app store
-        print("Navigate to telegram or charity app")
+        let urlAddress = URIs.telegramLink
+        URLBrowser(urlAddress: urlAddress).openURL()
     }
     
     override func viewDidLoad() {
