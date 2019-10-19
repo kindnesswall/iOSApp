@@ -112,21 +112,23 @@ class LoginRegisterViewController: UIViewController {
     
     func requestPhoneNumberChange(to newPhoneNumber:String) {
         apiRequest.requestPhoneNumberChange(to: newPhoneNumber) { [weak self] (result) in
-            self?.handleResult(result)
+            DispatchQueue.main.async {
+                self?.handleResult(result)
+            }
         }
     }
     
     func registerUser(with phoneNumber:String) {
         apiRequest.registerUser(phoneNumber: phoneNumber) { [weak self] (result) in
-            self?.handleResult(result)
+            DispatchQueue.main.async {
+                self?.handleResult(result)
+            }
         }
     }
     
     func handleResult(_ result:Result<Void>) {
-        DispatchQueue.main.async {
-            self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: [])
-            self.loading.stopAnimating()
-        }
+        self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: [])
+        self.loading.stopAnimating()
         
         switch(result){
         case .failure(let error):
@@ -137,17 +139,14 @@ class LoginRegisterViewController: UIViewController {
             default:
                 bodyString = LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain)
             }
-            DispatchQueue.main.async {
-                FlashMessage.showMessage(body: bodyString, theme: .error)
-            }
+            FlashMessage.showMessage(body: bodyString, theme: .error)
             
         case .success(_):
             let controller=VerificationCodeViewController()
             controller.setCloseComplition(closeComplition: self.closeComplition)
             controller.setSubmitComplition(submitComplition: self.submitComplition)
-            DispatchQueue.main.async {
-                self.navigationController?.pushViewController(controller, animated: true)
-            }
+            self.navigationController?.pushViewController(controller, animated: true)
+
         }
     }
 }
