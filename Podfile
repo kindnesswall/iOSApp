@@ -37,4 +37,6 @@ pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
 pod 'PanModal', '~> 1.2.4'
 pod 'SPStorkController', '~> 1.7.7'
 
+pod 'XCoordinator', '~> 2.0'
+
 end

@@ -123,6 +123,9 @@ PODS:
   - SwiftMessages/App (7.0.1)
   - SwiftyOnboard (1.3.8)
   - UICircularProgressRing (6.3.0)
+  - XCoordinator (2.0.3):
+    - XCoordinator/Core (= 2.0.3)
+  - XCoordinator/Core (2.0.3)
   - XLActionController/Core (5.0.1)
   - XLActionController/Skype (5.0.1):
     - XLActionController/Core
@@ -148,6 +151,7 @@ DEPENDENCIES:
   - SwiftMessages (~> 7.0.0)
   - SwiftyOnboard (~> 1.3.8)
   - UICircularProgressRing (~> 6.3.0)
+  - XCoordinator (~> 2.0)
   - XLActionController/Skype (~> 5.0.0)
 
 SPEC REPOS:
@@ -186,6 +190,7 @@ SPEC REPOS:
     - SwiftMessages
     - SwiftyOnboard
     - UICircularProgressRing
+    - XCoordinator
     - XLActionController
 
 EXTERNAL SOURCES:
@@ -233,8 +238,9 @@ SPEC CHECKSUMS:
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
   SwiftyOnboard: de60e90c2af23dd61b01ec0c6a8d0be3370f857b
   UICircularProgressRing: e700fb0505328e88ee53c4ed92bee6d1a5b8bbe3
+  XCoordinator: 5ad39737e6fa8e8f09a8174b16976ccda5ede541
   XLActionController: ec9207228162569df1c90dccded2e88d0f39b2e7
 
-PODFILE CHECKSUM: 5aa6b10de7998d593ea9d76b66e893cbe886e8aa
+PODFILE CHECKSUM: b6aa723c779e5a075526a509e35b78291f0fe9d5
 
 COCOAPODS: 1.6.0
