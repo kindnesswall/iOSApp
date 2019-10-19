@@ -26,7 +26,7 @@ extension HomeViewController:UITableViewDelegate {
         let action = UIContextualAction(style: .normal, title: "Approve") { (uiContextualAction, view, completion) in
             self.approveAction(rowIndex: indexPath,handler: completion)
         }
-        action.image = UIImage(named: "approve")
+        action.image = UIImage(named: AppImages.Approve)
         action.backgroundColor = .green
         return action
     }
@@ -53,7 +53,7 @@ extension HomeViewController:UITableViewDelegate {
                 self?.rejectAction(rowIndex: indexPath, handler: completion)
             }
         }
-        action.image = UIImage(named: "reject")
+        action.image = UIImage(named: AppImages.Reject)
         //        action.backgroundColor = .red
         return action
     }

@@ -84,7 +84,7 @@ class CharityDetailViewController: UIViewController {
         self.managerNameLabel.text = charity.manager
         
         if let path = charity.imageUrl {
-            charityImage.kf.setImage(with: URL(string: path), placeholder: UIImage(named: "blank_avatar"))
+            charityImage.kf.setImage(with: URL(string: path), placeholder: UIImage(named: AppImages.BlankAvatar))
         }
 
         telephoneBtn.setTitle(charity.telephoneNumber, for: .normal)

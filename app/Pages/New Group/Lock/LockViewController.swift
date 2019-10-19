@@ -207,11 +207,11 @@ class LockViewController: UIViewController {
         
         switch touchMe.biometricType() {
         case .faceID:
-            fingerPrintBtn.setImage(UIImage(named: "faceIcon"),  for: .normal)
-            fingerPrintBtn.setImage(UIImage(named: "faceIcon_dark"),  for: .highlighted)
+            fingerPrintBtn.setImage(UIImage(named: AppImages.FaceIcon),  for: .normal)
+            fingerPrintBtn.setImage(UIImage(named: AppImages.FaceIconDark),  for: .highlighted)
         default:
-            fingerPrintBtn.setImage(UIImage(named: "touch_icon"),  for: .normal)
-            fingerPrintBtn.setImage(UIImage(named: "touch_icon_dark"),  for: .highlighted)
+            fingerPrintBtn.setImage(UIImage(named: AppImages.TouchIcon),  for: .normal)
+            fingerPrintBtn.setImage(UIImage(named: AppImages.TouchIconDark),  for: .highlighted)
         }
         
         fingerPrintBtn.isHidden = !touchMe.canEvaluatePolicy()

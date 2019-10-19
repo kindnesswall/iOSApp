@@ -43,6 +43,7 @@
 		05444E4A231B3F07006E5E09 /* ContactUsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05444E48231B3F06006E5E09 /* ContactUsCollectionViewCell.xib */; };
 		05444E4C231BBD0C006E5E09 /* CharityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05444E4B231BBD0C006E5E09 /* CharityDetailViewModel.swift */; };
 		05444E50231BBD5E006E5E09 /* CharityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05444E4F231BBD5E006E5E09 /* CharityListViewModel.swift */; };
+		0544DD64235B6C2D007AC8F3 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544DD63235B6C2D007AC8F3 /* AppImages.swift */; };
 		054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */; };
 		054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */; };
 		054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */; };
@@ -282,6 +283,7 @@
 		05444E48231B3F06006E5E09 /* ContactUsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactUsCollectionViewCell.xib; path = ContactUs/Cell/ContactUsCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
 		05444E4B231BBD0C006E5E09 /* CharityDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityDetailViewModel.swift; sourceTree = "<group>"; };
 		05444E4F231BBD5E006E5E09 /* CharityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityListViewModel.swift; sourceTree = "<group>"; };
+		0544DD63235B6C2D007AC8F3 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
 		054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftTableViewCell.swift; sourceTree = "<group>"; };
 		054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Light.ttf; sourceTree = "<group>"; };
 		054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Bold.ttf; sourceTree = "<group>"; };
@@ -992,6 +994,7 @@
 				05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */,
 				5247C8AB21E388B2009E8770 /* GithubConstants.swift */,
 				0523117A22A3EAF600A22157 /* AppError.swift */,
+				0544DD63235B6C2D007AC8F3 /* AppImages.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -1704,6 +1707,7 @@
 				52466DD921DB607D0086F327 /* RGVM+URLSessionTaskDelegate.swift in Sources */,
 				05BFBBB81FDA654D00DBCDDF /* LoginRegisterViewController.swift in Sources */,
 				601F83D32037367900F9118B /* Place.swift in Sources */,
+				0544DD64235B6C2D007AC8F3 /* AppImages.swift in Sources */,
 				52466DE521DB9A360086F327 /* HomeVM.swift in Sources */,
 				0593E51122D5502200C3B046 /* CharitySignupEditViewController.swift in Sources */,
 				60C972EB21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift in Sources */,

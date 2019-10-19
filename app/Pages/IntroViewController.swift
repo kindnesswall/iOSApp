@@ -95,7 +95,7 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         let view = SwiftyOnboardPage()
         
         //Set the image on the page:
-        view.imageView.image = UIImage(named: "intro_img_\(index)")
+        view.imageView.image = UIImage(named: AppImages.Intro + "\(index)")
         
         //Set the font and color for the labels:
         view.title.font = AppConst.Resource.Font.getBoldFont(size: 22)

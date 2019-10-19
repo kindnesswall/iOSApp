@@ -48,17 +48,17 @@ class ContactUsViewController: UIViewController {
     
     func fillContactUsData(){
         
-        let github = ContactUsModel(image: UIImage(named: "github") , link: URIs.githubLink)
+        let github = ContactUsModel(image: UIImage(named: AppImages.Github) , link: URIs.githubLink)
         
-        let gmail = ContactUsModel(image: UIImage(named: "gmail") , link: URIs.gmailLink)
+        let gmail = ContactUsModel(image: UIImage(named: AppImages.Gmail) , link: URIs.gmailLink)
         
-        let instagram = ContactUsModel(image: UIImage(named: "instagram") , link: URIs.instagramLink)
+        let instagram = ContactUsModel(image: UIImage(named: AppImages.Instagram) , link: URIs.instagramLink)
         
-        let telegram = ContactUsModel(image: UIImage(named: "telegram") , link: URIs.telegramLink)
+        let telegram = ContactUsModel(image: UIImage(named: AppImages.Telegram) , link: URIs.telegramLink)
         
-        let facebook = ContactUsModel(image: UIImage(named: "facebook") , link: URIs.facebookLink)
+        let facebook = ContactUsModel(image: UIImage(named: AppImages.Facebook) , link: URIs.facebookLink)
         
-        let website = ContactUsModel(image: UIImage(named: "website") , link: URIs.webSiteLink)
+        let website = ContactUsModel(image: UIImage(named: AppImages.Website) , link: URIs.webSiteLink)
         
         data.append(github)
         data.append(gmail)

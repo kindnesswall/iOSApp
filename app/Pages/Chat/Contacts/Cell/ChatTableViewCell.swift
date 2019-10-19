@@ -12,7 +12,7 @@ class ChatTableViewCell: UITableViewCell {
     
     static let cellHeight:CGFloat = 80
     let userImageSize:CGFloat = 40
-    let imagePlaceholder = UIImage(named: "blank_avatar")
+    let imagePlaceholder = UIImage(named: AppImages.BlankAvatar)
     
     var userNameLabel = UILabel()
     var notificationLabel = UILabel()

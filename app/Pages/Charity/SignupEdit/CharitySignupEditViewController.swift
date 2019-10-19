@@ -59,7 +59,7 @@ class CharitySignupEditViewController: UIViewController {
         descriptionTextView.text = charity.description
         
         if let path = charity.imageUrl {
-            charityImageView.kf.setImage(with: URL(string: path), placeholder: UIImage(named: "blank_avatar"))
+            charityImageView.kf.setImage(with: URL(string: path), placeholder: UIImage(named: AppImages.BlankAvatar))
         }
         
     }

@@ -127,7 +127,7 @@ class ProfileViewController: UIViewController {
                     self.phoneLabel.text = UserDefaults.standard.string(forKey: AppConst.UserDefaults.PHONE_NUMBER)
                     self.usernameTextField.text = myProfile.name
                     if let path = myProfile.image {
-                        self.avatarImageView.kf.setImage(with: URL(string: path), placeholder: UIImage(named: "blank_avatar"))
+                        self.avatarImageView.kf.setImage(with: URL(string: path), placeholder: UIImage(named: AppImages.BlankAvatar))
                     }
                 }
             }
@@ -168,7 +168,7 @@ class ProfileViewController: UIViewController {
     @objc func textFieldDidChange(_ textField: UITextField) {
         if username != textField.text {
             usernameBtn.isHidden = false
-            usernameBtn.setImage(UIImage(named: "ic_check_grey"), for: .normal)
+            usernameBtn.setImage(UIImage(named: AppImages.CheckGrey), for: .normal)
             
         }else {
             usernameBtn.isHidden = true
