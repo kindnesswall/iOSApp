@@ -176,7 +176,7 @@ class MoreViewController: UIViewController {
     func setAllTextsInView(){
         setLoginLogoutBtnTitle()
         
-        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.myWall)
+        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.more)
         
 //        contactUsBtn.setTitle(AppLiteral.contactUs, for: .normal)
 //        bugReportBtn.setTitle(AppLiteral.bugReport, for: .normal)
