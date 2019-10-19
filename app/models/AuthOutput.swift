@@ -10,4 +10,5 @@ import Foundation
 final class AuthOutput : Codable {
     let token: Token
     let isAdmin: Bool
+    let isCharity: Bool
 }

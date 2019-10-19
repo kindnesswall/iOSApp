@@ -159,7 +159,7 @@ class VerificationCodeViewController: UIViewController {
             
         case .success(let authOutput):
             if let userID = authOutput.token.userID?.description, let token = authOutput.token.token {
-                AppDelegate.me().login(userID: userID, token: token, isAdmin: authOutput.isAdmin)
+                AppDelegate.me().login(userID: userID, token: token, isAdmin: authOutput.isAdmin, isCharity: authOutput.isCharity)
             }
             
             self.dismiss(animated: true, completion: {
