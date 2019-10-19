@@ -43,6 +43,18 @@ class MoreViewController: UIViewController {
         return false
     }
     
+    
+    @IBAction func showMyWall(_ sender: Any) {
+        guard isLogedin() else {
+            AppDelegate.me().showLoginVC()
+            return
+        }
+        
+        let myWallViewController = MyWallViewController()
+        myWallViewController.userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
+        self.navigationController?.pushViewController(myWallViewController, animated: true)
+    }
+    
     @IBAction func addNewCharity(_ sender: Any) {
         guard isLogedin() else {
             AppDelegate.me().showLoginVC()

@@ -55,7 +55,7 @@ extension AppDelegate : UITabBarControllerDelegate{
     func resetAppAfterSwitchUser(){
         guard let tabs = self.tabBarController?.viewControllers as? [UINavigationController] else { return }
         
-        initiateTab(tabIndex: AppConst.TabIndex.MyWall,tabs:tabs)
+        initiateTab(tabIndex: AppConst.TabIndex.Charities,tabs:tabs)
         initiateTab(tabIndex: AppConst.TabIndex.Chat,tabs:tabs)
     }
     
@@ -72,11 +72,6 @@ extension AppDelegate : UITabBarControllerDelegate{
         case AppConst.TabIndex.Charities:
             let charitiesViewController = CharityListViewController()
             controller = charitiesViewController
-            
-        case AppConst.TabIndex.MyWall:
-            let myWallViewController = MyWallViewController()
-            myWallViewController.userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
-            controller = myWallViewController
             
         case AppConst.TabIndex.RegisterGift:
             controller=RegisterGiftViewController()
