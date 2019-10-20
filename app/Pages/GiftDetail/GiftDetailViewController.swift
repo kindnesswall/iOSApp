@@ -53,22 +53,17 @@ class GiftDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
         createSlideShow()
         fillUIWithGift()
-        
-//        self.loadingIndicator?.stopLoading()
-        
+                
         if let myIdString=KeychainSwift().get(AppConst.KeyChain.USER_ID), let myId=Int(myIdString), let userId=gift?.userId, myId==userId {
             self.addEditBtn()
-            //                    self?.requestBtn.hide()
+            self.requestBtn.hide()
             self.removeBtn.show()
         } else {
-            //                    self?.requestBtn.show()
+            self.requestBtn.show()
             self.removeBtn.hide()
         }
-        
-        
     }
     
     func fillUIWithGift(){
@@ -97,16 +92,6 @@ class GiftDetailViewController: UIViewController {
         )
         
         self.navigationItem.rightBarButtonItems=[editBtn!]
-    }
-    
-    func setUI(){
-        
-        self.removeBtn.hide()
-//        self.requestBtn.hide()
-        
-//        self.loadingIndicator=LoadingIndicator(navigationItem: self.navigationItem, type: .right, replacedNavigationBarButton: nil)
-//        self.loadingIndicator?.startLoading()
-        
     }
     
     @IBAction func requestBtnClicked(_ sender: Any) {
@@ -160,6 +145,7 @@ class GiftDetailViewController: UIViewController {
         
         switch result {
         case .failure(let error):
+            print(error)
             FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
         case .success(let chat):
             if let id = chat.id {
@@ -245,7 +231,6 @@ class GiftDetailViewController: UIViewController {
     }
     
     func createSlideShow() {
-        
         
         // Do any additional setup after loading the view.
         slideshow.backgroundColor = UIColor.white
