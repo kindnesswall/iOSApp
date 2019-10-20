@@ -155,7 +155,6 @@
 		60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DE22069018C0025D397 /* PopUpMessage.swift */; };
 		6032F61C205287ED00975C23 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032F61B205287ED00975C23 /* LoadingIndicator.swift */; };
 		6033DA9622AF69BD00D43738 /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6033DA9522AF69BC00D43738 /* ContactsViewController.xib */; };
-		6033DA9822AF6B3800D43738 /* ContactsSocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033DA9722AF6B3800D43738 /* ContactsSocketViewModel.swift */; };
 		6033DA9A22AF7E2200D43738 /* ContactsRestfulViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033DA9922AF7E2200D43738 /* ContactsRestfulViewModel.swift */; };
 		6033DA9E22B4F62300D43738 /* AuthOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033DA9D22B4F62300D43738 /* AuthOutput.swift */; };
 		6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040F3A2206688A800FCD429 /* APIEmptyInput.swift */; };
@@ -411,7 +410,6 @@
 		60302DE22069018C0025D397 /* PopUpMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMessage.swift; sourceTree = "<group>"; };
 		6032F61B205287ED00975C23 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		6033DA9522AF69BC00D43738 /* ContactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsViewController.xib; sourceTree = "<group>"; };
-		6033DA9722AF6B3800D43738 /* ContactsSocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsSocketViewModel.swift; sourceTree = "<group>"; };
 		6033DA9922AF7E2200D43738 /* ContactsRestfulViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRestfulViewModel.swift; sourceTree = "<group>"; };
 		6033DA9D22B4F62300D43738 /* AuthOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthOutput.swift; sourceTree = "<group>"; };
 		6040F3A2206688A800FCD429 /* APIEmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyInput.swift; sourceTree = "<group>"; };
@@ -735,7 +733,6 @@
 			children = (
 				6033DA9922AF7E2200D43738 /* ContactsRestfulViewModel.swift */,
 				607E78842279E23600FF0008 /* ContactsViewModel.swift */,
-				6033DA9722AF6B3800D43738 /* ContactsSocketViewModel.swift */,
 			);
 			path = VM;
 			sourceTree = "<group>";
@@ -1517,7 +1514,6 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SPStorkController/SPStorkController.framework",
 				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
@@ -1542,7 +1538,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SPStorkController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
@@ -1685,7 +1680,6 @@
 				053892DB231874DE00828372 /* SendMessageInput.swift in Sources */,
 				6066C3BB22C7B23400BCB50A /* AppDelegate + Notification.swift in Sources */,
 				6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */,
-				6033DA9822AF6B3800D43738 /* ContactsSocketViewModel.swift in Sources */,
 				05BFBBBB1FDA654D00DBCDDF /* VerificationCodeViewController.swift in Sources */,
 				053892E2231AE07C00828372 /* CharitySignupEditVM.swift in Sources */,
 				05444E50231BBD5E006E5E09 /* CharityListViewModel.swift in Sources */,

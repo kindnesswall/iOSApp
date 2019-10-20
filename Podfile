@@ -32,7 +32,6 @@ pod 'CryptoSwift', '~> 1.0.0'
 
 pod "Apollo", '~> 0.11.0'
 
-pod 'Starscream', '~> 3.0.2'
 pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
 pod 'PanModal', '~> 1.2.4'
 pod 'SPStorkController', '~> 1.7.7'

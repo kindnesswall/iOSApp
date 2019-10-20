@@ -12,7 +12,6 @@ import KeychainSwift
 
 class ContactsViewModel: NSObject {
     
-    
     var userId :Int
     var allChats = [MessagesViewModel]() {
         didSet {
@@ -29,12 +28,10 @@ class ContactsViewModel: NSObject {
         let userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
         self.userId = userId ?? -1
         
-//        network = ContactsSocketViewModel()
         network = ContactsRestfulViewModel()
         super.init()
         
         network.delegate = self
-        
     }
     
     deinit {
