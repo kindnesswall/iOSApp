@@ -184,11 +184,11 @@ enum Endpoint:EndpointProtocol {
             
         case .GiftsToReview:
             return giftsBaseURL + "review"
-        case .UserDonatedGifts(let userId):
+        case .UserDonatedGifts(let userId, _):
             return giftsBaseURL + "userDonated/\(userId)"
-        case .UserReceivedGifts(let userId):
+        case .UserReceivedGifts(let userId, _):
             return giftsBaseURL + "userReceived/\(userId)"
-        case .UserRegisteredGifts(let userId):
+        case .UserRegisteredGifts(let userId, _):
             return giftsBaseURL + "userRegistered/\(userId)"
         case .GetGifts:
             return giftsBaseURL
