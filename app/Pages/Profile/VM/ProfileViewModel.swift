@@ -13,8 +13,6 @@ class ProfileViewModel : UploadImageVM {
     
     var username: String?
     
-    lazy var apiRequest = ApiRequest(HTTPLayer())
-
     override init() {
         
     }

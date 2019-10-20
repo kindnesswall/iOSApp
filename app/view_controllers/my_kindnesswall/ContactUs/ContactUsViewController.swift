@@ -42,23 +42,23 @@ class ContactUsViewController: UIViewController {
     }
     
     @IBAction func criticismsAndSuggestionsBtnAction(_ sender: Any) {
-        let urlAddress = URIs.telegramLink
+        let urlAddress = AppConst.URL.telegramLink
         URLBrowser(urlAddress: urlAddress).openURL()
     }
     
     func fillContactUsData(){
         
-        let github = ContactUsModel(image: UIImage(named: AppImages.Github) , link: URIs.githubLink)
+        let github = ContactUsModel(image: UIImage(named: AppImages.Github) , link: AppConst.URL.githubLink)
         
-        let gmail = ContactUsModel(image: UIImage(named: AppImages.Gmail) , link: URIs.gmailLink)
+        let gmail = ContactUsModel(image: UIImage(named: AppImages.Gmail) , link: AppConst.URL.gmailLink)
         
-        let instagram = ContactUsModel(image: UIImage(named: AppImages.Instagram) , link: URIs.instagramLink)
+        let instagram = ContactUsModel(image: UIImage(named: AppImages.Instagram) , link: AppConst.URL.instagramLink)
         
-        let telegram = ContactUsModel(image: UIImage(named: AppImages.Telegram) , link: URIs.telegramLink)
+        let telegram = ContactUsModel(image: UIImage(named: AppImages.Telegram) , link: AppConst.URL.telegramLink)
         
-        let facebook = ContactUsModel(image: UIImage(named: AppImages.Facebook) , link: URIs.facebookLink)
+        let facebook = ContactUsModel(image: UIImage(named: AppImages.Facebook) , link: AppConst.URL.facebookLink)
         
-        let website = ContactUsModel(image: UIImage(named: AppImages.Website) , link: URIs.webSiteLink)
+        let website = ContactUsModel(image: UIImage(named: AppImages.Website) , link: AppConst.URL.webSiteLink)
         
         data.append(github)
         data.append(gmail)

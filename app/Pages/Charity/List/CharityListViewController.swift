@@ -14,7 +14,7 @@ class CharityListViewController: UIViewController {
     var vm = CharityListViewModel()
     
     @IBAction func addNewCharityClicked(_ sender: Any) {
-        let urlAddress = URIs.telegramLink
+        let urlAddress = AppConst.URL.telegramLink
         URLBrowser(urlAddress: urlAddress).openURL()
     }
     

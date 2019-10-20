@@ -70,6 +70,8 @@ enum Endpoint:EndpointProtocol {
     case ChatAckMessage(input: ChatAckMessageInput)
     case BlockChat(id: Int)
     case UnBlockChat(id: Int)
+    //        ---------------------------------------
+    case UploadImage(input : ImageInput)
     
     private var basePathUrl:String{ return "/api/v1/"}
     private var usersBaseURL:String { return basePathUrl + "users/" }
@@ -134,6 +136,9 @@ enum Endpoint:EndpointProtocol {
             return ApiUtility.convert(input: toNewNumber)
         case .ValidatePhoneNumberChange(let input):
             return ApiUtility.convert(input: input)
+            
+        case .UploadImage(let input):
+            return ApiUtility.convert(input: input)
         }
     }
     
@@ -142,7 +147,7 @@ enum Endpoint:EndpointProtocol {
         case .GetProvinces, .GetCitiesOfProvince(_), .GetCategories, .GetRegions(_), .RequestGift(_), .GetProfile(_), .CharityList, .Statistics, .GetUserStatistics, .GetContacts, .GetBlockContacts:
             return HttpMethod.GET.rawValue
 
-        case .RegisterUser(_), .Login(_), .RegisterGift, .DonateGift(_,_), .GiftsToDonate(_,_), .UserRegisteredGifts(_,_), .UserReceivedGifts(_,_), .UserDonatedGifts(_,_), .SendTextMessage(_), .SendAck(_), .FetchMessages(_), .RegisterPush(_), .GiftsToReview(_), .SendPushNotif, .UpdateUser, .ChatSendMessage, .ChatAckMessage, .GetGifts(_), .RequestPhoneNumberChange(_), .ValidatePhoneNumberChange(_):
+        case .RegisterUser(_), .Login(_), .RegisterGift, .DonateGift(_,_), .GiftsToDonate(_,_), .UserRegisteredGifts(_,_), .UserReceivedGifts(_,_), .UserDonatedGifts(_,_), .SendTextMessage(_), .SendAck(_), .FetchMessages(_), .RegisterPush(_), .GiftsToReview(_), .SendPushNotif, .UpdateUser, .ChatSendMessage, .ChatAckMessage, .GetGifts(_), .RequestPhoneNumberChange(_), .ValidatePhoneNumberChange(_), .UploadImage(_):
             return HttpMethod.POST.rawValue
             
         case .EditGift(_), .GiftReviewApproved, .AcceptCharity, .RejectCharity, .UnBlockUserAccess, .UnBlockChat, .BlockChat:
@@ -156,6 +161,8 @@ enum Endpoint:EndpointProtocol {
     
     private var path:String {
         switch self {
+        case .UploadImage:
+            return basePathUrl+"/image/upload"
 //        ---------------------------------------
         case .GetProvinces:
             return basePathUrl+"provinces"

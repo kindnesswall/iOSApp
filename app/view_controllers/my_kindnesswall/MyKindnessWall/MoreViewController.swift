@@ -169,7 +169,7 @@ class MoreViewController: UIViewController {
     }
     
     @IBAction func bugReportBtnAction(_ sender: Any) {
-        let urlAddress = URIs.telegramLink
+        let urlAddress = AppConst.URL.telegramLink
         URLBrowser(urlAddress: urlAddress).openURL()
     }
     

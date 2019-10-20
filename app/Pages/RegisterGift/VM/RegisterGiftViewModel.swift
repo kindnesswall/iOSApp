@@ -13,9 +13,6 @@ class RegisterGiftViewModel: NSObject {
     var imagesUrl:[String] = []
     var apiRequest = ApiRequest(HTTPLayer())
     
-    var sessions : [URLSession]=[]
-    var tasks : [URLSessionUploadTask]=[]
-    
     var category:Category?
     var dateStatus:DateStatus?
     var places=[Place]()
@@ -167,56 +164,32 @@ class RegisterGiftViewModel: NSObject {
         FlashMessage.showMessage(body: errorText,theme: .warning)
     }
     
-    func findIndexOf(task:URLSessionTask?)->Int?{
-        guard let task = task else {
-            return nil
-        }
-        
-        for (index,t) in tasks.enumerated() {
-            if t == task {
-                return index
-            }
-        }
-        
-        return nil
-    }
-    
     func uploadToIranServers(image:UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
         
         let imageData = image.jpegData(compressionQuality: 1)
         let imageInput = ImageInput(image: imageData!, imageFormat: .jpeg)
         
-        APICall.uploadImage(
-            url: URIs().image_upload,
-            input: imageInput,
-            sessions: &sessions,
-            tasks: &tasks,
-            delegate: self) { [weak self] (data, response, error) in
-                
-                ApiUtility.watch(data: data)
-                
-                if let imageSrc=ApiUtility.convert(data: data, to: ImageOutput.self)?.address {
-                    self?.uploadedSuccessfully()
-                    onSuccess(imageSrc)
-                } else {
-                    self?.uploadFailed()
-                    onFail?()
-                }
+        apiRequest.upload(imageInput: imageInput, urlSessionDelegate: self) { [weak self] (result) in
+            
+            switch(result){
+            case .failure(let error):
+                print(error)
+                self?.uploadFailed()
+                onFail?()
+            case .success(let imageSrc):
+                self?.uploadedSuccessfully()
+                onSuccess(imageSrc)
+            }
         }
+        
     }
     
     func imageRemovedFromList(index:Int) {
         if imagesUrl.count > index {
             imagesUrl.remove(at: index)
         }
-        if sessions.count > index {
-            sessions[index].invalidateAndCancel()
-            sessions.remove(at: index)
-        }
-        if tasks.count > index {
-            tasks[index].cancel()
-            tasks.remove(at: index)
-        }
+        
+        apiRequest.cancelRequestAt(index: index)
     }
     
     func upload(image:UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
@@ -398,19 +371,9 @@ class RegisterGiftViewModel: NSObject {
         FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
     }
     
-    func cancelAll_taskAndSessions() {
-        for session in sessions {
-            session.invalidateAndCancel()
-        }
-        for task in tasks {
-            task.cancel()
-        }
-        sessions = []
-        tasks = []
-    }
     
     func clearUploadImages() {
-        cancelAll_taskAndSessions()
+        apiRequest.cancelAllRequests()        
         imagesUrl = []
     }
 }

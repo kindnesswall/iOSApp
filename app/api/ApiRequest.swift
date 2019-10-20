@@ -18,6 +18,18 @@ class ApiRequest:ApiRequestProtocol {
         self.httpLayer = httpLayer
     }
     
+    func cancelRequestAt(index:Int) {
+        httpLayer.cancelRequestAt(index: index)
+    }
+    
+    func cancelAllRequests() {
+        httpLayer.cancelAllTasksAndSessions()
+    }
+    
+    func findIndexOf(task:URLSessionTask?)->Int?{
+        return httpLayer.findIndexOf(task: task)
+    }
+    
     func registerGift(
         _ gift:Gift, completion: @escaping (Result<Gift>) -> Void){
         registerEditGift(endPoint: Endpoint.RegisterGift(gift), completion)
@@ -40,6 +52,21 @@ class ApiRequest:ApiRequestProtocol {
                 }
             }
         }
+    }
+    
+    func upload(imageInput:ImageInput, urlSessionDelegate: URLSessionDelegate,completion: @escaping (Result<String>) -> Void){
+            self.httpLayer.upload(at: Endpoint.UploadImage(input: imageInput), urlSessionDelegate: urlSessionDelegate) { (result) in
+           switch result{
+           case .failure(let appError):
+               completion(.failure(appError))
+           case .success(let data):
+               if let imageSrc=ApiUtility.convert(data: data, to: ImageOutput.self)?.address {
+                   completion(.success(imageSrc))
+               } else {
+                   completion(.failure(AppError.DataDecoding))
+               }
+           }
+       }
     }
     
     func giftRejectedAfterReview(giftId: Int,completion: @escaping (Result<Void>) -> Void) {

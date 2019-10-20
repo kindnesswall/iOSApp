@@ -147,7 +147,6 @@
 		601F83D12036A8BE00F9118B /* DateStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D02036A8BE00F9118B /* DateStatus.swift */; };
 		601F83D32037367900F9118B /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D22037367900F9118B /* Place.swift */; };
 		601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D420373E9E00F9118B /* PlaceListViewModel.swift */; };
-		6024132322272E7A0094E6E2 /* URIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6024132222272E7A0094E6E2 /* URIs.swift */; };
 		602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */; };
 		602BC8F82034B7CC00ECF6E2 /* UploadImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */; };
 		60302DE02068FC7E0025D397 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DDE2068FC7E0025D397 /* PopUpViewController.swift */; };
@@ -210,7 +209,6 @@
 		60E7E4BD22999D160047344D /* FetchMessagesInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E7E4BC22999D160047344D /* FetchMessagesInput.swift */; };
 		60E7E4BF22999D6E0047344D /* ContactMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E7E4BE22999D6E0047344D /* ContactMessage.swift */; };
 		60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */; };
-		60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83D2064DBE10039BF61 /* APICall.swift */; };
 		60FAB8402064EE950039BF61 /* RGVC + uploading images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */; };
 		60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FAB842206503AE0039BF61 /* Stored Models.swift */; };
 		60FAB845206571340039BF61 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60FAB844206571340039BF61 /* icomoon.ttf */; };
@@ -402,7 +400,6 @@
 		601F83D02036A8BE00F9118B /* DateStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStatus.swift; sourceTree = "<group>"; };
 		601F83D22037367900F9118B /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		601F83D420373E9E00F9118B /* PlaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewModel.swift; sourceTree = "<group>"; };
-		6024132222272E7A0094E6E2 /* URIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URIs.swift; sourceTree = "<group>"; };
 		602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageView.swift; sourceTree = "<group>"; };
 		602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageView.xib; sourceTree = "<group>"; };
 		60302DDE2068FC7E0025D397 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
@@ -470,7 +467,6 @@
 		60E7E4BC22999D160047344D /* FetchMessagesInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchMessagesInput.swift; sourceTree = "<group>"; };
 		60E7E4BE22999D6E0047344D /* ContactMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactMessage.swift; sourceTree = "<group>"; };
 		60FAB83820642AB80039BF61 /* UINavigationItem + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem + config.swift"; sourceTree = "<group>"; };
-		60FAB83D2064DBE10039BF61 /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		60FAB83F2064EE950039BF61 /* RGVC + uploading images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGVC + uploading images.swift"; sourceTree = "<group>"; };
 		60FAB842206503AE0039BF61 /* Stored Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stored Models.swift"; sourceTree = "<group>"; };
 		60FAB844206571340039BF61 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = icomoon.ttf; path = icomoon/fonts/icomoon.ttf; sourceTree = "<group>"; };
@@ -1033,8 +1029,6 @@
 			isa = PBXGroup;
 			children = (
 				0523117722A3EAA900A22157 /* enums */,
-				6024132222272E7A0094E6E2 /* URIs.swift */,
-				60FAB83D2064DBE10039BF61 /* APICall.swift */,
 				52D1A13A21D92859005EA2F0 /* ApiUtility.swift */,
 				0523118222A4198100A22157 /* HTTPLayer.swift */,
 				0523118422A4203F00A22157 /* ApiRequest.swift */,
@@ -1626,7 +1620,6 @@
 				60C972ED21C9ACC700A8D1C5 /* GiftViewModel.swift in Sources */,
 				05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */,
 				6092D633204950F700AFDA7B /* MyWallViewController.swift in Sources */,
-				60FAB83E2064DBE10039BF61 /* APICall.swift in Sources */,
 				52D1A14421DA3C30005EA2F0 /* Address.swift in Sources */,
 				0523118322A4198100A22157 /* HTTPLayer.swift in Sources */,
 				5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */,
@@ -1672,7 +1665,6 @@
 				604FB57E2283616500795CE2 /* AppDelegate + Login.swift in Sources */,
 				05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */,
 				52D1A13B21D92859005EA2F0 /* ApiUtility.swift in Sources */,
-				6024132322272E7A0094E6E2 /* URIs.swift in Sources */,
 				60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */,
 				607EEA83222EACDA00637A93 /* GiftsRequestInput.swift in Sources */,
 				05BFBBC31FDAA45C00DBCDDF /* Time.swift in Sources */,

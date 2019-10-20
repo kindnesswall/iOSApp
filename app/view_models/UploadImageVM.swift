@@ -16,9 +16,8 @@ protocol UploadImageVMDelegate : class {
 class UploadImageVM : NSObject {
 
     weak var delegate : UploadImageVMDelegate?
+    var apiRequest = ApiRequest(HTTPLayer())
 
-    var sessions : [URLSession]=[]
-    var tasks : [URLSessionUploadTask]=[]
     var imageUrl: String?
     
     func upload(image:UIImage, onSuccess:@escaping ()->(), onFail:(()->())?) {
@@ -26,23 +25,18 @@ class UploadImageVM : NSObject {
         let imageData = image.jpegData(compressionQuality: 1)
         let imageInput = ImageInput(image: imageData!, imageFormat: .jpeg)
         
-        APICall.uploadImage(
-            url: URIs().image_upload,
-            input: imageInput,
-            sessions: &sessions,
-            tasks: &tasks,
-            delegate: self) { [weak self] (data, response, error) in
-                
-                ApiUtility.watch(data: data)
-                
-                if let imageSrc=ApiUtility.convert(data: data, to: ImageOutput.self)?.address {
-                    self?.uploadedSuccessfully()
-                    self?.imageUrl = imageSrc
-                    onSuccess()
-                } else {
-                    self?.uploadFailed()
-                    onFail?()
-                }
+        apiRequest.upload(imageInput: imageInput, urlSessionDelegate: self) { [weak self] (result) in
+            
+            switch(result){
+            case .failure(let error):
+                print(error)
+                self?.uploadFailed()
+                onFail?()
+            case .success(let imageSrc):
+                self?.uploadedSuccessfully()
+                self?.imageUrl = imageSrc
+                onSuccess()
+            }
         }
     }
     

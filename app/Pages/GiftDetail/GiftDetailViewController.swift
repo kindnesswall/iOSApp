@@ -119,6 +119,7 @@ class GiftDetailViewController: UIViewController {
         self.present(nc, animated: true, completion: nil)
         
     }
+    
     @IBAction func removeBtnClicked(_ sender: Any) {
         
         PopUpMessage.showPopUp(nibClass: PromptUser.self, data: LocalizationSystem.getStr(forKey: LanguageKeys.giftRemovingPrompt),animation:.none,declineHandler: nil) { (ـ) in
