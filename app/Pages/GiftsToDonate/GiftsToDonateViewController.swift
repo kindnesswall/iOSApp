@@ -14,7 +14,7 @@ class GiftsToDonateViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var viewModel:GiftsToDonateViewModel?
     var toUserId:Int?
-    lazy var apiRequest = ApiRequest(HTTPLayer())
+    lazy var apiService = ApiService(HTTPLayer())
 
     var donateGiftHandler:((Gift)->Void)?
     
@@ -55,7 +55,7 @@ class GiftsToDonateViewController: UIViewController {
         ,let toUserId = self.toUserId
             else { return }
         
-        apiRequest.donateGift(id: giftId, toUserId: toUserId) { [weak self](result) in
+        apiService.donateGift(id: giftId, toUserId: toUserId) { [weak self](result) in
             DispatchQueue.main.async {
                 switch(result){
                 case .failure(let error):

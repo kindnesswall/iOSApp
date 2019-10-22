@@ -1,5 +1,5 @@
 //
-//  ApiRequestProtocol.swift
+//  ApiServiceProtocol.swift
 //  app
 //
 //  Created by Hamed Ghadirian on 02.06.19.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol ApiRequestProtocol {
+protocol ApiServiceProtocol {
 
 }
 
-class ApiRequest:ApiRequestProtocol {
+class ApiService:ApiServiceProtocol {
     let httpLayer: HTTPLayerProtocol
     init(_ httpLayer: HTTPLayerProtocol) {
         self.httpLayer = httpLayer

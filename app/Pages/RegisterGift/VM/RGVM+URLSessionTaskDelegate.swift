@@ -18,7 +18,7 @@ extension RegisterGiftViewModel:URLSessionTaskDelegate{
             percent = 99
         }
         
-        guard let uploadIndex=apiRequest.findIndexOf(task: task) else {
+        guard let uploadIndex=apiService.findIndexOf(task: task) else {
             return
         }
         self.delegate?.updateUploadImage(index: uploadIndex, percent: percent)

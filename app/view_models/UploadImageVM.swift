@@ -16,7 +16,7 @@ protocol UploadImageVMDelegate : class {
 class UploadImageVM : NSObject {
 
     weak var delegate : UploadImageVMDelegate?
-    var apiRequest = ApiRequest(HTTPLayer())
+    var apiService = ApiService(HTTPLayer())
 
     var imageUrl: String?
     
@@ -25,7 +25,7 @@ class UploadImageVM : NSObject {
         let imageData = image.jpegData(compressionQuality: 1)
         let imageInput = ImageInput(image: imageData!, imageFormat: .jpeg)
         
-        apiRequest.upload(imageInput: imageInput, urlSessionDelegate: self) { [weak self] (result) in
+        apiService.upload(imageInput: imageInput, urlSessionDelegate: self) { [weak self] (result) in
             
             switch(result){
             case .failure(let error):

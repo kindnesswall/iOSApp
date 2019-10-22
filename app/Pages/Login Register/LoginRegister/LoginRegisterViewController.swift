@@ -11,7 +11,7 @@ import UIKit
 class LoginRegisterViewController: UIViewController {
     
     let userDefault=UserDefaults.standard
-    lazy var apiRequest = ApiRequest(HTTPLayer())
+    lazy var apiService = ApiService(HTTPLayer())
 
     @IBOutlet weak var guideLabel: UILabel!
     @IBOutlet weak var phoneNumberTextField: ShakingTextField!
@@ -111,7 +111,7 @@ class LoginRegisterViewController: UIViewController {
     }
     
     func requestPhoneNumberChange(to newPhoneNumber:String) {
-        apiRequest.requestPhoneNumberChange(to: newPhoneNumber) { [weak self] (result) in
+        apiService.requestPhoneNumberChange(to: newPhoneNumber) { [weak self] (result) in
             DispatchQueue.main.async {
                 self?.handleResult(result)
             }
@@ -119,7 +119,7 @@ class LoginRegisterViewController: UIViewController {
     }
     
     func registerUser(with phoneNumber:String) {
-        apiRequest.registerUser(phoneNumber: phoneNumber) { [weak self] (result) in
+        apiService.registerUser(phoneNumber: phoneNumber) { [weak self] (result) in
             DispatchQueue.main.async {
                 self?.handleResult(result)
             }

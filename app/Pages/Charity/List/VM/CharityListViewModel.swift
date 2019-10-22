@@ -13,10 +13,10 @@ class CharityListViewModel:NSObject {
     var charities:[Charity] = []
     
     lazy var httpLayer = HTTPLayer()
-    lazy var apiRequest = ApiRequest(httpLayer)
+    lazy var apiService = ApiService(httpLayer)
 
     func getList(compeletionHandler: @escaping ()->()) {
-        apiRequest.getCharityList { [weak self](result) in
+        apiService.getCharityList { [weak self](result) in
             switch(result){
             case .failure(let error):
                 print(error)

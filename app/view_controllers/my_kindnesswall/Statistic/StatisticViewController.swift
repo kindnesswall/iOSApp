@@ -16,7 +16,7 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
     @IBOutlet weak var tableView: UITableView!
     var initialLoadingIndicator:LoadingIndicator?
     
-    lazy var apiRequest = ApiRequest(HTTPLayer())
+    lazy var apiService = ApiService(HTTPLayer())
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,7 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
         
         startLoadingPage()
         
-        apiRequest.getStatistics { [weak self](result) in
+        apiService.getStatistics { [weak self](result) in
             
             self?.statisticsKeys = []
             self?.statisticsValues = []

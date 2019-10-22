@@ -12,7 +12,7 @@ class VerificationCodeViewController: UIViewController {
 
     var requestId:String!
     var session:URLSession?
-    lazy var apiRequest = ApiRequest(HTTPLayer())
+    lazy var apiService = ApiService(HTTPLayer())
 
     let userDefault = UserDefaults.standard
     
@@ -124,7 +124,7 @@ class VerificationCodeViewController: UIViewController {
     }
     
     func login(_ phoneNumber: String,_ activationCode: String) {
-        apiRequest.login(phoneNumber: phoneNumber, activationCode: activationCode) { [weak self] (result) in
+        apiService.login(phoneNumber: phoneNumber, activationCode: activationCode) { [weak self] (result) in
             DispatchQueue.main.async {
                 self?.handleLogin(result)
             }
@@ -132,7 +132,7 @@ class VerificationCodeViewController: UIViewController {
     }
     
     func validatePhoneNumberChange(_ phoneNumber: String,_ activationCode: String) {
-        apiRequest.validatePhoneNumberChange(to: phoneNumber, with: activationCode) { [weak self] (result) in
+        apiService.validatePhoneNumberChange(to: phoneNumber, with: activationCode) { [weak self] (result) in
             DispatchQueue.main.async {
                 self?.handleLogin(result)
             }
@@ -211,7 +211,7 @@ class VerificationCodeViewController: UIViewController {
             return
         }
         
-        apiRequest.registerUser(phoneNumber: mobile) { [weak self] (result) in
+        apiService.registerUser(phoneNumber: mobile) { [weak self] (result) in
             DispatchQueue.main.async {
                 self?.handleRegisterUser(result)
             }

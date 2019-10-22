@@ -15,7 +15,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
     let showCities:Bool
     let showRegions:Bool
     
-    lazy var apiRequest = ApiRequest(HTTPLayer())
+    lazy var apiService = ApiService(HTTPLayer())
     
     enum PlaceType {
         case province
@@ -80,7 +80,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
     }
     
     func getRegions(_ cityId:Int, _ completionHandler:(()->Void)?) {
-        apiRequest.getRegions(cityId) { [weak self](result) in
+        apiService.getRegions(cityId) { [weak self](result) in
             switch(result){
             case .failure(let error):
                 // FIXME: Plz Handle me
@@ -103,7 +103,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
     }
     
     func getProvinces(_ completionHandler:(()->Void)?) {
-        apiRequest.getProvinces { [weak self](result) in
+        apiService.getProvinces { [weak self](result) in
             switch(result){
             case .failure(let error):
                 // FIXME: Plz Handle me
@@ -126,7 +126,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
     }
     
     func getCitieOfProvince(id: Int, _ completionHandler:(()->Void)?) {
-        apiRequest.getCitieOfProvince(id: id) { [weak self](result) in
+        apiService.getCitieOfProvince(id: id) { [weak self](result) in
             switch(result){
             case .failure(let error):
                 // FIXME: Plz Handle me

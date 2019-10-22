@@ -19,7 +19,7 @@ class HomeVM: NSObject {
     var lazyLoadingCount=20
     
     lazy var httpLayer = HTTPLayer()
-    lazy var apiRequest = ApiRequest(httpLayer)
+    lazy var apiService = ApiService(httpLayer)
     
     func reloadPage(){
         if initialGiftsLoadingHasOccurred {
@@ -40,7 +40,7 @@ class HomeVM: NSObject {
         guard let giftId = gifts[rowNumber].id else {
             return
         }
-        apiRequest.giftApprovedAfterReview(giftId: giftId) { (result) in
+        apiService.giftApprovedAfterReview(giftId: giftId) { (result) in
             completion(result)
         }
     }
@@ -52,7 +52,7 @@ class HomeVM: NSObject {
         guard let giftId = gifts[rowNumber].id else {
             return
         }
-        apiRequest.giftRejectedAfterReview(giftId: giftId) { (result) in
+        apiService.giftRejectedAfterReview(giftId: giftId) { (result) in
             completion(result)
         }
     }
@@ -144,7 +144,7 @@ class HomeVM: NSObject {
             endPoint = Endpoint.GetGifts(input: input)
         }
         
-        apiRequest.getGifts(endPoint: endPoint) { [weak self] (result) in
+        apiService.getGifts(endPoint: endPoint) { [weak self] (result) in
             DispatchQueue.main.async {
                 self?.handleGetGift(result, beforeId)
             }

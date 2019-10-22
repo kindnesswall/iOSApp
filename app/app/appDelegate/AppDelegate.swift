@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let keychain = KeychainSwift()
     var isActiveAfterBioAuth:Bool = false
     var current_time:Time?
-    var apiRequest = ApiRequest(HTTPLayer())
+    var apiService = ApiService(HTTPLayer())
 
     public var tabBarController = MainTabBarController()
     

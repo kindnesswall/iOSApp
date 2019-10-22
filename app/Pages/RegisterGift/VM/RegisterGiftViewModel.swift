@@ -11,7 +11,7 @@ import UIKit
 class RegisterGiftViewModel: NSObject {
     
     var imagesUrl:[String] = []
-    var apiRequest = ApiRequest(HTTPLayer())
+    var apiService = ApiService(HTTPLayer())
     
     var category:Category?
     var dateStatus:DateStatus?
@@ -104,7 +104,7 @@ class RegisterGiftViewModel: NSObject {
             completion(.failure(AppError.NoData))
             return
         }
-        apiRequest.editGift(gift) { (result) in
+        apiService.editGift(gift) { (result) in
             switch result {
             case .failure(let error):
                 completion(.failure(error))
@@ -121,7 +121,7 @@ class RegisterGiftViewModel: NSObject {
             return
         }
         
-        apiRequest.registerGift(gift, completion: completion)
+        apiService.registerGift(gift, completion: completion)
     }
     
 //    func sendGift(
@@ -169,7 +169,7 @@ class RegisterGiftViewModel: NSObject {
         let imageData = image.jpegData(compressionQuality: 1)
         let imageInput = ImageInput(image: imageData!, imageFormat: .jpeg)
         
-        apiRequest.upload(imageInput: imageInput, urlSessionDelegate: self) { [weak self] (result) in
+        apiService.upload(imageInput: imageInput, urlSessionDelegate: self) { [weak self] (result) in
             
             switch(result){
             case .failure(let error):
@@ -189,7 +189,7 @@ class RegisterGiftViewModel: NSObject {
             imagesUrl.remove(at: index)
         }
         
-        apiRequest.cancelRequestAt(index: index)
+        apiService.cancelRequestAt(index: index)
     }
     
     func upload(image:UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
@@ -373,7 +373,7 @@ class RegisterGiftViewModel: NSObject {
     
     
     func clearUploadImages() {
-        apiRequest.cancelAllRequests()        
+        apiService.cancelAllRequests()        
         imagesUrl = []
     }
 }

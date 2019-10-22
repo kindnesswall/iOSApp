@@ -19,7 +19,7 @@
 		0523117D22A3EBA600A22157 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523117C22A3EBA600A22157 /* HTTPMethod.swift */; };
 		0523117F22A3ED0800A22157 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523117E22A3ED0800A22157 /* Endpoint.swift */; };
 		0523118322A4198100A22157 /* HTTPLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523118222A4198100A22157 /* HTTPLayer.swift */; };
-		0523118522A4203F00A22157 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523118422A4203F00A22157 /* ApiRequest.swift */; };
+		0523118522A4203F00A22157 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523118422A4203F00A22157 /* ApiService.swift */; };
 		05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05335D431FD0D0A800601115 /* GiftDetailViewController.swift */; };
 		053892CF231314F600828372 /* GiftListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892CE231314F600828372 /* GiftListType.swift */; };
 		053892D4231322BE00828372 /* SendPushInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053892D3231322BE00828372 /* SendPushInput.swift */; };
@@ -259,7 +259,7 @@
 		0523117C22A3EBA600A22157 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		0523117E22A3ED0800A22157 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		0523118222A4198100A22157 /* HTTPLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPLayer.swift; sourceTree = "<group>"; };
-		0523118422A4203F00A22157 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
+		0523118422A4203F00A22157 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		05335D431FD0D0A800601115 /* GiftDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetailViewController.swift; sourceTree = "<group>"; };
 		053892CE231314F600828372 /* GiftListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListType.swift; sourceTree = "<group>"; };
 		053892D3231322BE00828372 /* SendPushInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPushInput.swift; sourceTree = "<group>"; };
@@ -1062,7 +1062,7 @@
 				0523117722A3EAA900A22157 /* enums */,
 				52D1A13A21D92859005EA2F0 /* ApiUtility.swift */,
 				0523118222A4198100A22157 /* HTTPLayer.swift */,
-				0523118422A4203F00A22157 /* ApiRequest.swift */,
+				0523118422A4203F00A22157 /* ApiService.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1727,7 +1727,7 @@
 				0593E51122D5502200C3B046 /* CharitySignupEditViewController.swift in Sources */,
 				60C972EB21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift in Sources */,
 				05BEA43C20498F1900147BF5 /* UITableView+RegisterDequeueCell.swift in Sources */,
-				0523118522A4203F00A22157 /* ApiRequest.swift in Sources */,
+				0523118522A4203F00A22157 /* ApiService.swift in Sources */,
 				5263D5FE21B915F400B634A8 /* LanguageVM.swift in Sources */,
 				5247C8AC21E388B2009E8770 /* GithubConstants.swift in Sources */,
 				60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */,

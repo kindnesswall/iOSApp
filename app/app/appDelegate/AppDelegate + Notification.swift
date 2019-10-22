@@ -81,7 +81,7 @@ extension AppDelegate {
         
         let input = PushNotificationRegister(deviceIdentifier: deviceIdentifier, devicePushToken: pushToken)
         
-        self.apiRequest.registerPush(input: input) { _ in }
+        self.apiService.registerPush(input: input) { _ in }
     }
 }
 

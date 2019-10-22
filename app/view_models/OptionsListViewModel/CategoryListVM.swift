@@ -13,7 +13,7 @@ class CategoryListVM: NSObject, OptionsListViewModelProtocol {
     let titleName:String
     let hasDefaultOption:Bool
     var categories=[Category]()
-    lazy var apiRequest = ApiRequest(HTTPLayer())
+    lazy var apiService = ApiService(HTTPLayer())
     
     func getElementsCount()->Int{
         return self.categories.count
@@ -26,7 +26,7 @@ class CategoryListVM: NSObject, OptionsListViewModelProtocol {
     }
 
     func fetchElements(completionHandler:(()->Void)?){
-        apiRequest.getCategories { [weak self](result) in
+        apiService.getCategories { [weak self](result) in
             switch result{
             case .failure(let appError):
                 print(appError)

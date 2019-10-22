@@ -12,7 +12,7 @@ class ContactsRestfulViewModel: NSObject {
 
     weak var delegate : ContactsViewModelNetworkInterface?
     lazy var httpLayer = HTTPLayer()
-    lazy var apiRequest = ApiRequest(httpLayer)
+    lazy var apiService = ApiService(httpLayer)
     
     override init() {
         super.init()
@@ -27,7 +27,7 @@ class ContactsRestfulViewModel: NSObject {
 
 extension ContactsRestfulViewModel : ContactsViewModelNetwork {
     func sendTextMessage(textMessage: TextMessage) {
-        apiRequest.sendTextMessage(textMessage: textMessage) { result in
+        apiService.sendTextMessage(textMessage: textMessage) { result in
             switch result {
             case .success(let ackMessage):
                 DispatchQueue.main.async {
@@ -40,7 +40,7 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
     }
     
     func sendAck(ackMessage:AckMessage,completionHandler:(()->Void)?) {
-        apiRequest.sendAck(ackMessage: ackMessage) { result in
+        apiService.sendAck(ackMessage: ackMessage) { result in
             switch result {
             case .success(_):
                 completionHandler?()
@@ -51,7 +51,7 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
     }
     
     func fetchContacts() {
-        apiRequest.getContacts { result in
+        apiService.getContacts { result in
             switch result {
             case .success(let contactMessages):
                 DispatchQueue.main.async {
@@ -69,7 +69,7 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
     
     func fetchMessages(chatId: Int, beforeId: Int?) {
         let input = FetchMessagesInput(chatId: chatId, beforeId: beforeId)
-        apiRequest.fetchMessages(input: input) { result in
+        apiService.fetchMessages(input: input) { result in
             switch result {
             case .success(let contactMessage):
                 

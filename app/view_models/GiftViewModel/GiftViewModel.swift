@@ -23,7 +23,7 @@ class GiftViewModel: NSObject {
     var lazyLoadingCount=20
     
     lazy var httpLayer = HTTPLayer()
-    lazy var apiRequest = ApiRequest(httpLayer)
+    lazy var apiService = ApiService(httpLayer)
     
     init(giftListType:GiftListType) {
         self.giftListType = giftListType
@@ -97,7 +97,7 @@ class GiftViewModel: NSObject {
             endPoint = Endpoint.UserRegisteredGifts(userId: userId, input: input)
         }
         
-        apiRequest.getGifts(endPoint:endPoint) { [weak self] (result) in
+        apiService.getGifts(endPoint:endPoint) { [weak self] (result) in
             
             DispatchQueue.main.async {
                 self?.handleGetGift(result, beforeId)

@@ -9,14 +9,14 @@
 import Foundation
 
 class GiftDetailVM: NSObject {
-    lazy var apiRequest = ApiRequest(HTTPLayer())
+    lazy var apiService = ApiService(HTTPLayer())
 
     func removeGift(id:Int, completion: @escaping (Result<Void>)-> Void) {
-        apiRequest.removeGift(id: id, completion: completion)
+        apiService.removeGift(id: id, completion: completion)
     }
     
     func requestGift(id: Int, completion: @escaping (Result<Chat>)-> Void) {
-        apiRequest.requestGift(id: id,completion: completion)
+        apiService.requestGift(id: id,completion: completion)
     }
     
 }

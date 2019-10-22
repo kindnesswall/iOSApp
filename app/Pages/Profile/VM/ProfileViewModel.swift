@@ -34,7 +34,7 @@ class ProfileViewModel : UploadImageVM {
     
     func updateUser(name: String?, completion: @escaping (Result<Void>)-> Void) {
         let profile = UserProfile.Input(name: name, image: imageUrl)
-        apiRequest.updateUser(profile: profile) { (result) in
+        apiService.updateUser(profile: profile) { (result) in
             switch result {
             case .failure(let error):
                 completion(.failure(error))
@@ -46,7 +46,7 @@ class ProfileViewModel : UploadImageVM {
     
     func getProfile(completion: @escaping (Result<UserProfile>)-> Void) {
         if let userId = KeychainSwift().get(AppConst.KeyChain.USER_ID), let id = Int(userId) {
-            apiRequest.getUserProfile(userId: id) { [weak self](result) in
+            apiService.getUserProfile(userId: id) { [weak self](result) in
                 switch result {
                 case .failure(let error):
                     completion(.failure(error))
