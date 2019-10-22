@@ -21,15 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var current_time:Time?
     var apiRequest = ApiRequest(HTTPLayer())
 
-    public var tabBarController:UITabBarController?
-    weak var startNewChatProtocol:StartNewChatProtocol?
-    weak var refreshChatProtocol:RefreshChatProtocol?
+    public var tabBarController = MainTabBarController()
     
-    var tabBarPagesRelaodDelegates = [ReloadablePage]()
-
     static let screenWidth = UIScreen.main.bounds.width
     var launchedShortcutItem: UIApplicationShortcutItem?
 
+    func initializeTabbar()  {
+            window = UIWindow(frame: UIScreen.main.bounds)
+        window!.rootViewController = self.tabBarController.tabBarController
+            
+        self.tabBarController.initializeAllTabs()
+        
+        window!.makeKeyAndVisible()
+    }
     
     public func isPasscodeSaved() -> Bool {
         if let _ = keychain.get(AppConst.KeyChain.PassCode) {
@@ -56,14 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
         
         // present the view controller
-        self.tabBarController?.present(activityViewController, animated: true, completion: nil)
+        self.tabBarController.tabBarController?.present(activityViewController, animated: true, completion: nil)
     }
     
     func showLockVC() {
         let controller = LockViewController()
         controller.mode = .CheckPassCode
         controller.isCancelable = false
-        self.tabBarController?.present(controller, animated: true, completion: nil)
+        self.tabBarController.tabBarController?.present(controller, animated: true, completion: nil)
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -75,6 +79,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             uDStandard.synchronize()
             keychain.clear()
         }
+        
+        let token = "5sybCu3/uSGG6FFhfFqMJw=="
+        keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
+        
+        keychain.set(true, forKey: AppConst.KeyChain.IsAdmin)
         
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
         
@@ -105,7 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if item.type == "ir.kindnesswall.publicusers.DonateGift" {
             // shortcut was triggered!
             //                showTabbarIntro()
-            self.tabBarController?.selectedIndex = AppConst.TabIndex.RegisterGift
+            self.tabBarController.tabBarController?.selectedIndex = AppConst.TabIndex.RegisterGift
             return true
         }
         return false
@@ -171,7 +180,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: IntroViewController.identifier) as! IntroViewController
-        self.tabBarController?.present(viewController, animated: true, completion: nil)
+        self.tabBarController.tabBarController?.present(viewController, animated: true, completion: nil)
         
     }
     

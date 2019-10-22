@@ -95,7 +95,7 @@ class GiftDetailViewController: UIViewController {
     }
     
     @IBAction func requestBtnClicked(_ sender: Any) {
-        guard AppDelegate.me().checkForLogin() else {
+        guard AppDelegate.me().tabBarController.checkForLogin() else {
             return
         }
         
@@ -186,7 +186,7 @@ class GiftDetailViewController: UIViewController {
         let giftRequestChatMessage = LocalizationSystem.getStr(forKey: LanguageKeys.giftRequestChatMessage)
         let text = "\(giftRequestChatMessage) '\(self.gift?.title ?? "")'"
         
-        let startNewChatProtocol = AppDelegate.me().startNewChatProtocol
+        let startNewChatProtocol = AppDelegate.me().tabBarController.startNewChatProtocol
         guard let messagesViewModel = startNewChatProtocol?.writeMessage(text: text, chatId: chatId) else {
             return
         }

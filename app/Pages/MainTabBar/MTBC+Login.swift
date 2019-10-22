@@ -1,16 +1,16 @@
 //
-//  AppDelegate + Login.swift
+//  MTBC+Login.swift
 //  app
 //
-//  Created by Amir Hossein on 5/8/19.
+//  Created by Hamed Ghadirian on 22.10.19.
 //  Copyright © 2019 Hamed.Gh. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import KeychainSwift
+import UIKit
 
-extension AppDelegate {
-    
+extension MainTabBarController {
     func login(userID:String,token:String,isAdmin:Bool,isCharity:Bool){
         let keychain = KeychainSwift()
         
@@ -19,7 +19,7 @@ extension AppDelegate {
         keychain.set(isAdmin, forKey: AppConst.KeyChain.IsAdmin)
         keychain.set(isCharity, forKey: AppConst.KeyChain.IsCharity)
         
-        registerPush()
+        AppDelegate.me().registerPush()
         resetAppAfterSwitchUser()
     }
     
@@ -56,5 +56,4 @@ extension AppDelegate {
         showLoginVC()
         return false
     }
-    
 }

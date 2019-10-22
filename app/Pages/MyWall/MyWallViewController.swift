@@ -310,7 +310,7 @@ extension MyWallViewController : UITableViewDelegate {
     
     
     func reloadOtherVCs(){
-        AppDelegate.me().reloadTabBarPages(currentPage: self)
+        AppDelegate.me().tabBarController.reloadTabBarPages(currentPage: self)
     }
 }
 

@@ -215,7 +215,7 @@ class RegisterGiftViewController: UIViewController {
     }
     
     func reloadOtherPages(){
-        AppDelegate.me().reloadTabBarPages(currentPage: nil)
+        AppDelegate.me().tabBarController.reloadTabBarPages(currentPage: nil)
     }
     
 }

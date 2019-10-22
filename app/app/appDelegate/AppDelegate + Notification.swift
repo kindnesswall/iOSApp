@@ -74,7 +74,7 @@ extension AppDelegate {
         registerPush(deviceIdentifier: keychain.get(AppConst.KeyChain.DeviceIdentifier),pushToken: keychain.get(AppConst.KeyChain.PushToken))
     }
     func registerPush(deviceIdentifier:String?,pushToken:String?){
-        guard isUserLogedIn(),
+        guard self.tabBarController.isUserLogedIn(),
             let deviceIdentifier = deviceIdentifier,
             let pushToken = pushToken
         else { return }
@@ -98,6 +98,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             return
         }
         
-        self.refreshChatProtocol?.fetchChat(chatId: message.chatId)
+        self.tabBarController.refreshChatProtocol?.fetchChat(chatId: message.chatId)
     }
 }
