@@ -23,9 +23,6 @@ class MainTabBarController : NSObject{
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         self.tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController
         self.tabBarController?.delegate=self
-    }
-    
-    func initializeAllTabs() {
         initializeTabsViewControllers()
     }
     

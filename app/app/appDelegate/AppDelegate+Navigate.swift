@@ -26,19 +26,14 @@ extension AppDelegate{
         self.tabBarController.tabBarController?.present(activityViewController, animated: true, completion: nil)
     }
     
-    func showLockVC() {
-        let controller = LockViewController()
-        controller.mode = .CheckPassCode
-        controller.isCancelable = false
-        self.tabBarController.tabBarController?.present(controller, animated: true, completion: nil)
-    }
+    
     
     func showTabbarIntro() {
         
         initializeTabbar()
         
         if !uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO) {
-            showIntro()
+            mainCoordinator?.showIntro()
             uDStandard.set(true, forKey: AppConst.UserDefaults.WATCHED_INTRO)
             uDStandard.synchronize()
         }
@@ -61,13 +56,5 @@ extension AppDelegate{
         window!.rootViewController = vc
         window!.makeKeyAndVisible()
     }
-    
-    
-    func showIntro() {
-        
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: IntroViewController.identifier) as! IntroViewController
-        self.tabBarController.tabBarController?.present(viewController, animated: true, completion: nil)
-        
-    }
+
 }

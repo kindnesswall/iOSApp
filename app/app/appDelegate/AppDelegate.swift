@@ -21,17 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var current_time:Time?
     var apiService = ApiService(HTTPLayer())
 
-    public var tabBarController = MainTabBarController()
     
+    public var tabBarController = MainTabBarController()
+    var mainCoordinator:MainCoordinator?
+
     static let screenWidth = UIScreen.main.bounds.width
     var launchedShortcutItem: UIApplicationShortcutItem?
 
     func initializeTabbar()  {
         window = UIWindow(frame: UIScreen.main.bounds)
+        if let tabBarController = self.tabBarController.tabBarController {
+            mainCoordinator = MainCoordinator(tabBarController:tabBarController)
+        }
         window!.rootViewController = self.tabBarController.tabBarController
             
-        self.tabBarController.initializeAllTabs()
-        
         window!.makeKeyAndVisible()
     }
     
@@ -57,11 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             uDStandard.synchronize()
             keychain.clear()
         }
-        
-        let token = "5sybCu3/uSGG6FFhfFqMJw=="
-        keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
-        
-        keychain.set(true, forKey: AppConst.KeyChain.IsAdmin)
         
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
         
@@ -109,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("\n\napplicationDidBecomeActive\n\n")
         
         if isPasscodeSaved(), !isActiveAfterBioAuth {
-            showLockVC()
+            mainCoordinator?.showLockVC()
         }
         isActiveAfterBioAuth = false
         
