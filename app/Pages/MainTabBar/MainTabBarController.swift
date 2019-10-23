@@ -61,7 +61,8 @@ class MainTabBarController : NSObject{
         switch tabIndex {
         case AppConst.TabIndex.HOME:
             controller=HomeViewController(vm: HomeVM())
-        
+//            var image = UIImage(name: AppImages.Github)
+//            controller.tabBarItem = UITabBarItem(title: AppImages.Github, image: image, tag: 1)
         case AppConst.TabIndex.Charities:
             let charitiesViewController = CharityListViewController()
             controller = charitiesViewController

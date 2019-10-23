@@ -13,29 +13,26 @@ import UserNotifications
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var window: UIWindow?
     static let uDStandard = UserDefaults.standard
     let uDStandard = UserDefaults.standard
     let keychain = KeychainSwift()
     var isActiveAfterBioAuth:Bool = false
     var current_time:Time?
     var apiService = ApiService(HTTPLayer())
-
     
-    public var tabBarController = MainTabBarController()
-    var mainCoordinator:MainCoordinator?
-
+    var mainCoordinator:MainCoordinator = MainCoordinator(with: UIWindow(frame: UIScreen.main.bounds))
+    
     static let screenWidth = UIScreen.main.bounds.width
     var launchedShortcutItem: UIApplicationShortcutItem?
-
-    func initializeTabbar()  {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        if let tabBarController = self.tabBarController.tabBarController {
-            mainCoordinator = MainCoordinator(tabBarController:tabBarController)
+    
+    func showTabbarIntro() {
+        mainCoordinator.showRootView()
+        
+        if !uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO) {
+            mainCoordinator.showIntro()
+            uDStandard.set(true, forKey: AppConst.UserDefaults.WATCHED_INTRO)
+            uDStandard.synchronize()
         }
-        window!.rootViewController = self.tabBarController.tabBarController
-            
-        window!.makeKeyAndVisible()
     }
     
     public func isPasscodeSaved() -> Bool {
@@ -61,10 +58,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             keychain.clear()
         }
         
+        
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
         
         if uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY) == nil {
-            showSelectCountryVC()
+            mainCoordinator.showSelectCountryVC()
         }else{
             checkLanguageSelectedOrNot()
         }
@@ -82,15 +80,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE) {
             showTabbarIntro()
         }else{
-            showSelectLanguageVC()
+            mainCoordinator.showSelectLanguageVC()
         }
     }
     
     func handleShortCut(_ item: UIApplicationShortcutItem) -> Bool {
         if item.type == "ir.kindnesswall.publicusers.DonateGift" {
-            // shortcut was triggered!
-            //                showTabbarIntro()
-            self.tabBarController.tabBarController?.selectedIndex = AppConst.TabIndex.RegisterGift
+            mainCoordinator.showRegisterGiftTab()
             return true
         }
         return false
@@ -107,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("\n\napplicationDidBecomeActive\n\n")
         
         if isPasscodeSaved(), !isActiveAfterBioAuth {
-            mainCoordinator?.showLockVC()
+            mainCoordinator.showLockVC()
         }
         isActiveAfterBioAuth = false
         

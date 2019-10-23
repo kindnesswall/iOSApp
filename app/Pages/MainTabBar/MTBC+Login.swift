@@ -33,7 +33,6 @@ extension MainTabBarController {
         resetAppAfterSwitchUser()
     }
     
-    
     func showLoginVC(){
         let controller=LoginRegisterViewController()
         
