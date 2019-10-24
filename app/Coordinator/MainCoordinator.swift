@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
-class MainCoordinator: Coordinator {    
-    var childCoordinators = [Coordinator]()
+class MainCoordinator: Coordinator {
+    var navigationController: CoordinatedNavigationController
+    
+//    var childCoordinators = [Coordinator]()
     var tabBarController:UITabBarController?
     var window: UIWindow
     var mainTabBarController = MainTabBarController()
@@ -19,6 +21,7 @@ class MainCoordinator: Coordinator {
 //
     init(with window:UIWindow) {
         self.window = window
+        self.navigationController = CoordinatedNavigationController()
 //        self.navigationController = tabBarController.navigationController ?? <#default value#>
     }
     

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */; };
+		05041EB523625246007F12E9 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05041EB423625246007F12E9 /* HomeCoordinator.swift */; };
+		05041EB72362552F007F12E9 /* CharitiesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05041EB62362552F007F12E9 /* CharitiesCoordinator.swift */; };
+		05041EB92362577C007F12E9 /* MoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05041EB82362577C007F12E9 /* MoreCoordinator.swift */; };
+		05041EBB23625C1B007F12E9 /* DonateGiftCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05041EBA23625C1B007F12E9 /* DonateGiftCoordinator.swift */; };
+		05041EBD23625CFA007F12E9 /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05041EBC23625CFA007F12E9 /* ChatCoordinator.swift */; };
 		0507C8631F8C1A920084CDF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0507C8621F8C1A920084CDF1 /* AppDelegate.swift */; };
 		0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8661F8C1A920084CDF1 /* Main.storyboard */; };
 		0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0507C8691F8C1A920084CDF1 /* Assets.xcassets */; };
@@ -245,6 +250,11 @@
 /* Begin PBXFileReference section */
 		006A9055ED7D4288198332F6 /* Pods-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.debug.xcconfig"; sourceTree = "<group>"; };
 		05029EB91FE2BF8F004D96B1 /* AppDelegate+getMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+getMe.swift"; sourceTree = "<group>"; };
+		05041EB423625246007F12E9 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		05041EB62362552F007F12E9 /* CharitiesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharitiesCoordinator.swift; sourceTree = "<group>"; };
+		05041EB82362577C007F12E9 /* MoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCoordinator.swift; sourceTree = "<group>"; };
+		05041EBA23625C1B007F12E9 /* DonateGiftCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateGiftCoordinator.swift; sourceTree = "<group>"; };
+		05041EBC23625CFA007F12E9 /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		0507C85F1F8C1A920084CDF1 /* app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0507C8621F8C1A920084CDF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0507C8671F8C1A920084CDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -932,6 +942,11 @@
 		05A13838235E512800A1C277 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				05041EB423625246007F12E9 /* HomeCoordinator.swift */,
+				05041EB62362552F007F12E9 /* CharitiesCoordinator.swift */,
+				05041EB82362577C007F12E9 /* MoreCoordinator.swift */,
+				05041EBC23625CFA007F12E9 /* ChatCoordinator.swift */,
+				05041EBA23625C1B007F12E9 /* DonateGiftCoordinator.swift */,
 				0548259E235F8659006C0E37 /* Coordinator.swift */,
 				054825A0235F86C6006C0E37 /* Storyboarded.swift */,
 				054825A2235F9822006C0E37 /* MainCoordinator.swift */,
@@ -1625,10 +1640,12 @@
 				053892D4231322BE00828372 /* SendPushInput.swift in Sources */,
 				52466DD721DB60520086F327 /* RegisterGiftViewModelDelegate.swift in Sources */,
 				5263D60321BB0CC300B634A8 /* DonatedGiftViewModel.swift in Sources */,
+				05041EB92362577C007F12E9 /* MoreCoordinator.swift in Sources */,
 				05BEA447204C21E800147BF5 /* PopUpView.swift in Sources */,
 				522F6B6621D8B202001C67B9 /* SelectCountryVM.swift in Sources */,
 				607E788E2279E25600FF0008 /* MessagesDateTableViewCell.swift in Sources */,
 				05444E4C231BBD0C006E5E09 /* CharityDetailViewModel.swift in Sources */,
+				05041EBB23625C1B007F12E9 /* DonateGiftCoordinator.swift in Sources */,
 				607E78772279DDB900FF0008 /* Date + PersianDate + Clock.swift in Sources */,
 				05BEA444204C1FFA00147BF5 /* PromptUser.swift in Sources */,
 				52DD769921C6E19600C2E012 /* CircleDotView.swift in Sources */,
@@ -1664,6 +1681,7 @@
 				607E789B2279E28D00FF0008 /* ControlMessage.swift in Sources */,
 				05632774234665EC00545CAF /* Region.swift in Sources */,
 				60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */,
+				05041EBD23625CFA007F12E9 /* ChatCoordinator.swift in Sources */,
 				0523117922A3EABB00A22157 /* Result.swift in Sources */,
 				60FAB843206503AE0039BF61 /* Stored Models.swift in Sources */,
 				5246724A21E342670086F327 /* API.swift in Sources */,
@@ -1680,6 +1698,7 @@
 				528A2DA921AD340200DECE0F /* LanguageKeys.swift in Sources */,
 				5247C8B821E38A52009E8770 /* StatisticViewController.swift in Sources */,
 				607E789D2279E28D00FF0008 /* Message.swift in Sources */,
+				05041EB72362552F007F12E9 /* CharitiesCoordinator.swift in Sources */,
 				604FB58522860C5700795CE2 /* GiftsToDonateViewModel.swift in Sources */,
 				053892DD2318754B00828372 /* ChatAckMessageInput.swift in Sources */,
 				604A31DD2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift in Sources */,
@@ -1753,6 +1772,7 @@
 				05BFBBD91FE24C4D00DBCDDF /* AppConst.swift in Sources */,
 				5247C8BC21E38A66009E8770 /* ContactUsViewController.swift in Sources */,
 				053892F9231AE9F500828372 /* MoreViewController.swift in Sources */,
+				05041EB523625246007F12E9 /* HomeCoordinator.swift in Sources */,
 				607EEA7B222C383A00637A93 /* OptionsListViewModelProtocol.swift in Sources */,
 				0523117D22A3EBA600A22157 /* HTTPMethod.swift in Sources */,
 				522F6B6421D8B173001C67B9 /* SelectCountryVC.swift in Sources */,

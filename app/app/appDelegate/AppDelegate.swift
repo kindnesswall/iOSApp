@@ -20,13 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var current_time:Time?
     var apiService = ApiService(HTTPLayer())
     
-    var mainCoordinator:MainCoordinator = MainCoordinator(with: UIWindow(frame: UIScreen.main.bounds))
-    
+    var mainCoordinator = MainCoordinator(with: UIWindow(frame: UIScreen.main.bounds))
+    var mainTabBarController = MainTabBarController(window: UIWindow(frame: UIScreen.main.bounds))
     static let screenWidth = UIScreen.main.bounds.width
     var launchedShortcutItem: UIApplicationShortcutItem?
     
     func showTabbarIntro() {
-        mainCoordinator.showRootView()
+        
+//        mainCoordinator.showRootView()
         
         if !uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO) {
             mainCoordinator.showIntro()

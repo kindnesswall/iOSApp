@@ -10,21 +10,51 @@ import Foundation
 import UIKit
 import KeychainSwift
 
-class MainTabBarController : NSObject{
-    public var tabBarController:UITabBarController?
+class MainTabBarController : UITabBarController{
+    //    public var tabBarController:UITabBarController?
     weak var startNewChatProtocol:StartNewChatProtocol?
     weak var refreshChatProtocol:RefreshChatProtocol?
     let keychain = KeychainSwift()
     var tabBarPagesRelaodDelegates = [ReloadablePage]()
-
-    override init() {
-        super.init()
-        
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        self.tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController
-        self.tabBarController?.delegate=self
-        initializeTabsViewControllers()
+    
+    let home = HomeCoordinator()
+    let charities = CharitiesCoordinator()
+    let moreCoordinator = MoreCoordinator()
+    let donateGiftCoordinator = DonateGiftCoordinator()
+    let chatCoordinator = ChatCoordinator()
+    
+    var window:UIWindow
+    init(window:UIWindow) {
+        self.window = window
+        super.init(nibName: nil, bundle: nil)
+        window.rootViewController = self
+        window.makeKeyAndVisible()
     }
+    convenience init() {
+        self.init(window:UIWindow())
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewControllers = [
+            home.navigationController,
+            charities.navigationController,
+            donateGiftCoordinator.navigationController,
+            chatCoordinator.navigationController,
+            moreCoordinator.navigationController]
+    }
+    
+    //    override init() {
+    //        super.init()
+    
+    //        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    //        self.tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController
+    //        self.tabBarController?.delegate=self
+    //        initializeTabsViewControllers()
+    //    }
     
     func initializeTabsViewControllers()  {
         
@@ -61,8 +91,8 @@ class MainTabBarController : NSObject{
         switch tabIndex {
         case AppConst.TabIndex.HOME:
             controller=HomeViewController(vm: HomeVM())
-//            var image = UIImage(name: AppImages.Github)
-//            controller.tabBarItem = UITabBarItem(title: AppImages.Github, image: image, tag: 1)
+            //            var image = UIImage(name: AppImages.Github)
+        //            controller.tabBarItem = UITabBarItem(title: AppImages.Github, image: image, tag: 1)
         case AppConst.TabIndex.Charities:
             let charitiesViewController = CharityListViewController()
             controller = charitiesViewController

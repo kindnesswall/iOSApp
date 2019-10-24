@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 
-protocol Coordinator {
-    var childCoordinators: [Coordinator] { get set }
-//    var navigationController: UINavigationController { get set }
-    var tabBarController:UITabBarController? { get set }
+import Foundation
+import UIKit
+
+class CoordinatedNavigationController: UINavigationController {
+    weak var coordinator: Coordinator?
+}
+
+protocol Coordinator:AnyObject {
+    var navigationController: CoordinatedNavigationController { get set }
 }
