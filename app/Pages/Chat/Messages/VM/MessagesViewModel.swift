@@ -12,7 +12,7 @@ import Foundation
 class MessagesViewModel {
     var userId:Int
     var chatId:Int
-    var contactInfo:UserProfile?
+    var contactProfile:UserProfile?
     var serverNotificationCount: Int?
     private var messages = [TextMessage]()
     var curatedMessages = [[TextMessage]]()
@@ -30,7 +30,7 @@ class MessagesViewModel {
     }
     
     func getContactId()->Int?{
-        return contactInfo?.id
+        return contactProfile?.id
     }
     
     var notificationCount: Int {

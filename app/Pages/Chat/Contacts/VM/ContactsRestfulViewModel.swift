@@ -13,8 +13,10 @@ class ContactsRestfulViewModel: NSObject {
     weak var delegate : ContactsViewModelNetworkInterface?
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
+    let blockedChats: Bool
     
-    override init() {
+    init(blockedChats: Bool) {
+        self.blockedChats = blockedChats
         super.init()
         self.fetchContacts()
     }
@@ -51,7 +53,7 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
     }
     
     func fetchContacts() {
-        apiService.getContacts { result in
+        apiService.getContacts(blockedChats: self.blockedChats) { result in
             switch result {
             case .success(let contactMessages):
                 DispatchQueue.main.async {
@@ -87,7 +89,7 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
     
     func fetchMessagesIsCompleted(contactMessage:ContactMessage){
         guard let textMessages = contactMessage.textMessages,
-            let chatId = contactMessage.chat?.id
+            let chatId = contactMessage.chatContacts?.chatId
             else { return }
         
         if textMessages.count != 0 {

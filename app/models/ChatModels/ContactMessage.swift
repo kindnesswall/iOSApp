@@ -9,12 +9,15 @@ import Foundation
 
 
 class ContactMessage: Codable {
-    var chat: Chat?
-    var contactInfo: UserProfile?
+    var chatContacts: ChatContacts?
+    var contactProfile: UserProfile?
     var textMessages: [TextMessage]?
     var notificationCount: Int?
-    
-    init(textMessages: [TextMessage]?) {
-        self.textMessages = textMessages
-    }
+    var blockStatus: BlockStatus?
+}
+
+
+final class BlockStatus: Codable {
+    var userIsBlocked: Bool?
+    var contactIsBlocked: Bool?
 }
