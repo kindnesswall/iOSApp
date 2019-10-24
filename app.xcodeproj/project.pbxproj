@@ -537,7 +537,7 @@
 				5246724921E342660086F327 /* API.swift */,
 				5246725221E349A40086F327 /* Users.graphql */,
 				52DD768721C6428300C2E012 /* GoogleService-Info.plist */,
-				05A13838235E512800A1C277 /* coordinator */,
+				05A13838235E512800A1C277 /* Coordinator */,
 				05029ED41FE9A663004D96B1 /* custom_classes */,
 				05BFBBCD1FDB112800DBCDDF /* extensions */,
 				05BFBBC41FDAA49E00DBCDDF /* app */,
@@ -929,14 +929,14 @@
 			path = SignupEdit;
 			sourceTree = "<group>";
 		};
-		05A13838235E512800A1C277 /* coordinator */ = {
+		05A13838235E512800A1C277 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
 				0548259E235F8659006C0E37 /* Coordinator.swift */,
 				054825A0235F86C6006C0E37 /* Storyboarded.swift */,
 				054825A2235F9822006C0E37 /* MainCoordinator.swift */,
 			);
-			path = coordinator;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		05BEA43320497AD500147BF5 /* MyWall */ = {
