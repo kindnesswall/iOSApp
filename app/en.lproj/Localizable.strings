@@ -150,6 +150,7 @@
 "tabBar_my_wall" = "My Wall";
 
 "chats" = "Chats";
+"blockedChats" = "Blocked Chats";
 
 "descriptionOfUserOnChatList" = "User With ID";
 "giftRequestChatMessage" = "Requestion of gift";
@@ -160,4 +161,6 @@
 "connecting" = "Connecting...";
 "newMessage" = "New Message";
 "contact" = "Contact";
+"block" = "Block";
+"unblock" = "Unblock";
 

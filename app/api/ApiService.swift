@@ -460,6 +460,21 @@ class ApiService:ApiServiceProtocol {
         }
     }
     
+    func blockOrUnblockChat(blockCase: BlockCase, chatId:Int, completion: @escaping (Result<Void>)-> Void) {
+        
+        let endPoint = blockCase == .block ? Endpoint.BlockChat(id: chatId) : Endpoint.UnBlockChat(id: chatId)
+        self.httpLayer.request(at: endPoint) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let appError):
+                    completion(.failure(appError))
+                case .success(_):
+                    completion(.success(Void()))
+                }
+            }
+        }
+    }
+    
     func fetchMessages(input: FetchMessagesInput, completion: @escaping (Result<ContactMessage>)-> Void){
         
         self.httpLayer.request(at: Endpoint.FetchMessages(input: input)) { result in
