@@ -133,7 +133,7 @@ extension HomeViewController:UITableViewDelegate {
     }
     
     func reloadOtherVCs(){
-        AppDelegate.me().tabBarController.reloadTabBarPages(currentPage: self)
+        AppDelegate.me().mainCoordinator.mainTabBarController.reloadTabBarPages(currentPage: self)
     }
     
 }

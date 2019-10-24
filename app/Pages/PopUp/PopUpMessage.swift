@@ -28,7 +28,7 @@ class PopUpMessage {
     }
     
     private static func presentCotroller(controller:UIViewController) {
-        guard var rootViewController = AppDelegate.me().window?.rootViewController else{
+        guard var rootViewController = AppDelegate.me().mainCoordinator.window.rootViewController else{
             return
         }
         if let presentedVC=rootViewController.presentedViewController {

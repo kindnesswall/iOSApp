@@ -20,6 +20,7 @@ extension AppDelegate {
                 self?.getNotificationSettings()
         }
     }
+    
     func getNotificationSettings() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             print("Notification settings: \(settings)")
@@ -28,8 +29,7 @@ extension AppDelegate {
             DispatchQueue.main.async {
                 UIApplication.shared.registerForRemoteNotifications()
             }
-        }
-        
+        }        
     }
     
     func application(
@@ -58,9 +58,7 @@ extension AppDelegate {
         print("Push Token: \(pushToken ?? "")")
         
         registerPush(deviceIdentifier: deviceIdentifier, pushToken: pushToken)
-        
     }
-    
     
     private func saveOrDelete(value:String?,key:String) {
         if let value = value {
@@ -73,8 +71,9 @@ extension AppDelegate {
     func registerPush(){
         registerPush(deviceIdentifier: keychain.get(AppConst.KeyChain.DeviceIdentifier),pushToken: keychain.get(AppConst.KeyChain.PushToken))
     }
+    
     func registerPush(deviceIdentifier:String?,pushToken:String?){
-        guard self.tabBarController.isUserLogedIn(),
+        guard self.mainCoordinator.mainTabBarController.isUserLogedIn(),
             let deviceIdentifier = deviceIdentifier,
             let pushToken = pushToken
         else { return }
@@ -98,6 +97,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             return
         }
         
-        self.tabBarController.refreshChatProtocol?.fetchChat(chatId: message.chatId)
+        self.mainCoordinator.mainTabBarController.refreshChatProtocol?.fetchChat(chatId: message.chatId)
     }
 }

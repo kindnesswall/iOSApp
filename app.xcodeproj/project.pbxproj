@@ -50,7 +50,6 @@
 		054825A5235F9CBA006C0E37 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054825A4235F9CBA006C0E37 /* MainTabBarController.swift */; };
 		054825A8235F9E52006C0E37 /* MTBC+UITabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054825A7235F9E52006C0E37 /* MTBC+UITabBarControllerDelegate.swift */; };
 		054825AA235F9E81006C0E37 /* MTBC+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054825A9235F9E81006C0E37 /* MTBC+Login.swift */; };
-		054825AC235FA7B7006C0E37 /* AppDelegate+Navigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054825AB235FA7B7006C0E37 /* AppDelegate+Navigate.swift */; };
 		054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */; };
 		054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */; };
 		054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */; };
@@ -292,7 +291,6 @@
 		054825A4235F9CBA006C0E37 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		054825A7235F9E52006C0E37 /* MTBC+UITabBarControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTBC+UITabBarControllerDelegate.swift"; sourceTree = "<group>"; };
 		054825A9235F9E81006C0E37 /* MTBC+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MTBC+Login.swift"; sourceTree = "<group>"; };
-		054825AB235FA7B7006C0E37 /* AppDelegate+Navigate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Navigate.swift"; sourceTree = "<group>"; };
 		054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftTableViewCell.swift; sourceTree = "<group>"; };
 		054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Light.ttf; sourceTree = "<group>"; };
 		054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Bold.ttf; sourceTree = "<group>"; };
@@ -824,7 +822,6 @@
 			children = (
 				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
 				6066C3BA22C7B23400BCB50A /* AppDelegate + Notification.swift */,
-				054825AB235FA7B7006C0E37 /* AppDelegate+Navigate.swift */,
 			);
 			path = appDelegate;
 			sourceTree = "<group>";
@@ -1771,7 +1768,6 @@
 				053C46F82294A82A00074761 /* ResponseModel.swift in Sources */,
 				52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */,
 				607E78A02279E28D00FF0008 /* Chat.swift in Sources */,
-				054825AC235FA7B7006C0E37 /* AppDelegate+Navigate.swift in Sources */,
 				6066C3C522D0B8CF00BCB50A /* PushNotificationRegister.swift in Sources */,
 				054825A5235F9CBA006C0E37 /* MainTabBarController.swift in Sources */,
 				6033DA9E22B4F62300D43738 /* AuthOutput.swift in Sources */,

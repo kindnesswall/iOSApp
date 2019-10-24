@@ -33,7 +33,7 @@ class MoreViewController: UIViewController {
     @IBOutlet weak var passcodeTouchIDBtn: UIButton!
     
     @IBAction func shareApp(_ sender: Any) {
-        AppDelegate.me().shareApp()
+        AppDelegate.me().mainCoordinator.shareApp()
     }
     
     func isLogedin() -> Bool {
@@ -46,7 +46,7 @@ class MoreViewController: UIViewController {
     
     @IBAction func showMyWall(_ sender: Any) {
         guard isLogedin() else {
-            AppDelegate.me().tabBarController.showLoginVC()
+            AppDelegate.me().mainCoordinator.mainTabBarController.showLoginVC()
             return
         }
         
@@ -57,7 +57,7 @@ class MoreViewController: UIViewController {
     
     @IBAction func addNewCharity(_ sender: Any) {
         guard isLogedin() else {
-            AppDelegate.me().tabBarController.showLoginVC()
+            AppDelegate.me().mainCoordinator.mainTabBarController.showLoginVC()
             return
         }
         
@@ -73,7 +73,7 @@ class MoreViewController: UIViewController {
     
     @IBAction func showReviewQueue(_ sender: Any) {
         guard isLogedin() else {
-            AppDelegate.me().tabBarController.showLoginVC()
+            AppDelegate.me().mainCoordinator.mainTabBarController.showLoginVC()
             return
         }
         
@@ -90,7 +90,7 @@ class MoreViewController: UIViewController {
     
     @IBAction func showMyProfile(_ sender: Any) {
         guard isLogedin() else {
-            AppDelegate.me().tabBarController.showLoginVC()
+            AppDelegate.me().mainCoordinator.mainTabBarController.showLoginVC()
             return
         }
         
@@ -126,7 +126,7 @@ class MoreViewController: UIViewController {
     @IBAction func logoutBtnClicked(_ sender: Any) {
         
         guard isLogedin() else{
-            AppDelegate.me().tabBarController.showLoginVC()
+            AppDelegate.me().mainCoordinator.mainTabBarController.showLoginVC()
             setLoginLogoutBtnTitle()
             return
         }
@@ -138,7 +138,7 @@ class MoreViewController: UIViewController {
             preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
-            AppDelegate.me().tabBarController.logout()
+            AppDelegate.me().mainCoordinator.mainTabBarController.logout()
             UIApplication.shared.shortcutItems = []
             self.setLoginLogoutBtnTitle()
         }))
