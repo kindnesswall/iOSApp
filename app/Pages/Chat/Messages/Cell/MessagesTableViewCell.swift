@@ -20,7 +20,7 @@ class MessagesTableViewCell: UITableViewCell {
     let textMargin:CGFloat = 10
     let stateLabelMaxWidth:CGFloat = 20
     let isNewMessageHeight:CGFloat = 40
-    let isNewMessageLabelWidth:CGFloat = 100
+    let isNewMessageLabelWidth:CGFloat = 140
     
     var containerStackView = UIStackView()
     var isNewMessageView = UIView()
@@ -102,7 +102,7 @@ class MessagesTableViewCell: UITableViewCell {
     }
     
     func configIsNewMessageLabels(){
-        self.isNewMessageLabel.font = AppConst.Resource.Font.getRegularFont(size: 17)
+        self.isNewMessageLabel.font = AppConst.Resource.Font.getRegularFont(size: 15)
         self.isNewMessageLabel.textAlignment = .center
         self.isNewMessageLabel.text = LocalizationSystem.getStr(forKey: LanguageKeys.newMessage)
         

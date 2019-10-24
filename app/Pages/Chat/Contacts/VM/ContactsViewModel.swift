@@ -79,14 +79,14 @@ extension ContactsViewModel : ContactsViewModelNetworkInterface {
     private func contactMessageIsReceived(contactMessage:ContactMessage){
         
         
-        guard let chatId = contactMessage.chat?.id  else {
+        guard let chatId = contactMessage.chatContacts?.chatId  else {
             return
         }
         
         let messagesViewModel = addContact(chatId: chatId)
         
-        if let contactInfo = contactMessage.contactInfo {
-            messagesViewModel.contactInfo = contactInfo
+        if let contactProfile = contactMessage.contactProfile {
+            messagesViewModel.contactProfile = contactProfile
         }
         if let notificationCount = contactMessage.notificationCount {
             messagesViewModel.serverNotificationCount = notificationCount

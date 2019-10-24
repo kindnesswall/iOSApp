@@ -13,3 +13,9 @@ final class Chat : Codable {
     var firstId:Int
     var secondId:Int
 }
+
+final class ChatContacts: Codable {
+    var chatId:Int
+    var userId:Int
+    var contactId:Int
+}

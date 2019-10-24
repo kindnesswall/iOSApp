@@ -87,7 +87,7 @@ extension ContactsRestfulViewModel : ContactsViewModelNetwork {
     
     func fetchMessagesIsCompleted(contactMessage:ContactMessage){
         guard let textMessages = contactMessage.textMessages,
-            let chatId = contactMessage.chat?.id
+            let chatId = contactMessage.chatContacts?.chatId
             else { return }
         
         if textMessages.count != 0 {

@@ -57,12 +57,12 @@ class ChatTableViewCell: UITableViewCell {
     func fillUI(viewModel:MessagesViewModel){
         
         let defaultName = LocalizationSystem.getStr(forKey: LanguageKeys.contact)
-        self.userNameLabel.text = viewModel.contactInfo?.name ?? defaultName
+        self.userNameLabel.text = viewModel.contactProfile?.name ?? defaultName
         
         let numberOfNotification = viewModel.notificationCount
         self.notificationLabel.text = AppLanguage.getNumberString(number: numberOfNotification.description)
         
-        if let imageAddr = viewModel.contactInfo?.image,
+        if let imageAddr = viewModel.contactProfile?.image,
             let url = URL(string: imageAddr) {
             self.userImage.kf.setImage(with: url, placeholder: imagePlaceholder)
         } else {
