@@ -24,11 +24,11 @@ class ContactsViewModel: NSObject {
     private var network: ContactsViewModelNetwork
     var initialContactsHasLoaded = false
     
-    override init() {
+    init(blockedChats: Bool) {
         let userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
         self.userId = userId ?? -1
         
-        network = ContactsRestfulViewModel()
+        network = ContactsRestfulViewModel(blockedChats: blockedChats)
         super.init()
         
         network.delegate = self

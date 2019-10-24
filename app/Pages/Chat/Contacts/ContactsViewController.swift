@@ -12,7 +12,8 @@ import UIKit
 class ContactsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    let viewModel = ContactsViewModel()
+    var viewModel: ContactsViewModel!
+    var blockedChats = false
     var loadingIndicator: LoadingIndicator?
     let refreshControl = UIRefreshControl()
     @IBOutlet weak var onEmptyListMessage: UIView!
@@ -20,6 +21,11 @@ class ContactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.viewModel = ContactsViewModel(blockedChats: self.blockedChats)
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
         self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.chats)
         

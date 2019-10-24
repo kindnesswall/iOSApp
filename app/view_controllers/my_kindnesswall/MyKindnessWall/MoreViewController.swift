@@ -55,6 +55,13 @@ class MoreViewController: UIViewController {
         self.navigationController?.pushViewController(myWallViewController, animated: true)
     }
     
+    @IBAction func showBlockedChats(_ sender: Any) {
+        
+        let contactsViewController = ContactsViewController()
+        contactsViewController.blockedChats = true
+        self.navigationController?.pushViewController(contactsViewController, animated: true)
+        
+    }
     @IBAction func addNewCharity(_ sender: Any) {
         guard isLogedin() else {
             AppDelegate.me().mainCoordinator.mainTabBarController.showLoginVC()

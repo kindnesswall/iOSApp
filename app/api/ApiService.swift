@@ -442,9 +442,11 @@ class ApiService:ApiServiceProtocol {
         }
     }
     
-    func getContacts(completion: @escaping (Result<[ContactMessage]>)-> Void){
+    func getContacts(blockedChats:Bool,completion: @escaping (Result<[ContactMessage]>)-> Void){
         
-        self.httpLayer.request(at: Endpoint.GetContacts) { result in
+        let endPoint = blockedChats ? Endpoint.GetBlockContacts : Endpoint.GetContacts
+        
+        self.httpLayer.request(at: endPoint) { result in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
