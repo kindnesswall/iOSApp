@@ -27,6 +27,8 @@ class GiftsToDonateViewController: UIViewController {
         
         self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.DonateGift)
         
+        self.navigationItem.rightBarButtonItem = UINavigationItem.getCloseNavigationItem(target: self, action: #selector(self.closePage))
+        
         if let toUserId = toUserId {
             self.viewModel = GiftsToDonateViewModel(toUserId: toUserId)
             self.viewModel?.delegate = self
@@ -50,6 +52,10 @@ class GiftsToDonateViewController: UIViewController {
         self.navigationController?.navigationBar.setDefaultStyle()
     }
     
+    @objc func closePage() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func donateGift(gift:Gift){
         guard let giftId = gift.id
         ,let toUserId = self.toUserId
@@ -62,7 +68,7 @@ class GiftsToDonateViewController: UIViewController {
                     print(error)
                 case .success(let gift):
                     self?.donateGiftHandler?(gift)
-                    self?.navigationController?.popViewController(animated: true)
+                    self?.closePage()
                 }
             }
         }

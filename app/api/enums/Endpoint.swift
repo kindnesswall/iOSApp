@@ -199,7 +199,7 @@ enum Endpoint:EndpointProtocol {
             return giftsBaseURL + "userRegistered/\(userId)"
         case .GetGifts:
             return giftsBaseURL
-        case .GiftsToDonate(let toUserId):
+        case .GiftsToDonate(let toUserId, _):
             return giftsBaseURL + "todonate/\(toUserId)"
 //        ---------------------------------------
         case .SendTextMessage:
