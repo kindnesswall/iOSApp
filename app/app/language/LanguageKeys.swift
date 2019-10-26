@@ -152,6 +152,7 @@ struct LanguageKeys {
     static let loading : String = "loading"
     
     static let chats : String = "chats"
+    static let blockedChats : String = "blockedChats"
     
     static let descriptionOfUserOnChatList : String = "descriptionOfUserOnChatList"
     
@@ -163,4 +164,7 @@ struct LanguageKeys {
     static let connecting : String = "connecting"
     static let newMessage : String = "newMessage"
     static let contact = "contact"
+    
+    static let block = "block"
+    static let unblock = "unblock"
 }

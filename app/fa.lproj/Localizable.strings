@@ -150,6 +150,7 @@
 "tabBar_my_wall" = "دیوار من";
 
 "chats" = "گفتگوها";
+"blockedChats" = "گفتگو‌های مسدود شده";
 
 "descriptionOfUserOnChatList" = "کاربر با شناسه";
 "giftRequestChatMessage" = "درخواست هدیه";
@@ -160,3 +161,5 @@
 "connecting" = "در حال اتصال...";
 "newMessage" = "پیغام جدید";
 "contact" = "مخاطب";
+"block" = "مسدود";
+"unblock" = "عدم مسدود";

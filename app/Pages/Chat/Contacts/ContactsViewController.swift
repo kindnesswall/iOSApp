@@ -16,6 +16,8 @@ class ContactsViewController: UIViewController {
     var blockedChats = false
     var loadingIndicator: LoadingIndicator?
     let refreshControl = UIRefreshControl()
+    lazy var httpLayer = HTTPLayer()
+    lazy var apiService = ApiService(httpLayer)
     @IBOutlet weak var onEmptyListMessage: UIView!
     
     
@@ -27,7 +29,8 @@ class ContactsViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.chats)
+        let titleKey = self.blockedChats ? LanguageKeys.blockedChats : LanguageKeys.chats
+        self.navigationItem.title = LocalizationSystem.getStr(forKey: titleKey)
         
         self.tableView.register(ChatTableViewCell.self, forCellReuseIdentifier: ChatTableViewCell.identifier)
         self.loadingIndicator=LoadingIndicator(view: self.view)
@@ -89,6 +92,38 @@ extension ContactsViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return ChatTableViewCell.cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let messagesViewModel = self.viewModel.allChats[indexPath.row]
+        let action = getSwipeAction(chatId: messagesViewModel.chatId)
+        return UISwipeActionsConfiguration(actions: [action])
+        
+    }
+    func getSwipeAction(chatId: Int) -> UIContextualAction {
+        
+        let titleKey = self.blockedChats ? LanguageKeys.unblock : LanguageKeys.block
+        let title = LocalizationSystem.getStr(forKey: titleKey)
+        
+        let action = UIContextualAction(style: .destructive, title: title) { [weak self] action, view, completion in
+            
+            self?.swipeHandler(chatId: chatId, completion: completion)
+            
+        }
+        return action
+    }
+    
+    func swipeHandler(chatId: Int, completion: @escaping (Bool)->Void ){
+        
+        let blockCase = self.blockedChats ? BlockCase.unblock : BlockCase.block
+        self.apiService.blockOrUnblockChat(blockCase: blockCase, chatId: chatId, completion: { result in
+            switch result {
+            case .failure(_):
+                break
+            case .success(_):
+                completion(true)
+            }
+        })
     }
 }
 

@@ -31,6 +31,11 @@ extension UINavigationItem {
         return backBtn
     }
     
+    static func getCloseNavigationItem(target:AnyObject,action:Selector?,color:UIColor=AppConst.Resource.Color.Tint)->UIBarButtonItem {
+        let closeBtn=UINavigationItem.getNavigationItem(target: target, action: action, text: "\u{e900}", font: AppConst.Resource.Font.getIcomoonFont(size: 25), color: color)
+        return closeBtn
+    }
+    
     func setRightBtn(target:AnyObject,action:Selector?,text:String,font:UIFont=AppConst.Resource.Font.getRegularFont(size: 14),color:UIColor=AppConst.Resource.Color.Tint) {
         
         let btn=UINavigationItem.getNavigationItem(target: target, action: action, text: text, font: font, color: color)

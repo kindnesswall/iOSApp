@@ -35,7 +35,7 @@ class Gift: Codable,GiftPresenter,RegisterGiftInput {
                     
     var id:Int?
     var userId:Int?
-    var donatedToUserId:String?
+    var donatedToUserId:Int?
     var isReviewed:Bool?
     var isRejected:Bool?
     var isDeleted:Bool?

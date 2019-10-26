@@ -21,3 +21,8 @@ final class BlockStatus: Codable {
     var userIsBlocked: Bool?
     var contactIsBlocked: Bool?
 }
+
+enum BlockCase {
+    case block
+    case unblock
+}

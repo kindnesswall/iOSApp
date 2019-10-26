@@ -67,8 +67,8 @@ class MessagesViewController: UIViewController,MessagesDelegate {
         controller.donateGiftHandler = { [weak self] gift in
             self?.sendGiftDonationMessage(gift: gift)
         }
-        self.navigationController?.presentPanModal(controller)
-//        pushViewController(controller, animated: true)
+        let nc = UINavigationController(rootViewController: controller)
+        self.present(nc, animated: true, completion: nil)
     }
     
     func sendGiftDonationMessage(gift:Gift){
