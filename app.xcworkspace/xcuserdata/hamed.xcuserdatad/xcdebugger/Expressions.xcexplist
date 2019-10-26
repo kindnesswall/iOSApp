@@ -3,10 +3,15 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ApiRequest.registerGift(_:completion:):ApiRequest.swift">
-      </ContextState>
-      <ContextState
-         contextName = "HomeVM.getGifts(beforeId:):HomeVM.swift">
+         contextName = "CharityDetailViewModel.dialNumber(number:):CharityDetailViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIApplication.shared.canOpenURL(url)">
+            </PersistentString>
+            <PersistentString
+               value = "UIApplication.shared.canOpenURL(phoneCallURL)">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "HomeViewController.getGiftDetailVCFor(index:):HomeViewController.swift">
@@ -20,7 +25,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in ApiRequest.getStatistics(completion:):ApiRequest.swift">
+         contextName = "Endpoint.path.getter:Endpoint.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in HTTPLayer.request(at:completion:):HTTPLayer.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(response as? HTTPURLResponse).statusCode">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MoreViewController.viewDidLoad():MoreViewController.swift">
@@ -31,10 +44,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in HTTPLayer.request(at:completion:):HTTPLayer.swift">
+         contextName = "ApiRequest.registerGift(_:completion:):ApiRequest.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MainTabBarController.initiateTab(tabIndex:):MainTabBarController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "(response as? HTTPURLResponse).statusCode">
+               value = "self.viewControllers">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -56,10 +72,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "HTTPLayer.createURLRequestFrom(endpoint:):HTTPLayer.swift">
+         contextName = "closure #1 in ApiRequest.getStatistics(completion:):ApiRequest.swift">
       </ContextState>
       <ContextState
-         contextName = "CharityListViewController.tableView(_:cellForRowAt:):CharityListViewController.swift">
+         contextName = "closure #1 in HomeVM.getGifts(beforeId:):HomeVM.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.statusCode">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "closure #1 in StatisticViewController.fetchStatistics():StatisticViewController.swift">
@@ -70,13 +91,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CharityDetailViewModel.dialNumber(number:):CharityDetailViewModel.swift">
+         contextName = "closure #1 in ApiRequest.registerEditGift(endPoint:_:):ApiRequest.swift">
+      </ContextState>
+      <ContextState
+         contextName = "RegisterGiftViewController.viewDidLoad():RegisterGiftViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "UIApplication.shared.canOpenURL(url)">
+               value = "self.vm">
             </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainTabBarController.initializeTabsViewControllers():MainTabBarController.swift">
+         <PersistentStrings>
             <PersistentString
-               value = "UIApplication.shared.canOpenURL(phoneCallURL)">
+               value = "viewControllers">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -89,29 +118,16 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in ApiRequest.registerEditGift(endPoint:_:):ApiRequest.swift">
+         contextName = "MainTabBarController.setTabsDelegates():MainTabBarController.swift">
       </ContextState>
       <ContextState
-         contextName = "Endpoint.path.getter:Endpoint.swift">
+         contextName = "HomeVM.getGifts(beforeId:):HomeVM.swift">
       </ContextState>
       <ContextState
-         contextName = "RegisterGiftViewController.viewDidLoad():RegisterGiftViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.vm">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "HTTPLayer.createURLRequestFrom(endpoint:):HTTPLayer.swift">
       </ContextState>
       <ContextState
          contextName = "RegisterGiftViewModel.editGift(completion:):RegisterGiftViewModel.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in HomeVM.getGifts(beforeId:):HomeVM.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "response.statusCode">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "HTTPLayer.handleResponse(_:_:_:completion:):HTTPLayer.swift">
@@ -120,6 +136,9 @@
                value = "httpResponse.statusCode">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CharityListViewController.tableView(_:cellForRowAt:):CharityListViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
