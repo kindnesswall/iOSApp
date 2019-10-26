@@ -1,5 +1,5 @@
 //
-//  MainCoordinator.swift
+//  AppCoordinator.swift
 //  app
 //
 //  Created by Hamed Ghadirian on 22.10.19.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MainCoordinator {
+class AppCoordinator {
     var window: UIWindow
     var tabBarController = TabBarController()
 

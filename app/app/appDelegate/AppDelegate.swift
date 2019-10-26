@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var current_time:Time?
     var apiService = ApiService(HTTPLayer())
     
-    lazy var mainCoordinator = MainCoordinator(with: UIWindow(frame: UIScreen.main.bounds))
+    lazy var mainCoordinator = AppCoordinator(with: UIWindow(frame: UIScreen.main.bounds))
     static let screenWidth = UIScreen.main.bounds.width
     var launchedShortcutItem: UIApplicationShortcutItem?
     

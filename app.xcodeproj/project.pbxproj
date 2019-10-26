@@ -830,6 +830,7 @@
 		05444E52231BD5BB006E5E09 /* appDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				054825A2235F9822006C0E37 /* AppCoordinator.swift */,
 				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
 				6066C3BA22C7B23400BCB50A /* AppDelegate + Notification.swift */,
 			);
@@ -939,17 +940,24 @@
 			path = SignupEdit;
 			sourceTree = "<group>";
 		};
+		059B1F4423644F7700596BD4 /* general */ = {
+			isa = PBXGroup;
+			children = (
+				0548259E235F8659006C0E37 /* Coordinator.swift */,
+				054825A0235F86C6006C0E37 /* Storyboarded.swift */,
+			);
+			path = general;
+			sourceTree = "<group>";
+		};
 		05A13838235E512800A1C277 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				059B1F4423644F7700596BD4 /* general */,
 				05041EB423625246007F12E9 /* HomeCoordinator.swift */,
 				05041EB62362552F007F12E9 /* CharitiesCoordinator.swift */,
 				05041EB82362577C007F12E9 /* MoreCoordinator.swift */,
 				05041EBC23625CFA007F12E9 /* ChatCoordinator.swift */,
 				05041EBA23625C1B007F12E9 /* DonateGiftCoordinator.swift */,
-				0548259E235F8659006C0E37 /* Coordinator.swift */,
-				054825A0235F86C6006C0E37 /* Storyboarded.swift */,
-				054825A2235F9822006C0E37 /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
