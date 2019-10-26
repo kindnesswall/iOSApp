@@ -22,7 +22,7 @@ class LockSettingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if AppDelegate.me().isPasscodeSaved() {
+        if AppDelegate.me().appViewModel.isPasscodeSaved() {
             turnPasscodeOnOffBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.TurnPasscodeOff), for: UIControl.State.normal)
             changePasscodeBtn.show()
         }else{
@@ -45,7 +45,7 @@ class LockSettingViewController: UIViewController {
     }
     
     @IBAction func turnPassOnOffBtnClicked(_ sender: Any) {
-        if AppDelegate.me().isPasscodeSaved() {
+        if AppDelegate.me().appViewModel.isPasscodeSaved() {
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
             
             alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.TurnPasscodeOff), style: UIAlertAction.Style.destructive, handler: { [weak self] (action) in

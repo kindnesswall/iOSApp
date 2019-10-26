@@ -14,11 +14,11 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     static let uDStandard = UserDefaults.standard
-    let uDStandard = UserDefaults.standard
+    
     let keychain = KeychainSwift()
     var isActiveAfterBioAuth:Bool = false
     var current_time:Time?
-    var apiService = ApiService(HTTPLayer())
+    
     let appViewModel = AppViewModel()
     
     lazy var appCoordinator = AppCoordinator(with: UIWindow(frame: UIScreen.main.bounds))
@@ -29,40 +29,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         appCoordinator.showRootView()
         
-        if !uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO) {
+        if !appViewModel.isUserWatchedIntro(){
             appCoordinator.showIntro()
-            uDStandard.set(true, forKey: AppConst.UserDefaults.WATCHED_INTRO)
-            uDStandard.synchronize()
+            appViewModel.userWatchedIntro()
         }
-    }
-    
-    public func isPasscodeSaved() -> Bool {
-        if let _ = keychain.get(AppConst.KeyChain.PassCode) {
-            return true
-        }
-        return false
-    }
-    
-    private func clearAllUserDefaultValues(){
-        let domain = Bundle.main.bundleIdentifier!
-        uDStandard.removePersistentDomain(forName: domain)
-        uDStandard.synchronize()
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
         
-        if uDStandard.object(forKey: AppConst.UserDefaults.FirstInstall) == nil {
-            uDStandard.set(false, forKey: AppConst.UserDefaults.FirstInstall)
-            uDStandard.synchronize()
-            keychain.clear()
+        if appViewModel.isItFirstTimeAppOpen() {
+            appViewModel.appOpenForTheFirstTime()
         }
-        
         
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
         
-        if uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY) == nil {
+        if appViewModel.isNotSelectedCountryBefore() {
             appCoordinator.showSelectCountryVC()
         }else{
             checkLanguageSelectedOrNot()
@@ -72,13 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             _ = handleShortCut(shortcutItem)
         }
         
-        registerForPushNotifications()
+        appViewModel.registerForPushNotifications()
         
         return true
     }
     
     func checkLanguageSelectedOrNot() {
-        if uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE) {
+        if appViewModel.isLanguageSelected() {
             showTabbarIntro()
         }else{
             appCoordinator.showSelectLanguageVC()
@@ -103,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("\n\napplicationDidBecomeActive\n\n")
         
-        if isPasscodeSaved(), !isActiveAfterBioAuth {
+        if appViewModel.isPasscodeSaved(), !isActiveAfterBioAuth {
             appCoordinator.showLockVC()
         }
         isActiveAfterBioAuth = false
@@ -119,9 +102,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func isIranSelected() -> Bool {
-        let selectedCountry = uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
-        return selectedCountry == AppConst.Country.IRAN
+    func application(
+        _ application: UIApplication,
+        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+        ) {
+        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        appViewModel.saveDeviceIdentifierAndPushToken(pushToken: token)
+    }
+    
+    func application(
+        _ application: UIApplication,
+        didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error)")
+        appViewModel.saveDeviceIdentifierAndPushToken(pushToken: nil)
     }
     
 }

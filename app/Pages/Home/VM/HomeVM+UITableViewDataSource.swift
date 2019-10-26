@@ -14,7 +14,7 @@ extension HomeVM:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if AppDelegate.me().isIranSelected(){
+        if AppDelegate.me().appViewModel.isIranSelected(){
             let index=indexPath.row+1
             if index==self.gifts.count {
                 if !self.isLoadingGifts {

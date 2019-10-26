@@ -160,7 +160,7 @@ class VerificationCodeViewController: UIViewController {
         case .success(let authOutput):
             
             AppDelegate.me().appViewModel.saveToKeychain(authOutput)
-            AppDelegate.me().registerPush()
+            AppDelegate.me().appViewModel.registerPush()
             AppDelegate.me().appCoordinator.refreshAppAfterSwitchUser()
             
             self.dismiss(animated: true, completion: {

@@ -110,7 +110,7 @@ class MoreViewController: UIViewController {
     
     @IBAction func passcodeTouchIDBtnClicked(_ sender: Any) {
         
-        if AppDelegate.me().isPasscodeSaved() {
+        if AppDelegate.me().appViewModel.isPasscodeSaved() {
             let controller = LockViewController()
             controller.mode = .CheckPassCode
             controller.onPasscodeCorrect = {
