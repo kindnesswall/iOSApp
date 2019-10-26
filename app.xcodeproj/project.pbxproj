@@ -52,8 +52,6 @@
 		0548259F235F8659006C0E37 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0548259E235F8659006C0E37 /* Coordinator.swift */; };
 		054825A1235F86C6006C0E37 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054825A0235F86C6006C0E37 /* Storyboarded.swift */; };
 		054825A3235F9822006C0E37 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054825A2235F9822006C0E37 /* AppCoordinator.swift */; };
-		054825A8235F9E52006C0E37 /* TBC+UITabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054825A7235F9E52006C0E37 /* TBC+UITabBarControllerDelegate.swift */; };
-		054825AA235F9E81006C0E37 /* TBC+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054825A9235F9E81006C0E37 /* TBC+Login.swift */; };
 		054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */; };
 		054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */; };
 		054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */; };
@@ -301,8 +299,6 @@
 		0548259E235F8659006C0E37 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		054825A0235F86C6006C0E37 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		054825A2235F9822006C0E37 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		054825A7235F9E52006C0E37 /* TBC+UITabBarControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TBC+UITabBarControllerDelegate.swift"; sourceTree = "<group>"; };
-		054825A9235F9E81006C0E37 /* TBC+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TBC+Login.swift"; sourceTree = "<group>"; };
 		054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftTableViewCell.swift; sourceTree = "<group>"; };
 		054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Light.ttf; sourceTree = "<group>"; };
 		054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Bold.ttf; sourceTree = "<group>"; };
@@ -852,8 +848,6 @@
 				059B1F4723645E8C00596BD4 /* TabBarViewModel.swift */,
 				059B1F452364502C00596BD4 /* TabBarCoordinator.swift */,
 				059B1F4223644EA100596BD4 /* TabBarController.swift */,
-				054825A7235F9E52006C0E37 /* TBC+UITabBarControllerDelegate.swift */,
-				054825A9235F9E81006C0E37 /* TBC+Login.swift */,
 			);
 			path = MainTabBar;
 			sourceTree = "<group>";
@@ -1682,7 +1676,6 @@
 				054825A3235F9822006C0E37 /* AppCoordinator.swift in Sources */,
 				604FB58222860B8100795CE2 /* GiftsToDonateViewController.swift in Sources */,
 				6080700B21B40F800046F940 /* UICollectionView + RegisterCell.swift in Sources */,
-				054825A8235F9E52006C0E37 /* TBC+UITabBarControllerDelegate.swift in Sources */,
 				52D1A14121D9376E005EA2F0 /* RGVC+vm delegate.swift in Sources */,
 				0523117F22A3ED0800A22157 /* Endpoint.swift in Sources */,
 				60E7E4BF22999D6E0047344D /* ContactMessage.swift in Sources */,
@@ -1796,7 +1789,6 @@
 				059B1F4323644EA100596BD4 /* TabBarController.swift in Sources */,
 				607E78852279E23600FF0008 /* MessagesViewModel.swift in Sources */,
 				52466DE721DBC6E80086F327 /* GiftDetailVM.swift in Sources */,
-				054825AA235F9E81006C0E37 /* TBC+Login.swift in Sources */,
 				053C46F82294A82A00074761 /* ResponseModel.swift in Sources */,
 				52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */,
 				059B1F462364502C00596BD4 /* TabBarCoordinator.swift in Sources */,
