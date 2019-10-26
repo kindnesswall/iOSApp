@@ -1,5 +1,5 @@
 //
-//  MainTabBarController.swift
+//  TabBarController.swift
 //  app
 //
 //  Created by Hamed Ghadirian on 22.10.19.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import KeychainSwift
 
-class MainTabBarController : UITabBarController{
+class TabBarController : UITabBarController{
     weak var startNewChatProtocol:StartNewChatProtocol?
     weak var refreshChatProtocol:RefreshChatProtocol?
     let keychain = KeychainSwift()

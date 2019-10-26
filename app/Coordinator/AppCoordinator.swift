@@ -11,7 +11,7 @@ import UIKit
 
 class MainCoordinator {
     var window: UIWindow
-    var mainTabBarController = MainTabBarController()
+    var tabBarController = TabBarController()
 
     init(with window:UIWindow = UIWindow() ) {
         self.window = window
@@ -19,24 +19,24 @@ class MainCoordinator {
     
     func showRootView() {
         window.makeKeyAndVisible()
-        window.rootViewController = self.mainTabBarController
+        window.rootViewController = self.tabBarController
     }
     
     func showRegisterGiftTab() {
-        self.mainTabBarController.tabBarController?.selectedIndex = AppConst.TabIndex.RegisterGift
+        self.tabBarController.tabBarController?.selectedIndex = AppConst.TabIndex.RegisterGift
     }
     
     func showLockVC() {
         let controller = LockViewController()
         controller.mode = .CheckPassCode
         controller.isCancelable = false
-        self.mainTabBarController.present(controller, animated: true, completion: nil)
+        self.tabBarController.present(controller, animated: true, completion: nil)
     }
     
     func showIntro() {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: IntroViewController.identifier) as! IntroViewController
-        self.mainTabBarController.present(viewController, animated: true, completion: nil)
+        self.tabBarController.present(viewController, animated: true, completion: nil)
     }
     
     func showSelectLanguageVC() {
@@ -67,7 +67,7 @@ class MainCoordinator {
         activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
         
         // present the view controller
-        self.mainTabBarController.present(activityViewController, animated: true, completion: nil)
+        self.tabBarController.present(activityViewController, animated: true, completion: nil)
     }
     
     

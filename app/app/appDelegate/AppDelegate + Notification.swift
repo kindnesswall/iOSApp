@@ -73,7 +73,7 @@ extension AppDelegate {
     }
     
     func registerPush(deviceIdentifier:String?,pushToken:String?){
-        guard self.mainCoordinator.mainTabBarController.isUserLogedIn(),
+        guard self.mainCoordinator.tabBarController.isUserLogedIn(),
             let deviceIdentifier = deviceIdentifier,
             let pushToken = pushToken
         else { return }
@@ -97,6 +97,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             return
         }
         
-        self.mainCoordinator.mainTabBarController.refreshChatProtocol?.fetchChat(chatId: message.chatId)
+        self.mainCoordinator.tabBarController.refreshChatProtocol?.fetchChat(chatId: message.chatId)
     }
 }

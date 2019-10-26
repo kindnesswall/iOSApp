@@ -10,7 +10,7 @@ import Foundation
 import KeychainSwift
 import UIKit
 
-extension MainTabBarController {
+extension TabBarController {
     func login(userID:String,token:String,isAdmin:Bool,isCharity:Bool){
         let keychain = KeychainSwift()
         
