@@ -71,15 +71,15 @@ extension AppDelegate {
     func registerPush(){
         registerPush(deviceIdentifier: keychain.get(AppConst.KeyChain.DeviceIdentifier),pushToken: keychain.get(AppConst.KeyChain.PushToken))
     }
-    
+
     func registerPush(deviceIdentifier:String?,pushToken:String?){
-        guard self.mainCoordinator.tabBarController.isUserLogedIn(),
+        guard AppDelegate.me().appViewModel.isUserLogedIn(),
             let deviceIdentifier = deviceIdentifier,
             let pushToken = pushToken
         else { return }
-        
+
         let input = PushNotificationRegister(deviceIdentifier: deviceIdentifier, devicePushToken: pushToken)
-        
+
         self.apiService.registerPush(input: input) { _ in }
     }
 }
@@ -97,6 +97,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             return
         }
         
-        self.mainCoordinator.tabBarController.refreshChatProtocol?.fetchChat(chatId: message.chatId)
+        self.appCoordinator.tabBarController.refreshChatProtocol?.fetchChat(chatId: message.chatId)
     }
 }

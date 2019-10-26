@@ -11,48 +11,20 @@ import KeychainSwift
 import UIKit
 
 extension TabBarController {
-    func login(userID:String,token:String,isAdmin:Bool,isCharity:Bool){
-        let keychain = KeychainSwift()
-        
-        keychain.set(userID, forKey: AppConst.KeyChain.USER_ID)
-        keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
-        keychain.set(isAdmin, forKey: AppConst.KeyChain.IsAdmin)
-        keychain.set(isCharity, forKey: AppConst.KeyChain.IsCharity)
-        
-        AppDelegate.me().registerPush()
-        resetAppAfterSwitchUser()
+    func refreshAppAfterSwitchUser(){
+        tabBarCoordinator.refreshAppAfterSwitchUser()
     }
     
     func logout(){
-        let keychain = KeychainSwift()
-        
-        keychain.delete(AppConst.KeyChain.USER_ID)
-        keychain.delete(AppConst.KeyChain.Authorization)
-        keychain.delete(AppConst.KeyChain.IsAdmin)
-        
-        resetAppAfterSwitchUser()
-    }
-    
-    func showLoginVC(){
-        let controller=LoginRegisterViewController()
-        
-        let nc = UINavigationController.init(rootViewController: controller)
-        self.tabBarController?.present(nc, animated: true, completion: nil)
-    }
-    
-    func isUserLogedIn() -> Bool {
-        
-        if let _=keychain.get(AppConst.KeyChain.Authorization) {
-            return true
-        }
-        return false
+        AppDelegate.me().appViewModel.clearUserSensitiveData()
+        tabBarCoordinator.refreshAppAfterSwitchUser()
     }
     
     func checkForLogin()->Bool{
-        if isUserLogedIn() {
+        if AppDelegate.me().appViewModel.isUserLogedIn() {
             return true
         }
-        showLoginVC()
+        tabBarCoordinator.showLoginView()
         return false
     }
 }

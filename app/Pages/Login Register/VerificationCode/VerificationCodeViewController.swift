@@ -158,9 +158,10 @@ class VerificationCodeViewController: UIViewController {
             }
             
         case .success(let authOutput):
-            if let userID = authOutput.token.userID?.description, let token = authOutput.token.token {
-                AppDelegate.me().mainCoordinator.tabBarController.login(userID: userID, token: token, isAdmin: authOutput.isAdmin, isCharity: authOutput.isCharity)
-            }
+            
+            AppDelegate.me().appViewModel.saveToKeychain(authOutput)
+            AppDelegate.me().registerPush()
+            AppDelegate.me().appCoordinator.refreshAppAfterSwitchUser()
             
             self.dismiss(animated: true, completion: {
                 UIApplication.shared.shortcutItems = [

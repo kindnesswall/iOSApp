@@ -19,17 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var isActiveAfterBioAuth:Bool = false
     var current_time:Time?
     var apiService = ApiService(HTTPLayer())
+    let appViewModel = AppViewModel()
     
-    lazy var mainCoordinator = AppCoordinator(with: UIWindow(frame: UIScreen.main.bounds))
+    lazy var appCoordinator = AppCoordinator(with: UIWindow(frame: UIScreen.main.bounds))
     static let screenWidth = UIScreen.main.bounds.width
     var launchedShortcutItem: UIApplicationShortcutItem?
     
     func showTabbarIntro() {
         
-        mainCoordinator.showRootView()
+        appCoordinator.showRootView()
         
         if !uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO) {
-            mainCoordinator.showIntro()
+            appCoordinator.showIntro()
             uDStandard.set(true, forKey: AppConst.UserDefaults.WATCHED_INTRO)
             uDStandard.synchronize()
         }
@@ -62,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
         
         if uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY) == nil {
-            mainCoordinator.showSelectCountryVC()
+            appCoordinator.showSelectCountryVC()
         }else{
             checkLanguageSelectedOrNot()
         }
@@ -80,13 +81,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE) {
             showTabbarIntro()
         }else{
-            mainCoordinator.showSelectLanguageVC()
+            appCoordinator.showSelectLanguageVC()
         }
     }
     
     func handleShortCut(_ item: UIApplicationShortcutItem) -> Bool {
         if item.type == "ir.kindnesswall.publicusers.DonateGift" {
-            mainCoordinator.showRegisterGiftTab()
+            appCoordinator.showRegisterGiftTab()
             return true
         }
         return false
@@ -103,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("\n\napplicationDidBecomeActive\n\n")
         
         if isPasscodeSaved(), !isActiveAfterBioAuth {
-            mainCoordinator.showLockVC()
+            appCoordinator.showLockVC()
         }
         isActiveAfterBioAuth = false
         

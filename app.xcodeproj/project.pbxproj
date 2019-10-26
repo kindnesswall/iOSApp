@@ -77,6 +77,8 @@
 		0593E51222D5502200C3B046 /* CharitySignupEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0593E51022D5502200C3B046 /* CharitySignupEditViewController.xib */; };
 		059B1F4323644EA100596BD4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059B1F4223644EA100596BD4 /* TabBarController.swift */; };
 		059B1F462364502C00596BD4 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059B1F452364502C00596BD4 /* TabBarCoordinator.swift */; };
+		059B1F4823645E8C00596BD4 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059B1F4723645E8C00596BD4 /* TabBarViewModel.swift */; };
+		059B1F4A2364640800596BD4 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059B1F492364640800596BD4 /* AppViewModel.swift */; };
 		05AE646F1FA2B43000FCCC28 /* ApiOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */; };
 		05BEA43820498EB400147BF5 /* UIView+hide+show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43720498EB400147BF5 /* UIView+hide+show.swift */; };
 		05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */; };
@@ -324,6 +326,8 @@
 		0593E51022D5502200C3B046 /* CharitySignupEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharitySignupEditViewController.xib; sourceTree = "<group>"; };
 		059B1F4223644EA100596BD4 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		059B1F452364502C00596BD4 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		059B1F4723645E8C00596BD4 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
+		059B1F492364640800596BD4 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppViewModel.swift; path = app/App/AppDelegate/AppViewModel.swift; sourceTree = SOURCE_ROOT; };
 		05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiOutputs.swift; sourceTree = "<group>"; };
 		05BEA43720498EB400147BF5 /* UIView+hide+show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+hide+show.swift"; sourceTree = "<group>"; };
 		05BEA43920498EF100147BF5 /* UIView+RegisterationHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RegisterationHelp.swift"; sourceTree = "<group>"; };
@@ -836,6 +840,7 @@
 				054825A2235F9822006C0E37 /* AppCoordinator.swift */,
 				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
 				6066C3BA22C7B23400BCB50A /* AppDelegate + Notification.swift */,
+				059B1F492364640800596BD4 /* AppViewModel.swift */,
 			);
 			path = appDelegate;
 			sourceTree = "<group>";
@@ -843,6 +848,7 @@
 		054825A6235F9DFB006C0E37 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				059B1F4723645E8C00596BD4 /* TabBarViewModel.swift */,
 				059B1F452364502C00596BD4 /* TabBarCoordinator.swift */,
 				059B1F4223644EA100596BD4 /* TabBarController.swift */,
 				054825A7235F9E52006C0E37 /* TBC+UITabBarControllerDelegate.swift */,
@@ -1659,6 +1665,7 @@
 				05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */,
 				607EEA81222D88C200637A93 /* Image.swift in Sources */,
 				6033DA9A22AF7E2200D43738 /* ContactsRestfulViewModel.swift in Sources */,
+				059B1F4A2364640800596BD4 /* AppViewModel.swift in Sources */,
 				05644DC61FFEFA2E00B7C853 /* DateHandler.swift in Sources */,
 				0523117422A33A4800A22157 /* HomeVM+UITableViewDataSource.swift in Sources */,
 				607E78A12279E28D00FF0008 /* AckMessage.swift in Sources */,
@@ -1760,6 +1767,7 @@
 				604FB5BF228B6DBE00795CE2 /* Donate.swift in Sources */,
 				054825A1235F86C6006C0E37 /* Storyboarded.swift in Sources */,
 				0523117B22A3EAF600A22157 /* AppError.swift in Sources */,
+				059B1F4823645E8C00596BD4 /* TabBarViewModel.swift in Sources */,
 				0563277623466DE700545CAF /* ValidatePhoneNumberChangeIntput.swift in Sources */,
 				053892DF231AD75200828372 /* UploadImageVM.swift in Sources */,
 				053892D723186C9C00828372 /* UnblockUserInput.swift in Sources */,

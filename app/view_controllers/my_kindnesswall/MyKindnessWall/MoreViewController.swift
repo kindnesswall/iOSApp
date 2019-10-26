@@ -33,7 +33,7 @@ class MoreViewController: UIViewController {
     @IBOutlet weak var passcodeTouchIDBtn: UIButton!
     
     @IBAction func shareApp(_ sender: Any) {
-        AppDelegate.me().mainCoordinator.shareApp()
+        AppDelegate.me().appCoordinator.shareApp()
     }
     
     func isLogedin() -> Bool {
@@ -46,7 +46,7 @@ class MoreViewController: UIViewController {
     
     @IBAction func showMyWall(_ sender: Any) {
         guard isLogedin() else {
-            AppDelegate.me().mainCoordinator.tabBarController.showLoginVC()
+            AppDelegate.me().appCoordinator.showLoginVC()
             return
         }
         
@@ -64,7 +64,7 @@ class MoreViewController: UIViewController {
     }
     @IBAction func addNewCharity(_ sender: Any) {
         guard isLogedin() else {
-            AppDelegate.me().mainCoordinator.tabBarController.showLoginVC()
+            AppDelegate.me().appCoordinator.showLoginVC()
             return
         }
         
@@ -80,7 +80,7 @@ class MoreViewController: UIViewController {
     
     @IBAction func showReviewQueue(_ sender: Any) {
         guard isLogedin() else {
-            AppDelegate.me().mainCoordinator.tabBarController.showLoginVC()
+            AppDelegate.me().appCoordinator.showLoginVC()
             return
         }
         
@@ -97,7 +97,7 @@ class MoreViewController: UIViewController {
     
     @IBAction func showMyProfile(_ sender: Any) {
         guard isLogedin() else {
-            AppDelegate.me().mainCoordinator.tabBarController.showLoginVC()
+            AppDelegate.me().appCoordinator.showLoginVC()
             return
         }
         
@@ -133,7 +133,7 @@ class MoreViewController: UIViewController {
     @IBAction func logoutBtnClicked(_ sender: Any) {
         
         guard isLogedin() else{
-            AppDelegate.me().mainCoordinator.tabBarController.showLoginVC()
+            AppDelegate.me().appCoordinator.showLoginVC()
             setLoginLogoutBtnTitle()
             return
         }
@@ -145,7 +145,10 @@ class MoreViewController: UIViewController {
             preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
-            AppDelegate.me().mainCoordinator.tabBarController.logout()
+            
+            AppDelegate.me().appViewModel.clearUserSensitiveData()
+            AppDelegate.me().appCoordinator.refreshAppAfterSwitchUser()
+            
             UIApplication.shared.shortcutItems = []
             self.setLoginLogoutBtnTitle()
         }))
@@ -228,8 +231,12 @@ class MoreViewController: UIViewController {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
         
         setAllTextsInView()
-        AdminStackView.isHidden = !(keychain.getBool(AppConst.KeyChain.IsAdmin) ?? false)
+        AdminStackView.isHidden = !isAdmin()
         UserStackView.isHidden = !isLogedin()
+    }
+    
+    func isAdmin() -> Bool {
+        return keychain.getBool(AppConst.KeyChain.IsAdmin) ?? false
     }
     
     //MARK:: GraphQL

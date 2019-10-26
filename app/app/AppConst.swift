@@ -61,11 +61,11 @@ struct AppConst {
     
     
     struct TabIndex {
-        public static let HOME:Int = 4
-        public static let Charities:Int = 3
+        public static let HOME:Int = 0
+        public static let Charities:Int = 1
         public static let RegisterGift:Int = 2
-        public static let Chat:Int = 1
-        public static let More:Int = 0
+        public static let Chat:Int = 3
+        public static let More:Int = 4
     }
     
     struct URL {        

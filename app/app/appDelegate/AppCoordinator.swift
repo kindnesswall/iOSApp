@@ -17,6 +17,14 @@ class AppCoordinator {
         self.window = window
     }
     
+    func reloadTabBarPages(currentPage: ReloadablePage?){
+        tabBarController.tabBarCoordinator.reloadTabBarPages(currentPage: currentPage)
+    }
+    
+    func refreshAppAfterSwitchUser() {
+        tabBarController.refreshAppAfterSwitchUser()
+    }
+    
     func showRootView() {
         window.makeKeyAndVisible()
         window.rootViewController = self.tabBarController
@@ -24,6 +32,13 @@ class AppCoordinator {
     
     func showRegisterGiftTab() {
         self.tabBarController.tabBarController?.selectedIndex = AppConst.TabIndex.RegisterGift
+    }
+    
+    func showLoginVC(){
+        let controller=LoginRegisterViewController()
+        
+        let nc = UINavigationController.init(rootViewController: controller)
+        self.tabBarController.present(nc, animated: true, completion: nil)
     }
     
     func showLockVC() {
