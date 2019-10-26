@@ -13,7 +13,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
-        
         guard let data = (userInfo["data"] as? String)?.data(using: .utf8),
             let message = ApiUtility.convert(data:data , to: TextMessage.self)
         else {
