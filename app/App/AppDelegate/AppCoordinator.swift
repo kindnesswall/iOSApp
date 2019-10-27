@@ -47,7 +47,7 @@ class AppCoordinator:AppCoordinatorProtocol {
     }
     
     func showIntro() {
-        tabBarCoordinator?.showLockVC()
+        tabBarCoordinator?.showIntro()
     }
     
     func showSelectLanguageVC() {

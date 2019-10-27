@@ -75,6 +75,7 @@ class MoreCoordinator : NavigationCoordinator {
     
     func showLockScreenView()  {
         let controller = LockViewController()
+        controller.modalPresentationStyle = .fullScreen
         controller.mode = .CheckPassCode
         controller.onPasscodeCorrect = {
             let controller = LockSettingViewController()

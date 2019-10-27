@@ -21,6 +21,7 @@ class TabBarController : UITabBarController{
     init(tabBarCoordinator:TabBarCoordinator) {
         self.tabBarCoordinator = tabBarCoordinator
         super.init(nibName: nil, bundle: nil)
+        self.delegate = self
     }
     
     required init?(coder: NSCoder) {

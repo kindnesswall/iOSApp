@@ -39,11 +39,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
         
+        //---- temporary -------
+        appViewModel.selectOtherCountry()
+        appViewModel.languageSelected()
+        //---- end of temporary -------
+        
         if appViewModel.isItFirstTimeAppOpen() {
             appViewModel.appOpenForTheFirstTime()
         }
         
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
+        
         
         if appViewModel.isNotSelectedCountryBefore() {
             appCoordinator.showSelectCountryVC()

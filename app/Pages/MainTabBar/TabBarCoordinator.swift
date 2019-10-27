@@ -50,6 +50,7 @@ class TabBarCoordinator : TabCoordinator{
     
     func showLockVC() {
         let controller = LockViewController()
+        controller.modalPresentationStyle = .fullScreen
         controller.mode = .CheckPassCode
         controller.isCancelable = false
         self.tabBarController.present(controller, animated: true, completion: nil)

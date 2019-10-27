@@ -18,7 +18,7 @@ class DonateGiftCoordinator : NavigationCoordinator {
 
         let viewController = RegisterGiftViewController()
         let img = UIImage(named: AppImages.DonateGift)
-        viewController.tabBarItem = UITabBarItem(title: "DonateGift", image: img, tag: 0)
+        viewController.tabBarItem = UITabBarItem(title: LanguageKeys.DonateGift.localizedString, image: img, tag: 0)
         
         navigationController.viewControllers = [viewController]
     }

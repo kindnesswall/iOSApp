@@ -142,4 +142,14 @@ class AppViewModel {
         
         registerPush(deviceIdentifier: deviceIdentifier, pushToken: pushToken)
     }
+    
+    func selectOtherCountry() {
+        uDStandard.set(AppConst.Country.OTHERS, forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
+        uDStandard.synchronize()
+    }
+    
+    func languageSelected() {
+        uDStandard.set(true, forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
+        uDStandard.synchronize()
+    }
 }
