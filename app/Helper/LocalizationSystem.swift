@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+extension String{
+    var localizedVersion: String {
+        return LocalizationSystem.getStr(forKey: self)
+    }
+}
+
 class LocalizationSystem:NSObject {
     
     var bundle: Bundle!

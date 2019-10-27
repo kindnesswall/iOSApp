@@ -9,7 +9,6 @@
 import UIKit
 import KeychainSwift
 import Apollo
-import SPStorkController
 
 class MoreViewController: UIViewController {
 
@@ -27,160 +26,116 @@ class MoreViewController: UIViewController {
     @IBOutlet var addNewCharityBtn: UIButton!
     
     @IBOutlet weak var scrollview: UIScrollView!
-    let keychain = KeychainSwift()
-    let userDefault=UserDefaults.standard
-
     @IBOutlet weak var passcodeTouchIDBtn: UIButton!
+
+    let userDefault=UserDefaults.standard
+    
+    var moreViewModel = MoreViewModel()
+    
+    var moreCoordinator:MoreCoordinator
+    init(moreCoordinator:MoreCoordinator) {
+        self.moreCoordinator = moreCoordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     @IBAction func shareApp(_ sender: Any) {
         AppDelegate.me().appCoordinator.shareApp()
     }
     
-    func isLogedin() -> Bool {
-        if let _=keychain.get(AppConst.KeyChain.Authorization){
-            return true
-        }
-        return false
-    }
-    
-    
     @IBAction func showMyWall(_ sender: Any) {
-        guard isLogedin() else {
+        guard moreViewModel.isLogedin() else {
             AppDelegate.me().appCoordinator.showLoginVC()
             return
         }
-        
-        let myWallViewController = MyWallViewController()
-        myWallViewController.userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
-        self.navigationController?.pushViewController(myWallViewController, animated: true)
+        moreCoordinator.showMyWall()
     }
     
     @IBAction func showBlockedChats(_ sender: Any) {
-        
-        let contactsViewController = ContactsViewController()
-        contactsViewController.blockedChats = true
-        self.navigationController?.pushViewController(contactsViewController, animated: true)
-        
+        moreCoordinator.showContacts()
     }
+    
     @IBAction func addNewCharity(_ sender: Any) {
-        guard isLogedin() else {
+        guard moreViewModel.isLogedin() else {
             AppDelegate.me().appCoordinator.showLoginVC()
             return
         }
         
-        guard let isAdmin = keychain.getBool(AppConst.KeyChain.IsAdmin), isAdmin
-            else {
+        guard moreViewModel.isAdmin() else {
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.accessError),theme: .error)
                 return
         }
-        let vm = CharitySignupEditVM()
-        let controller = CharitySignupEditViewController(vm: vm)
-        self.navigationController?.pushViewController(controller, animated: true)
+        moreCoordinator.showCharitySignupEditView()
     }
     
     @IBAction func showReviewQueue(_ sender: Any) {
-        guard isLogedin() else {
+        guard moreViewModel.isLogedin() else {
             AppDelegate.me().appCoordinator.showLoginVC()
             return
         }
         
-        guard let isAdmin = keychain.getBool(AppConst.KeyChain.IsAdmin), isAdmin
-             else {
+        guard moreViewModel.isAdmin() else {
                 FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.accessError),theme: .error)
                 return
         }
-        let vm = HomeVM()
-        vm.isReview = true
-        let controller = HomeViewController(vm: vm)
-        self.navigationController?.pushViewController(controller, animated: true)
+        moreCoordinator.showGiftReview()
     }
     
     @IBAction func showMyProfile(_ sender: Any) {
-        guard isLogedin() else {
+        guard moreViewModel.isLogedin() else {
             AppDelegate.me().appCoordinator.showLoginVC()
             return
         }
-        
-        let controller = ProfileViewController ()
-        let nc = UINavigationController.init(rootViewController: controller)
-        self.presentAsStork(nc)
-//        self.tabBarController?.present(nc, animated: true, completion: nil)
-        
+        moreCoordinator.showProfile()
     }
     
     @IBAction func passcodeTouchIDBtnClicked(_ sender: Any) {
-        
         if AppDelegate.me().appViewModel.isPasscodeSaved() {
-            let controller = LockViewController()
-            controller.mode = .CheckPassCode
-            controller.onPasscodeCorrect = {
-                let controller = LockSettingViewController()
-                self.navigationController?.pushViewController(controller, animated: true)
-            }
-            self.tabBarController?.present(controller, animated: true, completion: nil)
+            moreCoordinator.showLockScreenView()
         }else{
-            let controller = LockSettingViewController()
-            self.navigationController?.pushViewController(controller, animated: true)
+            moreCoordinator.showLockSetting()
         }
     }
     
     @IBAction func SwitchLanguageBtnClicked(_ sender: Any) {
-        let controller = LanguageViewController()
-        controller.languageViewModel.tabBarIsInitialized = true
-        self.tabBarController?.present(controller, animated: true, completion: nil)
+        moreCoordinator.showLanguageView()
     }
     
     @IBAction func logoutBtnClicked(_ sender: Any) {
         
-        guard isLogedin() else{
+        guard moreViewModel.isLogedin() else{
             AppDelegate.me().appCoordinator.showLoginVC()
             setLoginLogoutBtnTitle()
             return
         }
         //UserDefaults.standard.string(forKey: AppConstants.Authorization) {
             
-        let alert = UIAlertController(
-            title:LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_title),
-            message: LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_text),
-            preferredStyle: UIAlertController.Style.alert)
-        
-        alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
-            
+        moreCoordinator.showLogoutAlert {
             AppDelegate.me().appViewModel.clearUserSensitiveData()
             AppDelegate.me().appCoordinator.refreshAppAfterSwitchUser()
             
             UIApplication.shared.shortcutItems = []
             self.setLoginLogoutBtnTitle()
-        }))
-        
-        alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.cancel), style: UIAlertAction.Style.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: {
-                
-            })
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func contactUsBtnClicked(_ sender: Any) {
-        let controller = ContactUsViewController()
-        self.navigationController?.pushViewController(controller, animated: true)
+        moreCoordinator.showContactUsView()
     }
     
     @IBAction func statisticBtnAction(_ sender: Any) {
-        let controller = StatisticViewController()
-        self.navigationController?.pushViewController(controller, animated: true)
+        moreCoordinator.showStatisticView()
     }
     
     @IBAction func aboutKindnessWallBtnAction(_ sender: Any) {
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as! IntroViewController
-        self.present(viewController, animated: true, completion: nil)
+        moreCoordinator.showIntro()
     }
     
     @IBAction func bugReportBtnAction(_ sender: Any) {
-        let urlAddress = AppConst.URL.telegramLink
-        URLBrowser(urlAddress: urlAddress).openURL()
+        moreCoordinator.openTelegram()
     }
     
     func setAllTextsInView(){
@@ -195,7 +150,7 @@ class MoreViewController: UIViewController {
     }
     
     func setLoginLogoutBtnTitle(){
-        if isLogedin() {
+        if moreViewModel.isLogedin() {
             loginLogoutBtn.setTitle(
                 LocalizationSystem.getStr(forKey: LanguageKeys.logout) +
                     AppLanguage.getNumberString(
@@ -203,14 +158,6 @@ class MoreViewController: UIViewController {
         } else {
             loginLogoutBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.login), for: .normal)
         }
-    }
-    
-    func getVersionBuildNo() -> String {
-        let dic = Bundle.main.infoDictionary!
-        let version = dic["CFBundleShortVersionString"] as! String
-        let buildNumber = dic["CFBundleVersion"] as! String
-        
-        return version+"("+buildNumber+")"
     }
     
     deinit {
@@ -222,58 +169,18 @@ class MoreViewController: UIViewController {
 
         scrollview.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
-        versionNoLbl.text = LocalizationSystem.getStr(forKey: LanguageKeys.AppVersion) + AppLanguage.getNumberString(number: getVersionBuildNo())
+        versionNoLbl.text = LocalizationSystem.getStr(forKey: LanguageKeys.AppVersion) + AppLanguage.getNumberString(number: moreViewModel.getVersionBuildNo())
         
-        getRepoInfo()
+        moreViewModel.getRepoInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
         
         setAllTextsInView()
-        AdminStackView.isHidden = !isAdmin()
-        UserStackView.isHidden = !isLogedin()
+        AdminStackView.isHidden = !moreViewModel.isAdmin()
+        UserStackView.isHidden = !moreViewModel.isLogedin()
     }
     
-    func isAdmin() -> Bool {
-        return keychain.getBool(AppConst.KeyChain.IsAdmin) ?? false
-    }
     
-    //MARK:: GraphQL
-    let apollo:ApolloClient = {
-        let config = URLSessionConfiguration.default
-        config.httpAdditionalHeaders = ["Authorization":"Bearer \(GithubConstants.Token)"]
-        
-        let endPointUrl = URL(string: GithubConstants.EndPoint)
-        
-        return ApolloClient(networkTransport: HTTPNetworkTransport(url:endPointUrl!,configuration:config))
-    }()
-    
-    func getRepoInfo()  {
-        let userInfo = UserInfoQuery()
-        apollo.fetch(query: userInfo){ [weak self](result, error) in
-            print("RepoInfo:")
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            guard let name = result?.data?.user?.name else {
-                print("no name")
-                return
-            }
-            print("name: \(name)")
-            
-            guard let repos = result?.data?.user?.repositories.edges else {
-                print("no repo")
-                return
-            }
-            print("Repositories:")
-            for rep in repos {
-                if let name = rep?.node?.name {
-                    print(name)
-                }
-            }
-        }
-    }
 }

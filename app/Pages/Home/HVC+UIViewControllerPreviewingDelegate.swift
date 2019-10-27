@@ -15,7 +15,7 @@ extension HomeViewController:UIViewControllerPreviewingDelegate{
             previewRowIndex = indexPath.row
             
             previewingContext.sourceRect = tableview.rectForRow(at: indexPath)
-            return getGiftDetailVCFor(index: indexPath.row)
+            return homeCoordiantor?.getGiftDetailVCFor(vm.gifts[indexPath.row], self.editHandler)
         }
         
         return nil

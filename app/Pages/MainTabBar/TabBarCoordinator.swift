@@ -78,11 +78,17 @@ class TabBarCoordinator : TabCoordinator{
     
     func initializeTabs()  {
         var tabs = [UIViewController](repeating: UIViewController(), count: 5)
+        home.showHome()
         tabs[AppConst.TabIndex.HOME] = home.navigationController
+        
+        
         tabs[AppConst.TabIndex.Charities] = charities.navigationController
         tabs[AppConst.TabIndex.RegisterGift] = donateGiftCoordinator.navigationController
         tabs[AppConst.TabIndex.Chat] = chatCoordinator.navigationController
+        
+        moreCoordinator.showMore()
         tabs[AppConst.TabIndex.More] = moreCoordinator.navigationController
+        
         tabBarController = TabBarController(tabBarCoordinator:self)
         self.tabBarController.viewControllers = tabs
         
@@ -98,6 +104,7 @@ class TabBarCoordinator : TabCoordinator{
         self.tabBarController.viewControllers?[AppConst.TabIndex.Chat] = chatNC
         
         moreCoordinator = MoreCoordinator()
+        moreCoordinator.showMore()
         let moreNC = moreCoordinator.navigationController
         _ = moreNC.view
         self.tabBarController.viewControllers?[AppConst.TabIndex.More] = moreNC

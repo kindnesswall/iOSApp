@@ -67,6 +67,8 @@
 		05644DC81FFF01C300B7C853 /* ChatConversationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DC71FFF01C200B7C853 /* ChatConversationResult.swift */; };
 		05644DCA1FFF02A100B7C853 /* UITableView+isCellVisible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DC91FFF02A000B7C853 /* UITableView+isCellVisible.swift */; };
 		05644DD01FFF06F900B7C853 /* NibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DCF1FFF06F900B7C853 /* NibLoader.swift */; };
+		0580595B2365C7F000B679C4 /* GiftDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580595A2365C7F000B679C4 /* GiftDetailCoordinator.swift */; };
+		0580595D2365D77C00B679C4 /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580595C2365D77C00B679C4 /* MoreViewModel.swift */; };
 		0593E50222D54ADF00C3B046 /* Charity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593E50122D54ADF00C3B046 /* Charity.swift */; };
 		0593E50922D54FCB00C3B046 /* CharityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593E50722D54FCB00C3B046 /* CharityListViewController.swift */; };
 		0593E50A22D54FCB00C3B046 /* CharityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0593E50822D54FCB00C3B046 /* CharityListViewController.xib */; };
@@ -315,6 +317,8 @@
 		05644DC71FFF01C200B7C853 /* ChatConversationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConversationResult.swift; sourceTree = "<group>"; };
 		05644DC91FFF02A000B7C853 /* UITableView+isCellVisible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+isCellVisible.swift"; sourceTree = "<group>"; };
 		05644DCF1FFF06F900B7C853 /* NibLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoader.swift; sourceTree = "<group>"; };
+		0580595A2365C7F000B679C4 /* GiftDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetailCoordinator.swift; sourceTree = "<group>"; };
+		0580595C2365D77C00B679C4 /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
 		0593E50122D54ADF00C3B046 /* Charity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charity.swift; sourceTree = "<group>"; };
 		0593E50722D54FCB00C3B046 /* CharityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityListViewController.swift; sourceTree = "<group>"; };
 		0593E50822D54FCB00C3B046 /* CharityListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityListViewController.xib; sourceTree = "<group>"; };
@@ -996,6 +1000,7 @@
 		05BEA43520497B0A00147BF5 /* GiftDetail */ = {
 			isa = PBXGroup;
 			children = (
+				0580595A2365C7F000B679C4 /* GiftDetailCoordinator.swift */,
 				053892E6231AE20D00828372 /* VM */,
 				05335D431FD0D0A800601115 /* GiftDetailViewController.swift */,
 				5245921A21AAD7420009824C /* GiftDetailViewController.xib */,
@@ -1136,6 +1141,7 @@
 				05041EB82362577C007F12E9 /* MoreCoordinator.swift */,
 				053892FB231AEA0B00828372 /* MoreViewController.xib */,
 				053892F5231AE9F500828372 /* MoreViewController.swift */,
+				0580595C2365D77C00B679C4 /* MoreViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1555,7 +1561,6 @@
 				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
 				"${BUILT_PRODUCTS_DIR}/PanModal/PanModal.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SPStorkController/SPStorkController.framework",
 				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
@@ -1578,7 +1583,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PanModal.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SPStorkController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
@@ -1673,6 +1677,7 @@
 				054C6B992364ABF9009DF9A6 /* NavigationCoordinator.swift in Sources */,
 				52D1A14421DA3C30005EA2F0 /* Address.swift in Sources */,
 				0523118322A4198100A22157 /* HTTPLayer.swift in Sources */,
+				0580595D2365D77C00B679C4 /* MoreViewModel.swift in Sources */,
 				5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */,
 				607E78802279E21F00FF0008 /* MessagesViewController.swift in Sources */,
 				0593E50222D54ADF00C3B046 /* Charity.swift in Sources */,
@@ -1703,6 +1708,7 @@
 				601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,
 				528A2DA921AD340200DECE0F /* LanguageKeys.swift in Sources */,
+				0580595B2365C7F000B679C4 /* GiftDetailCoordinator.swift in Sources */,
 				5247C8B821E38A52009E8770 /* StatisticViewController.swift in Sources */,
 				607E789D2279E28D00FF0008 /* Message.swift in Sources */,
 				05041EB72362552F007F12E9 /* CharitiesCoordinator.swift in Sources */,

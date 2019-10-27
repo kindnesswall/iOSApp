@@ -121,10 +121,7 @@ extension HomeViewController:UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let controller = getGiftDetailVCFor(index: indexPath.row)
-        
-        self.navigationController?.pushViewController(controller, animated: true)
+        homeCoordiantor?.showDetail(gift: vm.gifts[indexPath.row], editHandler: self.editHandler)
     }
     
     func editHandler(){

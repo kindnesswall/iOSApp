@@ -10,16 +10,12 @@ import Foundation
 import UIKit
 
 protocol AppCoordinatorProtocol {
-    var window: UIWindow { get set }
+    var window: UIWindow? { get set }
 }
 
 class AppCoordinator:AppCoordinatorProtocol {
-    var window: UIWindow
+    var window: UIWindow?
     var tabBarCoordinator:TabBarCoordinator?
-    
-    init(with window:UIWindow = UIWindow() ) {
-        self.window = window
-    }
     
     func reloadTabBarPages(currentPage: ReloadablePage?){
         tabBarCoordinator?.reloadTabBarPages(currentPage: currentPage)
@@ -29,10 +25,9 @@ class AppCoordinator:AppCoordinatorProtocol {
         tabBarCoordinator?.refreshAppAfterSwitchUser()
     }
     
-    func showRootView() {
+    func showTabBar() {
         tabBarCoordinator = TabBarCoordinator(appCoordinator: self)
-        window.makeKeyAndVisible()
-        window.rootViewController = self.tabBarCoordinator?.tabBarController
+        setWindow(rootViewContrller: self.tabBarCoordinator?.tabBarController)
     }
     
     func checkForLogin()->Bool{
@@ -56,19 +51,21 @@ class AppCoordinator:AppCoordinatorProtocol {
     }
     
     func showSelectLanguageVC() {
-        window = UIWindow(frame: UIScreen.main.bounds)
         let viewController = LanguageViewController()
         viewController.languageViewModel.tabBarIsInitialized = false
-        window.rootViewController = viewController
-        window.makeKeyAndVisible()
+        setWindow(rootViewContrller: viewController)
     }
     
     func showSelectCountryVC() {
-        window = UIWindow(frame: UIScreen.main.bounds)
         let vc = SelectCountryVC()
         vc.vm.tabBarIsInitialized = false
-        window.rootViewController = vc
-        window.makeKeyAndVisible()
+        setWindow(rootViewContrller: vc)
+    }
+    
+    func setWindow(rootViewContrller:UIViewController?) {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = rootViewContrller
+        window?.makeKeyAndVisible()
     }
     
     func shareApp() {

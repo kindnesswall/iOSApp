@@ -28,7 +28,14 @@ class HomeViewController: UIViewController {
     var provinceBarBtn:UIBarButtonItem?
     
     var previewRowIndex:Int?
-
+    var homeCoordiantor:HomeCoordinator?
+    
+    init(vm: HomeVM,homeCoordiantor:HomeCoordinator) {
+        self.vm = vm
+        self.homeCoordiantor = homeCoordiantor
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     init(vm: HomeVM) {
         self.vm = vm
         super.init(nibName: nil, bundle: nil)
@@ -68,8 +75,6 @@ class HomeViewController: UIViewController {
         self.tableview.register(type: GiftTableViewCell.self)
         
         vm.getGifts(beforeId:nil)
-
-        
     }
     
     func configRefreshControl(){
@@ -149,18 +154,6 @@ class HomeViewController: UIViewController {
         if self.vm.provinceId==nil {
             self.provinceBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces)
         }
-    }
-    
-    func getGiftDetailVCFor(index:Int) -> UIViewController {
-        let controller = GiftDetailViewController()
-        
-        controller.gift = vm.gifts[index]
-        controller.editHandler={ [weak self] in
-            self?.editHandler()
-        }
-        print("Gift_id: \(controller.gift?.id?.description ?? "")")
-        
-        return controller
     }
 }
 

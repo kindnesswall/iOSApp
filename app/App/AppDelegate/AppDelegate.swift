@@ -21,13 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let appViewModel = AppViewModel()
     
-    lazy var appCoordinator = AppCoordinator(with: UIWindow(frame: UIScreen.main.bounds))
+    lazy var appCoordinator = AppCoordinator()
     static let screenWidth = UIScreen.main.bounds.width
     var launchedShortcutItem: UIApplicationShortcutItem?
     
     func showTabbarIntro() {
         
-        appCoordinator.showRootView()
+        appCoordinator.showTabBar()
         
         if !appViewModel.isUserWatchedIntro(){
             appCoordinator.showIntro()
