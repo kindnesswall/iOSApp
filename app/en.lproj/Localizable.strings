@@ -143,6 +143,9 @@
 "activationCodeSendSuccessfully" = "Activation Code Send Successfully";
 "activationCodeTryAgainOneMinuteLater" = "Try Again One Minute Later!";
 
+
+"YouHaveNoMessage" = "You have no message.";
+
 "tabBar_home" = "Home";
 "tabBar_my_gifts" = "My Gifts";
 "tabBar_give_gift" = "Donate Gift";

@@ -20,6 +20,7 @@ class ContactsViewController: UIViewController {
     lazy var apiService = ApiService(httpLayer)
     @IBOutlet weak var onEmptyListMessage: UIView!
     
+    @IBOutlet weak var youHaveNoMessage: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,8 @@ class ContactsViewController: UIViewController {
         configRefreshControl()
         
         self.viewModel.delegate = self
+        
+        youHaveNoMessage.text = LanguageKeys.YouHaveNoMessage.localizedString
         
         if self.viewModel.initialContactsHasLoaded {
             self.pageLoadingAnimation(pageLoadingSate: .hasLoaded(showEmptyListMessage: self.viewModel.allChats.count == 0))

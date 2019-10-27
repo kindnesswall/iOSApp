@@ -9,6 +9,9 @@
 import Foundation
 
 struct LanguageKeys {
+    
+    static let YouHaveNoMessage : String = "YouHaveNoMessage"
+
     static let DonateGift : String = "DonateGift"
     
     static let RegisterGiftViewController_title : String = "RegisterGiftViewController_title"

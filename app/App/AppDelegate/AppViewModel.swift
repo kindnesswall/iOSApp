@@ -21,7 +21,6 @@ class AppViewModel {
             keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
         }
         
-        
         keychain.set(authOutput.isAdmin, forKey: AppConst.KeyChain.IsAdmin)
         keychain.set(authOutput.isCharity, forKey: AppConst.KeyChain.IsCharity)
     }
@@ -32,6 +31,7 @@ class AppViewModel {
         keychain.delete(AppConst.KeyChain.USER_ID)
         keychain.delete(AppConst.KeyChain.Authorization)
         keychain.delete(AppConst.KeyChain.IsAdmin)
+        keychain.delete(AppConst.KeyChain.PassCode)
     }
     
     func isUserLogedIn() -> Bool {

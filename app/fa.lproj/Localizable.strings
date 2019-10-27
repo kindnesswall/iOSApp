@@ -143,6 +143,8 @@
 
 "profileUpdatedSuccessfully" = "پروفایل به روزرسانی شد";
 
+"YouHaveNoMessage" = "شما هیچ پیغامی ندارید.";
+
 "tabBar_home" = "خانه";
 "tabBar_my_gifts" = "هدیه‌های من";
 "tabBar_give_gift" = "ثبت هدیه";
