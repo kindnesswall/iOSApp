@@ -21,7 +21,7 @@ class CharityListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.charities)
+        self.navigationItem.title=LanguageKeys.charities.localizedString
         
         self.tableview.register(type: CharityTableViewCell.self)
         

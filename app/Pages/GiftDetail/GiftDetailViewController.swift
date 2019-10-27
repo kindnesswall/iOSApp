@@ -74,9 +74,9 @@ class GiftDetailViewController: UIViewController {
         giftCategory.text = gift?.categoryTitle
         giftAddress.text = gift?.address
         if let isNew = gift?.isNew, isNew {
-            oldOrNew.text = LocalizationSystem.getStr(forKey: LanguageKeys.new)
+            oldOrNew.text = LanguageKeys.new.localizedString
         }else{
-            oldOrNew.text = LocalizationSystem.getStr(forKey: LanguageKeys.used)
+            oldOrNew.text = LanguageKeys.used.localizedString
         }
         giftDescription.text = gift?.description
         
@@ -87,7 +87,7 @@ class GiftDetailViewController: UIViewController {
         editBtn = NavigationBarStyle.getNavigationItem(
             target: self,
             action: #selector(self.editBtnClicked),
-            text:LocalizationSystem.getStr(forKey: LanguageKeys.edit),
+            text: LanguageKeys.edit.localizedString,
             font:AppConst.Resource.Font.getRegularFont(size: 16)
         )
         
@@ -122,7 +122,7 @@ class GiftDetailViewController: UIViewController {
     
     @IBAction func removeBtnClicked(_ sender: Any) {
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: LocalizationSystem.getStr(forKey: LanguageKeys.giftRemovingPrompt),animation:.none,declineHandler: nil) { (ـ) in
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data:  LanguageKeys.giftRemovingPrompt.localizedString,animation:.none,declineHandler: nil) { (ـ) in
             self.removeGift()
         }
     }
@@ -147,7 +147,7 @@ class GiftDetailViewController: UIViewController {
         switch result {
         case .failure(let error):
             print(error)
-            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
+            FlashMessage.showMessage(body:  LanguageKeys.operationFailed.localizedString,theme: .error)
         case .success(let chat):
             if let id = chat.id {
                 self.sendRequestMessage(chatId: id)
@@ -174,7 +174,7 @@ class GiftDetailViewController: UIViewController {
         
         switch result {
         case .failure(_):
-            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.operationFailed),theme: .error)
+            FlashMessage.showMessage(body:  LanguageKeys.operationFailed.localizedString,theme: .error)
         case .success(_):
             self.editHandler?()
             self.navigationController?.popViewController(animated: true)
@@ -183,7 +183,7 @@ class GiftDetailViewController: UIViewController {
     
     func sendRequestMessage(chatId:Int){
         
-        let giftRequestChatMessage = LocalizationSystem.getStr(forKey: LanguageKeys.giftRequestChatMessage)
+        let giftRequestChatMessage = LanguageKeys.giftRequestChatMessage.localizedString
         let text = "\(giftRequestChatMessage) '\(self.gift?.title ?? "")'"
         
         let startNewChatProtocol = AppDelegate.me().appCoordinator.tabBarCoordinator?.tabBarController.startNewChatProtocol
@@ -219,16 +219,14 @@ class GiftDetailViewController: UIViewController {
     }
     
     func setAllTextsInView(){
-        self.editBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.edit)
-        self.removeBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.remove), for: .normal)
-        self.requestBtn.setTitle(
-            LocalizationSystem.getStr(forKey: LanguageKeys.request),
-            for: .normal)
+        self.editBtn?.title=LanguageKeys.edit.localizedString
+        self.removeBtn.setTitle(LanguageKeys.remove.localizedString, for: .normal)
+        self.requestBtn.setTitle(LanguageKeys.request.localizedString,for: .normal)
         
-        self.categoryLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.category)
-        self.oldOrNewLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.status)
-        self.addressLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.address)
-        self.descriptionLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.description)
+        self.categoryLabel.text=LanguageKeys.category.localizedString
+        self.oldOrNewLabel.text=LanguageKeys.status.localizedString
+        self.addressLabel.text=LanguageKeys.address.localizedString
+        self.descriptionLabel.text=LanguageKeys.description.localizedString
     }
     
     func createSlideShow() {

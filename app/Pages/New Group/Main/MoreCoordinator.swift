@@ -90,17 +90,17 @@ class MoreCoordinator : NavigationCoordinator {
     
     func showLogoutAlert(onConfirm : @escaping ()->()) {
         let alert = UIAlertController(
-            title:LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_title),
-            message: LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_text),
+            title:LanguageKeys.logout_dialog_title.localizedString,
+            message: LanguageKeys.logout_dialog_text.localizedString,
             preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: LanguageKeys.ok.localizedString, style: UIAlertAction.Style.default, handler: { (action) in
             
             onConfirm()
             
         }))
         
-        alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.cancel), style: UIAlertAction.Style.default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: LanguageKeys.cancel.localizedString, style: UIAlertAction.Style.default, handler: { (action) in
             alert.dismiss(animated: true, completion: {
                 
             })

@@ -60,7 +60,7 @@ class HomeViewController: UIViewController {
         
         self.tableview.hide()
         
-        hud.textLabel.text = LocalizationSystem.getStr(forKey: LanguageKeys.loading)
+        hud.textLabel.text = LanguageKeys.loading.localizedString
         
         self.lazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight/2)
         self.tableview.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight/2, right: 0)
@@ -97,10 +97,10 @@ class HomeViewController: UIViewController {
     }
     
     func setNavigationBar(){
-        categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts),font:AppConst.Resource.Font.getRegularFont(size: 16))
+        categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: LanguageKeys.allGifts.localizedString,font:AppConst.Resource.Font.getRegularFont(size: 16))
         self.navigationItem.rightBarButtonItems=[categotyBarBtn!]
         
-        provinceBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces),font:AppConst.Resource.Font.getRegularFont(size: 16))
+        provinceBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LanguageKeys.allProvinces.localizedString,font:AppConst.Resource.Font.getRegularFont(size: 16))
         self.navigationItem.leftBarButtonItems=[provinceBarBtn!]
     }
     
@@ -147,12 +147,12 @@ class HomeViewController: UIViewController {
     }
     
     func setAllTextsInView(){
-        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.home)
+        self.navigationItem.title=LanguageKeys.home.localizedString
         if self.vm.categoryId==nil {
-            self.categotyBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allGifts)
+            self.categotyBarBtn?.title=LanguageKeys.allGifts.localizedString
         }
         if self.vm.provinceId==nil {
-            self.provinceBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces)
+            self.provinceBarBtn?.title=LanguageKeys.allProvinces.localizedString
         }
     }
 }

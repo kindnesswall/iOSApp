@@ -56,7 +56,7 @@ class ChatTableViewCell: UITableViewCell {
     
     func fillUI(viewModel:MessagesViewModel){
         
-        let defaultName = LocalizationSystem.getStr(forKey: LanguageKeys.contact)
+        let defaultName = LanguageKeys.contact.localizedString
         self.userNameLabel.text = viewModel.contactProfile?.name ?? defaultName
         
         let numberOfNotification = viewModel.notificationCount

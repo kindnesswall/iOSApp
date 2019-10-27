@@ -255,11 +255,11 @@ class MyWallViewController: UIViewController {
         let msg : String
         switch type {
         case .registered:
-            msg = LocalizationSystem.getStr(forKey: LanguageKeys.noGiftRegistered)
+            msg = LanguageKeys.noGiftRegistered.localizedString
         case .donated:
-            msg = LocalizationSystem.getStr(forKey: LanguageKeys.noGiftDonated)
+            msg = LanguageKeys.noGiftDonated.localizedString
         case .received:
-            msg = LocalizationSystem.getStr(forKey: LanguageKeys.noGiftReceived)
+            msg = LanguageKeys.noGiftReceived.localizedString
         }
         
         if show {
@@ -274,7 +274,7 @@ class MyWallViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
-        self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.MyGiftsViewController_title)
+        self.navigationItem.title = LanguageKeys.MyGiftsViewController_title.localizedString
     }
 
     override func didReceiveMemoryWarning() {

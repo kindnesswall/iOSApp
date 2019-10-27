@@ -85,27 +85,27 @@ class ProfileViewController: UIViewController {
                 }
             case .success(_):
                 completion?()
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.profileUpdatedSuccessfully), theme: .success)
+                FlashMessage.showMessage(body: LanguageKeys.profileUpdatedSuccessfully.localizedString, theme: .success)
             }
         })
     }
     
     func showDialogFailed(tryAgainHandler: @escaping ()-> Void) {
         let alert = UIAlertController(
-            title:LocalizationSystem.getStr(forKey: LanguageKeys.requestfail_dialog_title),
-            message: LocalizationSystem.getStr(forKey: LanguageKeys.requestfail_dialog_text),
+            title: LanguageKeys.requestfail_dialog_title.localizedString,
+            message: LanguageKeys.requestfail_dialog_text.localizedString,
             preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(
             UIAlertAction(
-                title: LocalizationSystem.getStr(forKey: LanguageKeys.tryAgain),
+                title: LanguageKeys.tryAgain.localizedString,
                 style: UIAlertAction.Style.default, handler: { (action) in
                     tryAgainHandler()
             }))
         
         alert.addAction(
             UIAlertAction(
-                title: LocalizationSystem.getStr(forKey: LanguageKeys.closeThisPage),
+                title: LanguageKeys.closeThisPage.localizedString,
                 style: UIAlertAction.Style.default, handler: { [weak self] (action) in
                     self?.dismiss(animated: true, completion: nil)
             }))
@@ -142,7 +142,7 @@ class ProfileViewController: UIViewController {
     @objc func selectImage(_ sender: UITapGestureRecognizer){
         let actionController = SkypeActionController()
         
-        actionController.addAction(Action(LocalizationSystem.getStr(forKey: LanguageKeys.camera), style: .default, handler: { action in
+        actionController.addAction(Action(LanguageKeys.camera.localizedString, style: .default, handler: { action in
             
             self.imagePicker.allowsEditing = false
             self.imagePicker.sourceType = .camera
@@ -152,7 +152,7 @@ class ProfileViewController: UIViewController {
             
         }))
         
-        actionController.addAction(Action(LocalizationSystem.getStr(forKey: LanguageKeys.gallery), style: .default, handler: { action in
+        actionController.addAction(Action(LanguageKeys.gallery.localizedString, style: .default, handler: { action in
             
             self.imagePicker.allowsEditing = false
             self.imagePicker.sourceType = .photoLibrary
@@ -176,7 +176,7 @@ class ProfileViewController: UIViewController {
     }
     
     func setNavBar(){
-        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.profile)
+        self.navigationItem.title=LanguageKeys.profile.localizedString
         
         self.navigationItem.removeDefaultBackBtn()
         

@@ -65,7 +65,7 @@ class MoreViewController: UIViewController {
         }
         
         guard moreViewModel.isAdmin() else {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.accessError),theme: .error)
+                FlashMessage.showMessage(body: LanguageKeys.accessError.localizedString,theme: .error)
                 return
         }
         moreCoordinator.showCharitySignupEditView()
@@ -78,7 +78,7 @@ class MoreViewController: UIViewController {
         }
         
         guard moreViewModel.isAdmin() else {
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.accessError),theme: .error)
+                FlashMessage.showMessage(body: LanguageKeys.accessError.localizedString,theme: .error)
                 return
         }
         moreCoordinator.showGiftReview()
@@ -141,7 +141,7 @@ class MoreViewController: UIViewController {
     func setAllTextsInView(){
         setLoginLogoutBtnTitle()
         
-        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.more)
+        self.navigationItem.title=LanguageKeys.more.localizedString
         
 //        contactUsBtn.setTitle(AppLiteral.contactUs, for: .normal)
 //        bugReportBtn.setTitle(AppLiteral.bugReport, for: .normal)
@@ -152,11 +152,11 @@ class MoreViewController: UIViewController {
     func setLoginLogoutBtnTitle(){
         if moreViewModel.isLogedin() {
             loginLogoutBtn.setTitle(
-                LocalizationSystem.getStr(forKey: LanguageKeys.logout) +
+                LanguageKeys.logout.localizedString +
                     AppLanguage.getNumberString(
                         number: (userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) ?? "")), for: .normal)
         } else {
-            loginLogoutBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.login), for: .normal)
+            loginLogoutBtn.setTitle(LanguageKeys.login.localizedString, for: .normal)
         }
     }
     
@@ -169,7 +169,7 @@ class MoreViewController: UIViewController {
 
         scrollview.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
-        versionNoLbl.text = LocalizationSystem.getStr(forKey: LanguageKeys.AppVersion) + AppLanguage.getNumberString(number: moreViewModel.getVersionBuildNo())
+        versionNoLbl.text = LanguageKeys.AppVersion.localizedString + AppLanguage.getNumberString(number: moreViewModel.getVersionBuildNo())
         
         moreViewModel.getRepoInfo()
     }

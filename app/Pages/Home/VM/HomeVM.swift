@@ -63,18 +63,18 @@ class HomeVM: NSObject {
         self.delegate?.refreshControlAnimation(isLoading: false)
         
         let alert = UIAlertController(
-            title:LocalizationSystem.getStr(forKey: LanguageKeys.requestfail_dialog_title),
-            message: LocalizationSystem.getStr(forKey: LanguageKeys.requestfail_dialog_text),
+            title:LanguageKeys.requestfail_dialog_title.localizedString,
+            message:LanguageKeys.requestfail_dialog_text.localizedString,
             preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.ok), style: UIAlertAction.Style.default, handler: { [weak self] (action) in
+        alert.addAction(UIAlertAction(title:LanguageKeys.ok.localizedString, style: UIAlertAction.Style.default, handler: { [weak self] (action) in
             self?.isLoadingGifts=false
             self?.getGifts(beforeId:beforeId)
         }))
         
         if self.gifts.count > 0 {
             self.delegate?.showTableView(show: true)
-            alert.addAction(UIAlertAction(title: LocalizationSystem.getStr(forKey: LanguageKeys.cancel), style: UIAlertAction.Style.default, handler: {
+            alert.addAction(UIAlertAction(title:LanguageKeys.cancel.localizedString, style: UIAlertAction.Style.default, handler: {
                 //                        [weak self]
                 (action) in
                 alert.dismiss(animated: true, completion: {

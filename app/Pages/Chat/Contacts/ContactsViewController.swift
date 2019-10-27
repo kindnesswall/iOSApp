@@ -30,7 +30,7 @@ class ContactsViewController: UIViewController {
         self.tableView.dataSource = self
         
         let titleKey = self.blockedChats ? LanguageKeys.blockedChats : LanguageKeys.chats
-        self.navigationItem.title = LocalizationSystem.getStr(forKey: titleKey)
+        self.navigationItem.title = titleKey.localizedString
         
         self.tableView.register(ChatTableViewCell.self, forCellReuseIdentifier: ChatTableViewCell.identifier)
         self.loadingIndicator=LoadingIndicator(view: self.view)
@@ -103,7 +103,7 @@ extension ContactsViewController : UITableViewDelegate {
     func getSwipeAction(chatId: Int) -> UIContextualAction {
         
         let titleKey = self.blockedChats ? LanguageKeys.unblock : LanguageKeys.block
-        let title = LocalizationSystem.getStr(forKey: titleKey)
+        let title = titleKey.localizedString
         
         let action = UIContextualAction(style: .destructive, title: title) { [weak self] action, view, completion in
             
@@ -146,11 +146,11 @@ extension ContactsViewController : ContactsViewModelProtocol {
     }
     
     func socketConnected() {
-        self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.chats)
+        self.navigationItem.title = LanguageKeys.chats.localizedString
     }
     
     func socketDisConnected() {
-        self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.connecting)
+        self.navigationItem.title = LanguageKeys.connecting.localizedString
     }
     
 }

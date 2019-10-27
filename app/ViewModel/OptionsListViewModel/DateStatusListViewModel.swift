@@ -20,15 +20,15 @@ class DateStatusListViewModel: NSObject, OptionsListViewModelProtocol {
     
     override init() {
         
-        self.titleName = LocalizationSystem.getStr(forKey: LanguageKeys.newOrUsed)
+        self.titleName = LanguageKeys.newOrUsed.localizedString
        
         super.init()
         
     }
     
     func fetchElements(completionHandler:(()->Void)?){
-        dateStatus.append(DateStatus(id:0,title:LocalizationSystem.getStr(forKey: LanguageKeys.new)))
-        dateStatus.append(DateStatus(id: 1 , title: LocalizationSystem.getStr(forKey: LanguageKeys.used)))
+        dateStatus.append(DateStatus(id:0,title:LanguageKeys.new.localizedString))
+        dateStatus.append(DateStatus(id: 1 , title: LanguageKeys.used.localizedString))
         completionHandler?()
     }
     

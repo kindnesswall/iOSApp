@@ -104,7 +104,7 @@ class MessagesTableViewCell: UITableViewCell {
     func configIsNewMessageLabels(){
         self.isNewMessageLabel.font = AppConst.Resource.Font.getRegularFont(size: 15)
         self.isNewMessageLabel.textAlignment = .center
-        self.isNewMessageLabel.text = LocalizationSystem.getStr(forKey: LanguageKeys.newMessage)
+        self.isNewMessageLabel.text = LanguageKeys.newMessage.localizedString
         
         let lineColor = UIColor.gray
         self.isNewMessageLLineLabel.backgroundColor = lineColor

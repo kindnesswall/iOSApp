@@ -14,10 +14,10 @@ class IntroViewController: UIViewController {
     var swiftyOnboard: SwiftyOnboard!
     let colors:[UIColor] = [#colorLiteral(red: 0.9980840087, green: 0.3723873496, blue: 0.4952875376, alpha: 1),#colorLiteral(red: 0.2666860223, green: 0.5116362572, blue: 1, alpha: 1),#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1),#colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)]
     var titleArray: [String] = [
-        LocalizationSystem.getStr(forKey: LanguageKeys.intro_culture),
-        LocalizationSystem.getStr(forKey: LanguageKeys.intro_donate_platform),
-        LocalizationSystem.getStr(forKey: LanguageKeys.intro_free),
-        LocalizationSystem.getStr(forKey: LanguageKeys.intro_opensource)
+       LanguageKeys.intro_culture.localizedString,
+       LanguageKeys.intro_donate_platform.localizedString,
+       LanguageKeys.intro_free.localizedString,
+       LanguageKeys.intro_opensource.localizedString
     ]
     
     var subTitleArray2: [String] = [
@@ -27,11 +27,11 @@ class IntroViewController: UIViewController {
     ""
         ]
     var subTitleArray: [String] = [
-        LocalizationSystem.getStr(forKey: LanguageKeys.intro_subtitle_culture),
-        LocalizationSystem.getStr(forKey: LanguageKeys.intro_subtitle_donate_platform),
-        LocalizationSystem.getStr(forKey: LanguageKeys.intro_subtitle_free),
-        LocalizationSystem.getStr(forKey: LanguageKeys.intro_subtitle_opensource)
- ]
+       LanguageKeys.intro_subtitle_culture.localizedString,
+       LanguageKeys.intro_subtitle_donate_platform.localizedString,
+       LanguageKeys.intro_subtitle_free.localizedString,
+       LanguageKeys.intro_subtitle_opensource.localizedString
+    ]
     
     var gradiant: CAGradientLayer = {
         //Gradiant for the background view
@@ -123,11 +123,11 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         overlay.skipButton.titleLabel?.font = AppConst.Resource.Font.getRegularFont(size: 16)
         
         overlay.continueButton.setTitle(
-            LocalizationSystem.getStr(forKey: LanguageKeys.yes),
+           LanguageKeys.yes.localizedString,
             for: .normal)
         
         overlay.skipButton.setTitle(
-            LocalizationSystem.getStr(forKey: LanguageKeys.skip), for: .normal)
+           LanguageKeys.skip.localizedString, for: .normal)
         
         //Return the overlay view:
         return overlay
@@ -141,15 +141,15 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         
         if Int(currentPage) < titleArray.count-1 {
             overlay.continueButton.setTitle(
-                LocalizationSystem.getStr(forKey: LanguageKeys.yes),
+               LanguageKeys.yes.localizedString,
                 for: .normal)
             
             overlay.skipButton.setTitle(
-                LocalizationSystem.getStr(forKey: LanguageKeys.skip), for: .normal)
+               LanguageKeys.skip.localizedString, for: .normal)
             
             overlay.skipButton.show()
         } else {
-            overlay.continueButton.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.letsGoToTheApplication), for: .normal)
+            overlay.continueButton.setTitle(LanguageKeys.letsGoToTheApplication.localizedString, for: .normal)
             overlay.skipButton.hide()
         }
     }

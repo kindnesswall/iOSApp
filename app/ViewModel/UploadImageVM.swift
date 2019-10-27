@@ -41,11 +41,11 @@ class UploadImageVM : NSObject {
     }
     
     func uploadedSuccessfully() {
-        FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.uploadedSuccessfully),theme: .success)
+        FlashMessage.showMessage(body: LanguageKeys.uploadedSuccessfully.localizedString,theme: .success)
     }
     
     func uploadFailed() {
-        FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
+        FlashMessage.showMessage(body: LanguageKeys.imageUploadingError.localizedString,theme: .warning)
     }
     
 }

@@ -58,7 +58,7 @@ class VerificationCodeViewController: UIViewController {
     
     func setTipLabel(){
         if let phoneNumber = userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) {
-            tipLabel.text = LocalizationSystem.getStr(forKey: LanguageKeys.guideOfRegitering_part1) + AppLanguage.getNumberString(number: phoneNumber) + LocalizationSystem.getStr(forKey: LanguageKeys.guideOfRegitering_part2)
+            tipLabel.text = LanguageKeys.guideOfRegitering_part1.localizedString + AppLanguage.getNumberString(number: phoneNumber) + LanguageKeys.guideOfRegitering_part2.localizedString
         }
     }
     
@@ -74,18 +74,18 @@ class VerificationCodeViewController: UIViewController {
     
     func setAllTextsInView(){
         
-        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.login)
+        self.navigationItem.title=LanguageKeys.login.localizedString
         
-        self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.registeringActivationCode), for: .normal)
-        self.sendAgainBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.resendActivationCode), for: .normal)
-        self.returnBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.back), for: .normal)
+        self.registerBtn.setTitle(LanguageKeys.registeringActivationCode.localizedString, for: .normal)
+        self.sendAgainBtn.setTitle(LanguageKeys.resendActivationCode.localizedString, for: .normal)
+        self.returnBtn.setTitle(LanguageKeys.back.localizedString, for: .normal)
         
         self.setTipLabel()
     }
     
     func setNavBar(){
         //        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.login)
+        self.navigationItem.title=LanguageKeys.login.localizedString
         self.navigationItem.removeDefaultBackBtn()
         self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppConst.Resource.Font.getIcomoonFont(size: 24))
     }
@@ -100,19 +100,19 @@ class VerificationCodeViewController: UIViewController {
         let activationCode:String = verifyCodeTextField.text?.castNumberToEnglish() ?? ""
         
         if activationCode.count <= 0 {
-            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeError),theme: .warning)
+            FlashMessage.showMessage(body:LanguageKeys.activationCodeError.localizedString,theme: .warning)
             self.verifyCodeTextField.shake()
             return
         }
         
         if activationCode.count < 5 {
-            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeIncorrectError),theme: .warning)
+            FlashMessage.showMessage(body:LanguageKeys.activationCodeIncorrectError.localizedString,theme: .warning)
             self.verifyCodeTextField.shake()
             return
         }
         
         guard let mobile = userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) else {
-            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.phoneNumberTryAgainError), theme: .error)
+            FlashMessage.showMessage(body:LanguageKeys.phoneNumberTryAgainError.localizedString, theme: .error)
             return
         }
         
@@ -140,7 +140,7 @@ class VerificationCodeViewController: UIViewController {
     }
     
     func handleLogin(_ result:Result<AuthOutput>) {
-        self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.registeringActivationCode), for: [])
+        self.registerBtn.setTitle(LanguageKeys.registeringActivationCode.localizedString, for: [])
         self.registerLoading.stopAnimating()
         
         switch(result){
@@ -148,13 +148,13 @@ class VerificationCodeViewController: UIViewController {
             var msg = "Error"
             switch(error){
             case .ServerError:
-                msg = LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeIncorrectError)
+                msg = LanguageKeys.activationCodeIncorrectError.localizedString
                 
                 FlashMessage.showMessage(body: msg,theme: .warning)
                 self.verifyCodeTextField.shake()
                 
             default:
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+                FlashMessage.showMessage(body:LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
             }
             
         case .success(let authOutput):
@@ -167,7 +167,7 @@ class VerificationCodeViewController: UIViewController {
                 UIApplication.shared.shortcutItems = [
                     UIApplicationShortcutItem(
                         type: "ir.kindnesswall.publicusers.DonateGift",
-                        localizedTitle: LocalizationSystem.getStr(forKey: LanguageKeys.DonateGift),
+                        localizedTitle:LanguageKeys.DonateGift.localizedString,
                         localizedSubtitle: "",
                         icon: UIApplicationShortcutIcon(type: .favorite),
                         userInfo: nil)
@@ -178,7 +178,7 @@ class VerificationCodeViewController: UIViewController {
     }
     
     func handleRegisterUser(_ result:Result<Void>) {
-        self.sendAgainBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.resendActivationCode), for: [])
+        self.sendAgainBtn.setTitle(LanguageKeys.resendActivationCode.localizedString, for: [])
         self.resendLoading.stopAnimating()
         
         switch(result){
@@ -186,15 +186,15 @@ class VerificationCodeViewController: UIViewController {
             var errorMsg = "Error"
             switch(error){
             case .ServerError:
-                errorMsg = LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeTryAgainOneMinuteLater)
+                errorMsg = LanguageKeys.activationCodeTryAgainOneMinuteLater.localizedString
                 
             default:
-                errorMsg = LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain)
+                errorMsg = LanguageKeys.weEncounterErrorTryAgain.localizedString
             }
             FlashMessage.showMessage(body: errorMsg, theme: .error)
 
         case .success(_):
-            let msg = LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeSendSuccessfully)
+            let msg = LanguageKeys.activationCodeSendSuccessfully.localizedString
             FlashMessage.showMessage(body: msg, theme: .success)
             
         }
@@ -206,8 +206,8 @@ class VerificationCodeViewController: UIViewController {
         self.resendLoading.startAnimating()
         
         guard let mobile = userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) else {
-            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.phoneNumberTryAgainError), theme: .error)
-            self.sendAgainBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.resendActivationCode), for: [])
+            FlashMessage.showMessage(body: LanguageKeys.phoneNumberTryAgainError.localizedString, theme: .error)
+            self.sendAgainBtn.setTitle(LanguageKeys.resendActivationCode.localizedString, for: [])
             self.resendLoading.stopAnimating()
             return
         }
@@ -226,7 +226,7 @@ class VerificationCodeViewController: UIViewController {
     
     func customizeUIElements() {
         self.verifyCodeTextField.backgroundColor=UIColor.clear
-        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:LocalizationSystem.getStr(forKey: LanguageKeys.activationCode), attributes: [NSAttributedString.Key.font : AppConst.Resource.Font.getLightFont(size: 13),NSAttributedString.Key.foregroundColor: UIColor.gray])
+        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string:LanguageKeys.activationCode.localizedString, attributes: [NSAttributedString.Key.font : AppConst.Resource.Font.getLightFont(size: 13),NSAttributedString.Key.foregroundColor: UIColor.gray])
         
         self.registerBtn.backgroundColor=AppConst.Resource.Color.Tint
         

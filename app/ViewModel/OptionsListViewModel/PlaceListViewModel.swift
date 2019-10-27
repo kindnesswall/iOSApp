@@ -58,7 +58,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
     
     init(placeType:PlaceType, showCities:Bool, showRegions:Bool, hasDefaultOption:Bool) {
         
-        self.titleName = LocalizationSystem.getStr(forKey: LanguageKeys.placeOfTheGift)
+        self.titleName = LanguageKeys.placeOfTheGift.localizedString
         self.placeType=placeType
         self.hasDefaultOption=hasDefaultOption
         self.showCities=showCities
@@ -89,7 +89,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
                 
                 self?.regions = []
 //                if self?.hasDefaultOption ?? false {
-//                    let defaultOption=Province(id: nil, name: LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces))
+//                    let defaultOption=Province(id: nil, name: LanguageKeys.allProvinces.localizedString)
 //                    self?.provinces.append(defaultOption)
 //                }
                 
@@ -112,7 +112,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
                 
                 self?.provinces = []
                 if self?.hasDefaultOption ?? false {
-                    let defaultOption=Province(id: nil, name: LocalizationSystem.getStr(forKey: LanguageKeys.allProvinces))
+                    let defaultOption=Province(id: nil, name: LanguageKeys.allProvinces.localizedString)
                     self?.provinces.append(defaultOption)
                 }
                 
@@ -135,7 +135,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
                 
                 self?.cities=[]
                 if self?.hasDefaultOption ?? false {
-                    let defaultOption=City(id: nil, name:LocalizationSystem.getStr(forKey: LanguageKeys.allCities))
+                    let defaultOption=City(id: nil, name:LanguageKeys.allCities.localizedString)
                     self?.cities.append(defaultOption)
                 }
                 

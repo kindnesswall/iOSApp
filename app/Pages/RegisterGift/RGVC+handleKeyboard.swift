@@ -51,7 +51,7 @@ extension RegisterGiftViewController {
     @IBAction func uploadBtnClicked(_ sender: Any) {
         let actionController = SkypeActionController()
         
-        actionController.addAction(Action(LocalizationSystem.getStr(forKey: LanguageKeys.camera), style: .default, handler: { action in
+        actionController.addAction(Action( LanguageKeys.camera.localizedString, style: .default, handler: { action in
             
             self.imagePicker.allowsEditing = false
             self.imagePicker.sourceType = .camera
@@ -61,7 +61,7 @@ extension RegisterGiftViewController {
             
         }))
         
-        actionController.addAction(Action(LocalizationSystem.getStr(forKey: LanguageKeys.gallery), style: .default, handler: { action in
+        actionController.addAction(Action( LanguageKeys.gallery.localizedString, style: .default, handler: { action in
             
             self.imagePicker.allowsEditing = false
             self.imagePicker.sourceType = .photoLibrary

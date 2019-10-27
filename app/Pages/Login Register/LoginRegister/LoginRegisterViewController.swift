@@ -58,14 +58,14 @@ class LoginRegisterViewController: UIViewController {
     }
     
     func setAllTextsInView(){
-        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.login)
-        self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: .normal)
-        self.guideLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.guideOfSendingActivationCode)
+        self.navigationItem.title=LanguageKeys.login.localizedString
+        self.registerBtn.setTitle(LanguageKeys.sendingActivationCode.localizedString, for: .normal)
+        self.guideLabel.text=LanguageKeys.guideOfSendingActivationCode)
     }
     
     func setNavBar(){
 //        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.login)
+        self.navigationItem.title=LanguageKeys.login.localizedString
         self.navigationItem.removeDefaultBackBtn()
         self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppConst.Resource.Font.getIcomoonFont(size: 24))
     }
@@ -93,7 +93,7 @@ class LoginRegisterViewController: UIViewController {
     @IBAction func registerBtnClick(_ sender: Any) {
         let mobile:String = phoneNumberTextField.text?.castNumberToEnglish() ?? ""
         if !mobile.starts(with: "9") || mobile.count != 10 || !mobile.isNumber{
-            FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.phoneNumberIncorrectError), theme: .error)
+            FlashMessage.showMessage(body: LanguageKeys.phoneNumberIncorrectError.localizedString, theme: .error)
             self.phoneNumberTextField.shake()
             return
         }
@@ -127,7 +127,7 @@ class LoginRegisterViewController: UIViewController {
     }
     
     func handleResult(_ result:Result<Void>) {
-        self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.sendingActivationCode), for: [])
+        self.registerBtn.setTitle(LanguageKeys.sendingActivationCode.localizedString, for: [])
         self.loading.stopAnimating()
         
         switch(result){
@@ -135,9 +135,9 @@ class LoginRegisterViewController: UIViewController {
             var bodyString:String = "Error"
             switch(error){
             case .ServerError:
-                bodyString = LocalizationSystem.getStr(forKey: LanguageKeys.activationCodeTryAgainOneMinuteLater)
+                bodyString = LanguageKeys.activationCodeTryAgainOneMinuteLater.localizedString
             default:
-                bodyString = LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain)
+                bodyString = LanguageKeys.weEncounterErrorTryAgain.localizedString
             }
             FlashMessage.showMessage(body: bodyString, theme: .error)
             

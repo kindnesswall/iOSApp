@@ -54,7 +54,7 @@ class MessagesViewController: UIViewController,MessagesDelegate {
 //        donateGiftBarBtn = UINavigationItem.getNavigationItem(
 //            target: self,
 //            action: #selector(self.donateGiftBtnTapped),
-//            text:LocalizationSystem.getStr(forKey: LanguageKeys.DonateGift),
+//            text:LanguageKeys.DonateGift.localizedString,
 //            font:AppConst.Resource.Font.getRegularFont(size: 16)
 //        )
         
@@ -73,7 +73,7 @@ class MessagesViewController: UIViewController,MessagesDelegate {
     
     func sendGiftDonationMessage(gift:Gift){
         
-        let giftDonateChatMessage = LocalizationSystem.getStr(forKey: LanguageKeys.giftDonateChatMessage)
+        let giftDonateChatMessage = LanguageKeys.giftDonateChatMessage.localizedString
         let text = "\(giftDonateChatMessage) '\(gift.title ?? "")'"
         
         guard let viewModel = self.viewModel else {
@@ -90,7 +90,7 @@ class MessagesViewController: UIViewController,MessagesDelegate {
     }
     
     func setAllTextsInView(){
-        self.donateGiftBarBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.DonateGift)
+        self.donateGiftBarBtn?.title=LanguageKeys.DonateGift.localizedString
     }
     
     func configureMessageInput(){

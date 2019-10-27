@@ -43,7 +43,7 @@ class OptionsListViewController: UIViewController {
     }
     
     func setNavbar(){
-        NavigationBarStyle.setRightBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.exitBtnAction), text: LocalizationSystem.getStr(forKey: LanguageKeys.cancel))
+        NavigationBarStyle.setRightBtn(navigationItem: self.navigationItem, target: self, action: #selector(self.exitBtnAction), text: LanguageKeys.cancel.localizedString)
         NavigationBarStyle.removeDefaultBackBtn(navigationItem: self.navigationItem)
     }
     

@@ -25,7 +25,7 @@ class GiftsToDonateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.DonateGift)
+        self.navigationItem.title = LanguageKeys.DonateGift.localizedString
         
         self.navigationItem.rightBarButtonItem = UINavigationItem.getCloseNavigationItem(target: self, action: #selector(self.closePage))
         
@@ -83,7 +83,7 @@ extension GiftsToDonateViewController : UITableViewDelegate {
         guard let gift = self.viewModel?.gifts[indexPath.row]
             else { return }
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: LocalizationSystem.getStr(forKey: LanguageKeys.giftDonationPrompt),animation:.none,declineHandler: nil) { [weak self] (ـ) in
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: LanguageKeys.giftDonationPrompt.localizedString,animation:.none,declineHandler: nil) { [weak self] (ـ) in
             self?.donateGift(gift: gift)
         }
         

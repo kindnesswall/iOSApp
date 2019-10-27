@@ -36,19 +36,19 @@ class RegisterGiftViewModel: NSObject {
         
         guard let title=uiProperties?.titleTextViewText , title != "" else {
             inputErrorOnSendingGift(
-                errorText: LocalizationSystem.getStr(forKey: LanguageKeys.titleError))
+                errorText: LanguageKeys.titleError.localizedString)
             return nil
         }
         input.title=title
         
         guard let categoryId=self.category?.id, categoryId != 0 else {
-            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.categoryError))
+            inputErrorOnSendingGift(errorText: LanguageKeys.categoryError.localizedString)
             return nil
         }
         input.categoryId=categoryId
         
         guard let dateStatusId=self.dateStatus?.id else {
-            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.newOrUsedError))
+            inputErrorOnSendingGift(errorText: LanguageKeys.newOrUsedError.localizedString)
             return nil
         }
         if dateStatusId == 0 {
@@ -58,13 +58,13 @@ class RegisterGiftViewModel: NSObject {
         }
         
         guard let giftDescription=uiProperties?.descriptionTextViewText , giftDescription != "" else {
-            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.descriptionError))
+            inputErrorOnSendingGift(errorText: LanguageKeys.descriptionError.localizedString)
             return nil
         }
         input.description=giftDescription
         
         guard let price=uiProperties?.priceTextViewText?.castNumberToEnglish(), let priceInt = Int(price) else {
-            inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.priceError))
+            inputErrorOnSendingGift(errorText: LanguageKeys.priceError.localizedString)
             return nil
         }
         input.price=priceInt
@@ -73,15 +73,15 @@ class RegisterGiftViewModel: NSObject {
             
             let addressObject=self.getAddress()
             guard let address=addressObject?.address else {
-                inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError))
+                inputErrorOnSendingGift(errorText: LanguageKeys.addressError.localizedString)
                 return nil
             }
             guard let provinceId=addressObject?.provinceId, provinceId != 0 else {
-                inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError))
+                inputErrorOnSendingGift(errorText: LanguageKeys.addressError.localizedString)
                 return nil
             }
             guard let cityId=addressObject?.cityId, cityId != 0 else {
-                inputErrorOnSendingGift(errorText: LocalizationSystem.getStr(forKey: LanguageKeys.addressError))
+                inputErrorOnSendingGift(errorText: LanguageKeys.addressError.localizedString)
                 return nil
             }
             
@@ -148,13 +148,13 @@ class RegisterGiftViewModel: NSObject {
 //            responseHandler?()
 //            
 //            guard let response = response as? HTTPURLResponse else {
-//                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+//                FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
 //                return
 //            }
 //            if response.statusCode == APICall.OKStatus {
 //                complitionHandler?()
 //            } else {
-//                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+//                FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
 //            }
 //            
 //        }
@@ -266,9 +266,9 @@ class RegisterGiftViewModel: NSObject {
         
         if let isNew=gift.isNew {
             if isNew {
-                self.dateStatus=DateStatus(id:0,title:LocalizationSystem.getStr(forKey: LanguageKeys.new))
+                self.dateStatus=DateStatus(id:0,title:LanguageKeys.new.localizedString)
             } else {
-                self.dateStatus=DateStatus(id: 1 , title: LocalizationSystem.getStr(forKey: LanguageKeys.used))
+                self.dateStatus=DateStatus(id: 1 , title: LanguageKeys.used.localizedString)
             }
             self.delegate?.setDateStatusBtnTitle(text: self.dateStatus?.title)
         }
@@ -307,7 +307,7 @@ class RegisterGiftViewModel: NSObject {
         userDefault.set(data, forKey: AppConst.UserDefaults.RegisterGiftDraft)
         userDefault.synchronize()
         
-        FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.draftSavedSuccessfully), theme: .success)
+        FlashMessage.showMessage(body: LanguageKeys.draftSavedSuccessfully.localizedString, theme: .success)
     }
     
     
@@ -364,11 +364,11 @@ class RegisterGiftViewModel: NSObject {
     }
     
     func uploadedSuccessfully() {
-        FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.uploadedSuccessfully),theme: .success)
+        FlashMessage.showMessage(body: LanguageKeys.uploadedSuccessfully.localizedString,theme: .success)
     }
     
     func uploadFailed() {
-        FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.imageUploadingError),theme: .warning)
+        FlashMessage.showMessage(body: LanguageKeys.imageUploadingError.localizedString,theme: .warning)
     }
     
     

@@ -76,20 +76,20 @@ extension HomeViewController:UITableViewDelegate {
     
     func showDialogFailed(tryAgainHandler: @escaping ()-> Void) {
         let alert = UIAlertController(
-            title:LocalizationSystem.getStr(forKey: LanguageKeys.requestfail_dialog_title),
-            message: LocalizationSystem.getStr(forKey: LanguageKeys.requestfail_dialog_text),
+            title:LanguageKeys.requestfail_dialog_title.localizedString,
+            message: LanguageKeys.requestfail_dialog_text.localizedString,
             preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(
             UIAlertAction(
-                title: LocalizationSystem.getStr(forKey: LanguageKeys.tryAgain),
+                title:LanguageKeys.tryAgain.localizedString,
                 style: UIAlertAction.Style.default, handler: { (action) in
                     tryAgainHandler()
             }))
         
         alert.addAction(
             UIAlertAction(
-                title: LocalizationSystem.getStr(forKey: LanguageKeys.cancel),
+                title:LanguageKeys.cancel.localizedString,
                 style: UIAlertAction.Style.default, handler: { (action) in
                     alert.dismiss(animated: true, completion: nil)
             }))
@@ -99,20 +99,20 @@ extension HomeViewController:UITableViewDelegate {
     
     func showConfirmationDialog(actionHandler: @escaping ()-> Void) {
         let alert = UIAlertController(
-            title:LocalizationSystem.getStr(forKey: LanguageKeys.warning),
-            message: LocalizationSystem.getStr(forKey: LanguageKeys.areYouSure),
+            title:LanguageKeys.warning.localizedString,
+            message:LanguageKeys.areYouSure.localizedString,
             preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(
             UIAlertAction(
-                title: LocalizationSystem.getStr(forKey: LanguageKeys.yes),
+                title:LanguageKeys.yes.localizedString,
                 style: UIAlertAction.Style.default, handler: { (action) in
                     actionHandler()
             }))
         
         alert.addAction(
             UIAlertAction(
-                title: LocalizationSystem.getStr(forKey: LanguageKeys.cancel),
+                title:LanguageKeys.cancel.localizedString,
                 style: UIAlertAction.Style.default, handler: { (action) in
                     alert.dismiss(animated: true, completion: nil)
             }))

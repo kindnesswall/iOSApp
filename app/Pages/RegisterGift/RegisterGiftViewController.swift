@@ -110,13 +110,13 @@ class RegisterGiftViewController: UIViewController {
     func configNavBar(){
         
         if !isEditMode {
-            self.barClearBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.clearAllInput), text: LocalizationSystem.getStr(forKey: LanguageKeys.clearPage))
+            self.barClearBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.clearAllInput), text: LanguageKeys.clearPage.localizedString)
             self.navigationItem.rightBarButtonItems=[self.barClearBtn!]
-            self.barSaveBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.saveBarBtnAction), text: LocalizationSystem.getStr(forKey: LanguageKeys.saveDraft))
+            self.barSaveBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.saveBarBtnAction), text: LanguageKeys.saveDraft.localizedString)
             self.navigationItem.leftBarButtonItems=[self.barSaveBtn!]
             
         } else {
-            self.barCloseBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.closeBarBtnAction), text: LocalizationSystem.getStr(forKey: LanguageKeys.cancel))
+            self.barCloseBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.closeBarBtnAction), text: LanguageKeys.cancel.localizedString)
             
             self.navigationItem.rightBarButtonItems=[self.barCloseBtn!]
         }
@@ -128,10 +128,10 @@ class RegisterGiftViewController: UIViewController {
         self.clearUploadedImages()
         self.clearGiftPlaces()
         
-        self.categoryBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
+        self.categoryBtn.setTitle(LanguageKeys.select.localizedString, for: .normal)
         self.vm.category=nil
         
-        self.dateStatusBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
+        self.dateStatusBtn.setTitle(LanguageKeys.select.localizedString, for: .normal)
         self.vm.dateStatus=nil
         
         self.titleTextView.text=""
@@ -182,35 +182,34 @@ class RegisterGiftViewController: UIViewController {
     
     func setAllTextsInView(){
         if isEditMode {
-            self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.EditGiftViewController_title)
+            self.navigationItem.title=LanguageKeys.EditGiftViewController_title.localizedString
         } else {
-            self.navigationItem.title=LocalizationSystem.getStr(forKey: LanguageKeys.RegisterGiftViewController_title)
+            self.navigationItem.title=LanguageKeys.RegisterGiftViewController_title.localizedString
         }
         
-        self.barClearBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.clearPage)
-        self.barSaveBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.saveDraft)
-        self.barCloseBtn?.title=LocalizationSystem.getStr(forKey: LanguageKeys.cancel)
+        self.barClearBtn?.title=LanguageKeys.clearPage.localizedString
+        self.barSaveBtn?.title=LanguageKeys.saveDraft.localizedString
+        self.barCloseBtn?.title=LanguageKeys.cancel.localizedString
         
-        self.categoryLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.giftCategory)
-        self.titleLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.title)
-        self.descriptionLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.description)
-        self.placeLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.placeOfTheGift)
-        self.newOrSecondhandLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.newOrUsed)
-        self.priceLabel.text=LocalizationSystem.getStr(forKey: LanguageKeys.approximatePrice)+LocalizationSystem.getStr(forKey: LanguageKeys.gettingPriceReason)
+        self.categoryLabel.text=LanguageKeys.giftCategory.localizedString
+        self.titleLabel.text=LanguageKeys.title.localizedString
+        self.descriptionLabel.text=LanguageKeys.description.localizedString
+        self.placeLabel.text=LanguageKeys.placeOfTheGift.localizedString
+        self.newOrSecondhandLabel.text=LanguageKeys.newOrUsed.localizedString
+        self.priceLabel.text=LanguageKeys.approximatePrice.localizedString + LanguageKeys.gettingPriceReason.localizedString
         
-        self.registerBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.RegisterGiftViewController_title), for: .normal)
+        self.registerBtn.setTitle(  LanguageKeys.RegisterGiftViewController_title.localizedString, for: .normal)
         
         self.editBtn.setTitle(
-            LocalizationSystem.getStr(forKey: LanguageKeys.EditGiftViewController_title),
-            for: .normal)
+              LanguageKeys.EditGiftViewController_title.localizedString, for: .normal)
         
-        self.uploadBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.addImage), for: .normal)
-        self.placeBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
+        self.uploadBtn.setTitle(  LanguageKeys.addImage.localizedString, for: .normal)
+        self.placeBtn.setTitle(  LanguageKeys.select.localizedString, for: .normal)
         if self.vm.category == nil {
-            self.categoryBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
+            self.categoryBtn.setTitle(  LanguageKeys.select.localizedString, for: .normal)
         }
         if self.vm.dateStatus == nil {
-            self.dateStatusBtn.setTitle(LocalizationSystem.getStr(forKey: LanguageKeys.select), for: .normal)
+            self.dateStatusBtn.setTitle(  LanguageKeys.select.localizedString, for: .normal)
         }
     }
     

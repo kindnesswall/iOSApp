@@ -20,7 +20,7 @@ class CategoryListVM: NSObject, OptionsListViewModelProtocol {
     }
     
     init(hasDefaultOption:Bool) {
-        self.titleName = LocalizationSystem.getStr(forKey: LanguageKeys.category)
+        self.titleName = LanguageKeys.category.localizedString
         self.hasDefaultOption=hasDefaultOption
         super.init()
     }
@@ -33,7 +33,7 @@ class CategoryListVM: NSObject, OptionsListViewModelProtocol {
             case .success(let categories):
                 self?.categories=[]
                 if self?.hasDefaultOption ?? false {
-                    let defaultOption=Category(id: nil, title: LocalizationSystem.getStr(forKey: LanguageKeys.allGifts))
+                    let defaultOption=Category(id: nil, title: LanguageKeys.allGifts.localizedString)
                     self?.categories.append(defaultOption)
                 }
                 self?.categories.append(contentsOf: categories)

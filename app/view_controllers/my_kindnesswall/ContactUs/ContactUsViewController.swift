@@ -33,7 +33,7 @@ class ContactUsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.contactUs)
+        self.navigationItem.title = LanguageKeys.contactUs.localizedString
         
         self.collectionView.register(cellType: ContactUsCollectionViewCell.self)
 

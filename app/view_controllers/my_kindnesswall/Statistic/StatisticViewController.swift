@@ -21,7 +21,7 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = LocalizationSystem.getStr(forKey: "StatisticViewController_title")
+        self.navigationItem.title = "StatisticViewController_title".localizedString
         
         self.tableView.register(type: StatisticTableViewCell.self)
         self.initialLoadingIndicator=LoadingIndicator(view: self.view)

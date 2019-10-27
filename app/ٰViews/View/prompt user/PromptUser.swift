@@ -28,11 +28,11 @@ class PromptUser: PopUpView {
     override func initPopUpView() {
         
         self.acceptBtn.setTitle(
-            LocalizationSystem.getStr(forKey: LanguageKeys.yes),
+            LanguageKeys.yes.localizedString,
             for: .normal)
         
         self.rejectBtn.setTitle(
-            LocalizationSystem.getStr(forKey: LanguageKeys.no), for: .normal)
+            LanguageKeys.no.localizedString, for: .normal)
         
         self.message.textAlignment = AppLanguage.getTextAlignment()
         

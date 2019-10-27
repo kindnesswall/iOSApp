@@ -21,9 +21,9 @@ extension RegisterGiftViewController {
 
             switch result {
             case .failure:
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+                FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
             case .success:                
-                FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.giftRegisteredSuccessfully),theme: .success)
+                FlashMessage.showMessage(body: LanguageKeys.giftRegisteredSuccessfully.localizedString,theme: .success)
                 
                 DispatchQueue.main.async {
                     self.clearAllInput()
@@ -44,9 +44,9 @@ extension RegisterGiftViewController {
                 
                 switch result {
                 case .failure:
-                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.weEncounterErrorTryAgain), theme: .error)
+                    FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
                 case .success:
-                    FlashMessage.showMessage(body: LocalizationSystem.getStr(forKey: LanguageKeys.giftEditedSuccessfully), theme: .success)
+                    FlashMessage.showMessage(body: LanguageKeys.giftEditedSuccessfully.localizedString, theme: .success)
                     
                     self.vm.writeChangesToEditedGift()
                     self.editHandler?()

@@ -83,7 +83,7 @@ class LockViewController: UIViewController {
                         
                         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                         
-                        mainTitleLbl.text = LocalizationSystem.getStr(forKey: LanguageKeys.EnterAPasscode)
+                        mainTitleLbl.text = LanguageKeys.EnterAPasscode.localizedString
                         isReEnterPasscode = false
                         
                         passcode.removeAll()
@@ -97,7 +97,7 @@ class LockViewController: UIViewController {
                 passwordCounter = -1
                 clearCircles()
                 
-                mainTitleLbl.text = LocalizationSystem.getStr(forKey: LanguageKeys.ReEnterNewPasscode)
+                mainTitleLbl.text = LanguageKeys.ReEnterNewPasscode.localizedString
                 isReEnterPasscode = true
             }
         case .CheckPassCode:
