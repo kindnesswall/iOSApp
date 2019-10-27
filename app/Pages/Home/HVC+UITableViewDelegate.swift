@@ -35,7 +35,7 @@ extension HomeViewController:UITableViewDelegate {
         self.vm.giftApprovedAfterReview(rowNumber: rowIndex.row, completion: { [weak self] (result) in
             switch result {
             case .failure(_):
-                self?.showDialogFailed {
+                self?.homeCoordiantor?.showDialogFailed {
                     self?.approveAction(rowIndex: rowIndex, handler: handler)
                 }
             case .success:
@@ -49,7 +49,7 @@ extension HomeViewController:UITableViewDelegate {
     
     func rejectGift(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Reject") { [weak self](uiContextualAction, view, completion) in
-            self?.showConfirmationDialog {
+            self?.homeCoordiantor?.showConfirmationDialog {
                 self?.rejectAction(rowIndex: indexPath, handler: completion)
             }
         }
@@ -62,7 +62,7 @@ extension HomeViewController:UITableViewDelegate {
         self.vm.giftRejectedAfterReview(rowNumber: rowIndex.row, completion: { [weak self] (result) in
             switch result {
             case .failure(_):
-                self?.showDialogFailed {
+                self?.homeCoordiantor?.showDialogFailed {
                     self?.rejectAction(rowIndex: rowIndex, handler: handler)
                 }
             case .success:
@@ -74,64 +74,14 @@ extension HomeViewController:UITableViewDelegate {
         })
     }
     
-    func showDialogFailed(tryAgainHandler: @escaping ()-> Void) {
-        let alert = UIAlertController(
-            title:LanguageKeys.requestfail_dialog_title.localizedString,
-            message: LanguageKeys.requestfail_dialog_text.localizedString,
-            preferredStyle: UIAlertController.Style.alert)
-        
-        alert.addAction(
-            UIAlertAction(
-                title:LanguageKeys.tryAgain.localizedString,
-                style: UIAlertAction.Style.default, handler: { (action) in
-                    tryAgainHandler()
-            }))
-        
-        alert.addAction(
-            UIAlertAction(
-                title:LanguageKeys.cancel.localizedString,
-                style: UIAlertAction.Style.default, handler: { (action) in
-                    alert.dismiss(animated: true, completion: nil)
-            }))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func showConfirmationDialog(actionHandler: @escaping ()-> Void) {
-        let alert = UIAlertController(
-            title:LanguageKeys.warning.localizedString,
-            message:LanguageKeys.areYouSure.localizedString,
-            preferredStyle: UIAlertController.Style.alert)
-        
-        alert.addAction(
-            UIAlertAction(
-                title:LanguageKeys.yes.localizedString,
-                style: UIAlertAction.Style.default, handler: { (action) in
-                    actionHandler()
-            }))
-        
-        alert.addAction(
-            UIAlertAction(
-                title:LanguageKeys.cancel.localizedString,
-                style: UIAlertAction.Style.default, handler: { (action) in
-                    alert.dismiss(animated: true, completion: nil)
-            }))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         homeCoordiantor?.showDetail(gift: vm.gifts[indexPath.row], editHandler: self.editHandler)
     }
     
     func editHandler(){
         self.reloadPage()
-        reloadOtherVCs()
+        homeCoordiantor?.reloadOtherVCs()
     }
-    
-    func reloadOtherVCs(){
-        AppDelegate.me().appCoordinator.reloadTabBarPages(currentPage: self)
-    }
-    
+
 }
 

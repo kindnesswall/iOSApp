@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J0O-CZ-t8x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,61 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
-        <scene sceneID="fbA-Bp-inU">
-            <objects>
-                <tabBarController storyboardIdentifier="UITabBarController" automaticallyAdjustsScrollViewInsets="NO" id="J0O-CZ-t8x" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zwu-dz-qdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="LeQ-FY-e8B" kind="relationship" relationship="viewControllers" id="n7c-Dv-N3d"/>
-                        <segue destination="dIc-UX-04e" kind="relationship" relationship="viewControllers" id="fSF-dx-LJT"/>
-                        <segue destination="1Dw-OM-lRS" kind="relationship" relationship="viewControllers" id="h6L-EE-pdY"/>
-                        <segue destination="Q3b-p9-9Cb" kind="relationship" relationship="viewControllers" id="RyN-E2-T7r"/>
-                        <segue destination="v24-Mi-6dR" kind="relationship" relationship="viewControllers" id="gUY-sO-bkz"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4jz-SM-uRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1204" y="132"/>
-        </scene>
-        <!--ثبت هدیه-->
-        <scene sceneID="L3H-3K-hAL">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Dw-OM-lRS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ثبت هدیه" image="ic_gift_white_36dp" id="QMD-IL-3h9"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cCD-qg-41j">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BKT-xY-4n6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1204" y="988"/>
-        </scene>
-        <!--درخواستها-->
-        <scene sceneID="dF8-QV-EDX">
-            <objects>
-                <navigationController id="dIc-UX-04e" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="درخواستها" image="ic_human_handsup_white_24dp" id="5uA-Tn-CJs"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZzC-tO-pCe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ffh-7M-aeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-436" y="987"/>
-        </scene>
         <!--Intro View Controller-->
         <scene sceneID="dNv-Ua-I0c">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oyc-jP-MK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="IntroViewController" id="6Pc-j2-Z1V" customClass="IntroViewController" customModule="app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yog-p2-XUs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -71,58 +20,8 @@
                         <viewLayoutGuide key="safeArea" id="wd3-Is-Njc"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Oyc-jP-MK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="94" y="132"/>
         </scene>
-        <!--بیشتر-->
-        <scene sceneID="WBK-h8-VGF">
-            <objects>
-                <navigationController id="LeQ-FY-e8B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="بیشتر" image="ic_more" id="Giq-yA-iw8"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="amh-7K-A96">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9I0-ke-rmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="495" y="991"/>
-        </scene>
-        <!--خیریه‌ها-->
-        <scene sceneID="jh8-ND-T8A">
-            <objects>
-                <navigationController id="Q3b-p9-9Cb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="خیریه‌ها" image="heart.fill" catalog="system" id="hwT-SD-rgX"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q3l-ri-aoB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VZr-Fa-Xu1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2687" y="986"/>
-        </scene>
-        <!--خانه-->
-        <scene sceneID="49l-z7-VEd">
-            <objects>
-                <navigationController id="v24-Mi-6dR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="خانه" image="ic_home_white_24dp" id="XSi-Od-cG1"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7dT-nl-p5p">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sWf-jb-A8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2006" y="988"/>
-        </scene>
     </scenes>
-    <resources>
-        <image name="heart.fill" catalog="system" width="64" height="54"/>
-        <image name="ic_gift_white_36dp" width="32" height="32"/>
-        <image name="ic_home_white_24dp" width="32" height="32"/>
-        <image name="ic_human_handsup_white_24dp" width="32" height="32"/>
-        <image name="ic_more" width="32" height="32"/>
-    </resources>
 </document>

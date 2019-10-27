@@ -8,6 +8,16 @@
 
 import UIKit
 
+protocol HomeViewModelDelegate: class {
+    func pageLoadingAnimation(isLoading:Bool)
+    func lazyLoadingAnimation(isLoading:Bool)
+    func refreshControlAnimation(isLoading:Bool)
+    func showTableView(show:Bool)
+    func reloadTableView()
+    func insertNewItemsToTableView(insertedIndexes:[IndexPath])
+    func presentfailedAlert(alert:UIAlertController)
+}
+
 extension HomeViewController : HomeViewModelDelegate {
 
     func insertNewItemsToTableView(insertedIndexes:[IndexPath]) {

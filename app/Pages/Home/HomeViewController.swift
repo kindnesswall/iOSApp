@@ -12,6 +12,8 @@ import Firebase
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet var tableview: UITableView!
+
     let vm: HomeVM
     let userDefault=UserDefaults.standard
 
@@ -44,8 +46,6 @@ class HomeViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @IBOutlet var tableview: UITableView!
     
     deinit {
         print("HomeViewController deinit")
@@ -97,7 +97,12 @@ class HomeViewController: UIViewController {
     }
     
     func setNavigationBar(){
-        categotyBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.categoryFilterBtnClicked), text: LanguageKeys.allGifts.localizedString,font:AppConst.Resource.Font.getRegularFont(size: 16))
+        categotyBarBtn=UINavigationItem.getNavigationItem(
+            target: self,
+            action: #selector(self.categoryFilterBtnClicked),
+            text: LanguageKeys.allGifts.localizedString,
+            font:AppConst.Resource.Font.getRegularFont(size: 16)
+        )
         self.navigationItem.rightBarButtonItems=[categotyBarBtn!]
         
         provinceBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LanguageKeys.allProvinces.localizedString,font:AppConst.Resource.Font.getRegularFont(size: 16))
