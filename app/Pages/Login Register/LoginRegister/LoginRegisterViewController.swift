@@ -60,7 +60,7 @@ class LoginRegisterViewController: UIViewController {
     func setAllTextsInView(){
         self.navigationItem.title=LanguageKeys.login.localizedString
         self.registerBtn.setTitle(LanguageKeys.sendingActivationCode.localizedString, for: .normal)
-        self.guideLabel.text=LanguageKeys.guideOfSendingActivationCode)
+        self.guideLabel.text=LanguageKeys.guideOfSendingActivationCode.localizedString
     }
     
     func setNavBar(){
