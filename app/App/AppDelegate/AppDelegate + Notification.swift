@@ -20,6 +20,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             return
         }
         
-        self.appCoordinator.tabBarController.refreshChatProtocol?.fetchChat(chatId: message.chatId)
+        self.appCoordinator.refreshChat(id: message.chatId)
     }
 }

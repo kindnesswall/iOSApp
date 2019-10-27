@@ -16,29 +16,30 @@ class TabBarController : UITabBarController{
     let keychain = KeychainSwift()
     let tabBarViewModel = TabBarViewModel()
 
-    lazy var tabBarCoordinator:TabBarCoordinator = TabBarCoordinator(tabBarController: self)
+    var tabBarCoordinator:TabBarCoordinator?
+    
+    init(tabBarCoordinator:TabBarCoordinator) {
+        self.tabBarCoordinator = tabBarCoordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarCoordinator.initializeTabs()
     }
+//
+//    func refreshAppAfterSwitchUser(){
+//        tabBarCoordinator?.refreshAppAfterSwitchUser()
+//    }
     
-    func refreshAppAfterSwitchUser(){
-        tabBarCoordinator.refreshAppAfterSwitchUser()
-    }
-    
-    func logout(){
-        AppDelegate.me().appViewModel.clearUserSensitiveData()
-        tabBarCoordinator.refreshAppAfterSwitchUser()
-    }
-    
-    func checkForLogin()->Bool{
-        if AppDelegate.me().appViewModel.isUserLogedIn() {
-            return true
-        }
-        tabBarCoordinator.showLoginView()
-        return false
-    }
+//    func logout(){
+//        AppDelegate.me().appViewModel.clearUserSensitiveData()
+//        tabBarCoordinator?.refreshAppAfterSwitchUser()
+//    }
+        
 }
 
 extension TabBarController : UITabBarControllerDelegate{
@@ -47,7 +48,7 @@ extension TabBarController : UITabBarControllerDelegate{
         
         if !AppDelegate.me().appViewModel.isUserLogedIn(),tabBarViewModel.isAuthenticationMandatory(for: viewController)
             {
-                tabBarCoordinator.showLoginView()
+                tabBarCoordinator?.showLoginView()
             return false
         }
         

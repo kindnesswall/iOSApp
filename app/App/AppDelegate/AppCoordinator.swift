@@ -9,49 +9,50 @@
 import Foundation
 import UIKit
 
-class AppCoordinator {
-    var window: UIWindow
-    var tabBarController = TabBarController()
+protocol AppCoordinatorProtocol {
+    var window: UIWindow { get set }
+}
 
+class AppCoordinator:AppCoordinatorProtocol {
+    var window: UIWindow
+    var tabBarCoordinator:TabBarCoordinator?
+    
     init(with window:UIWindow = UIWindow() ) {
         self.window = window
     }
     
     func reloadTabBarPages(currentPage: ReloadablePage?){
-        tabBarController.tabBarCoordinator.reloadTabBarPages(currentPage: currentPage)
+        tabBarCoordinator?.reloadTabBarPages(currentPage: currentPage)
     }
     
     func refreshAppAfterSwitchUser() {
-        tabBarController.refreshAppAfterSwitchUser()
+        tabBarCoordinator?.refreshAppAfterSwitchUser()
     }
     
     func showRootView() {
+        tabBarCoordinator = TabBarCoordinator(appCoordinator: self)
         window.makeKeyAndVisible()
-        window.rootViewController = self.tabBarController
+        window.rootViewController = self.tabBarCoordinator?.tabBarController
+    }
+    
+    func checkForLogin()->Bool{
+        return tabBarCoordinator?.checkForLogin() ?? false
     }
     
     func showRegisterGiftTab() {
-        self.tabBarController.tabBarController?.selectedIndex = AppConst.TabIndex.RegisterGift
+        tabBarCoordinator?.setSelectedTab(index: AppConst.TabIndex.RegisterGift)
     }
     
     func showLoginVC(){
-        let controller=LoginRegisterViewController()
-        
-        let nc = UINavigationController.init(rootViewController: controller)
-        self.tabBarController.present(nc, animated: true, completion: nil)
+        tabBarCoordinator?.showLoginView()
     }
     
     func showLockVC() {
-        let controller = LockViewController()
-        controller.mode = .CheckPassCode
-        controller.isCancelable = false
-        self.tabBarController.present(controller, animated: true, completion: nil)
+        tabBarCoordinator?.showLockVC()
     }
     
     func showIntro() {
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: IntroViewController.identifier) as! IntroViewController
-        self.tabBarController.present(viewController, animated: true, completion: nil)
+        tabBarCoordinator?.showLockVC()
     }
     
     func showSelectLanguageVC() {
@@ -71,19 +72,10 @@ class AppCoordinator {
     }
     
     func shareApp() {
-        let text = "دیوار مهربانی، نیاز نداری بزار، نیاز داری بردار\n\n دانلود از سیب اپ:\nhttps://new.sibapp.com/applications/app-12\n\nدانلود از گوگل پلی:\nhttps://play.google.com/store/apps/details?id=ir.kindnesswall"
-        
-        // set up activity view controller
-        let textToShare = [ text ]
-        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.window // so that iPads won't crash
-        
-        // exclude some activity types from the list (optional)
-        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
-        
-        // present the view controller
-        self.tabBarController.present(activityViewController, animated: true, completion: nil)
+        tabBarCoordinator?.shareApp()
     }
-    
-    
+
+    func refreshChat(id:Int) {
+        tabBarCoordinator?.refreshChat(id:id)
+    }
 }

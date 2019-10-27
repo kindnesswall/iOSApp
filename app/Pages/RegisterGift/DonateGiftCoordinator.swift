@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class DonateGiftCoordinator : Coordinator {
+class DonateGiftCoordinator : NavigationCoordinator {
     var navigationController: CoordinatedNavigationController
     
     init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {

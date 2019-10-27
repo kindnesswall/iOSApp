@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ChatCoordinator : Coordinator {
+class ChatCoordinator : NavigationCoordinator {
     var navigationController: CoordinatedNavigationController
     
     init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {

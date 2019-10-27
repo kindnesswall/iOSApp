@@ -9,13 +9,11 @@
 import Foundation
 import UIKit
 
-import Foundation
-import UIKit
-
 class CoordinatedNavigationController: UINavigationController {
-    weak var coordinator: Coordinator?
+    weak var coordinator: NavigationCoordinator?
 }
 
-protocol Coordinator:AnyObject {
+protocol NavigationCoordinator:AnyObject {
     var navigationController: CoordinatedNavigationController { get set }
 }
+

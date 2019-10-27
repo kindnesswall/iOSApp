@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
-class TabBarCoordinator {
+class TabBarCoordinator : TabCoordinator{
+    lazy var tabBarController = TabBarController(tabBarCoordinator:self)
+    var appCoordinator: AppCoordinatorProtocol
     
     let home = HomeCoordinator()
     let charities = CharitiesCoordinator()
@@ -20,15 +22,58 @@ class TabBarCoordinator {
 
     var tabBarPagesRelaodDelegates = [ReloadablePage]()
 
-    let tabBarController:UITabBarController
 //    let appCoordinator: AppCoordinator
-    init(tabBarController:UITabBarController) {
+    init(appCoordinator: AppCoordinatorProtocol) {
 //        self.appCoordinator = AppDelegate.me().appCoordinator
-        self.tabBarController = tabBarController
+//        self.tabBarController = tabBarController
+        self.appCoordinator = appCoordinator
+        initializeTabs()
+    }
+    
+    func setSelectedTab(index:Int) {
+        tabBarController.selectedIndex = index
+    }
+    
+    func checkForLogin()->Bool{
+        if AppDelegate.me().appViewModel.isUserLogedIn() {
+            return true
+        }
+        showLoginView()
+        return false
     }
     
     func showLoginView() {
-        AppDelegate.me().appCoordinator.showLoginVC()
+        let controller=LoginRegisterViewController()
+        let nc = UINavigationController.init(rootViewController: controller)
+        self.tabBarController.present(nc, animated: true, completion: nil)
+    }
+    
+    func showLockVC() {
+        let controller = LockViewController()
+        controller.mode = .CheckPassCode
+        controller.isCancelable = false
+        self.tabBarController.present(controller, animated: true, completion: nil)
+    }
+    
+    func showIntro() {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: IntroViewController.identifier) as! IntroViewController
+        self.tabBarController.present(viewController, animated: true, completion: nil)
+    }
+    
+    func shareApp() {
+        let text = "دیوار مهربانی، نیاز نداری بزار، نیاز داری بردار\n\n دانلود از سیب اپ:\nhttps://new.sibapp.com/applications/app-12\n\nدانلود از گوگل پلی:\nhttps://play.google.com/store/apps/details?id=ir.kindnesswall"
+        
+        // set up activity view controller
+        let textToShare = [ text ]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.appCoordinator.window // so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+        
+        // present the view controller
+        self.tabBarController.present(activityViewController, animated: true, completion: nil)
     }
     
     func initializeTabs()  {
@@ -38,7 +83,7 @@ class TabBarCoordinator {
         tabs[AppConst.TabIndex.RegisterGift] = donateGiftCoordinator.navigationController
         tabs[AppConst.TabIndex.Chat] = chatCoordinator.navigationController
         tabs[AppConst.TabIndex.More] = moreCoordinator.navigationController
-        
+        tabBarController = TabBarController(tabBarCoordinator:self)
         self.tabBarController.viewControllers = tabs
         
         setTabsDelegates()
@@ -85,5 +130,9 @@ class TabBarCoordinator {
             }
             delegate.reloadPage()
         }
+    }
+    
+    func refreshChat(id:Int) {
+        tabBarController.refreshChatProtocol?.fetchChat(chatId:id)
     }
 }

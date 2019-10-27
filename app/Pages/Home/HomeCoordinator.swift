@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class HomeCoordinator : Coordinator {
+class HomeCoordinator : NavigationCoordinator {
     var navigationController: CoordinatedNavigationController
     
     init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {
