@@ -13,7 +13,8 @@ import Firebase
 class HomeViewController: UIViewController {
 
     @IBOutlet var tableview: UITableView!
-
+    @IBOutlet weak var emptyListMessageLabel: UILabel!
+    
     let vm: HomeVM
     let userDefault=UserDefaults.standard
 
@@ -55,10 +56,11 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         self.vm.delegate = self
-        
+        emptyListMessageLabel.text = vm.getEmptyListMessage()
+
         registerForPreviewing(with: self, sourceView: tableview)
         
-        self.tableview.hide()
+//        self.tableview.hide()
         
         hud.textLabel.text = LanguageKeys.loading.localizedString
         

@@ -17,48 +17,48 @@ extension RegisterGiftViewController {
         vm.registerGift { (result) in
             DispatchQueue.main.async {
                 self.registerBtn.isEnabled=true
-            }
-
-            switch result {
-            case .failure:
-                FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
-            case .success:                
-                FlashMessage.showMessage(body: LanguageKeys.giftRegisteredSuccessfully.localizedString,theme: .success)
-                
-                DispatchQueue.main.async {
-                    self.clearAllInput()
-                    self.reloadOtherPages()
-                }
+                self.handleRegisterGift(result)
             }
         }
-        
+    }
+    
+    func handleRegisterGift(_ result:Result<Gift>)  {
+        switch result {
+        case .failure:
+            FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
+        case .success:
+            FlashMessage.showMessage(body: LanguageKeys.giftRegisteredSuccessfully.localizedString,theme: .success)
+            
+            self.clearAllInput()
+            self.reloadOtherPages()
+        }
     }
     
     @IBAction func editBtnAction(_ sender: Any) {
-        
         self.editBtn.isEnabled=false
-        
         vm.editGift { (result) in
             DispatchQueue.main.async {
                 self.editBtn.isEnabled=true
-                
-                switch result {
-                case .failure:
-                    FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
-                case .success:
-                    FlashMessage.showMessage(body: LanguageKeys.giftEditedSuccessfully.localizedString, theme: .success)
-                    
-                    self.vm.writeChangesToEditedGift()
-                    self.editHandler?()
-                    
-                    let when=DispatchTime.now() + 1
-                    DispatchQueue.main.asyncAfter(deadline: when, execute: {
-                        self.dismiss(animated: true, completion: nil)
-                    })
-                }
+                self.handleEditGift(result)
             }
         }
-        
+    }
+    
+    func handleEditGift(_ result:Result<Gift>)  {
+        switch result {
+        case .failure:
+            FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
+        case .success:
+            FlashMessage.showMessage(body: LanguageKeys.giftEditedSuccessfully.localizedString, theme: .success)
+            
+            self.vm.writeChangesToEditedGift()
+            self.editHandler?()
+            
+            let when=DispatchTime.now() + 1
+            DispatchQueue.main.asyncAfter(deadline: when, execute: {
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
     }
     
     @IBAction func placeBtnAction(_ sender: Any) {

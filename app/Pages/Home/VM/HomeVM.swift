@@ -21,6 +21,9 @@ class HomeVM: NSObject {
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
     
+    var categoryId:Int?
+    var provinceId:Int?
+    
     func reloadPage(){
         if initialGiftsLoadingHasOccurred {
             httpLayer.cancelRequests()
@@ -30,8 +33,9 @@ class HomeVM: NSObject {
         }
     }
     
-    var categoryId:Int?
-    var provinceId:Int?
+    func getEmptyListMessage() -> String {
+        return "No gift is available!"
+    }
     
     func giftApprovedAfterReview(rowNumber: Int,completion: @escaping (Result<Void>)-> Void) {
         defer {
@@ -89,15 +93,21 @@ class HomeVM: NSObject {
     }
     
     func handleResponse(beforeId:Int?, recieveGifts reply:[Gift]) {
+        self.delegate?.pageLoadingAnimation(isLoading: false)
+        self.delegate?.lazyLoadingAnimation(isLoading: false)
+        self.delegate?.refreshControlAnimation(isLoading: false)
+        
+        if beforeId == nil, reply.count == 0 {
+            self.isLoadingGifts=false
+            self.delegate?.showTableView(show: false)
+            return
+        }
+        
         if beforeId==nil {
             self.gifts=[]
             self.delegate?.showTableView(show: true)
             self.delegate?.reloadTableView()
         }
-        
-        self.delegate?.pageLoadingAnimation(isLoading: false)
-        self.delegate?.lazyLoadingAnimation(isLoading: false)
-        self.delegate?.refreshControlAnimation(isLoading: false)
         
         if reply.count == self.lazyLoadingCount {
             self.isLoadingGifts=false

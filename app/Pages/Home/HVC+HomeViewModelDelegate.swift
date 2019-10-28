@@ -51,11 +51,8 @@ extension HomeViewController : HomeViewModelDelegate {
     }
     
     func showTableView(show:Bool){
-        if show {
-            self.tableview.show()
-        } else {
-            self.tableview.hide()
-        }
+//        self.tableview.isHidden = show
+        emptyListMessageLabel.isHidden = show
     }
     
     func presentfailedAlert(alert:UIAlertController) {
