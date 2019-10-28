@@ -42,6 +42,16 @@ class MyWallViewController: UIViewController {
     var donatedRefreshControl=UIRefreshControl()
     var receivedRefreshControl=UIRefreshControl()
     
+    var myWallCoordinator:MyWallCoordinator
+    init(myWallCoordinator:MyWallCoordinator) {
+        self.myWallCoordinator = myWallCoordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     enum GiftType {
         case registered
         case donated

@@ -11,6 +11,7 @@ import Foundation
 struct LanguageKeys {
     
     static let YouHaveNoMessage : String = "YouHaveNoMessage"
+    static let YouDidntBlockAnyBody: String = "YouDidntBlockAnyBody"
 
     static let DonateGift : String = "DonateGift"
     

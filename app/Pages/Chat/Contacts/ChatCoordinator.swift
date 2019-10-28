@@ -17,8 +17,8 @@ class ChatCoordinator : NavigationCoordinator {
         navigationController.coordinator = self
 
         let viewController = ContactsViewController()
-        let img = UIImage(named: AppImages.Contacts)
-        viewController.tabBarItem = UITabBarItem(title: "Chat", image: img, tag: 0)
+        let img = UIImage(named: AppImages.Requests)
+        viewController.tabBarItem = UITabBarItem(title: "Chats", image: img, tag: 0)
         
         navigationController.viewControllers = [viewController]
     }

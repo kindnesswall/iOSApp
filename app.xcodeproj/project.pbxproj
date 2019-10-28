@@ -69,6 +69,7 @@
 		05644DD01FFF06F900B7C853 /* NibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DCF1FFF06F900B7C853 /* NibLoader.swift */; };
 		0580595B2365C7F000B679C4 /* GiftDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580595A2365C7F000B679C4 /* GiftDetailCoordinator.swift */; };
 		0580595D2365D77C00B679C4 /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580595C2365D77C00B679C4 /* MoreViewModel.swift */; };
+		0580595F2367816E00B679C4 /* MyWallCoordiantor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580595E2367816E00B679C4 /* MyWallCoordiantor.swift */; };
 		0593E50222D54ADF00C3B046 /* Charity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593E50122D54ADF00C3B046 /* Charity.swift */; };
 		0593E50922D54FCB00C3B046 /* CharityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593E50722D54FCB00C3B046 /* CharityListViewController.swift */; };
 		0593E50A22D54FCB00C3B046 /* CharityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0593E50822D54FCB00C3B046 /* CharityListViewController.xib */; };
@@ -318,6 +319,7 @@
 		05644DCF1FFF06F900B7C853 /* NibLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoader.swift; sourceTree = "<group>"; };
 		0580595A2365C7F000B679C4 /* GiftDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetailCoordinator.swift; sourceTree = "<group>"; };
 		0580595C2365D77C00B679C4 /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
+		0580595E2367816E00B679C4 /* MyWallCoordiantor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWallCoordiantor.swift; sourceTree = "<group>"; };
 		0593E50122D54ADF00C3B046 /* Charity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charity.swift; sourceTree = "<group>"; };
 		0593E50722D54FCB00C3B046 /* CharityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityListViewController.swift; sourceTree = "<group>"; };
 		0593E50822D54FCB00C3B046 /* CharityListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityListViewController.xib; sourceTree = "<group>"; };
@@ -971,6 +973,7 @@
 		05BEA43320497AD500147BF5 /* MyWall */ = {
 			isa = PBXGroup;
 			children = (
+				0580595E2367816E00B679C4 /* MyWallCoordiantor.swift */,
 				6092D631204950F700AFDA7B /* MyWallViewController.swift */,
 				604A31E22291FA5900E2C5B6 /* MyWallViewController.xib */,
 			);
@@ -1792,6 +1795,7 @@
 				059B1F4323644EA100596BD4 /* TabBarController.swift in Sources */,
 				607E78852279E23600FF0008 /* MessagesViewModel.swift in Sources */,
 				52466DE721DBC6E80086F327 /* GiftDetailVM.swift in Sources */,
+				0580595F2367816E00B679C4 /* MyWallCoordiantor.swift in Sources */,
 				053C46F82294A82A00074761 /* ResponseModel.swift in Sources */,
 				52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */,
 				059B1F462364502C00596BD4 /* TabBarCoordinator.swift in Sources */,

@@ -63,6 +63,7 @@ struct AppConst {
     struct TabIndex {
         public static let HOME:Int = 0
         public static let Charities:Int = 1
+        public static let MyWall:Int = 1
         public static let RegisterGift:Int = 2
         public static let Chat:Int = 3
         public static let More:Int = 4

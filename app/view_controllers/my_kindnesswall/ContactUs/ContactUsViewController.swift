@@ -50,22 +50,22 @@ class ContactUsViewController: UIViewController {
         
         let github = ContactUsModel(image: UIImage(named: AppImages.Github) , link: AppConst.URL.githubLink)
         
-        let gmail = ContactUsModel(image: UIImage(named: AppImages.Gmail) , link: AppConst.URL.gmailLink)
+//        let gmail = ContactUsModel(image: UIImage(named: AppImages.Gmail) , link: AppConst.URL.gmailLink)
         
-        let instagram = ContactUsModel(image: UIImage(named: AppImages.Instagram) , link: AppConst.URL.instagramLink)
+//        let instagram = ContactUsModel(image: UIImage(named: AppImages.Instagram) , link: AppConst.URL.instagramLink)
         
         let telegram = ContactUsModel(image: UIImage(named: AppImages.Telegram) , link: AppConst.URL.telegramLink)
         
-        let facebook = ContactUsModel(image: UIImage(named: AppImages.Facebook) , link: AppConst.URL.facebookLink)
+//        let facebook = ContactUsModel(image: UIImage(named: AppImages.Facebook) , link: AppConst.URL.facebookLink)
         
-        let website = ContactUsModel(image: UIImage(named: AppImages.Website) , link: AppConst.URL.webSiteLink)
+//        let website = ContactUsModel(image: UIImage(named: AppImages.Website) , link: AppConst.URL.webSiteLink)
         
         data.append(github)
-        data.append(gmail)
-        data.append(instagram)
+//        data.append(gmail)
+//        data.append(instagram)
         data.append(telegram)
-        data.append(facebook)
-        data.append(website)
+//        data.append(facebook)
+//        data.append(website)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -77,17 +77,6 @@ class ContactUsViewController: UIViewController {
         
         self.navigationController?.navigationBar.setDefaultStyle()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

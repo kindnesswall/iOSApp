@@ -21,7 +21,7 @@ class ContactsViewModel: NSObject {
     
     weak var delegate : ContactsViewModelProtocol?
     
-    private var network: ContactsViewModelNetwork
+    var network: ContactsViewModelNetwork
     var initialContactsHasLoaded = false
     
     init(blockedChats: Bool) {
@@ -194,6 +194,7 @@ protocol ContactsViewModelNetwork : class {
     func sendAck(ackMessage:AckMessage,completionHandler:(()->Void)?)
     func fetchContacts()
     func fetchMessages(chatId:Int,beforeId:Int?)
+    func getEmptyListMessage() -> String
 }
 
 protocol ContactsViewModelNetworkInterface : class {

@@ -30,8 +30,8 @@ struct AppImages {
     static let Intro = "intro_img_"
 
     static let Home = "ic_home_white_24dp"    
-    static let Charities = "ic_human_handsup_white_24dp"
+    static let Requests = "ic_human_handsup_white_24dp"
     static let DonateGift = "ic_gift_white_36dp"
-    static let Contacts = "ic_mywall"
+    static let MyWall = "ic_mywall"
     static let More = "ic_more"
 }

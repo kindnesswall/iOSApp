@@ -25,6 +25,10 @@ class ContactsRestfulViewModel: NSObject {
         print("ContactsRestfulViewModel deinit")
     }
     
+    func getEmptyListMessage() -> String {
+        return blockedChats ? LanguageKeys.YouDidntBlockAnyBody.localizedString : LanguageKeys.YouHaveNoMessage.localizedString
+    }
+    
 }
 
 extension ContactsRestfulViewModel : ContactsViewModelNetwork {

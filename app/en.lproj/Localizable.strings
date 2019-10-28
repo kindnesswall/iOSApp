@@ -6,6 +6,9 @@
   Copyright © 2018 Hamed.Gh. All rights reserved.
 */
 
+
+"YouDidntBlockAnyBody" = "You didn't block anybody.";
+
 "profile" = "Profile";
 "ReEnterNewPasscode" = "Re-enter your new passcode";
 "EnterAPasscode" = "Enter a passcode";
@@ -30,9 +33,9 @@
 "operationFailed" = "We encounter error at our server!";
 "weEncounterErrorTryAgain" = "We encounter error, please try again!";
 
-"noGiftRegistered" = "There is no gift that registered by you";
-"noGiftDonated" = "There is no gift that donated by you";
-"noGiftReceived" = "There is no gift that received by you";
+"noGiftRegistered" = "You have no registered gift.";
+"noGiftDonated" = "You have no donated gift.";
+"noGiftReceived" = "You have no received gift.";
 
 "intro_culture" = "KindnessWall's Culture";
 "intro_donate_platform" = "2nate.com";
@@ -148,7 +151,7 @@
 
 "tabBar_home" = "Home";
 "tabBar_my_gifts" = "My Gifts";
-"tabBar_give_gift" = "Donate Gift";
+"tabBar_give_gift" = "Donate";
 "tabBar_requests" = "Requests";
 "tabBar_my_wall" = "My Wall";
 

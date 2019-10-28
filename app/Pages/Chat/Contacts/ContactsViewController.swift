@@ -39,7 +39,7 @@ class ContactsViewController: UIViewController {
         
         self.viewModel.delegate = self
         
-        youHaveNoMessage.text = LanguageKeys.YouHaveNoMessage.localizedString
+        youHaveNoMessage.text = viewModel.network.getEmptyListMessage()
         
         if self.viewModel.initialContactsHasLoaded {
             self.pageLoadingAnimation(pageLoadingSate: .hasLoaded(showEmptyListMessage: self.viewModel.allChats.count == 0))

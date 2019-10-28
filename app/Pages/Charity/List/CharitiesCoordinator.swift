@@ -17,8 +17,8 @@ class CharitiesCoordinator : NavigationCoordinator {
         navigationController.coordinator = self
 
         let charitiesViewController = CharityListViewController()
-        let img = UIImage(named: AppImages.Charities)
-        charitiesViewController.tabBarItem = UITabBarItem(title: "Charities", image: img, tag: 0)
+//        let img = UIImage(named: AppImages.Charities)
+//        charitiesViewController.tabBarItem = UITabBarItem(title: "Charities", image: img, tag: 0)
         
         navigationController.viewControllers = [charitiesViewController]
 

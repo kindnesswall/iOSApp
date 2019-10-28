@@ -14,18 +14,15 @@ class TabBarCoordinator : TabCoordinator{
     var appCoordinator: AppCoordinatorProtocol
     
     let home = HomeCoordinator()
-    let charities = CharitiesCoordinator()
+//    let charities = CharitiesCoordinator()
     let donateGiftCoordinator = DonateGiftCoordinator()
     
     var moreCoordinator = MoreCoordinator()
     var chatCoordinator = ChatCoordinator()
-
+    var myWallCoordinator = MyWallCoordinator()
+    
     var tabBarPagesRelaodDelegates = [ReloadablePage]()
-
-//    let appCoordinator: AppCoordinator
     init(appCoordinator: AppCoordinatorProtocol) {
-//        self.appCoordinator = AppDelegate.me().appCoordinator
-//        self.tabBarController = tabBarController
         self.appCoordinator = appCoordinator
         initializeTabs()
     }
@@ -82,8 +79,8 @@ class TabBarCoordinator : TabCoordinator{
         home.showHome()
         tabs[AppConst.TabIndex.HOME] = home.navigationController
         
-        
-        tabs[AppConst.TabIndex.Charities] = charities.navigationController
+        myWallCoordinator.showMyWall()
+        tabs[AppConst.TabIndex.MyWall] = myWallCoordinator.navigationController//charities.navigationController
         tabs[AppConst.TabIndex.RegisterGift] = donateGiftCoordinator.navigationController
         tabs[AppConst.TabIndex.Chat] = chatCoordinator.navigationController
         
@@ -109,6 +106,12 @@ class TabBarCoordinator : TabCoordinator{
         let moreNC = moreCoordinator.navigationController
         _ = moreNC.view
         self.tabBarController.viewControllers?[AppConst.TabIndex.More] = moreNC
+        
+        myWallCoordinator = MyWallCoordinator()
+        myWallCoordinator.showMyWall()
+        let myWallNC = myWallCoordinator.navigationController
+        _ = myWallNC.view
+        self.tabBarController.viewControllers?[AppConst.TabIndex.MyWall] = myWallNC
     }
 
     func setTabsDelegates(){

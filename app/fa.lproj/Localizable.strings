@@ -165,3 +165,5 @@
 "contact" = "مخاطب";
 "block" = "مسدود";
 "unblock" = "عدم مسدود";
+
+"YouDidntBlockAnyBody" = "شما فردی را بلاک نکرده اید.";

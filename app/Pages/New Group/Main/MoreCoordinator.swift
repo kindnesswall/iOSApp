@@ -68,9 +68,7 @@ class MoreCoordinator : NavigationCoordinator {
     }
     
     func showMyWall() {
-        let myWallViewController = MyWallViewController()
-        myWallViewController.userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
-        self.navigationController.pushViewController(myWallViewController, animated: true)
+        
     }
     
     func showLockScreenView()  {
