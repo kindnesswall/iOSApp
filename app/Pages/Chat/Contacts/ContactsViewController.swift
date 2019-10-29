@@ -18,6 +18,17 @@ class ContactsViewController: UIViewController {
     let refreshControl = UIRefreshControl()
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
+    
+    var chatCoordinator:ChatCoordinator
+    init(chatCoordinator:ChatCoordinator) {
+        self.chatCoordinator = chatCoordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @IBOutlet weak var onEmptyListMessage: UIView!
     
     @IBOutlet weak var youHaveNoMessage: UILabel!
@@ -29,11 +40,12 @@ class ContactsViewController: UIViewController {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self.viewModel
-        
-        let titleKey = self.blockedChats ? LanguageKeys.blockedChats : LanguageKeys.chats
-        self.navigationItem.title = titleKey.localizedString
+
+        let titleKey = blockedChats ? LanguageKeys.blockedChats : LanguageKeys.chats
+        navigationItem.title = titleKey.localizedString
         
         self.tableView.register(ChatTableViewCell.self, forCellReuseIdentifier: ChatTableViewCell.identifier)
+
         self.loadingIndicator=LoadingIndicator(view: self.view)
         configRefreshControl()
         
@@ -69,16 +81,10 @@ class ContactsViewController: UIViewController {
     }
 }
 
-
-
 extension ContactsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let messagesViewModel = self.viewModel.allChats[indexPath.row]
-        let controller = MessagesViewController()
-        controller.viewModel = messagesViewModel
-        controller.delegate = self.viewModel
-        controller.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(controller, animated: true)
+        chatCoordinator.showMessages(viewModel: messagesViewModel, delegate: viewModel)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -93,7 +99,7 @@ extension ContactsViewController : UITableViewDelegate {
     }
     func getSwipeAction(chatId: Int) -> UIContextualAction {
         
-        let titleKey = self.blockedChats ? LanguageKeys.unblock : LanguageKeys.block
+        let titleKey = blockedChats ? LanguageKeys.unblock : LanguageKeys.block
         let title = titleKey.localizedString
         
         let action = UIContextualAction(style: .destructive, title: title) { [weak self] action, view, completion in
@@ -110,6 +116,7 @@ extension ContactsViewController : UITableViewDelegate {
         self.apiService.blockOrUnblockChat(blockCase: blockCase, chatId: chatId, completion: { result in
             switch result {
             case .failure(_):
+                //TODO: should handle the failure
                 break
             case .success(_):
                 completion(true)

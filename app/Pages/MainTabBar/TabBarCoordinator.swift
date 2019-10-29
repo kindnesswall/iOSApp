@@ -82,6 +82,8 @@ class TabBarCoordinator : TabCoordinator{
         myWallCoordinator.showMyWall()
         tabs[AppConst.TabIndex.MyWall] = myWallCoordinator.navigationController//charities.navigationController
         tabs[AppConst.TabIndex.RegisterGift] = donateGiftCoordinator.navigationController
+        
+        chatCoordinator.showRoot()
         tabs[AppConst.TabIndex.Chat] = chatCoordinator.navigationController
         
         moreCoordinator.showMore()
@@ -97,6 +99,7 @@ class TabBarCoordinator : TabCoordinator{
     
     func refreshAppAfterSwitchUser(){
         chatCoordinator = ChatCoordinator()
+        chatCoordinator.showRoot()
         let chatNC = chatCoordinator.navigationController
         _ = chatNC.view
         self.tabBarController.viewControllers?[AppConst.TabIndex.Chat] = chatNC
