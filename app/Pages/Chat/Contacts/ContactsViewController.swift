@@ -28,7 +28,7 @@ class ContactsViewController: UIViewController {
         self.viewModel = ContactsViewModel(blockedChats: self.blockedChats)
         
         self.tableView.delegate = self
-        self.tableView.dataSource = self
+        self.tableView.dataSource = self.viewModel
         
         let titleKey = self.blockedChats ? LanguageKeys.blockedChats : LanguageKeys.chats
         self.navigationItem.title = titleKey.localizedString
@@ -69,19 +69,7 @@ class ContactsViewController: UIViewController {
     }
 }
 
-extension ContactsViewController : UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.allChats.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ChatTableViewCell.identifier, for: indexPath) as! ChatTableViewCell
-        let messagesViewModel = self.viewModel.allChats[indexPath.row]
-        cell.fillUI(viewModel: messagesViewModel)
-        return cell
-    }
-    
-}
+
 
 extension ContactsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
