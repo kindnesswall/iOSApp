@@ -25,8 +25,7 @@ extension HomeVM:UITableViewDataSource{
             }
         }
         
-        let cell=tableView.dequeueReusableCell(withIdentifier: GiftTableViewCell.identifier) as! GiftTableViewCell
-        
+        let cell=tableView.dequeue(type: GiftTableViewCell.self, for: indexPath)
         cell.filViews(gift: gifts[indexPath.row])
         return cell
         

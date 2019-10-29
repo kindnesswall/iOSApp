@@ -124,8 +124,7 @@ extension GiftViewModel : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell=tableView.dequeueReusableCell(withIdentifier: GiftTableViewCell.identifier, for: indexPath) as! GiftTableViewCell
-        
+        let cell = tableView.dequeue(type: GiftTableViewCell.self, for: indexPath)
         cell.filViews(gift: gifts[indexPath.row])
         
         let index=indexPath.row+1

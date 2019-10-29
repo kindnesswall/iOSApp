@@ -184,8 +184,6 @@ extension ContactsViewModel : StartNewChatProtocol {
 protocol ContactsViewModelProtocol : class {
     func reloadTableView()
     func pageLoadingAnimation(pageLoadingSate: PageLoadingSate)
-    func socketConnected()
-    func socketDisConnected()
 }
 
 protocol ContactsViewModelNetwork : class {

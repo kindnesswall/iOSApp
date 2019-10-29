@@ -135,15 +135,6 @@ extension ContactsViewController : ContactsViewModelProtocol {
             self.onEmptyListMessage.isHidden = !showEmptyListMessage
         }
     }
-    
-    func socketConnected() {
-        self.navigationItem.title = LanguageKeys.chats.localizedString
-    }
-    
-    func socketDisConnected() {
-        self.navigationItem.title = LanguageKeys.connecting.localizedString
-    }
-    
 }
 
 extension ContactsViewController: RefreshChatProtocol {
