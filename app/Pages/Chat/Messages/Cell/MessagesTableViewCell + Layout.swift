@@ -28,10 +28,10 @@ extension MessagesTableViewCell {
         let autoLayout = AutoLayoutHelper(view: subView)
         switch type {
         case .others:
-            autoLayout.addConstraints(firstView: subView, secondView: superView, leading: margin, trailing: nil, top: margin, bottom: -margin)
+            autoLayout.addConstraints(firstView: subView, secondView: superView, leading: hMargin, trailing: nil, top: vMargin, bottom: -vMargin)
             autoLayout.addConstantConstraint(firstAnchor: subView.trailingAnchor, secondAnchor: superView.trailingAnchor, equationType: .lessThan, constant: -userMargin)
         case .user:
-            autoLayout.addConstraints(firstView: subView, secondView: superView, leading: nil, trailing: -margin, top: margin, bottom: -margin)
+            autoLayout.addConstraints(firstView: subView, secondView: superView, leading: nil, trailing: -hMargin, top: vMargin, bottom: -vMargin)
             autoLayout.addConstantConstraint(firstAnchor: subView.leadingAnchor, secondAnchor: superView.leadingAnchor, equationType: .greaterThan, constant: userMargin)
         }
     }
@@ -69,11 +69,11 @@ extension MessagesTableViewCell {
         
         let superViewAnchor = isLeft ? self.isNewMessageView.leadingAnchor : self.isNewMessageView.trailingAnchor
         autoLayout.addConstantConstraint(
-            firstAnchor: isLeft ? line.leadingAnchor : line.trailingAnchor, secondAnchor: superViewAnchor, equationType: .equal, constant: isLeft ? margin : -margin)
+            firstAnchor: isLeft ? line.leadingAnchor : line.trailingAnchor, secondAnchor: superViewAnchor, equationType: .equal, constant: isLeft ? hMargin : -hMargin)
 
         let centerLabelAnchor = isLeft ? self.isNewMessageLabel.leadingAnchor : self.isNewMessageLabel.trailingAnchor
         autoLayout.addConstantConstraint(
-            firstAnchor: isLeft ? line.trailingAnchor : line.leadingAnchor, secondAnchor: centerLabelAnchor, equationType: .equal, constant: isLeft ? -margin : margin)
+            firstAnchor: isLeft ? line.trailingAnchor : line.leadingAnchor, secondAnchor: centerLabelAnchor, equationType: .equal, constant: isLeft ? -hMargin : hMargin)
         
     }
 }

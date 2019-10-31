@@ -15,7 +15,8 @@ class MessagesTableViewCell: UITableViewCell {
         case others
     }
     
-    let margin:CGFloat = 6
+    let vMargin:CGFloat = 6
+    let hMargin:CGFloat = 12
     let userMargin:CGFloat = 50
     let textMargin:CGFloat = 10
     let stateLabelMaxWidth:CGFloat = 20
