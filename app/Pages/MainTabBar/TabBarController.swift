@@ -11,8 +11,7 @@ import UIKit
 import KeychainSwift
 
 class TabBarController : UITabBarController{
-    weak var startNewChatProtocol:StartNewChatProtocol?
-    weak var refreshChatProtocol:RefreshChatProtocol?
+    
     let keychain = KeychainSwift()
     let tabBarViewModel = TabBarViewModel()
 

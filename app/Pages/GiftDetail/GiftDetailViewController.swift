@@ -41,6 +41,46 @@ class GiftDetailViewController: UIViewController {
     @IBOutlet var giftDescription: UILabel!
     
     @IBOutlet var requestBtn: UIButton!
+    @IBOutlet weak var requestBtnActivity: UIActivityIndicatorView!
+    @IBOutlet weak var requestBtnPlaceholder: UIView!
+    var requestBtnState: RequestBtnState = .isNotRequested
+    
+    enum RequestBtnState {
+        case hide
+        case loading
+        case isRequested(chat: Chat)
+        case isNotRequested
+    }
+    
+    func setRequestBtnState(state: RequestBtnState) {
+        
+        self.requestBtnState = state
+        
+        switch state {
+        case .loading, .hide:
+            self.requestBtn.setTitle("", for: .normal)
+        case .isNotRequested:
+            self.requestBtn.setTitle(LanguageKeys.request.localizedString,for: .normal)
+        case .isRequested(_):
+            self.requestBtn.setTitle(LanguageKeys.sendMessage.localizedString,for: .normal)
+        }
+        
+        switch state {
+        case .loading:
+            self.requestBtn.isEnabled = false
+            self.requestBtnActivity.startAnimating()
+        default:
+            self.requestBtn.isEnabled = true
+            self.requestBtnActivity.stopAnimating()
+        }
+        
+        switch state {
+        case .hide:
+            self.requestBtnPlaceholder.hide()
+        default:
+            self.requestBtnPlaceholder.show()
+        }
+    }
     
     @IBOutlet var slideshow: ImageSlideshow!
     
@@ -58,11 +98,41 @@ class GiftDetailViewController: UIViewController {
                 
         if let myIdString=KeychainSwift().get(AppConst.KeyChain.USER_ID), let myId=Int(myIdString), let userId=gift?.userId, myId==userId {
             self.addEditBtn()
-            self.requestBtn.hide()
+            self.setRequestBtnState(state: .hide)
             self.removeBtn.show()
         } else {
-            self.requestBtn.show()
+            self.checkRequestStatus()
             self.removeBtn.hide()
+        }
+    }
+    
+    func checkRequestStatus(){
+        guard AppDelegate.me().appCoordinator.checkForLogin()
+        ,let giftId = gift?.id else {
+            self.setRequestBtnState(state: .isNotRequested)
+            return
+        }
+        
+        self.setRequestBtnState(state: .loading)
+        
+        vm.checkRequestStatus(id: giftId, completion: { [weak self] result in
+            DispatchQueue.main.async {
+                self?.handleCheckRequestStatus(result: result)
+            }
+        })
+        
+    }
+    
+    func handleCheckRequestStatus(result: Result<GiftRequestStatus>) {
+        switch result {
+        case .failure(_):
+            self.setRequestBtnState(state: .isNotRequested)
+        case .success(let status):
+            if status.isRequested, let chat = status.chat {
+                self.setRequestBtnState(state: .isRequested(chat: chat))
+            } else {
+                self.setRequestBtnState(state: .isNotRequested)
+            }
         }
     }
     
@@ -99,7 +169,14 @@ class GiftDetailViewController: UIViewController {
             return
         }
         
-        self.requestGift()
+        switch requestBtnState {
+        case .isNotRequested:
+            self.requestGiftPrompt()
+        case .isRequested(let chat):
+            startChat(chat: chat, sendRequestMessage: false)
+        default:
+            break
+        }
         
     }
     
@@ -127,11 +204,18 @@ class GiftDetailViewController: UIViewController {
         }
     }
     
+    func requestGiftPrompt() {
+        
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data:  LanguageKeys.giftRequestPrompt.localizedString,animation:.none,declineHandler: nil) { (ـ) in
+            self.requestGift()
+        }
+    }
+    
     func requestGift(){
         guard let giftId = gift?.id else {
             return
         }
-        self.requestBtn.isEnabled = false
+        self.setRequestBtnState(state: .loading)
 
         vm.requestGift(id: giftId) { [weak self](result) in
             DispatchQueue.main.async {
@@ -142,16 +226,15 @@ class GiftDetailViewController: UIViewController {
     }
     
     func handleRequestGift(result:Result<Chat>) {
-        self.requestBtn.isEnabled = true
         
         switch result {
         case .failure(let error):
             print(error)
             FlashMessage.showMessage(body:  LanguageKeys.operationFailed.localizedString,theme: .error)
+            self.setRequestBtnState(state: .isNotRequested)
         case .success(let chat):
-            if let id = chat.id {
-                self.sendRequestMessage(chatId: id)
-            }
+            self.startChat(chat: chat, sendRequestMessage: true)
+            self.setRequestBtnState(state: .isRequested(chat: chat))
         }
     }
     
@@ -181,18 +264,20 @@ class GiftDetailViewController: UIViewController {
         }
     }
     
-    func sendRequestMessage(chatId:Int){
+    func startChat(chat:Chat, sendRequestMessage: Bool){
         
-        let giftRequestChatMessage = LanguageKeys.giftRequestChatMessage.localizedString
-        let text = "\(giftRequestChatMessage) '\(self.gift?.title ?? "")'"
-        
-        let startNewChatProtocol = AppDelegate.me().appCoordinator.tabBarCoordinator?.tabBarController.startNewChatProtocol
-        guard let messagesViewModel = startNewChatProtocol?.writeMessage(text: text, chatId: chatId) else {
+        guard let chatId = chat.id else {
             return
         }
-        guard let messagesViewControllerDelegate = startNewChatProtocol?.getMessagesViewControllerDelegate() else {
+        
+        let giftRequestMessage = "\(LanguageKeys.giftRequestChatMessage.localizedString) '\(self.gift?.title ?? "")'"
+        
+        guard let startNewChatProtocol = AppDelegate.me().appCoordinator.tabBarCoordinator?.chatCoordinator.startNewChatProtocol else {
             return
         }
+        let messagesViewModel = startNewChatProtocol.writeMessage(text: sendRequestMessage ? giftRequestMessage : nil, chatId: chatId)
+
+        let messagesViewControllerDelegate = startNewChatProtocol.getMessagesViewControllerDelegate()
         
         self.pushMessagesViewController(messagesViewModel: messagesViewModel, messagesViewControllerDelegate: messagesViewControllerDelegate)
     }
@@ -221,8 +306,7 @@ class GiftDetailViewController: UIViewController {
     func setAllTextsInView(){
         self.editBtn?.title=LanguageKeys.edit.localizedString
         self.removeBtn.setTitle(LanguageKeys.remove.localizedString, for: .normal)
-        self.requestBtn.setTitle(LanguageKeys.request.localizedString,for: .normal)
-        
+        self.setRequestBtnState(state: self.requestBtnState)
         self.categoryLabel.text=LanguageKeys.category.localizedString
         self.oldOrNewLabel.text=LanguageKeys.status.localizedString
         self.addressLabel.text=LanguageKeys.address.localizedString

@@ -162,16 +162,15 @@ extension ContactsViewModel : MessagesViewControllerDelegate {
 
 extension ContactsViewModel : StartNewChatProtocol {
     
-    func writeMessage(text:String,chatId:Int)->MessagesViewModel{
-        
-        let message = TextMessage(text: text, senderId: self.userId, chatId: chatId)
+    func writeMessage(text:String?,chatId:Int)->MessagesViewModel{
         
         let messagesViewModel = self.addContact(chatId: chatId)
         
-        self.addMessages(messages: [message], isSending: true, messagesViewModel: messagesViewModel)
-        
-        network.sendTextMessage(textMessage: message)
-        
+        if let text = text {
+            let message = TextMessage(text: text, senderId: self.userId, chatId: chatId)
+            self.addMessages(messages: [message], isSending: true, messagesViewModel: messagesViewModel)
+            network.sendTextMessage(textMessage: message)
+        }
         
         return messagesViewModel
     }
@@ -204,6 +203,6 @@ protocol ContactsViewModelNetworkInterface : class {
 }
 
 protocol StartNewChatProtocol : class {
-    func writeMessage(text:String,chatId:Int)->MessagesViewModel
+    func writeMessage(text:String?,chatId:Int)->MessagesViewModel
     func getMessagesViewControllerDelegate()->MessagesViewControllerDelegate
 }

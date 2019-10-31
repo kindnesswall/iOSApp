@@ -133,6 +133,7 @@
 "priceError" = "لطفا قیمت هدیه را وارد نمایید";
 "addressError" = "لطفا محل هدیه را انتخاب نمایید";
 "giftRemovingPrompt" = "آیا از حدف این هدیه اطمینان دارید؟";
+"giftRequestPrompt" = "آیا از درخواست به این هدیه اطمینان دارید؟";
 "phoneNumberIncorrectError" = "شماره موبایل صحیح نمی باشد.";
 "phoneNumberTryAgainError" = "شماره تلفن را مجدد وارد کنید";
 "activationCodeError" = "لطفا کد فعالسازی را وارد نمایید.";
@@ -161,6 +162,7 @@
 "giftDonationPrompt" = "آیا از اهدا این هدیه اطمینان دارید؟";
 
 "newMessage" = "پیغام جدید";
+"sendMessage" = "ارسال پیغام";
 "contact" = "مخاطب";
 "block" = "مسدود";
 "unblock" = "عدم مسدود";

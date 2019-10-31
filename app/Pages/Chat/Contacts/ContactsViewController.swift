@@ -12,7 +12,7 @@ import UIKit
 class ContactsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var viewModel: ContactsViewModel!
+    var viewModel: ContactsViewModel
     var blockedChats = false
     var loadingIndicator: LoadingIndicator?
     let refreshControl = UIRefreshControl()
@@ -20,8 +20,10 @@ class ContactsViewController: UIViewController {
     lazy var apiService = ApiService(httpLayer)
     
     var chatCoordinator:ChatCoordinator
-    init(chatCoordinator:ChatCoordinator) {
+    init(chatCoordinator:ChatCoordinator, blockedChats: Bool) {
         self.chatCoordinator = chatCoordinator
+        self.blockedChats = blockedChats
+        self.viewModel = ContactsViewModel(blockedChats: blockedChats)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,8 +37,6 @@ class ContactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.viewModel = ContactsViewModel(blockedChats: self.blockedChats)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self.viewModel

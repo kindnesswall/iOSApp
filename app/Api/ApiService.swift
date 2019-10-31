@@ -337,6 +337,22 @@ class ApiService:ApiServiceProtocol {
         
     }
     
+    func requestGiftStatus(id: Int, completion: @escaping (Result<GiftRequestStatus>)-> Void) {
+        self.httpLayer.request(at: Endpoint.RequestGiftStatus(id: id)) { result in
+            
+            switch result {
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let status = ApiUtility.convert(data: data, to: GiftRequestStatus.self) {
+                    completion(.success(status))
+                } else {
+                    completion(.failure(AppError.DataDecoding))
+                }
+            }
+        }
+    }
+    
     func removeGift(id: Int, completion: @escaping (Result<Void>)-> Void) {
         
         self.httpLayer.request(at: Endpoint.RemoveGift(id: id)) {(result) in

@@ -133,6 +133,7 @@
 "priceError" = "Please write the price of the gift";
 "addressError" = "Please select the location of the gift";
 "giftRemovingPrompt" = "Are you sure that you want to remove the gift?";
+"giftRequestPrompt" = "Are you sure that you want to request the gift?";
 "phoneNumberIncorrectError" = "The phone number is not correct.";
 "phoneNumberTryAgainError" = "Please type your telephone number again";
 "activationCodeError" = "Please type the activation code.";
@@ -159,12 +160,13 @@
 "blockedChats" = "Blocked Chats";
 
 "descriptionOfUserOnChatList" = "User With ID";
-"giftRequestChatMessage" = "Requestion of gift";
+"giftRequestChatMessage" = "Request of gift";
 "giftDonateChatMessage" = "Donation of gift";
 
 "giftDonationPrompt" = "Are you sure that you want to donate the gift?";
 
 "newMessage" = "New Message";
+"sendMessage" = "Send a message";
 "contact" = "Contact";
 "block" = "Block";
 "unblock" = "Unblock";

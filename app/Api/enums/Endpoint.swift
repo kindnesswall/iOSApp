@@ -31,6 +31,7 @@ enum Endpoint:EndpointProtocol {
     case EditGift(_ gift:Gift)
     case RemoveGift(id:Int)
     case RequestGift(id:Int)
+    case RequestGiftStatus(id:Int)
     case DonateGift(id:Int,toUserId:Int)
     
     case GiftsToReview(input: GiftsRequestInput)
@@ -87,7 +88,7 @@ enum Endpoint:EndpointProtocol {
         var urlComponent = URLComponents()
         urlComponent.scheme = self.scheme
         urlComponent.host = self.host
-        urlComponent.port = 8080
+        urlComponent.port = 80
         urlComponent.path = self.path
         urlComponent.queryItems = self.queryItems
         return urlComponent.url
@@ -96,7 +97,7 @@ enum Endpoint:EndpointProtocol {
     var httpBody: Data? {
         switch self {
             
-        case .GetProfile, .GetBlockContacts, .GetContacts, .GetUserStatistics, .UnBlockChat, .BlockChat, .BlockUserAccess, .Statistics, .RejectCharity, .CharityList, .AcceptCharity, .GiftReviewApproved, .GiftReviewRejected, .GetProvinces, .GetCategories, .GetCitiesOfProvince(_), .GetRegions(_), .RemoveGift, .RequestGift:
+        case .GetProfile, .GetBlockContacts, .GetContacts, .GetUserStatistics, .UnBlockChat, .BlockChat, .BlockUserAccess, .Statistics, .RejectCharity, .CharityList, .AcceptCharity, .GiftReviewApproved, .GiftReviewRejected, .GetProvinces, .GetCategories, .GetCitiesOfProvince(_), .GetRegions(_), .RemoveGift, .RequestGift, .RequestGiftStatus:
             return nil
 
 //        ---------------------------------------
@@ -144,7 +145,7 @@ enum Endpoint:EndpointProtocol {
     
     var httpMethod: String {
         switch self {
-        case .GetProvinces, .GetCitiesOfProvince(_), .GetCategories, .GetRegions(_), .RequestGift(_), .GetProfile(_), .CharityList, .Statistics, .GetUserStatistics, .GetContacts, .GetBlockContacts:
+        case .GetProvinces, .GetCitiesOfProvince(_), .GetCategories, .GetRegions(_), .RequestGift(_), .RequestGiftStatus, .GetProfile(_), .CharityList, .Statistics, .GetUserStatistics, .GetContacts, .GetBlockContacts:
             return HttpMethod.GET.rawValue
 
         case .RegisterUser(_), .Login(_), .RegisterGift, .DonateGift(_,_), .GiftsToDonate(_,_), .UserRegisteredGifts(_,_), .UserReceivedGifts(_,_), .UserDonatedGifts(_,_), .SendTextMessage(_), .SendAck(_), .FetchMessages(_), .RegisterPush(_), .GiftsToReview(_), .SendPushNotif, .UpdateUser, .ChatSendMessage, .ChatAckMessage, .GetGifts(_), .RequestPhoneNumberChange(_), .ValidatePhoneNumberChange(_), .UploadImage(_):
@@ -186,6 +187,8 @@ enum Endpoint:EndpointProtocol {
             return giftsBaseURL+"\(id)"
         case .RequestGift(let id):
             return giftsBaseURL+"request/\(id)"
+        case .RequestGiftStatus(let id):
+            return giftsBaseURL+"request/status/\(id)"
         case .DonateGift(_,_):
             return basePathUrl+"donate"
             

@@ -147,6 +147,6 @@ class TabBarCoordinator : TabCoordinator{
     }
     
     func refreshChat(id:Int) {
-        tabBarController.refreshChatProtocol?.fetchChat(chatId:id)
+        chatCoordinator.refreshChatProtocol?.fetchChat(chatId:id)
     }
 }

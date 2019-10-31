@@ -19,5 +19,9 @@ class GiftDetailVM: NSObject {
         apiService.requestGift(id: id,completion: completion)
     }
     
+    func checkRequestStatus(id: Int, completion: @escaping (Result<GiftRequestStatus>)-> Void) {
+        apiService.requestGiftStatus(id: id, completion: completion)
+    }
+    
 }
 

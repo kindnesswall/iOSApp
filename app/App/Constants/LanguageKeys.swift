@@ -125,6 +125,7 @@ struct LanguageKeys {
     static let activationCodeTryAgainOneMinuteLater : String = "activationCodeTryAgainOneMinuteLater"
     
     static let giftRemovingPrompt : String = "giftRemovingPrompt"
+    static let giftRequestPrompt : String = "giftRequestPrompt"
     static let guideOfSendingActivationCode : String = "guideOfSendingActivationCode"
     static let guideOfRegitering_part1 : String = "guideOfRegitering_part1"
     static let guideOfRegitering_part2 : String = "guideOfRegitering_part2"
@@ -166,6 +167,7 @@ struct LanguageKeys {
     static let giftDonationPrompt : String = "giftDonationPrompt"
     
     static let newMessage : String = "newMessage"
+    static let sendMessage : String = "sendMessage"
     static let contact = "contact"
     
     static let block = "block"

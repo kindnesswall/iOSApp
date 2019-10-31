@@ -11,6 +11,8 @@ import UIKit
 
 class ChatCoordinator : NavigationCoordinator {
     var navigationController: CoordinatedNavigationController
+    weak var startNewChatProtocol:StartNewChatProtocol?
+    weak var refreshChatProtocol:RefreshChatProtocol?
     
     init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {
         self.navigationController = navigationController
@@ -18,8 +20,9 @@ class ChatCoordinator : NavigationCoordinator {
     }
     
     func showRoot(blockedChats:Bool = false) {
-        let viewController = ContactsViewController(chatCoordinator: self)
-        viewController.blockedChats = blockedChats
+        let viewController = ContactsViewController(chatCoordinator: self, blockedChats: blockedChats)
+        self.startNewChatProtocol = viewController.viewModel
+        self.refreshChatProtocol = viewController
         let img = UIImage(named: AppImages.Requests)
         viewController.tabBarItem = UITabBarItem(title: "Chats", image: img, tag: 0)
         
