@@ -12,7 +12,7 @@ class HomeVM: NSObject {
     
     weak var delegate:HomeViewModelDelegate?
     var gifts:[Gift] = []
-    var isReview: Bool = false
+    var isReview: Bool
     
     var isLoadingGifts=false
     var initialGiftsLoadingHasOccurred=false
@@ -23,6 +23,10 @@ class HomeVM: NSObject {
     
     var categoryId:Int?
     var provinceId:Int?
+    
+    init(isReview:Bool = false){
+        self.isReview = isReview
+    }
     
     func reloadPage(){
         if initialGiftsLoadingHasOccurred {
@@ -50,13 +54,17 @@ class HomeVM: NSObject {
     }
     
     func giftRejectedAfterReview(rowNumber: Int,completion: @escaping (Result<Void>)-> Void) {
-        defer {
-            gifts.remove(at: rowNumber)
-        }
+        
         guard let giftId = gifts[rowNumber].id else {
             return
         }
-        apiService.giftRejectedAfterReview(giftId: giftId) { (result) in
+        apiService.giftRejectedAfterReview(giftId: giftId) { [weak self](result) in
+            switch(result){
+            case.failure(let error):
+                print(error)
+            case.success:
+                self?.gifts.remove(at: rowNumber)
+            }
             completion(result)
         }
     }

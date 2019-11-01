@@ -14,8 +14,10 @@ class HomeCoordinator : NavigationCoordinator {
     var homeViewController:HomeViewController?
     
     lazy var giftDetailCoordinator = GiftDetailCoordinator(navigationController: self.navigationController)
-    
-    init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {
+    var isReview:Bool
+
+    init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController(),isReview:Bool = false) {
+        self.isReview = isReview
         self.navigationController = navigationController
         navigationController.coordinator = self
     }
@@ -29,6 +31,11 @@ class HomeCoordinator : NavigationCoordinator {
         if let vc = homeViewController {
             navigationController.viewControllers = [vc]
         }
+    }
+    
+    func pushRoot() {
+        homeViewController = HomeViewController(vm: HomeVM(isReview: isReview), homeCoordiantor: self)
+        navigationController.pushViewController(homeViewController!, animated: true)
     }
     
     func showDetail(gift:Gift, editHandler:(()->Void)?) {

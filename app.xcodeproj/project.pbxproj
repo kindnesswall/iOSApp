@@ -105,6 +105,7 @@
 		05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBDF1FE26ADE00DBCDDF /* User.swift */; };
 		05BFBBE21FE26B0500DBCDDF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBE11FE26B0500DBCDDF /* Category.swift */; };
 		05BFBBEC1FE29F7C00DBCDDF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */; };
+		05CD3B1B236C9A10000E0209 /* RejectGiftReviewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B1A236C9A10000E0209 /* RejectGiftReviewInput.swift */; };
 		05D0A38E2368F351009D16F8 /* ContactsViewModel+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D0A38D2368F351009D16F8 /* ContactsViewModel+DataSource.swift */; };
 		522F6B5821D816DD001C67B9 /* UIColor+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5721D816DD001C67B9 /* UIColor+init.swift */; };
 		522F6B5E21D81AA2001C67B9 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5D21D81AA2001C67B9 /* FirebaseUser.swift */; };
@@ -357,6 +358,7 @@
 		05BFBBDF1FE26ADE00DBCDDF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		05BFBBE11FE26B0500DBCDDF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		05CD3B1A236C9A10000E0209 /* RejectGiftReviewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectGiftReviewInput.swift; sourceTree = "<group>"; };
 		05D0A38D2368F351009D16F8 /* ContactsViewModel+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactsViewModel+DataSource.swift"; sourceTree = "<group>"; };
 		34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
 		522F6B5721D816DD001C67B9 /* UIColor+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+init.swift"; sourceTree = "<group>"; };
@@ -730,6 +732,7 @@
 				60E7E4BC22999D160047344D /* FetchMessagesInput.swift */,
 				053892D3231322BE00828372 /* SendPushInput.swift */,
 				0563277523466DE700545CAF /* ValidatePhoneNumberChangeIntput.swift */,
+				05CD3B1A236C9A10000E0209 /* RejectGiftReviewInput.swift */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -1786,6 +1789,7 @@
 				52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */,
 				528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */,
 				607E78862279E23600FF0008 /* ContactsViewModel.swift in Sources */,
+				05CD3B1B236C9A10000E0209 /* RejectGiftReviewInput.swift in Sources */,
 				05BFBBD91FE24C4D00DBCDDF /* AppConst.swift in Sources */,
 				5247C8BC21E38A66009E8770 /* ContactUsViewController.swift in Sources */,
 				053892F9231AE9F500828372 /* MoreViewController.swift in Sources */,

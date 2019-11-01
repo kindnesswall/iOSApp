@@ -51,7 +51,7 @@ enum Endpoint:EndpointProtocol {
     case GetProfile(userId: Int)
     case UpdateUser(profile: UserProfile.Input)
 //        ---------------------------------------
-    case GiftReviewRejected(giftId: Int)
+    case GiftReviewRejected(giftId: Int, input:RejectGiftReviewInput)
     case GiftReviewApproved(giftId: Int)
 //        ---------------------------------------
     case CharityList
@@ -97,9 +97,11 @@ enum Endpoint:EndpointProtocol {
     var httpBody: Data? {
         switch self {
             
-        case .GetProfile, .GetBlockContacts, .GetContacts, .GetUserStatistics, .UnBlockChat, .BlockChat, .BlockUserAccess, .Statistics, .RejectCharity, .CharityList, .AcceptCharity, .GiftReviewApproved, .GiftReviewRejected, .GetProvinces, .GetCategories, .GetCitiesOfProvince(_), .GetRegions(_), .RemoveGift, .RequestGift, .RequestGiftStatus:
+        case .GetProfile, .GetBlockContacts, .GetContacts, .GetUserStatistics, .UnBlockChat, .BlockChat, .BlockUserAccess, .Statistics, .RejectCharity, .CharityList, .AcceptCharity, .GiftReviewApproved, .GetProvinces, .GetCategories, .GetCitiesOfProvince(_), .GetRegions(_), .RemoveGift, .RequestGift, .RequestGiftStatus:
             return nil
 
+        case .GiftReviewRejected(_,let input):
+            return ApiUtility.convert(input: input)
 //        ---------------------------------------
         case .RegisterUser(let user), .Login(let user):
             return ApiUtility.convert(input: user)

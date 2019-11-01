@@ -27,10 +27,8 @@ class MoreCoordinator : NavigationCoordinator {
     }
     
     func showGiftReview() {
-        let vm = HomeVM()
-        vm.isReview = true
-        let controller = HomeViewController(vm: vm)
-        self.navigationController.pushViewController(controller, animated: true)
+        let homeCoordinator = HomeCoordinator(navigationController: self.navigationController,isReview: true)
+        homeCoordinator.pushRoot()
     }
     
     func showContacts() {

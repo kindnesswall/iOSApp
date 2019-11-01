@@ -70,7 +70,8 @@ class ApiService:ApiServiceProtocol {
     }
     
     func giftRejectedAfterReview(giftId: Int,completion: @escaping (Result<Void>) -> Void) {
-        self.httpLayer.request(at: Endpoint.GiftReviewRejected(giftId: giftId)) { (result) in
+        let rejectInput = RejectGiftReviewInput(rejectReason: "")
+        self.httpLayer.request(at: Endpoint.GiftReviewRejected(giftId: giftId,input: rejectInput)) { (result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))

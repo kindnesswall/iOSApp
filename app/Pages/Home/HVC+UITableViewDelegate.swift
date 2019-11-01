@@ -62,11 +62,14 @@ extension HomeViewController:UITableViewDelegate {
         self.vm.giftRejectedAfterReview(rowNumber: rowIndex.row, completion: { [weak self] (result) in
             switch result {
             case .failure(_):
-                self?.homeCoordiantor?.showDialogFailed {
-                    self?.rejectAction(rowIndex: rowIndex, handler: handler)
+                DispatchQueue.main.async {
+                    self?.homeCoordiantor?.showDialogFailed {
+                        self?.rejectAction(rowIndex: rowIndex, handler: handler)
+                    }
                 }
             case .success:
                 DispatchQueue.main.async {
+                    
                     self?.tableview.deleteRows(at: [rowIndex], with: .automatic)
                 }
                 handler(true)
