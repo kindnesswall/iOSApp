@@ -14,22 +14,25 @@ class ChatCoordinator : NavigationCoordinator {
     weak var startNewChatProtocol:StartNewChatProtocol?
     weak var refreshChatProtocol:RefreshChatProtocol?
     var rootViewController:ContactsViewController?
-    
-    init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {
+    let blockedChats:Bool
+    init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController(),blockedChats:Bool = false) {
+        self.blockedChats = blockedChats
         self.navigationController = navigationController
         navigationController.coordinator = self
     }
     
-    func showRoot(blockedChats:Bool = false) {
-        rootViewController = createViewController(blockedChats: blockedChats)
-        guard let rootVC = rootViewController else {return}
-        
+    func showRoot() {
+        let rootVC = getRootViewController()
         let img = UIImage(named: AppImages.Requests)
         rootVC.tabBarItem = UITabBarItem(title: "Chats", image: img, tag: 0)
         navigationController.viewControllers = [rootVC]
     }
     
-    func createViewController(blockedChats:Bool = false) -> ContactsViewController {
+    func pushRoot() {
+        navigationController.pushViewController(getRootViewController(), animated: true)
+    }
+    
+    func getRootViewController() -> ContactsViewController {
         if let rootVC = rootViewController {
             return rootVC
         }
