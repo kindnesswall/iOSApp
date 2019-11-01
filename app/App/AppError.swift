@@ -16,5 +16,6 @@ public enum AppError: Error {
     case ServerError
     case DBFetch
     case NoData
+    case ClientSide(message:String)
     case Unknown
 }

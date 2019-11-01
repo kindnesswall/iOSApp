@@ -24,8 +24,13 @@ extension RegisterGiftViewController {
     
     func handleRegisterGift(_ result:Result<Gift>)  {
         switch result {
-        case .failure:
-            FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
+        case .failure(let error):
+            switch error {
+            case .ClientSide(let message):
+                FlashMessage.showMessage(body: message,theme: .warning)
+            default:
+                FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
+            }
         case .success:
             FlashMessage.showMessage(body: LanguageKeys.giftRegisteredSuccessfully.localizedString,theme: .success)
             

@@ -13,20 +13,33 @@ class ChatCoordinator : NavigationCoordinator {
     var navigationController: CoordinatedNavigationController
     weak var startNewChatProtocol:StartNewChatProtocol?
     weak var refreshChatProtocol:RefreshChatProtocol?
-    
-    init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {
+    var rootViewController:ContactsViewController?
+    let blockedChats:Bool
+    init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController(),blockedChats:Bool = false) {
+        self.blockedChats = blockedChats
         self.navigationController = navigationController
         navigationController.coordinator = self
     }
     
-    func showRoot(blockedChats:Bool = false) {
-        let viewController = ContactsViewController(chatCoordinator: self, blockedChats: blockedChats)
-        self.startNewChatProtocol = viewController.viewModel
-        self.refreshChatProtocol = viewController
+    func showRoot() {
+        let rootVC = getRootViewController()
         let img = UIImage(named: AppImages.Requests)
-        viewController.tabBarItem = UITabBarItem(title: "Chats", image: img, tag: 0)
-        
-        navigationController.viewControllers = [viewController]
+        rootVC.tabBarItem = UITabBarItem(title: "Chats", image: img, tag: 0)
+        navigationController.viewControllers = [rootVC]
+    }
+    
+    func pushRoot() {
+        navigationController.pushViewController(getRootViewController(), animated: true)
+    }
+    
+    func getRootViewController() -> ContactsViewController {
+        if let rootVC = rootViewController {
+            return rootVC
+        }
+        rootViewController = ContactsViewController(chatCoordinator: self, blockedChats: blockedChats)
+        self.startNewChatProtocol = rootViewController!.viewModel
+        self.refreshChatProtocol = rootViewController!
+        return rootViewController!
     }
     
     func showMessages(viewModel:MessagesViewModel, delegate:MessagesViewControllerDelegate) {

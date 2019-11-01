@@ -114,7 +114,7 @@ class LockViewController: UIViewController {
     }
     var mutex: Int = 0
     @IBAction func numbersClicked(_ sender: Any) {
-        print("Number \((sender as AnyObject).tag) clicked.")
+        print("Number \((sender as AnyObject).tag ?? -1) clicked.")
         
         guard self.mutex == 0 else {
             return

@@ -34,9 +34,8 @@ class MoreCoordinator : NavigationCoordinator {
     }
     
     func showContacts() {
-        let chatCoordinator = ChatCoordinator()
-        chatCoordinator.showRoot(blockedChats: true)
-        self.navigationController.pushViewController(chatCoordinator.navigationController, animated: true)
+        let chatCoordinator = ChatCoordinator(navigationController: navigationController, blockedChats: true)
+        chatCoordinator.pushRoot()
     }
     
     func showCharitySignupEditView() {
