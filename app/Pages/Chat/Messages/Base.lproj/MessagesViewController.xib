@@ -15,9 +15,13 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessagesViewController" customModule="app" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessagesViewController" customModule="KindnessWall" customModuleProvider="target">
             <connections>
+                <outlet property="blockBtn" destination="6k0-Ar-y8K" id="7ms-VP-1bY"/>
+                <outlet property="donateGiftBtn" destination="e9c-Fl-8i5" id="Asc-9h-eRz"/>
                 <outlet property="messageInput" destination="EXt-Kb-gfv" id="yfZ-yE-976"/>
+                <outlet property="messageInputPlaceholder" destination="oeD-lF-th6" id="KJq-Ju-P7e"/>
+                <outlet property="sendMessageBtn" destination="VhY-zU-PdF" id="7VT-56-2hY"/>
                 <outlet property="tableView" destination="udf-VT-x7G" id="U5t-sy-iYB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -35,6 +39,20 @@
                         <outlet property="delegate" destination="-1" id="lZy-b3-kwL"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6k0-Ar-y8K">
+                    <rect key="frame" x="0.0" y="619" width="375" height="40"/>
+                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="g5w-2z-hnX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <state key="normal">
+                        <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="unblockAction:" destination="-1" eventType="touchUpInside" id="R6a-bt-EIn"/>
+                    </connections>
+                </button>
                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oeD-lF-th6">
                     <rect key="frame" x="66" y="617" width="249" height="50"/>
                     <subviews>
@@ -50,7 +68,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhY-zU-PdF">
-                    <rect key="frame" x="315" y="625" width="60" height="34"/>
+                    <rect key="frame" x="315" y="627" width="60" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="XoQ-tm-EMj"/>
                     </constraints>
@@ -74,6 +92,8 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6k0-Ar-y8K" secondAttribute="bottom" constant="8" id="Mlx-NP-baE"/>
+                <constraint firstItem="6k0-Ar-y8K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Tqz-V5-Pa9"/>
                 <constraint firstItem="oeD-lF-th6" firstAttribute="leading" secondItem="e9c-Fl-8i5" secondAttribute="trailing" constant="8" id="V5k-wT-26C"/>
                 <constraint firstItem="VhY-zU-PdF" firstAttribute="leading" secondItem="oeD-lF-th6" secondAttribute="trailing" id="XHB-pn-th4"/>
                 <constraint firstItem="VhY-zU-PdF" firstAttribute="bottom" secondItem="oeD-lF-th6" secondAttribute="bottom" id="ZFL-NC-Z2C"/>
@@ -81,6 +101,7 @@
                 <constraint firstItem="e9c-Fl-8i5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="dn5-gq-Lqj"/>
                 <constraint firstItem="udf-VT-x7G" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="iO4-BQ-aPI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="oeD-lF-th6" secondAttribute="bottom" constant="8" id="jga-EC-55U" customClass="KeyboardLayoutConstraint" customModule="Spring"/>
+                <constraint firstAttribute="trailing" secondItem="6k0-Ar-y8K" secondAttribute="trailing" id="mIA-wA-G2f"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="udf-VT-x7G" secondAttribute="trailing" id="mIg-zS-AIo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VhY-zU-PdF" secondAttribute="trailing" id="msa-us-8yv"/>
                 <constraint firstItem="udf-VT-x7G" firstAttribute="bottom" secondItem="oeD-lF-th6" secondAttribute="top" id="ojT-UO-e3y"/>

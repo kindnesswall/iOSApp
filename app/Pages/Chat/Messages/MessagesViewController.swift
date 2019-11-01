@@ -14,6 +14,13 @@ class MessagesViewController: UIViewController,MessagesDelegate {
     @IBAction func donateGift(_ sender: Any) {
         donateGiftBtnTapped()
     }
+    
+    var blockButtonState : BlockButtonState = .unblock
+    @IBOutlet weak var blockBtn: UIButton!
+    @IBOutlet weak var donateGiftBtn: UIButton!
+    
+    @IBOutlet weak var sendMessageBtn: UIButton!
+    @IBOutlet weak var messageInputPlaceholder: UIStackView!
     @IBOutlet weak var messageInput: UITextView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -22,9 +29,14 @@ class MessagesViewController: UIViewController,MessagesDelegate {
     var donateGiftBarBtn: UIBarButtonItem?
     
     weak var delegate:MessagesViewControllerDelegate?
+    
+    lazy var httpLayer = HTTPLayer()
+    lazy var apiService = ApiService(httpLayer)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadBlockButtonState()
         
         self.configBarButtons()
         
@@ -61,6 +73,77 @@ class MessagesViewController: UIViewController,MessagesDelegate {
 //        self.navigationItem.rightBarButtonItems=[donateGiftBarBtn!]
     }
     
+    func loadBlockButtonState() {
+        if self.viewModel?.blockStatus?.contactIsBlocked == true {
+            setBlockButtonState(state: .contactBlock)
+        } else {
+            if self.viewModel?.blockStatus?.userIsBlocked == true {
+                setBlockButtonState(state: .userBlock)
+            } else {
+                setBlockButtonState(state: .unblock)
+            }
+        }
+    }
+    
+    enum BlockButtonState {
+        case unblock
+        case contactBlock
+        case userBlock
+    }
+    
+    func setBlockButtonState(state: BlockButtonState) {
+        
+        self.blockButtonState = state
+        
+        if state == .unblock {
+            hideOrShowSendMessagesBtn(show: true)
+            self.blockBtn.hide()
+        } else {
+            hideOrShowSendMessagesBtn(show: false)
+            self.blockBtn.show()
+        }
+        
+        switch state {
+        case .unblock:
+            self.blockBtn.isEnabled = false
+            self.blockBtn.setTitle("", for: .normal)
+        case .contactBlock:
+            self.blockBtn.isEnabled = true
+            self.blockBtn.setTitle(LanguageKeys.unblock.localizedString, for: .normal)
+        case .userBlock:
+            self.blockBtn.isEnabled = false
+            self.blockBtn.setTitle(LanguageKeys.youHaveBeenBlocked.localizedString, for: .normal)
+        }
+    }
+    
+    func hideOrShowSendMessagesBtn(show: Bool) {
+        let isHidden = !show
+        self.messageInputPlaceholder.isHidden = isHidden
+        self.sendMessageBtn.isHidden = isHidden
+        self.donateGiftBtn.isHidden = isHidden
+    }
+    
+    @IBAction func unblockAction(_ sender: Any) {
+        guard blockButtonState == .contactBlock else {
+            return
+        }
+        
+        guard let chatId = viewModel?.chatId else {
+            return
+        }
+        
+        self.apiService.blockOrUnblockChat(blockCase: .unblock, chatId: chatId, completion: { [weak self] result in
+            switch result {
+            case .failure(_):
+                //TODO: should handle the failure
+                break
+            case .success(_):
+                self?.delegate?.reloadContacts()
+                self?.navigationController?.popViewController(animated: true)
+            }
+        })
+        
+    }
     @objc func donateGiftBtnTapped(){
         let controller = GiftsToDonateViewController()
         controller.toUserId = viewModel?.getContactId()
@@ -209,4 +292,5 @@ protocol MessagesViewControllerDelegate : class{
     func writeMessage(text:String,messagesViewModel:MessagesViewModel)
     func loadMessages(chatId:Int,beforeId:Int?)
     func sendAckMessage(message:TextMessage,completionHandler:(()->Void)?)
+    func reloadContacts()
 }

@@ -91,6 +91,9 @@ extension ContactsViewModel : ContactsViewModelNetworkInterface {
         if let notificationCount = contactMessage.notificationCount {
             messagesViewModel.serverNotificationCount = notificationCount
         }
+        if let blockStatus = contactMessage.blockStatus {
+            messagesViewModel.blockStatus = blockStatus
+        }
         
         guard let textMessages = contactMessage.textMessages else {
             return
@@ -157,6 +160,10 @@ extension ContactsViewModel : MessagesViewControllerDelegate {
         
         let ackMessage = AckMessage(messageId: messageId)
         network.sendAck(ackMessage: ackMessage, completionHandler: completionHandler)
+    }
+    
+    func reloadContacts() {
+        self.reloadData()
     }
 }
 
