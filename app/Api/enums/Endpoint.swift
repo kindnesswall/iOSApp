@@ -153,10 +153,10 @@ enum Endpoint:EndpointProtocol {
         case .RegisterUser(_), .Login(_), .RegisterGift, .DonateGift(_,_), .GiftsToDonate(_,_), .UserRegisteredGifts(_,_), .UserReceivedGifts(_,_), .UserDonatedGifts(_,_), .SendTextMessage(_), .SendAck(_), .FetchMessages(_), .RegisterPush(_), .GiftsToReview(_), .SendPushNotif, .UpdateUser, .ChatSendMessage, .ChatAckMessage, .GetGifts(_), .RequestPhoneNumberChange(_), .ValidatePhoneNumberChange(_), .UploadImage(_):
             return HttpMethod.POST.rawValue
             
-        case .EditGift(_), .GiftReviewApproved, .AcceptCharity, .RejectCharity, .UnBlockUserAccess, .UnBlockChat, .BlockChat:
+        case .EditGift(_), .GiftReviewApproved, .AcceptCharity, .RejectCharity, .UnBlockUserAccess, .UnBlockChat, .BlockChat,.GiftReviewRejected:
             return HttpMethod.PUT.rawValue
             
-        case .RemoveGift(_), .GiftReviewRejected, .BlockUserAccess:
+        case .RemoveGift(_), .BlockUserAccess:
             return HttpMethod.DELETE.rawValue
         }
     }
@@ -224,7 +224,7 @@ enum Endpoint:EndpointProtocol {
         case .UpdateUser(_):
             return profileBaseURL
 //        ---------------------------------------
-        case .GiftReviewRejected(let giftId):
+        case .GiftReviewRejected(let giftId, _):
             return giftsBaseURL + "reject/\(giftId)"
         case .GiftReviewApproved(let giftId):
             return giftsBaseURL + "accept/\(giftId)"
