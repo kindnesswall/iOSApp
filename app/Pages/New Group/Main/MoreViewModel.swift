@@ -44,7 +44,7 @@ class MoreViewModel {
     
     func getRepoInfo()  {
         let userInfo = UserInfoQuery()
-        apollo.fetch(query: userInfo){ [weak self](result, error) in
+        apollo.fetch(query: userInfo){ (result, error) in
             print("RepoInfo:")
             if let error = error {
                 print(error)
