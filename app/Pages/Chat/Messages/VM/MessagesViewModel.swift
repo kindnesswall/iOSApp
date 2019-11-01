@@ -13,6 +13,7 @@ class MessagesViewModel {
     var userId:Int
     var chatId:Int
     var contactProfile:UserProfile?
+    var blockStatus: BlockStatus?
     var serverNotificationCount: Int?
     private var messages = [TextMessage]()
     var curatedMessages = [[TextMessage]]()
