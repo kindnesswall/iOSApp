@@ -134,6 +134,10 @@
 "addressError" = "Please select the location of the gift";
 "noImageError" = "Please upload at least one image!";
 
+"province" = "Province";
+"city" = "City";
+"region" = "Region";
+
 "giftRemovingPrompt" = "Are you sure that you want to remove the gift?";
 "giftRequestPrompt" = "Are you sure that you want to request the gift?";
 "phoneNumberIncorrectError" = "The phone number is not correct.";

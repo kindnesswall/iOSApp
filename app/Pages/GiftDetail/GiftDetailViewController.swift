@@ -142,12 +142,13 @@ class GiftDetailViewController: UIViewController {
         giftDatelbl.text = AppLanguage.getNumberString(number: gift?.createdAt?.convertToDate()?.getPersianDate() ?? "")
         
         giftCategory.text = gift?.categoryTitle
-        giftAddress.text = gift?.address
-        if let isNew = gift?.isNew, isNew {
-            oldOrNew.text = LanguageKeys.new.localizedString
-        }else{
-            oldOrNew.text = LanguageKeys.used.localizedString
-        }
+        
+        let address = Address(province: gift?.provinceName, city: gift?.cityName, region: gift?.regionName)
+        giftAddress.text = address.address
+        
+        let isNew:Bool = gift?.isNew ?? false
+        oldOrNew.text = isNew ? LanguageKeys.new.localizedString : LanguageKeys.used.localizedString
+
         giftDescription.text = gift?.description
         
         addImagesToSlideShows()

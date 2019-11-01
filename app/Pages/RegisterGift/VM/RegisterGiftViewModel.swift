@@ -18,7 +18,7 @@ class RegisterGiftViewModel: NSObject {
     var places=[Place]()
     
     var editedGift:Gift?
-    var editedGiftAddress=Address()
+    var editedGiftAddress:Address?
     var giftHasNewAddress=false
 
     weak var delegate : RegisterGiftViewModelDelegate?
@@ -72,13 +72,24 @@ class RegisterGiftViewModel: NSObject {
                 return (nil,LanguageKeys.addressError.localizedString)
             }
             
-            input.address=address
             input.provinceId=provinceId
+            input.provinceName=addressObject?.province
+            
             input.cityId=cityId
+            input.cityName=addressObject?.city
+            
+            input.regionName=addressObject?.region
+            input.regionId=addressObject?.regionId
+            
         } else {
-            input.address=self.editedGiftAddress.address
-            input.provinceId=self.editedGiftAddress.provinceId
-            input.cityId=self.editedGiftAddress.cityId
+            input.provinceId=self.editedGiftAddress?.provinceId
+            input.provinceName=editedGiftAddress?.province
+            
+            input.cityId=self.editedGiftAddress?.cityId
+            input.cityName=editedGiftAddress?.city
+
+            input.regionId=self.editedGiftAddress?.cityId
+            input.regionName=editedGiftAddress?.region
         }
         if imagesUrl.count <= 0 {
             return (nil,LanguageKeys.noImageError.localizedString)
@@ -181,16 +192,23 @@ class RegisterGiftViewModel: NSObject {
             
             let addressObject=self.getAddress()
             
-            gift.address=addressObject?.address
             gift.provinceId=addressObject?.provinceId
             gift.cityId=addressObject?.cityId
+            gift.regionId=addressObject?.cityId
+            
+            gift.provinceName=addressObject?.province
+            gift.cityName=addressObject?.city
+            gift.regionName=addressObject?.region
             
         } else {
             
-            gift.address=self.editedGiftAddress.address
-            gift.provinceId=self.editedGiftAddress.provinceId
-            gift.cityId=self.editedGiftAddress.cityId
+            gift.provinceId=self.editedGiftAddress?.provinceId
+            gift.cityId=self.editedGiftAddress?.cityId
+            gift.regionId=self.editedGiftAddress?.regionId
             
+            gift.provinceName=self.editedGiftAddress?.province
+            gift.cityName=self.editedGiftAddress?.city
+            gift.regionName=self.editedGiftAddress?.region
         }
         
         gift.giftImages=imagesUrl
@@ -224,10 +242,13 @@ class RegisterGiftViewModel: NSObject {
             self.delegate?.setDateStatusBtnTitle(text: self.dateStatus?.title)
         }
         
-        self.delegate?.setEditedGiftOriginalAddressLabel(text: gift.address)
-        self.editedGiftAddress.address = gift.address
-        self.editedGiftAddress.provinceId=gift.provinceId
-        self.editedGiftAddress.cityId=gift.cityId
+        let address = Address(province: gift.provinceName, city: gift.cityName, region: gift.regionName)
+        self.delegate?.setEditedGiftOriginalAddressLabel(text: address.address)
+        
+        self.editedGiftAddress = Address(province: gift.provinceName, city: gift.cityName, region: gift.regionName)
+        self.editedGiftAddress?.provinceId=gift.provinceId
+        self.editedGiftAddress?.cityId=gift.cityId
+        self.editedGiftAddress?.regionId=gift.regionId
         
         if let giftImages = gift.giftImages {
             for giftImage in giftImages {
@@ -295,23 +316,14 @@ class RegisterGiftViewModel: NSObject {
     }
     
     func getAddress()-> Address? {
+
+        let province = places.count > 0 ? places[0] : nil
+        let city = places.count > 1 ? places[1] : nil
+        let region = places.count > 2 ? places[2] : nil
+
+        let address=Address(province: province, city: city, region: region)
         
-        guard let provinceId=self.places.first?.id , let provinceName=self.places.first?.name else {
-            return nil
-        }
-        
-        guard self.places.count > 1 else {
-            return nil
-        }
-        
-        guard let cityId=self.places[1].id , let cityName=self.places[1].name else {
-            return nil
-        }
-        
-        
-        let address="\(provinceName) \(cityName)"
-        
-        return Address(address:address,provinceId:provinceId,cityId:cityId)
+        return address
     }
     
     func uploadedSuccessfully() {

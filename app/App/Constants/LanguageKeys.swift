@@ -52,6 +52,10 @@ struct LanguageKeys {
     static let status : String = "status"
     static let address : String = "address"
     
+    static let province : String = "province"
+    static let city : String = "city"
+    static let region : String = "region"
+    
     static let allGifts : String = "allGifts"
     static let allCities : String = "allCities"
     static let allProvinces : String = "allProvinces"

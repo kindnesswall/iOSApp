@@ -134,6 +134,10 @@
 "addressError" = "لطفا محل هدیه را انتخاب نمایید";
 "noImageError" = "لطفا حداقل یک عکس آپلود نمایید";
 
+"province" = "استان";
+"city" = "شهر";
+"region" = "منطقه";
+
 "giftRemovingPrompt" = "آیا از حدف این هدیه اطمینان دارید؟";
 "giftRequestPrompt" = "آیا از درخواست به این هدیه اطمینان دارید؟";
 "phoneNumberIncorrectError" = "شماره موبایل صحیح نمی باشد.";

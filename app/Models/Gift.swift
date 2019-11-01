@@ -12,13 +12,15 @@ protocol GiftPresenter {
     var title:String? { get }
     var createdAt: String? { get }
     var description:String? { get }
-    var address:String? { get }
     var giftImages:[String]? { get }
+    
+    var provinceName:String? { get }
+    var cityName:String? { get }
+    var regionName:String? { get }
 }
 
 protocol RegisterGiftInput {
     var title:String? { get set }
-    var address:String? { get set }
     var description:String? { get set }
     var giftImages : [String]? { get set }
     var price:Int? { get set }
@@ -30,9 +32,6 @@ protocol RegisterGiftInput {
 
 class Gift: Codable,GiftPresenter,RegisterGiftInput {
     
-    
-    var address: String?
-                    
     var id:Int?
     var userId:Int?
     var donatedToUserId:Int?

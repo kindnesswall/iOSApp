@@ -39,7 +39,8 @@ class GiftTableViewCell: UITableViewCell {
         giftDate.text = AppLanguage.getNumberString(number: gift.createdAt?.convertToDate()?.getPersianDate() ?? "")
         
         giftDescription.text = gift.description
-        giftCity.text=gift.address
+        let address = Address(province: gift.provinceName, city: gift.cityName, region: gift.regionName)
+        giftCity.text=address.address
         
         self.precentView.hide()
         self.giftImage.show()
