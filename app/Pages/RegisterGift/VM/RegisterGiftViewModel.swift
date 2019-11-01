@@ -29,43 +29,33 @@ class RegisterGiftViewModel: NSObject {
         var descriptionTextViewText : String?
     }
     
-    func readGiftInfo(_ giftInput:Gift) -> Gift? {
+    func readGiftInfo(_ giftInput:Gift) -> (Gift?,String?) {
         let input:Gift = giftInput
         
         let uiProperties = delegate?.getUIInputProperties()
         
         guard let title=uiProperties?.titleTextViewText , title != "" else {
-            inputErrorOnSendingGift(
-                errorText: LanguageKeys.titleError.localizedString)
-            return nil
+            return (nil,LanguageKeys.titleError.localizedString)
         }
         input.title=title
         
         guard let categoryId=self.category?.id, categoryId != 0 else {
-            inputErrorOnSendingGift(errorText: LanguageKeys.categoryError.localizedString)
-            return nil
+            return (nil,LanguageKeys.categoryError.localizedString)
         }
         input.categoryId=categoryId
         
         guard let dateStatusId=self.dateStatus?.id else {
-            inputErrorOnSendingGift(errorText: LanguageKeys.newOrUsedError.localizedString)
-            return nil
+            return (nil,LanguageKeys.newOrUsedError.localizedString)
         }
-        if dateStatusId == 0 {
-            input.isNew=true
-        } else {
-            input.isNew=false
-        }
+        input.isNew=dateStatusId == 0
         
         guard let giftDescription=uiProperties?.descriptionTextViewText , giftDescription != "" else {
-            inputErrorOnSendingGift(errorText: LanguageKeys.descriptionError.localizedString)
-            return nil
+            return (nil,LanguageKeys.descriptionError.localizedString)
         }
         input.description=giftDescription
         
         guard let price=uiProperties?.priceTextViewText?.castNumberToEnglish(), let priceInt = Int(price) else {
-            inputErrorOnSendingGift(errorText: LanguageKeys.priceError.localizedString)
-            return nil
+            return (nil,LanguageKeys.priceError.localizedString)
         }
         input.price=priceInt
         
@@ -73,16 +63,13 @@ class RegisterGiftViewModel: NSObject {
             
             let addressObject=self.getAddress()
             guard let address=addressObject?.address else {
-                inputErrorOnSendingGift(errorText: LanguageKeys.addressError.localizedString)
-                return nil
+                return (nil,LanguageKeys.addressError.localizedString)
             }
             guard let provinceId=addressObject?.provinceId, provinceId != 0 else {
-                inputErrorOnSendingGift(errorText: LanguageKeys.addressError.localizedString)
-                return nil
+                return (nil,LanguageKeys.addressError.localizedString)
             }
             guard let cityId=addressObject?.cityId, cityId != 0 else {
-                inputErrorOnSendingGift(errorText: LanguageKeys.addressError.localizedString)
-                return nil
+                return (nil,LanguageKeys.addressError.localizedString)
             }
             
             input.address=address
@@ -93,15 +80,18 @@ class RegisterGiftViewModel: NSObject {
             input.provinceId=self.editedGiftAddress.provinceId
             input.cityId=self.editedGiftAddress.cityId
         }
-        
+        if imagesUrl.count <= 0 {
+            return (nil,LanguageKeys.noImageError.localizedString)
+        }
         input.giftImages=imagesUrl
         
-        return input
+        return (input,nil)
     }
     
     func editGift(completion: @escaping (Result<Gift>) -> Void) {
-        guard let gift = readGiftInfo(editedGift ?? Gift()) else {
-            completion(.failure(AppError.NoData))
+        let (giftFromUI,errorMessage) = readGiftInfo(editedGift ?? Gift())
+        guard let gift = giftFromUI else {
+            completion(.failure(AppError.ClientSide(message: errorMessage ?? "")))
             return
         }
         apiService.editGift(gift) { (result) in
@@ -116,52 +106,13 @@ class RegisterGiftViewModel: NSObject {
     }
     
     func registerGift(completion: @escaping (Result<Gift>) -> Void) {
-        guard let gift = readGiftInfo(Gift()) else {
-            completion(.failure(AppError.NoData))
+        let (giftFromUI,errorMessage) = readGiftInfo(editedGift ?? Gift())
+        guard let gift = giftFromUI else {
+            completion(.failure(AppError.ClientSide(message: errorMessage ?? "")))
             return
         }
         
         apiService.registerGift(gift, completion: completion)
-    }
-    
-//    func sendGift(
-//        httpMethod:HttpMethod,
-//        giftId:Int? = nil,
-//        responseHandler:(()->Void)?,
-//        complitionHandler:(()->Void)?){
-//        
-//        guard let input = readGiftInfo() as? Gift else {
-//            responseHandler?()
-//            return
-//        }
-//        
-//        let url:String = {
-//            if let giftId=giftId {
-//                return "\(URIs().gifts)/\(giftId)"
-//            } else {
-//                return URIs().gifts_register
-//            }
-//        }()
-//        
-//        APICall.request(url: url, httpMethod: httpMethod, input: input) { (data, response, error) in
-//            
-//            responseHandler?()
-//            
-//            guard let response = response as? HTTPURLResponse else {
-//                FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
-//                return
-//            }
-//            if response.statusCode == APICall.OKStatus {
-//                complitionHandler?()
-//            } else {
-//                FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)
-//            }
-//            
-//        }
-//    }
-    
-    func inputErrorOnSendingGift(errorText:String){
-        FlashMessage.showMessage(body: errorText,theme: .warning)
     }
     
     func uploadToIranServers(image:UIImage, onSuccess:@escaping (String)->(), onFail:(()->())?) {
