@@ -13,6 +13,7 @@ class ChatCoordinator : NavigationCoordinator {
     var navigationController: CoordinatedNavigationController
     weak var startNewChatProtocol:StartNewChatProtocol?
     weak var refreshChatProtocol:RefreshChatProtocol?
+    var rootViewController:ContactsViewController?
     
     init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {
         self.navigationController = navigationController
@@ -20,13 +21,22 @@ class ChatCoordinator : NavigationCoordinator {
     }
     
     func showRoot(blockedChats:Bool = false) {
-        let viewController = ContactsViewController(chatCoordinator: self, blockedChats: blockedChats)
-        self.startNewChatProtocol = viewController.viewModel
-        self.refreshChatProtocol = viewController
-        let img = UIImage(named: AppImages.Requests)
-        viewController.tabBarItem = UITabBarItem(title: "Chats", image: img, tag: 0)
+        rootViewController = createViewController(blockedChats: blockedChats)
+        guard let rootVC = rootViewController else {return}
         
-        navigationController.viewControllers = [viewController]
+        let img = UIImage(named: AppImages.Requests)
+        rootVC.tabBarItem = UITabBarItem(title: "Chats", image: img, tag: 0)
+        navigationController.viewControllers = [rootVC]
+    }
+    
+    func createViewController(blockedChats:Bool = false) -> ContactsViewController {
+        if let rootVC = rootViewController {
+            return rootVC
+        }
+        rootViewController = ContactsViewController(chatCoordinator: self, blockedChats: blockedChats)
+        self.startNewChatProtocol = rootViewController!.viewModel
+        self.refreshChatProtocol = rootViewController!
+        return rootViewController!
     }
     
     func showMessages(viewModel:MessagesViewModel, delegate:MessagesViewControllerDelegate) {
