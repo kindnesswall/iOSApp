@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         //---- temporary -------
-        AppCountry.setCountry(current: .others)
+        AppCountry.setCountry(current: .iran)
         appViewModel.languageSelected()
         //---- end of temporary -------
         
