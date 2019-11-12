@@ -166,6 +166,11 @@
 		601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D420373E9E00F9118B /* PlaceListViewModel.swift */; };
 		602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */; };
 		602BC8F82034B7CC00ECF6E2 /* UploadImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */; };
+		602EA123237B48C700130A24 /* AppCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602EA122237B48C700130A24 /* AppCountry.swift */; };
+		602EA125237B48D500130A24 /* FirebaseLoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602EA124237B48D500130A24 /* FirebaseLoginInput.swift */; };
+		602EA12A237B48E000130A24 /* LoginRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602EA127237B48E000130A24 /* LoginRegisterViewModel.swift */; };
+		602EA12B237B48E000130A24 /* FirebaseLoginRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602EA128237B48E000130A24 /* FirebaseLoginRegisterViewModel.swift */; };
+		602EA12C237B48E000130A24 /* LoginRegisterViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602EA129237B48E000130A24 /* LoginRegisterViewModelProtocol.swift */; };
 		60302DE02068FC7E0025D397 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DDE2068FC7E0025D397 /* PopUpViewController.swift */; };
 		60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60302DDF2068FC7E0025D397 /* PopUpViewController.xib */; };
 		60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DE22069018C0025D397 /* PopUpMessage.swift */; };
@@ -432,6 +437,11 @@
 		601F83D420373E9E00F9118B /* PlaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewModel.swift; sourceTree = "<group>"; };
 		602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageView.swift; sourceTree = "<group>"; };
 		602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageView.xib; sourceTree = "<group>"; };
+		602EA122237B48C700130A24 /* AppCountry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCountry.swift; path = app/app/Constants/AppCountry.swift; sourceTree = SOURCE_ROOT; };
+		602EA124237B48D500130A24 /* FirebaseLoginInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseLoginInput.swift; path = app/models/api/input/FirebaseLoginInput.swift; sourceTree = SOURCE_ROOT; };
+		602EA127237B48E000130A24 /* LoginRegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewModel.swift; sourceTree = "<group>"; };
+		602EA128237B48E000130A24 /* FirebaseLoginRegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseLoginRegisterViewModel.swift; sourceTree = "<group>"; };
+		602EA129237B48E000130A24 /* LoginRegisterViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewModelProtocol.swift; sourceTree = "<group>"; };
 		60302DDE2068FC7E0025D397 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		60302DDF2068FC7E0025D397 /* PopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpViewController.xib; sourceTree = "<group>"; };
 		60302DE22069018C0025D397 /* PopUpMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMessage.swift; sourceTree = "<group>"; };
@@ -725,6 +735,7 @@
 		053C46FA2294AB8B00074761 /* input */ = {
 			isa = PBXGroup;
 			children = (
+				602EA124237B48D500130A24 /* FirebaseLoginInput.swift */,
 				6040F3A2206688A800FCD429 /* APIEmptyInput.swift */,
 				053892D623186C9C00828372 /* UnblockUserInput.swift */,
 				053892DA231874DE00828372 /* SendMessageInput.swift */,
@@ -919,6 +930,7 @@
 		054C6B9323649A87009DF9A6 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				602EA122237B48C700130A24 /* AppCountry.swift */,
 				528A2DA821AD340200DECE0F /* LanguageKeys.swift */,
 				05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */,
 				0544DD63235B6C2D007AC8F3 /* AppImages.swift */,
@@ -1044,6 +1056,7 @@
 		05BFBBB31FDA653400DBCDDF /* Login Register */ = {
 			isa = PBXGroup;
 			children = (
+				602EA126237B48E000130A24 /* VM */,
 				05444E43231B3B7A006E5E09 /* LoginRegister */,
 				05444E42231B3B63006E5E09 /* VerificationCode */,
 			);
@@ -1252,6 +1265,16 @@
 				5283174F21C91B7F0044B9AD /* LockSettingViewController.xib */,
 			);
 			path = Lock;
+			sourceTree = "<group>";
+		};
+		602EA126237B48E000130A24 /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				602EA127237B48E000130A24 /* LoginRegisterViewModel.swift */,
+				602EA128237B48E000130A24 /* FirebaseLoginRegisterViewModel.swift */,
+				602EA129237B48E000130A24 /* LoginRegisterViewModelProtocol.swift */,
+			);
+			path = VM;
 			sourceTree = "<group>";
 		};
 		60302DE4206953670025D397 /* PopUp */ = {
@@ -1652,10 +1675,12 @@
 				05BFBBB21FDA5DBF00DBCDDF /* UIFunctions.swift in Sources */,
 				05BFBBBF1FDA9FCF00DBCDDF /* NavigationBarStyle.swift in Sources */,
 				60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */,
+				602EA12C237B48E000130A24 /* LoginRegisterViewModelProtocol.swift in Sources */,
 				0593E50D22D54FDE00C3B046 /* CharityDetailViewController.swift in Sources */,
 				053892D4231322BE00828372 /* SendPushInput.swift in Sources */,
 				52466DD721DB60520086F327 /* RegisterGiftViewModelDelegate.swift in Sources */,
 				5263D60321BB0CC300B634A8 /* DonatedGiftViewModel.swift in Sources */,
+				602EA12B237B48E000130A24 /* FirebaseLoginRegisterViewModel.swift in Sources */,
 				05041EB92362577C007F12E9 /* MoreCoordinator.swift in Sources */,
 				05BEA447204C21E800147BF5 /* PopUpView.swift in Sources */,
 				522F6B6621D8B202001C67B9 /* SelectCountryVM.swift in Sources */,
@@ -1670,6 +1695,7 @@
 				607E78752279D6CA00FF0008 /* String + ConvertToDate.swift in Sources */,
 				05644DC21FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift in Sources */,
 				05335D451FD0D0A800601115 /* GiftDetailViewController.swift in Sources */,
+				602EA12A237B48E000130A24 /* LoginRegisterViewModel.swift in Sources */,
 				607EEA81222D88C200637A93 /* Image.swift in Sources */,
 				6033DA9A22AF7E2200D43738 /* ContactsRestfulViewModel.swift in Sources */,
 				059B1F4A2364640800596BD4 /* AppViewModel.swift in Sources */,
@@ -1683,6 +1709,8 @@
 				054C6B992364ABF9009DF9A6 /* NavigationCoordinator.swift in Sources */,
 				52D1A14421DA3C30005EA2F0 /* Address.swift in Sources */,
 				0523118322A4198100A22157 /* HTTPLayer.swift in Sources */,
+				602EA125237B48D500130A24 /* FirebaseLoginInput.swift in Sources */,
+				602EA123237B48C700130A24 /* AppCountry.swift in Sources */,
 				0580595D2365D77C00B679C4 /* MoreViewModel.swift in Sources */,
 				5245922021AAFC760009824C /* LocalizationSystem.swift in Sources */,
 				607E78802279E21F00FF0008 /* MessagesViewController.swift in Sources */,

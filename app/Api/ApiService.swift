@@ -305,17 +305,30 @@ class ApiService:ApiServiceProtocol {
     func login(phoneNumber: String, activationCode: String, completion: @escaping (Result<AuthOutput>)-> Void) {
         
         let input = User(phoneNumber: phoneNumber,activationCode: activationCode)
-        self.httpLayer.request(at: Endpoint.Login(user: input)) {(result) in
-            
-            switch result{
-            case .failure(let appError):
-                completion(.failure(appError))
-            case .success(let data):
-                if let authOutput = ApiUtility.convert(data:data , to: AuthOutput.self) {
-                    completion(.success(authOutput))
-                }else{
-                    completion(.failure(AppError.DataDecoding))
-                }
+        self.httpLayer.request(at: Endpoint.Login(user: input)) { result in
+            ApiService.handleAuthOutputResult(result: result, completion: completion)
+        }
+    }
+    
+    func fireBaseLogin(input: FirebaseLoginInput, completion: @escaping (Result<AuthOutput>)-> Void) {
+        
+        let endPoint = Endpoint.FirebaseLogin(input: input)
+        self.httpLayer.request(at: endPoint) { result in
+            ApiService.handleAuthOutputResult(result: result, completion: completion)
+        }
+        
+    }
+    
+    private static func handleAuthOutputResult(result: Result<Data>, completion: @escaping (Result<AuthOutput>)-> Void) {
+        
+        switch result{
+        case .failure(let appError):
+            completion(.failure(appError))
+        case .success(let data):
+            if let authOutput = ApiUtility.convert(data:data , to: AuthOutput.self) {
+                completion(.success(authOutput))
+            }else{
+                completion(.failure(AppError.DataDecoding))
             }
         }
     }

@@ -9,10 +9,11 @@
 import UIKit
 
 struct AppConst {
-    
-    struct Country {
-        static let IRAN:String = "Iran"
-        static let OTHERS:String = "Others"
+ 
+    enum Country: String, CaseIterable {
+        case iran
+        case german
+        case others
     }
     
     struct Resource {

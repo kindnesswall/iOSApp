@@ -14,16 +14,16 @@ extension HomeVM:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if AppDelegate.me().appViewModel.isIranSelected(){
-            let index=indexPath.row+1
-            if index==self.gifts.count {
-                if !self.isLoadingGifts {
-                    if let beforeId = self.gifts[indexPath.row].id {
-                        getGifts(beforeId: beforeId)
-                    }
+        
+        let index=indexPath.row+1
+        if index==self.gifts.count {
+            if !self.isLoadingGifts {
+                if let beforeId = self.gifts[indexPath.row].id {
+                    getGifts(beforeId: beforeId)
                 }
             }
         }
+        
         
         let cell=tableView.dequeue(type: GiftTableViewCell.self, for: indexPath)
         cell.filViews(gift: gifts[indexPath.row])

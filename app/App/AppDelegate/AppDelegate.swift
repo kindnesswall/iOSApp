@@ -9,6 +9,7 @@
 import UIKit
 import KeychainSwift
 import UserNotifications
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,8 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
         
+        FirebaseApp.configure()
+        
         //---- temporary -------
-        appViewModel.selectOtherCountry()
+        AppCountry.setCountry(current: .others)
         appViewModel.languageSelected()
         //---- end of temporary -------
         
@@ -51,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIView.appearance().semanticContentAttribute = .forceLeftToRight
         
         
-        if appViewModel.isNotSelectedCountryBefore() {
+        if AppCountry.isNotSelectedAnyCountry {
             appCoordinator.showSelectCountryVC()
         }else{
             checkLanguageSelectedOrNot()

@@ -15,13 +15,13 @@ protocol SelectCountryDelegate {
 
 class SelectCountryVM: NSObject {
     let keychain = KeychainSwift()
-    let datasource = [AppConst.Country.IRAN, AppConst.Country.OTHERS]
+    let datasource = AppConst.Country.allCases
     var tabBarIsInitialized : Bool!
     var delegate:SelectCountryDelegate?
     
     func countrySelected(index:Int) {
-        UserDefaults.standard.set(datasource[index], forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
-        UserDefaults.standard.synchronize()
+        
+        AppCountry.setCountry(current: datasource[index])
         
         delegate?.dismissViewController()
     }
@@ -41,7 +41,7 @@ extension SelectCountryVM:UIPickerViewDelegate,UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return datasource[row]
+        return AppCountry.getText(country: datasource[row])
     }
 }
 

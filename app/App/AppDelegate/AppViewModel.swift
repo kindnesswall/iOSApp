@@ -93,11 +93,6 @@ class AppViewModel {
         return false
     }
     
-    func isIranSelected() -> Bool {
-        let selectedCountry = uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
-        return selectedCountry == AppConst.Country.IRAN
-    }
-    
     func isUserWatchedIntro() -> Bool {
         return uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO)
     }
@@ -123,10 +118,6 @@ class AppViewModel {
         keychain.clear()
     }
     
-    func isNotSelectedCountryBefore() -> Bool {
-        return uDStandard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY) == nil
-    }
-    
     func isLanguageSelected() -> Bool {
         return uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
     }
@@ -141,11 +132,6 @@ class AppViewModel {
         print("Push Token: \(pushToken ?? "")")
         
         registerPush(deviceIdentifier: deviceIdentifier, pushToken: pushToken)
-    }
-    
-    func selectOtherCountry() {
-        uDStandard.set(AppConst.Country.OTHERS, forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
-        uDStandard.synchronize()
     }
     
     func languageSelected() {

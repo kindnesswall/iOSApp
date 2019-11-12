@@ -12,9 +12,11 @@ class VerificationCodeViewController: UIViewController {
 
     var requestId:String!
     var session:URLSession?
-    lazy var apiService = ApiService(HTTPLayer())
 
-    let userDefault = UserDefaults.standard
+    var verificationId: String?
+    var viewModel: LoginRegisterViewModelProtocol?
+    
+    var mobileWithCode = ""
     
     @IBOutlet weak var verifyCodeTextField: ShakingTextField!
     @IBOutlet weak var resendLoading: UIActivityIndicatorView!
@@ -57,9 +59,7 @@ class VerificationCodeViewController: UIViewController {
     }
     
     func setTipLabel(){
-        if let phoneNumber = userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) {
-            tipLabel.text = LanguageKeys.guideOfRegitering_part1.localizedString + AppLanguage.getNumberString(number: phoneNumber) + LanguageKeys.guideOfRegitering_part2.localizedString
-        }
+        tipLabel.text = LanguageKeys.guideOfRegitering_part1.localizedString + AppLanguage.getNumberString(number: mobileWithCode) + LanguageKeys.guideOfRegitering_part2.localizedString
     }
     
     @objc func dismissKeyboard() {
@@ -111,33 +111,16 @@ class VerificationCodeViewController: UIViewController {
             return
         }
         
-        guard let mobile = userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) else {
-            FlashMessage.showMessage(body:LanguageKeys.phoneNumberTryAgainError.localizedString, theme: .error)
-            return
-        }
-        
         registerBtn.setTitle("", for: [])
         registerLoading.startAnimating()
         
-        login(mobile, activationCode)
+        viewModel?.login(with: mobileWithCode, activationCode: activationCode, verificationId: self.verificationId) { [weak self] result in
+            self?.handleLogin(result)
+        }
         
     }
     
-    func login(_ phoneNumber: String,_ activationCode: String) {
-        apiService.login(phoneNumber: phoneNumber, activationCode: activationCode) { [weak self] (result) in
-            DispatchQueue.main.async {
-                self?.handleLogin(result)
-            }
-        }
-    }
     
-    func validatePhoneNumberChange(_ phoneNumber: String,_ activationCode: String) {
-        apiService.validatePhoneNumberChange(to: phoneNumber, with: activationCode) { [weak self] (result) in
-            DispatchQueue.main.async {
-                self?.handleLogin(result)
-            }
-        }
-    }
     
     func handleLogin(_ result:Result<AuthOutput>) {
         self.registerBtn.setTitle(LanguageKeys.registeringActivationCode.localizedString, for: [])
@@ -177,7 +160,8 @@ class VerificationCodeViewController: UIViewController {
         }
     }
     
-    func handleRegisterUser(_ result:Result<Void>) {
+    func handleRegisterUser(result:Result<String?>) {
+    
         self.sendAgainBtn.setTitle(LanguageKeys.resendActivationCode.localizedString, for: [])
         self.resendLoading.stopAnimating()
         
@@ -193,7 +177,8 @@ class VerificationCodeViewController: UIViewController {
             }
             FlashMessage.showMessage(body: errorMsg, theme: .error)
 
-        case .success(_):
+        case .success(let verificationId):
+            self.verificationId = verificationId
             let msg = LanguageKeys.activationCodeSendSuccessfully.localizedString
             FlashMessage.showMessage(body: msg, theme: .success)
             
@@ -205,18 +190,9 @@ class VerificationCodeViewController: UIViewController {
         self.sendAgainBtn.setTitle("", for: [])
         self.resendLoading.startAnimating()
         
-        guard let mobile = userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) else {
-            FlashMessage.showMessage(body: LanguageKeys.phoneNumberTryAgainError.localizedString, theme: .error)
-            self.sendAgainBtn.setTitle(LanguageKeys.resendActivationCode.localizedString, for: [])
-            self.resendLoading.stopAnimating()
-            return
-        }
-        
-        apiService.registerUser(phoneNumber: mobile) { [weak self] (result) in
-            DispatchQueue.main.async {
-                self?.handleRegisterUser(result)
-            }
-        }
+        viewModel?.registerUser(with: mobileWithCode, handleResult: { [weak self] result in
+            self?.handleRegisterUser(result: result)
+        })
     }
     
     @IBAction func returnBtnClick(_ sender: Any) {

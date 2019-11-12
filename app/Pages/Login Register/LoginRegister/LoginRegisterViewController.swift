@@ -11,12 +11,19 @@ import UIKit
 class LoginRegisterViewController: UIViewController {
     
     let userDefault=UserDefaults.standard
-    lazy var apiService = ApiService(HTTPLayer())
-
+    @IBOutlet weak var countryCodeInput: ShakingTextField!
     @IBOutlet weak var guideLabel: UILabel!
     @IBOutlet weak var phoneNumberTextField: ShakingTextField!
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
+    
+    var viewModel: LoginRegisterViewModelProtocol?
+    
+    var mobile = ""
+    var countryCode = ""
+    var mobileWithCode: String {
+        return "+\(countryCode)\(mobile)"
+    }
     
     var closeComplition:(()->Void)?
     
@@ -33,12 +40,24 @@ class LoginRegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let country = AppCountry.getCurrent
+        
+        if country == AppConst.Country.iran {
+            self.viewModel = LoginRegisterViewModel()
+        } else {
+            self.viewModel = FirebaseLoginRegisterViewModel()
+        }
+        
         customizeUIElements()
         
         self.phoneNumberTextField.keyboardType = UIKeyboardType.numberPad
         
         if let phoneNumber = userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) {
-            phoneNumberTextField.text =  phoneNumber
+            phoneNumberTextField.text =  AppLanguage.getNumberString(number: phoneNumber)
+        }
+        
+        if let countryCode = AppCountry.getPhoneCode() {
+            self.countryCodeInput.text = AppLanguage.getNumberString(number: countryCode)
         }
         
         setNavBar()
@@ -91,7 +110,7 @@ class LoginRegisterViewController: UIViewController {
     }
     
     @IBAction func registerBtnClick(_ sender: Any) {
-        let mobile:String = phoneNumberTextField.text?.castNumberToEnglish() ?? ""
+        mobile = phoneNumberTextField.text?.castNumberToEnglish() ?? ""
         if !mobile.starts(with: "9") || mobile.count != 10 || !mobile.isNumber{
             FlashMessage.showMessage(body: LanguageKeys.phoneNumberIncorrectError.localizedString, theme: .error)
             self.phoneNumberTextField.shake()
@@ -101,32 +120,27 @@ class LoginRegisterViewController: UIViewController {
         userDefault.set(mobile, forKey: AppConst.UserDefaults.PHONE_NUMBER)
         userDefault.synchronize()
         
+        
+        countryCode = countryCodeInput.text?.castNumberToEnglish() ?? ""
+        guard countryCode != "" else {
+            FlashMessage.showMessage(body: LanguageKeys.phoneNumberIncorrectError.localizedString, theme: .error)
+            countryCodeInput.shake()
+            return
+        }
+        
+        
         phoneNumberTextField.isUserInteractionEnabled = false
         
         registerBtn.setTitle("", for: [])
         loading.startAnimating()
         
-        registerUser(with: mobile)
+        viewModel?.registerUser(with: mobileWithCode, handleResult: { [weak self] result in
+            self?.handleResult(result)
+        })
         
     }
     
-    func requestPhoneNumberChange(to newPhoneNumber:String) {
-        apiService.requestPhoneNumberChange(to: newPhoneNumber) { [weak self] (result) in
-            DispatchQueue.main.async {
-                self?.handleResult(result)
-            }
-        }
-    }
-    
-    func registerUser(with phoneNumber:String) {
-        apiService.registerUser(phoneNumber: phoneNumber) { [weak self] (result) in
-            DispatchQueue.main.async {
-                self?.handleResult(result)
-            }
-        }
-    }
-    
-    func handleResult(_ result:Result<Void>) {
+    func handleResult(_ result:Result<String?>) {
         self.registerBtn.setTitle(LanguageKeys.sendingActivationCode.localizedString, for: [])
         self.loading.stopAnimating()
         
@@ -141,8 +155,11 @@ class LoginRegisterViewController: UIViewController {
             }
             FlashMessage.showMessage(body: bodyString, theme: .error)
             
-        case .success(_):
+        case .success(let verificationId):
             let controller=VerificationCodeViewController()
+            controller.viewModel = viewModel
+            controller.mobileWithCode = mobileWithCode
+            controller.verificationId = verificationId
             controller.setCloseComplition(closeComplition: self.closeComplition)
             controller.setSubmitComplition(submitComplition: self.submitComplition)
             self.navigationController?.pushViewController(controller, animated: true)

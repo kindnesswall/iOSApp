@@ -24,6 +24,7 @@ enum Endpoint:EndpointProtocol {
 //        ---------------------------------------
     case RegisterUser(_ user:User)
     case Login(user:User)
+    case FirebaseLogin(input:FirebaseLoginInput)
     case RequestPhoneNumberChange(toNewNumber:String)
     case ValidatePhoneNumberChange(input: ValidatePhoneNumberChangeIntput)
 //        ---------------------------------------
@@ -142,6 +143,9 @@ enum Endpoint:EndpointProtocol {
             
         case .UploadImage(let input):
             return ApiUtility.convert(input: input)
+            
+        case .FirebaseLogin(let input):
+            return ApiUtility.convert(input: input)
         }
     }
     
@@ -150,7 +154,7 @@ enum Endpoint:EndpointProtocol {
         case .GetProvinces, .GetCitiesOfProvince(_), .GetCategories, .GetRegions(_), .RequestGift(_), .RequestGiftStatus, .GetProfile(_), .CharityList, .Statistics, .GetUserStatistics, .GetContacts, .GetBlockContacts:
             return HttpMethod.GET.rawValue
 
-        case .RegisterUser(_), .Login(_), .RegisterGift, .DonateGift(_,_), .GiftsToDonate(_,_), .UserRegisteredGifts(_,_), .UserReceivedGifts(_,_), .UserDonatedGifts(_,_), .SendTextMessage(_), .SendAck(_), .FetchMessages(_), .RegisterPush(_), .GiftsToReview(_), .SendPushNotif, .UpdateUser, .ChatSendMessage, .ChatAckMessage, .GetGifts(_), .RequestPhoneNumberChange(_), .ValidatePhoneNumberChange(_), .UploadImage(_):
+        case .RegisterUser(_), .Login(_), .FirebaseLogin, .RegisterGift, .DonateGift(_,_), .GiftsToDonate(_,_), .UserRegisteredGifts(_,_), .UserReceivedGifts(_,_), .UserDonatedGifts(_,_), .SendTextMessage(_), .SendAck(_), .FetchMessages(_), .RegisterPush(_), .GiftsToReview(_), .SendPushNotif, .UpdateUser, .ChatSendMessage, .ChatAckMessage, .GetGifts(_), .RequestPhoneNumberChange(_), .ValidatePhoneNumberChange(_), .UploadImage(_):
             return HttpMethod.POST.rawValue
             
         case .EditGift(_), .GiftReviewApproved, .AcceptCharity, .RejectCharity, .UnBlockUserAccess, .UnBlockChat, .BlockChat,.GiftReviewRejected:
@@ -180,6 +184,8 @@ enum Endpoint:EndpointProtocol {
             return registerBaseURL
         case .Login(_):
             return basePathUrl+"login"
+        case .FirebaseLogin:
+            return basePathUrl+"login/firebase"
 //        ---------------------------------------
         case .RegisterGift:
             return giftsBaseURL+"register"
