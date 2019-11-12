@@ -7,3 +7,5 @@ The kindness wall (Dewar e meherbani) is a charity work phenomenon and a kind of
 Why your app is not avaiable on AppStore?
  
 <img src="https://user-images.githubusercontent.com/7838249/68712877-ebf59a00-059c-11ea-8c60-15517bc9f4d7.jpg" height="50%" width="40%">
+
+What a shame!
