@@ -1,0 +1,45 @@
+
+/* Class = "UIButton"; normalTitle = "Statistics"; ObjectID = "46c-F9-pKq"; */
+"46c-F9-pKq.normalTitle" = "آمار";
+
+/* Class = "UIButton"; normalTitle = "Gift's review queue"; ObjectID = "51G-Hl-DSr"; */
+"51G-Hl-DSr.normalTitle" = "لیست بازبینی هدیه";
+
+/* Class = "UIButton"; normalTitle = "Passcode & Touch ID"; ObjectID = "CIW-xi-jGN"; */
+"CIW-xi-jGN.normalTitle" = "رمز عبور و اثر انگشت";
+
+/* Class = "UIButton"; normalTitle = "Add New Charity"; ObjectID = "Dtn-EF-Gw1"; */
+"Dtn-EF-Gw1.normalTitle" = "اضافه کردن خیریه";
+
+/* Class = "UIButton"; normalTitle = "Share the App with friends :)"; ObjectID = "EFI-WB-1C2"; */
+"EFI-WB-1C2.normalTitle" = "معرفی اپ به دوستان :)";
+
+/* Class = "UIButton"; normalTitle = "User List"; ObjectID = "Gpc-Pd-APL"; */
+"Gpc-Pd-APL.normalTitle" = "لیست کاربران";
+
+/* Class = "UIButton"; normalTitle = "About KindnessWall"; ObjectID = "Lkc-mO-68e"; */
+"Lkc-mO-68e.normalTitle" = "درباره دیوار مهربانی";
+
+/* Class = "UIButton"; normalTitle = "Report Bugs"; ObjectID = "Lzg-Yj-27L"; */
+"Lzg-Yj-27L.normalTitle" = "گزارش مشکل نرم افزاری";
+
+/* Class = "UIButton"; normalTitle = "Black List"; ObjectID = "P6W-ZE-gWu"; */
+"P6W-ZE-gWu.normalTitle" = "لیست گفتگو‌های مسدود شده";
+
+/* Class = "UIButton"; accessibilityLabel = "تغییر زبان"; ObjectID = "kcu-43-RBy"; */
+"kcu-43-RBy.accessibilityLabel" = "تغییر زبان برنامه";
+
+/* Class = "UIButton"; normalTitle = "Change Application Language"; ObjectID = "kcu-43-RBy"; */
+"kcu-43-RBy.normalTitle" = "تغییر زبان برنامه";
+
+/* Class = "UIButton"; normalTitle = "My Wall"; ObjectID = "nLV-rY-LNf"; */
+"nLV-rY-LNf.normalTitle" = "دیوار من";
+
+/* Class = "UIButton"; normalTitle = "Contact Us"; ObjectID = "qlv-fg-nyn"; */
+"qlv-fg-nyn.normalTitle" = "ارتباط با ما";
+
+/* Class = "UIButton"; normalTitle = "My profile"; ObjectID = "w6Z-Tf-im4"; */
+"w6Z-Tf-im4.normalTitle" = "حساب کاربری من";
+
+/* Class = "UIButton"; normalTitle = "Blocked Chats"; ObjectID = "x2V-mU-0wn"; */
+"x2V-mU-0wn.normalTitle" = "لیست گفتگو‌های مسدود شده";

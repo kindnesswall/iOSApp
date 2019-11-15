@@ -24,6 +24,7 @@ pod "ImageSlideshow/Kingfisher", '~> 1.8.0'
 
 pod 'Firebase/Core', '~> 6.6.0'
 pod 'Firebase/Performance', '~> 6.6.0'
+pod 'Firebase/Auth'
 
 pod 'Fabric', '~> 1.9.0'
 pod 'Crashlytics', '~> 3.12.0'
