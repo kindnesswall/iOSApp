@@ -27,4 +27,13 @@ class MyWallCoordinator : NavigationCoordinator {
         
         navigationController.viewControllers = [viewController]
     }
+    
+    func showGiftDetail(gift: Gift, editHandler:(()->Void)?) {
+        let controller = GiftDetailViewController()
+        
+        controller.gift = gift
+        controller.editHandler = editHandler
+        
+        self.navigationController.pushViewController(controller, animated: true)
+    }
 }
