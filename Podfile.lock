@@ -7,6 +7,9 @@ PODS:
   - CropViewController (2.5.1)
   - CryptoSwift (1.0.0)
   - Fabric (1.9.0)
+  - Firebase/Auth (6.6.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (~> 6.2.2)
   - Firebase/Core (6.6.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.1.0)
@@ -29,6 +32,13 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
   - FirebaseAnalyticsInterop (1.4.0)
+  - FirebaseAuth (6.2.3):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.2)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.2)
+    - GoogleUtilities/Environment (~> 6.2)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseAuthInterop (1.0.0)
   - FirebaseCore (6.2.0):
     - FirebaseCoreDiagnostics (~> 1.0)
     - FirebaseCoreDiagnosticsInterop (~> 1.0)
@@ -131,6 +141,7 @@ DEPENDENCIES:
   - CropViewController (~> 2.5.1)
   - CryptoSwift (~> 1.0.0)
   - Fabric (~> 1.9.0)
+  - Firebase/Auth
   - Firebase/Core (~> 6.6.0)
   - Firebase/Performance (~> 6.6.0)
   - ImageSlideshow (~> 1.6)
@@ -181,6 +192,9 @@ SPEC REPOS:
     - SwiftyOnboard
     - UICircularProgressRing
     - XLActionController
+  trunk:
+    - FirebaseAuth
+    - FirebaseAuthInterop
 
 EXTERNAL SOURCES:
   Spring:
@@ -201,6 +215,8 @@ SPEC CHECKSUMS:
   FirebaseABTesting: 662e8de812ceb5d57ad66381f6402f4d28dc5c91
   FirebaseAnalytics: 48414ae5cbf6976d8a2f7177e0466540e5ab33ce
   FirebaseAnalyticsInterop: d48b6ab67bcf016a05e55b71fc39c61c0cb6b7f3
+  FirebaseAuth: e7f86c2dfc57281cd01f7da5e4b40e01e4510a4a
+  FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: 8c9e08bce0c72a3affd83927d8184cf244918bc8
   FirebaseCoreDiagnostics: be4f7a09d02ab305f18de59a470412caddb64c2a
   FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
@@ -227,6 +243,6 @@ SPEC CHECKSUMS:
   UICircularProgressRing: e700fb0505328e88ee53c4ed92bee6d1a5b8bbe3
   XLActionController: ec9207228162569df1c90dccded2e88d0f39b2e7
 
-PODFILE CHECKSUM: c0709f4f925ba05f473867257dc74b3aa54e8a77
+PODFILE CHECKSUM: 69a47b13e66213b78d944c8a4608fc024cd06f66
 
 COCOAPODS: 1.8.4
