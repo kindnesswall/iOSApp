@@ -9,6 +9,19 @@
 import Foundation
 import KeychainSwift
 
+
+extension String {
+    var localizedNumber: String {
+        return AppLanguage.getNumberString(number: self)
+    }
+}
+
+extension Int {
+    var localizedNumber: String {
+        return self.description.localizedNumber
+    }
+}
+
 class AppLanguage{
     
     

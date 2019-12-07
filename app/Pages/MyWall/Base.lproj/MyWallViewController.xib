@@ -14,6 +14,7 @@
                 <outlet property="receivedStack" destination="vvH-3Z-FK9" id="IHA-yD-zES"/>
                 <outlet property="registeredStack" destination="PaQ-VI-duD" id="pHy-K4-XEx"/>
                 <outlet property="segmentControlStack" destination="ylz-el-GGR" id="ECm-mR-nkA"/>
+                <outlet property="userProfileStack" destination="k5H-lc-pJR" id="eGV-mq-r7Y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,23 +26,26 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z1b-YM-CNt">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ylz-el-GGR">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="k5H-lc-pJR">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ylz-el-GGR">
+                            <rect key="frame" x="0.0" y="170" width="414" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="e7Z-8y-BcG"/>
                             </constraints>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEB-pk-rwG">
-                            <rect key="frame" x="0.0" y="40" width="414" height="778"/>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uEB-pk-rwG">
+                            <rect key="frame" x="0.0" y="210" width="414" height="608"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7ne-oL-6gk">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="778"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7ne-oL-6gk">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="608"/>
                                 </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PaQ-VI-duD">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="778"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PaQ-VI-duD">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="608"/>
                                 </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vvH-3Z-FK9">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="778"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vvH-3Z-FK9">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="608"/>
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

@@ -179,4 +179,7 @@ struct LanguageKeys {
     static let block = "block"
     static let unblock = "unblock"
     static let youHaveBeenBlocked = "youHaveBeenBlocked"
+    
+    static let identifier = "identifier"
+    static let phoneNumber = "phoneNumber"
 }

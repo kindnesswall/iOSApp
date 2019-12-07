@@ -15,8 +15,10 @@ class MyWallViewController: UIViewController {
     @IBOutlet weak var registeredStack: UIStackView!
     @IBOutlet weak var receivedStack: UIStackView!
     @IBOutlet weak var segmentControlStack: UIStackView!
+    @IBOutlet weak var userProfileStack: UIStackView!
     
     var segmentControlView: MyWallSegmentControl?
+    var userProfileView: UserProfileSegment?
     var donatedSegment: MyWallTableViewSegment?
     var registeredSegment: MyWallTableViewSegment?
     var receivedSegment: MyWallTableViewSegment?
@@ -52,6 +54,7 @@ class MyWallViewController: UIViewController {
         }
         
         loadSegmentControl()
+        loadUserProfileView(userId: userId)
         
         loadSegments(userId: userId)
         subscribeToSections()
@@ -76,12 +79,14 @@ class MyWallViewController: UIViewController {
         self.registeredSegment?.viewModel?.getGifts(beforeId: nil)
         self.donatedSegment?.viewModel?.getGifts(beforeId: nil)
         self.receivedSegment?.viewModel?.getGifts(beforeId: nil)
+        self.userProfileView?.viewModel?.getProfile()
     }
     
     func reloadGifts() {
         self.registeredSegment?.viewModel?.reloadGifts()
         self.donatedSegment?.viewModel?.reloadGifts()
         self.receivedSegment?.viewModel?.reloadGifts()
+        self.userProfileView?.viewModel?.getProfile()
     }
     
     func updateUI(){
@@ -138,6 +143,15 @@ extension MyWallViewController {
         }
         segmentControlStack.addArrangedSubview(segmentControlView)
         self.segmentControlView = segmentControlView
+    }
+    
+    func loadUserProfileView(userId: Int) {
+        guard let userProfileView = NibLoader.load(type: UserProfileSegment.self) else { return }
+        
+        userProfileView.viewModel = UserProfileViewModel(userId: userId)
+        
+        userProfileStack.addArrangedSubview(userProfileView)
+        self.userProfileView = userProfileView
     }
     
     func loadSegments(userId: Int) {

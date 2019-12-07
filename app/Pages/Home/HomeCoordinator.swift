@@ -26,7 +26,7 @@ class HomeCoordinator : NavigationCoordinator {
         homeViewController = HomeViewController(vm: HomeVM(), homeCoordiantor: self)
         
         let img = UIImage(named: AppImages.Home)
-        homeViewController?.tabBarItem = UITabBarItem(title: "Home", image: img, tag: 0)
+        homeViewController?.tabBarItem = UITabBarItem(title: LanguageKeys.home.localizedString, image: img, tag: 0)
         
         if let vc = homeViewController {
             navigationController.viewControllers = [vc]

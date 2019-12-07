@@ -1,0 +1,58 @@
+//
+//  UserProfileSegment.swift
+//  app
+//
+//  Created by Amir Hossein on 11/21/19.
+//  Copyright © 2019 Hamed.Gh. All rights reserved.
+//
+
+import UIKit
+import Kingfisher
+
+class UserProfileSegment: UIView {
+
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userId: UILabel!
+    @IBOutlet weak var userPhoneNumber: UILabel!
+    @IBOutlet weak var showCharityBtn: UIButton!
+    
+    
+    var viewModel: UserProfileViewModel? {didSet{bindToViewModel()}}
+    
+    override func awakeFromNib() {
+        showCharityBtn.layer.cornerRadius = 20
+    }
+    
+    func bindToViewModel() {
+        viewModel?.profileBinding.bind = {[weak self] profile in
+            self?.updateUI(profile: profile)
+        }
+    }
+    
+    func updateUI(profile: UserProfile?) {
+        setProfileImage(profile: profile)
+        self.userName.text = profile?.name
+        self.userId.text = "\(LanguageKeys.identifier.localizedString): \(profile?.id.localizedNumber ?? "")"
+        
+        if let phoneNumber = profile?.phoneNumber {
+            self.userPhoneNumber.text = "\(LanguageKeys.phoneNumber.localizedString): \(phoneNumber.localizedNumber)"
+        } else {
+            self.userPhoneNumber.text = ""
+        }
+        
+        let isCharity = profile?.isCharity == true
+        showCharityBtn.isHidden = !isCharity
+        
+    }
+    
+    fileprivate func setProfileImage(profile: UserProfile?) {
+        let imagePlaceholder = UIImage(named: AppImages.BlankAvatar)
+        if let url = URL(string: profile?.image ?? "") {
+            self.profileImage.kf.setImage(with: url, placeholder: imagePlaceholder)
+        } else {
+            self.profileImage.image = imagePlaceholder
+        }
+    }
+    
+}

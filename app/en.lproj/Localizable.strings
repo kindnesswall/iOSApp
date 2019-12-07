@@ -178,3 +178,5 @@
 "unblock" = "Unblock";
 "youHaveBeenBlocked" = "You have been blocked";
 
+"identifier" = "Identifier";
+"phoneNumber" = "Phone Number";

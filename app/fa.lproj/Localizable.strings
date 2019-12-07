@@ -175,3 +175,6 @@
 "youHaveBeenBlocked" = "شما مسدود شده‌اید";
 
 "YouDidntBlockAnyBody" = "شما فردی را بلاک نکرده اید.";
+
+"identifier" = "شناسه";
+"phoneNumber" = "شماره موبایل";

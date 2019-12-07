@@ -11,6 +11,8 @@ final class UserProfile : Codable {
     var id: Int
     var name:String?
     var image:String?
+    var phoneNumber:String?
+    var isCharity:Bool?
     
     final class Input: Codable {
         var name:String?
