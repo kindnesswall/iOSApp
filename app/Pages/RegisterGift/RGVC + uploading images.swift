@@ -66,10 +66,10 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     }
     
     func initUploadImageView()-> UploadImageView {
-        let uploadedImageView = NibLoader.loadViewFromNib(
+        let uploadedImageView = (NibLoader.loadViewFromNib(
             name: UploadImageView.identifier,
             owner: self,
-            nibType: UploadImageView.self) as! UploadImageView
+            nibType: UploadImageView.self) as? UploadImageView) ?? UploadImageView()
         uploadedImageView.widthAnchor.constraint(equalToConstant: 100).isActive=true
         
         uploadedImageView.delegate=self

@@ -83,7 +83,7 @@ extension GiftsToDonateViewController : UITableViewDelegate {
         guard let gift = self.viewModel?.gifts[indexPath.row]
             else { return }
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: LanguageKeys.giftDonationPrompt.localizedString,animation:.none,declineHandler: nil) { [weak self] (ـ) in
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data: LanguageKeys.giftDonationPrompt.localizedString,animation:.none,declineHandler: nil) { [weak self] _ in
             self?.donateGift(gift: gift)
         }
         

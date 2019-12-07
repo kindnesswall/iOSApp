@@ -59,7 +59,7 @@ class VerificationCodeViewController: UIViewController {
     }
     
     func setTipLabel(){
-        tipLabel.text = LanguageKeys.guideOfRegitering_part1.localizedString + AppLanguage.getNumberString(number: mobileWithCode) + LanguageKeys.guideOfRegitering_part2.localizedString
+        tipLabel.text = LanguageKeys.guideOfRegiteringPart1.localizedString + AppLanguage.getNumberString(number: mobileWithCode) + LanguageKeys.guideOfRegiteringPart2.localizedString
     }
     
     @objc func dismissKeyboard() {
@@ -130,7 +130,7 @@ class VerificationCodeViewController: UIViewController {
         case .failure(let error):
             var msg = "Error"
             switch(error){
-            case .ServerError:
+            case .serverError:
                 msg = LanguageKeys.activationCodeIncorrectError.localizedString
                 
                 FlashMessage.showMessage(body: msg,theme: .warning)
@@ -169,7 +169,7 @@ class VerificationCodeViewController: UIViewController {
         case .failure(let error):
             var errorMsg = "Error"
             switch(error){
-            case .ServerError:
+            case .serverError:
                 errorMsg = LanguageKeys.activationCodeTryAgainOneMinuteLater.localizedString
                 
             default:

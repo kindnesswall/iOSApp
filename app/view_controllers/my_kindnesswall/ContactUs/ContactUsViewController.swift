@@ -87,7 +87,7 @@ extension ContactUsViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactUsCollectionViewCell.identifier, for: indexPath) as! ContactUsCollectionViewCell
+        let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: ContactUsCollectionViewCell.identifier, for: indexPath) as? ContactUsCollectionViewCell) ?? ContactUsCollectionViewCell()
         
         cell.setUI(data: data[indexPath.item])
         

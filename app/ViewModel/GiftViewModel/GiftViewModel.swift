@@ -16,7 +16,7 @@ class GiftViewModel: NSObject {
     
     weak var delegate : GiftViewModelDelegate?
     
-    var isLoadingGifts_ForLazyLoading=false
+    var isLoadingGiftsForLazyLoading=false
     var initialGiftsLoadingHasOccurred=false
     var isLoadingGifts=false
     
@@ -48,13 +48,13 @@ class GiftViewModel: NSObject {
             self.delegate?.lazyLoadingAnimation(viewModel:self,isLoading: false)
             
             if gifts.count == self.lazyLoadingCount {
-                self.isLoadingGifts_ForLazyLoading=false
+                self.isLoadingGiftsForLazyLoading=false
             }
             
             var insertedIndexes=[IndexPath]()
             let minCount = self.gifts.count
-            for i in minCount..<minCount+gifts.count {
-                insertedIndexes.append(IndexPath(item: i, section: 0))
+            for counter in minCount..<minCount+gifts.count {
+                insertedIndexes.append(IndexPath(item: counter, section: 0))
             }
             
             self.gifts.append(contentsOf: gifts)
@@ -69,10 +69,10 @@ class GiftViewModel: NSObject {
         
         self.initialGiftsLoadingHasOccurred=true
         
-        if isLoadingGifts_ForLazyLoading {
+        if isLoadingGiftsForLazyLoading {
             return
         }
-        isLoadingGifts_ForLazyLoading=true
+        isLoadingGiftsForLazyLoading=true
         
         if beforeId==nil {
             self.delegate?.pageLoadingAnimation(viewModel:self,isLoading: true)
@@ -87,14 +87,14 @@ class GiftViewModel: NSObject {
         
         var endPoint:Endpoint!
         switch giftListType {
-        case .GiftsToDonate(let toUserId):
-            endPoint = Endpoint.GiftsToDonate(toUserId: toUserId, input: input)
-        case .UserDonatedGifts(let userId):
-            endPoint = Endpoint.UserDonatedGifts(userId: userId, input: input)
-        case .UserReceivedGifts(let userId):
-            endPoint = Endpoint.UserReceivedGifts(userId: userId, input: input)
-        case .UserRegisteredGifts(let userId):
-            endPoint = Endpoint.UserRegisteredGifts(userId: userId, input: input)
+        case .giftsToDonate(let toUserId):
+            endPoint = Endpoint.giftsToDonate(toUserId: toUserId, input: input)
+        case .userDonatedGifts(let userId):
+            endPoint = Endpoint.userDonatedGifts(userId: userId, input: input)
+        case .userReceivedGifts(let userId):
+            endPoint = Endpoint.userReceivedGifts(userId: userId, input: input)
+        case .userRegisteredGifts(let userId):
+            endPoint = Endpoint.userRegisteredGifts(userId: userId, input: input)
         }
         
         apiService.getGifts(endPoint:endPoint) { [weak self] (result) in
@@ -109,7 +109,7 @@ class GiftViewModel: NSObject {
     func reloadGifts(){
         if self.initialGiftsLoadingHasOccurred {
             self.httpLayer.cancelRequests()
-            isLoadingGifts_ForLazyLoading=false
+            isLoadingGiftsForLazyLoading=false
             getGifts(beforeId: nil)
         }
     }
@@ -129,7 +129,7 @@ extension GiftViewModel : UITableViewDataSource {
         
         let index=indexPath.row+1
         if index==self.gifts.count {
-            if !self.isLoadingGifts_ForLazyLoading {
+            if !self.isLoadingGiftsForLazyLoading {
                 if let beforeId = self.gifts[indexPath.row].id {
                     getGifts(beforeId: beforeId)
                 }

@@ -93,7 +93,7 @@ class MoreViewController: UIViewController {
         }
     }
     
-    @IBAction func SwitchLanguageBtnClicked(_ sender: Any) {
+    @IBAction func switchLanguageBtnClicked(_ sender: Any) {
         let controller = LanguageViewController()
         controller.languageViewModel.tabBarIsInitialized = true
         self.tabBarController?.present(controller, animated: true, completion: nil)
@@ -141,7 +141,7 @@ class MoreViewController: UIViewController {
     
     @IBAction func aboutKindnessWallBtnAction(_ sender: Any) {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as! IntroViewController
+        let viewController = (mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as? IntroViewController) ?? IntroViewController()
         self.present(viewController, animated: true, completion: nil)
     }
     
@@ -182,8 +182,8 @@ class MoreViewController: UIViewController {
     
     func getVersionBuildNo() -> String {
         let dic = Bundle.main.infoDictionary!
-        let version = dic["CFBundleShortVersionString"] as! String
-        let buildNumber = dic["CFBundleVersion"] as! String
+        let version = (dic["CFBundleShortVersionString"] as? String) ?? "get version failed"
+        let buildNumber = (dic["CFBundleVersion"] as? String) ?? "get buildNumber failed"
         
         return version+"("+buildNumber+")"
     }

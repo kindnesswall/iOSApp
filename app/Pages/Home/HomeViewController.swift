@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     let vm: HomeVM
     let userDefault=UserDefaults.standard
 
-    let NumberOfSecondsOfOneDay:Float = 26*60*60
+    let numberOfSecondsOfOneDay:Float = 26*60*60
     
     let hud = JGProgressHUD(style: .dark)
     

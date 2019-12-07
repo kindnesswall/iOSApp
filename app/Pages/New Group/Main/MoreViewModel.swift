@@ -26,8 +26,8 @@ class MoreViewModel {
     
     func getVersionBuildNo() -> String {
         let dic = Bundle.main.infoDictionary!
-        let version = dic["CFBundleShortVersionString"] as! String
-        let buildNumber = dic["CFBundleVersion"] as! String
+        let version = (dic["CFBundleShortVersionString"] as? String) ?? "get version failed"
+        let buildNumber = (dic["CFBundleVersion"] as? String) ?? "get buildNumber failed"
         
         return version+"("+buildNumber+")"
     }

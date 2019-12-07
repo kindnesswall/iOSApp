@@ -11,7 +11,7 @@ import UIKit
 
 extension String{
     
-    public func CastNumberToPersian()->String{
+    public func castNumberToPersian()->String{
         
         var number=self
         

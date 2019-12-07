@@ -4,7 +4,7 @@ import UIKit
 
 
 public class UIFunctions{
-    public static func CastNumberToPersian(input:String)->String{
+    public static func castNumberToPersian(input:String)->String{
         
         var number=input
         
@@ -23,7 +23,7 @@ public class UIFunctions{
         
     }
     
-    public static func CastNumberToPersian(input:Int)->String{
+    public static func castNumberToPersian(input:Int)->String{
         
         var number=String(input)
         
@@ -45,7 +45,7 @@ public class UIFunctions{
     public static func setPriceBtn(priceBtn:UIButton,price: String?,color:UIColor){
 
         if let price = price {
-            let faPrice = self.CastNumberToPersian(input: price)
+            let faPrice = self.castNumberToPersian(input: price)
             if faPrice == "۰" {
                 priceBtn.setTitle("رایگان", for: .normal)
             }else { priceBtn.setTitle(faPrice+" تومان", for: .normal)}

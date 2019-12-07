@@ -94,7 +94,7 @@ class LanguageVM: NSObject {
     }
     
     func selectLanguage(index:Int) {
-        UserDefaults.standard.set(true, forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
+        UserDefaults.standard.set(true, forKey: AppConst.UserDefaults.WatchedSelectLanguage)
         UserDefaults.standard.synchronize()
         
         if datasource[index] == AppLanguage.getLanguage() {

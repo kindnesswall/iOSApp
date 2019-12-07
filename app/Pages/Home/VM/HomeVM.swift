@@ -75,8 +75,8 @@ class HomeVM: NSObject {
         self.delegate?.refreshControlAnimation(isLoading: false)
         
         let alert = UIAlertController(
-            title:LanguageKeys.requestfail_dialog_title.localizedString,
-            message:LanguageKeys.requestfail_dialog_text.localizedString,
+            title:LanguageKeys.requestfailDialogTitle.localizedString,
+            message:LanguageKeys.requestfailDialogText.localizedString,
             preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title:LanguageKeys.ok.localizedString, style: UIAlertAction.Style.default, handler: { [weak self] (action) in
@@ -128,8 +128,8 @@ class HomeVM: NSObject {
 
         let lastIndex = self.gifts.count
         
-        for i in firstIndex..<lastIndex{
-            insertedIndexes.append(IndexPath(item: i, section: 0))
+        for index in firstIndex..<lastIndex{
+            insertedIndexes.append(IndexPath(item: index, section: 0))
         }
         
         self.delegate?.insertNewItemsToTableView(insertedIndexes: insertedIndexes)
@@ -157,9 +157,9 @@ class HomeVM: NSObject {
         
         var endPoint:Endpoint
         if isReview {
-            endPoint = Endpoint.GiftsToReview(input: input)
+            endPoint = Endpoint.giftsToReview(input: input)
         } else {
-            endPoint = Endpoint.GetGifts(input: input)
+            endPoint = Endpoint.getGifts(input: input)
         }
         
         apiService.getGifts(endPoint: endPoint) { [weak self] (result) in

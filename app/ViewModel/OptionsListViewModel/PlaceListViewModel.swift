@@ -19,7 +19,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
     
     enum PlaceType {
         case province
-        case city(province_id:Int)
+        case city(provinceId:Int)
         case region(cityId:Int)
     }
     let placeType:PlaceType
@@ -44,7 +44,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
     }
     
     func dequeueReusableCell(tableView:UITableView,indexPath:IndexPath)->UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: GenericOptionsTableViewCell.identifier, for: indexPath) as! GenericOptionsTableViewCell
+        let cell = tableView.dequeue(type: GenericOptionsTableViewCell.self, for: indexPath)
         switch placeType {
         case .province:
             cell.setValue(name: provinces[indexPath.row].name)
@@ -72,8 +72,8 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
         switch placeType {
         case .province:
             getProvinces(completionHandler)
-        case .city(let province_id):
-            getCitieOfProvince(id: province_id, completionHandler)
+        case .city(let provinceId):
+            getCitieOfProvince(id: provinceId, completionHandler)
         case .region(let cityId):
             getRegions(cityId,completionHandler)
         }
@@ -169,10 +169,10 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
             guard showCities else {
                 return nil
             }
-            guard let province_id = provinces[indexPath.row].id else {
+            guard let provinceId = provinces[indexPath.row].id else {
                 return nil
             }
-            let viewModel = PlaceListViewModel(placeType: .city(province_id: province_id),showCities: self.showCities,showRegions: self.showRegions, hasDefaultOption: self.hasDefaultOption)
+            let viewModel = PlaceListViewModel(placeType: .city(provinceId: provinceId),showCities: self.showCities,showRegions: self.showRegions, hasDefaultOption: self.hasDefaultOption)
             return viewModel
         case .city:
             guard showRegions else {

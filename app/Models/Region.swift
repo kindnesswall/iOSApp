@@ -10,7 +10,7 @@ import Foundation
 
 class Region:Codable {
     var id:Int?
-    var city_id:Int
+    var cityId:Int
     var name:String
     var latitude:Double
     var longitude:Double

@@ -193,7 +193,7 @@ class AppLiteralForMessages{
         }
     }
     
-    static var guideOfRegitering_part1 : String {
+    static var guideOfRegiteringPart1 : String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -203,7 +203,7 @@ class AppLiteralForMessages{
         }
     }
     
-    static var guideOfRegitering_part2 : String {
+    static var guideOfRegiteringPart2 : String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:

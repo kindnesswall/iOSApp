@@ -14,8 +14,8 @@ import KeychainSwift
 class LockViewController: UIViewController {
 
     enum Mode {
-        case SetPassCode
-        case CheckPassCode
+        case setPassCode
+        case checkPassCode
     }
     
     @IBOutlet weak var cancelBtn: UIButton!
@@ -42,9 +42,9 @@ class LockViewController: UIViewController {
         }
     }
     
-    let Salt = "x4vV8bGgqqmQwgCoyXFQj+(o.nUNQhVP7ND"
+    let salt = "x4vV8bGgqqmQwgCoyXFQj+(o.nUNQhVP7ND"
 
-    var mode:Mode = .SetPassCode
+    var mode:Mode = .setPassCode
     
     var isReEnterPasscode:Bool = false
     var passcode:[Int] = [Int]()
@@ -67,17 +67,17 @@ class LockViewController: UIViewController {
     }
     
     func clearCircles() {
-        for i in 0...(circles.count - 1) {
-            circles[i].mainColor = .black
+        for index in 0...(circles.count - 1) {
+            circles[index].mainColor = .black
         }
     }
     
     func afterLastPasscodeKeyPressed() {
         switch mode {
-        case .SetPassCode:
+        case .setPassCode:
             if isReEnterPasscode {
-                for i in 0...(circles.count - 1) {
-                    if passcode[i] != reEnterPasscode[i]{
+                for index in 0...(circles.count - 1) {
+                    if passcode[index] != reEnterPasscode[index]{
                         passwordCounter = -1
                         clearCircles()
                         
@@ -100,7 +100,7 @@ class LockViewController: UIViewController {
                 mainTitleLbl.text = LanguageKeys.ReEnterNewPasscode.localizedString
                 isReEnterPasscode = true
             }
-        case .CheckPassCode:
+        case .checkPassCode:
             if isPasscodeCorrect(){
                 self.onPasscodeCorrect?()
                 self.dismiss(animated: true, completion: nil)
@@ -125,13 +125,13 @@ class LockViewController: UIViewController {
         
         if let code = (sender as AnyObject).tag {
             switch mode {
-            case .SetPassCode:
+            case .setPassCode:
                 if isReEnterPasscode {
                     reEnterPasscode.append( code)
                 }else{
                     passcode.append( code)
                 }
-            case .CheckPassCode:
+            case .checkPassCode:
                 passcode.append( code)
             }
         }
@@ -150,21 +150,21 @@ class LockViewController: UIViewController {
     
     func hashPasscode()-> String {
         var pass:String = ""
-        for i in 0...passcode.count-1 {
-            pass = pass + "\(passcode[i])"
+        for index in 0...passcode.count-1 {
+            pass += "\(passcode[index])"
         }
-        return "\(pass).\(Salt)".sha256()
+        return "\(pass).\(salt)".sha256()
     }
     
     func isPasscodeCorrect() -> Bool {
         guard passcode.count == circles.count else { return false }
         
         var pass:String = ""
-        for i in 0...passcode.count-1 {
-            pass = pass + "\(passcode[i])"
+        for index in 0...passcode.count-1 {
+            pass += "\(passcode[index])"
         }
         
-        let passCodeHash:String = "\(pass).\(Salt)".sha256()
+        let passCodeHash:String = "\(pass).\(salt)".sha256()
         let lastSavedPasscodeHash:String = self.keychain.get(AppConst.KeyChain.PassCode) ?? ""
         if passCodeHash == lastSavedPasscodeHash {
             return true
@@ -181,10 +181,10 @@ class LockViewController: UIViewController {
         if passwordCounter >= 0 {
             
             switch mode{
-            case .CheckPassCode:
+            case .checkPassCode:
                 passcode.remove(at: passwordCounter)
                 
-            case .SetPassCode:
+            case .setPassCode:
                 if isReEnterPasscode {
                     reEnterPasscode.remove(at: passwordCounter)
                 }else{

@@ -16,15 +16,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoreViewController" customModule="KindnessWall" customModuleProvider="target">
             <connections>
-                <outlet property="AdminStackView" destination="Ru8-zB-5OU" id="Tvw-aD-ilm"/>
-                <outlet property="UserStackView" destination="zJL-MM-Knh" id="KmR-mw-wno"/>
                 <outlet property="aboutKindnessWallBtn" destination="Lkc-mO-68e" id="yiF-Lm-oZy"/>
                 <outlet property="addNewCharityBtn" destination="Dtn-EF-Gw1" id="xxX-AJ-9za"/>
+                <outlet property="adminStackView" destination="Ru8-zB-5OU" id="Tvw-aD-ilm"/>
                 <outlet property="bugReportBtn" destination="Lzg-Yj-27L" id="F8r-hr-f0L"/>
                 <outlet property="contactUsBtn" destination="qlv-fg-nyn" id="hoq-rp-Iew"/>
                 <outlet property="loginLogoutBtn" destination="nQK-i4-MHV" id="1ay-22-6vj"/>
                 <outlet property="passcodeTouchIDBtn" destination="CIW-xi-jGN" id="cCQ-cf-XId"/>
                 <outlet property="scrollview" destination="Wde-ei-gc8" id="qVJ-VQ-mak"/>
+                <outlet property="userStackView" destination="zJL-MM-Knh" id="KmR-mw-wno"/>
                 <outlet property="versionNoLbl" destination="I7P-9g-ZhZ" id="Bgq-kA-wbh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -223,7 +223,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <action selector="SwitchLanguageBtnClicked:" destination="-1" eventType="touchUpInside" id="CCU-Z1-bLV"/>
+                                                <action selector="switchLanguageBtnClicked:" destination="-1" eventType="touchUpInside" id="CCU-Z1-bLV"/>
                                             </connections>
                                         </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzg-Yj-27L">

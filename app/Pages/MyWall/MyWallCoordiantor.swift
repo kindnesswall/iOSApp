@@ -20,10 +20,10 @@ class MyWallCoordinator : NavigationCoordinator {
     
     func showMyWall() {
         let viewController = MyWallViewController(myWallCoordinator: self)
-        viewController.userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
+        viewController.userId = Int(KeychainSwift().get(AppConst.KeyChain.UserID) ?? "")
         
         let img = UIImage(named: AppImages.MyWall)
-        viewController.tabBarItem = UITabBarItem(title: LanguageKeys.tabBar_my_wall.localizedString, image: img, tag: 0)
+        viewController.tabBarItem = UITabBarItem(title: LanguageKeys.tabBarMyWall.localizedString, image: img, tag: 0)
         
         navigationController.viewControllers = [viewController]
     }

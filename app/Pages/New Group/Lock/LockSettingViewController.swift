@@ -37,7 +37,7 @@ class LockSettingViewController: UIViewController {
     func setPasscode() {
         let controller = LockViewController()
         controller.modalPresentationStyle = .fullScreen
-        controller.mode = .SetPassCode
+        controller.mode = .setPassCode
         self.tabBarController?.present(controller, animated: true, completion: nil)
     }
     

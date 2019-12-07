@@ -175,13 +175,11 @@ public class DateHelper {
     }
     
     static func isToday(currentTime:Time,startTime:Time)->Bool{
-        let current_time = self.getFaDate(faDate: currentTime.fa_date!)
-        let start_time = self.getFaDate(faDate: startTime.fa_date!)
+        let currentTime = self.getFaDate(faDate: currentTime.fa_date!)
+        let startTime = self.getFaDate(faDate: startTime.fa_date!)
         
-        if(current_time == start_time) {
-            return true
-        }
-        return false
+        return (currentTime == startTime)
+            
     }
     
 }

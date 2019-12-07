@@ -71,7 +71,7 @@ class MoreCoordinator : NavigationCoordinator {
     func showLockScreenView()  {
         let controller = LockViewController()
         controller.modalPresentationStyle = .fullScreen
-        controller.mode = .CheckPassCode
+        controller.mode = .checkPassCode
         controller.onPasscodeCorrect = {
             let controller = LockSettingViewController()
             self.navigationController.pushViewController(controller, animated: true)
@@ -86,8 +86,8 @@ class MoreCoordinator : NavigationCoordinator {
     
     func showLogoutAlert(onConfirm : @escaping ()->()) {
         let alert = UIAlertController(
-            title:LanguageKeys.logout_dialog_title.localizedString,
-            message: LanguageKeys.logout_dialog_text.localizedString,
+            title:LanguageKeys.logoutDialogTitle.localizedString,
+            message: LanguageKeys.logoutDialogText.localizedString,
             preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: LanguageKeys.ok.localizedString, style: UIAlertAction.Style.default, handler: { (action) in
@@ -107,7 +107,7 @@ class MoreCoordinator : NavigationCoordinator {
     
     func showIntro() {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as! IntroViewController
+        let viewController = (mainStoryboard.instantiateViewController(withIdentifier: "IntroViewController") as? IntroViewController) ?? IntroViewController()
         self.navigationController.present(viewController, animated: true, completion: nil)
     }
     

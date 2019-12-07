@@ -52,7 +52,7 @@ class LoginRegisterViewController: UIViewController {
         
         self.phoneNumberTextField.keyboardType = UIKeyboardType.numberPad
         
-        if let phoneNumber = userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) {
+        if let phoneNumber = userDefault.string(forKey: AppConst.UserDefaults.PhoneNumber) {
             phoneNumberTextField.text =  AppLanguage.getNumberString(number: phoneNumber)
         }
         
@@ -117,7 +117,7 @@ class LoginRegisterViewController: UIViewController {
             return
         }
         
-        userDefault.set(mobile, forKey: AppConst.UserDefaults.PHONE_NUMBER)
+        userDefault.set(mobile, forKey: AppConst.UserDefaults.PhoneNumber)
         userDefault.synchronize()
         
         
@@ -148,7 +148,7 @@ class LoginRegisterViewController: UIViewController {
         case .failure(let error):
             var bodyString:String = "Error"
             switch(error){
-            case .ServerError:
+            case .serverError:
                 bodyString = LanguageKeys.activationCodeTryAgainOneMinuteLater.localizedString
             default:
                 bodyString = LanguageKeys.weEncounterErrorTryAgain.localizedString

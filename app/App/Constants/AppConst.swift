@@ -39,7 +39,7 @@ struct AppConst {
     
     struct KeyChain {
         static let Authorization:String = "Authorization"
-        public static let USER_ID:String = "USER_ID"
+        public static let UserID:String = "USER_ID"
         public static let BEARER:String = "Bearer"
         public static let PassCode:String = "PassCode"
         public static let IsAdmin:String = "IsAdmin"
@@ -50,11 +50,11 @@ struct AppConst {
     
     struct UserDefaults {
         static let RegisterGiftDraft="RegisterGiftDraft"
-        public static let PHONE_NUMBER:String = "PHONE_NUMBER"
-        public static let WATCHED_INTRO:String = "watched_intro"
+        public static let PhoneNumber:String = "PHONE_NUMBER"
+        public static let WatchedIntro:String = "watched_intro"
         
-        public static let WATCHED_SELECT_LANGUAGE:String = "WATCHED_SELECT_LANGUAGE"
-        public static let SELECTED_COUNTRY:String = "SELECTED_COUNTRY"
+        public static let WatchedSelectLanguage:String = "WATCHED_SELECT_LANGUAGE"
+        public static let SelectedCountry:String = "SELECTED_COUNTRY"
         
         public static let FirstInstall:String = "FirstInstall"
         static let AppleLanguages:String = "AppleLanguages"

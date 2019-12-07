@@ -12,7 +12,7 @@ public class NibLoader {
         let nib = UINib(nibName: name, bundle: bundle)
         
         // Assumes UIView is top level and only object in CustomView.xib file
-        let view = nib.instantiate(withOwner: owner, options: nil)[0] as! UIView
+        let view = (nib.instantiate(withOwner: owner, options: nil)[0] as? UIView) ?? UIView()
         return view
     }
 }

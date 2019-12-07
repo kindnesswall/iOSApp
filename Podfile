@@ -35,4 +35,7 @@ pod "Apollo", '~> 0.11.0'
 
 pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
 pod 'PanModal', '~> 1.2.4'
+
+pod 'SwiftLint', '~> 0.38.0'
+
 end

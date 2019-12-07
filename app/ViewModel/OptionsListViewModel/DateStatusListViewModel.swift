@@ -37,7 +37,7 @@ class DateStatusListViewModel: NSObject, OptionsListViewModelProtocol {
     }
     
     func dequeueReusableCell(tableView:UITableView,indexPath:IndexPath)->UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: GenericOptionsTableViewCell.identifier, for: indexPath) as! GenericOptionsTableViewCell
+        let cell = tableView.dequeue(type: GenericOptionsTableViewCell.self, for: indexPath)
         cell.setValue(name: dateStatus[indexPath.row].title)
         return cell
     }

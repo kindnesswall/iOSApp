@@ -18,7 +18,7 @@ class FirebaseLoginRegisterViewModel: NSObject, LoginRegisterViewModelProtocol {
             
             DispatchQueue.main.async {
                 guard error == nil, let verificationId = verificationId  else {
-                    handleResult(.failure(AppError.FirebaseError(error: error)))
+                    handleResult(.failure(AppError.firebaseError(error: error)))
                     return
                 }
                 handleResult(.success(verificationId))
@@ -41,7 +41,7 @@ class FirebaseLoginRegisterViewModel: NSObject, LoginRegisterViewModelProtocol {
             guard error == nil, let result = result  else {
                 
                 DispatchQueue.main.async {
-                    handleResult(.failure(AppError.FirebaseError(error: error)))
+                    handleResult(.failure(AppError.firebaseError(error: error)))
                 }
                 
                 return
@@ -50,7 +50,7 @@ class FirebaseLoginRegisterViewModel: NSObject, LoginRegisterViewModelProtocol {
                 
                 guard error == nil, let idToken = idToken  else {
                     DispatchQueue.main.async {
-                        handleResult(.failure(AppError.FirebaseError(error: error)))
+                        handleResult(.failure(AppError.firebaseError(error: error)))
                     }
                     return
                 }

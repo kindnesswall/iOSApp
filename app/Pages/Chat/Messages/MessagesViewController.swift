@@ -243,8 +243,8 @@ extension MessagesViewController : UITableViewDataSource {
         } else {
             messageType = .others
         }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: messageType.rawValue, for: indexPath) as! MessagesTableViewCell
+    
+        let cell = (tableView.dequeueReusableCell(withIdentifier: messageType.rawValue, for: indexPath) as? MessagesTableViewCell) ?? MessagesTableViewCell(style: .default, reuseIdentifier: messageType.rawValue)
         cell.updateUI(message: message, messageType: messageType)
         
         if indexPath.section == viewModel.curatedMessages.count-1,

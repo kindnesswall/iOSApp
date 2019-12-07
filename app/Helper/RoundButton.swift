@@ -31,13 +31,13 @@ import UIKit
     
     @IBInspectable var borderWidth: CGFloat = 2 {
         didSet {
-            refreshBorder(_borderWidth: borderWidth)
+            refreshBorder(borderWidth: borderWidth)
         }
     }
     
     @IBInspectable var customBorderColor: UIColor = UIColor.init (red: 0, green: 122/255, blue: 255/255, alpha: 1){
         didSet {
-            refreshBorderColor(_colorBorder: customBorderColor)
+            refreshBorderColor(colorBorder: customBorderColor)
         }
     }
     
@@ -62,20 +62,20 @@ import UIKit
         refreshColor(color: normalBackgroundImageColor, state: UIControl.State.normal)
         refreshColor(color: highlightedBackgroundImageColor, state: UIControl.State.normal)
         
-        refreshBorderColor(_colorBorder: customBorderColor)
-        refreshBorder(_borderWidth: borderWidth)
+        refreshBorderColor(colorBorder: customBorderColor)
+        refreshBorder(borderWidth: borderWidth)
     }
     
     func refreshCorners(value: CGFloat) {
         layer.cornerRadius = value
     }
     
-    func refreshBorder(_borderWidth: CGFloat) {
-        layer.borderWidth = _borderWidth
+    func refreshBorder(borderWidth: CGFloat) {
+        layer.borderWidth = borderWidth
     }
     
-    func refreshBorderColor(_colorBorder: UIColor) {
-        layer.borderColor = _colorBorder.cgColor
+    func refreshBorderColor(colorBorder: UIColor) {
+        layer.borderColor = colorBorder.cgColor
     }
 
     func createImage(color: UIColor) -> UIImage {

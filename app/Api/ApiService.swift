@@ -32,11 +32,11 @@ class ApiService:ApiServiceProtocol {
     
     func registerGift(
         _ gift:Gift, completion: @escaping (Result<Gift>) -> Void){
-        registerEditGift(endPoint: Endpoint.RegisterGift(gift), completion)
+        registerEditGift(endPoint: Endpoint.registerGift(gift), completion)
     }
     
     func editGift(_ gift:Gift, completion: @escaping (Result<Gift>) -> Void){
-        registerEditGift(endPoint: Endpoint.EditGift(gift), completion)
+        registerEditGift(endPoint: Endpoint.editGift(gift), completion)
     }
     
     private func registerEditGift(endPoint:Endpoint,_ completion: @escaping (Result<Gift>) -> Void) {
@@ -48,14 +48,14 @@ class ApiService:ApiServiceProtocol {
                 if let resultGift = ApiUtility.convert(data: data, to: Gift.self){
                     completion(.success(resultGift))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
     }
     
     func upload(imageInput:ImageInput, urlSessionDelegate: URLSessionDelegate,completion: @escaping (Result<String>) -> Void){
-            self.httpLayer.upload(at: Endpoint.UploadImage(input: imageInput), urlSessionDelegate: urlSessionDelegate) { (result) in
+            self.httpLayer.upload(at: Endpoint.uploadImage(input: imageInput), urlSessionDelegate: urlSessionDelegate) { (result) in
            switch result{
            case .failure(let appError):
                completion(.failure(appError))
@@ -63,7 +63,7 @@ class ApiService:ApiServiceProtocol {
                if let imageSrc=ApiUtility.convert(data: data, to: ImageOutput.self)?.address {
                    completion(.success(imageSrc))
                } else {
-                   completion(.failure(AppError.DataDecoding))
+                   completion(.failure(AppError.dataDecoding))
                }
            }
        }
@@ -71,7 +71,7 @@ class ApiService:ApiServiceProtocol {
     
     func giftRejectedAfterReview(giftId: Int,completion: @escaping (Result<Void>) -> Void) {
         let rejectInput = RejectGiftReviewInput(rejectReason: "")
-        self.httpLayer.request(at: Endpoint.GiftReviewRejected(giftId: giftId,input: rejectInput)) { (result) in
+        self.httpLayer.request(at: Endpoint.giftReviewRejected(giftId: giftId,input: rejectInput)) { (result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -82,7 +82,7 @@ class ApiService:ApiServiceProtocol {
     }
     
     func giftApprovedAfterReview(giftId: Int,completion: @escaping (Result<Void>) -> Void) {
-        self.httpLayer.request(at: Endpoint.GiftReviewApproved(giftId: giftId)) { (result) in
+        self.httpLayer.request(at: Endpoint.giftReviewApproved(giftId: giftId)) { (result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -96,7 +96,7 @@ class ApiService:ApiServiceProtocol {
         
         let input = SendPushInput(userId: userId, body: bodyMessage)
         
-        self.httpLayer.request(at: Endpoint.SendPushNotif(input: input)) { (result) in
+        self.httpLayer.request(at: Endpoint.sendPushNotif(input: input)) { (result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -107,7 +107,7 @@ class ApiService:ApiServiceProtocol {
     }
 
     func getUserStatistics(id userId: Int, completion: @escaping (Result<[String:Int]?>) -> Void){
-        self.httpLayer.request(at: Endpoint.GetUserStatistics(userId: userId)) {(result) in
+        self.httpLayer.request(at: Endpoint.getUserStatistics(userId: userId)) {(result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -115,14 +115,14 @@ class ApiService:ApiServiceProtocol {
                 if let statistics = ApiUtility.convert(data: data, to: [String:Int]?.self){
                     completion(.success(statistics))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
     }
     
     func unblockUser(id userId: Int,completion: @escaping (Result<Void>) -> Void) {
-        self.httpLayer.request(at: Endpoint.UnBlockUserAccess(input: UnblockUserInput(userId: userId))) { (result) in
+        self.httpLayer.request(at: Endpoint.unBlockUserAccess(input: UnblockUserInput(userId: userId))) { (result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -133,7 +133,7 @@ class ApiService:ApiServiceProtocol {
     }
     
     func blockUser(id userId: Int,completion: @escaping (Result<Void>) -> Void) {
-        self.httpLayer.request(at: Endpoint.BlockUserAccess(userId: userId)) { (result) in
+        self.httpLayer.request(at: Endpoint.blockUserAccess(userId: userId)) { (result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -144,7 +144,7 @@ class ApiService:ApiServiceProtocol {
     }
     
     func acceptCharity(id charityId: Int,completion: @escaping (Result<Void>) -> Void) {
-        self.httpLayer.request(at: Endpoint.AcceptCharity(charityId: charityId)) { (result) in
+        self.httpLayer.request(at: Endpoint.acceptCharity(charityId: charityId)) { (result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -155,7 +155,7 @@ class ApiService:ApiServiceProtocol {
     }
     
     func rejectCharity(id charityId: Int,completion: @escaping (Result<Void>) -> Void) {
-        self.httpLayer.request(at: Endpoint.RejectCharity(charityId: charityId)) { (result) in
+        self.httpLayer.request(at: Endpoint.rejectCharity(charityId: charityId)) { (result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -167,7 +167,7 @@ class ApiService:ApiServiceProtocol {
     
     func getStatistics(completion: @escaping (Result<[String:Int]?>) -> Void){
         
-        self.httpLayer.request(at: Endpoint.Statistics) {(result) in
+        self.httpLayer.request(at: Endpoint.statistics) {(result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -176,7 +176,7 @@ class ApiService:ApiServiceProtocol {
                 if let statistics = ApiUtility.convert(data: data, to: [String:Int]?.self){
                     completion(.success(statistics))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
@@ -184,7 +184,7 @@ class ApiService:ApiServiceProtocol {
     
     func getCharityList(completion: @escaping (Result<[Charity]>) -> Void){
         
-        self.httpLayer.request(at: Endpoint.CharityList) {(result) in
+        self.httpLayer.request(at: Endpoint.charityList) {(result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -192,7 +192,7 @@ class ApiService:ApiServiceProtocol {
                 if let charities = ApiUtility.convert(data: data, to: [Charity].self){
                     completion(.success(charities))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
@@ -200,7 +200,7 @@ class ApiService:ApiServiceProtocol {
     
     func getProvinces(completion: @escaping (Result<[Province]>) -> Void){
         
-        self.httpLayer.request(at: Endpoint.GetProvinces) {(result) in
+        self.httpLayer.request(at: Endpoint.getProvinces) {(result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -208,14 +208,14 @@ class ApiService:ApiServiceProtocol {
                 if let provinces = ApiUtility.convert(data: data, to: [Province].self){
                     completion(.success(provinces))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
     }
     
     func getRegions(_ cityId: Int, completion: @escaping (Result<[Region]>) -> Void){
-        self.httpLayer.request(at: Endpoint.GetRegions(cityId)) {(result) in
+        self.httpLayer.request(at: Endpoint.getRegions(cityId)) {(result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -223,7 +223,7 @@ class ApiService:ApiServiceProtocol {
                 if let provinces = ApiUtility.convert(data: data, to: [Region].self){
                     completion(.success(provinces))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
@@ -231,7 +231,7 @@ class ApiService:ApiServiceProtocol {
     
     func getCitieOfProvince(id: Int, completion: @escaping (Result<[City]>) -> Void){
         
-        self.httpLayer.request(at: Endpoint.GetCitiesOfProvince(id: id)) {(result) in
+        self.httpLayer.request(at: Endpoint.getCitiesOfProvince(id: id)) {(result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -239,7 +239,7 @@ class ApiService:ApiServiceProtocol {
                 if let cities = ApiUtility.convert(data: data, to: [City].self){
                     completion(.success(cities))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
@@ -247,7 +247,7 @@ class ApiService:ApiServiceProtocol {
     
     func getCategories(completion: @escaping (Result<[Category]>)-> Void) {
         
-        self.httpLayer.request(at: Endpoint.GetCategories) {(result) in
+        self.httpLayer.request(at: Endpoint.getCategories) {(result) in
             
             switch result{
             case .failure(let appError):
@@ -256,14 +256,14 @@ class ApiService:ApiServiceProtocol {
                 if let categories = ApiUtility.convert(data: data, to: [Category].self){
                 completion(.success(categories))
                 }else{
-                completion(.failure(AppError.DataDecoding))
+                completion(.failure(AppError.dataDecoding))
                 }
             }
         }
     }
     
     func requestPhoneNumberChange(to newPhoneNumber: String, completion: @escaping (Result<Void>)-> Void) {
-        self.httpLayer.request(at: Endpoint.RequestPhoneNumberChange(toNewNumber: newPhoneNumber)) {(result) in
+        self.httpLayer.request(at: Endpoint.requestPhoneNumberChange(toNewNumber: newPhoneNumber)) {(result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -275,7 +275,7 @@ class ApiService:ApiServiceProtocol {
     
     func validatePhoneNumberChange(to newPhoneNumber: String, with activationCode:String, completion: @escaping (Result<AuthOutput>)-> Void) {
         let input = ValidatePhoneNumberChangeIntput(phoneNumber: newPhoneNumber, activationCode: activationCode)
-        self.httpLayer.request(at: Endpoint.ValidatePhoneNumberChange(input: input)) {(result) in
+        self.httpLayer.request(at: Endpoint.validatePhoneNumberChange(input: input)) {(result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -283,7 +283,7 @@ class ApiService:ApiServiceProtocol {
                 if let authOutput = ApiUtility.convert(data:data , to: AuthOutput.self) {
                     completion(.success(authOutput))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
@@ -291,7 +291,7 @@ class ApiService:ApiServiceProtocol {
     
     func registerUser(phoneNumber: String, completion: @escaping (Result<Void>)-> Void) {
         
-        self.httpLayer.request(at: Endpoint.RegisterUser(User(phoneNumber: phoneNumber))) {(result) in
+        self.httpLayer.request(at: Endpoint.registerUser(User(phoneNumber: phoneNumber))) {(result) in
             
             switch result{
             case .failure(let appError):
@@ -305,14 +305,14 @@ class ApiService:ApiServiceProtocol {
     func login(phoneNumber: String, activationCode: String, completion: @escaping (Result<AuthOutput>)-> Void) {
         
         let input = User(phoneNumber: phoneNumber,activationCode: activationCode)
-        self.httpLayer.request(at: Endpoint.Login(user: input)) { result in
+        self.httpLayer.request(at: Endpoint.login(user: input)) { result in
             ApiService.handleAuthOutputResult(result: result, completion: completion)
         }
     }
     
     func fireBaseLogin(input: FirebaseLoginInput, completion: @escaping (Result<AuthOutput>)-> Void) {
         
-        let endPoint = Endpoint.FirebaseLogin(input: input)
+        let endPoint = Endpoint.firebaseLogin(input: input)
         self.httpLayer.request(at: endPoint) { result in
             ApiService.handleAuthOutputResult(result: result, completion: completion)
         }
@@ -328,14 +328,14 @@ class ApiService:ApiServiceProtocol {
             if let authOutput = ApiUtility.convert(data:data , to: AuthOutput.self) {
                 completion(.success(authOutput))
             }else{
-                completion(.failure(AppError.DataDecoding))
+                completion(.failure(AppError.dataDecoding))
             }
         }
     }
     
     func requestGift(id: Int, completion: @escaping (Result<Chat>)-> Void) {
         
-        self.httpLayer.request(at: Endpoint.RequestGift(id: id)) {(result) in
+        self.httpLayer.request(at: Endpoint.requestGift(id: id)) {(result) in
             
             switch result{
             case .failure(let appError):
@@ -344,7 +344,7 @@ class ApiService:ApiServiceProtocol {
                 if let chat = ApiUtility.convert(data:data , to: Chat.self) {
                     completion(.success(chat))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
@@ -352,7 +352,7 @@ class ApiService:ApiServiceProtocol {
     }
     
     func requestGiftStatus(id: Int, completion: @escaping (Result<GiftRequestStatus>)-> Void) {
-        self.httpLayer.request(at: Endpoint.RequestGiftStatus(id: id)) { result in
+        self.httpLayer.request(at: Endpoint.requestGiftStatus(id: id)) { result in
             
             switch result {
             case .failure(let appError):
@@ -361,7 +361,7 @@ class ApiService:ApiServiceProtocol {
                 if let status = ApiUtility.convert(data: data, to: GiftRequestStatus.self) {
                     completion(.success(status))
                 } else {
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
@@ -369,7 +369,7 @@ class ApiService:ApiServiceProtocol {
     
     func removeGift(id: Int, completion: @escaping (Result<Void>)-> Void) {
         
-        self.httpLayer.request(at: Endpoint.RemoveGift(id: id)) {(result) in
+        self.httpLayer.request(at: Endpoint.removeGift(id: id)) {(result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -381,7 +381,7 @@ class ApiService:ApiServiceProtocol {
     
     func donateGift(id:Int,toUserId:Int, completion: @escaping (Result<Gift>)-> Void) {
         
-        self.httpLayer.request(at: Endpoint.DonateGift(id: id, toUserId: toUserId)) {(result) in
+        self.httpLayer.request(at: Endpoint.donateGift(id: id, toUserId: toUserId)) {(result) in
             
             switch result{
             case .failure(let appError):
@@ -390,7 +390,7 @@ class ApiService:ApiServiceProtocol {
                 if let gift = ApiUtility.convert(data:data , to: Gift.self) {
                     completion(.success(gift))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
             
@@ -411,13 +411,13 @@ class ApiService:ApiServiceProtocol {
             if let gifts = ApiUtility.convert(data: data, to: [Gift].self){
                 completion(.success(gifts))
             }else{
-                completion(.failure(AppError.DataDecoding))
+                completion(.failure(AppError.dataDecoding))
             }
         }
     }
     
     func updateUser(profile: UserProfile.Input, completion: @escaping (Result<Void>)-> Void) {
-        self.httpLayer.request(at: Endpoint.UpdateUser(profile: profile)) {(result) in
+        self.httpLayer.request(at: Endpoint.updateUser(profile: profile)) {(result) in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -428,7 +428,7 @@ class ApiService:ApiServiceProtocol {
     }
     
     func getUserProfile(userId: Int, completion: @escaping (Result<UserProfile>)-> Void) {
-        self.httpLayer.request(at: Endpoint.GetProfile(userId: userId)) {(result) in
+        self.httpLayer.request(at: Endpoint.getProfile(userId: userId)) {(result) in
             
             DispatchQueue.main.async {
                 switch result{
@@ -438,7 +438,7 @@ class ApiService:ApiServiceProtocol {
                     if let profile = ApiUtility.convert(data: data, to: UserProfile.self){
                         completion(.success(profile))
                     }else{
-                        completion(.failure(AppError.DataDecoding))
+                        completion(.failure(AppError.dataDecoding))
                     }
                 }
             }
@@ -447,7 +447,7 @@ class ApiService:ApiServiceProtocol {
     
     
     func sendTextMessage(textMessage: TextMessage, completion: @escaping (Result<AckMessage>)-> Void) {
-        self.httpLayer.request(at: Endpoint.SendTextMessage(textMessage: textMessage)) { result in
+        self.httpLayer.request(at: Endpoint.sendTextMessage(textMessage: textMessage)) { result in
             
             switch result{
             case .failure(let appError):
@@ -456,14 +456,14 @@ class ApiService:ApiServiceProtocol {
                 if let object = ApiUtility.convert(data: data, to: AckMessage.self){
                     completion(.success(object))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
     }
     
     func sendAck(ackMessage:AckMessage, completion: @escaping (Result<Void>)-> Void) {
-        self.httpLayer.request(at: Endpoint.SendAck(ackMessage: ackMessage)) { result in
+        self.httpLayer.request(at: Endpoint.sendAck(ackMessage: ackMessage)) { result in
             
             switch result{
             case .failure(let appError):
@@ -476,7 +476,7 @@ class ApiService:ApiServiceProtocol {
     
     func getContacts(blockedChats:Bool,completion: @escaping (Result<[ContactMessage]>)-> Void){
         
-        let endPoint = blockedChats ? Endpoint.GetBlockContacts : Endpoint.GetContacts
+        let endPoint = blockedChats ? Endpoint.getBlockContacts : Endpoint.getContacts
         
         self.httpLayer.request(at: endPoint) { result in
             switch result{
@@ -486,7 +486,7 @@ class ApiService:ApiServiceProtocol {
                 if let object = ApiUtility.convert(data: data, to: [ContactMessage].self){
                     completion(.success(object))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
@@ -494,7 +494,7 @@ class ApiService:ApiServiceProtocol {
     
     func blockOrUnblockChat(blockCase: BlockCase, chatId:Int, completion: @escaping (Result<Void>)-> Void) {
         
-        let endPoint = blockCase == .block ? Endpoint.BlockChat(id: chatId) : Endpoint.UnBlockChat(id: chatId)
+        let endPoint = blockCase == .block ? Endpoint.blockChat(id: chatId) : Endpoint.unBlockChat(id: chatId)
         self.httpLayer.request(at: endPoint) { result in
             DispatchQueue.main.async {
                 switch result {
@@ -509,7 +509,7 @@ class ApiService:ApiServiceProtocol {
     
     func fetchMessages(input: FetchMessagesInput, completion: @escaping (Result<ContactMessage>)-> Void){
         
-        self.httpLayer.request(at: Endpoint.FetchMessages(input: input)) { result in
+        self.httpLayer.request(at: Endpoint.fetchMessages(input: input)) { result in
             switch result{
             case .failure(let appError):
                 completion(.failure(appError))
@@ -517,7 +517,7 @@ class ApiService:ApiServiceProtocol {
                 if let object = ApiUtility.convert(data: data, to: ContactMessage.self){
                     completion(.success(object))
                 }else{
-                    completion(.failure(AppError.DataDecoding))
+                    completion(.failure(AppError.dataDecoding))
                 }
             }
         }
@@ -525,7 +525,7 @@ class ApiService:ApiServiceProtocol {
     }
     
     func registerPush(input:PushNotificationRegister, completion: @escaping (Result<Void>)-> Void) {
-        self.httpLayer.request(at: Endpoint.RegisterPush(input: input)) { result in
+        self.httpLayer.request(at: Endpoint.registerPush(input: input)) { result in
             
             switch result{
             case .failure(let appError):

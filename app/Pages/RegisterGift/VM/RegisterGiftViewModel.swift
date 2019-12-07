@@ -102,7 +102,7 @@ class RegisterGiftViewModel: NSObject {
     func editGift(completion: @escaping (Result<Gift>) -> Void) {
         let (giftFromUI,errorMessage) = readGiftInfo(editedGift ?? Gift())
         guard let gift = giftFromUI else {
-            completion(.failure(AppError.ClientSide(message: errorMessage ?? "")))
+            completion(.failure(AppError.clientSide(message: errorMessage ?? "")))
             return
         }
         apiService.editGift(gift) { (result) in
@@ -119,7 +119,7 @@ class RegisterGiftViewModel: NSObject {
     func registerGift(completion: @escaping (Result<Gift>) -> Void) {
         let (giftFromUI,errorMessage) = readGiftInfo(editedGift ?? Gift())
         guard let gift = giftFromUI else {
-            completion(.failure(AppError.ClientSide(message: errorMessage ?? "")))
+            completion(.failure(AppError.clientSide(message: errorMessage ?? "")))
             return
         }
         

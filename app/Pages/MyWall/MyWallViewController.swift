@@ -122,7 +122,7 @@ class MyWallViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
-        self.navigationItem.title = LanguageKeys.MyGiftsViewController_title.localizedString
+        self.navigationItem.title = LanguageKeys.MyGiftsViewControllerTitle.localizedString
     }
 
     override func didReceiveMemoryWarning() {

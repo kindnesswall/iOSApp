@@ -92,8 +92,8 @@ class ProfileViewController: UIViewController {
     
     func showDialogFailed(tryAgainHandler: @escaping ()-> Void) {
         let alert = UIAlertController(
-            title: LanguageKeys.requestfail_dialog_title.localizedString,
-            message: LanguageKeys.requestfail_dialog_text.localizedString,
+            title: LanguageKeys.requestfailDialogTitle.localizedString,
+            message: LanguageKeys.requestfailDialogText.localizedString,
             preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(
@@ -124,7 +124,7 @@ class ProfileViewController: UIViewController {
             case .success(let myProfile):
                 DispatchQueue.main.async {
                     self.username = myProfile.name
-                    self.phoneLabel.text = UserDefaults.standard.string(forKey: AppConst.UserDefaults.PHONE_NUMBER)
+                    self.phoneLabel.text = UserDefaults.standard.string(forKey: AppConst.UserDefaults.PhoneNumber)
                     self.usernameTextField.text = myProfile.name
                     if let path = myProfile.image {
                         self.avatarImageView.kf.setImage(with: URL(string: path), placeholder: UIImage(named: AppImages.BlankAvatar))

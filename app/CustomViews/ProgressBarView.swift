@@ -53,10 +53,10 @@ class ProgressBarView: UIView {
     }
     
     private func createCirclePath() {
-        let x = self.frame.width / 2
-        let y = self.frame.height / 2
-        let center = CGPoint(x: x, y: y)
-        bgPath.addArc(withCenter: center, radius: x / CGFloat(2), startAngle: CGFloat(0), endAngle: CGFloat(6.28), clockwise: true)
+        let width = self.frame.width / 2
+        let height = self.frame.height / 2
+        let center = CGPoint(x: width, y: height)
+        bgPath.addArc(withCenter: center, radius: width / CGFloat(2), startAngle: CGFloat(0), endAngle: CGFloat(6.28), clockwise: true)
         bgPath.close()
     }
 }

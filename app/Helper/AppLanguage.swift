@@ -44,7 +44,7 @@ class AppLanguage{
         
         switch language {
         case Persian:
-            return number.CastNumberToPersian()
+            return number.castNumberToPersian()
         case English:
             return number
         default:

@@ -41,7 +41,7 @@ class HTTPLayer:HTTPLayerProtocol {
     func createURLRequestFrom(endpoint: EndpointProtocol) throws -> URLRequest {
         
         guard let url = endpoint.url else {
-            throw AppError.ApiUrlProblem
+            throw AppError.apiUrlProblem
         }
         
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 60)
@@ -55,7 +55,7 @@ class HTTPLayer:HTTPLayerProtocol {
     func createUploadRequestFrom(endpoint: EndpointProtocol) throws -> URLRequest {
         
         guard let url = endpoint.url else {
-            throw AppError.ApiUrlProblem
+            throw AppError.apiUrlProblem
         }
         
         var request = URLRequest(url: url)
@@ -72,7 +72,7 @@ class HTTPLayer:HTTPLayerProtocol {
         do{
             request = try createURLRequestFrom(endpoint: endpoint)
         }catch{
-            completion(.failure(AppError.ApiUrlProblem))
+            completion(.failure(AppError.apiUrlProblem))
             return
         }
         
@@ -90,22 +90,22 @@ class HTTPLayer:HTTPLayerProtocol {
         if let error = error as NSError? {
             switch error.code{
             case URLError.notConnectedToInternet.rawValue:
-                completion(.failure(AppError.NoInternet))
+                completion(.failure(AppError.noInternet))
             default:
-                completion(.failure(AppError.Unknown))
+                completion(.failure(AppError.unknown))
             }
             return
         }
         
         guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else{
-            completion(.failure(AppError.ServerError))
+            completion(.failure(AppError.serverError))
             return
         }
         
         if let data = data {
             completion(.success(data))
         }else{
-            completion(.failure(AppError.Unknown))
+            completion(.failure(AppError.unknown))
         }
     }
     
@@ -116,7 +116,7 @@ class HTTPLayer:HTTPLayerProtocol {
         do{
             request = try createUploadRequestFrom(endpoint: endpoint)
         }catch{
-            completion(.failure(AppError.ApiUrlProblem))
+            completion(.failure(AppError.apiUrlProblem))
             return
         }
         
@@ -172,8 +172,8 @@ class HTTPLayer:HTTPLayerProtocol {
             return nil
         }
 
-        for (index,t) in tasks.enumerated() {
-            if t == task {
+        for (index,task) in tasks.enumerated() {
+            if task == task {
                 return index
             }
         }

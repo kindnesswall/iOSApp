@@ -48,14 +48,14 @@ class TabBarCoordinator : TabCoordinator{
     func showLockVC() {
         let controller = LockViewController()
         controller.modalPresentationStyle = .fullScreen
-        controller.mode = .CheckPassCode
+        controller.mode = .checkPassCode
         controller.isCancelable = false
         self.tabBarController.present(controller, animated: true, completion: nil)
     }
     
     func showIntro() {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: IntroViewController.identifier) as! IntroViewController
+        let viewController = (mainStoryboard.instantiateViewController(withIdentifier: IntroViewController.identifier) as? IntroViewController) ?? IntroViewController()
         self.tabBarController.present(viewController, animated: true, completion: nil)
     }
     

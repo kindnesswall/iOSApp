@@ -1,0 +1,6 @@
+excluded:
+  - Carthage
+  - Pods
+  - app/API.swift
+
+line_length: 200

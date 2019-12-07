@@ -25,7 +25,7 @@ class ContactsViewModel: NSObject {
     var initialContactsHasLoaded = false
     
     init(blockedChats: Bool) {
-        let userId = Int(KeychainSwift().get(AppConst.KeyChain.USER_ID) ?? "")
+        let userId = Int(KeychainSwift().get(AppConst.KeyChain.UserID) ?? "")
         self.userId = userId ?? -1
         
         network = ContactsRestfulViewModel(blockedChats: blockedChats)

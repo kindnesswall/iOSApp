@@ -12,7 +12,7 @@ class Place : Codable{
     
     var id:Int?
     var name:String?
-    var container_id:Int?
+    var containerId:Int?
     
     init() {
         
@@ -22,10 +22,10 @@ class Place : Codable{
         self.id=id
         self.name=name
     }
-    init(id:Int?,name:String?,container_id:Int?) {
+    init(id:Int?,name:String?,containerId:Int?) {
         self.id=id
         self.name=name
-        self.container_id=container_id
+        self.containerId=containerId
     }
 }
 

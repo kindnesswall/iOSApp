@@ -17,7 +17,7 @@ class AppViewModel {
     func saveToKeychain(_ authOutput:AuthOutput) {
         if let userID = authOutput.token.userID?.description, let token = authOutput.token.token {
             
-            keychain.set(userID, forKey: AppConst.KeyChain.USER_ID)
+            keychain.set(userID, forKey: AppConst.KeyChain.UserID)
             keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
         }
         
@@ -28,7 +28,7 @@ class AppViewModel {
     func clearUserSensitiveData() {
         let keychain = KeychainSwift()
         
-        keychain.delete(AppConst.KeyChain.USER_ID)
+        keychain.delete(AppConst.KeyChain.UserID)
         keychain.delete(AppConst.KeyChain.Authorization)
         keychain.delete(AppConst.KeyChain.IsAdmin)
         keychain.delete(AppConst.KeyChain.PassCode)
@@ -94,11 +94,11 @@ class AppViewModel {
     }
     
     func isUserWatchedIntro() -> Bool {
-        return uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_INTRO)
+        return uDStandard.bool(forKey: AppConst.UserDefaults.WatchedIntro)
     }
     
     func userWatchedIntro() {
-        uDStandard.set(true, forKey: AppConst.UserDefaults.WATCHED_INTRO)
+        uDStandard.set(true, forKey: AppConst.UserDefaults.WatchedIntro)
         uDStandard.synchronize()
     }
     
@@ -119,7 +119,7 @@ class AppViewModel {
     }
     
     func isLanguageSelected() -> Bool {
-        return uDStandard.bool(forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
+        return uDStandard.bool(forKey: AppConst.UserDefaults.WatchedSelectLanguage)
     }
     
     func saveDeviceIdentifierAndPushToken(pushToken:String?){
@@ -135,7 +135,7 @@ class AppViewModel {
     }
     
     func languageSelected() {
-        uDStandard.set(true, forKey: AppConst.UserDefaults.WATCHED_SELECT_LANGUAGE)
+        uDStandard.set(true, forKey: AppConst.UserDefaults.WatchedSelectLanguage)
         uDStandard.synchronize()
     }
 }

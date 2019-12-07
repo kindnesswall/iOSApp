@@ -9,8 +9,8 @@
 import Foundation
 
 enum GiftListType {
-    case UserDonatedGifts(userId:Int)
-    case UserReceivedGifts(userId:Int)
-    case UserRegisteredGifts(userId:Int)
-    case GiftsToDonate(toUserId:Int)
+    case userDonatedGifts(userId:Int)
+    case userReceivedGifts(userId:Int)
+    case userRegisteredGifts(userId:Int)
+    case giftsToDonate(toUserId:Int)
 }

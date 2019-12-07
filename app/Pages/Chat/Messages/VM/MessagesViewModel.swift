@@ -187,13 +187,13 @@ class MessagesViewModel {
             return nil
         }
         
-        for i in 0..<messages.count {
-            guard let eachId = messages[i].id else {
+        for index in 0..<messages.count {
+            guard let eachId = messages[index].id else {
                 continue
             }
             if messageId > eachId {
-                self.messages.insert(message, at: i)
-                return i
+                self.messages.insert(message, at: index)
+                return index
             }
         }
         

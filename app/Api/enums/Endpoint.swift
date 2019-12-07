@@ -17,63 +17,63 @@ protocol EndpointProtocol {
 enum Endpoint:EndpointProtocol {
 
 //        ---------------------------------------
-    case GetProvinces
-    case GetCitiesOfProvince(id:Int)
-    case GetCategories
-    case GetRegions(_ cityId:Int)
+    case getProvinces
+    case getCitiesOfProvince(id:Int)
+    case getCategories
+    case getRegions(_ cityId:Int)
 //        ---------------------------------------
-    case RegisterUser(_ user:User)
-    case Login(user:User)
-    case FirebaseLogin(input:FirebaseLoginInput)
-    case RequestPhoneNumberChange(toNewNumber:String)
-    case ValidatePhoneNumberChange(input: ValidatePhoneNumberChangeIntput)
+    case registerUser(_ user:User)
+    case login(user:User)
+    case firebaseLogin(input:FirebaseLoginInput)
+    case requestPhoneNumberChange(toNewNumber:String)
+    case validatePhoneNumberChange(input: ValidatePhoneNumberChangeIntput)
 //        ---------------------------------------
-    case RegisterGift(_ gift:Gift)
-    case EditGift(_ gift:Gift)
-    case RemoveGift(id:Int)
-    case RequestGift(id:Int)
-    case RequestGiftStatus(id:Int)
-    case DonateGift(id:Int,toUserId:Int)
+    case registerGift(_ gift:Gift)
+    case editGift(_ gift:Gift)
+    case removeGift(id:Int)
+    case requestGift(id:Int)
+    case requestGiftStatus(id:Int)
+    case donateGift(id:Int,toUserId:Int)
     
-    case GiftsToReview(input: GiftsRequestInput)
-    case UserDonatedGifts(userId: Int, input: GiftsRequestInput)
-    case UserReceivedGifts(userId: Int, input: GiftsRequestInput)
-    case UserRegisteredGifts(userId: Int, input: GiftsRequestInput)
-    case GetGifts(input: GiftsRequestInput)
-    case GiftsToDonate(toUserId: Int, input: GiftsRequestInput)
+    case giftsToReview(input: GiftsRequestInput)
+    case userDonatedGifts(userId: Int, input: GiftsRequestInput)
+    case userReceivedGifts(userId: Int, input: GiftsRequestInput)
+    case userRegisteredGifts(userId: Int, input: GiftsRequestInput)
+    case getGifts(input: GiftsRequestInput)
+    case giftsToDonate(toUserId: Int, input: GiftsRequestInput)
 //        ---------------------------------------
-    case SendTextMessage(textMessage: TextMessage)
-    case SendAck(ackMessage: AckMessage)
-    case FetchMessages(input: FetchMessagesInput)
+    case sendTextMessage(textMessage: TextMessage)
+    case sendAck(ackMessage: AckMessage)
+    case fetchMessages(input: FetchMessagesInput)
 //        ---------------------------------------
-    case RegisterPush(input: PushNotificationRegister)
-    case SendPushNotif(input: SendPushInput)
+    case registerPush(input: PushNotificationRegister)
+    case sendPushNotif(input: SendPushInput)
 //        ---------------------------------------
-    case GetProfile(userId: Int)
-    case UpdateUser(profile: UserProfile.Input)
+    case getProfile(userId: Int)
+    case updateUser(profile: UserProfile.Input)
 //        ---------------------------------------
-    case GiftReviewRejected(giftId: Int, input:RejectGiftReviewInput)
-    case GiftReviewApproved(giftId: Int)
+    case giftReviewRejected(giftId: Int, input:RejectGiftReviewInput)
+    case giftReviewApproved(giftId: Int)
 //        ---------------------------------------
-    case CharityList
-    case AcceptCharity(charityId: Int)
-    case RejectCharity(charityId: Int)
+    case charityList
+    case acceptCharity(charityId: Int)
+    case rejectCharity(charityId: Int)
 //        ---------------------------------------
-    case Statistics
+    case statistics
 //        ---------------------------------------
-    case BlockUserAccess(userId:Int)
-    case GetUserStatistics(userId:Int)
-    case UnBlockUserAccess(input: UnblockUserInput)
+    case blockUserAccess(userId:Int)
+    case getUserStatistics(userId:Int)
+    case unBlockUserAccess(input: UnblockUserInput)
 //        ---------------------------------------
-    case GetContacts
-    case GetBlockContacts
+    case getContacts
+    case getBlockContacts
 //        ---------------------------------------
-    case ChatSendMessage(input: SendMessageInput)
-    case ChatAckMessage(input: ChatAckMessageInput)
-    case BlockChat(id: Int)
-    case UnBlockChat(id: Int)
+    case chatSendMessage(input: SendMessageInput)
+    case chatAckMessage(input: ChatAckMessageInput)
+    case blockChat(id: Int)
+    case unBlockChat(id: Int)
     //        ---------------------------------------
-    case UploadImage(input : ImageInput)
+    case uploadImage(input : ImageInput)
     
     private var basePathUrl:String{ return "/api/v1/"}
     private var usersBaseURL:String { return basePathUrl + "users/" }
@@ -98,69 +98,69 @@ enum Endpoint:EndpointProtocol {
     var httpBody: Data? {
         switch self {
             
-        case .GetProfile, .GetBlockContacts, .GetContacts, .GetUserStatistics, .UnBlockChat, .BlockChat, .BlockUserAccess, .Statistics, .RejectCharity, .CharityList, .AcceptCharity, .GiftReviewApproved, .GetProvinces, .GetCategories, .GetCitiesOfProvince(_), .GetRegions(_), .RemoveGift, .RequestGift, .RequestGiftStatus:
+        case .getProfile, .getBlockContacts, .getContacts, .getUserStatistics, .unBlockChat, .blockChat, .blockUserAccess, .statistics, .rejectCharity, .charityList, .acceptCharity, .giftReviewApproved, .getProvinces, .getCategories, .getCitiesOfProvince(_), .getRegions(_), .removeGift, .requestGift, .requestGiftStatus:
             return nil
 
-        case .GiftReviewRejected(_,let input):
+        case .giftReviewRejected(_,let input):
             return ApiUtility.convert(input: input)
 //        ---------------------------------------
-        case .RegisterUser(let user), .Login(let user):
+        case .registerUser(let user), .login(let user):
             return ApiUtility.convert(input: user)
 //        ---------------------------------------
-        case .RegisterGift(let gift), .EditGift(let gift):
+        case .registerGift(let gift), .editGift(let gift):
             return ApiUtility.convert(input: gift)
         
-        case .DonateGift(let id, let toUserId):
+        case .donateGift(let id, let toUserId):
             return ApiUtility.convert(input: Donate(giftId: id, donatedToUserId: toUserId))
 
-        case .GiftsToReview(let input), .UserDonatedGifts(_ , let input), .UserReceivedGifts(_ , let input), .UserRegisteredGifts(_, let input), .GiftsToDonate(_ , let input), .GetGifts(let input):
+        case .giftsToReview(let input), .userDonatedGifts(_ , let input), .userReceivedGifts(_ , let input), .userRegisteredGifts(_, let input), .giftsToDonate(_ , let input), .getGifts(let input):
             return ApiUtility.convert(input: input)
 //        ---------------------------------------
-        case .SendTextMessage(let textMessage):
+        case .sendTextMessage(let textMessage):
             return ApiUtility.convert(input: textMessage)
-        case .SendAck(let ackMessage):
+        case .sendAck(let ackMessage):
             return ApiUtility.convert(input: ackMessage)
-        case .FetchMessages(let input):
+        case .fetchMessages(let input):
             return ApiUtility.convert(input: input)
 //        ---------------------------------------
-        case .RegisterPush(let input):
+        case .registerPush(let input):
             return ApiUtility.convert(input: input)
-        case .SendPushNotif(let input):
+        case .sendPushNotif(let input):
             return ApiUtility.convert(input: input)
 //        ---------------------------------------
-        case .UpdateUser(let profile):
+        case .updateUser(let profile):
             return ApiUtility.convert(input: profile)
 //        ---------------------------------------
-        case .UnBlockUserAccess(let input): return ApiUtility.convert(input: input)
+        case .unBlockUserAccess(let input): return ApiUtility.convert(input: input)
 //        ---------------------------------------
-        case .ChatSendMessage(let input): return ApiUtility.convert(input: input)
-        case .ChatAckMessage(let input): return ApiUtility.convert(input: input)
+        case .chatSendMessage(let input): return ApiUtility.convert(input: input)
+        case .chatAckMessage(let input): return ApiUtility.convert(input: input)
         
-        case .RequestPhoneNumberChange(let toNewNumber):
+        case .requestPhoneNumberChange(let toNewNumber):
             return ApiUtility.convert(input: toNewNumber)
-        case .ValidatePhoneNumberChange(let input):
+        case .validatePhoneNumberChange(let input):
             return ApiUtility.convert(input: input)
             
-        case .UploadImage(let input):
+        case .uploadImage(let input):
             return ApiUtility.convert(input: input)
             
-        case .FirebaseLogin(let input):
+        case .firebaseLogin(let input):
             return ApiUtility.convert(input: input)
         }
     }
     
     var httpMethod: String {
         switch self {
-        case .GetProvinces, .GetCitiesOfProvince(_), .GetCategories, .GetRegions(_), .RequestGift(_), .RequestGiftStatus, .GetProfile(_), .CharityList, .Statistics, .GetUserStatistics, .GetContacts, .GetBlockContacts:
+        case .getProvinces, .getCitiesOfProvince(_), .getCategories, .getRegions(_), .requestGift(_), .requestGiftStatus, .getProfile(_), .charityList, .statistics, .getUserStatistics, .getContacts, .getBlockContacts:
             return HttpMethod.GET.rawValue
 
-        case .RegisterUser(_), .Login(_), .FirebaseLogin, .RegisterGift, .DonateGift(_,_), .GiftsToDonate(_,_), .UserRegisteredGifts(_,_), .UserReceivedGifts(_,_), .UserDonatedGifts(_,_), .SendTextMessage(_), .SendAck(_), .FetchMessages(_), .RegisterPush(_), .GiftsToReview(_), .SendPushNotif, .UpdateUser, .ChatSendMessage, .ChatAckMessage, .GetGifts(_), .RequestPhoneNumberChange(_), .ValidatePhoneNumberChange(_), .UploadImage(_):
+        case .registerUser(_), .login(_), .firebaseLogin, .registerGift, .donateGift(_,_), .giftsToDonate(_,_), .userRegisteredGifts(_,_), .userReceivedGifts(_,_), .userDonatedGifts(_,_), .sendTextMessage(_), .sendAck(_), .fetchMessages(_), .registerPush(_), .giftsToReview(_), .sendPushNotif, .updateUser, .chatSendMessage, .chatAckMessage, .getGifts(_), .requestPhoneNumberChange(_), .validatePhoneNumberChange(_), .uploadImage(_):
             return HttpMethod.POST.rawValue
             
-        case .EditGift(_), .GiftReviewApproved, .AcceptCharity, .RejectCharity, .UnBlockUserAccess, .UnBlockChat, .BlockChat,.GiftReviewRejected:
+        case .editGift(_), .giftReviewApproved, .acceptCharity, .rejectCharity, .unBlockUserAccess, .unBlockChat, .blockChat,.giftReviewRejected:
             return HttpMethod.PUT.rawValue
             
-        case .RemoveGift(_), .BlockUserAccess:
+        case .removeGift(_), .blockUserAccess:
             return HttpMethod.DELETE.rawValue
         }
     }
@@ -168,101 +168,101 @@ enum Endpoint:EndpointProtocol {
     
     private var path:String {
         switch self {
-        case .UploadImage:
+        case .uploadImage:
             return basePathUrl+"/image/upload"
 //        ---------------------------------------
-        case .GetProvinces:
+        case .getProvinces:
             return basePathUrl+"provinces"
-        case .GetCitiesOfProvince(let id):
+        case .getCitiesOfProvince(let id):
             return basePathUrl+"cities/\(id)"
-        case .GetCategories:
+        case .getCategories:
             return basePathUrl+"categories"
-        case .GetRegions(let cityId):
+        case .getRegions(let cityId):
             return basePathUrl+"regions/\(cityId)"
 //        ---------------------------------------
-        case .RegisterUser(_):
+        case .registerUser(_):
             return registerBaseURL
-        case .Login(_):
+        case .login(_):
             return basePathUrl+"login"
-        case .FirebaseLogin:
+        case .firebaseLogin:
             return basePathUrl+"login/firebase"
 //        ---------------------------------------
-        case .RegisterGift:
+        case .registerGift:
             return giftsBaseURL+"register"
-        case .EditGift(let gift):
+        case .editGift(let gift):
             return giftsBaseURL+"\(gift.id!)"
-        case .RemoveGift(let id):
+        case .removeGift(let id):
             return giftsBaseURL+"\(id)"
-        case .RequestGift(let id):
+        case .requestGift(let id):
             return giftsBaseURL+"request/\(id)"
-        case .RequestGiftStatus(let id):
+        case .requestGiftStatus(let id):
             return giftsBaseURL+"request/status/\(id)"
-        case .DonateGift(_,_):
+        case .donateGift(_,_):
             return basePathUrl+"donate"
             
-        case .GiftsToReview:
+        case .giftsToReview:
             return giftsBaseURL + "review"
-        case .UserDonatedGifts(let userId, _):
+        case .userDonatedGifts(let userId, _):
             return giftsBaseURL + "userDonated/\(userId)"
-        case .UserReceivedGifts(let userId, _):
+        case .userReceivedGifts(let userId, _):
             return giftsBaseURL + "userReceived/\(userId)"
-        case .UserRegisteredGifts(let userId, _):
+        case .userRegisteredGifts(let userId, _):
             return giftsBaseURL + "userRegistered/\(userId)"
-        case .GetGifts:
+        case .getGifts:
             return giftsBaseURL
-        case .GiftsToDonate(let toUserId, _):
+        case .giftsToDonate(let toUserId, _):
             return giftsBaseURL + "todonate/\(toUserId)"
 //        ---------------------------------------
-        case .SendTextMessage:
+        case .sendTextMessage:
             return chatBaseURL + "send"
-        case .SendAck:
+        case .sendAck:
             return chatBaseURL + "ack"
-        case .FetchMessages(_):
+        case .fetchMessages(_):
             return chatBaseURL + "messages"
 //        ---------------------------------------
-        case .RegisterPush(_):
+        case .registerPush(_):
             return basePathUrl + "push/register"
-        case .SendPushNotif(_):
+        case .sendPushNotif(_):
             return basePathUrl + "sendPush"
 //        ---------------------------------------
-        case .GetProfile(let userId):
+        case .getProfile(let userId):
             return profileBaseURL + "\(userId)"
-        case .UpdateUser(_):
+        case .updateUser(_):
             return profileBaseURL
 //        ---------------------------------------
-        case .GiftReviewRejected(let giftId, _):
+        case .giftReviewRejected(let giftId, _):
             return giftsBaseURL + "reject/\(giftId)"
-        case .GiftReviewApproved(let giftId):
+        case .giftReviewApproved(let giftId):
             return giftsBaseURL + "accept/\(giftId)"
 //        ---------------------------------------
-        case .CharityList:
+        case .charityList:
             return charityBaseURL + "list"
-        case .AcceptCharity(let charityId):
+        case .acceptCharity(let charityId):
             return charityBaseURL + "accept/\(charityId)"
-        case .RejectCharity(let charityId):
+        case .rejectCharity(let charityId):
             return charityBaseURL + "reject/\(charityId)"
 //        ---------------------------------------
-        case .Statistics:
+        case .statistics:
             return basePathUrl + "statistics"
 //        ---------------------------------------
-        case .BlockUserAccess(let userId):
+        case .blockUserAccess(let userId):
             return usersBaseURL + "denyAccess/\(userId)"
-        case .UnBlockUserAccess(_):
+        case .unBlockUserAccess(_):
             return usersBaseURL + "allowAccess"
-        case .GetUserStatistics(let userId):
+        case .getUserStatistics(let userId):
             return usersBaseURL + "statistics/\(userId)"
 //        ---------------------------------------
-        case .GetContacts: return contactsBaseURL
-        case .GetBlockContacts: return contactsBaseURL + "block"
+        case .getContacts: return contactsBaseURL
+        case .getBlockContacts: return contactsBaseURL + "block"
 //        ---------------------------------------
-        case .ChatSendMessage: return chatBaseURL + "send"
-        case .ChatAckMessage: return chatBaseURL + "ack"
-        case .BlockChat(let chatId): return chatBaseURL + "block/\(chatId)"
-        case .UnBlockChat(let chatId): return chatBaseURL + "unblock/\(chatId)"
+        case .chatSendMessage: return chatBaseURL + "send"
+        case .chatAckMessage: return chatBaseURL + "ack"
+        case .blockChat(let chatId): return chatBaseURL + "block/\(chatId)"
+        case .unBlockChat(let chatId): return chatBaseURL + "unblock/\(chatId)"
             
-        case .RequestPhoneNumberChange:
+        case .requestPhoneNumberChange:
             return phoneNumberChangeBaseURL + "request"
-        case .ValidatePhoneNumberChange:
+        case .validatePhoneNumberChange:
             return phoneNumberChangeBaseURL + "validate"
         }
     }

@@ -182,9 +182,9 @@ class RegisterGiftViewController: UIViewController {
     
     func setAllTextsInView(){
         if isEditMode {
-            self.navigationItem.title=LanguageKeys.EditGiftViewController_title.localizedString
+            self.navigationItem.title=LanguageKeys.EditGiftViewControllerTitle.localizedString
         } else {
-            self.navigationItem.title=LanguageKeys.RegisterGiftViewController_title.localizedString
+            self.navigationItem.title=LanguageKeys.RegisterGiftViewControllerTitle.localizedString
         }
         
         self.barClearBtn?.title=LanguageKeys.clearPage.localizedString
@@ -198,10 +198,10 @@ class RegisterGiftViewController: UIViewController {
         self.newOrSecondhandLabel.text=LanguageKeys.newOrUsed.localizedString
         self.priceLabel.text=LanguageKeys.approximatePrice.localizedString + LanguageKeys.gettingPriceReason.localizedString
         
-        self.registerBtn.setTitle(  LanguageKeys.RegisterGiftViewController_title.localizedString, for: .normal)
+        self.registerBtn.setTitle(  LanguageKeys.RegisterGiftViewControllerTitle.localizedString, for: .normal)
         
         self.editBtn.setTitle(
-              LanguageKeys.EditGiftViewController_title.localizedString, for: .normal)
+              LanguageKeys.EditGiftViewControllerTitle.localizedString, for: .normal)
         
         self.uploadBtn.setTitle(  LanguageKeys.addImage.localizedString, for: .normal)
         self.placeBtn.setTitle(  LanguageKeys.select.localizedString, for: .normal)

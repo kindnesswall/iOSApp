@@ -31,7 +31,7 @@ class AppCountry {
     }
     
     private static func loadCurrent() -> String? {
-        let value = UserDefaults.standard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
+        let value = UserDefaults.standard.string(forKey: AppConst.UserDefaults.SelectedCountry)
         return value
     }
     
@@ -40,7 +40,7 @@ class AppCountry {
     static func setCountry(current: AppConst.Country) {
         let rawValue = current.rawValue
         let userDefault = UserDefaults.standard
-        userDefault.set(rawValue, forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
+        userDefault.set(rawValue, forKey: AppConst.UserDefaults.SelectedCountry)
         userDefault.synchronize()
     }
     

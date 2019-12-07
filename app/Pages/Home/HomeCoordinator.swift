@@ -48,8 +48,8 @@ class HomeCoordinator : NavigationCoordinator {
     
     func showDialogFailed(tryAgainHandler: @escaping ()-> Void) {
         let alert = UIAlertController(
-            title:LanguageKeys.requestfail_dialog_title.localizedString,
-            message: LanguageKeys.requestfail_dialog_text.localizedString,
+            title:LanguageKeys.requestfailDialogTitle.localizedString,
+            message: LanguageKeys.requestfailDialogText.localizedString,
             preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(

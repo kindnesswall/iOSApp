@@ -10,7 +10,7 @@ import Foundation
 
 final class City : Codable{
     var id:Int?
-    var province_id:Int?
+    var provinceId:Int?
     var name:String?
     
     init(id:Int?,name:String?) {

@@ -12,8 +12,8 @@ import Apollo
 
 class MoreViewController: UIViewController {
 
-    @IBOutlet weak var AdminStackView: UIStackView!
-    @IBOutlet weak var UserStackView: UIStackView!
+    @IBOutlet weak var adminStackView: UIStackView!
+    @IBOutlet weak var userStackView: UIStackView!
     
     @IBOutlet weak var blackListBtn: UIButton!
     @IBOutlet weak var versionNoLbl: UILabel!
@@ -100,7 +100,7 @@ class MoreViewController: UIViewController {
         }
     }
     
-    @IBAction func SwitchLanguageBtnClicked(_ sender: Any) {
+    @IBAction func switchLanguageBtnClicked(_ sender: Any) {
         moreCoordinator.showLanguageView()
     }
     
@@ -154,7 +154,7 @@ class MoreViewController: UIViewController {
             loginLogoutBtn.setTitle(
                 LanguageKeys.logout.localizedString +
                     AppLanguage.getNumberString(
-                        number: (userDefault.string(forKey: AppConst.UserDefaults.PHONE_NUMBER) ?? "")), for: .normal)
+                        number: (userDefault.string(forKey: AppConst.UserDefaults.PhoneNumber) ?? "")), for: .normal)
         } else {
             loginLogoutBtn.setTitle(LanguageKeys.login.localizedString, for: .normal)
         }
@@ -178,8 +178,8 @@ class MoreViewController: UIViewController {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
         
         setAllTextsInView()
-        AdminStackView.isHidden = !moreViewModel.isAdmin()
-        UserStackView.isHidden = !moreViewModel.isLogedin()
+        adminStackView.isHidden = !moreViewModel.isAdmin()
+        userStackView.isHidden = !moreViewModel.isLogedin()
     }
     
     

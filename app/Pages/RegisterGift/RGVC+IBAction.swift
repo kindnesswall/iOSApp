@@ -26,7 +26,7 @@ extension RegisterGiftViewController {
         switch result {
         case .failure(let error):
             switch error {
-            case .ClientSide(let message):
+            case .clientSide(let message):
                 FlashMessage.showMessage(body: message,theme: .warning)
             default:
                 FlashMessage.showMessage(body: LanguageKeys.weEncounterErrorTryAgain.localizedString, theme: .error)

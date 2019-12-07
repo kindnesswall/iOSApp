@@ -54,7 +54,7 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StatisticTableViewCell.identifier, for: indexPath) as! StatisticTableViewCell
+        let cell = tableView.dequeue(type: StatisticTableViewCell.self, for: indexPath)
         cell.setUI(key: self.statisticsKeys[indexPath.item], value:AppLanguage.getNumberString(number: self.statisticsValues[indexPath.item].description))
         return cell
     }

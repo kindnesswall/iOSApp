@@ -49,7 +49,7 @@ class CategoryListVM: NSObject, OptionsListViewModelProtocol {
     }
     
     func dequeueReusableCell(tableView:UITableView,indexPath:IndexPath)->UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryOptionsTableViewCell.identifier, for: indexPath) as! CategoryOptionsTableViewCell
+        let cell = tableView.dequeue(type: CategoryOptionsTableViewCell.self, for: indexPath)
         cell.setValue(category: categories[indexPath.row])
         return cell
     }

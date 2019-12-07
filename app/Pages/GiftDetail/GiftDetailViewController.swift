@@ -96,7 +96,7 @@ class GiftDetailViewController: UIViewController {
         createSlideShow()
         fillUIWithGift()
                 
-        if let myIdString=KeychainSwift().get(AppConst.KeyChain.USER_ID), let myId=Int(myIdString), let userId=gift?.userId, myId==userId {
+        if let myIdString=KeychainSwift().get(AppConst.KeyChain.UserID), let myId=Int(myIdString), let userId=gift?.userId, myId==userId {
             self.addEditBtn()
             self.setRequestBtnState(state: .hide)
             self.removeBtn.show()
@@ -200,15 +200,15 @@ class GiftDetailViewController: UIViewController {
     
     @IBAction func removeBtnClicked(_ sender: Any) {
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data:  LanguageKeys.giftRemovingPrompt.localizedString,animation:.none,declineHandler: nil) { (ـ) in
-            self.removeGift()
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data:  LanguageKeys.giftRemovingPrompt.localizedString,animation:.none,declineHandler: nil) { [weak self] _ in
+            self?.removeGift()
         }
     }
     
     func requestGiftPrompt() {
         
-        PopUpMessage.showPopUp(nibClass: PromptUser.self, data:  LanguageKeys.giftRequestPrompt.localizedString,animation:.none,declineHandler: nil) { (ـ) in
-            self.requestGift()
+        PopUpMessage.showPopUp(nibClass: PromptUser.self, data:  LanguageKeys.giftRequestPrompt.localizedString,animation:.none,declineHandler: nil) { [weak self] _ in
+            self?.requestGift()
         }
     }
     

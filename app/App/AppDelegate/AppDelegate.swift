@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let keychain = KeychainSwift()
     var isActiveAfterBioAuth:Bool = false
-    var current_time:Time?
+    var currentTime:Time?
     
     let appViewModel = AppViewModel()
     
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
         
-        FirebaseApp.configure()
+//        FirebaseApp.configure()
         
         //---- temporary -------
         AppCountry.setCountry(current: .iran)

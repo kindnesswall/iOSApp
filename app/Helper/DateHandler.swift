@@ -83,7 +83,7 @@ public class DateHandler {
         
         timeStr=timeStr.replacingOccurrences(of: ":", with: " : ")
         
-        timeStr = UIFunctions.CastNumberToPersian(input: timeStr)
+        timeStr = UIFunctions.castNumberToPersian(input: timeStr)
         
         return timeStr
     }
@@ -102,7 +102,7 @@ public class DateHandler {
         let endIndex = faDate.index(faDate.startIndex, offsetBy: 9)
         var timeStr = String(faDate[startIndex...endIndex])
         
-        timeStr = UIFunctions.CastNumberToPersian(input:timeStr)
+        timeStr = UIFunctions.castNumberToPersian(input:timeStr)
         
         timeStr=timeStr.replacingOccurrences(of: "۰۱", with: "۱")
         timeStr=timeStr.replacingOccurrences(of: "۰۲", with: "۲")
@@ -174,10 +174,10 @@ public class DateHandler {
             logOutTxt = "آخرین بازدید در تاریخ" + " " + date
         }else{
             if diff < 60 {
-                let offlineTime = UIFunctions.CastNumberToPersian(input:diff)
+                let offlineTime = UIFunctions.castNumberToPersian(input:diff)
                 logOutTxt = "وضعیت قطع"+" "+offlineTime+"دقیقه"
             }else{
-                let offlineTime = UIFunctions.CastNumberToPersian(input:Int(diff/60))
+                let offlineTime = UIFunctions.castNumberToPersian(input:Int(diff/60))
                 logOutTxt = "وضعیت قطع"+offlineTime+" "+"ساعت"
             }
         }
@@ -186,10 +186,10 @@ public class DateHandler {
     
     static func getSendingMsgTime(currentDay:String,sendingTime:String)->String {
         var returnTxt = ""
-//        if(currentDay == sendingTime.day_of_week){
+//        if(currentDay == sendingTime.dayOfWeek){
             returnTxt = DateHandler.getFaTime(faDate: sendingTime)
 //        }else{
-//            returnTxt = DateHandler.getPersianWeekDayName(weekDay: (sendingTime.day_of_week)!)
+//            returnTxt = DateHandler.getPersianWeekDayName(weekDay: (sendingTime.dayOfWeek)!)
 //        }
         return returnTxt
     }
