@@ -219,6 +219,12 @@
 		60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */; };
 		60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861155206E50CD000A42E5 /* AppLanguage.swift */; };
 		6092D633204950F700AFDA7B /* MyWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6092D631204950F700AFDA7B /* MyWallViewController.swift */; };
+		609D841D238596D600F79A0C /* MyWallSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D841C238596D600F79A0C /* MyWallSegmentControl.swift */; };
+		609D84202385984A00F79A0C /* MyWallSegmentControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609D84222385984A00F79A0C /* MyWallSegmentControl.xib */; };
+		609D842C2385AF1C00F79A0C /* MyWallTableViewSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D842B2385AF1C00F79A0C /* MyWallTableViewSegment.swift */; };
+		609D842E2385AF2200F79A0C /* MyWallTableViewSegment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609D842D2385AF2200F79A0C /* MyWallTableViewSegment.xib */; };
+		609D84302386E0F700F79A0C /* UserProfileSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D842F2386E0F700F79A0C /* UserProfileSegment.swift */; };
+		609D84322386E0FF00F79A0C /* UserProfileSegment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609D84312386E0FF00F79A0C /* UserProfileSegment.xib */; };
 		60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */; };
 		60AE9C86202DB9B100F246CD /* CategoryListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C85202DB9B100F246CD /* CategoryListVM.swift */; };
 		60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C87202DE87100F246CD /* OptionsListViewController.swift */; };
@@ -226,6 +232,9 @@
 		60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */; };
 		60C972EB21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C972EA21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift */; };
 		60C972ED21C9ACC700A8D1C5 /* GiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C972EC21C9ACC700A8D1C5 /* GiftViewModel.swift */; };
+		60DE9F4E239BDCFB002F3A87 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE9F4D239BDCFB002F3A87 /* UserProfileViewModel.swift */; };
+		60DE9F50239BDEFD002F3A87 /* BindingWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE9F4F239BDEFD002F3A87 /* BindingWrapper.swift */; };
+		60DE9F52239BF83A002F3A87 /* ViewLoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE9F51239BF83A002F3A87 /* ViewLoadingState.swift */; };
 		60E30D49229C967500619E9E /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E30D48229C967500619E9E /* UserProfile.swift */; };
 		60E7E4BD22999D160047344D /* FetchMessagesInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E7E4BC22999D160047344D /* FetchMessagesInput.swift */; };
 		60E7E4BF22999D6E0047344D /* ContactMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E7E4BE22999D6E0047344D /* ContactMessage.swift */; };
@@ -453,8 +462,6 @@
 		6040F3A2206688A800FCD429 /* APIEmptyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyInput.swift; sourceTree = "<group>"; };
 		604A31DC2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedGiftViewModel.swift; sourceTree = "<group>"; };
 		604A31E32291FA5900E2C5B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyWallViewController.xib; sourceTree = "<group>"; };
-		604A31E52291FA6400E2C5B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MyWallViewController.strings; sourceTree = "<group>"; };
-		604A31E62291FA6600E2C5B6 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/MyWallViewController.strings; sourceTree = "<group>"; };
 		604FB577228234AD00795CE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MessagesViewController.xib; sourceTree = "<group>"; };
 		604FB57A228234F000795CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MessagesViewController.strings; sourceTree = "<group>"; };
 		604FB57C228234F400795CE2 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/MessagesViewController.strings; sourceTree = "<group>"; };
@@ -496,6 +503,16 @@
 		60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar + config.swift"; sourceTree = "<group>"; };
 		60861155206E50CD000A42E5 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		6092D631204950F700AFDA7B /* MyWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWallViewController.swift; sourceTree = "<group>"; };
+		609D841C238596D600F79A0C /* MyWallSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWallSegmentControl.swift; sourceTree = "<group>"; };
+		609D84212385984A00F79A0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyWallSegmentControl.xib; sourceTree = "<group>"; };
+		609D84242385984E00F79A0C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MyWallSegmentControl.strings; sourceTree = "<group>"; };
+		609D84262385985200F79A0C /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/MyWallSegmentControl.strings; sourceTree = "<group>"; };
+		609D842823859A0000F79A0C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MyWallViewController.strings; sourceTree = "<group>"; };
+		609D842A23859A0300F79A0C /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/MyWallViewController.strings; sourceTree = "<group>"; };
+		609D842B2385AF1C00F79A0C /* MyWallTableViewSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWallTableViewSegment.swift; sourceTree = "<group>"; };
+		609D842D2385AF2200F79A0C /* MyWallTableViewSegment.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWallTableViewSegment.xib; sourceTree = "<group>"; };
+		609D842F2386E0F700F79A0C /* UserProfileSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSegment.swift; sourceTree = "<group>"; };
+		609D84312386E0FF00F79A0C /* UserProfileSegment.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserProfileSegment.xib; sourceTree = "<group>"; };
 		60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsListViewController.xib; sourceTree = "<group>"; };
 		60AE9C85202DB9B100F246CD /* CategoryListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListVM.swift; sourceTree = "<group>"; };
 		60AE9C87202DE87100F246CD /* OptionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsListViewController.swift; sourceTree = "<group>"; };
@@ -503,6 +520,9 @@
 		60AE9C90202DF97100F246CD /* CategoryOptionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryOptionsTableViewCell.xib; sourceTree = "<group>"; };
 		60C972EA21C9ABF000A8D1C5 /* RegisteredGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredGiftViewModel.swift; sourceTree = "<group>"; };
 		60C972EC21C9ACC700A8D1C5 /* GiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftViewModel.swift; sourceTree = "<group>"; };
+		60DE9F4D239BDCFB002F3A87 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		60DE9F4F239BDEFD002F3A87 /* BindingWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BindingWrapper.swift; path = app/models/BindingWrapper.swift; sourceTree = SOURCE_ROOT; };
+		60DE9F51239BF83A002F3A87 /* ViewLoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewLoadingState.swift; path = app/models/ViewLoadingState.swift; sourceTree = SOURCE_ROOT; };
 		60E30D48229C967500619E9E /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		60E7E4BC22999D160047344D /* FetchMessagesInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchMessagesInput.swift; sourceTree = "<group>"; };
 		60E7E4BE22999D6E0047344D /* ContactMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactMessage.swift; sourceTree = "<group>"; };
@@ -924,6 +944,8 @@
 				0593E50122D54ADF00C3B046 /* Charity.swift */,
 				05632773234665EC00545CAF /* Region.swift */,
 				6002C919236B691900BAB091 /* GiftRequestStatus.swift */,
+				60DE9F4F239BDEFD002F3A87 /* BindingWrapper.swift */,
+				60DE9F51239BF83A002F3A87 /* ViewLoadingState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -995,6 +1017,8 @@
 		05BEA43320497AD500147BF5 /* MyWall */ = {
 			isa = PBXGroup;
 			children = (
+				60DE9F4C239BDCD0002F3A87 /* ViewModel */,
+				609D841B2385969B00F79A0C /* Views */,
 				0580595E2367816E00B679C4 /* MyWallCoordiantor.swift */,
 				6092D631204950F700AFDA7B /* MyWallViewController.swift */,
 				604A31E22291FA5900E2C5B6 /* MyWallViewController.xib */,
@@ -1349,6 +1373,19 @@
 			path = OptionsListViewModel;
 			sourceTree = "<group>";
 		};
+		609D841B2385969B00F79A0C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				609D841C238596D600F79A0C /* MyWallSegmentControl.swift */,
+				609D84222385984A00F79A0C /* MyWallSegmentControl.xib */,
+				609D842B2385AF1C00F79A0C /* MyWallTableViewSegment.swift */,
+				609D842D2385AF2200F79A0C /* MyWallTableViewSegment.xib */,
+				609D842F2386E0F700F79A0C /* UserProfileSegment.swift */,
+				609D84312386E0FF00F79A0C /* UserProfileSegment.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		60AE9C82202DB96200F246CD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1389,6 +1426,14 @@
 				604A31DC2291F7BB00E2C5B6 /* ReceivedGiftViewModel.swift */,
 			);
 			path = GiftViewModel;
+			sourceTree = "<group>";
+		};
+		60DE9F4C239BDCD0002F3A87 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				60DE9F4D239BDCFB002F3A87 /* UserProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		60FAB841206503790039BF61 /* User Default Stored Models */ = {
@@ -1515,10 +1560,13 @@
 				0593E51222D5502200C3B046 /* CharitySignupEditViewController.xib in Resources */,
 				60FAB845206571340039BF61 /* icomoon.ttf in Resources */,
 				5247C8C221E38A83009E8770 /* ContactUsViewController.strings in Resources */,
+				609D842E2385AF2200F79A0C /* MyWallTableViewSegment.xib in Resources */,
 				6033DA9622AF69BD00D43738 /* ContactsViewController.xib in Resources */,
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
 				604FB576228234AD00795CE2 /* MessagesViewController.xib in Resources */,
+				609D84202385984A00F79A0C /* MyWallSegmentControl.xib in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
+				609D84322386E0FF00F79A0C /* UserProfileSegment.xib in Resources */,
 				5283174D21C91B7F0044B9AD /* LockSettingViewController.xib in Resources */,
 				52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */,
 				5245922521AB47EA0009824C /* Localizable.strings in Resources */,
@@ -1755,6 +1803,7 @@
 				05029EBA1FE2BF8F004D96B1 /* AppDelegate+getMe.swift in Sources */,
 				607E789E2279E28D00FF0008 /* MessageSendingState.swift in Sources */,
 				05444E39231B010C006E5E09 /* CharityTableViewCell.swift in Sources */,
+				609D841D238596D600F79A0C /* MyWallSegmentControl.swift in Sources */,
 				05BFBBC01FDA9FCF00DBCDDF /* FlashMessage.swift in Sources */,
 				05BFBBDE1FE26A9000DBCDDF /* Gift.swift in Sources */,
 				52D1A13B21D92859005EA2F0 /* ApiUtility.swift in Sources */,
@@ -1767,6 +1816,7 @@
 				6040F3A3206688A800FCD429 /* APIEmptyInput.swift in Sources */,
 				05BFBBBB1FDA654D00DBCDDF /* VerificationCodeViewController.swift in Sources */,
 				053892E2231AE07C00828372 /* CharitySignupEditVM.swift in Sources */,
+				609D842C2385AF1C00F79A0C /* MyWallTableViewSegment.swift in Sources */,
 				05444E50231BBD5E006E5E09 /* CharityListViewModel.swift in Sources */,
 				05644DD01FFF06F900B7C853 /* NibLoader.swift in Sources */,
 				05BEA43E2049919D00147BF5 /* String+numbers.swift in Sources */,
@@ -1786,6 +1836,7 @@
 				05644DC81FFF01C300B7C853 /* ChatConversationResult.swift in Sources */,
 				52466DD921DB607D0086F327 /* RGVM+URLSessionTaskDelegate.swift in Sources */,
 				05BFBBB81FDA654D00DBCDDF /* LoginRegisterViewController.swift in Sources */,
+				609D84302386E0F700F79A0C /* UserProfileSegment.swift in Sources */,
 				601F83D32037367900F9118B /* Place.swift in Sources */,
 				0544DD64235B6C2D007AC8F3 /* AppImages.swift in Sources */,
 				52466DE521DB9A360086F327 /* HomeVM.swift in Sources */,
@@ -1824,6 +1875,7 @@
 				053892F9231AE9F500828372 /* MoreViewController.swift in Sources */,
 				05041EB523625246007F12E9 /* HomeCoordinator.swift in Sources */,
 				607EEA7B222C383A00637A93 /* OptionsListViewModelProtocol.swift in Sources */,
+				60DE9F4E239BDCFB002F3A87 /* UserProfileViewModel.swift in Sources */,
 				0523117D22A3EBA600A22157 /* HTTPMethod.swift in Sources */,
 				522F6B6421D8B173001C67B9 /* SelectCountryVC.swift in Sources */,
 				601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */,
@@ -1837,6 +1889,7 @@
 				607E78852279E23600FF0008 /* MessagesViewModel.swift in Sources */,
 				52466DE721DBC6E80086F327 /* GiftDetailVM.swift in Sources */,
 				0580595F2367816E00B679C4 /* MyWallCoordiantor.swift in Sources */,
+				60DE9F52239BF83A002F3A87 /* ViewLoadingState.swift in Sources */,
 				053C46F82294A82A00074761 /* ResponseModel.swift in Sources */,
 				52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */,
 				059B1F462364502C00596BD4 /* TabBarCoordinator.swift in Sources */,
@@ -1851,6 +1904,7 @@
 				05BFBBE21FE26B0500DBCDDF /* Category.swift in Sources */,
 				601F83D12036A8BE00F9118B /* DateStatus.swift in Sources */,
 				60E7E4BD22999D160047344D /* FetchMessagesInput.swift in Sources */,
+				60DE9F50239BDEFD002F3A87 /* BindingWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1991,8 +2045,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				604A31E32291FA5900E2C5B6 /* Base */,
-				604A31E52291FA6400E2C5B6 /* en */,
-				604A31E62291FA6600E2C5B6 /* fa */,
+				609D842823859A0000F79A0C /* en */,
+				609D842A23859A0300F79A0C /* fa */,
 			);
 			name = MyWallViewController.xib;
 			sourceTree = "<group>";
@@ -2005,6 +2059,16 @@
 				604FB57C228234F400795CE2 /* fa */,
 			);
 			name = MessagesViewController.xib;
+			sourceTree = "<group>";
+		};
+		609D84222385984A00F79A0C /* MyWallSegmentControl.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				609D84212385984A00F79A0C /* Base */,
+				609D84242385984E00F79A0C /* en */,
+				609D84262385985200F79A0C /* fa */,
+			);
+			name = MyWallSegmentControl.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

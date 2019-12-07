@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyWallTableViewSegment" customModule="KindnessWall" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="122" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C5B-UB-Zjv">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <inset key="separatorInset" minX="10000" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swP-Do-m8d">
+                    <rect key="frame" x="204.5" y="441" width="5" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="C5B-UB-Zjv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4Ff-j9-vgp"/>
+                <constraint firstAttribute="bottom" secondItem="C5B-UB-Zjv" secondAttribute="bottom" id="HSf-Es-SKK"/>
+                <constraint firstItem="swP-Do-m8d" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="LRR-hY-BVe"/>
+                <constraint firstItem="swP-Do-m8d" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Pvb-p3-grX"/>
+                <constraint firstAttribute="trailing" secondItem="C5B-UB-Zjv" secondAttribute="trailing" id="ir2-qc-Zld"/>
+                <constraint firstItem="C5B-UB-Zjv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xc0-Cx-Y4s"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="emptyListLabel" destination="swP-Do-m8d" id="AaE-3h-xsq"/>
+                <outlet property="tableView" destination="C5B-UB-Zjv" id="uNf-gv-QiG"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="98"/>
+        </view>
+    </objects>
+</document>

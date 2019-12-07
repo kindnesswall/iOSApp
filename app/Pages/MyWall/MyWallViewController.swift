@@ -11,41 +11,29 @@ import KeychainSwift
 
 class MyWallViewController: UIViewController {
 
-    @IBOutlet weak var noGiftMsg: UILabel!
+    @IBOutlet weak var donatedStack: UIStackView!
+    @IBOutlet weak var registeredStack: UIStackView!
+    @IBOutlet weak var receivedStack: UIStackView!
+    @IBOutlet weak var segmentControlStack: UIStackView!
+    @IBOutlet weak var userProfileStack: UIStackView!
     
-    @IBOutlet weak var segmentControl: UISegmentedControl!
+    var segmentControlView: MyWallSegmentControl?
+    var userProfileView: UserProfileSegment?
+    var donatedSegment: MyWallTableViewSegment?
+    var registeredSegment: MyWallTableViewSegment?
+    var receivedSegment: MyWallTableViewSegment?
     
-    @IBOutlet weak var donatedGiftsContainerView: UIView!
-    @IBOutlet weak var registeredGiftsContainerView: UIView!
-    @IBOutlet weak var receivedGiftsContainerView: UIView!
-    
-    @IBOutlet weak var registeredGiftsTableView: UITableView!
-    @IBOutlet weak var donatedGiftsTableView: UITableView!
-    @IBOutlet weak var receivedGiftsTableView: UITableView!
     
     var userId:Int?
-    var registeredGiftsViewModel: RegisteredGiftViewModel?
-    var donatedGiftsViewModel: DonatedGiftViewModel?
-    var receivedGiftsViewModel: ReceivedGiftViewModel?
-    
-    var registeredInitialLoadingIndicator:LoadingIndicator?
-    var donatedInitialLoadingIndicator:LoadingIndicator?
-    var receivedInitialLoadingIndicator:LoadingIndicator?
-    
-    var registeredLazyLoadingIndicator:LoadingIndicator?
-    var donatedLazyLoadingIndicator:LoadingIndicator?
-    var receivedLazyLoadingIndicator:LoadingIndicator?
-    
-    var tableViewCellHeight:CGFloat=122
-    
-    var registeredRefreshControl=UIRefreshControl()
-    var donatedRefreshControl=UIRefreshControl()
-    var receivedRefreshControl=UIRefreshControl()
     
     var myWallCoordinator:MyWallCoordinator
     init(myWallCoordinator:MyWallCoordinator) {
         self.myWallCoordinator = myWallCoordinator
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    deinit {
+        print("MyWallViewController deinit")
     }
     
     required init?(coder: NSCoder) {
@@ -58,229 +46,79 @@ class MyWallViewController: UIViewController {
         case received
     }
     
-    @IBAction func segmentControlAction(_ sender: Any) {
-        updateUI()
-    }
-    
-    func updateUI(){
-        switch self.segmentControl.selectedSegmentIndex {
-        case 0:
-            hideOrShowCorrespondingViewOfSegmentControl(type: .donated)
-        case 1:
-            hideOrShowCorrespondingViewOfSegmentControl(type: .received)
-        case 2:
-            hideOrShowCorrespondingViewOfSegmentControl(type: .registered)
-        default:
-            break
-        }
-    }
-    
-    
-    deinit {
-        print("MyWallViewController deinit")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         guard let userId = self.userId else {
             return
         }
-        self.registeredGiftsViewModel = RegisteredGiftViewModel(userId: userId)
-        self.donatedGiftsViewModel = DonatedGiftViewModel(userId: userId)
-        self.receivedGiftsViewModel = ReceivedGiftViewModel(userId: userId)
         
-        self.registeredGiftsViewModel?.delegate = self
-        self.donatedGiftsViewModel?.delegate = self
-        self.receivedGiftsViewModel?.delegate = self
+        loadSegmentControl()
+        loadUserProfileView(userId: userId)
         
-        self.registeredGiftsTableView.dataSource = self.registeredGiftsViewModel
-        self.donatedGiftsTableView.dataSource = self.donatedGiftsViewModel
-        self.receivedGiftsTableView.dataSource = self.receivedGiftsViewModel
+        loadSegments(userId: userId)
+        subscribeToSections()
         
-        configTableView(tableView: registeredGiftsTableView)
-        configTableView(tableView: donatedGiftsTableView)
-        configTableView(tableView: receivedGiftsTableView)
-        
-        
-        configRefreshControl()
-        configLoadingAnimations()
-        configSegmentControl()
-        
-        self.registeredGiftsViewModel?.getGifts(beforeId: nil)
-        self.donatedGiftsViewModel?.getGifts(beforeId: nil)
-        self.receivedGiftsViewModel?.getGifts(beforeId: nil)
-        
+        fetchGifts()
         self.updateUI()
     }
     
-    func configTableView(tableView:UITableView){
-        tableView.register(type: GiftTableViewCell.self)
-        tableView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight/2, right: 0)
-    }
-    
-    
-    func configRefreshControl(){
-        
-        configRefreshControl(refreshControl: registeredRefreshControl, tableView: registeredGiftsTableView, action: #selector(self.registeredRefreshControlAction))
-        
-        configRefreshControl(refreshControl: donatedRefreshControl, tableView: donatedGiftsTableView, action: #selector(self.donatedRefreshControlAction))
-        
-        configRefreshControl(refreshControl: receivedRefreshControl, tableView: receivedGiftsTableView, action: #selector(self.receivedRefreshControlAction))
-    }
-    
-    func configRefreshControl(refreshControl:UIRefreshControl,tableView:UITableView,action:Selector){
-        refreshControl.addTarget(self, action: action, for: .valueChanged)
-        refreshControl.tintColor=AppConst.Resource.Color.Tint
-        tableView.addSubview(refreshControl)
-    }
-    
-    func configLoadingAnimations(){
-        self.registeredInitialLoadingIndicator=LoadingIndicator(view: self.registeredGiftsContainerView)
-        self.donatedInitialLoadingIndicator=LoadingIndicator(view: self.donatedGiftsContainerView)
-        self.receivedInitialLoadingIndicator=LoadingIndicator(view: self.receivedGiftsContainerView)
-        
-        self.registeredLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.registeredGiftsContainerView, cellHeight: tableViewCellHeight/2)
-        self.donatedLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.donatedGiftsContainerView, cellHeight: tableViewCellHeight/2)
-        self.receivedLazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.receivedGiftsContainerView, cellHeight: tableViewCellHeight/2)
-    }
-    
-    func configSegmentControl(){
-        self.segmentControl.tintColor=AppConst.Resource.Color.Tint
-        self.segmentControl.setTitleTextAttributes([NSAttributedString.Key.font:AppConst.Resource.Font.getLightFont(size: 13)], for: .normal)
-    }
-    
-    func getViewModel(type:GiftType)->GiftViewModel?{
-        let viewModel : GiftViewModel?
-        switch type {
-        case .registered:
-            viewModel = self.registeredGiftsViewModel
-        case .donated:
-            viewModel = self.donatedGiftsViewModel
-        case .received:
-            viewModel = self.receivedGiftsViewModel
+    func subscribeToSections() {
+        registeredSegment?.presentDetailPage = { [weak self] gift in
+            self?.presentDetailPage(gift: gift)
         }
-        return viewModel
-    }
-    
-    func reloadViewModel(type:GiftType) {
-        let viewModel = getViewModel(type: type)
-        viewModel?.reloadGifts()
-    }
-    
-    @objc func registeredRefreshControlAction(){
-        self.reloadViewModel(type: .registered)
-        self.setTableViewLoading(isLoading: false, giftType: .registered, loadingType: .initial)
-    }
-    
-    @objc func donatedRefreshControlAction(){
-        self.reloadViewModel(type: .donated)
-        self.setTableViewLoading(isLoading: false, giftType: .donated, loadingType: .initial)
-    }
-    
-    @objc func receivedRefreshControlAction(){
-        self.reloadViewModel(type: .received)
-        self.setTableViewLoading(isLoading: false, giftType: .received, loadingType: .initial)
-    }
-    
-    enum LoadingType {
-        case initial
-        case lazy
-    }
-    
-    func setTableViewLoading(isLoading:Bool,giftType:GiftType,loadingType:LoadingType){
-        
-        let loadingIndicator:LoadingIndicator?
-        
-        switch giftType {
-        case .registered:
-            switch loadingType {
-            case .initial:
-                loadingIndicator=registeredInitialLoadingIndicator
-            case .lazy:
-                loadingIndicator=registeredLazyLoadingIndicator
-            }
-        case .donated:
-            switch loadingType {
-            case .initial:
-                loadingIndicator=donatedInitialLoadingIndicator
-            case .lazy:
-                loadingIndicator=donatedLazyLoadingIndicator
-            }
-        case .received:
-            switch loadingType {
-            case .initial:
-                loadingIndicator=receivedInitialLoadingIndicator
-            case .lazy:
-                loadingIndicator=receivedLazyLoadingIndicator
-            }
+        donatedSegment?.presentDetailPage = { [weak self] gift in
+            self?.presentDetailPage(gift: gift)
         }
-        
-        if isLoading {
-            loadingIndicator?.startLoading()
-        } else {
-            loadingIndicator?.stopLoading()
+        receivedSegment?.presentDetailPage = { [weak self] gift in
+            self?.presentDetailPage(gift: gift)
         }
     }
     
-    func hideOrShowCorrespondingViewOfSegmentControl(type :GiftType){
-        hideOrShowContainerView(type: type)
-        hideOrShowNoGiftMsgLabel(type: type)
-        
+    func fetchGifts() {
+        self.registeredSegment?.viewModel?.getGifts(beforeId: nil)
+        self.donatedSegment?.viewModel?.getGifts(beforeId: nil)
+        self.receivedSegment?.viewModel?.getGifts(beforeId: nil)
+        self.userProfileView?.viewModel?.getProfile(loadingType: .initial)
+    }
+    
+    func reloadGifts() {
+        self.registeredSegment?.viewModel?.reloadGifts()
+        self.donatedSegment?.viewModel?.reloadGifts()
+        self.receivedSegment?.viewModel?.reloadGifts()
+        self.userProfileView?.viewModel?.getProfile(loadingType: .refresh)
+    }
+    
+    func updateUI(){
+        switch self.segmentControlView?.segmentControl.selectedSegmentIndex {
+        case 0:
+            hideOrShowContainerView(type: .donated)
+        case 1:
+            hideOrShowContainerView(type: .received)
+        case 2:
+            hideOrShowContainerView(type: .registered)
+        default:
+            break
+        }
     }
     
     func hideOrShowContainerView(type :GiftType){
         if type == .registered {
-            self.registeredGiftsContainerView.show()
+            self.registeredStack?.show()
         } else {
-            self.registeredGiftsContainerView.hide()
+            self.registeredStack?.hide()
         }
         if type == .donated {
-            self.donatedGiftsContainerView.show()
+            self.donatedStack?.show()
         } else {
-            self.donatedGiftsContainerView.hide()
+            self.donatedStack?.hide()
         }
         if type == .received {
-            self.receivedGiftsContainerView.show()
+            self.receivedStack?.show()
         } else {
-            self.receivedGiftsContainerView.hide()
+            self.receivedStack?.hide()
         }
     }
-    
-    func hideOrShowNoGiftMsgLabel(type: GiftType) {
-        
-        guard let viewModel = getViewModel(type: type) else {
-            return
-        }
-        
-        let count = viewModel.gifts.count
-        let isLoading = viewModel.isLoadingGifts
-        
-        let show = (count == 0) && (!isLoading)
-        hideOrShowNoGiftMsgLabel(show: show, type: type)
-        
-    }
-    
-    func hideOrShowNoGiftMsgLabel(show: Bool, type: GiftType) {
-        let msg : String
-        switch type {
-        case .registered:
-            msg = LanguageKeys.noGiftRegistered.localizedString
-        case .donated:
-            msg = LanguageKeys.noGiftDonated.localizedString
-        case .received:
-            msg = LanguageKeys.noGiftReceived.localizedString
-        }
-        
-        if show {
-            self.noGiftMsg.text = msg
-            self.noGiftMsg.show()
-        } else {
-            self.noGiftMsg.hide()
-        }
-        
-    }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         NavigationBarStyle.setDefaultStyle(navigationC: navigationController)
@@ -294,23 +132,77 @@ class MyWallViewController: UIViewController {
     
 }
 
-extension MyWallViewController : UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//MARK: - Load Segments
+extension MyWallViewController {
+    func loadSegmentControl() {
         
-        guard let viewModel = getViewModel(tableView: tableView) else {
-            return
+        guard let segmentControlView = NibLoader.load(type: MyWallSegmentControl.self) else { return }
+        
+        segmentControlView.segmentChanged = {[weak self] in
+            self?.updateUI()
         }
+        segmentControlStack.addArrangedSubview(segmentControlView)
+        self.segmentControlView = segmentControlView
+    }
+    
+    func loadUserProfileView(userId: Int) {
+        guard let userProfileView = NibLoader.load(type: UserProfileSegment.self) else { return }
         
-        let controller = GiftDetailViewController()
-        controller.gift = viewModel.gifts[indexPath.row]
+        userProfileView.viewModel = UserProfileViewModel(userId: userId)
         
-        controller.editHandler = { [weak self] in
+        userProfileStack.addArrangedSubview(userProfileView)
+        self.userProfileView = userProfileView
+    }
+    
+    func loadSegments(userId: Int) {
+        loadRegisteredSegment(userId: userId)
+        loadDonatedSegement(userId: userId)
+        loadReceivedSegment(userId: userId)
+    }
+    
+    func loadRegisteredSegment(userId: Int) {
+        guard let registeredSegment =  NibLoader.load(type: MyWallTableViewSegment.self) else { return }
+        
+        registeredSegment.setViewModel(viewModel: RegisteredGiftViewModel(userId: userId))
+        registeredSegment.emptyListMessage = LanguageKeys.noGiftRegistered.localizedString
+        
+        registeredStack.addArrangedSubview(registeredSegment)
+        self.registeredSegment = registeredSegment
+        
+    }
+    
+    func loadDonatedSegement(userId: Int) {
+        guard let donatedSegment = NibLoader.load(type: MyWallTableViewSegment.self) else { return }
+        
+        donatedSegment.setViewModel(viewModel: DonatedGiftViewModel(userId: userId))
+        donatedSegment.emptyListMessage = LanguageKeys.noGiftDonated.localizedString
+        
+        donatedStack.addArrangedSubview(donatedSegment)
+        self.donatedSegment = donatedSegment
+        
+    }
+    
+    func loadReceivedSegment(userId: Int) {
+        guard let receivedSegment = NibLoader.load(type: MyWallTableViewSegment.self) else { return}
+        
+        receivedSegment.setViewModel(viewModel: ReceivedGiftViewModel(userId: userId))
+        receivedSegment.emptyListMessage = LanguageKeys.noGiftReceived.localizedString
+        
+        receivedStack.addArrangedSubview(receivedSegment)
+        self.receivedSegment = receivedSegment
+    }
+}
+
+//MARK: - Subscribe
+
+extension MyWallViewController {
+    
+    func presentDetailPage(gift: Gift) {
+        
+        self.myWallCoordinator.showGiftDetail(gift: gift, editHandler: { [weak self] in
             self?.editHandler()
-        }
+        })
         
-        print("Gift_id: \(controller.gift?.id?.description ?? "")")
-        
-        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func editHandler(){
@@ -327,127 +219,6 @@ extension MyWallViewController : UITableViewDelegate {
 
 extension MyWallViewController : ReloadablePage {
     func reloadPage(){
-        self.reloadViewModel(type: .registered)
-        self.reloadViewModel(type: .donated)
-        self.reloadViewModel(type: .received)
+        self.reloadGifts()
     }
-}
-
-extension MyWallViewController : GiftViewModelDelegate {
-    func pageLoadingAnimation(viewModel: GiftViewModel, isLoading: Bool) {
-        switch viewModel {
-        case registeredGiftsViewModel:
-            setTableViewLoading(isLoading: isLoading, giftType: .registered, loadingType: .initial)
-        case donatedGiftsViewModel:
-            setTableViewLoading(isLoading: isLoading, giftType: .donated, loadingType: .initial)
-        case receivedGiftsViewModel:
-            setTableViewLoading(isLoading: isLoading, giftType: .received, loadingType: .initial)
-            
-        default:
-            break
-        }
-    }
-    
-    func lazyLoadingAnimation(viewModel: GiftViewModel, isLoading: Bool) {
-        switch viewModel {
-        case registeredGiftsViewModel:
-            setTableViewLoading(isLoading: isLoading, giftType: .registered, loadingType: .lazy)
-            
-        case donatedGiftsViewModel:
-            setTableViewLoading(isLoading: isLoading, giftType: .donated, loadingType: .lazy)
-            
-        case receivedGiftsViewModel:
-            setTableViewLoading(isLoading: isLoading, giftType: .received, loadingType: .lazy)
-            
-        default:
-            break
-        }
-    }
-    
-    func refreshControlAnimation(viewModel: GiftViewModel, isLoading: Bool) {
-        switch viewModel {
-        case registeredGiftsViewModel:
-            if isLoading {
-            } else {
-                self.registeredRefreshControl.endRefreshing()
-            }
-            
-        case donatedGiftsViewModel:
-            if isLoading {
-            } else {
-                self.donatedRefreshControl.endRefreshing()
-            }
-            
-        case receivedGiftsViewModel:
-            if isLoading {
-            } else {
-                self.receivedRefreshControl.endRefreshing()
-            }
-            
-        default:
-            break
-        }
-    }
-    
-    func getTableView(viewModel: GiftViewModel)->UITableView? {
-        let tableView : UITableView?
-        switch viewModel {
-        case registeredGiftsViewModel:
-            tableView = self.registeredGiftsTableView
-        case donatedGiftsViewModel:
-            tableView = self.donatedGiftsTableView
-        case receivedGiftsViewModel:
-            tableView = self.receivedGiftsTableView
-        default:
-            tableView = nil
-        }
-        return tableView
-    }
-    
-    func getViewModel(tableView:UITableView) -> GiftViewModel? {
-        let viewModel: GiftViewModel?
-        switch tableView {
-        case registeredGiftsTableView:
-            viewModel = self.registeredGiftsViewModel
-        case donatedGiftsTableView:
-            viewModel = self.donatedGiftsViewModel
-        case receivedGiftsTableView:
-            viewModel = self.receivedGiftsViewModel
-        default:
-            viewModel = nil
-        }
-        return viewModel
-    }
-    
-    func showTableView(viewModel: GiftViewModel, show: Bool) {
-        let tableView = getTableView(viewModel: viewModel)
-        tableView?.isHidden = !show
-    }
-    
-    func reloadTableView(viewModel: GiftViewModel) {
-        
-        // show or hide no gifts message
-        self.updateUI()
-        
-        let tableView = getTableView(viewModel: viewModel)
-        tableView?.reloadData()
-    }
-    
-    func insertNewItemsToTableView(viewModel: GiftViewModel, insertedIndexes: [IndexPath]) {
-        
-        // show or hide no gifts message
-        self.updateUI()
-        
-        let tableView = getTableView(viewModel: viewModel)
-        UIView.performWithoutAnimation {
-            tableView?.insertRows(at: insertedIndexes, with: .bottom)
-        }
-        
-    }
-    
-    func presentfailedAlert(viewModel: GiftViewModel, alert: UIAlertController) {
-        
-    }
-    
-    
 }

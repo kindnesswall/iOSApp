@@ -24,7 +24,7 @@ class ChatCoordinator : NavigationCoordinator {
     func showRoot() {
         let rootVC = getRootViewController()
         let img = UIImage(named: AppImages.Requests)
-        rootVC.tabBarItem = UITabBarItem(title: "Chats", image: img, tag: 0)
+        rootVC.tabBarItem = UITabBarItem(title: LanguageKeys.chats.localizedString, image: img, tag: 0)
         navigationController.viewControllers = [rootVC]
     }
     

@@ -1,0 +1,9 @@
+
+/* Class = "UISegmentedControl"; RIg-Zg-3Jl.segmentTitles[0] = "Donated"; ObjectID = "RIg-Zg-3Jl"; */
+"RIg-Zg-3Jl.segmentTitles[0]" = "اهدا شده";
+
+/* Class = "UISegmentedControl"; RIg-Zg-3Jl.segmentTitles[1] = "Received"; ObjectID = "RIg-Zg-3Jl"; */
+"RIg-Zg-3Jl.segmentTitles[1]" = "دریافت شده";
+
+/* Class = "UISegmentedControl"; RIg-Zg-3Jl.segmentTitles[2] = "Registered"; ObjectID = "RIg-Zg-3Jl"; */
+"RIg-Zg-3Jl.segmentTitles[2]" = "ثبت شده";

@@ -21,7 +21,7 @@ class MoreCoordinator : NavigationCoordinator {
     func showMore() {
         let viewController = MoreViewController(moreCoordinator: self)
         let img = UIImage(named: AppImages.More)
-        viewController.tabBarItem = UITabBarItem(title: "More", image: img, tag: 0)
+        viewController.tabBarItem = UITabBarItem(title: LanguageKeys.more.localizedString, image: img, tag: 0)
         
         navigationController.viewControllers = [viewController]
     }
