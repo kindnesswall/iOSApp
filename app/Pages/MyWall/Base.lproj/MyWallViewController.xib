@@ -27,25 +27,22 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="k5H-lc-pJR">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ylz-el-GGR">
-                            <rect key="frame" x="0.0" y="170" width="414" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="e7Z-8y-BcG"/>
-                            </constraints>
+                            <rect key="frame" x="0.0" y="90" width="414" height="50"/>
                         </stackView>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uEB-pk-rwG">
-                            <rect key="frame" x="0.0" y="210" width="414" height="608"/>
+                            <rect key="frame" x="0.0" y="140" width="414" height="678"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7ne-oL-6gk">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="608"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="668"/>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PaQ-VI-duD">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="608"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="668"/>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vvH-3Z-FK9">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="608"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="668"/>
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

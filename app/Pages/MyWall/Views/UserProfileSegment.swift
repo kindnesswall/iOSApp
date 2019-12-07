@@ -23,7 +23,7 @@ class UserProfileSegment: UIView {
     var viewModel: UserProfileViewModel? {didSet{bindToViewModel()}}
     
     override func awakeFromNib() {
-        showCharityBtn.layer.cornerRadius = 20
+        showCharityBtn.layer.cornerRadius = 8
     }
     
     func bindToViewModel() {
@@ -48,11 +48,11 @@ class UserProfileSegment: UIView {
     
     func updateUI(profile: UserProfile?) {
         setProfileImage(profile: profile)
-        self.userName.text = profile?.name
+        self.userName.text = profile?.name ?? LanguageKeys.user.localizedString
         self.userId.text = "\(LanguageKeys.identifier.localizedString): \(profile?.id.localizedNumber ?? "")"
         
         if let phoneNumber = profile?.phoneNumber {
-            self.userPhoneNumber.text = "\(LanguageKeys.phoneNumber.localizedString): \(phoneNumber.localizedNumber)"
+            self.userPhoneNumber.text = "\(phoneNumber.localizedNumber)"
         } else {
             self.userPhoneNumber.text = ""
         }
