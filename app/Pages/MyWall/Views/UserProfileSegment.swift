@@ -24,6 +24,7 @@ class UserProfileSegment: UIView {
     
     override func awakeFromNib() {
         showCharityBtn.layer.cornerRadius = 8
+        showCharityBtn.setTitle(LanguageKeys.charity.localizedString, for: .normal)
     }
     
     func bindToViewModel() {

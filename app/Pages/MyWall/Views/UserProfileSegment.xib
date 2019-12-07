@@ -87,10 +87,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvN-R3-q9R">
-                            <rect key="frame" x="405" y="66" width="40" height="30"/>
+                            <rect key="frame" x="393" y="66" width="60" height="30"/>
                             <color key="backgroundColor" name="TintColor"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="40" id="2aN-pa-pZ9"/>
+                                <constraint firstAttribute="width" constant="60" id="2aN-pa-pZ9"/>
                                 <constraint firstAttribute="height" constant="30" id="QZA-Az-EGq"/>
                             </constraints>
                             <state key="normal" title="خیریه">
@@ -133,7 +133,7 @@
                         <constraint firstAttribute="bottom" secondItem="Vm0-Z7-KUE" secondAttribute="bottom" constant="4" id="Lqc-tA-TM3"/>
                         <constraint firstItem="cul-pY-JPU" firstAttribute="top" secondItem="4df-s6-QXw" secondAttribute="top" constant="4" id="ThC-vf-hiG"/>
                         <constraint firstAttribute="trailing" secondItem="4df-s6-QXw" secondAttribute="trailing" constant="12" id="aoh-aD-NqC"/>
-                        <constraint firstItem="Vm0-Z7-KUE" firstAttribute="leading" secondItem="vvN-R3-q9R" secondAttribute="trailing" constant="20" id="lfc-QO-pdU"/>
+                        <constraint firstItem="Vm0-Z7-KUE" firstAttribute="leading" secondItem="vvN-R3-q9R" secondAttribute="trailing" constant="12" id="lfc-QO-pdU"/>
                         <constraint firstItem="vvN-R3-q9R" firstAttribute="centerY" secondItem="Vm0-Z7-KUE" secondAttribute="centerY" id="mUB-L0-Fpu"/>
                         <constraint firstItem="4df-s6-QXw" firstAttribute="leading" secondItem="cul-pY-JPU" secondAttribute="trailing" constant="8" id="nJQ-pw-Eeb"/>
                         <constraint firstItem="Vm0-Z7-KUE" firstAttribute="top" secondItem="4df-s6-QXw" secondAttribute="bottom" constant="2" id="uDd-96-Tcq"/>
