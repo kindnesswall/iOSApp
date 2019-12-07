@@ -15,23 +15,21 @@ class UserProfileViewModel: NSObject {
     let userId: Int
     
     @BindingWrapper var profile: UserProfile? = nil
-    var profileBinding: BindingWrapper<UserProfile?> {
-        return _profile
-    }
+    @BindingWrapper var loadingState: ViewLoadingState = .loading(.initial)
     
     init(userId: Int) {
         self.userId = userId
     }
     
-    func getProfile() {
-        apiService.getUserProfile(userId: userId) { result in
+    func getProfile(loadingType: ViewLoadingType) {
+        loadingState = .loading(loadingType)
+        apiService.getUserProfile(userId: userId) {[weak self] result in
             switch result {
             case .success(let profile):
-                DispatchQueue.main.async {
-                    self.profile = profile
-                }
+                self?.profile = profile
+                self?.loadingState = .success
             case .failure(let error):
-                break
+                self?.loadingState = .failed(error)
             }
         }
     }

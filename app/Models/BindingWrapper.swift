@@ -11,7 +11,9 @@ import Foundation
 @propertyWrapper
 class BindingWrapper<T> {
     var wrappedValue: T {didSet {bind?(wrappedValue)}}
+    var projectedValue: BindingWrapper<T> { return self }
     var bind: ((T)->Void)?
+    
     
     init(wrappedValue: T) {
         self.wrappedValue = wrappedValue

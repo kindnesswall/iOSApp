@@ -11,6 +11,8 @@ import Kingfisher
 
 class UserProfileSegment: UIView {
 
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userId: UILabel!
@@ -25,8 +27,22 @@ class UserProfileSegment: UIView {
     }
     
     func bindToViewModel() {
-        viewModel?.profileBinding.bind = {[weak self] profile in
+        viewModel?.$profile.bind = {[weak self] profile in
             self?.updateUI(profile: profile)
+        }
+        viewModel?.$loadingState.bind = {[weak self] state in
+            self?.updateLoadingState(state: state)
+        }
+    }
+    
+    func updateLoadingState(state: ViewLoadingState){
+        switch state {
+        case .loading(_):
+            self.loadingView.show()
+            self.contentView.hide()
+        default:
+            self.loadingView.hide()
+            self.contentView.show()
         }
     }
     

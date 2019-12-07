@@ -79,14 +79,14 @@ class MyWallViewController: UIViewController {
         self.registeredSegment?.viewModel?.getGifts(beforeId: nil)
         self.donatedSegment?.viewModel?.getGifts(beforeId: nil)
         self.receivedSegment?.viewModel?.getGifts(beforeId: nil)
-        self.userProfileView?.viewModel?.getProfile()
+        self.userProfileView?.viewModel?.getProfile(loadingType: .initial)
     }
     
     func reloadGifts() {
         self.registeredSegment?.viewModel?.reloadGifts()
         self.donatedSegment?.viewModel?.reloadGifts()
         self.receivedSegment?.viewModel?.reloadGifts()
-        self.userProfileView?.viewModel?.getProfile()
+        self.userProfileView?.viewModel?.getProfile(loadingType: .refresh)
     }
     
     func updateUI(){
