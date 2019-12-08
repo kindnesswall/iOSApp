@@ -9,32 +9,32 @@
 import Foundation
 
 protocol EndpointProtocol {
-    var url:URL? {get}
+    var url: URL? {get}
     var httpMethod: String {get}
     var httpBody: Data? {get}
 }
 
-enum Endpoint:EndpointProtocol {
+enum Endpoint: EndpointProtocol {
 
 //        ---------------------------------------
     case getProvinces
-    case getCitiesOfProvince(id:Int)
+    case getCitiesOfProvince(id: Int)
     case getCategories
-    case getRegions(_ cityId:Int)
+    case getRegions(_ cityId: Int)
 //        ---------------------------------------
-    case registerUser(_ user:User)
-    case login(user:User)
-    case firebaseLogin(input:FirebaseLoginInput)
-    case requestPhoneNumberChange(toNewNumber:String)
+    case registerUser(_ user: User)
+    case login(user: User)
+    case firebaseLogin(input: FirebaseLoginInput)
+    case requestPhoneNumberChange(toNewNumber: String)
     case validatePhoneNumberChange(input: ValidatePhoneNumberChangeIntput)
 //        ---------------------------------------
-    case registerGift(_ gift:Gift)
-    case editGift(_ gift:Gift)
-    case removeGift(id:Int)
-    case requestGift(id:Int)
-    case requestGiftStatus(id:Int)
-    case donateGift(id:Int,toUserId:Int)
-    
+    case registerGift(_ gift: Gift)
+    case editGift(_ gift: Gift)
+    case removeGift(id: Int)
+    case requestGift(id: Int)
+    case requestGiftStatus(id: Int)
+    case donateGift(id: Int, toUserId: Int)
+
     case giftsToReview(input: GiftsRequestInput)
     case userDonatedGifts(userId: Int, input: GiftsRequestInput)
     case userReceivedGifts(userId: Int, input: GiftsRequestInput)
@@ -52,7 +52,7 @@ enum Endpoint:EndpointProtocol {
     case getProfile(userId: Int)
     case updateUser(profile: UserProfile.Input)
 //        ---------------------------------------
-    case giftReviewRejected(giftId: Int, input:RejectGiftReviewInput)
+    case giftReviewRejected(giftId: Int, input: RejectGiftReviewInput)
     case giftReviewApproved(giftId: Int)
 //        ---------------------------------------
     case charityList
@@ -61,8 +61,8 @@ enum Endpoint:EndpointProtocol {
 //        ---------------------------------------
     case statistics
 //        ---------------------------------------
-    case blockUserAccess(userId:Int)
-    case getUserStatistics(userId:Int)
+    case blockUserAccess(userId: Int)
+    case getUserStatistics(userId: Int)
     case unBlockUserAccess(input: UnblockUserInput)
 //        ---------------------------------------
     case getContacts
@@ -73,19 +73,19 @@ enum Endpoint:EndpointProtocol {
     case blockChat(id: Int)
     case unBlockChat(id: Int)
     //        ---------------------------------------
-    case uploadImage(input : ImageInput)
-    
-    private var basePathUrl:String{ return "/api/v1/"}
-    private var usersBaseURL:String { return basePathUrl + "users/" }
-    private var chatBaseURL:String { return basePathUrl + "chat/" }
-    private var contactsBaseURL:String { return chatBaseURL + "contacts/" }
-    private var giftsBaseURL:String{ return basePathUrl + "gifts/" }
-    private var charityBaseURL:String{ return basePathUrl + "charity/" }
-    private var profileBaseURL:String{ return basePathUrl + "profile/" }
-    private var registerBaseURL:String{ return basePathUrl + "register/" }
-    private var phoneNumberChangeBaseURL:String{ return registerBaseURL + "phoneNumberChange/" }
-    
-    var url:URL? {
+    case uploadImage(input: ImageInput)
+
+    private var basePathUrl: String { return "/api/v1/"}
+    private var usersBaseURL: String { return basePathUrl + "users/" }
+    private var chatBaseURL: String { return basePathUrl + "chat/" }
+    private var contactsBaseURL: String { return chatBaseURL + "contacts/" }
+    private var giftsBaseURL: String { return basePathUrl + "gifts/" }
+    private var charityBaseURL: String { return basePathUrl + "charity/" }
+    private var profileBaseURL: String { return basePathUrl + "profile/" }
+    private var registerBaseURL: String { return basePathUrl + "register/" }
+    private var phoneNumberChangeBaseURL: String { return registerBaseURL + "phoneNumberChange/" }
+
+    var url: URL? {
         var urlComponent = URLComponents()
         urlComponent.scheme = self.scheme
         urlComponent.host = self.host
@@ -94,14 +94,14 @@ enum Endpoint:EndpointProtocol {
         urlComponent.queryItems = self.queryItems
         return urlComponent.url
     }
-    
+
     var httpBody: Data? {
         switch self {
-            
-        case .getProfile, .getBlockContacts, .getContacts, .getUserStatistics, .unBlockChat, .blockChat, .blockUserAccess, .statistics, .rejectCharity, .charityList, .acceptCharity, .giftReviewApproved, .getProvinces, .getCategories, .getCitiesOfProvince(_), .getRegions(_), .removeGift, .requestGift, .requestGiftStatus:
+
+        case .getProfile, .getBlockContacts, .getContacts, .getUserStatistics, .unBlockChat, .blockChat, .blockUserAccess, .statistics, .rejectCharity, .charityList, .acceptCharity, .giftReviewApproved, .getProvinces, .getCategories, .getCitiesOfProvince, .getRegions, .removeGift, .requestGift, .requestGiftStatus:
             return nil
 
-        case .giftReviewRejected(_,let input):
+        case .giftReviewRejected(_, let input):
             return ApiUtility.convert(input: input)
 //        ---------------------------------------
         case .registerUser(let user), .login(let user):
@@ -109,11 +109,11 @@ enum Endpoint:EndpointProtocol {
 //        ---------------------------------------
         case .registerGift(let gift), .editGift(let gift):
             return ApiUtility.convert(input: gift)
-        
+
         case .donateGift(let id, let toUserId):
             return ApiUtility.convert(input: Donate(giftId: id, donatedToUserId: toUserId))
 
-        case .giftsToReview(let input), .userDonatedGifts(_ , let input), .userReceivedGifts(_ , let input), .userRegisteredGifts(_, let input), .giftsToDonate(_ , let input), .getGifts(let input):
+        case .giftsToReview(let input), .userDonatedGifts(_, let input), .userReceivedGifts(_, let input), .userRegisteredGifts(_, let input), .giftsToDonate(_, let input), .getGifts(let input):
             return ApiUtility.convert(input: input)
 //        ---------------------------------------
         case .sendTextMessage(let textMessage):
@@ -135,38 +135,37 @@ enum Endpoint:EndpointProtocol {
 //        ---------------------------------------
         case .chatSendMessage(let input): return ApiUtility.convert(input: input)
         case .chatAckMessage(let input): return ApiUtility.convert(input: input)
-        
+
         case .requestPhoneNumberChange(let toNewNumber):
             return ApiUtility.convert(input: toNewNumber)
         case .validatePhoneNumberChange(let input):
             return ApiUtility.convert(input: input)
-            
+
         case .uploadImage(let input):
             return ApiUtility.convert(input: input)
-            
+
         case .firebaseLogin(let input):
             return ApiUtility.convert(input: input)
         }
     }
-    
+
     var httpMethod: String {
         switch self {
-        case .getProvinces, .getCitiesOfProvince(_), .getCategories, .getRegions(_), .requestGift(_), .requestGiftStatus, .getProfile(_), .charityList, .statistics, .getUserStatistics, .getContacts, .getBlockContacts:
+        case .getProvinces, .getCitiesOfProvince, .getCategories, .getRegions, .requestGift, .requestGiftStatus, .getProfile, .charityList, .statistics, .getUserStatistics, .getContacts, .getBlockContacts:
             return HttpMethod.GET.rawValue
 
-        case .registerUser(_), .login(_), .firebaseLogin, .registerGift, .donateGift(_,_), .giftsToDonate(_,_), .userRegisteredGifts(_,_), .userReceivedGifts(_,_), .userDonatedGifts(_,_), .sendTextMessage(_), .sendAck(_), .fetchMessages(_), .registerPush(_), .giftsToReview(_), .sendPushNotif, .updateUser, .chatSendMessage, .chatAckMessage, .getGifts(_), .requestPhoneNumberChange(_), .validatePhoneNumberChange(_), .uploadImage(_):
+        case .registerUser, .login, .firebaseLogin, .registerGift, .donateGift, .giftsToDonate, .userRegisteredGifts, .userReceivedGifts, .userDonatedGifts, .sendTextMessage, .sendAck, .fetchMessages, .registerPush, .giftsToReview, .sendPushNotif, .updateUser, .chatSendMessage, .chatAckMessage, .getGifts, .requestPhoneNumberChange, .validatePhoneNumberChange, .uploadImage:
             return HttpMethod.POST.rawValue
-            
-        case .editGift(_), .giftReviewApproved, .acceptCharity, .rejectCharity, .unBlockUserAccess, .unBlockChat, .blockChat,.giftReviewRejected:
+
+        case .editGift, .giftReviewApproved, .acceptCharity, .rejectCharity, .unBlockUserAccess, .unBlockChat, .blockChat, .giftReviewRejected:
             return HttpMethod.PUT.rawValue
-            
-        case .removeGift(_), .blockUserAccess:
+
+        case .removeGift, .blockUserAccess:
             return HttpMethod.DELETE.rawValue
         }
     }
-    
-    
-    private var path:String {
+
+    private var path: String {
         switch self {
         case .uploadImage:
             return basePathUrl+"/image/upload"
@@ -180,9 +179,9 @@ enum Endpoint:EndpointProtocol {
         case .getRegions(let cityId):
             return basePathUrl+"regions/\(cityId)"
 //        ---------------------------------------
-        case .registerUser(_):
+        case .registerUser:
             return registerBaseURL
-        case .login(_):
+        case .login:
             return basePathUrl+"login"
         case .firebaseLogin:
             return basePathUrl+"login/firebase"
@@ -197,9 +196,9 @@ enum Endpoint:EndpointProtocol {
             return giftsBaseURL+"request/\(id)"
         case .requestGiftStatus(let id):
             return giftsBaseURL+"request/status/\(id)"
-        case .donateGift(_,_):
+        case .donateGift:
             return basePathUrl+"donate"
-            
+
         case .giftsToReview:
             return giftsBaseURL + "review"
         case .userDonatedGifts(let userId, _):
@@ -217,17 +216,17 @@ enum Endpoint:EndpointProtocol {
             return chatBaseURL + "send"
         case .sendAck:
             return chatBaseURL + "ack"
-        case .fetchMessages(_):
+        case .fetchMessages:
             return chatBaseURL + "messages"
 //        ---------------------------------------
-        case .registerPush(_):
+        case .registerPush:
             return basePathUrl + "push/register"
-        case .sendPushNotif(_):
+        case .sendPushNotif:
             return basePathUrl + "sendPush"
 //        ---------------------------------------
         case .getProfile(let userId):
             return profileBaseURL + "\(userId)"
-        case .updateUser(_):
+        case .updateUser:
             return profileBaseURL
 //        ---------------------------------------
         case .giftReviewRejected(let giftId, _):
@@ -247,7 +246,7 @@ enum Endpoint:EndpointProtocol {
 //        ---------------------------------------
         case .blockUserAccess(let userId):
             return usersBaseURL + "denyAccess/\(userId)"
-        case .unBlockUserAccess(_):
+        case .unBlockUserAccess:
             return usersBaseURL + "allowAccess"
         case .getUserStatistics(let userId):
             return usersBaseURL + "statistics/\(userId)"
@@ -259,25 +258,25 @@ enum Endpoint:EndpointProtocol {
         case .chatAckMessage: return chatBaseURL + "ack"
         case .blockChat(let chatId): return chatBaseURL + "block/\(chatId)"
         case .unBlockChat(let chatId): return chatBaseURL + "unblock/\(chatId)"
-            
+
         case .requestPhoneNumberChange:
             return phoneNumberChangeBaseURL + "request"
         case .validatePhoneNumberChange:
             return phoneNumberChangeBaseURL + "validate"
         }
     }
-    
+
     private var queryItems: [URLQueryItem] {
-        let queryItems:[URLQueryItem] = []
+        let queryItems: [URLQueryItem] = []
         return queryItems
     }
-    
-    private var host:String{
+
+    private var host: String {
         return "185.211.58.168"
 //        return "localhost"
     }
-    
-    private var scheme:String {
+
+    private var scheme: String {
         return "http"
     }
 }

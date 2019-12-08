@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct RejectGiftReviewInput:Encodable {
-    var rejectReason:String
+struct RejectGiftReviewInput: Encodable {
+    var rejectReason: String
 }

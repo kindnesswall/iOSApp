@@ -9,29 +9,29 @@
 import UIKit
 
 class ProgressBarView: UIView {
-    
+
     var bgPath: UIBezierPath!
     var shapeLayer: CAShapeLayer!
     var progressLayer: CAShapeLayer!
-    
+
     var progress: Float = 0 {
         willSet(newValue) {
             progressLayer.strokeEnd = CGFloat(newValue)
         }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         bgPath = UIBezierPath()
         self.simpleShape()
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         bgPath = UIBezierPath()
         self.simpleShape()
     }
-    
+
     func simpleShape() {
         createCirclePath()
         shapeLayer = CAShapeLayer()
@@ -39,7 +39,7 @@ class ProgressBarView: UIView {
         shapeLayer.lineWidth = 2
         shapeLayer.fillColor = nil
         shapeLayer.strokeColor = UIColor.clear.cgColor
-        
+
         progressLayer = CAShapeLayer()
         progressLayer.path = bgPath.cgPath
         progressLayer.lineCap = CAShapeLayerLineCap.round
@@ -47,11 +47,11 @@ class ProgressBarView: UIView {
         progressLayer.fillColor = nil
         progressLayer.strokeColor = UIColor.red.cgColor
         progressLayer.strokeEnd = 0.0
-        
+
         self.layer.addSublayer(shapeLayer)
         self.layer.addSublayer(progressLayer)
     }
-    
+
     private func createCirclePath() {
         let width = self.frame.width / 2
         let height = self.frame.height / 2
@@ -60,4 +60,3 @@ class ProgressBarView: UIView {
         bgPath.close()
     }
 }
-

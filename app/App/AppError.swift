@@ -17,7 +17,7 @@ public enum AppError: Error {
     case serverError
     case dbFetch
     case noData
-    case clientSide(message:String)
-    case firebaseError(error:Error?)
+    case clientSide(message: String)
+    case firebaseError(error: Error?)
     case unknown
 }

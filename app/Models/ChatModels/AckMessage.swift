@@ -8,13 +8,13 @@
 import Foundation
 
 class AckMessage: Codable {
-    var messageId:Int
-    var textMessage:TextMessage?
-    
-    init(messageId:Int) {
+    var messageId: Int
+    var textMessage: TextMessage?
+
+    init(messageId: Int) {
         self.messageId=messageId
     }
-    init?(textMessage:TextMessage) {
+    init?(textMessage: TextMessage) {
         guard let messageId = textMessage.id else {
             return nil
         }

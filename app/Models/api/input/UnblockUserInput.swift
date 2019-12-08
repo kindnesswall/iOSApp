@@ -9,5 +9,5 @@
 import Foundation
 
 struct UnblockUserInput: Codable {
-    var userId:Int
+    var userId: Int
 }

@@ -8,33 +8,33 @@
 
 import UIKit
 
-class StatisticViewController: UIViewController , UITableViewDelegate,UITableViewDataSource {
-    
+class StatisticViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     var statisticsKeys = [String]()
     var statisticsValues = [Int]()
 
     @IBOutlet weak var tableView: UITableView!
-    var initialLoadingIndicator:LoadingIndicator?
-    
+    var initialLoadingIndicator: LoadingIndicator?
+
     lazy var apiRequest = ApiRequest(HTTPLayer())
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.title = LocalizationSystem.getStr(forKey: "StatisticViewController_title")
-        
+
         self.tableView.register(type: StatisticTableViewCell.self)
         self.initialLoadingIndicator=LoadingIndicator(view: self.view)
-        
+
         fetchStatistics()
         // Do any additional setup after loading the view.
     }
-    
-    func startLoadingPage(){
+
+    func startLoadingPage() {
         self.initialLoadingIndicator?.startLoading()
         self.tableView.hide()
     }
-    func stopLoadingPage(){
+    func stopLoadingPage() {
         self.initialLoadingIndicator?.stopLoading()
         self.tableView.show()
     }
@@ -43,42 +43,42 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         self.navigationController?.navigationBar.setDefaultStyle()
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return statisticsKeys.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(type: StatisticTableViewCell.self, for: indexPath)
-        cell.setUI(key: self.statisticsKeys[indexPath.item], value:AppLanguage.getNumberString(number: self.statisticsValues[indexPath.item].description))
+        cell.setUI(key: self.statisticsKeys[indexPath.item], value: AppLanguage.getNumberString(number: self.statisticsValues[indexPath.item].description))
         return cell
     }
-    
-    func fetchStatistics(){
-        
+
+    func fetchStatistics() {
+
         startLoadingPage()
-        
-        let input : APIEmptyInput? = nil
-        
+
+        let input: APIEmptyInput? = nil
+
         apiRequest.getStatistics { [weak self](result) in
-            
+
             self?.statisticsKeys = []
             self?.statisticsValues = []
             self?.stopLoadingPage()
-            
-            switch result{
+
+            switch result {
             case .failure(let appError):
                 print("Error")
             case .success(let statisticsData):
                 print(statisticsData)
                 if let statistics = statisticsData.statistics {
-                    for (key , value) in statistics {
+                    for (key, value) in statistics {
                         self?.statisticsKeys.append(key)
                         self?.statisticsValues.append(value)
                     }
@@ -88,7 +88,7 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
         }
 //        APICall.request(url: APIURLs.getStatistics, httpMethod: .GET, input: input) { [weak self] (data, response, error)  in
 //            APICall.printData(data: data)
-            
+
 //            self?.statisticsKeys = []
 //            self?.statisticsValues = []
 //            self?.stopLoadingPage()
@@ -104,7 +104,7 @@ class StatisticViewController: UIViewController , UITableViewDelegate,UITableVie
 //
 //            }
 //        }
-    
+
     }
 
     /*

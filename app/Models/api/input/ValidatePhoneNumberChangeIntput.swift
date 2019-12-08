@@ -9,10 +9,10 @@
 import Foundation
 
 class ValidatePhoneNumberChangeIntput: Codable {
-    var phoneNumber:String
-    var activationCode:String
-    
-    init(phoneNumber:String, activationCode:String) {
+    var phoneNumber: String
+    var activationCode: String
+
+    init(phoneNumber: String, activationCode: String) {
         self.phoneNumber = phoneNumber
         self.activationCode = activationCode
     }

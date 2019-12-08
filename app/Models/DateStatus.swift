@@ -8,13 +8,13 @@
 
 import Foundation
 
-class DateStatus : Codable {
-    var title:String?
-    var id:Int?
-    
-    init(id:Int?,title:String?) {
+class DateStatus: Codable {
+    var title: String?
+    var id: Int?
+
+    init(id: Int?, title: String?) {
         self.id=id
         self.title=title
     }
-    
+
 }

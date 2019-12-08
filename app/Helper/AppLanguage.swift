@@ -9,7 +9,6 @@
 import Foundation
 import KeychainSwift
 
-
 extension String {
     var localizedNumber: String {
         return AppLanguage.getNumberString(number: self)
@@ -22,14 +21,13 @@ extension Int {
     }
 }
 
-class AppLanguage{
-    
-    
-    static let English:String = "en"
-    static let Persian:String = "fa"
+class AppLanguage {
 
-    static func getLanguage()->String {
-        
+    static let English: String = "en"
+    static let Persian: String = "fa"
+
+    static func getLanguage() -> String {
+
         if LocalizationSystem.sharedInstance.getLanguage() == Persian {
             return Persian
         } else {
@@ -37,11 +35,11 @@ class AppLanguage{
         }
     }
 
-    //MARK: - Utilities
-    
-    static func getNumberString(number:String)->String{
+    // MARK: - Utilities
+
+    static func getNumberString(number: String) -> String {
         let language = AppLanguage.getLanguage()
-        
+
         switch language {
         case Persian:
             return number.castNumberToPersian()
@@ -51,8 +49,8 @@ class AppLanguage{
             return number
         }
     }
-    
-    static func getTextAlignment()->NSTextAlignment{
+
+    static func getTextAlignment() -> NSTextAlignment {
         let language = AppLanguage.getLanguage()
         switch language {
         case Persian:
@@ -63,5 +61,5 @@ class AppLanguage{
             return .left
         }
     }
-    
+
 }

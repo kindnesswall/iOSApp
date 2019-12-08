@@ -7,25 +7,25 @@
 
 import Foundation
 
-final class ControlMessage : Codable {
-    var type:ControlMessageType
-    var fetchMessagesInput:FetchMessagesInput?
-    var ackMessage:AckMessage?
-    
-    init(type:ControlMessageType) {
+final class ControlMessage: Codable {
+    var type: ControlMessageType
+    var fetchMessagesInput: FetchMessagesInput?
+    var ackMessage: AckMessage?
+
+    init(type: ControlMessageType) {
         self.type=type
     }
-    init(type:ControlMessageType,fetchMessagesInput:FetchMessagesInput) {
+    init(type: ControlMessageType, fetchMessagesInput: FetchMessagesInput) {
         self.type = type
         self.fetchMessagesInput=fetchMessagesInput
     }
-    init(ackMessage:AckMessage) {
+    init(ackMessage: AckMessage) {
         self.type = .ack
         self.ackMessage=ackMessage
     }
 }
 
-enum ControlMessageType : String,Codable {
+enum ControlMessageType: String, Codable {
     case ready
     case fetchContact
     case fetchMessage

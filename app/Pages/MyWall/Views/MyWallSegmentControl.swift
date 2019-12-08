@@ -11,19 +11,19 @@ import UIKit
 class MyWallSegmentControl: UIView {
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    var segmentChanged: (()->Void)?
-    
+    var segmentChanged: (() -> Void)?
+
     override func awakeFromNib() {
         configSegmentControl()
     }
-    
-    func configSegmentControl(){
+
+    func configSegmentControl() {
         self.segmentControl.tintColor=AppConst.Resource.Color.Tint
-        self.segmentControl.setTitleTextAttributes([NSAttributedString.Key.font:AppConst.Resource.Font.getLightFont(size: 13)], for: .normal)
+        self.segmentControl.setTitleTextAttributes([NSAttributedString.Key.font: AppConst.Resource.Font.getLightFont(size: 13)], for: .normal)
     }
-    
+
     @IBAction func segmentChangedAction(_ sender: Any) {
         self.segmentChanged?()
     }
-    
+
 }

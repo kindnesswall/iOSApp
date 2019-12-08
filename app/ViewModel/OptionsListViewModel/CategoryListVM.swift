@@ -9,25 +9,25 @@
 import UIKit
 
 class CategoryListVM: NSObject, OptionsListViewModelProtocol {
-    
-    let titleName:String
-    let hasDefaultOption:Bool
+
+    let titleName: String
+    let hasDefaultOption: Bool
     var categories=[Category]()
     lazy var apiService = ApiService(HTTPLayer())
-    
-    func getElementsCount()->Int{
+
+    func getElementsCount() -> Int {
         return self.categories.count
     }
-    
-    init(hasDefaultOption:Bool) {
+
+    init(hasDefaultOption: Bool) {
         self.titleName = LanguageKeys.category.localizedString
         self.hasDefaultOption=hasDefaultOption
         super.init()
     }
 
-    func fetchElements(completionHandler:(()->Void)?){
+    func fetchElements(completionHandler:(() -> Void)?) {
         apiService.getCategories { [weak self](result) in
-            switch result{
+            switch result {
             case .failure(let appError):
                 print(appError)
             case .success(let categories):
@@ -43,23 +43,22 @@ class CategoryListVM: NSObject, OptionsListViewModelProtocol {
             }
         }
     }
-    
-    func registerCell(tableView:UITableView){
+
+    func registerCell(tableView: UITableView) {
         tableView.register(type: CategoryOptionsTableViewCell.self)
     }
-    
-    func dequeueReusableCell(tableView:UITableView,indexPath:IndexPath)->UITableViewCell {
+
+    func dequeueReusableCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(type: CategoryOptionsTableViewCell.self, for: indexPath)
         cell.setValue(category: categories[indexPath.row])
         return cell
     }
-   
-    
-    func returnCellData(indexPath:IndexPath)->(Int?,String?) {
-        return (categories[indexPath.row].id,categories[indexPath.row].title)
+
+    func returnCellData(indexPath: IndexPath) -> (Int?, String?) {
+        return (categories[indexPath.row].id, categories[indexPath.row].title)
     }
-    
-    func getNestedViewModel(indexPath:IndexPath)->OptionsListViewModelProtocol? {
+
+    func getNestedViewModel(indexPath: IndexPath) -> OptionsListViewModelProtocol? {
         return nil
     }
 }

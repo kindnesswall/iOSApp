@@ -9,9 +9,9 @@
 import Foundation
 
 class DonatedGiftViewModel: GiftViewModel {
-    
-    init(userId:Int) {
+
+    init(userId: Int) {
         super.init(giftListType: .userDonatedGifts(userId: userId))
     }
-    
+
 }

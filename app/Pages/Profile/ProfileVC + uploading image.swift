@@ -10,40 +10,40 @@ import UIKit
 import CropViewController
 import Kingfisher
 
-extension ProfileViewController:UIImagePickerControllerDelegate{
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        guard let selectedImage = info[.originalImage] as? UIImage else{
+extension ProfileViewController: UIImagePickerControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+
+        guard let selectedImage = info[.originalImage] as? UIImage else {
             picker.dismiss(animated: true, completion: nil)
             return
         }
-        
+
         let cropViewController = CropViewController(image: selectedImage)
         cropViewController.delegate = self
-        
+
         picker.dismiss(animated: true, completion: nil)
         self.present(cropViewController, animated: true, completion: nil)
     }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
 }
 
-extension ProfileViewController:CropViewControllerDelegate{
-    
+extension ProfileViewController: CropViewControllerDelegate {
+
     public func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
         uploadImage(selectedImage: image)
         self.dismiss(animated: false, completion: nil)
     }
-    
+
     func uploadImage(selectedImage: UIImage) {
-        
+
         avatarImageView.image=selectedImage
         uploadProgressView.isHidden = false
         uploadView.isHidden = true
-        
+
         self.vm?.uploadThe(
             image: selectedImage,
             onSuccess: { [weak self] in
@@ -56,14 +56,14 @@ extension ProfileViewController:CropViewControllerDelegate{
                 }
         })
     }
-    
+
 }
 
-extension ProfileViewController:UINavigationControllerDelegate{
-    
+extension ProfileViewController: UINavigationControllerDelegate {
+
 }
 
-extension ProfileViewController:UploadImageVMDelegate{
+extension ProfileViewController: UploadImageVMDelegate {
     func updateUploadImage(percent: Int) {
         uploadProgressLbl.text = "٪" + String(AppLanguage.getNumberString(number: String(percent)))
     }

@@ -8,6 +8,6 @@
 
 import Foundation
 
-class EmptyInput:Codable {
-    
+class EmptyInput: Codable {
+
 }

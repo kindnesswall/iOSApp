@@ -9,70 +9,70 @@
 import UIKit
 import PanModal
 
-class MessagesViewController: UIViewController,MessagesDelegate {
-    
+class MessagesViewController: UIViewController, MessagesDelegate {
+
     @IBAction func donateGift(_ sender: Any) {
         donateGiftBtnTapped()
     }
-    
-    var blockButtonState : BlockButtonState = .unblock
+
+    var blockButtonState: BlockButtonState = .unblock
     @IBOutlet weak var blockBtn: UIButton!
     @IBOutlet weak var donateGiftBtn: UIButton!
-    
+
     @IBOutlet weak var sendMessageBtn: UIButton!
     @IBOutlet weak var messageInputPlaceholder: UIStackView!
     @IBOutlet weak var messageInput: UITextView!
-    
+
     @IBOutlet weak var tableView: UITableView!
-    var viewModel:MessagesViewModel?
-    
+    var viewModel: MessagesViewModel?
+
     var donateGiftBarBtn: UIBarButtonItem?
-    
-    weak var delegate:MessagesViewControllerDelegate?
-    
+
+    weak var delegate: MessagesViewControllerDelegate?
+
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         loadBlockButtonState()
-        
+
         self.configBarButtons()
-        
+
         self.tableView.register(MessagesTableViewCell.self, forCellReuseIdentifier: MessagesTableViewCell.MessageUserType.user.rawValue)
         self.tableView.register(MessagesTableViewCell.self, forCellReuseIdentifier: MessagesTableViewCell.MessageUserType.others.rawValue)
-        
+
         self.tableView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
         self.tableView.reloadData()
-        
+
         self.configureMessageInput()
-        
+
         self.viewModel?.delegate = self
-        
+
         guard let viewModel = viewModel else {
             return
         }
         self.delegate?.loadMessages(chatId: viewModel.chatId, beforeId: nil)
-        
+
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.viewModel?.updateIsNewMessageForAll()
     }
-    
-    func configBarButtons(){
+
+    func configBarButtons() {
 //        donateGiftBarBtn = UINavigationItem.getNavigationItem(
 //            target: self,
 //            action: #selector(self.donateGiftBtnTapped),
 //            text:LanguageKeys.DonateGift.localizedString,
 //            font:AppConst.Resource.Font.getRegularFont(size: 16)
 //        )
-        
+
 //        self.navigationItem.rightBarButtonItems=[donateGiftBarBtn!]
     }
-    
+
     func loadBlockButtonState() {
         if self.viewModel?.blockStatus?.contactIsBlocked == true {
             setBlockButtonState(state: .contactBlock)
@@ -84,17 +84,17 @@ class MessagesViewController: UIViewController,MessagesDelegate {
             }
         }
     }
-    
+
     enum BlockButtonState {
         case unblock
         case contactBlock
         case userBlock
     }
-    
+
     func setBlockButtonState(state: BlockButtonState) {
-        
+
         self.blockButtonState = state
-        
+
         if state == .unblock {
             hideOrShowSendMessagesBtn(show: true)
             self.blockBtn.hide()
@@ -102,7 +102,7 @@ class MessagesViewController: UIViewController,MessagesDelegate {
             hideOrShowSendMessagesBtn(show: false)
             self.blockBtn.show()
         }
-        
+
         switch state {
         case .unblock:
             self.blockBtn.isEnabled = false
@@ -115,36 +115,36 @@ class MessagesViewController: UIViewController,MessagesDelegate {
             self.blockBtn.setTitle(LanguageKeys.youHaveBeenBlocked.localizedString, for: .normal)
         }
     }
-    
+
     func hideOrShowSendMessagesBtn(show: Bool) {
         let isHidden = !show
         self.messageInputPlaceholder.isHidden = isHidden
         self.sendMessageBtn.isHidden = isHidden
         self.donateGiftBtn.isHidden = isHidden
     }
-    
+
     @IBAction func unblockAction(_ sender: Any) {
         guard blockButtonState == .contactBlock else {
             return
         }
-        
+
         guard let chatId = viewModel?.chatId else {
             return
         }
-        
+
         self.apiService.blockOrUnblockChat(blockCase: .unblock, chatId: chatId, completion: { [weak self] result in
             switch result {
-            case .failure(_):
+            case .failure:
                 //TODO: should handle the failure
                 break
-            case .success(_):
+            case .success:
                 self?.delegate?.reloadContacts()
                 self?.navigationController?.popViewController(animated: true)
             }
         })
-        
+
     }
-    @objc func donateGiftBtnTapped(){
+    @objc func donateGiftBtnTapped() {
         let controller = GiftsToDonateViewController()
         controller.toUserId = viewModel?.getContactId()
         controller.donateGiftHandler = { [weak self] gift in
@@ -153,39 +153,39 @@ class MessagesViewController: UIViewController,MessagesDelegate {
         let nc = UINavigationController(rootViewController: controller)
         self.present(nc, animated: true, completion: nil)
     }
-    
-    func sendGiftDonationMessage(gift:Gift){
-        
+
+    func sendGiftDonationMessage(gift: Gift) {
+
         let giftDonateChatMessage = LanguageKeys.giftDonateChatMessage.localizedString
         let text = "\(giftDonateChatMessage) '\(gift.title ?? "")'"
-        
+
         guard let viewModel = self.viewModel else {
             return
         }
-        
+
         self.delegate?.writeMessage(text: text, messagesViewModel: viewModel)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.setDefaultStyle()
         self.setAllTextsInView()
     }
-    
-    func setAllTextsInView(){
+
+    func setAllTextsInView() {
         self.donateGiftBarBtn?.title=LanguageKeys.DonateGift.localizedString
     }
-    
-    func configureMessageInput(){
+
+    func configureMessageInput() {
         self.messageInput.layer.borderColor = UIColor.black.cgColor
         self.messageInput.layer.borderWidth = 1
         self.messageInput.layer.cornerRadius = 10
         self.messageInput.layer.masksToBounds = true
-        
+
         self.messageInput.isScrollEnabled = false
         self.messageInput.sizeToFit()
     }
-    
+
     deinit {
         print("MessagesViewController deinit")
     }
@@ -194,15 +194,15 @@ class MessagesViewController: UIViewController,MessagesDelegate {
             return
         }
         self.messageInput.text = ""
-        
+
         guard let viewModel = self.viewModel else {
             return
         }
-        
+
         self.delegate?.writeMessage(text: messageText, messagesViewModel: viewModel)
-        
+
     }
-    
+
     func updateTableViewAndScrollToTop() {
         self.tableView.reloadData()
         self.scrollToTop()
@@ -210,8 +210,8 @@ class MessagesViewController: UIViewController,MessagesDelegate {
     func updateTableView() {
         self.tableView.reloadData()
     }
-    
-    func scrollToTop(){
+
+    func scrollToTop() {
         guard self.viewModel?.curatedMessages.count ?? 0 > 0,
             self.viewModel?.curatedMessages[0].count ?? 0 > 0
         else { return }
@@ -219,34 +219,34 @@ class MessagesViewController: UIViewController,MessagesDelegate {
     }
 }
 
-extension MessagesViewController : UITableViewDataSource {
-    
+extension MessagesViewController: UITableViewDataSource {
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.viewModel?.curatedMessages.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel?.curatedMessages[section].count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let viewModel = self.viewModel else {
             return UITableViewCell()
         }
         let message = viewModel.curatedMessages[indexPath.section][indexPath.row]
-        
+
         messageHasSeen(message: message, userId: viewModel.userId)
-        
-        let messageType:MessagesTableViewCell.MessageUserType
+
+        let messageType: MessagesTableViewCell.MessageUserType
         if message.senderId == viewModel.userId {
             messageType = .user
         } else {
             messageType = .others
         }
-    
+
         let cell = (tableView.dequeueReusableCell(withIdentifier: messageType.rawValue, for: indexPath) as? MessagesTableViewCell) ?? MessagesTableViewCell(style: .default, reuseIdentifier: messageType.rawValue)
         cell.updateUI(message: message, messageType: messageType)
-        
+
         if indexPath.section == viewModel.curatedMessages.count-1,
         indexPath.row == viewModel.curatedMessages[indexPath.section].count-1 {
             if !viewModel.noMoreOldMessages {
@@ -255,14 +255,14 @@ extension MessagesViewController : UITableViewDataSource {
                 }
             }
         }
-        
+
         return cell
     }
-    
-    func messageHasSeen(message:TextMessage, userId:Int){
-        
+
+    func messageHasSeen(message: TextMessage, userId: Int) {
+
         message.hasSeen = true
-        
+
         guard message.receiverId == userId, message.ack == false else {
             return
         }
@@ -270,27 +270,26 @@ extension MessagesViewController : UITableViewDataSource {
             message.ack = true
         }
     }
-    
-    
+
 }
 
-extension MessagesViewController : UITableViewDelegate {
-    
+extension MessagesViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let message = self.viewModel?.curatedMessages[section].first
         let messagesDateTableViewCell = MessagesDateTableViewCell(style: .default, reuseIdentifier: MessagesDateTableViewCell.identifier)
         messagesDateTableViewCell.updateUI(date: message?.createdAt?.convertToDate()?.getPersianDate())
         return messagesDateTableViewCell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return MessagesDateTableViewCell.height
     }
 }
 
-protocol MessagesViewControllerDelegate : class{
-    func writeMessage(text:String,messagesViewModel:MessagesViewModel)
-    func loadMessages(chatId:Int,beforeId:Int?)
-    func sendAckMessage(message:TextMessage,completionHandler:(()->Void)?)
+protocol MessagesViewControllerDelegate: class {
+    func writeMessage(text: String, messagesViewModel: MessagesViewModel)
+    func loadMessages(chatId: Int, beforeId: Int?)
+    func sendAckMessage(message: TextMessage, completionHandler:(() -> Void)?)
     func reloadContacts()
 }

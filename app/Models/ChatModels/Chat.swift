@@ -8,14 +8,14 @@
 
 import Foundation
 
-final class Chat : Codable {
-    var id:Int?
-    var firstId:Int
-    var secondId:Int
+final class Chat: Codable {
+    var id: Int?
+    var firstId: Int
+    var secondId: Int
 }
 
 final class ChatContacts: Codable {
-    var chatId:Int
-    var userId:Int
-    var contactId:Int
+    var chatId: Int
+    var userId: Int
+    var contactId: Int
 }

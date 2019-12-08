@@ -13,12 +13,12 @@ import XLActionController
 
 class ProfileViewController: UIViewController {
 
-    var closeComplition:(()->Void)?
-    var username:String?
+    var closeComplition:(() -> Void)?
+    var username: String?
     let imagePicker = UIImagePickerController()
-    var vm:ProfileViewModel?
-    
-    lazy var usernameBtnLoader:UIActivityIndicatorView = {
+    var vm: ProfileViewModel?
+
+    lazy var usernameBtnLoader: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.color = UIColor.lightGray
@@ -26,42 +26,42 @@ class ProfileViewController: UIViewController {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         return activityIndicator
     }()
-    
+
     @IBOutlet weak var uploadProgressView: UIView!
     @IBOutlet weak var uploadProgressLbl: UILabel!
     @IBAction func cancelUploadBtn(_ sender: Any) {
-        
+
     }
-    
+
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var uploadView: UIView!
-    
+
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var phoneLabel: UILabel!
-    
+
     @IBOutlet weak var usernameBtn: UIButton!
     @IBAction func onUsernameBtnClicked(_ sender: Any) {
-        
+
         usernameBtn.setImage(nil, for: .normal)
         usernameBtnLoader.startAnimating()
-        
+
         updateProfile {
             DispatchQueue.main.async {
                 self.usernameBtnLoader.stopAnimating()
                 self.username = self.usernameTextField.text
             }
         }
-        
+
     }
-    
-    func setCloseComplition(closeComplition: (()->Void)? ) {
+
+    func setCloseComplition(closeComplition: (() -> Void)? ) {
         self.closeComplition = closeComplition
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavBar()
-        
+
         vm = ProfileViewModel()
         vm?.delegate = self
         getProfile()
@@ -75,49 +75,49 @@ class ProfileViewController: UIViewController {
         uploadView.addGestureRecognizer(tap)
         setDefaultViews()
     }
-    
-    func updateProfile(completion: (()->Void)?) {
+
+    func updateProfile(completion: (() -> Void)?) {
         vm?.updateUser(name: usernameTextField.text, completion: { [weak self](result) in
             switch result {
-            case .failure(_):
+            case .failure:
                 self?.showDialogFailed {
                     self?.updateProfile(completion: completion)
                 }
-            case .success(_):
+            case .success:
                 completion?()
                 FlashMessage.showMessage(body: LanguageKeys.profileUpdatedSuccessfully.localizedString, theme: .success)
             }
         })
     }
-    
-    func showDialogFailed(tryAgainHandler: @escaping ()-> Void) {
+
+    func showDialogFailed(tryAgainHandler: @escaping () -> Void) {
         let alert = UIAlertController(
             title: LanguageKeys.requestfailDialogTitle.localizedString,
             message: LanguageKeys.requestfailDialogText.localizedString,
             preferredStyle: UIAlertController.Style.alert)
-        
+
         alert.addAction(
             UIAlertAction(
                 title: LanguageKeys.tryAgain.localizedString,
-                style: UIAlertAction.Style.default, handler: { (action) in
+                style: UIAlertAction.Style.default, handler: { (_) in
                     tryAgainHandler()
             }))
-        
+
         alert.addAction(
             UIAlertAction(
                 title: LanguageKeys.closeThisPage.localizedString,
-                style: UIAlertAction.Style.default, handler: { [weak self] (action) in
+                style: UIAlertAction.Style.default, handler: { [weak self] (_) in
                     self?.dismiss(animated: true, completion: nil)
             }))
-        
+
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     func getProfile() {
         vm?.getProfile(completion: { [weak self](result) in
             guard let self = self else {return}
             switch result {
-            case .failure(_):
+            case .failure:
                 self.showDialogFailed {
                     self.getProfile()
                 }
@@ -133,35 +133,35 @@ class ProfileViewController: UIViewController {
             }
         })
     }
-    
+
     func setDefaultViews() {
         uploadProgressView.isHidden = true
         uploadView.isHidden = false
     }
-    
-    @objc func selectImage(_ sender: UITapGestureRecognizer){
+
+    @objc func selectImage(_ sender: UITapGestureRecognizer) {
         let actionController = SkypeActionController()
-        
-        actionController.addAction(Action(LanguageKeys.camera.localizedString, style: .default, handler: { action in
-            
+
+        actionController.addAction(Action(LanguageKeys.camera.localizedString, style: .default, handler: { _ in
+
             self.imagePicker.allowsEditing = false
             self.imagePicker.sourceType = .camera
             self.imagePicker.delegate = self
-            
+
             self.present(self.imagePicker, animated: true, completion: nil)
-            
+
         }))
-        
-        actionController.addAction(Action(LanguageKeys.gallery.localizedString, style: .default, handler: { action in
-            
+
+        actionController.addAction(Action(LanguageKeys.gallery.localizedString, style: .default, handler: { _ in
+
             self.imagePicker.allowsEditing = false
             self.imagePicker.sourceType = .photoLibrary
             self.imagePicker.delegate = self
-            
+
             self.present(self.imagePicker, animated: true, completion: nil)
-            
+
         }))
-        
+
         present(actionController, animated: true, completion: nil)
     }
 
@@ -169,21 +169,21 @@ class ProfileViewController: UIViewController {
         if username != textField.text {
             usernameBtn.isHidden = false
             usernameBtn.setImage(UIImage(named: AppImages.CheckGrey), for: .normal)
-            
-        }else {
+
+        } else {
             usernameBtn.isHidden = true
         }
     }
-    
-    func setNavBar(){
+
+    func setNavBar() {
         self.navigationItem.title=LanguageKeys.profile.localizedString
-        
+
         self.navigationItem.removeDefaultBackBtn()
-        
+
         self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppConst.Resource.Font.getIcomoonFont(size: 24))
     }
-    
-    @objc func exitBtnAction(){
+
+    @objc func exitBtnAction() {
         self.closeComplition?()
         self.dismiss(animated: true, completion: nil)
     }

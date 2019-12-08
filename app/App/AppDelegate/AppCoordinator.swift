@@ -13,66 +13,66 @@ protocol AppCoordinatorProtocol {
     var window: UIWindow? { get set }
 }
 
-class AppCoordinator:AppCoordinatorProtocol {
+class AppCoordinator: AppCoordinatorProtocol {
     var window: UIWindow?
-    var tabBarCoordinator:TabBarCoordinator?
-    
-    func reloadTabBarPages(currentPage: ReloadablePage?){
+    var tabBarCoordinator: TabBarCoordinator?
+
+    func reloadTabBarPages(currentPage: ReloadablePage?) {
         tabBarCoordinator?.reloadTabBarPages(currentPage: currentPage)
     }
-    
+
     func refreshAppAfterSwitchUser() {
         tabBarCoordinator?.refreshAppAfterSwitchUser()
     }
-    
+
     func showTabBar() {
         tabBarCoordinator = TabBarCoordinator(appCoordinator: self)
         setWindow(rootViewContrller: self.tabBarCoordinator?.tabBarController)
     }
-    
-    func checkForLogin()->Bool{
+
+    func checkForLogin() -> Bool {
         return tabBarCoordinator?.checkForLogin() ?? false
     }
-    
+
     func showRegisterGiftTab() {
         tabBarCoordinator?.setSelectedTab(index: AppConst.TabIndex.RegisterGift)
     }
-    
-    func showLoginVC(){
+
+    func showLoginVC() {
         tabBarCoordinator?.showLoginView()
     }
-    
+
     func showLockVC() {
         tabBarCoordinator?.showLockVC()
     }
-    
+
     func showIntro() {
         tabBarCoordinator?.showIntro()
     }
-    
+
     func showSelectLanguageVC() {
         let viewController = LanguageViewController()
         viewController.languageViewModel.tabBarIsInitialized = false
         setWindow(rootViewContrller: viewController)
     }
-    
+
     func showSelectCountryVC() {
         let vc = SelectCountryVC()
         vc.vm.tabBarIsInitialized = false
         setWindow(rootViewContrller: vc)
     }
-    
-    func setWindow(rootViewContrller:UIViewController?) {
+
+    func setWindow(rootViewContrller: UIViewController?) {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootViewContrller
         window?.makeKeyAndVisible()
     }
-    
+
     func shareApp() {
         tabBarCoordinator?.shareApp()
     }
 
-    func refreshChat(id:Int) {
-        tabBarCoordinator?.refreshChat(id:id)
+    func refreshChat(id: Int) {
+        tabBarCoordinator?.refreshChat(id: id)
     }
 }

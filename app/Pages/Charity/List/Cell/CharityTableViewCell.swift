@@ -9,13 +9,13 @@
 import UIKit
 
 class CharityTableViewCell: UITableViewCell {
-    
-    static let cellHeight:CGFloat = 91
+
+    static let cellHeight: CGFloat = 91
 
     @IBOutlet weak var imageview: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

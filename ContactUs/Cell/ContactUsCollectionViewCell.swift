@@ -15,8 +15,8 @@ class ContactUsCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    func setUI(data:ContactUsViewController.ContactUsModel){
+
+    func setUI(data: ContactUsViewController.ContactUsModel) {
         logo.image = data.image
     }
 

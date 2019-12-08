@@ -11,11 +11,11 @@ import UIKit
 
 extension UITableView {
 
-    func register<CellType:UITableViewCell>(type:CellType.Type) {
+    func register<CellType: UITableViewCell>(type: CellType.Type) {
         self.register(CellType.nib, forCellReuseIdentifier: CellType.identifier)
     }
-    
-    func dequeue<CellType:UITableViewCell>(type:CellType.Type,for indexPath: IndexPath) -> CellType {
+
+    func dequeue<CellType: UITableViewCell>(type: CellType.Type, for indexPath: IndexPath) -> CellType {
         return (self.dequeueReusableCell(withIdentifier: CellType.identifier, for: indexPath) as? CellType) ?? CellType()
     }
 }

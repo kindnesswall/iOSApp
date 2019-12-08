@@ -9,53 +9,53 @@
 import UIKit
 
 protocol HomeViewModelDelegate: class {
-    func pageLoadingAnimation(isLoading:Bool)
-    func lazyLoadingAnimation(isLoading:Bool)
-    func refreshControlAnimation(isLoading:Bool)
-    func showTableView(show:Bool)
+    func pageLoadingAnimation(isLoading: Bool)
+    func lazyLoadingAnimation(isLoading: Bool)
+    func refreshControlAnimation(isLoading: Bool)
+    func showTableView(show: Bool)
     func reloadTableView()
-    func insertNewItemsToTableView(insertedIndexes:[IndexPath])
-    func presentfailedAlert(alert:UIAlertController)
+    func insertNewItemsToTableView(insertedIndexes: [IndexPath])
+    func presentfailedAlert(alert: UIAlertController)
 }
 
-extension HomeViewController : HomeViewModelDelegate {
+extension HomeViewController: HomeViewModelDelegate {
 
-    func insertNewItemsToTableView(insertedIndexes:[IndexPath]) {
+    func insertNewItemsToTableView(insertedIndexes: [IndexPath]) {
         UIView.performWithoutAnimation {
             self.tableview.insertRows(at: insertedIndexes, with: .bottom)
         }
     }
-    
+
     func reloadTableView() {
         self.tableview.reloadData()
     }
-    
-    func pageLoadingAnimation(isLoading:Bool) {
+
+    func pageLoadingAnimation(isLoading: Bool) {
         if isLoading {
             hud.show(in: self.view)
         } else {
             self.hud.dismiss(afterDelay: 0)
         }
     }
-    
-    func lazyLoadingAnimation(isLoading:Bool) {
+
+    func lazyLoadingAnimation(isLoading: Bool) {
         self.setTableViewLazyLoading(isLoading: isLoading)
     }
-    
-    func refreshControlAnimation(isLoading:Bool) {
+
+    func refreshControlAnimation(isLoading: Bool) {
         if isLoading {
-            
+
         } else {
             self.refreshControl.endRefreshing()
         }
     }
-    
-    func showTableView(show:Bool){
+
+    func showTableView(show: Bool) {
 //        self.tableview.isHidden = show
         emptyListMessageLabel.isHidden = show
     }
-    
-    func presentfailedAlert(alert:UIAlertController) {
+
+    func presentfailedAlert(alert: UIAlertController) {
         self.present(alert, animated: true, completion: nil)
     }
 }

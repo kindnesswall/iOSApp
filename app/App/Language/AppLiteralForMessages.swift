@@ -8,9 +8,9 @@
 
 import Foundation
 
-class AppLiteralForMessages{
-    
-    static var registeredSuccessfully : String {
+class AppLiteralForMessages {
+
+    static var registeredSuccessfully: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -19,8 +19,8 @@ class AppLiteralForMessages{
             return "The gift has registered successfully"
         }
     }
-    
-    static var editedSuccessfully : String {
+
+    static var editedSuccessfully: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -29,8 +29,8 @@ class AppLiteralForMessages{
             return "The gift has edited successfully"
         }
     }
-    
-    static var draftSavedSuccessfully : String {
+
+    static var draftSavedSuccessfully: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -39,8 +39,8 @@ class AppLiteralForMessages{
             return "The draft has saved successfully"
         }
     }
-    
-    static var uploadedSuccessfully : String {
+
+    static var uploadedSuccessfully: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -49,10 +49,8 @@ class AppLiteralForMessages{
             return "The Image has uploaded successfully"
         }
     }
-    
-    
-    
-    static var gettingPriceReason : String {
+
+    static var gettingPriceReason: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -61,10 +59,10 @@ class AppLiteralForMessages{
             return ""
         }
     }
-    
-    //MARK: Errors
-    
-    static var imageUploadingError : String {
+
+    // MARK: Errors
+
+    static var imageUploadingError: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -73,8 +71,8 @@ class AppLiteralForMessages{
             return "An error has occurred in image uploading"
         }
     }
-    
-    static var titleError : String {
+
+    static var titleError: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -83,8 +81,8 @@ class AppLiteralForMessages{
             return "Please write the title of the gift"
         }
     }
-    
-    static var categoryError : String {
+
+    static var categoryError: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -93,8 +91,8 @@ class AppLiteralForMessages{
             return "Please select the category of the gift"
         }
     }
-    
-    static var newOrSecondhandError : String {
+
+    static var newOrSecondhandError: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -103,8 +101,8 @@ class AppLiteralForMessages{
             return "Please select one of the \"new or secondhand\" options"
         }
     }
-    
-    static var descriptionError : String {
+
+    static var descriptionError: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -113,8 +111,8 @@ class AppLiteralForMessages{
             return "Please write the description of the gift"
         }
     }
-    
-    static var priceError : String {
+
+    static var priceError: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -123,8 +121,8 @@ class AppLiteralForMessages{
             return "Please write the price of the gift"
         }
     }
-    
-    static var addressError : String {
+
+    static var addressError: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -133,8 +131,8 @@ class AppLiteralForMessages{
             return "Please select the place of the gift"
         }
     }
-    
-    static var giftRemovingPrompt : String {
+
+    static var giftRemovingPrompt: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -143,8 +141,8 @@ class AppLiteralForMessages{
             return "Are you sure that you want to remove the gift?"
         }
     }
-    
-    static var phoneNumberIncorrectError : String {
+
+    static var phoneNumberIncorrectError: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -153,7 +151,7 @@ class AppLiteralForMessages{
             return "The phone number is not correct."
         }
     }
-    static var phoneNumberTryAgainError : String {
+    static var phoneNumberTryAgainError: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -162,8 +160,8 @@ class AppLiteralForMessages{
             return "Please write the number again"
         }
     }
-    
-    static var activationCodeError : String {
+
+    static var activationCodeError: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -172,8 +170,8 @@ class AppLiteralForMessages{
             return "Please write the activation code."
         }
     }
-    
-    static var activationCodeIncorrectError : String {
+
+    static var activationCodeIncorrectError: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -182,8 +180,8 @@ class AppLiteralForMessages{
             return "The activation code is not correct."
         }
     }
-    
-    static var guideOfSendingActivationCode : String {
+
+    static var guideOfSendingActivationCode: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -192,8 +190,8 @@ class AppLiteralForMessages{
             return "The activation code will be sent to the following phone number. If the phone number is not correct, please edit it."
         }
     }
-    
-    static var guideOfRegiteringPart1 : String {
+
+    static var guideOfRegiteringPart1: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -202,8 +200,8 @@ class AppLiteralForMessages{
             return "After few seconds, the message containing activation code will be sent to the phone number "
         }
     }
-    
-    static var guideOfRegiteringPart2 : String {
+
+    static var guideOfRegiteringPart2: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -212,8 +210,8 @@ class AppLiteralForMessages{
             return ". If you didn't receive the message, you can resend the activation code after 1 minutes."
         }
     }
-    
-    static var kindnessWallCultureDescription : String {
+
+    static var kindnessWallCultureDescription: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -222,8 +220,8 @@ class AppLiteralForMessages{
             return ""
         }
     }
-    
-    static var withDonateCollaborationDescription : String {
+
+    static var withDonateCollaborationDescription: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -232,8 +230,8 @@ class AppLiteralForMessages{
             return ""
         }
     }
-    
-    static var alwaysFreeDescription : String {
+
+    static var alwaysFreeDescription: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -242,8 +240,8 @@ class AppLiteralForMessages{
             return ""
         }
     }
-    
-    static var openSourceDescription : String {
+
+    static var openSourceDescription: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -252,7 +250,5 @@ class AppLiteralForMessages{
             return ""
         }
     }
-    
-    
-    
+
 }

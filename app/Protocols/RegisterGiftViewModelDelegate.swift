@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol RegisterGiftViewModelDelegate : class {
+protocol RegisterGiftViewModelDelegate: class {
     func getUIInputProperties() -> RegisterGiftViewModel.UIInputProperties
-    func setUIInputProperties(uiProperties : RegisterGiftViewModel.UIInputProperties)
-    
-    func setCategoryBtnTitle(text:String?)
-    func setDateStatusBtnTitle(text:String?)
-    func setEditedGiftOriginalAddressLabel(text:String?)
-    func addUploadedImageFromEditedGift(giftImage :String)
-    func addGiftPlaceToUIStack(place:Place)
-    func updateUploadImage(index:Int,percent:Int)
+    func setUIInputProperties(uiProperties: RegisterGiftViewModel.UIInputProperties)
+
+    func setCategoryBtnTitle(text: String?)
+    func setDateStatusBtnTitle(text: String?)
+    func setEditedGiftOriginalAddressLabel(text: String?)
+    func addUploadedImageFromEditedGift(giftImage: String)
+    func addGiftPlaceToUIStack(place: Place)
+    func updateUploadImage(index: Int, percent: Int)
 }

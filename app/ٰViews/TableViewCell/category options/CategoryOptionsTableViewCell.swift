@@ -15,8 +15,8 @@ class CategoryOptionsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    func setValue(category:Category) {
+
+    func setValue(category: Category) {
         self.name.text=category.title
     }
 
@@ -25,5 +25,5 @@ class CategoryOptionsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

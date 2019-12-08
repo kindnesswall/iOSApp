@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class DonateGiftCoordinator : NavigationCoordinator {
+class DonateGiftCoordinator: NavigationCoordinator {
     var navigationController: CoordinatedNavigationController
-    
+
     init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {
         self.navigationController = navigationController
         navigationController.coordinator = self
@@ -19,7 +19,7 @@ class DonateGiftCoordinator : NavigationCoordinator {
         let viewController = RegisterGiftViewController()
         let img = UIImage(named: AppImages.DonateGift)
         viewController.tabBarItem = UITabBarItem(title: LanguageKeys.tabBarGiveGift.localizedString, image: img, tag: 0)
-        
+
         navigationController.viewControllers = [viewController]
     }
 }

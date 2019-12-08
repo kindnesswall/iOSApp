@@ -11,25 +11,25 @@ import KeychainSwift
 
 protocol HTTPLayerProtocol {
     func request(at endpoint: EndpointProtocol, completion: @escaping (Result<Data>) -> Void)
-    func upload(at endpoint: EndpointProtocol, urlSessionDelegate:URLSessionDelegate, completion: @escaping (Result<Data>) -> Void)
-    
+    func upload(at endpoint: EndpointProtocol, urlSessionDelegate: URLSessionDelegate, completion: @escaping (Result<Data>) -> Void)
+
     func cancelRequests()
     func cancelAllTasksAndSessions()
-    func cancelRequestAt(index:Int)
-    func findIndexOf(task:URLSessionTask?)->Int?
+    func cancelRequestAt(index: Int)
+    func findIndexOf(task: URLSessionTask?) -> Int?
 }
 
-class HTTPLayer:HTTPLayerProtocol {
-    
-    var urlSession:URLSession
-    var tasks:[URLSessionDataTask] = []
-    var sessions : [URLSession]=[]
+class HTTPLayer: HTTPLayerProtocol {
 
-    init(urlSession:URLSession = .shared) {
+    var urlSession: URLSession
+    var tasks: [URLSessionDataTask] = []
+    var sessions: [URLSession]=[]
+
+    init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
     }
-    
-    func setRequestHeader(request:URLRequest)->URLRequest {
+
+    func setRequestHeader(request: URLRequest) -> URLRequest {
         var newRequest=request
         newRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         if let authorization=KeychainSwift().get(AppConst.KeyChain.Authorization) {
@@ -37,58 +37,58 @@ class HTTPLayer:HTTPLayerProtocol {
         }
         return newRequest
     }
-    
+
     func createURLRequestFrom(endpoint: EndpointProtocol) throws -> URLRequest {
-        
+
         guard let url = endpoint.url else {
             throw AppError.apiUrlProblem
         }
-        
+
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 60)
         request.httpBody = endpoint.httpBody
         request.httpMethod = endpoint.httpMethod
         request = setRequestHeader(request: request)
-        
+
         return request
     }
-    
+
     func createUploadRequestFrom(endpoint: EndpointProtocol) throws -> URLRequest {
-        
+
         guard let url = endpoint.url else {
             throw AppError.apiUrlProblem
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.httpMethod
         request = setRequestHeader(request: request)
-        
+
         return request
     }
-    
+
     func request(at endpoint: EndpointProtocol, completion: @escaping (Result<Data>) -> Void) {
-        
-        let request:URLRequest!
-        
-        do{
+
+        let request: URLRequest!
+
+        do {
             request = try createURLRequestFrom(endpoint: endpoint)
-        }catch{
+        } catch {
             completion(.failure(AppError.apiUrlProblem))
             return
         }
-        
+
         let task = urlSession.dataTask(with: request) { [weak self](data, response, error) in
-            
+
             self?.handleResponse(data, response, error, completion: completion)
         }
-        
+
         self.tasks.append(task)
         task.resume()
     }
-    
-    func handleResponse(_ data:Data?,_ response:URLResponse?,_ error:Error?, completion: @escaping (Result<Data>) -> Void) {
-        
+
+    func handleResponse(_ data: Data?, _ response: URLResponse?, _ error: Error?, completion: @escaping (Result<Data>) -> Void) {
+
         if let error = error as NSError? {
-            switch error.code{
+            switch error.code {
             case URLError.notConnectedToInternet.rawValue:
                 completion(.failure(AppError.noInternet))
             default:
@@ -96,47 +96,47 @@ class HTTPLayer:HTTPLayerProtocol {
             }
             return
         }
-        
-        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else{
+
+        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
             completion(.failure(AppError.serverError))
             return
         }
-        
+
         if let data = data {
             completion(.success(data))
-        }else{
+        } else {
             completion(.failure(AppError.unknown))
         }
     }
-    
-    func upload(at endpoint: EndpointProtocol, urlSessionDelegate:URLSessionDelegate, completion: @escaping (Result<Data>) -> Void){
-        
-        let request:URLRequest!
-        
-        do{
+
+    func upload(at endpoint: EndpointProtocol, urlSessionDelegate: URLSessionDelegate, completion: @escaping (Result<Data>) -> Void) {
+
+        let request: URLRequest!
+
+        do {
             request = try createUploadRequestFrom(endpoint: endpoint)
-        }catch{
+        } catch {
             completion(.failure(AppError.apiUrlProblem))
             return
         }
-        
+
         guard let dataToUpload = endpoint.httpBody else {
             return
         }
-        
+
         let config=URLSessionConfiguration.default
         let session=URLSession(configuration: config, delegate: urlSessionDelegate, delegateQueue: OperationQueue.main)
-        
+
         let task=session.uploadTask(with: request, from: dataToUpload) { [weak self] (data, response, error) in
-            
+
             self?.handleResponse(data, response, error, completion: completion)
         }
-        
+
         sessions.append(session)
         tasks.append(task)
         task.resume()
     }
-    
+
     func cancelRequests() {
         self.urlSession.invalidateAndCancel()
         for task in self.tasks {
@@ -155,7 +155,7 @@ class HTTPLayer:HTTPLayerProtocol {
         sessions = []
         tasks = []
     }
-    
+
     func cancelRequestAt(index: Int) {
         if sessions.count > index {
             sessions[index].invalidateAndCancel()
@@ -166,13 +166,13 @@ class HTTPLayer:HTTPLayerProtocol {
             tasks.remove(at: index)
         }
     }
-    
-    func findIndexOf(task:URLSessionTask?)->Int?{
+
+    func findIndexOf(task: URLSessionTask?) -> Int? {
         guard let task = task else {
             return nil
         }
 
-        for (index,task) in tasks.enumerated() {
+        for (index, task) in tasks.enumerated() {
             if task == task {
                 return index
             }

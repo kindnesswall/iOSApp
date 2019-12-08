@@ -8,29 +8,28 @@
 
 import UIKit
 
-
 class GiftViewModel: NSObject {
-    
-    let giftListType:GiftListType
+
+    let giftListType: GiftListType
     var gifts=[Gift]()
-    
-    weak var delegate : GiftViewModelDelegate?
-    
+
+    weak var delegate: GiftViewModelDelegate?
+
     var isLoadingGiftsForLazyLoading=false
     var initialGiftsLoadingHasOccurred=false
     var isLoadingGifts=false
-    
+
     var lazyLoadingCount=20
-    
+
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
-    
-    init(giftListType:GiftListType) {
+
+    init(giftListType: GiftListType) {
         self.giftListType = giftListType
     }
-    
-    func handleGetGift(_ result:Result<[Gift]>,_ beforeId:Int?) {
-        
+
+    func handleGetGift(_ result: Result<[Gift]>, _ beforeId: Int?) {
+
         switch result {
         case .failure(let error):
             print(error)
@@ -38,54 +37,54 @@ class GiftViewModel: NSObject {
             self.isLoadingGifts = false
             if beforeId==nil {
                 self.gifts=[]
-                self.delegate?.reloadTableView(viewModel:self)
-                
+                self.delegate?.reloadTableView(viewModel: self)
+
             }
-            self.delegate?.refreshControlAnimation(viewModel:self,isLoading: false)
-        
-            self.delegate?.pageLoadingAnimation(viewModel:self,isLoading: false)
-        
-            self.delegate?.lazyLoadingAnimation(viewModel:self,isLoading: false)
-            
+            self.delegate?.refreshControlAnimation(viewModel: self, isLoading: false)
+
+            self.delegate?.pageLoadingAnimation(viewModel: self, isLoading: false)
+
+            self.delegate?.lazyLoadingAnimation(viewModel: self, isLoading: false)
+
             if gifts.count == self.lazyLoadingCount {
                 self.isLoadingGiftsForLazyLoading=false
             }
-            
+
             var insertedIndexes=[IndexPath]()
             let minCount = self.gifts.count
             for counter in minCount..<minCount+gifts.count {
                 insertedIndexes.append(IndexPath(item: counter, section: 0))
             }
-            
+
             self.gifts.append(contentsOf: gifts)
-            
-            self.delegate?.insertNewItemsToTableView(viewModel:self,insertedIndexes: insertedIndexes)
-            
+
+            self.delegate?.insertNewItemsToTableView(viewModel: self, insertedIndexes: insertedIndexes)
+
         }
-        
+
     }
-    
-    func getGifts(beforeId:Int?){
-        
+
+    func getGifts(beforeId: Int?) {
+
         self.initialGiftsLoadingHasOccurred=true
-        
+
         if isLoadingGiftsForLazyLoading {
             return
         }
         isLoadingGiftsForLazyLoading=true
-        
+
         if beforeId==nil {
-            self.delegate?.pageLoadingAnimation(viewModel:self,isLoading: true)
+            self.delegate?.pageLoadingAnimation(viewModel: self, isLoading: true)
         } else {
-            self.delegate?.lazyLoadingAnimation(viewModel:self,isLoading: true)
+            self.delegate?.lazyLoadingAnimation(viewModel: self, isLoading: true)
         }
-        
+
         let input=GiftsRequestInput()
         input.beforeId = beforeId
         input.count = self.lazyLoadingCount
         isLoadingGifts = true
-        
-        var endPoint:Endpoint!
+
+        var endPoint: Endpoint!
         switch giftListType {
         case .giftsToDonate(let toUserId):
             endPoint = Endpoint.giftsToDonate(toUserId: toUserId, input: input)
@@ -96,37 +95,37 @@ class GiftViewModel: NSObject {
         case .userRegisteredGifts(let userId):
             endPoint = Endpoint.userRegisteredGifts(userId: userId, input: input)
         }
-        
-        apiService.getGifts(endPoint:endPoint) { [weak self] (result) in
-            
+
+        apiService.getGifts(endPoint: endPoint) { [weak self] (result) in
+
             DispatchQueue.main.async {
                 self?.handleGetGift(result, beforeId)
             }
         }
-        
+
     }
-    
-    func reloadGifts(){
+
+    func reloadGifts() {
         if self.initialGiftsLoadingHasOccurred {
             self.httpLayer.cancelRequests()
             isLoadingGiftsForLazyLoading=false
             getGifts(beforeId: nil)
         }
     }
-    
+
 }
 
-extension GiftViewModel : UITableViewDataSource {
-    
+extension GiftViewModel: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.gifts.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let cell = tableView.dequeue(type: GiftTableViewCell.self, for: indexPath)
         cell.filViews(gift: gifts[indexPath.row])
-        
+
         let index=indexPath.row+1
         if index==self.gifts.count {
             if !self.isLoadingGiftsForLazyLoading {
@@ -137,15 +136,15 @@ extension GiftViewModel : UITableViewDataSource {
         }
         return cell
     }
-    
+
 }
 
 protocol GiftViewModelDelegate: class {
-    func pageLoadingAnimation(viewModel:GiftViewModel,isLoading:Bool)
-    func lazyLoadingAnimation(viewModel:GiftViewModel,isLoading:Bool)
-    func refreshControlAnimation(viewModel:GiftViewModel,isLoading:Bool)
-    func showTableView(viewModel:GiftViewModel,show:Bool)
-    func reloadTableView(viewModel:GiftViewModel)
-    func insertNewItemsToTableView(viewModel:GiftViewModel,insertedIndexes:[IndexPath])
-    func presentfailedAlert(viewModel:GiftViewModel,alert:UIAlertController)
+    func pageLoadingAnimation(viewModel: GiftViewModel, isLoading: Bool)
+    func lazyLoadingAnimation(viewModel: GiftViewModel, isLoading: Bool)
+    func refreshControlAnimation(viewModel: GiftViewModel, isLoading: Bool)
+    func showTableView(viewModel: GiftViewModel, show: Bool)
+    func reloadTableView(viewModel: GiftViewModel)
+    func insertNewItemsToTableView(viewModel: GiftViewModel, insertedIndexes: [IndexPath])
+    func presentfailedAlert(viewModel: GiftViewModel, alert: UIAlertController)
 }

@@ -9,14 +9,13 @@
 import Foundation
 
 class Category: Codable {
-    
+
 //    var imageUrl:String?
-    var title:String?
-    var id:Int?
-    
-    init(id:Int?,title:String?) {
+    var title: String?
+    var id: Int?
+
+    init(id: Int?, title: String?) {
         self.id=id
         self.title=title
     }
 }
-

@@ -13,7 +13,6 @@ class CoordinatedNavigationController: UINavigationController {
     weak var coordinator: NavigationCoordinator?
 }
 
-protocol NavigationCoordinator:AnyObject {
+protocol NavigationCoordinator: AnyObject {
     var navigationController: CoordinatedNavigationController { get set }
 }
-

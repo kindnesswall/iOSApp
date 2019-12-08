@@ -9,7 +9,7 @@
 import Foundation
 
 class Address {
-    var address:String {
+    var address: String {
         var address = ""
         if let province = province {
             address = LanguageKeys.province.localizedString + ": " + province + ", "
@@ -22,15 +22,15 @@ class Address {
         }
         return address
     }
-    var province:String?
-    var city:String?
-    var region:String?
+    var province: String?
+    var city: String?
+    var region: String?
 
-    var provinceId:Int?
-    var cityId:Int?
-    var regionId:Int?
-    
-    init(province:Place?,city:Place?,region:Place?){
+    var provinceId: Int?
+    var cityId: Int?
+    var regionId: Int?
+
+    init(province: Place?, city: Place?, region: Place?) {
         self.province=province?.name
         self.provinceId=province?.id
         self.city=city?.name
@@ -38,8 +38,8 @@ class Address {
         self.region=region?.name
         self.regionId=region?.id
     }
-    
-    init(province:String?,city:String?,region:String?){
+
+    init(province: String?, city: String?, region: String?) {
         self.province=province
         self.city=city
         self.region=region

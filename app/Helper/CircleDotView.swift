@@ -11,7 +11,7 @@ import UIKit
 
 @IBDesignable
 class CircledDotView: UIView {
-    
+
     @IBInspectable var mainColor: UIColor = .white {
         didSet {
             self.draw()
@@ -27,37 +27,37 @@ class CircledDotView: UIView {
             self.draw()
         }
     }
-    
-    var rect:CGRect?
-    
+
+    var rect: CGRect?
+
     @IBInspectable var isSelected: Bool = true
-    
+
     func draw() {
         if let rect = rect {
             self.draw(rect)
         }
     }
-    
+
     override func draw(_ rect: CGRect) {
         self.rect = rect
-        
+
         let dotPath = UIBezierPath(ovalIn: rect)
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = dotPath.cgPath
         shapeLayer.fillColor = mainColor.cgColor
         layer.addSublayer(shapeLayer)
-        
+
         if (isSelected) {
             drawRingFittingInsideView(rect: rect)
         }
     }
-    
+
     internal func drawRingFittingInsideView(rect: CGRect) {
         self.rect = rect
 
         let hw: CGFloat = ringThickness / 2
         let circlePath = UIBezierPath(ovalIn: rect.insetBy(dx: hw, dy: hw))
-        
+
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePath.cgPath
         shapeLayer.fillColor = UIColor.clear.cgColor

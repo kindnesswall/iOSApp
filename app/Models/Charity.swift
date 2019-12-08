@@ -10,8 +10,8 @@ import Foundation
 
 class Charity: Codable {
     var id: Int?
-    var userId:Int?
-    var isRejected:Bool?
+    var userId: Int?
+    var isRejected: Bool?
     var imageUrl: String?
     var name: String?
     var manager: String?
@@ -24,7 +24,7 @@ class Charity: Codable {
     var email: String?
     var instagram: String?
     var telegram: String?
-    var twitter:String?
+    var twitter: String?
     var description: String?
-    var updatedAt:String?
+    var updatedAt: String?
 }

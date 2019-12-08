@@ -9,14 +9,13 @@
 import Foundation
 
 class AppInfoOutput: Codable {
-    var smsCenter:String?
+    var smsCenter: String?
 }
 
 class StatisticsOutput: Codable {
-    var statistics:[String:String]?
+    var statistics: [String: String]?
 }
 
 class RegisterOutput: Codable {
-    var remainingSeconds:String?
+    var remainingSeconds: String?
 }
-

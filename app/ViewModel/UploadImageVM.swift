@@ -8,26 +8,25 @@
 
 import UIKit
 
-
-protocol UploadImageVMDelegate : class {
-    func updateUploadImage(percent:Int)
+protocol UploadImageVMDelegate: class {
+    func updateUploadImage(percent: Int)
 }
 
-class UploadImageVM : NSObject {
+class UploadImageVM: NSObject {
 
-    weak var delegate : UploadImageVMDelegate?
+    weak var delegate: UploadImageVMDelegate?
     var apiService = ApiService(HTTPLayer())
 
     var imageUrl: String?
-    
-    func upload(image:UIImage, onSuccess:@escaping ()->(), onFail:(()->())?) {
-        
+
+    func upload(image: UIImage, onSuccess:@escaping ()->Void, onFail:(()->Void)?) {
+
         let imageData = image.jpegData(compressionQuality: 1)
         let imageInput = ImageInput(image: imageData!, imageFormat: .jpeg)
-        
+
         apiService.upload(imageInput: imageInput, urlSessionDelegate: self) { [weak self] (result) in
-            
-            switch(result){
+
+            switch(result) {
             case .failure(let error):
                 print(error)
                 self?.uploadFailed()
@@ -39,33 +38,32 @@ class UploadImageVM : NSObject {
             }
         }
     }
-    
+
     func uploadedSuccessfully() {
-        FlashMessage.showMessage(body: LanguageKeys.uploadedSuccessfully.localizedString,theme: .success)
+        FlashMessage.showMessage(body: LanguageKeys.uploadedSuccessfully.localizedString, theme: .success)
     }
-    
+
     func uploadFailed() {
-        FlashMessage.showMessage(body: LanguageKeys.imageUploadingError.localizedString,theme: .warning)
+        FlashMessage.showMessage(body: LanguageKeys.imageUploadingError.localizedString, theme: .warning)
     }
-    
+
 }
 
+extension UploadImageVM: URLSessionTaskDelegate {
 
-extension UploadImageVM:URLSessionTaskDelegate{
-    
     func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
         print("byte :: \(bytesSent) in : \(totalBytesSent) from : \(totalBytesExpectedToSend)")
-        
+
         var percent = Int(Float(totalBytesSent * 100)/Float(totalBytesExpectedToSend))
         if percent == 100 {
             percent = 99
         }
-        
+
         self.delegate?.updateUploadImage(percent: percent)
     }
-    
+
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        
+
     }
-    
+
 }

@@ -10,37 +10,37 @@ import UIKit
 import CropViewController
 import Kingfisher
 
-extension RegisterGiftViewController:UIImagePickerControllerDelegate{
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        guard let selectedImage = info[.originalImage] as? UIImage else{
+extension RegisterGiftViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+
+        guard let selectedImage = info[.originalImage] as? UIImage else {
             picker.dismiss(animated: true, completion: nil)
             return
         }
-        
+
         let cropViewController = CropViewController(image: selectedImage)
         cropViewController.delegate = self
-        
+
         picker.dismiss(animated: true, completion: nil)
         self.present(cropViewController, animated: true, completion: nil)
     }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
 }
 
-extension RegisterGiftViewController : CropViewControllerDelegate {
-    
+extension RegisterGiftViewController: CropViewControllerDelegate {
+
     public func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
         uploadImage(selectedImage: image)
         self.dismiss(animated: false, completion: nil)
     }
-    
+
     func uploadImage(selectedImage: UIImage) {
-        let _=addUploadImageView(image: selectedImage)
+        _=addUploadImageView(image: selectedImage)
         let index = uploadedImageViews.count - 1
-        
+
         self.vm.upload(
             image: selectedImage,
             onSuccess: { [weak self] (imageUrl) in
@@ -50,42 +50,42 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
                 self?.vm.imageRemovedFromList(index: index)
         })
     }
-    
-    func addUploadImageView(imageSrc:String) -> UploadImageView{
+
+    func addUploadImageView(imageSrc: String) -> UploadImageView {
         let uploadedImageView=initUploadImageView()
-        if let url=URL(string:imageSrc) {
+        if let url=URL(string: imageSrc) {
             uploadedImageView.imageView.kf.setImage(with: url)
         }
         return uploadedImageView
     }
-    
-    func addUploadImageView(image:UIImage) -> UploadImageView{
+
+    func addUploadImageView(image: UIImage) -> UploadImageView {
         let uploadedImageView=initUploadImageView()
         uploadedImageView.imageView.image=image
         return uploadedImageView
     }
-    
-    func initUploadImageView()-> UploadImageView {
+
+    func initUploadImageView() -> UploadImageView {
         let uploadedImageView = (NibLoader.loadViewFromNib(
             name: UploadImageView.identifier,
             owner: self,
             nibType: UploadImageView.self) as? UploadImageView) ?? UploadImageView()
         uploadedImageView.widthAnchor.constraint(equalToConstant: 100).isActive=true
-        
+
         uploadedImageView.delegate=self
-        
+
         self.uploadedImageViews.append(uploadedImageView)
         self.uploadedImageStack.addArrangedSubview(uploadedImageView)
-        
+
         return uploadedImageView
     }
-    
-    func imageViewUploadingHasFinished(uploadImageView:UploadImageView?,imageSrc:String){
+
+    func imageViewUploadingHasFinished(uploadImageView: UploadImageView?, imageSrc: String) {
         self.vm.imagesUrl.append(imageSrc)
         uploadImageView?.uploadFinished()
     }
-    
-    func clearUploadedImages(){
+
+    func clearUploadedImages() {
         for uploadedImageView in uploadedImageViews {
             uploadedImageView.removeFromSuperview()
         }
@@ -94,30 +94,29 @@ extension RegisterGiftViewController : CropViewControllerDelegate {
     }
 }
 
-extension RegisterGiftViewController : UploadImageViewDelegate {
- 
+extension RegisterGiftViewController: UploadImageViewDelegate {
+
     func imageCanceled(imageView: UploadImageView) {
-        guard let index=findIndexOfUploadedImage(imageView:imageView) else {
+        guard let index=findIndexOfUploadedImage(imageView: imageView) else {
             return
         }
         removeImage(index: index)
         vm.imageRemovedFromList(index: index)
     }
-    
-    func removeImage(index:Int) {
+
+    func removeImage(index: Int) {
         self.uploadedImageViews[index].removeFromSuperview()
         self.uploadedImageViews.remove(at: index)
     }
-    
-    func findIndexOfUploadedImage(imageView: UploadImageView)->Int?{
-        
-        for (index,view) in uploadedImageViews.enumerated() {
+
+    func findIndexOfUploadedImage(imageView: UploadImageView) -> Int? {
+
+        for (index, view) in uploadedImageViews.enumerated() {
             if view === imageView {
                 return index
             }
         }
         return nil
-        
+
     }
 }
-

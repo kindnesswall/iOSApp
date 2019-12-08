@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct SendMessageInput:Codable {
-    var chatId:Int
-    var text:String
+struct SendMessageInput: Codable {
+    var chatId: Int
+    var text: String
 }

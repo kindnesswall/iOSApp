@@ -9,6 +9,6 @@
 import Foundation
 
 protocol LoginRegisterViewModelProtocol {
-    func registerUser(with phoneNumber:String, handleResult: @escaping (Result<String?>)->Void)
-    func login(with phoneNumber:String, activationCode:String, verificationId:String?, handleResult: @escaping (Result<AuthOutput>)->Void)
+    func registerUser(with phoneNumber: String, handleResult: @escaping (Result<String?>) -> Void)
+    func login(with phoneNumber: String, activationCode: String, verificationId: String?, handleResult: @escaping (Result<AuthOutput>) -> Void)
 }

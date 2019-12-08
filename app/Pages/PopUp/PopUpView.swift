@@ -9,11 +9,11 @@
 import UIKit
 
 class PopUpView: UIView {
-    
-    weak var controller:PopUpViewController?
-    
-    func initPopUpView(){
-        
+
+    weak var controller: PopUpViewController?
+
+    func initPopUpView() {
+
     }
 
 }

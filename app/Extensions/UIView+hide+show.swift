@@ -13,7 +13,7 @@ extension UIView {
     func hide() {
         self.isHidden = true
     }
-    
+
     func show() {
         self.isHidden = false
     }

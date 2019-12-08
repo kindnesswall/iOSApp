@@ -9,29 +9,29 @@
 import Foundation
 import UIKit
 
-class ChatCoordinator : NavigationCoordinator {
+class ChatCoordinator: NavigationCoordinator {
     var navigationController: CoordinatedNavigationController
-    weak var startNewChatProtocol:StartNewChatProtocol?
-    weak var refreshChatProtocol:RefreshChatProtocol?
-    var rootViewController:ContactsViewController?
-    let blockedChats:Bool
-    init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController(),blockedChats:Bool = false) {
+    weak var startNewChatProtocol: StartNewChatProtocol?
+    weak var refreshChatProtocol: RefreshChatProtocol?
+    var rootViewController: ContactsViewController?
+    let blockedChats: Bool
+    init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController(), blockedChats: Bool = false) {
         self.blockedChats = blockedChats
         self.navigationController = navigationController
         navigationController.coordinator = self
     }
-    
+
     func showRoot() {
         let rootVC = getRootViewController()
         let img = UIImage(named: AppImages.Requests)
         rootVC.tabBarItem = UITabBarItem(title: LanguageKeys.chats.localizedString, image: img, tag: 0)
         navigationController.viewControllers = [rootVC]
     }
-    
+
     func pushRoot() {
         navigationController.pushViewController(getRootViewController(), animated: true)
     }
-    
+
     func getRootViewController() -> ContactsViewController {
         if let rootVC = rootViewController {
             return rootVC
@@ -41,8 +41,8 @@ class ChatCoordinator : NavigationCoordinator {
         self.refreshChatProtocol = rootViewController!
         return rootViewController!
     }
-    
-    func showMessages(viewModel:MessagesViewModel, delegate:MessagesViewControllerDelegate) {
+
+    func showMessages(viewModel: MessagesViewModel, delegate: MessagesViewControllerDelegate) {
         let controller = MessagesViewController()
         controller.viewModel = viewModel
         controller.delegate = delegate

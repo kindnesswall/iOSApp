@@ -9,8 +9,8 @@
 import Foundation
 
 class CharitySignupEditVM: UploadImageVM {
-    var charity:Charity?
-    init(charity:Charity) {
+    var charity: Charity?
+    init(charity: Charity) {
         self.charity = charity
     }
     override init() {
