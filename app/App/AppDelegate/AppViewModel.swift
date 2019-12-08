@@ -35,16 +35,12 @@ class AppViewModel {
     }
 
     func isUserLogedIn() -> Bool {
-        if let _=keychain.get(AppConst.KeyChain.Authorization) {
-            return true
-        }
-        return false
+        return keychain.get(AppConst.KeyChain.Authorization) != nil
     }
 
     func registerForPushNotifications() {
         UNUserNotificationCenter.current()
-            .requestAuthorization(options: [.alert, .sound, .badge]) {
-                [weak self] granted, _ in
+            .requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, _ in
 
                 print("Permission granted: \(granted)")
                 guard granted else { return }
@@ -87,10 +83,7 @@ class AppViewModel {
     }
 
     public func isPasscodeSaved() -> Bool {
-        if let _ = keychain.get(AppConst.KeyChain.PassCode) {
-            return true
-        }
-        return false
+        return keychain.get(AppConst.KeyChain.PassCode) != nil
     }
 
     func isUserWatchedIntro() -> Bool {

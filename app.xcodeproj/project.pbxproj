@@ -70,6 +70,8 @@
 		0580595B2365C7F000B679C4 /* GiftDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580595A2365C7F000B679C4 /* GiftDetailCoordinator.swift */; };
 		0580595D2365D77C00B679C4 /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580595C2365D77C00B679C4 /* MoreViewModel.swift */; };
 		0580595F2367816E00B679C4 /* MyWallCoordiantor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580595E2367816E00B679C4 /* MyWallCoordiantor.swift */; };
+		0593D5AB239C79EE005A4F67 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593D5AA239C79EE005A4F67 /* AppFont.swift */; };
+		0593D5AD239C7A1C005A4F67 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593D5AC239C7A1C005A4F67 /* AppColor.swift */; };
 		0593E50222D54ADF00C3B046 /* Charity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593E50122D54ADF00C3B046 /* Charity.swift */; };
 		0593E50922D54FCB00C3B046 /* CharityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593E50722D54FCB00C3B046 /* CharityListViewController.swift */; };
 		0593E50A22D54FCB00C3B046 /* CharityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0593E50822D54FCB00C3B046 /* CharityListViewController.xib */; };
@@ -335,6 +337,8 @@
 		0580595A2365C7F000B679C4 /* GiftDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetailCoordinator.swift; sourceTree = "<group>"; };
 		0580595C2365D77C00B679C4 /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
 		0580595E2367816E00B679C4 /* MyWallCoordiantor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWallCoordiantor.swift; sourceTree = "<group>"; };
+		0593D5AA239C79EE005A4F67 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		0593D5AC239C7A1C005A4F67 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		0593E50122D54ADF00C3B046 /* Charity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charity.swift; sourceTree = "<group>"; };
 		0593E50722D54FCB00C3B046 /* CharityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityListViewController.swift; sourceTree = "<group>"; };
 		0593E50822D54FCB00C3B046 /* CharityListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityListViewController.xib; sourceTree = "<group>"; };
@@ -958,6 +962,8 @@
 				05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */,
 				0544DD63235B6C2D007AC8F3 /* AppImages.swift */,
 				5247C8AB21E388B2009E8770 /* GithubConstants.swift */,
+				0593D5AA239C79EE005A4F67 /* AppFont.swift */,
+				0593D5AC239C7A1C005A4F67 /* AppColor.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1879,6 +1885,7 @@
 				053892D723186C9C00828372 /* UnblockUserInput.swift in Sources */,
 				607E78912279E25600FF0008 /* ChatTableViewCell + Layout.swift in Sources */,
 				60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */,
+				0593D5AD239C7A1C005A4F67 /* AppColor.swift in Sources */,
 				607E788D2279E25600FF0008 /* MessagesDateTableViewCell + Layout.swift in Sources */,
 				05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */,
 				60FAB8402064EE950039BF61 /* RGVC + uploading images.swift in Sources */,
@@ -1912,6 +1919,7 @@
 				52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */,
 				059B1F462364502C00596BD4 /* TabBarCoordinator.swift in Sources */,
 				607E78A02279E28D00FF0008 /* Chat.swift in Sources */,
+				0593D5AB239C79EE005A4F67 /* AppFont.swift in Sources */,
 				6066C3C522D0B8CF00BCB50A /* PushNotificationRegister.swift in Sources */,
 				6033DA9E22B4F62300D43738 /* AuthOutput.swift in Sources */,
 				05644DCA1FFF02A100B7C853 /* UITableView+isCellVisible.swift in Sources */,

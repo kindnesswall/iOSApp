@@ -47,7 +47,7 @@ class CircledDotView: UIView {
         shapeLayer.fillColor = mainColor.cgColor
         layer.addSublayer(shapeLayer)
 
-        if (isSelected) {
+        if isSelected {
             drawRingFittingInsideView(rect: rect)
         }
     }

@@ -9,7 +9,7 @@
 import UIKit
 import KeychainSwift
 
-protocol LanguageVMDelegate {
+protocol LanguageVMDelegate: class {
     func show(alert: UIAlertController)
     func dismissViewController()
 
@@ -21,7 +21,7 @@ class LanguageVM: NSObject {
     let keychain = KeychainSwift()
     let datasource = [AppLanguage.Persian, AppLanguage.English]
     let datasourceToShow = ["فارسی", "English"]
-    var delegate: LanguageVMDelegate?
+    weak var delegate: LanguageVMDelegate?
 
     var tabBarIsInitialized: Bool!
 
@@ -48,9 +48,10 @@ class LanguageVM: NSObject {
             message: message,
             preferredStyle: UIAlertController.Style.alert)
 
-        alert.addAction(UIAlertAction(title: okBtn, style: UIAlertAction.Style.default, handler: { (_) in
-
-            if let _=self.keychain.get(AppConst.KeyChain.Authorization) {
+        alert.addAction(UIAlertAction(title: okBtn, style: UIAlertAction.Style.default, handler: { [weak self] _ in
+            guard let self = self else { return }
+            
+            if self.keychain.get(AppConst.KeyChain.Authorization) != nil {
                 if AppLanguage.getLanguage() == AppLanguage.English {
                     UIApplication.shared.shortcutItems = [
                         UIApplicationShortcutItem(

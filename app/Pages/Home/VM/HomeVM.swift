@@ -59,7 +59,7 @@ class HomeVM: NSObject {
             return
         }
         apiService.giftRejectedAfterReview(giftId: giftId) { [weak self](result) in
-            switch(result) {
+            switch result {
             case.failure(let error):
                 print(error)
             case.success:
@@ -79,16 +79,14 @@ class HomeVM: NSObject {
             message: LanguageKeys.requestfailDialogText.localizedString,
             preferredStyle: UIAlertController.Style.alert)
 
-        alert.addAction(UIAlertAction(title: LanguageKeys.ok.localizedString, style: UIAlertAction.Style.default, handler: { [weak self] (_) in
+        alert.addAction(UIAlertAction(title: LanguageKeys.ok.localizedString, style: UIAlertAction.Style.default, handler: { [weak self] _ in
             self?.isLoadingGifts=false
             self?.getGifts(beforeId: beforeId)
         }))
 
         if self.gifts.count > 0 {
             self.delegate?.showTableView(show: true)
-            alert.addAction(UIAlertAction(title: LanguageKeys.cancel.localizedString, style: UIAlertAction.Style.default, handler: {
-                //                        [weak self]
-                (_) in
+            alert.addAction(UIAlertAction(title: LanguageKeys.cancel.localizedString, style: UIAlertAction.Style.default, handler: { _ in
                 alert.dismiss(animated: true, completion: {
 
                 })

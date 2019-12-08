@@ -38,7 +38,7 @@ class ChatTableViewCell: UITableViewCell {
     }
 
     func configUserNameLabel() {
-        self.userNameLabel.font = AppConst.Resource.Font.getRegularFont(size: 17)
+        self.userNameLabel.font = AppFont.getRegularFont(size: 17)
         self.userNameLabel.textAlignment = .right
         self.contentView.addSubview(self.userNameLabel)
         self.layoutUserNameLabel()
@@ -47,7 +47,7 @@ class ChatTableViewCell: UITableViewCell {
         self.notificationLabel.backgroundColor = UIColor.blue
         self.notificationLabel.textColor = UIColor.white
         self.notificationLabel.textAlignment = .center
-        self.notificationLabel.font = AppConst.Resource.Font.getRegularFont(size: 15)
+        self.notificationLabel.font = AppFont.getRegularFont(size: 15)
         self.notificationLabel.layer.cornerRadius = 10
         self.notificationLabel.layer.masksToBounds = true
         self.contentView.addSubview(self.notificationLabel)

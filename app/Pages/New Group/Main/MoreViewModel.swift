@@ -14,10 +14,7 @@ class MoreViewModel {
     let keychain = KeychainSwift()
 
     func isLogedin() -> Bool {
-        if let _=keychain.get(AppConst.KeyChain.Authorization) {
-            return true
-        }
-        return false
+        return keychain.get(AppConst.KeyChain.Authorization) != nil
     }
 
     func isAdmin() -> Bool {

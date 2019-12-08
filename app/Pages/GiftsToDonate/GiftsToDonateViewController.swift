@@ -60,7 +60,7 @@ class GiftsToDonateViewController: UIViewController {
 
         apiService.donateGift(id: giftId, toUserId: toUserId) { [weak self](result) in
             DispatchQueue.main.async {
-                switch(result) {
+                switch result {
                 case .failure(let error):
                     print(error)
                 case .success(let gift):

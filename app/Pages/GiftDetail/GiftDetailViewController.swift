@@ -158,7 +158,7 @@ class GiftDetailViewController: UIViewController {
             target: self,
             action: #selector(self.editBtnClicked),
             text: LanguageKeys.edit.localizedString,
-            font: AppConst.Resource.Font.getRegularFont(size: 16)
+            font: AppFont.getRegularFont(size: 16)
         )
 
         self.navigationItem.rightBarButtonItems=[editBtn!]
@@ -186,7 +186,7 @@ class GiftDetailViewController: UIViewController {
 
         controller.isEditMode=true
         controller.vm.editedGift=self.gift
-        controller.editHandler= { [weak self] in
+        controller.editHandler = { [weak self] in
             self?.fillUIWithGift()
             self?.editHandler?()
         }

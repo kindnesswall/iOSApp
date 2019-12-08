@@ -62,7 +62,7 @@ class ContactsViewController: UIViewController {
 
     func configRefreshControl() {
         refreshControl.addTarget(self, action: #selector(self.refreshControlAction), for: .valueChanged)
-        refreshControl.tintColor=AppConst.Resource.Color.Tint
+        refreshControl.tintColor=AppColor.Tint
         tableView.addSubview(refreshControl)
     }
 

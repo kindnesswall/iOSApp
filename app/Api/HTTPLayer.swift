@@ -172,10 +172,8 @@ class HTTPLayer: HTTPLayerProtocol {
             return nil
         }
 
-        for (index, task) in tasks.enumerated() {
-            if task == task {
+        for (index, thisTask) in tasks.enumerated() where thisTask == task {
                 return index
-            }
         }
 
         return nil

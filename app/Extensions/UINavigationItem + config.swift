@@ -10,7 +10,7 @@ import UIKit
 
 extension UINavigationItem {
 
-    static func getNavigationItem(target: AnyObject, action: Selector?, text: String, font: UIFont=AppConst.Resource.Font.getRegularFont(size: 14), color: UIColor=AppConst.Resource.Color.Tint) -> UIBarButtonItem {
+    static func getNavigationItem(target: AnyObject, action: Selector?, text: String, font: UIFont=AppFont.getRegularFont(size: 14), color: UIColor=AppColor.Tint) -> UIBarButtonItem {
 
         let btn = UIBarButtonItem()
 
@@ -26,24 +26,24 @@ extension UINavigationItem {
 
     }
 
-    static func getBackNavigationItem(target: AnyObject, action: Selector?, color: UIColor=AppConst.Resource.Color.Tint) -> UIBarButtonItem {
-        let backBtn=UINavigationItem.getNavigationItem(target: target, action: action, text: "\u{e946}", font: AppConst.Resource.Font.getIcomoonFont(size: 25), color: color)
+    static func getBackNavigationItem(target: AnyObject, action: Selector?, color: UIColor=AppColor.Tint) -> UIBarButtonItem {
+        let backBtn=UINavigationItem.getNavigationItem(target: target, action: action, text: "\u{e946}", font: AppFont.getIcomoonFont(size: 25), color: color)
         return backBtn
     }
 
-    static func getCloseNavigationItem(target: AnyObject, action: Selector?, color: UIColor=AppConst.Resource.Color.Tint) -> UIBarButtonItem {
-        let closeBtn=UINavigationItem.getNavigationItem(target: target, action: action, text: "\u{e900}", font: AppConst.Resource.Font.getIcomoonFont(size: 25), color: color)
+    static func getCloseNavigationItem(target: AnyObject, action: Selector?, color: UIColor=AppColor.Tint) -> UIBarButtonItem {
+        let closeBtn=UINavigationItem.getNavigationItem(target: target, action: action, text: "\u{e900}", font: AppFont.getIcomoonFont(size: 25), color: color)
         return closeBtn
     }
 
-    func setRightBtn(target: AnyObject, action: Selector?, text: String, font: UIFont=AppConst.Resource.Font.getRegularFont(size: 14), color: UIColor=AppConst.Resource.Color.Tint) {
+    func setRightBtn(target: AnyObject, action: Selector?, text: String, font: UIFont=AppFont.getRegularFont(size: 14), color: UIColor=AppColor.Tint) {
 
         let btn=UINavigationItem.getNavigationItem(target: target, action: action, text: text, font: font, color: color)
 
         self.rightBarButtonItems=[btn]
     }
 
-    func setLeftBtn(target: AnyObject, action: Selector?, text: String, font: UIFont=AppConst.Resource.Font.getRegularFont(size: 14), color: UIColor=AppConst.Resource.Color.Tint) {
+    func setLeftBtn(target: AnyObject, action: Selector?, text: String, font: UIFont=AppFont.getRegularFont(size: 14), color: UIColor=AppColor.Tint) {
 
         let btn=UINavigationItem.getNavigationItem(target: target, action: action, text: text, font: font, color: color)
 

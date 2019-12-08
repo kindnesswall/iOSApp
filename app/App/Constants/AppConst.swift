@@ -16,27 +16,6 @@ struct AppConst {
         case others
     }
 
-    struct Resource {
-        struct Font {
-            static func getRegularFont(size: CGFloat) -> UIFont {
-                return UIFont(name: "IRANSansMobile", size: size)!
-            }
-            static func getLightFont(size: CGFloat) -> UIFont {
-                return UIFont(name: "IRANSansMobile-Light", size: size)!
-            }
-            static func getBoldFont(size: CGFloat) -> UIFont {
-                return UIFont(name: "IRANSansMobile-Bold", size: size)!
-            }
-            static func getIcomoonFont(size: CGFloat) -> UIFont {
-                return UIFont(name: "icomoon", size: size)!
-            }
-        }
-        struct Color {
-            static let Tint=UIColor(named: "TintColor")!
-            static let GreyBg=UIColor(named: "GrayBackgroundColor")!
-        }
-    }
-
     struct KeyChain {
         static let Authorization: String = "Authorization"
         public static let UserID: String = "USER_ID"

@@ -86,7 +86,7 @@ class LoginRegisterViewController: UIViewController {
 //        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationItem.title=LanguageKeys.login.localizedString
         self.navigationItem.removeDefaultBackBtn()
-        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppConst.Resource.Font.getIcomoonFont(size: 24))
+        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
     }
 
     @objc func exitBtnAction() {
@@ -105,7 +105,7 @@ class LoginRegisterViewController: UIViewController {
 
         self.phoneNumberTextField.attributedPlaceholder = nsAttr
 
-        self.registerBtn.backgroundColor=AppConst.Resource.Color.Tint
+        self.registerBtn.backgroundColor=AppColor.Tint
 
     }
 
@@ -142,10 +142,10 @@ class LoginRegisterViewController: UIViewController {
         self.registerBtn.setTitle(LanguageKeys.sendingActivationCode.localizedString, for: [])
         self.loading.stopAnimating()
 
-        switch(result) {
+        switch result {
         case .failure(let error):
             var bodyString: String = "Error"
-            switch(error) {
+            switch error {
             case .serverError:
                 bodyString = LanguageKeys.activationCodeTryAgainOneMinuteLater.localizedString
             default:

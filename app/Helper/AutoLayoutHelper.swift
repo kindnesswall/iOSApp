@@ -21,10 +21,10 @@ class AutoLayoutHelper {
     }
 
     func addConstantConstraint<T>(firstAnchor: NSLayoutAnchor<T>,
-                                   secondAnchor: NSLayoutAnchor<T>,
-                              equationType: EquationType,
-                              constant: CGFloat,
-                              priority: UILayoutPriority? = nil) {
+                                  secondAnchor: NSLayoutAnchor<T>,
+                                  equationType: EquationType,
+                                  constant: CGFloat,
+                                  priority: UILayoutPriority? = nil) {
 
         let constraint: NSLayoutConstraint
         switch equationType {
@@ -41,9 +41,9 @@ class AutoLayoutHelper {
     }
 
     func addDimension(dimension: NSLayoutDimension,
-                                         equationType: EquationType,
-                                         constant: CGFloat,
-                                         priority: UILayoutPriority? = nil) {
+                      equationType: EquationType,
+                      constant: CGFloat,
+                      priority: UILayoutPriority? = nil) {
 
         let constraint: NSLayoutConstraint
         switch equationType {
@@ -60,10 +60,10 @@ class AutoLayoutHelper {
     }
 
     func addXAxisMultiplierConstraint(viewAnchor: NSLayoutXAxisAnchor,
-                                   superViewAnchor: NSLayoutXAxisAnchor,
-                                   equationType: EquationType = .equal,
-                                   multiplier: CGFloat = 1,
-                                   priority: UILayoutPriority? = nil) {
+                                      superViewAnchor: NSLayoutXAxisAnchor,
+                                      equationType: EquationType = .equal,
+                                      multiplier: CGFloat = 1,
+                                      priority: UILayoutPriority? = nil) {
 
         let constraint: NSLayoutConstraint
         switch equationType {
@@ -82,10 +82,10 @@ class AutoLayoutHelper {
     }
 
     func addYAxisMultiplierConstraint(viewAnchor: NSLayoutYAxisAnchor,
-                                   superViewAnchor: NSLayoutYAxisAnchor,
-                                   equationType: EquationType = .equal,
-                                   multiplier: CGFloat = 1,
-                                   priority: UILayoutPriority? = nil) {
+                                      superViewAnchor: NSLayoutYAxisAnchor,
+                                      equationType: EquationType = .equal,
+                                      multiplier: CGFloat = 1,
+                                      priority: UILayoutPriority? = nil) {
 
         let constraint: NSLayoutConstraint
         switch equationType {
@@ -104,15 +104,15 @@ class AutoLayoutHelper {
     }
 
     func addConstraints(firstView: UIView,
-                               secondView: UIView,
-                               leading: CGFloat?,
-                               trailing: CGFloat?,
-                               top: CGFloat?,
-                               bottom: CGFloat?,
-                               leadingPriority: UILayoutPriority? = nil,
-                               trailingPriority: UILayoutPriority? = nil,
-                               topPriority: UILayoutPriority? = nil,
-                               bottomPriority: UILayoutPriority? = nil) {
+                        secondView: UIView,
+                        leading: CGFloat?,
+                        trailing: CGFloat?,
+                        top: CGFloat?,
+                        bottom: CGFloat?,
+                        leadingPriority: UILayoutPriority? = nil,
+                        trailingPriority: UILayoutPriority? = nil,
+                        topPriority: UILayoutPriority? = nil,
+                        bottomPriority: UILayoutPriority? = nil) {
 
         if let leading=leading {
             let leadingConstraint = firstView.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: leading)
@@ -134,7 +134,7 @@ class AutoLayoutHelper {
     }
 
     func activateConstraint(constraint: NSLayoutConstraint,
-                                   priority: UILayoutPriority? = nil) {
+                            priority: UILayoutPriority? = nil) {
         if let priority = priority {
             constraint.priority = priority
         }

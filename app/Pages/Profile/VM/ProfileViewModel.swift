@@ -17,7 +17,7 @@ class ProfileViewModel: UploadImageVM {
 
     }
 
-    func uploadThe(image: UIImage, onSuccess:@escaping ()->Void, onFail:(()->Void)?) {
+    func uploadThe(image: UIImage, onSuccess:@escaping () -> Void, onFail:(() -> Void)?) {
 
         self.upload(image: image, onSuccess: { [weak self] in
             self?.updateUser(name: self?.username, completion: { (result) in

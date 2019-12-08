@@ -62,7 +62,7 @@ class RegisterGiftViewModel: NSObject {
         if giftHasNewAddress {
 
             let addressObject=self.getAddress()
-            guard let address=addressObject?.address else {
+            guard addressObject?.address != nil else {
                 return (nil, LanguageKeys.addressError.localizedString)
             }
             guard let provinceId=addressObject?.provinceId, provinceId != 0 else {
@@ -126,14 +126,14 @@ class RegisterGiftViewModel: NSObject {
         apiService.registerGift(gift, completion: completion)
     }
 
-    func uploadToIranServers(image: UIImage, onSuccess:@escaping (String)->Void, onFail:(()->Void)?) {
+    func uploadToIranServers(image: UIImage, onSuccess:@escaping (String) -> Void, onFail:(() -> Void)?) {
 
         let imageData = image.jpegData(compressionQuality: 1)
         let imageInput = ImageInput(image: imageData!, imageFormat: .jpeg)
 
         apiService.upload(imageInput: imageInput, urlSessionDelegate: self) { [weak self] (result) in
 
-            switch(result) {
+            switch result {
             case .failure(let error):
                 print(error)
                 self?.uploadFailed()
@@ -154,7 +154,7 @@ class RegisterGiftViewModel: NSObject {
         apiService.cancelRequestAt(index: index)
     }
 
-    func upload(image: UIImage, onSuccess:@escaping (String)->Void, onFail:(()->Void)?) {
+    func upload(image: UIImage, onSuccess:@escaping (String) -> Void, onFail:(() -> Void)?) {
 
         uploadToIranServers(image: image, onSuccess: { (url) in
             onSuccess(url)

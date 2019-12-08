@@ -8,7 +8,7 @@ public class DateHandler {
         var birthdate=""
         var day = birthdayDay
 
-        if(day.count == 1) {
+        if day.count == 1 {
             day = "0"+day
         }
 
@@ -166,7 +166,7 @@ public class DateHandler {
 
         let currentDate = self.getFaDate(faDate: currentTime)
         let logOutDate = self.getFaDate(faDate: logOutTime)
-        if(currentDate != logOutDate) {
+        if currentDate != logOutDate {
             let date = DateHandler.getFaDate(faDate: logOutTime)
             logOutTxt = "آخرین بازدید در تاریخ" + " " + date
         } else {

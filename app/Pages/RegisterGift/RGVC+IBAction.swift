@@ -75,12 +75,12 @@ extension RegisterGiftViewController {
         let controller=OptionsListViewController()
         let viewModel = PlaceListViewModel(placeType: .province, showCities: true, showRegions: false, hasDefaultOption: false)
         controller.viewModel=viewModel
-        controller.completionHandler= { [weak self] (id, name) in
+        controller.completionHandler = { [weak self] (id, name) in
             let place=Place(id: id, name: name)
             self?.vm.places.append(place)
             self?.addGiftPlace(place: place)
         }
-        controller.closeHandler= { [weak self] in
+        controller.closeHandler = { [weak self] in
             self?.clearGiftPlaces()
         }
         let nc=UINavigationController(rootViewController: controller)
@@ -92,7 +92,7 @@ extension RegisterGiftViewController {
         let controller=OptionsListViewController()
         let viewModel = CategoryListVM(hasDefaultOption: false)
         controller.viewModel=viewModel
-        controller.completionHandler= { [weak self] (id, name) in
+        controller.completionHandler = { [weak self] (id, name) in
             self?.categoryBtn.setTitle(name, for: .normal)
             self?.vm.category=Category(id: id, title: name)
         }
@@ -104,7 +104,7 @@ extension RegisterGiftViewController {
         let controller=OptionsListViewController()
         let viewModel = DateStatusListViewModel()
         controller.viewModel=viewModel
-        controller.completionHandler= { [weak self] (id, name) in
+        controller.completionHandler = { [weak self] (id, name) in
             self?.dateStatusBtn.setTitle(name, for: .normal)
             self?.vm.dateStatus=DateStatus(id: id, title: name)
         }

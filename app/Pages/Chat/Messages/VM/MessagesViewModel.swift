@@ -43,10 +43,8 @@ class MessagesViewModel {
 
     private var localNotificationCount: Int {
         var number = 0
-        for each in self.messages {
-            if each.senderId != self.userId, each.ack == false, each.hasSeen ?? false == false {
-                number+=1
-            }
+        for each in self.messages where (each.senderId != self.userId && each.ack == false && each.hasSeen ?? false == false) {
+            number+=1
         }
         return number
     }
@@ -161,7 +159,7 @@ class MessagesViewModel {
 
     private func removeSendingMessageFromSendingQueue(message: TextMessage) {
 
-        if let index = self.sendingQueue.firstIndex (where: {each in findSameText(message: message, each: each)}) {
+        if let index = self.sendingQueue.firstIndex(where: {each in findSameText(message: message, each: each)}) {
             self.sendingQueue.remove(at: index)
         }
     }

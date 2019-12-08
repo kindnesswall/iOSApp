@@ -51,7 +51,7 @@ class MyWallTableViewSegment: UIView {
 
     func configRefreshControl(refreshControl: UIRefreshControl, tableView: UITableView, action: Selector) {
         refreshControl.addTarget(self, action: action, for: .valueChanged)
-        refreshControl.tintColor=AppConst.Resource.Color.Tint
+        refreshControl.tintColor=AppColor.Tint
         tableView.addSubview(refreshControl)
     }
 

@@ -152,16 +152,16 @@ enum Endpoint: EndpointProtocol {
     var httpMethod: String {
         switch self {
         case .getProvinces, .getCitiesOfProvince, .getCategories, .getRegions, .requestGift, .requestGiftStatus, .getProfile, .charityList, .statistics, .getUserStatistics, .getContacts, .getBlockContacts:
-            return HttpMethod.GET.rawValue
+            return HttpMethod.get.rawValue
 
         case .registerUser, .login, .firebaseLogin, .registerGift, .donateGift, .giftsToDonate, .userRegisteredGifts, .userReceivedGifts, .userDonatedGifts, .sendTextMessage, .sendAck, .fetchMessages, .registerPush, .giftsToReview, .sendPushNotif, .updateUser, .chatSendMessage, .chatAckMessage, .getGifts, .requestPhoneNumberChange, .validatePhoneNumberChange, .uploadImage:
-            return HttpMethod.POST.rawValue
+            return HttpMethod.post.rawValue
 
         case .editGift, .giftReviewApproved, .acceptCharity, .rejectCharity, .unBlockUserAccess, .unBlockChat, .blockChat, .giftReviewRejected:
-            return HttpMethod.PUT.rawValue
+            return HttpMethod.put.rawValue
 
         case .removeGift, .blockUserAccess:
-            return HttpMethod.DELETE.rawValue
+            return HttpMethod.delete.rawValue
         }
     }
 

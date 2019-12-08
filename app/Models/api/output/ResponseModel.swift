@@ -1,11 +1,11 @@
 import Foundation
 
-class ResponseModel<Model:Codable>: Codable {
+class ResponseModel<Model: Codable>: Codable {
     var status: Int?
     var result: Model?
 }
 
-class DictionaryResponseModel<Model:Codable>: Codable {
+class DictionaryResponseModel<Model: Codable>: Codable {
     var status: Int?
     var result: [String: Model]?
 

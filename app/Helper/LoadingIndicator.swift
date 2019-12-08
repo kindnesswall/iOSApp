@@ -20,7 +20,7 @@ public class LoadingIndicator {
         case left
     }
 
-    init(view: UIView, offset: CGFloat=0, color: UIColor=AppConst.Resource.Color.Tint) {
+    init(view: UIView, offset: CGFloat=0, color: UIColor=AppColor.Tint) {
 
         loadingIndicatorType = .view
 
@@ -41,7 +41,7 @@ public class LoadingIndicator {
 
     }
 
-    init(viewBelowTableView: UIView, cellHeight: CGFloat, color: UIColor=AppConst.Resource.Color.Tint) {
+    init(viewBelowTableView: UIView, cellHeight: CGFloat, color: UIColor=AppColor.Tint) {
 
         loadingIndicatorType = .view
 
@@ -65,7 +65,7 @@ public class LoadingIndicator {
 
     }
 
-    init(navigationItem: UINavigationItem, type: NavigationItemType, replacedNavigationBarButton: UIBarButtonItem?, color: UIColor=AppConst.Resource.Color.Tint) {
+    init(navigationItem: UINavigationItem, type: NavigationItemType, replacedNavigationBarButton: UIBarButtonItem?, color: UIColor=AppColor.Tint) {
 
         self.navigationItem=navigationItem
         self.replacedNavigationBarButton=replacedNavigationBarButton

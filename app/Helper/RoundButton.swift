@@ -35,7 +35,7 @@ import UIKit
         }
     }
 
-    @IBInspectable var customBorderColor: UIColor = UIColor.init (red: 0, green: 122/255, blue: 255/255, alpha: 1) {
+    @IBInspectable var customBorderColor: UIColor = UIColor.init(red: 0, green: 122/255, blue: 255/255, alpha: 1) {
         didSet {
             refreshBorderColor(colorBorder: customBorderColor)
         }

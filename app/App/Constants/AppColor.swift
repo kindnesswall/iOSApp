@@ -6,4 +6,9 @@
 //  Copyright © 2019 Hamed.Gh. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+struct AppColor {
+    static let Tint=UIColor(named: "TintColor")!
+    static let GreyBg=UIColor(named: "GrayBackgroundColor")!
+}

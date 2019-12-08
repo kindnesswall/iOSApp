@@ -105,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         launchedShortcutItem = nil
 
-        if (application.applicationIconBadgeNumber != 0) {
+        if application.applicationIconBadgeNumber != 0 {
             application.applicationIconBadgeNumber = 0
         }
     }

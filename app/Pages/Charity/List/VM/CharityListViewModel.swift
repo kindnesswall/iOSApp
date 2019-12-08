@@ -15,9 +15,9 @@ class CharityListViewModel: NSObject {
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
 
-    func getList(compeletionHandler: @escaping ()->Void) {
+    func getList(compeletionHandler: @escaping () -> Void) {
         apiService.getCharityList { [weak self](result) in
-            switch(result) {
+            switch result {
             case .failure(let error):
                 print(error)
             case.success(let charities):

@@ -509,5 +509,4 @@ class AppLiteral {
             return "Open Source"
         }
     }
-
 }

@@ -81,7 +81,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
 
     func getRegions(_ cityId: Int, _ completionHandler:(() -> Void)?) {
         apiService.getRegions(cityId) { [weak self](result) in
-            switch(result) {
+            switch result {
             case .failure(let error):
                 // FIXME: Plz Handle me
                 print(error)
@@ -104,7 +104,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
 
     func getProvinces(_ completionHandler:(() -> Void)?) {
         apiService.getProvinces { [weak self](result) in
-            switch(result) {
+            switch result {
             case .failure(let error):
                 // FIXME: Plz Handle me
                 print(error)
@@ -127,7 +127,7 @@ class PlaceListViewModel: NSObject, OptionsListViewModelProtocol {
 
     func getCitieOfProvince(id: Int, _ completionHandler:(() -> Void)?) {
         apiService.getCitieOfProvince(id: id) { [weak self](result) in
-            switch(result) {
+            switch result {
             case .failure(let error):
                 // FIXME: Plz Handle me
                 print(error)

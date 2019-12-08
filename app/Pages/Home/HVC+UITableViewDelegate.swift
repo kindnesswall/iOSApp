@@ -31,7 +31,7 @@ extension HomeViewController: UITableViewDelegate {
         return action
     }
 
-    func approveAction(rowIndex: IndexPath, handler: @escaping (Bool)->Void) {
+    func approveAction(rowIndex: IndexPath, handler: @escaping (Bool) -> Void) {
         self.vm.giftApprovedAfterReview(rowNumber: rowIndex.row, completion: { [weak self] (result) in
             switch result {
             case .failure:
@@ -58,7 +58,7 @@ extension HomeViewController: UITableViewDelegate {
         return action
     }
 
-    func rejectAction(rowIndex: IndexPath, handler: @escaping (Bool)->Void) {
+    func rejectAction(rowIndex: IndexPath, handler: @escaping (Bool) -> Void) {
         self.vm.giftRejectedAfterReview(rowNumber: rowIndex.row, completion: { [weak self] (result) in
             switch result {
             case .failure:

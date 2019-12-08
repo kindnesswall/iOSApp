@@ -29,7 +29,7 @@ class MoreViewController: UIViewController {
     }
 
     @IBAction func showReviewQueue(_ sender: Any) {
-        guard let _=keychain.get(AppConst.KeyChain.Authorization) else {
+        guard keychain.get(AppConst.KeyChain.Authorization) != nil else {
             AppDelegate.me().showLoginVC()
             return
         }
@@ -46,12 +46,12 @@ class MoreViewController: UIViewController {
     }
 
     @IBAction func showMyProfile(_ sender: Any) {
-        guard let _=keychain.get(AppConst.KeyChain.Authorization) else {
+        guard keychain.get(AppConst.KeyChain.Authorization) != nil else {
             AppDelegate.me().showLoginVC()
             return
         }
 
-        let controller = ProfileViewController ()
+        let controller = ProfileViewController()
         let nc = UINavigationController.init(rootViewController: controller)
         self.tabBarController?.present(nc, animated: true, completion: nil)
 
@@ -81,7 +81,7 @@ class MoreViewController: UIViewController {
 
     @IBAction func logoutBtnClicked(_ sender: Any) {
 
-        if let _=keychain.get(AppConst.KeyChain.Authorization) { //UserDefaults.standard.string(forKey: AppConstants.Authorization) {
+        if keychain.get(AppConst.KeyChain.Authorization) != nil { 
 
             let alert = UIAlertController(
                 title: LocalizationSystem.getStr(forKey: LanguageKeys.logout_dialog_title),
@@ -142,7 +142,7 @@ class MoreViewController: UIViewController {
     }
 
     func setLoginLogoutBtnTitle() {
-        if let _=keychain.get(AppConst.KeyChain.Authorization) {
+        if keychain.get(AppConst.KeyChain.Authorization) != nil {
             loginLogoutBtn.setTitle(
                 LocalizationSystem.getStr(forKey: LanguageKeys.logout) +
                     AppLanguage.getNumberString(
@@ -153,7 +153,7 @@ class MoreViewController: UIViewController {
     }
 
     func setPasscodeBtnVisiblity() {
-        if let _=keychain.get(AppConst.KeyChain.Authorization) {
+        if keychain.get(AppConst.KeyChain.Authorization) != nil {
             passcodeTouchIDBtn.show()
         } else {
             passcodeTouchIDBtn.hide()
@@ -200,7 +200,7 @@ class MoreViewController: UIViewController {
 
     func getRepoInfo() {
         let userInfo = UserInfoQuery()
-        apollo.fetch(query: userInfo) { [weak self](result, error) in
+        apollo.fetch(query: userInfo) { (result, error) in
             print("RepoInfo:")
             if let error = error {
                 print(error)

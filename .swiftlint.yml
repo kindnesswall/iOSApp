@@ -2,5 +2,11 @@ excluded:
   - Carthage
   - Pods
   - app/API.swift
+  
+disabled_rules:
+    - trailing_whitespace
+
+identifier_name:
+    min_length: 2
 
 line_length: 200

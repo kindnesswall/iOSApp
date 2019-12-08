@@ -43,7 +43,7 @@ class MoreCoordinator: NavigationCoordinator {
     }
 
     func showProfile() {
-        let controller = ProfileViewController ()
+        let controller = ProfileViewController()
         let nc = UINavigationController.init(rootViewController: controller)
         navigationController.present(nc, animated: true, completion: nil)
     }
@@ -84,7 +84,7 @@ class MoreCoordinator: NavigationCoordinator {
         self.navigationController.pushViewController(controller, animated: true)
     }
 
-    func showLogoutAlert(onConfirm : @escaping ()->Void) {
+    func showLogoutAlert(onConfirm : @escaping () -> Void) {
         let alert = UIAlertController(
             title: LanguageKeys.logoutDialogTitle.localizedString,
             message: LanguageKeys.logoutDialogText.localizedString,

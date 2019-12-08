@@ -118,7 +118,7 @@ class PopUpViewController: UIViewController {
             let height=self.view.frame.height
             UIView.animate(withDuration: 0.35, animations: {
                 self.popUpView?.center.y = (1.5*height)
-            }) { (_) in
+            }) { _ in
                 self.dismiss(animated: false, completion: completion)
             }
 
@@ -126,7 +126,7 @@ class PopUpViewController: UIViewController {
 
             UIView.animate(withDuration: 0.1, animations: {
                 self.popUpView?.alpha=0
-            }) { (_) in
+            }) { _ in
                 self.dismiss(animated: false, completion: completion)
             }
         }

@@ -51,8 +51,7 @@ class GiftTableViewCell: UITableViewCell {
             self.giftImage.kf.setImage(
                 with: url,
                 placeholder: UIImage(named: AppImages.Placeholder),
-                options: [.transition(.fade(0.6))], progressBlock: { [weak self]
-                    receivedSize, totalSize in
+                options: [.transition(.fade(0.6))], progressBlock: { [weak self] receivedSize, totalSize in
 
                     let percentage = (Float(receivedSize) / Float(totalSize)) // * 100.0
                     if percentage == 1 {

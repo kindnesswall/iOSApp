@@ -86,7 +86,7 @@ class VerificationCodeViewController: UIViewController {
         //        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationItem.title=LanguageKeys.login.localizedString
         self.navigationItem.removeDefaultBackBtn()
-        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppConst.Resource.Font.getIcomoonFont(size: 24))
+        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
     }
 
     @objc func exitBtnAction() {
@@ -123,10 +123,10 @@ class VerificationCodeViewController: UIViewController {
         self.registerBtn.setTitle(LanguageKeys.registeringActivationCode.localizedString, for: [])
         self.registerLoading.stopAnimating()
 
-        switch(result) {
+        switch result {
         case .failure(let error):
             var msg = "Error"
-            switch(error) {
+            switch error {
             case .serverError:
                 msg = LanguageKeys.activationCodeIncorrectError.localizedString
 
@@ -162,10 +162,10 @@ class VerificationCodeViewController: UIViewController {
         self.sendAgainBtn.setTitle(LanguageKeys.resendActivationCode.localizedString, for: [])
         self.resendLoading.stopAnimating()
 
-        switch(result) {
+        switch result {
         case .failure(let error):
             var errorMsg = "Error"
-            switch(error) {
+            switch error {
             case .serverError:
                 errorMsg = LanguageKeys.activationCodeTryAgainOneMinuteLater.localizedString
 
@@ -198,18 +198,18 @@ class VerificationCodeViewController: UIViewController {
 
     func customizeUIElements() {
         self.verifyCodeTextField.backgroundColor=UIColor.clear
-        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string: LanguageKeys.activationCode.localizedString, attributes: [NSAttributedString.Key.font: AppConst.Resource.Font.getLightFont(size: 13), NSAttributedString.Key.foregroundColor: UIColor.gray])
+        self.verifyCodeTextField.attributedPlaceholder=NSAttributedString(string: LanguageKeys.activationCode.localizedString, attributes: [NSAttributedString.Key.font: AppFont.getLightFont(size: 13), NSAttributedString.Key.foregroundColor: UIColor.gray])
 
-        self.registerBtn.backgroundColor=AppConst.Resource.Color.Tint
+        self.registerBtn.backgroundColor=AppColor.Tint
 
-        self.returnBtn.setTitleColor(AppConst.Resource.Color.Tint, for: UIControl.State())
-        self.sendAgainBtn.setTitleColor(AppConst.Resource.Color.Tint, for: UIControl.State())
+        self.returnBtn.setTitleColor(AppColor.Tint, for: UIControl.State())
+        self.sendAgainBtn.setTitleColor(AppColor.Tint, for: UIControl.State())
 
-        UIFunctions.setBordersStyle(view: self.registerBtn, radius: 10, width: 1, color: AppConst.Resource.Color.Tint)
+        UIFunctions.setBordersStyle(view: self.registerBtn, radius: 10, width: 1, color: AppColor.Tint)
 
-        UIFunctions.setBordersStyle(view: self.returnBtn, radius: 10, width: 1, color: AppConst.Resource.Color.Tint)
+        UIFunctions.setBordersStyle(view: self.returnBtn, radius: 10, width: 1, color: AppColor.Tint)
 
-        UIFunctions.setBordersStyle(view: self.sendAgainBtn, radius: 10, width: 1, color: AppConst.Resource.Color.Tint)
+        UIFunctions.setBordersStyle(view: self.sendAgainBtn, radius: 10, width: 1, color: AppColor.Tint)
     }
 
 }

@@ -81,7 +81,7 @@ class HomeViewController: UIViewController {
 
     func configRefreshControl() {
         self.refreshControl.addTarget(self, action: #selector(self.refreshControlAction), for: .valueChanged)
-        refreshControl.tintColor=AppConst.Resource.Color.Tint
+        refreshControl.tintColor=AppColor.Tint
         self.tableview.addSubview(refreshControl)
     }
 
@@ -103,11 +103,11 @@ class HomeViewController: UIViewController {
             target: self,
             action: #selector(self.categoryFilterBtnClicked),
             text: LanguageKeys.allGifts.localizedString,
-            font: AppConst.Resource.Font.getRegularFont(size: 16)
+            font: AppFont.getRegularFont(size: 16)
         )
         self.navigationItem.rightBarButtonItems=[categotyBarBtn!]
 
-        provinceBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LanguageKeys.allProvinces.localizedString, font: AppConst.Resource.Font.getRegularFont(size: 16))
+        provinceBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LanguageKeys.allProvinces.localizedString, font: AppFont.getRegularFont(size: 16))
         self.navigationItem.leftBarButtonItems=[provinceBarBtn!]
     }
 
@@ -116,7 +116,7 @@ class HomeViewController: UIViewController {
         let controller=OptionsListViewController()
         let viewModel = CategoryListVM(hasDefaultOption: true)
         controller.viewModel=viewModel
-        controller.completionHandler= { [weak self] (id, name) in
+        controller.completionHandler = { [weak self] (id, name) in
 
             print("Selected Category id: \(id?.description ?? "")")
             self?.vm.categoryId=id
@@ -134,7 +134,7 @@ class HomeViewController: UIViewController {
         let controller=OptionsListViewController()
         let viewModel = PlaceListViewModel(placeType: .province, showCities: false, showRegions: false, hasDefaultOption: true)
         controller.viewModel=viewModel
-        controller.completionHandler= { [weak self] (id, name) in
+        controller.completionHandler = { [weak self] (id, name) in
 
             print("Selected province id: \(id?.description ?? "")")
             self?.vm.provinceId=id

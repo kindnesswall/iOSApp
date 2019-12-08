@@ -67,7 +67,7 @@ class MessagesViewController: UIViewController, MessagesDelegate {
 //            target: self,
 //            action: #selector(self.donateGiftBtnTapped),
 //            text:LanguageKeys.DonateGift.localizedString,
-//            font:AppConst.Resource.Font.getRegularFont(size: 16)
+//            font:AppFont.getRegularFont(size: 16)
 //        )
 
 //        self.navigationItem.rightBarButtonItems=[donateGiftBarBtn!]

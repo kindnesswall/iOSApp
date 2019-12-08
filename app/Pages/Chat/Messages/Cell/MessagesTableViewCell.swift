@@ -80,7 +80,7 @@ class MessagesTableViewCell: UITableViewCell {
     }
 
     func configMessageTextLabel(type: MessageUserType) {
-        self.messageText.font = AppConst.Resource.Font.getRegularFont(size: 17)
+        self.messageText.font = AppFont.getRegularFont(size: 17)
         self.messageText.numberOfLines = 0
         self.messageText.textAlignment = .right
         self.messageContentView.addSubview(self.messageText)
@@ -88,7 +88,7 @@ class MessagesTableViewCell: UITableViewCell {
     }
 
     func configTimeLabel(type: MessageUserType) {
-        self.timeLabel.font = AppConst.Resource.Font.getLightFont(size: 12)
+        self.timeLabel.font = AppFont.getLightFont(size: 12)
         self.timeLabel.textAlignment = .right
         self.messageContentView.addSubview(self.timeLabel)
         self.layoutTimeLabel(type: type)
@@ -102,7 +102,7 @@ class MessagesTableViewCell: UITableViewCell {
     }
 
     func configIsNewMessageLabels() {
-        self.isNewMessageLabel.font = AppConst.Resource.Font.getRegularFont(size: 15)
+        self.isNewMessageLabel.font = AppFont.getRegularFont(size: 15)
         self.isNewMessageLabel.textAlignment = .center
         self.isNewMessageLabel.text = LanguageKeys.newMessage.localizedString
 

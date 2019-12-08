@@ -28,7 +28,7 @@ class LockViewController: UIViewController {
 
     @IBOutlet weak var fingerPrintBtn: UIButton!
 
-    var onPasscodeCorrect:(()->Void)?
+    var onPasscodeCorrect:(() -> Void)?
 
     let touchMe = BiometricIDAuth()
 
@@ -56,10 +56,7 @@ class LockViewController: UIViewController {
 
     @IBAction func bioAuthBtnClicked(_ sender: Any) {
         touchMe.authenticateUser { [weak self] (msg) in
-
-            if let _ = msg {
-
-            } else {
+            if msg == nil {
                 self?.onPasscodeCorrect?()
                 self?.dismiss(animated: true, completion: nil)
             }
@@ -76,20 +73,18 @@ class LockViewController: UIViewController {
         switch mode {
         case .setPassCode:
             if isReEnterPasscode {
-                for index in 0...(circles.count - 1) {
-                    if passcode[index] != reEnterPasscode[index] {
-                        passwordCounter = -1
-                        clearCircles()
+                for index in 0...(circles.count - 1) where passcode[index] != reEnterPasscode[index] {
+                    passwordCounter = -1
+                    clearCircles()
 
-                        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 
-                        mainTitleLbl.text = LanguageKeys.EnterAPasscode.localizedString
-                        isReEnterPasscode = false
+                    mainTitleLbl.text = LanguageKeys.EnterAPasscode.localizedString
+                    isReEnterPasscode = false
 
-                        passcode.removeAll()
-                        reEnterPasscode.removeAll()
-                        return
-                    }
+                    passcode.removeAll()
+                    reEnterPasscode.removeAll()
+                    return
                 }
                 savePasscode()
                 self.dismiss(animated: true, completion: nil)

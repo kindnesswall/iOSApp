@@ -111,10 +111,8 @@ extension RegisterGiftViewController: UploadImageViewDelegate {
 
     func findIndexOfUploadedImage(imageView: UploadImageView) -> Int? {
 
-        for (index, view) in uploadedImageViews.enumerated() {
-            if view === imageView {
-                return index
-            }
+        for (index, view) in uploadedImageViews.enumerated() where view === imageView {            
+            return index
         }
         return nil
 
