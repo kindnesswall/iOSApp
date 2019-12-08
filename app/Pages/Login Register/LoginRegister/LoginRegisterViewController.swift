@@ -86,7 +86,7 @@ class LoginRegisterViewController: UIViewController {
 //        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationItem.title=LanguageKeys.login.localizedString
         self.navigationItem.removeDefaultBackBtn()
-        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
+        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.get(.icomoon, size: 24))
     }
 
     @objc func exitBtnAction() {
@@ -98,7 +98,7 @@ class LoginRegisterViewController: UIViewController {
 
         self.phoneNumberTextField.backgroundColor=UIColor.clear
 
-        let uiFont = UIFont(name: "IRANSansMobile-Medium", size: 13)
+        let uiFont = AppFont.get(.iranSansMedium, size: 13)
         let attr = [NSAttributedString.Key.font: uiFont!, NSAttributedString.Key.foregroundColor: UIColor.gray]
 
         let nsAttr = NSAttributedString(string: "", attributes: attr)

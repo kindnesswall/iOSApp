@@ -19,7 +19,7 @@ class MyWallSegmentControl: UIView {
 
     func configSegmentControl() {
         self.segmentControl.tintColor=AppColor.Tint
-        self.segmentControl.setTitleTextAttributes([NSAttributedString.Key.font: AppFont.getLightFont(size: 13)], for: .normal)
+        self.segmentControl.setTitleTextAttributes([NSAttributedString.Key.font: AppFont.get(.iranSansLight, size: 13)], for: .normal)
     }
 
     @IBAction func segmentChangedAction(_ sender: Any) {

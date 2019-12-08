@@ -101,11 +101,11 @@ class HomeViewController: UIViewController {
             target: self,
             action: #selector(self.categoryFilterBtnClicked),
             text: LanguageKeys.allGifts.localizedString,
-            font: AppFont.getRegularFont(size: 16)
+            font: AppFont.get(.iranSansRegular, size: 16)
         )
         self.navigationItem.rightBarButtonItems=[categotyBarBtn!]
 
-        provinceBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LanguageKeys.allProvinces.localizedString, font: AppFont.getRegularFont(size: 16))
+        provinceBarBtn=UINavigationItem.getNavigationItem(target: self, action: #selector(self.cityFilterBtnClicked), text: LanguageKeys.allProvinces.localizedString, font: AppFont.get(.iranSansRegular, size: 16))
         self.navigationItem.leftBarButtonItems=[provinceBarBtn!]
     }
 

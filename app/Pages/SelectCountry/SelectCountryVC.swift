@@ -38,7 +38,7 @@ class SelectCountryVC: UIViewController {
     lazy var okBtn: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("Select", for: .normal)
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        btn.titleLabel?.font = AppFont.get(.systemBold, size: 18)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(onSelectBtnClicked), for: .touchUpInside)
         return btn

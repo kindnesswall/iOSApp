@@ -156,7 +156,7 @@ class GiftDetailViewController: UIViewController {
             target: self,
             action: #selector(self.editBtnClicked),
             text: LanguageKeys.edit.localizedString,
-            font: AppFont.getRegularFont(size: 16)
+            font: AppFont.get(.iranSansRegular, size: 16)
         )
 
         self.navigationItem.rightBarButtonItems=[editBtn!]

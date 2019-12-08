@@ -8,7 +8,7 @@ class NavigationBarStyle {
     public static func setDefaultStyle(navigationC: UINavigationController?) {
 //        navigationC?.navigationBar.barTintColor=AppColor.tintColor
         navigationC?.navigationBar.tintColor=AppColor.Tint
-        navigationC?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: AppFont.getBoldFont(size: 17), NSAttributedString.Key.foregroundColor: AppColor.Tint]
+        navigationC?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: AppFont.get(.iranSansBold, size: 17), NSAttributedString.Key.foregroundColor: AppColor.Tint]
     }
 
     // MARK: - Color
@@ -54,8 +54,8 @@ class NavigationBarStyle {
         backBtn.target=target
         backBtn.action=action
 
-        backBtn.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "icomoon", size: 25)!, NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())
-        backBtn.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "icomoon", size: 25)!, NSAttributedString.Key.foregroundColor: UIColor.white], for: .highlighted)
+        backBtn.setTitleTextAttributes([NSAttributedString.Key.font: AppFont.get(.icomoon, size: 25), NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())
+        backBtn.setTitleTextAttributes([NSAttributedString.Key.font: AppFont.get(.icomoon, size: 25), NSAttributedString.Key.foregroundColor: UIColor.white], for: .highlighted)
 
         //        titleBackBtn.setTitleTextAttributes([NSFontAttributeName : UIFont(name: "IranSans-Light", size: 15)!,NSForegroundColorAttributeName: UIColor.white], for: UIControlState())
 
@@ -68,7 +68,7 @@ class NavigationBarStyle {
 
     }
 
-    public static func setLeftBtn(navigationItem: UINavigationItem, target: AnyObject, action: Selector?, text: String, font: UIFont=AppFont.getBoldFont(size: 14)) {
+    public static func setLeftBtn(navigationItem: UINavigationItem, target: AnyObject, action: Selector?, text: String, font: UIFont=AppFont.get(.iranSansBold, size: 14)) {
 
         let btn=NavigationBarStyle.getNavigationItem(target: target, action: action, text: text, font: font)
 
@@ -76,7 +76,7 @@ class NavigationBarStyle {
 
     }
 
-    public static func setRightBtn(navigationItem: UINavigationItem, target: AnyObject, action: Selector?, text: String, font: UIFont=AppFont.getBoldFont(size: 14)) {
+    public static func setRightBtn(navigationItem: UINavigationItem, target: AnyObject, action: Selector?, text: String, font: UIFont=AppFont.get(.iranSansBold, size: 14)) {
 
         let btn=NavigationBarStyle.getNavigationItem(target: target, action: action, text: text, font: font)
 
@@ -84,7 +84,7 @@ class NavigationBarStyle {
 
     }
 
-    public static func getNavigationItem(target: AnyObject, action: Selector?, text: String, font: UIFont=AppFont.getBoldFont(size: 14)) -> UIBarButtonItem {
+    public static func getNavigationItem(target: AnyObject, action: Selector?, text: String, font: UIFont=AppFont.get(.iranSansBold, size: 14)) -> UIBarButtonItem {
 
         let btn=UIBarButtonItem()
 

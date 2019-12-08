@@ -179,7 +179,7 @@ class ProfileViewController: UIViewController {
 
         self.navigationItem.removeDefaultBackBtn()
 
-        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.getIcomoonFont(size: 24))
+        self.navigationItem.setRightBtn(target: self, action: #selector(self.exitBtnAction), text: "", font: AppFont.get(.icomoon, size: 24))
     }
 
     @objc func exitBtnAction() {

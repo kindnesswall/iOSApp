@@ -25,7 +25,7 @@ class MessagesDateTableViewCell: UITableViewCell {
     }
 
     func configDateLabel() {
-        dateLabel.font = AppFont.getRegularFont(size: 14)
+        dateLabel.font = AppFont.get(.iranSansRegular, size: 14)
         dateLabel.textColor = UIColor.gray
         dateLabel.textAlignment = .center
         self.contentView.addSubview(dateLabel)

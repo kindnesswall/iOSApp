@@ -98,8 +98,8 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         view.imageView.image = UIImage(named: AppImages.Intro + "\(index)")
 
         //Set the font and color for the labels:
-        view.title.font = AppFont.getBoldFont(size: 22)
-        view.subTitle.font = AppFont.getRegularFont(size: 14)
+        view.title.font = AppFont.get(.iranSansBold, size: 22)
+        view.subTitle.font = AppFont.get(.iranSansRegular, size: 14)
 
         //Set the text in the page:
         view.title.text = titleArray[index]
@@ -117,10 +117,10 @@ extension IntroViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         overlay.continueButton.addTarget(self, action: #selector(handleContinue), for: .touchUpInside)
 
         //Setup for the overlay buttons:
-        overlay.continueButton.titleLabel?.font = AppFont.getBoldFont(size: 16)
+        overlay.continueButton.titleLabel?.font = AppFont.get(.iranSansBold, size: 16)
         overlay.continueButton.setTitleColor(UIColor.white, for: .normal)
         overlay.skipButton.setTitleColor(UIColor.white, for: .normal)
-        overlay.skipButton.titleLabel?.font = AppFont.getRegularFont(size: 16)
+        overlay.skipButton.titleLabel?.font = AppFont.get(.iranSansRegular, size: 16)
 
         overlay.continueButton.setTitle(
            LanguageKeys.yes.localizedString,
