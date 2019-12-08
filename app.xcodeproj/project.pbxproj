@@ -607,7 +607,6 @@
 				054B1B461FCC29B3007570EF /* ٰViews */,
 				054B1B581FCC44E3007570EF /* Models */,
 				054B1B4B1FCC3B60007570EF /* Fonts */,
-				05DDD3DC1F921D03006C5E31 /* Api */,
 				0507C8691F8C1A920084CDF1 /* Assets.xcassets */,
 				0507C86E1F8C1A920084CDF1 /* Info.plist */,
 				52DD768521C5109B00C2E012 /* InfoPlist.strings */,
@@ -973,6 +972,7 @@
 		0593D5AE239C802B005A4F67 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				05DDD3DC1F921D03006C5E31 /* Api */,
 				0593D5AF239C8054005A4F67 /* UserDefaultService.swift */,
 				0593DB03239C813000C9622F /* KeychainService.swift */,
 			);

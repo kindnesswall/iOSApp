@@ -94,7 +94,7 @@ class GiftDetailViewController: UIViewController {
         createSlideShow()
         fillUIWithGift()
 
-        if let myIdString=KeychainService().get(.userId), let myId=Int(myIdString), let userId=gift?.userId, myId==userId {
+        if vm.isItMy(userId: gift?.userId) {
             self.addEditBtn()
             self.setRequestBtnState(state: .hide)
             self.removeBtn.show()
@@ -105,7 +105,7 @@ class GiftDetailViewController: UIViewController {
     }
 
     func checkRequestStatus() {
-        guard AppDelegate.me().appCoordinator.checkForLogin(), let giftId = gift?.id else {
+        guard vm.isUserLogedIn(), let giftId = gift?.id else {
             self.setRequestBtnState(state: .isNotRequested)
             return
         }
