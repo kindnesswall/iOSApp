@@ -9,7 +9,6 @@
 import UIKit
 import AudioToolbox
 import CryptoSwift
-import KeychainSwift
 
 class LockViewController: UIViewController {
 
@@ -32,7 +31,7 @@ class LockViewController: UIViewController {
 
     let touchMe = BiometricIDAuth()
 
-    let keychain = KeychainSwift()
+    let keychainService = KeychainService()
     var isCancelable: Bool = true
     var passwordCounter: Int = -1 {
         didSet {
@@ -140,7 +139,7 @@ class LockViewController: UIViewController {
     }
 
     func savePasscode() {
-        self.keychain.set(hashPasscode(), forKey: AppConst.KeyChain.PassCode)
+        self.keychainService.set(.passCode, value: hashPasscode())
     }
 
     func hashPasscode() -> String {
@@ -160,7 +159,7 @@ class LockViewController: UIViewController {
         }
 
         let passCodeHash: String = "\(pass).\(salt)".sha256()
-        let lastSavedPasscodeHash: String = self.keychain.get(AppConst.KeyChain.PassCode) ?? ""
+        let lastSavedPasscodeHash: String = self.keychainService.get(.passCode) ?? ""
         if passCodeHash == lastSavedPasscodeHash {
             return true
         }

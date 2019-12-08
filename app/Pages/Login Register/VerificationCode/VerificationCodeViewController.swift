@@ -10,6 +10,8 @@ import UIKit
 
 class VerificationCodeViewController: UIViewController {
 
+    let keychainService = KeychainService()
+    
     var requestId: String!
     var session: URLSession?
 
@@ -139,7 +141,7 @@ class VerificationCodeViewController: UIViewController {
 
         case .success(let authOutput):
 
-            AppDelegate.me().appViewModel.saveToKeychain(authOutput)
+            keychainService.set(authOutput)
             AppDelegate.me().appViewModel.registerPush()
             AppDelegate.me().appCoordinator.refreshAppAfterSwitchUser()
 

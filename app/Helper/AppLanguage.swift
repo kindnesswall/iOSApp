@@ -6,8 +6,7 @@
 //  Copyright © 2018 Hamed.Gh. All rights reserved.
 //
 
-import Foundation
-import KeychainSwift
+import UIKit
 
 extension String {
     var localizedNumber: String {

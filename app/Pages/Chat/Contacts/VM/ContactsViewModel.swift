@@ -8,8 +8,6 @@
 
 import UIKit
 
-import KeychainSwift
-
 class ContactsViewModel: NSObject {
 
     var userId: Int
@@ -25,7 +23,7 @@ class ContactsViewModel: NSObject {
     var initialContactsHasLoaded = false
 
     init(blockedChats: Bool) {
-        let userId = Int(KeychainSwift().get(AppConst.KeyChain.UserID) ?? "")
+        let userId = Int(KeychainService().get(.userId) ?? "")
         self.userId = userId ?? -1
 
         network = ContactsRestfulViewModel(blockedChats: blockedChats)

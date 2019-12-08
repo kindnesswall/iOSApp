@@ -8,11 +8,10 @@
 
 import Foundation
 import UIKit
-import KeychainSwift
 
 class TabBarController: UITabBarController {
 
-    let keychain = KeychainSwift()
+    let keychainService = KeychainService()
     let tabBarViewModel = TabBarViewModel()
 
     var tabBarCoordinator: TabBarCoordinator?
@@ -46,7 +45,7 @@ extension TabBarController: UITabBarControllerDelegate {
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
 
-        if !AppDelegate.me().appViewModel.isUserLogedIn(), tabBarViewModel.isAuthenticationMandatory(for: viewController) {
+        if !keychainService.isUserLogedIn(), tabBarViewModel.isAuthenticationMandatory(for: viewController) {
                 tabBarCoordinator?.showLoginView()
             return false
         }

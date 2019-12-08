@@ -12,7 +12,9 @@ import UIKit
 class TabBarCoordinator: TabCoordinator {
     lazy var tabBarController = TabBarController(tabBarCoordinator: self)
     var appCoordinator: AppCoordinatorProtocol
-
+    
+    let keychainService = KeychainService()
+    
     let home = HomeCoordinator()
 //    let charities = CharitiesCoordinator()
     let donateGiftCoordinator = DonateGiftCoordinator()
@@ -32,7 +34,7 @@ class TabBarCoordinator: TabCoordinator {
     }
 
     func checkForLogin() -> Bool {
-        if AppDelegate.me().appViewModel.isUserLogedIn() {
+        if keychainService.isUserLogedIn() {
             return true
         }
         showLoginView()

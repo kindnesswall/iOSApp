@@ -7,16 +7,15 @@
 //
 
 import UIKit
-import KeychainSwift
 import UserNotifications
 import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    static let uDStandard = UserDefaults.standard
-
-    let keychain = KeychainSwift()
+    let keychainService = KeychainService()
+    let userDefaultService = UserDefaultService()
+    
     var isActiveAfterBioAuth: Bool = false
     var currentTime: Time?
 
@@ -30,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         appCoordinator.showTabBar()
 
-        if !appViewModel.isUserWatchedIntro() {
+        if !userDefaultService.isUserWatchedIntro() {
             appCoordinator.showIntro()
-            appViewModel.userWatchedIntro()
+            userDefaultService.userWatchedIntro()
         }
     }
 
@@ -44,10 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //---- temporary -------
         AppCountry.setCountry(current: .iran)
-        appViewModel.languageSelected()
+        userDefaultService.languageSelected()
         //---- end of temporary -------
 
-        if appViewModel.isItFirstTimeAppOpen() {
+        if userDefaultService.isItFirstTimeAppOpen() {
             appViewModel.appOpenForTheFirstTime()
         }
 
@@ -69,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func checkLanguageSelectedOrNot() {
-        if appViewModel.isLanguageSelected() {
+        if userDefaultService.isLanguageSelected() {
             showTabbarIntro()
         } else {
             appCoordinator.showSelectLanguageVC()
@@ -94,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("\n\napplicationDidBecomeActive\n\n")
 
-        if appViewModel.isPasscodeSaved(), !isActiveAfterBioAuth {
+        if keychainService.isPasscodeSaved(), !isActiveAfterBioAuth {
             appCoordinator.showLockVC()
         }
         isActiveAfterBioAuth = false

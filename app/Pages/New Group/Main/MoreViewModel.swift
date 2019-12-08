@@ -7,18 +7,17 @@
 //
 
 import Foundation
-import KeychainSwift
 import Apollo
 
 class MoreViewModel {
-    let keychain = KeychainSwift()
+    let keychainService = KeychainService()
 
     func isLogedin() -> Bool {
-        return keychain.get(AppConst.KeyChain.Authorization) != nil
+        return keychainService.isUserLogedIn()
     }
 
     func isAdmin() -> Bool {
-        return keychain.getBool(AppConst.KeyChain.IsAdmin) ?? false
+        return keychainService.isAdmin()
     }
 
     func getVersionBuildNo() -> String {

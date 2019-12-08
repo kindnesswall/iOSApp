@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KeychainSwift
 
 class ProfileViewModel: UploadImageVM {
 
@@ -45,7 +44,7 @@ class ProfileViewModel: UploadImageVM {
     }
 
     func getProfile(completion: @escaping (Result<UserProfile>) -> Void) {
-        if let userId = KeychainSwift().get(AppConst.KeyChain.UserID), let id = Int(userId) {
+        if let userId = KeychainService().get(.userId), let id = Int(userId) {
             apiService.getUserProfile(userId: id) { [weak self](result) in
                 switch result {
                 case .failure(let error):

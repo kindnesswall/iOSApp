@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import KeychainSwift
 
 class MoreCoordinator: NavigationCoordinator {
     var navigationController: CoordinatedNavigationController

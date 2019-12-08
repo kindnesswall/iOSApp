@@ -10,7 +10,7 @@ import UIKit
 
 class LoginRegisterViewController: UIViewController {
 
-    let userDefault=UserDefaults.standard
+    let userDefaultService = UserDefaultService()
     @IBOutlet weak var countryCodeInput: ShakingTextField!
     @IBOutlet weak var guideLabel: UILabel!
     @IBOutlet weak var phoneNumberTextField: ShakingTextField!
@@ -52,7 +52,7 @@ class LoginRegisterViewController: UIViewController {
 
         self.phoneNumberTextField.keyboardType = UIKeyboardType.numberPad
 
-        if let phoneNumber = userDefault.string(forKey: AppConst.UserDefaults.PhoneNumber) {
+        if let phoneNumber = userDefaultService.getString(.phoneNumber) {
             phoneNumberTextField.text =  AppLanguage.getNumberString(number: phoneNumber)
         }
 
@@ -117,8 +117,7 @@ class LoginRegisterViewController: UIViewController {
             return
         }
 
-        userDefault.set(mobile, forKey: AppConst.UserDefaults.PhoneNumber)
-        userDefault.synchronize()
+        userDefaultService.set(.phoneNumber, value: mobile)
 
         countryCode = countryCodeInput.text?.castNumberToEnglish() ?? ""
         guard countryCode != "" else {

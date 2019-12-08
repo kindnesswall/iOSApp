@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KeychainSwift
 
 protocol LanguageVMDelegate: class {
     func show(alert: UIAlertController)
@@ -18,7 +17,7 @@ protocol LanguageVMDelegate: class {
 }
 
 class LanguageVM: NSObject {
-    let keychain = KeychainSwift()
+    let keychainService = KeychainService()
     let datasource = [AppLanguage.Persian, AppLanguage.English]
     let datasourceToShow = ["فارسی", "English"]
     weak var delegate: LanguageVMDelegate?
@@ -51,7 +50,7 @@ class LanguageVM: NSObject {
         alert.addAction(UIAlertAction(title: okBtn, style: UIAlertAction.Style.default, handler: { [weak self] _ in
             guard let self = self else { return }
             
-            if self.keychain.get(AppConst.KeyChain.Authorization) != nil {
+            if self.keychainService.get(.authorization) != nil {
                 if AppLanguage.getLanguage() == AppLanguage.English {
                     UIApplication.shared.shortcutItems = [
                         UIApplicationShortcutItem(
@@ -95,9 +94,7 @@ class LanguageVM: NSObject {
     }
 
     func selectLanguage(index: Int) {
-        UserDefaults.standard.set(true, forKey: AppConst.UserDefaults.WatchedSelectLanguage)
-        UserDefaults.standard.synchronize()
-
+        UserDefaultService().watchedSelectLanguage()
         if datasource[index] == AppLanguage.getLanguage() {
 
             languageHasNotChanged()

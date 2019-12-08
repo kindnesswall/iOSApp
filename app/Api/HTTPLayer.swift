@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import KeychainSwift
 
 protocol HTTPLayerProtocol {
     func request(at endpoint: EndpointProtocol, completion: @escaping (Result<Data>) -> Void)
@@ -21,6 +20,7 @@ protocol HTTPLayerProtocol {
 
 class HTTPLayer: HTTPLayerProtocol {
 
+    let keychainService = KeychainService()
     var urlSession: URLSession
     var tasks: [URLSessionDataTask] = []
     var sessions: [URLSession]=[]
@@ -32,7 +32,7 @@ class HTTPLayer: HTTPLayerProtocol {
     func setRequestHeader(request: URLRequest) -> URLRequest {
         var newRequest=request
         newRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        if let authorization=KeychainSwift().get(AppConst.KeyChain.Authorization) {
+        if let authorization=keychainService.get(.authorization) {
             newRequest.setValue(authorization, forHTTPHeaderField: AppConst.KeyChain.Authorization)
         }
         return newRequest

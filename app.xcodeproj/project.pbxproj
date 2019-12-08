@@ -49,7 +49,6 @@
 		05444E4C231BBD0C006E5E09 /* CharityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05444E4B231BBD0C006E5E09 /* CharityDetailViewModel.swift */; };
 		05444E50231BBD5E006E5E09 /* CharityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05444E4F231BBD5E006E5E09 /* CharityListViewModel.swift */; };
 		0544DD64235B6C2D007AC8F3 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544DD63235B6C2D007AC8F3 /* AppImages.swift */; };
-		054825A1235F86C6006C0E37 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054825A0235F86C6006C0E37 /* Storyboarded.swift */; };
 		054825A3235F9822006C0E37 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054825A2235F9822006C0E37 /* AppCoordinator.swift */; };
 		054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */; };
 		054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */; };
@@ -72,6 +71,8 @@
 		0580595F2367816E00B679C4 /* MyWallCoordiantor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580595E2367816E00B679C4 /* MyWallCoordiantor.swift */; };
 		0593D5AB239C79EE005A4F67 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593D5AA239C79EE005A4F67 /* AppFont.swift */; };
 		0593D5AD239C7A1C005A4F67 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593D5AC239C7A1C005A4F67 /* AppColor.swift */; };
+		0593D5B0239C8054005A4F67 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593D5AF239C8054005A4F67 /* UserDefaultService.swift */; };
+		0593DB04239C813000C9622F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593DB03239C813000C9622F /* KeychainService.swift */; };
 		0593E50222D54ADF00C3B046 /* Charity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593E50122D54ADF00C3B046 /* Charity.swift */; };
 		0593E50922D54FCB00C3B046 /* CharityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593E50722D54FCB00C3B046 /* CharityListViewController.swift */; };
 		0593E50A22D54FCB00C3B046 /* CharityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0593E50822D54FCB00C3B046 /* CharityListViewController.xib */; };
@@ -316,7 +317,6 @@
 		05444E4B231BBD0C006E5E09 /* CharityDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityDetailViewModel.swift; sourceTree = "<group>"; };
 		05444E4F231BBD5E006E5E09 /* CharityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityListViewModel.swift; sourceTree = "<group>"; };
 		0544DD63235B6C2D007AC8F3 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
-		054825A0235F86C6006C0E37 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		054825A2235F9822006C0E37 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftTableViewCell.swift; sourceTree = "<group>"; };
 		054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Light.ttf; sourceTree = "<group>"; };
@@ -339,6 +339,8 @@
 		0580595E2367816E00B679C4 /* MyWallCoordiantor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWallCoordiantor.swift; sourceTree = "<group>"; };
 		0593D5AA239C79EE005A4F67 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		0593D5AC239C7A1C005A4F67 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		0593D5AF239C8054005A4F67 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
+		0593DB03239C813000C9622F /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		0593E50122D54ADF00C3B046 /* Charity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charity.swift; sourceTree = "<group>"; };
 		0593E50722D54FCB00C3B046 /* CharityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityListViewController.swift; sourceTree = "<group>"; };
 		0593E50822D54FCB00C3B046 /* CharityListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityListViewController.xib; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 				5246724921E342660086F327 /* API.swift */,
 				5246725221E349A40086F327 /* Users.graphql */,
 				52DD768721C6428300C2E012 /* GoogleService-Info.plist */,
+				0593D5AE239C802B005A4F67 /* Services */,
 				05A13838235E512800A1C277 /* Coordinator */,
 				05029ED41FE9A663004D96B1 /* CustomViews */,
 				05BFBBCD1FDB112800DBCDDF /* Extensions */,
@@ -881,7 +884,6 @@
 		05444E52231BD5BB006E5E09 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				054825A2235F9822006C0E37 /* AppCoordinator.swift */,
 				0507C8621F8C1A920084CDF1 /* AppDelegate.swift */,
 				6066C3BA22C7B23400BCB50A /* AppDelegate + Notification.swift */,
 				059B1F492364640800596BD4 /* AppViewModel.swift */,
@@ -968,6 +970,15 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		0593D5AE239C802B005A4F67 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0593D5AF239C8054005A4F67 /* UserDefaultService.swift */,
+				0593DB03239C813000C9622F /* KeychainService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		0593E50322D54F2D00C3B046 /* Charity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1015,7 +1026,6 @@
 			children = (
 				054C6B982364ABF8009DF9A6 /* NavigationCoordinator.swift */,
 				054C6B962364ABA0009DF9A6 /* TabCoordinator.swift */,
-				054825A0235F86C6006C0E37 /* Storyboarded.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -1097,6 +1107,7 @@
 		05BFBBC41FDAA49E00DBCDDF /* App */ = {
 			isa = PBXGroup;
 			children = (
+				054825A2235F9822006C0E37 /* AppCoordinator.swift */,
 				054C6B9323649A87009DF9A6 /* Constants */,
 				05444E52231BD5BB006E5E09 /* AppDelegate */,
 				0523117A22A3EAF600A22157 /* AppError.swift */,
@@ -1775,6 +1786,7 @@
 				05644DC61FFEFA2E00B7C853 /* DateHandler.swift in Sources */,
 				0523117422A33A4800A22157 /* HomeVM+UITableViewDataSource.swift in Sources */,
 				607E78A12279E28D00FF0008 /* AckMessage.swift in Sources */,
+				0593DB04239C813000C9622F /* KeychainService.swift in Sources */,
 				053C46F12291D11200074761 /* ProfileViewModel.swift in Sources */,
 				60C972ED21C9ACC700A8D1C5 /* GiftViewModel.swift in Sources */,
 				05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */,
@@ -1877,7 +1889,6 @@
 				60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */,
 				607E78922279E25600FF0008 /* MessagesTableViewCell + Layout.swift in Sources */,
 				604FB5BF228B6DBE00795CE2 /* Donate.swift in Sources */,
-				054825A1235F86C6006C0E37 /* Storyboarded.swift in Sources */,
 				0523117B22A3EAF600A22157 /* AppError.swift in Sources */,
 				059B1F4823645E8C00596BD4 /* TabBarViewModel.swift in Sources */,
 				0563277623466DE700545CAF /* ValidatePhoneNumberChangeIntput.swift in Sources */,
@@ -1930,6 +1941,7 @@
 				05BFBBE21FE26B0500DBCDDF /* Category.swift in Sources */,
 				601F83D12036A8BE00F9118B /* DateStatus.swift in Sources */,
 				60E7E4BD22999D160047344D /* FetchMessagesInput.swift in Sources */,
+				0593D5B0239C8054005A4F67 /* UserDefaultService.swift in Sources */,
 				60DE9F50239BDEFD002F3A87 /* BindingWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

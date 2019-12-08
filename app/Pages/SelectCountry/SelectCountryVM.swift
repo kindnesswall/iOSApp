@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import KeychainSwift
 
 protocol SelectCountryDelegate: class {
     func dismissViewController()
 }
 
 class SelectCountryVM: NSObject {
-    let keychain = KeychainSwift()
     let datasource = AppConst.Country.allCases
     var tabBarIsInitialized: Bool!
     weak var delegate: SelectCountryDelegate?

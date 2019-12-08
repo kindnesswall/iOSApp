@@ -138,9 +138,7 @@ class RegisterGiftViewController: UIViewController {
         self.descriptionTextView.text=""
         self.priceTextView.text=""
 
-        let userDefault=UserDefaults.standard
-        userDefault.set(nil, forKey: AppConst.UserDefaults.RegisterGiftDraft)
-        userDefault.synchronize()
+        UserDefaultService().delete(.registerGiftDraft)
     }
 
     @objc func saveBarBtnAction() {

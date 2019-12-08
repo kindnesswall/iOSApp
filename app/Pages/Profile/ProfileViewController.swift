@@ -8,7 +8,6 @@
 
 import UIKit
 import Kingfisher
-import KeychainSwift
 import XLActionController
 
 class ProfileViewController: UIViewController {
@@ -124,7 +123,7 @@ class ProfileViewController: UIViewController {
             case .success(let myProfile):
                 DispatchQueue.main.async {
                     self.username = myProfile.name
-                    self.phoneLabel.text = UserDefaults.standard.string(forKey: AppConst.UserDefaults.PhoneNumber)
+                    self.phoneLabel.text = UserDefaultService().getString(.phoneNumber)
                     self.usernameTextField.text = myProfile.name
                     if let path = myProfile.image {
                         self.avatarImageView.kf.setImage(with: URL(string: path), placeholder: UIImage(named: AppImages.BlankAvatar))

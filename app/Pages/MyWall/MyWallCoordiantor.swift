@@ -8,9 +8,9 @@
 
 import Foundation
 import UIKit
-import KeychainSwift
 
 class MyWallCoordinator: NavigationCoordinator {
+    let keychainService = KeychainService()
     var navigationController: CoordinatedNavigationController
 
     init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {
@@ -20,7 +20,7 @@ class MyWallCoordinator: NavigationCoordinator {
 
     func showMyWall() {
         let viewController = MyWallViewController(myWallCoordinator: self)
-        viewController.userId = Int(KeychainSwift().get(AppConst.KeyChain.UserID) ?? "")
+        viewController.userId = Int(keychainService.get(.userId) ?? "")
 
         let img = UIImage(named: AppImages.MyWall)
         viewController.tabBarItem = UITabBarItem(title: LanguageKeys.tabBarMyWall.localizedString, image: img, tag: 0)

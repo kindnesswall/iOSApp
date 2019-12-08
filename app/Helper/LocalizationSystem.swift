@@ -18,7 +18,8 @@ extension String {
 class LocalizationSystem: NSObject {
 
     var bundle: Bundle!
-
+    let userDefaultService = UserDefaultService()
+    
     static func getStr(forKey: String) -> String {
         return LocalizationSystem.sharedInstance.localizedStringForKey(key: forKey)
     }
@@ -55,11 +56,10 @@ class LocalizationSystem: NSObject {
     // If this function is not called it will use the default OS language.
     // If the language does not exists y returns the default OS language.
     func setLanguage(languageCode: String) {
-        var appleLanguages = (UserDefaults.standard.object(forKey: AppConst.UserDefaults.AppleLanguages) as? [String]) ?? [""]
+        var appleLanguages = userDefaultService.getLanguages()
         appleLanguages.remove(at: 0)
         appleLanguages.insert(languageCode, at: 0)
-        UserDefaults.standard.set(appleLanguages, forKey: AppConst.UserDefaults.AppleLanguages)
-        UserDefaults.standard.synchronize() //needs restrat
+        userDefaultService.set(.appleLanguages, value: appleLanguages)
 
         if let languageDirectoryPath = Bundle.main.path(forResource: languageCode, ofType: "lproj") {
             bundle = Bundle.init(path: languageDirectoryPath)
@@ -77,7 +77,7 @@ class LocalizationSystem: NSObject {
     // MARK: - getLanguage
     // Just gets the current setted up language.
     func getLanguage() -> String {
-        let appleLanguages = (UserDefaults.standard.object(forKey: AppConst.UserDefaults.AppleLanguages) as? [String]) ?? [""]
+        let appleLanguages = userDefaultService.getLanguages()
         let prefferedLanguage = appleLanguages[0]
         if prefferedLanguage.contains("-") {
             let array = prefferedLanguage.components(separatedBy: "-")

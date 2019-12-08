@@ -8,9 +8,7 @@
 
 import UIKit
 import ImageSlideshow
-import KeychainSwift
 import Kingfisher
-//import ImageSlideshow;/Kingfisher
 
 class GiftDetailViewController: UIViewController {
 
@@ -96,7 +94,7 @@ class GiftDetailViewController: UIViewController {
         createSlideShow()
         fillUIWithGift()
 
-        if let myIdString=KeychainSwift().get(AppConst.KeyChain.UserID), let myId=Int(myIdString), let userId=gift?.userId, myId==userId {
+        if let myIdString=KeychainService().get(.userId), let myId=Int(myIdString), let userId=gift?.userId, myId==userId {
             self.addEditBtn()
             self.setRequestBtnState(state: .hide)
             self.removeBtn.show()

@@ -16,8 +16,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var emptyListMessageLabel: UILabel!
 
     let vm: HomeVM
-    let userDefault=UserDefaults.standard
-
     let numberOfSecondsOfOneDay: Float = 26*60*60
 
     let hud = JGProgressHUD(style: .dark)

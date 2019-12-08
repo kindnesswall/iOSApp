@@ -12,7 +12,8 @@ class RegisterGiftViewModel: NSObject {
 
     var imagesUrl: [String] = []
     var apiService = ApiService(HTTPLayer())
-
+    let userDefaultService = UserDefaultService()
+    
     var category: Category?
     var dateStatus: DateStatus?
     var places=[Place]()
@@ -274,15 +275,13 @@ class RegisterGiftViewModel: NSObject {
             return
         }
 
-        let userDefault=UserDefaults.standard
-        userDefault.set(data, forKey: AppConst.UserDefaults.RegisterGiftDraft)
-        userDefault.synchronize()
+        UserDefaultService().set(.registerGiftDraft, value: data)
 
         FlashMessage.showMessage(body: LanguageKeys.draftSavedSuccessfully.localizedString, theme: .success)
     }
 
     func readFromDraft() {
-        guard let data = UserDefaults.standard.data(forKey: AppConst.UserDefaults.RegisterGiftDraft) else {
+        guard let data = userDefaultService.getData(.registerGiftDraft) else {
             return
         }
         guard let draft = try? JSONDecoder().decode(RegisterGiftDraft.self, from: data) else {

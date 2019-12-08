@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import KeychainSwift
 
 class LockSettingViewController: UIViewController {
 
-    let keychain = KeychainSwift()
+    let keychainService = KeychainService()
 
     @IBOutlet weak var turnPasscodeOnOffBtn: UIButton!
 
@@ -22,7 +21,7 @@ class LockSettingViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if AppDelegate.me().appViewModel.isPasscodeSaved() {
+        if keychainService.isPasscodeSaved() {
             turnPasscodeOnOffBtn.setTitle(LanguageKeys.TurnPasscodeOff.localizedString, for: UIControl.State.normal)
             changePasscodeBtn.show()
         } else {
@@ -46,12 +45,12 @@ class LockSettingViewController: UIViewController {
     }
 
     @IBAction func turnPassOnOffBtnClicked(_ sender: Any) {
-        if AppDelegate.me().appViewModel.isPasscodeSaved() {
+        if keychainService.isPasscodeSaved() {
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
 
             alert.addAction(UIAlertAction(title: LanguageKeys.TurnPasscodeOff.localizedString, style: UIAlertAction.Style.destructive, handler: { [weak self] (_) in
 
-                self?.keychain.delete(AppConst.KeyChain.PassCode)
+                self?.keychainService.delete(.passCode)
                 self?.turnPasscodeOnOffBtn.setTitle(LanguageKeys.TurnPasscodeOn.localizedString, for: UIControl.State.normal)
                 self?.changePasscodeBtn.hide()
 

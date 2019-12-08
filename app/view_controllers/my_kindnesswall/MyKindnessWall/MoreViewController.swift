@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KeychainSwift
 import Apollo
 
 class MoreViewController: UIViewController {
@@ -28,8 +27,9 @@ class MoreViewController: UIViewController {
     @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var passcodeTouchIDBtn: UIButton!
 
-    let userDefault=UserDefaults.standard
-
+    let userDefaultService = UserDefaultService()
+    let keychainService = KeychainService()
+    
     var moreViewModel = MoreViewModel()
 
     var moreCoordinator: MoreCoordinator
@@ -93,7 +93,7 @@ class MoreViewController: UIViewController {
     }
 
     @IBAction func passcodeTouchIDBtnClicked(_ sender: Any) {
-        if AppDelegate.me().appViewModel.isPasscodeSaved() {
+        if keychainService.isPasscodeSaved() {
             moreCoordinator.showLockScreenView()
         } else {
             moreCoordinator.showLockSetting()
@@ -111,14 +111,13 @@ class MoreViewController: UIViewController {
             setLoginLogoutBtnTitle()
             return
         }
-        //UserDefaults.standard.string(forKey: AppConstants.Authorization) {
 
-        moreCoordinator.showLogoutAlert {
-            AppDelegate.me().appViewModel.clearUserSensitiveData()
+        moreCoordinator.showLogoutAlert {[weak self] in
+            self?.keychainService.clearUserSensitiveData()
             AppDelegate.me().appCoordinator.refreshAppAfterSwitchUser()
 
             UIApplication.shared.shortcutItems = []
-            self.setLoginLogoutBtnTitle()
+            self?.setLoginLogoutBtnTitle()
         }
     }
 
@@ -154,7 +153,7 @@ class MoreViewController: UIViewController {
             loginLogoutBtn.setTitle(
                 LanguageKeys.logout.localizedString +
                     AppLanguage.getNumberString(
-                        number: (userDefault.string(forKey: AppConst.UserDefaults.PhoneNumber) ?? "")), for: .normal)
+                        number: (userDefaultService.getString(.phoneNumber) ?? "")), for: .normal)
         } else {
             loginLogoutBtn.setTitle(LanguageKeys.login.localizedString, for: .normal)
         }
