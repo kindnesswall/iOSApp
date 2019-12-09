@@ -8,13 +8,11 @@
 
 import Foundation
 
-
 class AppCountry {
-    
-    //MARK: - Default
+
+    // MARK: - Default
     private static let defaultCountry = AppConst.Country.iran
-    
-    //MARK: - Get
+    // MARK: - Get
     static var getCurrent: AppConst.Country {
 
         guard let rawValue = loadCurrent(),
@@ -22,31 +20,25 @@ class AppCountry {
         else {
             return defaultCountry
         }
-        
+
         return current
     }
-    
+
     static var isNotSelectedAnyCountry: Bool {
         return loadCurrent() == nil
     }
-    
+
     private static func loadCurrent() -> String? {
-        let value = UserDefaults.standard.string(forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
-        return value
+        return UserDefaultService().getString(.selectedCountry)
     }
-    
-    
-    //MARK: - Set
+
+    // MARK: - Set
     static func setCountry(current: AppConst.Country) {
-        let rawValue = current.rawValue
-        let userDefault = UserDefaults.standard
-        userDefault.set(rawValue, forKey: AppConst.UserDefaults.SELECTED_COUNTRY)
-        userDefault.synchronize()
+        UserDefaultService().set(.selectedCountry, value: current.rawValue)
     }
-    
-    
-    //MARK: - Attributes
-    
+
+    // MARK: - Attributes
+
     static func getText(country: AppConst.Country = getCurrent) -> String {
         switch country {
         case .iran:
@@ -57,7 +49,7 @@ class AppCountry {
             return "Others"
         }
     }
-    
+
     static func getPhoneCode(country: AppConst.Country = getCurrent) -> String? {
         switch country {
         case .iran:
@@ -68,5 +60,5 @@ class AppCountry {
             return nil
         }
     }
-    
+
 }

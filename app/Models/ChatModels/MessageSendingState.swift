@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum MessageSendingState :String,Codable{
+enum MessageSendingState: String, Codable {
     case sending
     case sent
     case failed

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol TabCoordinator:AnyObject {
+protocol TabCoordinator: AnyObject {
     var tabBarController: TabBarController { get set }
     var appCoordinator: AppCoordinatorProtocol { get set }
 }

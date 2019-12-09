@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class ContactMessage: Codable {
     var chatContacts: ChatContacts?
     var contactProfile: UserProfile?
@@ -15,7 +14,6 @@ class ContactMessage: Codable {
     var notificationCount: Int?
     var blockStatus: BlockStatus?
 }
-
 
 final class BlockStatus: Codable {
     var userIsBlocked: Bool?

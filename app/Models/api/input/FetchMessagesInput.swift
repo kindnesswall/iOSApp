@@ -8,10 +8,10 @@
 import Foundation
 
 class FetchMessagesInput: Codable {
-    var chatId:Int
-    var beforeId:Int?
-    
-    init(chatId:Int,beforeId:Int?) {
+    var chatId: Int
+    var beforeId: Int?
+
+    init(chatId: Int, beforeId: Int?) {
         self.chatId=chatId
         self.beforeId=beforeId
     }

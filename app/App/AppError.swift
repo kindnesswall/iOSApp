@@ -9,15 +9,15 @@
 import Foundation
 
 public enum AppError: Error {
-    case InvalidInput
+    case invalidInput
     case nilInput
-    case ApiUrlProblem
-    case NoInternet
-    case DataDecoding
-    case ServerError
-    case DBFetch
-    case NoData
-    case ClientSide(message:String)
-    case FirebaseError(error:Error?)
-    case Unknown
+    case apiUrlProblem
+    case noInternet
+    case dataDecoding
+    case serverError
+    case dbFetch
+    case noData
+    case clientSide(message: String)
+    case firebaseError(error: Error?)
+    case unknown
 }

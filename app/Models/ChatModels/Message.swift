@@ -7,12 +7,12 @@
 
 import Foundation
 
-final class Message : Codable {
+final class Message: Codable {
     var type: MessageType
-    
+
     var contactMessages: [ContactMessage]?
     var controlMessage: ControlMessage?
-    
+
     init(contactMessages: [ContactMessage]) {
         self.type = .contact
         self.contactMessages=contactMessages
@@ -23,7 +23,7 @@ final class Message : Codable {
     }
 }
 
-enum MessageType : String,Codable {
+enum MessageType: String, Codable {
     case contact
     case control
 }

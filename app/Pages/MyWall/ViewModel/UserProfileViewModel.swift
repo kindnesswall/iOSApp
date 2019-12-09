@@ -13,14 +13,14 @@ class UserProfileViewModel: NSObject {
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
     let userId: Int
-    
-    @BindingWrapper var profile: UserProfile? = nil
+
+    @BindingWrapper var profile: UserProfile?
     @BindingWrapper var loadingState: ViewLoadingState = .loading(.initial)
-    
+
     init(userId: Int) {
         self.userId = userId
     }
-    
+
     func getProfile(loadingType: ViewLoadingType) {
         loadingState = .loading(loadingType)
         apiService.getUserProfile(userId: userId) {[weak self] result in

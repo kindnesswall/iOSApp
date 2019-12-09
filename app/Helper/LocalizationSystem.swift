@@ -9,75 +9,75 @@
 import Foundation
 import UIKit
 
-extension String{
+extension String {
     var localizedString: String {
         return LocalizationSystem.getStr(forKey: self)
     }
 }
 
-class LocalizationSystem:NSObject {
-    
+class LocalizationSystem: NSObject {
+
     var bundle: Bundle!
+    let userDefaultService = UserDefaultService()
     
-    static func getStr(forKey:String)->String{
-        return LocalizationSystem.sharedInstance.localizedStringForKey(key:forKey)
+    static func getStr(forKey: String) -> String {
+        return LocalizationSystem.sharedInstance.localizedStringForKey(key: forKey)
     }
-    
+
     class var sharedInstance: LocalizationSystem {
         struct Singleton {
             static let instance: LocalizationSystem = LocalizationSystem()
         }
         return Singleton.instance
     }
-    
+
     override init() {
         super.init()
         bundle = Bundle.main
     }
-    
-    func localizedStringForKey(key:String) -> String {
-        return localizedStringForKey(key:key, comment:"")
+
+    func localizedStringForKey(key: String) -> String {
+        return localizedStringForKey(key: key, comment: "")
     }
-    
-    func localizedStringForKey(key:String, comment:String) -> String {
+
+    func localizedStringForKey(key: String, comment: String) -> String {
         return bundle.localizedString(forKey: key, value: comment, table: nil)
     }
-    
-    func localizedImagePathForImg(imagename:String, type:String) -> String {
+
+    func localizedImagePathForImg(imagename: String, type: String) -> String {
         guard let imagePath =  bundle.path(forResource: imagename, ofType: type) else {
             return ""
         }
         return imagePath
     }
-    
-    //MARK:- setLanguage
+
+    // MARK: - setLanguage
     // Sets the desired language of the ones you have.
     // If this function is not called it will use the default OS language.
     // If the language does not exists y returns the default OS language.
-    func setLanguage(languageCode:String) {
-        var appleLanguages = UserDefaults.standard.object(forKey: AppConst.UserDefaults.AppleLanguages) as! [String]
+    func setLanguage(languageCode: String) {
+        var appleLanguages = userDefaultService.getLanguages()
         appleLanguages.remove(at: 0)
         appleLanguages.insert(languageCode, at: 0)
-        UserDefaults.standard.set(appleLanguages, forKey: AppConst.UserDefaults.AppleLanguages)
-        UserDefaults.standard.synchronize() //needs restrat
-        
-        if let languageDirectoryPath = Bundle.main.path(forResource: languageCode, ofType: "lproj")  {
+        userDefaultService.set(.appleLanguages, value: appleLanguages)
+
+        if let languageDirectoryPath = Bundle.main.path(forResource: languageCode, ofType: "lproj") {
             bundle = Bundle.init(path: languageDirectoryPath)
         } else {
             resetLocalization()
         }
     }
-    
-    //MARK:- resetLocalization
+
+    // MARK: - resetLocalization
     //Resets the localization system, so it uses the OS default language.
     func resetLocalization() {
         bundle = Bundle.main
     }
-    
-    //MARK:- getLanguage
+
+    // MARK: - getLanguage
     // Just gets the current setted up language.
     func getLanguage() -> String {
-        let appleLanguages = UserDefaults.standard.object(forKey: AppConst.UserDefaults.AppleLanguages) as! [String]
+        let appleLanguages = userDefaultService.getLanguages()
         let prefferedLanguage = appleLanguages[0]
         if prefferedLanguage.contains("-") {
             let array = prefferedLanguage.components(separatedBy: "-")
@@ -85,12 +85,5 @@ class LocalizationSystem:NSObject {
         }
         return prefferedLanguage
     }
-    
+
 }
-
-
-
-
-
-
-

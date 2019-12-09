@@ -9,33 +9,33 @@
 import UIKit
 
 class MessagesTableViewCell: UITableViewCell {
-    
-    enum MessageUserType:String {
+
+    enum MessageUserType: String {
         case user
         case others
     }
-    
-    let vMargin:CGFloat = 6
-    let hMargin:CGFloat = 12
-    let userMargin:CGFloat = 50
-    let textMargin:CGFloat = 10
-    let stateLabelMaxWidth:CGFloat = 20
-    let isNewMessageHeight:CGFloat = 40
-    let isNewMessageLabelWidth:CGFloat = 140
-    
+
+    let vMargin: CGFloat = 6
+    let hMargin: CGFloat = 12
+    let userMargin: CGFloat = 50
+    let textMargin: CGFloat = 10
+    let stateLabelMaxWidth: CGFloat = 20
+    let isNewMessageHeight: CGFloat = 40
+    let isNewMessageLabelWidth: CGFloat = 140
+
     var containerStackView = UIStackView()
     var isNewMessageView = UIView()
     var messageContainerView = UIView()
-    
+
     var messageContentView = UIView()
     var messageText = UILabel()
     var timeLabel = UILabel()
     var stateLabel = UILabel()
-    
+
     var isNewMessageLabel = UILabel()
     var isNewMessageLLineLabel = UILabel()
     var isNewMessageRLineLabel = UILabel()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
@@ -44,92 +44,90 @@ class MessagesTableViewCell: UITableViewCell {
         }
         self.createElements(type: type)
     }
-    
-    func createElements(type: MessageUserType){
+
+    func createElements(type: MessageUserType) {
         configContainerStackView(type: type)
     }
-    
-    func configContainerStackView(type: MessageUserType){
+
+    func configContainerStackView(type: MessageUserType) {
         self.containerStackView.axis = .vertical
         self.contentView.addSubview(self.containerStackView)
         self.layoutContainerStackView()
-        
+
         configIsNewMessageView(type: type)
         configMessageContainerView(type: type)
     }
-    
-    func configIsNewMessageView(type: MessageUserType){
+
+    func configIsNewMessageView(type: MessageUserType) {
         self.containerStackView.addArrangedSubview(self.isNewMessageView)
         self.layoutIsNewMessageView()
         self.configIsNewMessageLabels()
     }
-    
-    func configMessageContainerView(type: MessageUserType){
+
+    func configMessageContainerView(type: MessageUserType) {
         self.containerStackView.addArrangedSubview(self.messageContainerView)
         configMessageContentView(type: type)
     }
-    
-    func configMessageContentView(type: MessageUserType){
+
+    func configMessageContentView(type: MessageUserType) {
         self.messageContentView.layer.cornerRadius = 10
         self.messageContainerView.addSubview(self.messageContentView)
         self.layoutMessageContentView(type: type)
-        
+
         configMessageTextLabel(type: type)
         configTimeLabel(type: type)
         configStateLabel(type: type)
     }
-    
-    
-    func configMessageTextLabel(type: MessageUserType){
-        self.messageText.font = AppConst.Resource.Font.getRegularFont(size: 17)
+
+    func configMessageTextLabel(type: MessageUserType) {
+        self.messageText.font = AppFont.get(.iranSansRegular, size: 17)
         self.messageText.numberOfLines = 0
         self.messageText.textAlignment = .right
         self.messageContentView.addSubview(self.messageText)
         self.layoutMessageTextLabel(type: type)
     }
-    
-    func configTimeLabel(type: MessageUserType){
-        self.timeLabel.font = AppConst.Resource.Font.getLightFont(size: 12)
+
+    func configTimeLabel(type: MessageUserType) {
+        self.timeLabel.font = AppFont.get(.iranSansLight, size: 12)
         self.timeLabel.textAlignment = .right
         self.messageContentView.addSubview(self.timeLabel)
         self.layoutTimeLabel(type: type)
     }
-    
-    func configStateLabel(type: MessageUserType){
-        self.stateLabel.font = UIFont(name: "Arial", size: 15)
+
+    func configStateLabel(type: MessageUserType) {
+        self.stateLabel.font = AppFont.get(.arial, size: 15)
         self.stateLabel.textAlignment = .center
         self.messageContentView.addSubview(self.stateLabel)
         self.layoutStateLabel(type: type)
     }
-    
-    func configIsNewMessageLabels(){
-        self.isNewMessageLabel.font = AppConst.Resource.Font.getRegularFont(size: 15)
+
+    func configIsNewMessageLabels() {
+        self.isNewMessageLabel.font = AppFont.get(.iranSansRegular, size: 15)
         self.isNewMessageLabel.textAlignment = .center
         self.isNewMessageLabel.text = LanguageKeys.newMessage.localizedString
-        
+
         let lineColor = UIColor.gray
         self.isNewMessageLLineLabel.backgroundColor = lineColor
         self.isNewMessageRLineLabel.backgroundColor = lineColor
-        
+
         self.isNewMessageView.addSubview(self.isNewMessageLabel)
         self.isNewMessageView.addSubview(self.isNewMessageLLineLabel)
         self.isNewMessageView.addSubview(self.isNewMessageRLineLabel)
-        
+
         self.layoutIsNewMessageLabel()
         self.layoutIsNewMessageLineLabel(line: self.isNewMessageLLineLabel, isLeft: true)
         self.layoutIsNewMessageLineLabel(line: self.isNewMessageRLineLabel, isLeft: false)
     }
-    
-    func updateUI(message:TextMessage?,messageType:MessageUserType){
-        
-        
+
+    func updateUI(message: TextMessage?, messageType: MessageUserType) {
+
         guard let message = message else {
             return
         }
         self.messageText.text = message.text
         self.timeLabel.text = AppLanguage.getNumberString(number: message.createdAt?.convertToDate()?.getClock() ?? "")
         self.isNewMessageView.isHidden = !(message.isFirstNewMessage ?? false)
-        
+
         switch messageType {
         case .user:
             self.messageContentView.backgroundColor = UIColor.blue
@@ -160,12 +158,12 @@ class MessagesTableViewCell: UITableViewCell {
     }
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         print("init(coder:) has not been implemented")
         return nil

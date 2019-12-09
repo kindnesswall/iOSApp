@@ -12,12 +12,12 @@ class StatisticTableViewCell: UITableViewCell {
 
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
-    
-    func setUI(key:String,value:String) {
+
+    func setUI(key: String, value: String) {
         keyLabel.text = key
         valueLabel.text = value
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,5 +28,5 @@ class StatisticTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

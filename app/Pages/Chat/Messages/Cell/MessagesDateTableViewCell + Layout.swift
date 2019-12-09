@@ -9,10 +9,10 @@
 import Foundation
 
 extension MessagesDateTableViewCell {
-    
-    func layoutDateLabel(){
+
+    func layoutDateLabel() {
         let autoLayout = AutoLayoutHelper(view: self.dateLabel)
         autoLayout.addConstraints(firstView: self.dateLabel, secondView: self.contentView, leading: 8, trailing: -8, top: 0, bottom: 0)
     }
-    
+
 }

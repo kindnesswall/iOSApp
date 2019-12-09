@@ -8,28 +8,28 @@
 
 import Foundation
 
-class Place : Codable{
-    
-    var id:Int?
-    var name:String?
-    var container_id:Int?
-    
+class Place: Codable {
+
+    var id: Int?
+    var name: String?
+    var containerId: Int?
+
     init() {
-        
+
     }
-    
-    init(id:Int?,name:String?) {
+
+    init(id: Int?, name: String?) {
         self.id=id
         self.name=name
     }
-    init(id:Int?,name:String?,container_id:Int?) {
+    init(id: Int?, name: String?, containerId: Int?) {
         self.id=id
         self.name=name
-        self.container_id=container_id
+        self.containerId=containerId
     }
 }
 
-class PlaceResponse : Codable{
-    var places:[Place]?
-    
+class PlaceResponse: Codable {
+    var places: [Place]?
+
 }

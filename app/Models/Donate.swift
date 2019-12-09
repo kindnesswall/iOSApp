@@ -7,12 +7,11 @@
 
 import Foundation
 
-
 class Donate: Codable {
-    var giftId:Int
-    var donatedToUserId:Int
-    
-    init(giftId:Int,donatedToUserId:Int) {
+    var giftId: Int
+    var donatedToUserId: Int
+
+    init(giftId: Int, donatedToUserId: Int) {
         self.giftId=giftId
         self.donatedToUserId=donatedToUserId
     }

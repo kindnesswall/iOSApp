@@ -11,11 +11,11 @@ import UIKit
 class GenericOptionsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
-    
-    func setValue(name:String?) {
+
+    func setValue(name: String?) {
         self.name.text=name
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,5 +26,5 @@ class GenericOptionsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

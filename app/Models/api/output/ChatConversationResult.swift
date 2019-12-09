@@ -1,19 +1,17 @@
-
 import Foundation
 
 class ChatConversationOutput: Codable {
-    
-    var status:Int?
-    var result:ChatConversationResult?
-    
+
+    var status: Int?
+    var result: ChatConversationResult?
+
 }
 
 class ChatConversationResult: Codable {
-    
-//    var last_seen_time:Time?
-    var last_seen_time:String?
-    var total_count:Int?
-    var list:[Message]?
-    
-}
 
+//    var last_seen_time:Time?
+    var lastSeenTime: String?
+    var totalCount: Int?
+    var list: [Message]?
+
+}

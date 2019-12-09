@@ -8,13 +8,13 @@
 
 import UIKit
 
-extension HomeVM:UITableViewDataSource{
+extension HomeVM: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.gifts.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let index=indexPath.row+1
         if index==self.gifts.count {
             if !self.isLoadingGifts {
@@ -23,12 +23,10 @@ extension HomeVM:UITableViewDataSource{
                 }
             }
         }
-        
-        
+
         let cell=tableView.dequeue(type: GiftTableViewCell.self, for: indexPath)
         cell.filViews(gift: gifts[indexPath.row])
         return cell
-        
+
     }
 }
-

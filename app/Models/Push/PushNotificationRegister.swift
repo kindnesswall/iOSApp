@@ -12,7 +12,7 @@ class PushNotificationRegister: Codable {
     var deviceIdentifier: String
     var type: String
     var devicePushToken: String
-    
+
     init(deviceIdentifier: String, devicePushToken: String) {
         self.deviceIdentifier = deviceIdentifier
         self.type = PushNotificationType.APNS.rawValue

@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension HomeViewController:UITableViewDelegate {
-    
+extension HomeViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard vm.isReview else {return UISwipeActionsConfiguration(actions: [])}
         let approveAction = approveGift(at: indexPath)
@@ -23,18 +23,18 @@ extension HomeViewController:UITableViewDelegate {
     }
 
     func approveGift(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "Approve") { (uiContextualAction, view, completion) in
-            self.approveAction(rowIndex: indexPath,handler: completion)
+        let action = UIContextualAction(style: .normal, title: "Approve") { (_, _, completion) in
+            self.approveAction(rowIndex: indexPath, handler: completion)
         }
         action.image = UIImage(named: AppImages.Approve)
         action.backgroundColor = .green
         return action
     }
 
-    func approveAction(rowIndex: IndexPath,handler: @escaping (Bool)->()) {
+    func approveAction(rowIndex: IndexPath, handler: @escaping (Bool) -> Void) {
         self.vm.giftApprovedAfterReview(rowNumber: rowIndex.row, completion: { [weak self] (result) in
             switch result {
-            case .failure(_):
+            case .failure:
                 self?.homeCoordiantor?.showDialogFailed {
                     self?.approveAction(rowIndex: rowIndex, handler: handler)
                 }
@@ -46,9 +46,9 @@ extension HomeViewController:UITableViewDelegate {
             }
         })
     }
-    
+
     func rejectGift(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .destructive, title: "Reject") { [weak self](uiContextualAction, view, completion) in
+        let action = UIContextualAction(style: .destructive, title: "Reject") { [weak self](_, _, completion) in
             self?.homeCoordiantor?.showConfirmationDialog {
                 self?.rejectAction(rowIndex: indexPath, handler: completion)
             }
@@ -57,11 +57,11 @@ extension HomeViewController:UITableViewDelegate {
         //        action.backgroundColor = .red
         return action
     }
-    
-    func rejectAction(rowIndex: IndexPath,handler: @escaping (Bool)->()) {
+
+    func rejectAction(rowIndex: IndexPath, handler: @escaping (Bool) -> Void) {
         self.vm.giftRejectedAfterReview(rowNumber: rowIndex.row, completion: { [weak self] (result) in
             switch result {
-            case .failure(_):
+            case .failure:
                 DispatchQueue.main.async {
                     self?.homeCoordiantor?.showDialogFailed {
                         self?.rejectAction(rowIndex: rowIndex, handler: handler)
@@ -69,22 +69,21 @@ extension HomeViewController:UITableViewDelegate {
                 }
             case .success:
                 DispatchQueue.main.async {
-                    
+
                     self?.tableview.deleteRows(at: [rowIndex], with: .automatic)
                 }
                 handler(true)
             }
         })
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         homeCoordiantor?.showDetail(gift: vm.gifts[indexPath.row], editHandler: self.editHandler)
     }
-    
-    func editHandler(){
+
+    func editHandler() {
         self.reloadPage()
         homeCoordiantor?.reloadOtherVCs()
     }
 
 }
-

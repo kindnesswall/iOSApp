@@ -9,15 +9,15 @@
 import UIKit
 import Kingfisher
 
-class CharityListViewModel:NSObject {
-    var charities:[Charity] = []
-    
+class CharityListViewModel: NSObject {
+    var charities: [Charity] = []
+
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
 
-    func getList(compeletionHandler: @escaping ()->()) {
+    func getList(compeletionHandler: @escaping () -> Void) {
         apiService.getCharityList { [weak self](result) in
-            switch(result){
+            switch result {
             case .failure(let error):
                 print(error)
             case.success(let charities):
@@ -32,7 +32,7 @@ extension CharityListViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return charities.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(type: CharityTableViewCell.self, for: indexPath)
         let charity = charities[indexPath.row]
@@ -41,7 +41,7 @@ extension CharityListViewModel: UITableViewDataSource {
         if let path = charity.imageUrl {
             cell.imageview.kf.setImage(with: URL(string: path), placeholder: UIImage(named: AppImages.BlankAvatar))
         }
-        
+
         return cell
     }
 }

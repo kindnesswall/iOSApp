@@ -8,13 +8,12 @@
 
 import Foundation
 
-final class SendPushInput : Codable {
-    var userId:Int
-    var body:String
-    
-    init(userId:Int,body:String) {
+final class SendPushInput: Codable {
+    var userId: Int
+    var body: String
+
+    init(userId: Int, body: String) {
         self.userId = userId
         self.body = body
     }
 }
-

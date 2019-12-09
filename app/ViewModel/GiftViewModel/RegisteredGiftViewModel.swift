@@ -9,8 +9,8 @@
 import UIKit
 
 class RegisteredGiftViewModel: GiftViewModel {
-    
-    init(userId:Int) {
-        super.init(giftListType: .UserRegisteredGifts(userId: userId))
+
+    init(userId: Int) {
+        super.init(giftListType: .userRegisteredGifts(userId: userId))
     }
 }

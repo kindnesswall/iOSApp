@@ -1,18 +1,17 @@
-
 import Foundation
 import  UIKit
 
 public class DateHelper {
-    
-    public static func makeDate(birthdateYear:String,birthdayMonth:String,birthdayDay:String)->String{
-        
+
+    public static func makeDate(birthdateYear: String, birthdayMonth: String, birthdayDay: String) -> String {
+
         var birthdate=""
         var day = birthdayDay
-        
-        if(day.count == 1){
+
+        if day.count == 1 {
             day = "0"+day
         }
-        
+
         var month = birthdayMonth
         month=month.replacingOccurrences(of: "فروردین", with: "01")
         month=month.replacingOccurrences(of: "اردیبهشت", with: "02")
@@ -26,14 +25,13 @@ public class DateHelper {
         month=month.replacingOccurrences(of: "دی", with: "10")
         month=month.replacingOccurrences(of: "بهمن", with: "11")
         month=month.replacingOccurrences(of: "اسفند", with: "12")
-        
+
         birthdate = birthdateYear+"/"+month+"/"+day
         return birthdate
     }
-    
-    
-    public static func persionMonth(persionMonth:String)->String{
-        
+
+    public static func persionMonth(persionMonth: String) -> String {
+
         var number = persionMonth
         number=number.replacingOccurrences(of: "۰۱", with: "فروردین")
         number=number.replacingOccurrences(of: "۰۲", with: "اردیبهشت")
@@ -47,12 +45,12 @@ public class DateHelper {
         number=number.replacingOccurrences(of: "۱۰", with: "دی")
         number=number.replacingOccurrences(of: "۱۱", with: "بهمن")
         number=number.replacingOccurrences(of: "۱۲", with: "اسفند")
-        
+
         return number
-        
+
     }
-    
-    public static func getPersianWeekDayName(weekDay:String)->String {
+
+    public static func getPersianWeekDayName(weekDay: String) -> String {
         switch weekDay {
         case "Saturday":
             return "شنبه"
@@ -68,43 +66,41 @@ public class DateHelper {
             return "پنج شنبه"
         case "Friday":
             return "جمعه"
-            
+
         default:
             return ""
         }
     }
-    
-    public static func getFaTime(faDate: String)->String{
-        
-        
+
+    public static func getFaTime(faDate: String) -> String {
+
         let startIndex = faDate.index(faDate.startIndex, offsetBy: 10)
         let endIndex = faDate.index(faDate.startIndex, offsetBy: 15)
         var timeStr = String(faDate[startIndex...endIndex])
-        
+
         timeStr=timeStr.replacingOccurrences(of: ":", with: " : ")
-        
+
         timeStr = UIFunctions.CastNumberToPersian(input: timeStr)
-        
+
         return timeStr
     }
-    
-    
-    public static func getTime(faDate: String)->String{
-        
+
+    public static func getTime(faDate: String) -> String {
+
         let startIndex = faDate.index(faDate.startIndex, offsetBy: 10)
         let endIndex = faDate.index(faDate.startIndex, offsetBy: 18)
         let timeStr = String(faDate[startIndex...endIndex])
-        
+
         return timeStr
     }
-    
-    public static func getFaDate(faDate: String)->String{
+
+    public static func getFaDate(faDate: String) -> String {
         let startIndex = faDate.index(faDate.startIndex, offsetBy: 5)
         let endIndex = faDate.index(faDate.startIndex, offsetBy: 9)
         var timeStr = String(faDate[startIndex...endIndex])
-        
-        timeStr = UIFunctions.CastNumberToPersian(input:timeStr)
-        
+
+        timeStr = UIFunctions.CastNumberToPersian(input: timeStr)
+
         timeStr=timeStr.replacingOccurrences(of: "۰۱", with: "۱")
         timeStr=timeStr.replacingOccurrences(of: "۰۲", with: "۲")
         timeStr=timeStr.replacingOccurrences(of: "۰۳", with: "۳")
@@ -114,17 +110,17 @@ public class DateHelper {
         timeStr=timeStr.replacingOccurrences(of: "۰۷", with: "۷")
         timeStr=timeStr.replacingOccurrences(of: "۰۸", with: "۸")
         timeStr=timeStr.replacingOccurrences(of: "۰۹", with: "۹")
-        
+
         return timeStr
     }
-    
-    public static func getFaDateWithYear(faDate: String)->String{
+
+    public static func getFaDateWithYear(faDate: String) -> String {
         let startIndex = faDate.index(faDate.startIndex, offsetBy: 0)
         let endIndex = faDate.index(faDate.startIndex, offsetBy: 9)
         var timeStr = String(faDate[startIndex...endIndex])
-        
-        timeStr = UIFunctions.CastNumberToPersian(input:timeStr)
-        
+
+        timeStr = UIFunctions.CastNumberToPersian(input: timeStr)
+
         timeStr=timeStr.replacingOccurrences(of: "۰۱", with: "۱")
         timeStr=timeStr.replacingOccurrences(of: "۰۲", with: "۲")
         timeStr=timeStr.replacingOccurrences(of: "۰۳", with: "۳")
@@ -134,55 +130,52 @@ public class DateHelper {
         timeStr=timeStr.replacingOccurrences(of: "۰۷", with: "۷")
         timeStr=timeStr.replacingOccurrences(of: "۰۸", with: "۸")
         timeStr=timeStr.replacingOccurrences(of: "۰۹", with: "۹")
-        
+
         return timeStr
     }
-    
-    public static func getHour(time: String)->Int{
+
+    public static func getHour(time: String) -> Int {
         let startIndex = time.index(time.startIndex, offsetBy: 1)
         let endIndex = time.index(time.startIndex, offsetBy: 2)
         let hour = time[startIndex...endIndex]
-        
+
         return Int(hour)!
     }
-    
-    public static func getMinute(time: String)->Int{
+
+    public static func getMinute(time: String) -> Int {
         let startIndex = time.index(time.startIndex, offsetBy: 4)
         let endIndex = time.index(time.startIndex, offsetBy: 5)
         let minute = time[startIndex...endIndex]
-        
+
         return Int(minute)!
     }
-    
-    public static func getSecond(time: String)->Int{
+
+    public static func getSecond(time: String) -> Int {
         let startIndex = time.index(time.startIndex, offsetBy: 7)
         let endIndex = time.index(time.startIndex, offsetBy: 8)
         let second = time[startIndex...endIndex]
-        
+
         return Int(second)!
     }
-    
-    public static func timeDifferenceCalculator(startTime: String, endTime: String)-> Int{
-        
-        let hoursDiff = getHour(time: endTime)-getHour(time:startTime)
-        let minDiff = getMinute(time:endTime)-getMinute(time:startTime)
-        let secDiff = getSecond(time: endTime)-getSecond(time:startTime)
-        
+
+    public static func timeDifferenceCalculator(startTime: String, endTime: String) -> Int {
+
+        let hoursDiff = getHour(time: endTime)-getHour(time: startTime)
+        let minDiff = getMinute(time: endTime)-getMinute(time: startTime)
+        let secDiff = getSecond(time: endTime)-getSecond(time: startTime)
+
         let totalDiffOnSeconds = (hoursDiff*3600)+(minDiff*60)+secDiff
         let totalDiffOnMinute = totalDiffOnSeconds/60
-        
+
         return totalDiffOnMinute
     }
-    
-    static func isToday(currentTime:Time,startTime:Time)->Bool{
-        let current_time = self.getFaDate(faDate: currentTime.fa_date!)
-        let start_time = self.getFaDate(faDate: startTime.fa_date!)
-        
-        if(current_time == start_time) {
-            return true
-        }
-        return false
-    }
-    
-}
 
+    static func isToday(currentTime: Time, startTime: Time) -> Bool {
+        let currentTime = self.getFaDate(faDate: currentTime.fa_date!)
+        let startTime = self.getFaDate(faDate: startTime.fa_date!)
+
+        return (currentTime == startTime)
+
+    }
+
+}

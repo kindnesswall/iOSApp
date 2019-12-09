@@ -8,35 +8,34 @@
 
 import UIKit
 
-
 class PromptUser: PopUpView {
 
     @IBOutlet weak var message: UILabel!
-    
+
     @IBOutlet weak var acceptBtn: UIButton!
     @IBOutlet weak var rejectBtn: UIButton!
-    
+
     @IBAction func acceptBtnClicked(_ sender: Any) {
-        
+
         self.controller?.submitPopUp()
     }
-    
+
     @IBAction func rejectBtnClicked(_ sender: Any) {
         self.controller?.declinePopUp()
     }
-    
+
     override func initPopUpView() {
-        
+
         self.acceptBtn.setTitle(
             LanguageKeys.yes.localizedString,
             for: .normal)
-        
+
         self.rejectBtn.setTitle(
             LanguageKeys.no.localizedString, for: .normal)
-        
+
         self.message.textAlignment = AppLanguage.getTextAlignment()
-        
-        if let txt:String = controller?.data as? String {
+
+        if let txt: String = controller?.data as? String {
             self.message.text = txt
         }
     }

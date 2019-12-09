@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-extension String{
-    
-    public func CastNumberToPersian()->String{
-        
+extension String {
+
+    public func castNumberToPersian() -> String {
+
         var number=self
-        
+
         number=number.replacingOccurrences(of: "0", with: "۰")
         number=number.replacingOccurrences(of: "1", with: "۱")
         number=number.replacingOccurrences(of: "2", with: "۲")
@@ -25,12 +25,12 @@ extension String{
         number=number.replacingOccurrences(of: "7", with: "۷")
         number=number.replacingOccurrences(of: "8", with: "۸")
         number=number.replacingOccurrences(of: "9", with: "۹")
-        
+
         return number
     }
-   
-    public func castNumberToPersianLetterText()->String{
-        
+
+    public func castNumberToPersianLetterText() -> String {
+
         var number = self
         number=number.replacingOccurrences(of: "0", with: "اول")
         number=number.replacingOccurrences(of: "1", with: "دوم")
@@ -42,16 +42,16 @@ extension String{
         number=number.replacingOccurrences(of: "7", with: "هشتم")
         number=number.replacingOccurrences(of: "8", with: "نهم")
         number=number.replacingOccurrences(of: "9", with: "دهم")
-        
+
         return number
     }
-    
-    public func castNumberToEnglish()->String? {
+
+    public func castNumberToEnglish() -> String? {
         let number = self
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "en")
         let englishNumber = formatter.number(from: number)
         return englishNumber?.description
     }
-    
+
 }

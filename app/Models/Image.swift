@@ -8,19 +8,19 @@
 import Foundation
 
 class ImageInput: Codable {
-    var image:Data
-    var imageFormat:ImageInputFormat?
-    
-    init(image:Data,imageFormat:ImageInputFormat?) {
+    var image: Data
+    var imageFormat: ImageInputFormat?
+
+    init(image: Data, imageFormat: ImageInputFormat?) {
         self.image=image
         self.imageFormat=imageFormat
     }
 }
 
-enum ImageInputFormat: String,Codable {
+enum ImageInputFormat: String, Codable {
     case jpeg
 }
 
 class ImageOutput: Codable {
-    var address:String
+    var address: String
 }

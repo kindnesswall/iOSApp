@@ -9,9 +9,9 @@
 import Foundation
 
 class ReceivedGiftViewModel: GiftViewModel {
-    
-    init(userId:Int) {
-        super.init(giftListType: .UserReceivedGifts(userId: userId))
+
+    init(userId: Int) {
+        super.init(giftListType: .userReceivedGifts(userId: userId))
     }
-    
+
 }

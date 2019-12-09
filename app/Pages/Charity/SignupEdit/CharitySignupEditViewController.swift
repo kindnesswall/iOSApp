@@ -11,9 +11,8 @@ import Kingfisher
 
 class CharitySignupEditViewController: UIViewController {
 
-    
     @IBOutlet weak var charityImageView: UIImageView!
-    
+
     @IBOutlet weak var managerNameTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
@@ -24,10 +23,10 @@ class CharitySignupEditViewController: UIViewController {
     @IBOutlet weak var instagramTextField: UITextField!
     @IBOutlet weak var telegramTextField: UITextField!
     @IBOutlet weak var twitterTextField: UITextField!
-    
+
     @IBOutlet weak var descriptionTextView: UITextView!
-    
-    var vm:CharitySignupEditVM
+
+    var vm: CharitySignupEditVM
     init(vm: CharitySignupEditVM) {
         self.vm = vm
         super.init(nibName: nil, bundle: nil)
@@ -35,7 +34,7 @@ class CharitySignupEditViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,9 +42,9 @@ class CharitySignupEditViewController: UIViewController {
             show(charity: charity)
         }
     }
-    
-    func show(charity:Charity) {
-        
+
+    func show(charity: Charity) {
+
         nameTextField.text = charity.name
         managerNameTextField.text = charity.manager
         addressTextField.text = charity.address
@@ -57,14 +56,14 @@ class CharitySignupEditViewController: UIViewController {
         instagramTextField.text = charity.instagram
         twitterTextField.text = charity.twitter
         descriptionTextView.text = charity.description
-        
+
         if let path = charity.imageUrl {
             charityImageView.kf.setImage(with: URL(string: path), placeholder: UIImage(named: AppImages.BlankAvatar))
         }
-        
+
     }
 
     @IBAction func addNewOrEditData(_ sender: Any) {
-        
+
     }
 }

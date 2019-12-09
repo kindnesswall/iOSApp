@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class CharitiesCoordinator : NavigationCoordinator {
+class CharitiesCoordinator: NavigationCoordinator {
     var navigationController: CoordinatedNavigationController
-    
+
     init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {
         self.navigationController = navigationController
         navigationController.coordinator = self
@@ -19,7 +19,7 @@ class CharitiesCoordinator : NavigationCoordinator {
         let charitiesViewController = CharityListViewController()
 //        let img = UIImage(named: AppImages.Charities)
 //        charitiesViewController.tabBarItem = UITabBarItem(title: LanguageKeys.charities.localizedString, image: img, tag: 0)
-        
+
         navigationController.viewControllers = [charitiesViewController]
 
     }

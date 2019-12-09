@@ -9,7 +9,7 @@
 import Foundation
 
 extension Date {
-    func getPersianDate()->String{
+    func getPersianDate() -> String {
         let calendar = Calendar(identifier: .persian)
         let year = calendar.component(.year, from: self)
         let month = calendar.component(.month, from: self)
@@ -17,17 +17,17 @@ extension Date {
         let persianDate = "\(year)/\(month)/\(day)"
         return persianDate
     }
-    
-    func getClock()->String{
+
+    func getClock() -> String {
         let calendar = Calendar(identifier: .persian)
         let hour = calendar.component(.hour, from: self)
         let minute = calendar.component(.minute, from: self)
-        
+
         let hourString = hour<10 ? "0\(hour)" : "\(hour)"
         let minuteString = minute<10 ? "0\(minute)" : "\(minute)"
-        
+
         let clockString = "\(hourString):\(minuteString)"
         return clockString
     }
-    
+
 }

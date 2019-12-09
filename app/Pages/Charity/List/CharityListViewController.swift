@@ -12,22 +12,22 @@ class CharityListViewController: UIViewController {
 
     @IBOutlet weak var tableview: UITableView!
     var vm = CharityListViewModel()
-    
+
     @IBAction func addNewCharityClicked(_ sender: Any) {
         let urlAddress = AppConst.URL.telegramLink
         URLBrowser(urlAddress: urlAddress).openURL()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.title=LanguageKeys.charities.localizedString
-        
+
         self.tableview.register(type: CharityTableViewCell.self)
-        
+
         tableview.dataSource = vm
         tableview.delegate = self
-        
+
         vm.getList {[weak self] in
             DispatchQueue.main.async {
                 self?.tableview.reloadData()
@@ -48,5 +48,3 @@ extension CharityListViewController: UITableViewDelegate {
         return CharityTableViewCell.cellHeight
     }
 }
-
-

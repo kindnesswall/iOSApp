@@ -9,8 +9,8 @@
 import Foundation
 
 class FirebaseUser: Codable {
-    var id:String?
-    var email:String?
-    var name:String?
-    var profileImageURL:String?
+    var id: String?
+    var email: String?
+    var name: String?
+    var profileImageURL: String?
 }

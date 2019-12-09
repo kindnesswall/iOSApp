@@ -8,12 +8,11 @@
 
 import Foundation
 
-
-class RegisterGiftDraft : Codable {
-    var title:String?
-    var description:String?
-    var price:Int?
-    var places : [Place]?
-    var category : Category?
-    var dateStatus : DateStatus?
+class RegisterGiftDraft: Codable {
+    var title: String?
+    var description: String?
+    var price: Int?
+    var places: [Place]?
+    var category: Category?
+    var dateStatus: DateStatus?
 }

@@ -6,9 +6,7 @@
 //  Copyright © 2018 Hamed.Gh. All rights reserved.
 //
 
-import Foundation
-import KeychainSwift
-
+import UIKit
 
 extension String {
     var localizedNumber: String {
@@ -22,14 +20,13 @@ extension Int {
     }
 }
 
-class AppLanguage{
-    
-    
-    static let English:String = "en"
-    static let Persian:String = "fa"
+class AppLanguage {
 
-    static func getLanguage()->String {
-        
+    static let English: String = "en"
+    static let Persian: String = "fa"
+
+    static func getLanguage() -> String {
+
         if LocalizationSystem.sharedInstance.getLanguage() == Persian {
             return Persian
         } else {
@@ -37,22 +34,22 @@ class AppLanguage{
         }
     }
 
-    //MARK: - Utilities
-    
-    static func getNumberString(number:String)->String{
+    // MARK: - Utilities
+
+    static func getNumberString(number: String) -> String {
         let language = AppLanguage.getLanguage()
-        
+
         switch language {
         case Persian:
-            return number.CastNumberToPersian()
+            return number.castNumberToPersian()
         case English:
             return number
         default:
             return number
         }
     }
-    
-    static func getTextAlignment()->NSTextAlignment{
+
+    static func getTextAlignment() -> NSTextAlignment {
         let language = AppLanguage.getLanguage()
         switch language {
         case Persian:
@@ -63,5 +60,5 @@ class AppLanguage{
             return .left
         }
     }
-    
+
 }

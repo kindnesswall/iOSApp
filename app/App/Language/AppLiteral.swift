@@ -8,10 +8,9 @@
 
 import Foundation
 
-
 class AppLiteral {
-    
-    static var back : String {
+
+    static var back: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -20,8 +19,8 @@ class AppLiteral {
             return "Back"
         }
     }
-    
-    static var cancel : String {
+
+    static var cancel: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -30,8 +29,8 @@ class AppLiteral {
             return "Cancel"
         }
     }
-    
-    static var yes : String {
+
+    static var yes: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -40,8 +39,8 @@ class AppLiteral {
             return "Yes"
         }
     }
-    
-    static var no : String {
+
+    static var no: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -50,8 +49,8 @@ class AppLiteral {
             return "No"
         }
     }
-    
-    static var skip : String {
+
+    static var skip: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -60,8 +59,8 @@ class AppLiteral {
             return "Skip"
         }
     }
-    
-    static var home : String {
+
+    static var home: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -70,8 +69,8 @@ class AppLiteral {
             return "Home"
         }
     }
-    
-    static var myGifts : String {
+
+    static var myGifts: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -80,8 +79,8 @@ class AppLiteral {
             return "My Gifts"
         }
     }
-    
-    static var registerGift : String {
+
+    static var registerGift: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -90,8 +89,8 @@ class AppLiteral {
             return "Gift Registering"
         }
     }
-    
-    static var edit : String {
+
+    static var edit: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -100,8 +99,8 @@ class AppLiteral {
             return "Edit"
         }
     }
-    
-    static var editGift : String {
+
+    static var editGift: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -110,8 +109,8 @@ class AppLiteral {
             return "Gift Editing"
         }
     }
-    
-    static var request : String {
+
+    static var request: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -120,8 +119,8 @@ class AppLiteral {
             return "Request"
         }
     }
-    
-    static var remove : String {
+
+    static var remove: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -130,8 +129,8 @@ class AppLiteral {
             return "Remove"
         }
     }
-    
-    static var status : String {
+
+    static var status: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -140,8 +139,8 @@ class AppLiteral {
             return "Status"
         }
     }
-    
-    static var address : String {
+
+    static var address: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -150,8 +149,8 @@ class AppLiteral {
             return "Address"
         }
     }
-    
-    static var allGifts : String {
+
+    static var allGifts: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -160,8 +159,8 @@ class AppLiteral {
             return "All Gifts"
         }
     }
-    
-    static var allCities : String {
+
+    static var allCities: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -170,8 +169,8 @@ class AppLiteral {
             return "All Cities"
         }
     }
-    
-    static var allRegions : String {
+
+    static var allRegions: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -180,8 +179,8 @@ class AppLiteral {
             return "All Regions"
         }
     }
-    
-    static var category : String {
+
+    static var category: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -190,8 +189,8 @@ class AppLiteral {
             return "Category"
         }
     }
-    
-    static var giftCategory : String {
+
+    static var giftCategory: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -200,8 +199,8 @@ class AppLiteral {
             return "Gift Category"
         }
     }
-    
-    static var newOrSecondHand : String {
+
+    static var newOrSecondHand: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -210,8 +209,8 @@ class AppLiteral {
             return "New or Secondhand"
         }
     }
-    
-    static var new : String {
+
+    static var new: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -220,8 +219,8 @@ class AppLiteral {
             return "New"
         }
     }
-    
-    static var secondHand : String {
+
+    static var secondHand: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -230,8 +229,8 @@ class AppLiteral {
             return "Secondhand"
         }
     }
-    
-    static var placeOfTheGift : String {
+
+    static var placeOfTheGift: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -240,8 +239,8 @@ class AppLiteral {
             return "Place of the Gift"
         }
     }
-    
-    static var registered : String {
+
+    static var registered: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -250,8 +249,8 @@ class AppLiteral {
             return "Registered"
         }
     }
-    
-    static var donated : String {
+
+    static var donated: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -260,8 +259,8 @@ class AppLiteral {
             return "Donated"
         }
     }
-    
-    static var clearPage : String {
+
+    static var clearPage: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -270,8 +269,8 @@ class AppLiteral {
             return "Clear Page"
         }
     }
-    
-    static var saveDraft : String {
+
+    static var saveDraft: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -280,8 +279,8 @@ class AppLiteral {
             return "Save Draft"
         }
     }
-    
-    static var select : String {
+
+    static var select: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -290,8 +289,8 @@ class AppLiteral {
             return "Select"
         }
     }
-    
-    static var camera : String {
+
+    static var camera: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -300,8 +299,8 @@ class AppLiteral {
             return "Camera"
         }
     }
-    
-    static var gallery : String {
+
+    static var gallery: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -310,8 +309,8 @@ class AppLiteral {
             return "Gallery"
         }
     }
-    
-    static var title : String {
+
+    static var title: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -320,8 +319,8 @@ class AppLiteral {
             return "Title"
         }
     }
-    
-    static var description : String {
+
+    static var description: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -330,8 +329,8 @@ class AppLiteral {
             return "Description"
         }
     }
-    
-    static var approximatePriceInToman : String {
+
+    static var approximatePriceInToman: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -340,8 +339,8 @@ class AppLiteral {
             return "Approximate Price in Toman"
         }
     }
-    
-    static var addImage : String {
+
+    static var addImage: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -350,8 +349,8 @@ class AppLiteral {
             return "Add Image"
         }
     }
-    
-    static var login : String {
+
+    static var login: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -360,8 +359,8 @@ class AppLiteral {
             return "Login"
         }
     }
-    
-    static var logout : String {
+
+    static var logout: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -370,8 +369,8 @@ class AppLiteral {
             return "Logout"
         }
     }
-    
-    static var myWall : String {
+
+    static var myWall: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -380,8 +379,8 @@ class AppLiteral {
             return "My Wall"
         }
     }
-    
-    static var contactUs : String {
+
+    static var contactUs: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -390,8 +389,8 @@ class AppLiteral {
             return "Contact Us"
         }
     }
-    
-    static var bugReport : String {
+
+    static var bugReport: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -400,8 +399,8 @@ class AppLiteral {
             return "Bug Report"
         }
     }
-    
-    static var aboutKindnessWall : String {
+
+    static var aboutKindnessWall: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -410,8 +409,8 @@ class AppLiteral {
             return "About Kindness Wall"
         }
     }
-    
-    static var letsGoToTheApplication : String {
+
+    static var letsGoToTheApplication: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -420,8 +419,8 @@ class AppLiteral {
             return "Let's go to the application!"
         }
     }
-    
-    static var statistic : String {
+
+    static var statistic: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -430,8 +429,8 @@ class AppLiteral {
             return "Statistic"
         }
     }
-    
-    static var activationCode : String {
+
+    static var activationCode: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -440,8 +439,8 @@ class AppLiteral {
             return "Activation Code"
         }
     }
-    
-    static var sendingActivationCode : String {
+
+    static var sendingActivationCode: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -450,8 +449,8 @@ class AppLiteral {
             return "Send Activation Code"
         }
     }
-    
-    static var resendingActivationCode : String {
+
+    static var resendingActivationCode: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -460,8 +459,8 @@ class AppLiteral {
             return "Resend Activation Code"
         }
     }
-    
-    static var registeringActivationCode : String {
+
+    static var registeringActivationCode: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -470,8 +469,8 @@ class AppLiteral {
             return "Register Activation Code"
         }
     }
-    
-    static var kindnessWallCulture : String {
+
+    static var kindnessWallCulture: String {
         let language = AppLanguage.getLanguage()
         switch language {
         case .persian:
@@ -480,7 +479,7 @@ class AppLiteral {
             return "Kindness Wall Culture"
         }
     }
-    
+
     static var withDonateCollaboration: String {
         let language = AppLanguage.getLanguage()
         switch language {
@@ -490,7 +489,7 @@ class AppLiteral {
             return "With 2Nate Collaboration"
         }
     }
-    
+
     static var alwaysFree: String {
         let language = AppLanguage.getLanguage()
         switch language {
@@ -500,7 +499,7 @@ class AppLiteral {
             return "Always Free"
         }
     }
-    
+
     static var openSource: String {
         let language = AppLanguage.getLanguage()
         switch language {
@@ -510,6 +509,4 @@ class AppLiteral {
             return "Open Source"
         }
     }
-    
-    
 }

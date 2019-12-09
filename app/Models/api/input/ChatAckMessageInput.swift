@@ -7,6 +7,6 @@
 //
 
 import Foundation
-struct ChatAckMessageInput:Codable {
-    
+struct ChatAckMessageInput: Codable {
+
 }

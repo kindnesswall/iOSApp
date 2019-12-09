@@ -9,26 +9,25 @@
 import UIKit
 
 class PopUpMessage {
-    
-    static func showPopUp(nibClass:AnyClass,data:Any?=nil,animation:PopUpViewController.PopUpAnimation,declineHandler : ((Any?)->Void)?,submitHandler : ((Any?)->Void)?){
-        
+
+    static func showPopUp(nibClass: AnyClass, data: Any?=nil, animation: PopUpViewController.PopUpAnimation, declineHandler: ((Any?) -> Void)?, submitHandler: ((Any?) -> Void)?) {
+
         let controller=PopUpViewController()
         controller.modalPresentationStyle = .overCurrentContext
-        
+
         controller.nibClass=nibClass
         controller.data=data
         controller.popUpAnimation=animation
-        
+
         controller.setSubmitHandler(submitHandler)
         controller.setDeclineHandler(declineHandler)
-        
+
         self.presentCotroller(controller: controller)
-        
-        
+
     }
-    
-    private static func presentCotroller(controller:UIViewController) {
-        guard var rootViewController = AppDelegate.me().appCoordinator.window?.rootViewController else{
+
+    private static func presentCotroller(controller: UIViewController) {
+        guard var rootViewController = AppDelegate.me().appCoordinator.window?.rootViewController else {
             return
         }
         if let presentedVC=rootViewController.presentedViewController {
@@ -37,4 +36,3 @@ class PopUpMessage {
         rootViewController.present(controller, animated: false, completion: nil)
     }
 }
-

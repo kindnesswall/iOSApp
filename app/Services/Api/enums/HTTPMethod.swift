@@ -8,9 +8,9 @@
 
 import Foundation
 
-enum HttpMethod :String{
-    case POST="POST"
-    case GET="GET"
-    case PUT="PUT"
-    case DELETE="DELETE"
+enum HttpMethod: String {
+    case post="POST"
+    case get="GET"
+    case put="PUT"
+    case delete="DELETE"
 }

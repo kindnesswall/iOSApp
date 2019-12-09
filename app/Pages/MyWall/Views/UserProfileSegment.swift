@@ -18,15 +18,14 @@ class UserProfileSegment: UIView {
     @IBOutlet weak var userId: UILabel!
     @IBOutlet weak var userPhoneNumber: UILabel!
     @IBOutlet weak var showCharityBtn: UIButton!
-    
-    
-    var viewModel: UserProfileViewModel? {didSet{bindToViewModel()}}
-    
+
+    var viewModel: UserProfileViewModel? {didSet {bindToViewModel()}}
+
     override func awakeFromNib() {
         showCharityBtn.layer.cornerRadius = 8
         showCharityBtn.setTitle(LanguageKeys.charity.localizedString, for: .normal)
     }
-    
+
     func bindToViewModel() {
         viewModel?.$profile.bind = {[weak self] profile in
             self?.updateUI(profile: profile)
@@ -35,10 +34,10 @@ class UserProfileSegment: UIView {
             self?.updateLoadingState(state: state)
         }
     }
-    
-    func updateLoadingState(state: ViewLoadingState){
+
+    func updateLoadingState(state: ViewLoadingState) {
         switch state {
-        case .loading(_):
+        case .loading:
             self.loadingView.show()
             self.contentView.hide()
         default:
@@ -46,23 +45,23 @@ class UserProfileSegment: UIView {
             self.contentView.show()
         }
     }
-    
+
     func updateUI(profile: UserProfile?) {
         setProfileImage(profile: profile)
         self.userName.text = profile?.name ?? LanguageKeys.user.localizedString
         self.userId.text = "\(LanguageKeys.identifier.localizedString): \(profile?.id.localizedNumber ?? "")"
-        
+
         if let phoneNumber = profile?.phoneNumber {
             self.userPhoneNumber.text = "\(phoneNumber.localizedNumber)"
         } else {
             self.userPhoneNumber.text = ""
         }
-        
+
         let isCharity = profile?.isCharity == true
         showCharityBtn.isHidden = !isCharity
-        
+
     }
-    
+
     fileprivate func setProfileImage(profile: UserProfile?) {
         let imagePlaceholder = UIImage(named: AppImages.BlankAvatar)
         if let url = URL(string: profile?.image ?? "") {
@@ -71,5 +70,5 @@ class UserProfileSegment: UIView {
             self.profileImage.image = imagePlaceholder
         }
     }
-    
+
 }

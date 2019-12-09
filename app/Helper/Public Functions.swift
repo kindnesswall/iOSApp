@@ -8,7 +8,7 @@
 
 import Foundation
 
-public func getUniqeNameWith(fileExtension:String) -> String {
+public func getUniqeNameWith(fileExtension: String) -> String {
     let dateFormatterGet = DateFormatter()
     dateFormatterGet.dateFormat = "yyyy-MM-dd"
     let fileName = NSUUID().uuidString + dateFormatterGet.string(from: Date()) + fileExtension

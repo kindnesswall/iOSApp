@@ -8,10 +8,9 @@
 
 import Foundation
 
-
 class FirebaseLoginInput: Codable {
     var idToken: String
-    
+
     init(idToken: String) {
         self.idToken = idToken
     }

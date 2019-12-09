@@ -9,57 +9,56 @@
 import UIKit
 
 class ContactUsViewController: UIViewController {
-    
-    
+
     class ContactUsModel {
-        var image:UIImage?
-        var link:String?
-        
-        init(image:UIImage?,link:String?) {
+        var image: UIImage?
+        var link: String?
+
+        init(image: UIImage?, link: String?) {
             self.image=image
             self.link=link
         }
-        
-        init(){
-            
+
+        init() {
+
         }
-        
+
     }
-    
+
     var data = [ContactUsModel]()
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.navigationItem.title = LocalizationSystem.getStr(forKey: LanguageKeys.contactUs)
-        
+
         self.collectionView.register(cellType: ContactUsCollectionViewCell.self)
 
         fillContactUsData()
         // Do any additional setup after loading the view.
     }
-    
+
     @IBAction func criticismsAndSuggestionsBtnAction(_ sender: Any) {
         let urlAddress = URIs.telegramLink
         URLBrowser(urlAddress: urlAddress).openURL()
     }
-    
-    func fillContactUsData(){
-        
-        let github = ContactUsModel(image: UIImage(named: "github") , link: URIs.githubLink)
-        
-        let gmail = ContactUsModel(image: UIImage(named: "gmail") , link: URIs.gmailLink)
-        
-        let instagram = ContactUsModel(image: UIImage(named: "instagram") , link: URIs.instagramLink)
-        
-        let telegram = ContactUsModel(image: UIImage(named: "telegram") , link: URIs.telegramLink)
-        
-        let facebook = ContactUsModel(image: UIImage(named: "facebook") , link: URIs.facebookLink)
-        
-        let website = ContactUsModel(image: UIImage(named: "website") , link: URIs.webSiteLink)
-        
+
+    func fillContactUsData() {
+
+        let github = ContactUsModel(image: UIImage(named: "github"), link: URIs.githubLink)
+
+        let gmail = ContactUsModel(image: UIImage(named: "gmail"), link: URIs.gmailLink)
+
+        let instagram = ContactUsModel(image: UIImage(named: "instagram"), link: URIs.instagramLink)
+
+        let telegram = ContactUsModel(image: UIImage(named: "telegram"), link: URIs.telegramLink)
+
+        let facebook = ContactUsModel(image: UIImage(named: "facebook"), link: URIs.facebookLink)
+
+        let website = ContactUsModel(image: UIImage(named: "website"), link: URIs.webSiteLink)
+
         data.append(github)
         data.append(gmail)
         data.append(instagram)
@@ -71,13 +70,12 @@ class ContactUsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         self.navigationController?.navigationBar.setDefaultStyle()
     }
-    
 
     /*
     // MARK: - Navigation
@@ -91,24 +89,21 @@ class ContactUsViewController: UIViewController {
 
 }
 
-
-extension ContactUsViewController : UICollectionViewDataSource {
+extension ContactUsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactUsCollectionViewCell.identifier, for: indexPath) as! ContactUsCollectionViewCell
-        
+        let cell = collectionView.dequeue(type: ContactUsCollectionViewCell.self, for: indexPath)
         cell.setUI(data: data[indexPath.item])
-        
+
         return cell
     }
-    
-    
+
 }
 
-extension ContactUsViewController : UICollectionViewDelegate {
+extension ContactUsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = self.data[indexPath.item]
         guard let urlAddress = item.link else {
@@ -118,22 +113,22 @@ extension ContactUsViewController : UICollectionViewDelegate {
     }
 }
 
-extension ContactUsViewController : UICollectionViewDelegateFlowLayout {
-    
+extension ContactUsViewController: UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let collectionViewWidth = collectionView.frame.width
-        
-        let numberOfItemsInRow : CGFloat = 4
-        
+
+        let numberOfItemsInRow: CGFloat = 4
+
         let width = collectionViewWidth / numberOfItemsInRow
-        
+
         let height = width
-        
+
         return CGSize(width: width, height: height)
-        
+
     }
 }
