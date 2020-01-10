@@ -35,7 +35,7 @@ class AppViewModel {
     }
 
     func registerPush() {
-        registerPush(deviceIdentifier: keychainService.get(.deviceIdentifier), pushToken: keychainService.get(.pushToken))
+        registerPush(deviceIdentifier: keychainService.getString(.deviceIdentifier), pushToken: keychainService.getString(.pushToken))
     }
 
     func registerPush(deviceIdentifier: String?, pushToken: String?) {

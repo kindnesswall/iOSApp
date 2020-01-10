@@ -17,7 +17,7 @@ class GiftDetailVM: NSObject {
         guard let userId = userId else {
             return false
         }
-        if let myIdString=keychainService.get(.userId), let myId=Int(myIdString), myId==userId {
+        if let myIdString=keychainService.getString(.userId), let myId=Int(myIdString), myId==userId {
             return true
         }
         return false

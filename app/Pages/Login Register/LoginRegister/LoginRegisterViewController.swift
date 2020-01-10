@@ -99,7 +99,7 @@ class LoginRegisterViewController: UIViewController {
         self.phoneNumberTextField.backgroundColor=UIColor.clear
 
         let uiFont = AppFont.get(.iranSansMedium, size: 13)
-        let attr = [NSAttributedString.Key.font: uiFont!, NSAttributedString.Key.foregroundColor: UIColor.gray]
+        let attr = [NSAttributedString.Key.font: uiFont, NSAttributedString.Key.foregroundColor: UIColor.gray]
 
         let nsAttr = NSAttributedString(string: "", attributes: attr)
 

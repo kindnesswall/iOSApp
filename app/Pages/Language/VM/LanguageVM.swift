@@ -50,7 +50,7 @@ class LanguageVM: NSObject {
         alert.addAction(UIAlertAction(title: okBtn, style: UIAlertAction.Style.default, handler: { [weak self] _ in
             guard let self = self else { return }
             
-            if self.keychainService.get(.authorization) != nil {
+            if self.keychainService.getString(.authorization) != nil {
                 if AppLanguage.getLanguage() == AppLanguage.English {
                     UIApplication.shared.shortcutItems = [
                         UIApplicationShortcutItem(

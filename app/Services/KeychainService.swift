@@ -17,6 +17,25 @@ enum KeychainKey {
     case isAdmin
     case isCharity
     case userId
+    
+    var key: String {
+        switch self {
+        case .deviceIdentifier:
+            return AppConst.KeyChain.DeviceIdentifier
+        case .pushToken:
+            return AppConst.KeyChain.PushToken
+        case .passCode:
+            return AppConst.KeyChain.PassCode
+        case .authorization:
+            return AppConst.KeyChain.Authorization
+        case .isAdmin:
+            return AppConst.KeyChain.IsAdmin
+        case .isCharity:
+            return AppConst.KeyChain.IsCharity
+        case .userId:
+            return AppConst.KeyChain.UserID
+        }
+    }
 }
 
 class KeychainService {
@@ -41,11 +60,11 @@ class KeychainService {
     }
     
     func isUserLogedIn() -> Bool {
-        return get(.authorization) != nil
+        return getString(.authorization) != nil
     }
     
     public func isPasscodeSaved() -> Bool {
-        return get(.passCode) != nil
+        return getString(.passCode) != nil
     }
     
     func isAdmin() -> Bool {
@@ -58,62 +77,34 @@ class KeychainService {
     
     func set(_ key: KeychainKey, value: String) {
         switch key {
-        case .deviceIdentifier:
-            keychain.set(value, forKey: AppConst.KeyChain.DeviceIdentifier)
-        case .pushToken:
-            keychain.set(value, forKey: AppConst.KeyChain.PushToken)
-        case .passCode:
-            keychain.set(value, forKey: AppConst.KeyChain.PassCode)
-        case .authorization:
-            keychain.set(value, forKey: AppConst.KeyChain.Authorization)
-        case .userId:
-            keychain.set(value, forKey: AppConst.KeyChain.UserID)
-        default:
+        case .deviceIdentifier, .pushToken, .passCode, .authorization, .userId:
+            keychain.set(value, forKey: key.key)
+        case .isAdmin, .isCharity:
+            print("Error: Associated value is not String!")
             return
         }
     }
     
     func set(_ key: KeychainKey, value: Bool) {
         switch key {
-        case .isCharity:
-            keychain.set(value, forKey: AppConst.KeyChain.IsCharity)
-        case .isAdmin:
-            keychain.set(value, forKey: AppConst.KeyChain.IsAdmin)
-        default:
+        case .isAdmin, .isCharity:
+            keychain.set(value, forKey: key.key)
+        case .deviceIdentifier, .pushToken, .passCode, .authorization, .userId:
+            print("Error: Associated value is not Bool!")
             return
         }
     }
     
     func delete(_ key: KeychainKey) {
-        switch key {
-        case .deviceIdentifier:
-            keychain.delete(AppConst.KeyChain.DeviceIdentifier)
-        case .pushToken:
-            keychain.delete(AppConst.KeyChain.PushToken)
-        case .passCode:
-            keychain.delete(AppConst.KeyChain.PassCode)
-        case .authorization:
-            keychain.delete(AppConst.KeyChain.Authorization)
-        case .isAdmin:
-            keychain.delete(AppConst.KeyChain.IsAdmin)
-        case .userId:
-            keychain.delete(AppConst.KeyChain.UserID)
-        case .isCharity:
-            keychain.delete(AppConst.KeyChain.IsCharity)
-        }
+        keychain.delete(key.key)
     }
     
-    func get(_ key: KeychainKey) -> String? {
+    func getString(_ key: KeychainKey) -> String? {
         switch key {
-        case .deviceIdentifier:
-            return keychain.get(AppConst.KeyChain.DeviceIdentifier)
-        case .pushToken:
-            return keychain.get(AppConst.KeyChain.PushToken)
-        case .passCode:
-            return keychain.get(AppConst.KeyChain.PassCode)
-        case .authorization:
-            return keychain.get(AppConst.KeyChain.Authorization)
-        default:
+        case .deviceIdentifier, .pushToken, .passCode, .authorization, .userId:
+            return keychain.get(key.key)
+        case .isAdmin, .isCharity:
+            print("Error: Associated value is not String!")
             return nil
         }
     }

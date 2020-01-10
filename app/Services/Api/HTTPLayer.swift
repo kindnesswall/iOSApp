@@ -32,7 +32,7 @@ class HTTPLayer: HTTPLayerProtocol {
     func setRequestHeader(request: URLRequest) -> URLRequest {
         var newRequest=request
         newRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        if let authorization=keychainService.get(.authorization) {
+        if let authorization=keychainService.getString(.authorization) {
             newRequest.setValue(authorization, forHTTPHeaderField: AppConst.KeyChain.Authorization)
         }
         return newRequest

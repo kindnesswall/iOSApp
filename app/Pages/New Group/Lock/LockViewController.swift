@@ -159,7 +159,7 @@ class LockViewController: UIViewController {
         }
 
         let passCodeHash: String = "\(pass).\(salt)".sha256()
-        let lastSavedPasscodeHash: String = self.keychainService.get(.passCode) ?? ""
+        let lastSavedPasscodeHash: String = self.keychainService.getString(.passCode) ?? ""
         if passCodeHash == lastSavedPasscodeHash {
             return true
         }
