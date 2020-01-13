@@ -30,7 +30,7 @@ class ContactsViewModel: NSObject {
         print("ContactsViewModel deinit")
     }
 
-    func reloadData() {
+    private func reloadData() {
         loadingState = .loading(.refresh)
         self.allChats = []
         network.fetchContacts()

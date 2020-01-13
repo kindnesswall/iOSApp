@@ -158,7 +158,7 @@ extension ContactsViewController {
 
 extension ContactsViewController: RefreshChatProtocol {
     func refreshChat() {
-        self.viewModel.reloadData()
+        self.viewModel.reloadContacts()
     }
     func fetchChat(chatId: Int) {
         self.viewModel.loadMessages(chatId: chatId, beforeId: nil)
