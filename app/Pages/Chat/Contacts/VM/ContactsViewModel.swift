@@ -11,16 +11,10 @@ import UIKit
 class ContactsViewModel: NSObject {
 
     var userId: Int
-    var allChats = [MessagesViewModel]() {
-        didSet {
-            self.delegate?.reloadTableView()
-        }
-    }
-
-    weak var delegate: ContactsViewModelProtocol?
+    @BindingWrapper var allChats = [MessagesViewModel]()
+    @BindingWrapper var loadingState: ViewLoadingState = .loading(.initial)
 
     var network: ContactsViewModelNetwork
-    var initialContactsHasLoaded = false
 
     init(blockedChats: Bool) {
         let userId = Int(KeychainService().getString(.userId) ?? "")
@@ -37,6 +31,7 @@ class ContactsViewModel: NSObject {
     }
 
     func reloadData() {
+        loadingState = .loading(.refresh)
         self.allChats = []
         network.fetchContacts()
     }
@@ -62,8 +57,11 @@ class ContactsViewModel: NSObject {
 extension ContactsViewModel: ContactsViewModelNetworkInterface {
 
     func allContactMessagesAreReceived(contactMessages: [ContactMessage]) {
-        self.initialContactsHasLoaded = true
-        self.delegate?.pageLoadingAnimation(pageLoadingSate: .hasLoaded(showEmptyListMessage: contactMessages.count == 0))
+        if contactMessages.count != 0 {
+            loadingState = .success
+        } else {
+            loadingState = .empty
+        }
         for contactMessage in contactMessages {
             self.contactMessageIsReceived(contactMessage: contactMessage)
         }
@@ -97,7 +95,7 @@ extension ContactsViewModel: ContactsViewModelNetworkInterface {
         self.addMessages(messages: textMessages, isSending: false, messagesViewModel: messagesViewModel)
 
         //Updating notification's count
-        self.delegate?.reloadTableView()
+        self.$allChats.hasSet()
 
     }
 
@@ -150,7 +148,7 @@ extension ContactsViewModel: MessagesViewControllerDelegate {
         }
 
         //Updating notification's count
-        self.delegate?.reloadTableView()
+        self.$allChats.hasSet()
 
         let ackMessage = AckMessage(messageId: messageId)
         network.sendAck(ackMessage: ackMessage, completionHandler: completionHandler)
@@ -179,11 +177,6 @@ extension ContactsViewModel: StartNewChatProtocol {
     func getMessagesViewControllerDelegate() -> MessagesViewControllerDelegate {
         return self
     }
-}
-
-protocol ContactsViewModelProtocol: class {
-    func reloadTableView()
-    func pageLoadingAnimation(pageLoadingSate: PageLoadingSate)
 }
 
 protocol ContactsViewModelNetwork: class {

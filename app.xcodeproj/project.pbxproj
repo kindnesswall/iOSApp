@@ -1468,8 +1468,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0507C8711F8C1A920084CDF1 /* Build configuration list for PBXNativeTarget "app" */;
 			buildPhases = (
-				0593D5A9239C3911005A4F67 /* ShellScript */,
 				1ACCC8F032A438A3510BB749 /* [CP] Check Pods Manifest.lock */,
+				0593D5A9239C3911005A4F67 /* ShellScript */,
 				6026E75F22D724C600226793 /* Generate Apollo GraphQL API */,
 				0507C85B1F8C1A920084CDF1 /* Sources */,
 				0507C85C1F8C1A920084CDF1 /* Frameworks */,

@@ -11,6 +11,7 @@ import Foundation
 enum ViewLoadingState {
     case loading(ViewLoadingType)
     case success
+    case empty
     case failed(Error)
 }
 

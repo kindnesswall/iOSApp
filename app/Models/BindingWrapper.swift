@@ -10,9 +10,10 @@ import Foundation
 
 @propertyWrapper
 class BindingWrapper<T> {
-    var wrappedValue: T {didSet {bind?(wrappedValue)}}
+    var wrappedValue: T {didSet {hasSet()}}
     var projectedValue: BindingWrapper<T> { return self }
-    var bind: ((T) -> Void)?
+    var bind: ((T) -> Void)? {didSet {hasSet()}}
+    func hasSet() { bind?(wrappedValue) }
 
     init(wrappedValue: T) {
         self.wrappedValue = wrappedValue

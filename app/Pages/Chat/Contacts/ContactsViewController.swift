@@ -48,15 +48,9 @@ class ContactsViewController: UIViewController {
         self.loadingIndicator=LoadingIndicator(view: self.view)
         configRefreshControl()
 
-        self.viewModel.delegate = self
-
         youHaveNoMessage.text = viewModel.network.getEmptyListMessage()
-
-        if self.viewModel.initialContactsHasLoaded {
-            self.pageLoadingAnimation(pageLoadingSate: .hasLoaded(showEmptyListMessage: self.viewModel.allChats.count == 0))
-        } else {
-            self.pageLoadingAnimation(pageLoadingSate: .isLoading)
-        }
+        
+        bindViewModel()
 
     }
 
@@ -124,21 +118,40 @@ extension ContactsViewController: UITableViewDelegate {
     }
 }
 
-extension ContactsViewController: ContactsViewModelProtocol {
-
-    func reloadTableView() {
-        self.tableView.reloadData()
+// MARK: - Binding
+extension ContactsViewController {
+    
+    func bindViewModel() {
+        viewModel.$allChats.bind = { [weak self] _ in
+            self?.tableView.reloadData()
+        }
+        viewModel.$loadingState.bind = { [weak self] state in
+            self?.setLoading(state: state)
+        }
     }
-
-    func pageLoadingAnimation(pageLoadingSate: PageLoadingSate) {
-        switch pageLoadingSate {
-        case .isLoading:
-            self.loadingIndicator?.startLoading()
+    
+    func setLoading(state: ViewLoadingState) {
+        switch state {
+        case .loading(let type):
+            if type == .initial {
+                self.loadingIndicator?.startLoading()
+            }
             self.onEmptyListMessage.hide()
-        case .hasLoaded(let showEmptyListMessage):
+        
+        case .success:
             self.loadingIndicator?.stopLoading()
             self.refreshControl.endRefreshing()
-            self.onEmptyListMessage.isHidden = !showEmptyListMessage
+            self.onEmptyListMessage.isHidden = true
+        
+        case .empty:
+            self.loadingIndicator?.stopLoading()
+            self.refreshControl.endRefreshing()
+            self.onEmptyListMessage.isHidden = false
+        
+        case .failed:
+            //TODO: should handle the failure
+            break
+        
         }
     }
 }
@@ -150,11 +163,6 @@ extension ContactsViewController: RefreshChatProtocol {
     func fetchChat(chatId: Int) {
         self.viewModel.loadMessages(chatId: chatId, beforeId: nil)
     }
-}
-
-enum PageLoadingSate {
-    case isLoading
-    case hasLoaded(showEmptyListMessage: Bool)
 }
 
 protocol RefreshChatProtocol: class {
