@@ -77,7 +77,7 @@ class ContactsViewController: UIViewController {
 extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let messagesViewModel = self.viewModel.allChats[indexPath.row]
-        chatCoordinator.showMessages(viewModel: messagesViewModel, delegate: viewModel)
+        chatCoordinator.showMessages(viewModel: messagesViewModel)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

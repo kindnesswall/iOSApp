@@ -46,7 +46,7 @@ class ContactsViewModel: NSObject {
         if let messagesViewModel = MessagesViewModel.find(chatId: chatId, list: self.allChats) {
             return messagesViewModel
         } else {
-            let messagesViewModel = MessagesViewModel(userId: self.userId, chatId: chatId)
+            let messagesViewModel = MessagesViewModel(userId: self.userId, chatId: chatId, parentDelegate: self)
             self.allChats.append(messagesViewModel)
             return messagesViewModel
         }
@@ -126,7 +126,7 @@ extension ContactsViewModel: ContactsViewModelNetworkInterface {
     }
 }
 
-extension ContactsViewModel: MessagesViewControllerDelegate {
+extension ContactsViewModel: MessagesViewModelParentDelegate {
 
     func writeMessage(text: String, messagesViewModel: MessagesViewModel) {
 
@@ -173,10 +173,6 @@ extension ContactsViewModel: StartNewChatProtocol {
 
         return messagesViewModel
     }
-
-    func getMessagesViewControllerDelegate() -> MessagesViewControllerDelegate {
-        return self
-    }
 }
 
 protocol ContactsViewModelNetwork: class {
@@ -198,5 +194,4 @@ protocol ContactsViewModelNetworkInterface: class {
 
 protocol StartNewChatProtocol: class {
     func writeMessage(text: String?, chatId: Int) -> MessagesViewModel
-    func getMessagesViewControllerDelegate() -> MessagesViewControllerDelegate
 }

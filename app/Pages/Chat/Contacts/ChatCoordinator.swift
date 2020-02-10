@@ -42,10 +42,9 @@ class ChatCoordinator: NavigationCoordinator {
         return rootViewController!
     }
 
-    func showMessages(viewModel: MessagesViewModel, delegate: MessagesViewControllerDelegate) {
+    func showMessages(viewModel: MessagesViewModel) {
         let controller = MessagesViewController()
         controller.viewModel = viewModel
-        controller.delegate = delegate
         controller.hidesBottomBarWhenPushed = true
         self.navigationController.pushViewController(controller, animated: true)
     }

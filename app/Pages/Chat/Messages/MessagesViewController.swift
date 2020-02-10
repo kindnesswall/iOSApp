@@ -25,10 +25,11 @@ class MessagesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var viewModel: MessagesViewModel?
+    var network: MessagesViewModelParentDelegate? {
+        return viewModel?.parentDelegate
+    }
 
     var donateGiftBarBtn: UIBarButtonItem?
-
-    weak var delegate: MessagesViewControllerDelegate?
 
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
@@ -53,7 +54,7 @@ class MessagesViewController: UIViewController {
         guard let viewModel = viewModel else {
             return
         }
-        self.delegate?.loadMessages(chatId: viewModel.chatId, beforeId: nil)
+        network?.loadMessages(chatId: viewModel.chatId, beforeId: nil)
 
     }
 
@@ -138,7 +139,7 @@ class MessagesViewController: UIViewController {
                 //TODO: should handle the failure
                 break
             case .success:
-                self?.delegate?.reloadContacts()
+                self?.network?.reloadContacts()
                 self?.navigationController?.popViewController(animated: true)
             }
         })
@@ -163,7 +164,7 @@ class MessagesViewController: UIViewController {
             return
         }
 
-        self.delegate?.writeMessage(text: text, messagesViewModel: viewModel)
+        network?.writeMessage(text: text, messagesViewModel: viewModel)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -199,7 +200,7 @@ class MessagesViewController: UIViewController {
             return
         }
 
-        self.delegate?.writeMessage(text: messageText, messagesViewModel: viewModel)
+        network?.writeMessage(text: messageText, messagesViewModel: viewModel)
 
     }
     
@@ -256,7 +257,7 @@ extension MessagesViewController: UITableViewDataSource {
         indexPath.row == viewModel.curatedMessages[indexPath.section].count-1 {
             if !viewModel.noMoreOldMessages {
                 if let beforeId = message.id {
-                    self.delegate?.loadMessages(chatId: viewModel.chatId, beforeId: beforeId)
+                    network?.loadMessages(chatId: viewModel.chatId, beforeId: beforeId)
                 }
             }
         }
@@ -271,7 +272,7 @@ extension MessagesViewController: UITableViewDataSource {
         guard message.receiverId == userId, message.ack == false else {
             return
         }
-        self.delegate?.sendAckMessage(message: message) {
+        network?.sendAckMessage(message: message) {
             message.ack = true
         }
     }
@@ -292,9 +293,3 @@ extension MessagesViewController: UITableViewDelegate {
     }
 }
 
-protocol MessagesViewControllerDelegate: class {
-    func writeMessage(text: String, messagesViewModel: MessagesViewModel)
-    func loadMessages(chatId: Int, beforeId: Int?)
-    func sendAckMessage(message: TextMessage, completionHandler:(() -> Void)?)
-    func reloadContacts()
-}

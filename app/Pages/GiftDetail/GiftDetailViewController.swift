@@ -275,17 +275,13 @@ class GiftDetailViewController: UIViewController {
         }
         let messagesViewModel = startNewChatProtocol.writeMessage(text: sendRequestMessage ? giftRequestMessage : nil, chatId: chatId)
 
-        let messagesViewControllerDelegate = startNewChatProtocol.getMessagesViewControllerDelegate()
-
-        self.pushMessagesViewController(messagesViewModel: messagesViewModel, messagesViewControllerDelegate: messagesViewControllerDelegate)
+        self.pushMessagesViewController(messagesViewModel: messagesViewModel)
     }
 
-    func pushMessagesViewController(messagesViewModel: MessagesViewModel,
-                                    messagesViewControllerDelegate: MessagesViewControllerDelegate) {
+    func pushMessagesViewController(messagesViewModel: MessagesViewModel) {
 
         let controller = MessagesViewController()
         controller.viewModel = messagesViewModel
-        controller.delegate = messagesViewControllerDelegate
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }

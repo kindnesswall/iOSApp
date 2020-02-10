@@ -19,10 +19,12 @@ class MessagesViewModel {
     var sendingQueue = [TextMessage]()
     var updateMessagesBind: ((UpdateMessagesType) -> Void)?
     var noMoreOldMessages = false
+    weak var parentDelegate: MessagesViewModelParentDelegate?
 
-    init(userId: Int, chatId: Int) {
+    init(userId: Int, chatId: Int, parentDelegate: MessagesViewModelParentDelegate) {
         self.userId=userId
         self.chatId=chatId
+        self.parentDelegate = parentDelegate
     }
 
     deinit {
@@ -209,6 +211,13 @@ extension MessagesViewModel {
             }
         })
     }
+}
+
+protocol MessagesViewModelParentDelegate: class {
+    func writeMessage(text: String, messagesViewModel: MessagesViewModel)
+    func loadMessages(chatId: Int, beforeId: Int?)
+    func sendAckMessage(message: TextMessage, completionHandler:(() -> Void)?)
+    func reloadContacts()
 }
 
 enum UpdateMessagesType {
