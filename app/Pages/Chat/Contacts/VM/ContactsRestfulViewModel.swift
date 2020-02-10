@@ -10,7 +10,7 @@ import UIKit
 
 class ContactsRestfulViewModel: NSObject {
 
-    weak var delegate: ContactsViewModelNetworkInterface?
+    weak var interface: ContactsViewModelNetworkInterface?
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
     let blockedChats: Bool
@@ -37,7 +37,7 @@ extension ContactsRestfulViewModel: ContactsViewModelNetwork {
             switch result {
             case .success(let ackMessage):
                 DispatchQueue.main.async {
-                    self.delegate?.ackMessageIsReceived(ackMessage: ackMessage)
+                    self.interface?.ackMessageIsReceived(ackMessage: ackMessage)
                 }
             default:
                 break
@@ -70,7 +70,7 @@ extension ContactsRestfulViewModel: ContactsViewModelNetwork {
     }
 
     func fetchContactsIsCompleted(contactMessages: [ContactMessage]) {
-        self.delegate?.allContactMessagesAreReceived(contactMessages: contactMessages)
+        self.interface?.allContactMessagesAreReceived(contactMessages: contactMessages)
     }
 
     func fetchMessages(chatId: Int, beforeId: Int?) {
@@ -96,9 +96,9 @@ extension ContactsRestfulViewModel: ContactsViewModelNetwork {
             else { return }
 
         if textMessages.count != 0 {
-            self.delegate?.singleContactMessageIsReceived(contactMessage: contactMessage)
+            self.interface?.singleContactMessageIsReceived(contactMessage: contactMessage)
         } else {
-            self.delegate?.noMoreOldMessagesIsReceived(chatId: chatId)
+            self.interface?.noMoreOldMessagesIsReceived(chatId: chatId)
         }
     }
 

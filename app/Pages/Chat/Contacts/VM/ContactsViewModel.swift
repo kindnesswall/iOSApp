@@ -23,7 +23,7 @@ class ContactsViewModel: NSObject {
         network = ContactsRestfulViewModel(blockedChats: blockedChats)
         super.init()
 
-        network.delegate = self
+        network.interface = self
     }
 
     deinit {
@@ -176,7 +176,7 @@ extension ContactsViewModel: StartNewChatProtocol {
 }
 
 protocol ContactsViewModelNetwork: class {
-    var delegate: ContactsViewModelNetworkInterface? { get set }
+    var interface: ContactsViewModelNetworkInterface? { get set }
     func sendTextMessage(textMessage: TextMessage)
     func sendAck(ackMessage: AckMessage, completionHandler:(() -> Void)?)
     func fetchContacts()
