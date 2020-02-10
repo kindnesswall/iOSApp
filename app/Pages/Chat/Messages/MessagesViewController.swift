@@ -9,7 +9,7 @@
 import UIKit
 import PanModal
 
-class MessagesViewController: UIViewController, MessagesDelegate {
+class MessagesViewController: UIViewController {
 
     @IBAction func donateGift(_ sender: Any) {
         donateGiftBtnTapped()
@@ -48,7 +48,7 @@ class MessagesViewController: UIViewController, MessagesDelegate {
 
         self.configureMessageInput()
 
-        self.viewModel?.delegate = self
+        bindToViewModel()
 
         guard let viewModel = viewModel else {
             return
@@ -202,13 +202,18 @@ class MessagesViewController: UIViewController, MessagesDelegate {
         self.delegate?.writeMessage(text: messageText, messagesViewModel: viewModel)
 
     }
-
-    func updateTableViewAndScrollToTop() {
-        self.tableView.reloadData()
-        self.scrollToTop()
+    
+    func bindToViewModel() {
+        self.viewModel?.updateMessagesBind = {[weak self] type in
+            self?.updateMessagesAction(type: type)
+        }
     }
-    func updateTableView() {
+    
+    func updateMessagesAction(type: UpdateMessagesType) {
         self.tableView.reloadData()
+        if type == .updateAndScrollToTop {
+            self.scrollToTop()
+        }
     }
 
     func scrollToTop() {

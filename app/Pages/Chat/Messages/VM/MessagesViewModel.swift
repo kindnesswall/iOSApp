@@ -17,7 +17,7 @@ class MessagesViewModel {
     private var messages = [TextMessage]()
     var curatedMessages = [[TextMessage]]()
     var sendingQueue = [TextMessage]()
-    weak var delegate: MessagesDelegate?
+    var updateMessagesBind: ((UpdateMessagesType) -> Void)?
     var noMoreOldMessages = false
 
     init(userId: Int, chatId: Int) {
@@ -94,9 +94,9 @@ class MessagesViewModel {
         updateCuratedMessages()
 
         if scrollToTop {
-            self.delegate?.updateTableViewAndScrollToTop()
+            self.updateMessagesBind?(.updateAndScrollToTop)
         } else {
-            self.delegate?.updateTableView()
+            self.updateMessagesBind?(.update)
         }
     }
 
@@ -211,7 +211,7 @@ extension MessagesViewModel {
     }
 }
 
-protocol MessagesDelegate: class {
-    func updateTableViewAndScrollToTop()
-    func updateTableView()
+enum UpdateMessagesType {
+    case update
+    case updateAndScrollToTop
 }
