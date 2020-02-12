@@ -228,6 +228,7 @@
 		609D842E2385AF2200F79A0C /* MyWallTableViewSegment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609D842D2385AF2200F79A0C /* MyWallTableViewSegment.xib */; };
 		609D84302386E0F700F79A0C /* UserProfileSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D842F2386E0F700F79A0C /* UserProfileSegment.swift */; };
 		609D84322386E0FF00F79A0C /* UserProfileSegment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609D84312386E0FF00F79A0C /* UserProfileSegment.xib */; };
+		60A87B0423F4391A007A4357 /* FontLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 60A87B0323F4391A007A4357 /* FontLicense.txt */; };
 		60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */; };
 		60AE9C86202DB9B100F246CD /* CategoryListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C85202DB9B100F246CD /* CategoryListVM.swift */; };
 		60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C87202DE87100F246CD /* OptionsListViewController.swift */; };
@@ -519,6 +520,7 @@
 		609D842D2385AF2200F79A0C /* MyWallTableViewSegment.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWallTableViewSegment.xib; sourceTree = "<group>"; };
 		609D842F2386E0F700F79A0C /* UserProfileSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSegment.swift; sourceTree = "<group>"; };
 		609D84312386E0FF00F79A0C /* UserProfileSegment.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserProfileSegment.xib; sourceTree = "<group>"; };
+		60A87B0323F4391A007A4357 /* FontLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FontLicense.txt; path = app/fonts/FontLicense.txt; sourceTree = SOURCE_ROOT; };
 		60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsListViewController.xib; sourceTree = "<group>"; };
 		60AE9C85202DB9B100F246CD /* CategoryListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListVM.swift; sourceTree = "<group>"; };
 		60AE9C87202DE87100F246CD /* OptionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsListViewController.swift; sourceTree = "<group>"; };
@@ -919,6 +921,7 @@
 				054B1B4F1FCC4100007570EF /* IRANSansMobile_Medium.ttf */,
 				054B1B501FCC4100007570EF /* IRANSansMobile_UltraLight.ttf */,
 				054B1B511FCC4100007570EF /* IRANSansMobile.ttf */,
+				60A87B0323F4391A007A4357 /* FontLicense.txt */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -1603,6 +1606,7 @@
 				054B1B551FCC4101007570EF /* IRANSansMobile_Medium.ttf in Resources */,
 				05444E4A231B3F07006E5E09 /* ContactUsCollectionViewCell.xib in Resources */,
 				05389306231AEAC500828372 /* HomeViewController.xib in Resources */,
+				60A87B0423F4391A007A4357 /* FontLicense.txt in Resources */,
 				528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */,
 				52DD768821C6428300C2E012 /* GoogleService-Info.plist in Resources */,
 				5245921821AAD7420009824C /* GiftDetailViewController.xib in Resources */,
