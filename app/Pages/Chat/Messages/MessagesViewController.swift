@@ -29,7 +29,7 @@ class MessagesViewController: UIViewController {
         return viewModel?.parentDelegate
     }
 
-    var donateGiftBarBtn: UIBarButtonItem?
+    var contactsWallBarBtn: UIBarButtonItem?
 
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
@@ -64,14 +64,19 @@ class MessagesViewController: UIViewController {
     }
 
     func configBarButtons() {
-//        donateGiftBarBtn = UINavigationItem.getNavigationItem(
-//            target: self,
-//            action: #selector(self.donateGiftBtnTapped),
-//            text:LanguageKeys.DonateGift.localizedString,
-//            font:AppFont.getRegularFont(size: 16)
-//        )
-
-//        self.navigationItem.rightBarButtonItems=[donateGiftBarBtn!]
+        
+        let contactsWallBarBtn = UINavigationItem.getNavigationItem(
+            target: self,
+            action: #selector(self.showContactsWall),
+            text: LanguageKeys.contactsWall.localizedString,
+            font: AppFont.get(.iranSansRegular, size: 17)
+        )
+        self.contactsWallBarBtn = contactsWallBarBtn
+        self.navigationItem.rightBarButtonItems=[contactsWallBarBtn]
+    }
+    
+    @objc func showContactsWall(){
+        print("Show Contacts Wall!")
     }
 
     func loadBlockButtonState() {
@@ -174,7 +179,7 @@ class MessagesViewController: UIViewController {
     }
 
     func setAllTextsInView() {
-        self.donateGiftBarBtn?.title=LanguageKeys.DonateGift.localizedString
+        self.contactsWallBarBtn?.title=LanguageKeys.contactsWall.localizedString
     }
 
     func configureMessageInput() {

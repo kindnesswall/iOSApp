@@ -51,12 +51,6 @@
 		0544DD64235B6C2D007AC8F3 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544DD63235B6C2D007AC8F3 /* AppImages.swift */; };
 		054825A3235F9822006C0E37 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054825A2235F9822006C0E37 /* AppCoordinator.swift */; };
 		054B1B491FCC29F6007570EF /* GiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */; };
-		054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */; };
-		054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */; };
-		054B1B541FCC4101007570EF /* IRANSansMobile_Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4E1FCC4100007570EF /* IRANSansMobile_Black.ttf */; };
-		054B1B551FCC4101007570EF /* IRANSansMobile_Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B4F1FCC4100007570EF /* IRANSansMobile_Medium.ttf */; };
-		054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B501FCC4100007570EF /* IRANSansMobile_UltraLight.ttf */; };
-		054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054B1B511FCC4100007570EF /* IRANSansMobile.ttf */; };
 		054C6B972364ABA0009DF9A6 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C6B962364ABA0009DF9A6 /* TabCoordinator.swift */; };
 		054C6B992364ABF9009DF9A6 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C6B982364ABF8009DF9A6 /* NavigationCoordinator.swift */; };
 		05632774234665EC00545CAF /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05632773234665EC00545CAF /* Region.swift */; };
@@ -193,6 +187,12 @@
 		6066C3C522D0B8CF00BCB50A /* PushNotificationRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066C3C422D0B8CF00BCB50A /* PushNotificationRegister.swift */; };
 		60749B1621D3E0E00058421A /* RegisterGiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */; };
 		60749B1921D7CFA60058421A /* ReloadablePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60749B1821D7CFA60058421A /* ReloadablePage.swift */; };
+		6076BDC123F57628002848DF /* IRANSansMobile_Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6076BDBB23F57628002848DF /* IRANSansMobile_Black.ttf */; };
+		6076BDC223F57628002848DF /* IRANSansMobile_Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6076BDBC23F57628002848DF /* IRANSansMobile_Medium.ttf */; };
+		6076BDC323F57628002848DF /* IRANSansMobile_UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6076BDBD23F57628002848DF /* IRANSansMobile_UltraLight.ttf */; };
+		6076BDC423F57628002848DF /* IRANSansMobile.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6076BDBE23F57628002848DF /* IRANSansMobile.ttf */; };
+		6076BDC523F57628002848DF /* IRANSansMobile_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6076BDBF23F57628002848DF /* IRANSansMobile_Bold.ttf */; };
+		6076BDC623F57628002848DF /* IRANSansMobile_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6076BDC023F57628002848DF /* IRANSansMobile_Light.ttf */; };
 		607E78752279D6CA00FF0008 /* String + ConvertToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78742279D6CA00FF0008 /* String + ConvertToDate.swift */; };
 		607E78772279DDB900FF0008 /* Date + PersianDate + Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78762279DDB800FF0008 /* Date + PersianDate + Clock.swift */; };
 		607E78802279E21F00FF0008 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E787C2279E21E00FF0008 /* MessagesViewController.swift */; };
@@ -320,12 +320,6 @@
 		0544DD63235B6C2D007AC8F3 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
 		054825A2235F9822006C0E37 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		054B1B471FCC29F6007570EF /* GiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftTableViewCell.swift; sourceTree = "<group>"; };
-		054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Light.ttf; sourceTree = "<group>"; };
-		054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Bold.ttf; sourceTree = "<group>"; };
-		054B1B4E1FCC4100007570EF /* IRANSansMobile_Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Black.ttf; sourceTree = "<group>"; };
-		054B1B4F1FCC4100007570EF /* IRANSansMobile_Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Medium.ttf; sourceTree = "<group>"; };
-		054B1B501FCC4100007570EF /* IRANSansMobile_UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_UltraLight.ttf; sourceTree = "<group>"; };
-		054B1B511FCC4100007570EF /* IRANSansMobile.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile.ttf; sourceTree = "<group>"; };
 		054C6B962364ABA0009DF9A6 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
 		054C6B982364ABF8009DF9A6 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
 		05632773234665EC00545CAF /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
@@ -481,6 +475,12 @@
 		6066C3C422D0B8CF00BCB50A /* PushNotificationRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegister.swift; sourceTree = "<group>"; };
 		60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGiftViewModel.swift; sourceTree = "<group>"; };
 		60749B1821D7CFA60058421A /* ReloadablePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadablePage.swift; sourceTree = "<group>"; };
+		6076BDBB23F57628002848DF /* IRANSansMobile_Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Black.ttf; sourceTree = "<group>"; };
+		6076BDBC23F57628002848DF /* IRANSansMobile_Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Medium.ttf; sourceTree = "<group>"; };
+		6076BDBD23F57628002848DF /* IRANSansMobile_UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_UltraLight.ttf; sourceTree = "<group>"; };
+		6076BDBE23F57628002848DF /* IRANSansMobile.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile.ttf; sourceTree = "<group>"; };
+		6076BDBF23F57628002848DF /* IRANSansMobile_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Bold.ttf; sourceTree = "<group>"; };
+		6076BDC023F57628002848DF /* IRANSansMobile_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IRANSansMobile_Light.ttf; sourceTree = "<group>"; };
 		607E78742279D6CA00FF0008 /* String + ConvertToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + ConvertToDate.swift"; sourceTree = "<group>"; };
 		607E78762279DDB800FF0008 /* Date + PersianDate + Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date + PersianDate + Clock.swift"; sourceTree = "<group>"; };
 		607E787C2279E21E00FF0008 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -520,7 +520,7 @@
 		609D842D2385AF2200F79A0C /* MyWallTableViewSegment.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWallTableViewSegment.xib; sourceTree = "<group>"; };
 		609D842F2386E0F700F79A0C /* UserProfileSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSegment.swift; sourceTree = "<group>"; };
 		609D84312386E0FF00F79A0C /* UserProfileSegment.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserProfileSegment.xib; sourceTree = "<group>"; };
-		60A87B0323F4391A007A4357 /* FontLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FontLicense.txt; path = app/fonts/FontLicense.txt; sourceTree = SOURCE_ROOT; };
+		60A87B0323F4391A007A4357 /* FontLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FontLicense.txt; path = app/fonts/IRANSans/FontLicense.txt; sourceTree = SOURCE_ROOT; };
 		60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsListViewController.xib; sourceTree = "<group>"; };
 		60AE9C85202DB9B100F246CD /* CategoryListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListVM.swift; sourceTree = "<group>"; };
 		60AE9C87202DE87100F246CD /* OptionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsListViewController.swift; sourceTree = "<group>"; };
@@ -914,14 +914,8 @@
 		054B1B4B1FCC3B60007570EF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				6076BDBA23F57628002848DF /* IRANSans */,
 				60FAB844206571340039BF61 /* icomoon.ttf */,
-				054B1B4E1FCC4100007570EF /* IRANSansMobile_Black.ttf */,
-				054B1B4D1FCC4100007570EF /* IRANSansMobile_Bold.ttf */,
-				054B1B4C1FCC40FF007570EF /* IRANSansMobile_Light.ttf */,
-				054B1B4F1FCC4100007570EF /* IRANSansMobile_Medium.ttf */,
-				054B1B501FCC4100007570EF /* IRANSansMobile_UltraLight.ttf */,
-				054B1B511FCC4100007570EF /* IRANSansMobile.ttf */,
-				60A87B0323F4391A007A4357 /* FontLicense.txt */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -1351,6 +1345,21 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		6076BDBA23F57628002848DF /* IRANSans */ = {
+			isa = PBXGroup;
+			children = (
+				60A87B0323F4391A007A4357 /* FontLicense.txt */,
+				6076BDBB23F57628002848DF /* IRANSansMobile_Black.ttf */,
+				6076BDBC23F57628002848DF /* IRANSansMobile_Medium.ttf */,
+				6076BDBD23F57628002848DF /* IRANSansMobile_UltraLight.ttf */,
+				6076BDBE23F57628002848DF /* IRANSansMobile.ttf */,
+				6076BDBF23F57628002848DF /* IRANSansMobile_Bold.ttf */,
+				6076BDC023F57628002848DF /* IRANSansMobile_Light.ttf */,
+			);
+			name = IRANSans;
+			path = app/fonts/IRANSans;
+			sourceTree = SOURCE_ROOT;
+		};
 		607E78782279E1B200FF0008 /* VM */ = {
 			isa = PBXGroup;
 			children = (
@@ -1562,28 +1571,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				05444E3A231B010C006E5E09 /* CharityTableViewCell.xib in Resources */,
+				6076BDC423F57628002848DF /* IRANSansMobile.ttf in Resources */,
 				601F83CF2036A50600F9118B /* GenericOptionsTableViewCell.xib in Resources */,
 				0507C86D1F8C1A920084CDF1 /* LaunchScreen.storyboard in Resources */,
+				6076BDC223F57628002848DF /* IRANSansMobile_Medium.ttf in Resources */,
 				5283174821C91B400044B9AD /* LockViewController.xib in Resources */,
 				5247C8A721E34D82009E8770 /* schema.json in Resources */,
 				528A2DBD21AD3EBF00DECE0F /* GiftTableViewCell.xib in Resources */,
 				602BC8F82034B7CC00ECF6E2 /* UploadImageView.xib in Resources */,
-				054B1B531FCC4101007570EF /* IRANSansMobile_Bold.ttf in Resources */,
+				6076BDC123F57628002848DF /* IRANSansMobile_Black.ttf in Resources */,
+				6076BDC523F57628002848DF /* IRANSansMobile_Bold.ttf in Resources */,
 				60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */,
-				054B1B561FCC4101007570EF /* IRANSansMobile_UltraLight.ttf in Resources */,
 				60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */,
 				0593E50A22D54FCB00C3B046 /* CharityListViewController.xib in Resources */,
 				5247C8BF21E38A74009E8770 /* ContactUsViewController.xib in Resources */,
 				604FB58322860B8100795CE2 /* GiftsToDonateViewController.xib in Resources */,
-				054B1B571FCC4101007570EF /* IRANSansMobile.ttf in Resources */,
 				528A2DCB21ADAA2100DECE0F /* LanguageViewController.xib in Resources */,
-				054B1B541FCC4101007570EF /* IRANSansMobile_Black.ttf in Resources */,
 				0593E51222D5502200C3B046 /* CharitySignupEditViewController.xib in Resources */,
 				60FAB845206571340039BF61 /* icomoon.ttf in Resources */,
 				5247C8C221E38A83009E8770 /* ContactUsViewController.strings in Resources */,
 				609D842E2385AF2200F79A0C /* MyWallTableViewSegment.xib in Resources */,
 				6033DA9622AF69BD00D43738 /* ContactsViewController.xib in Resources */,
 				0507C86A1F8C1A920084CDF1 /* Assets.xcassets in Resources */,
+				6076BDC323F57628002848DF /* IRANSansMobile_UltraLight.ttf in Resources */,
 				604FB576228234AD00795CE2 /* MessagesViewController.xib in Resources */,
 				609D84202385984A00F79A0C /* MyWallSegmentControl.xib in Resources */,
 				0507C8681F8C1A920084CDF1 /* Main.storyboard in Resources */,
@@ -1599,11 +1609,10 @@
 				05BFBBB91FDA654D00DBCDDF /* VerificationCodeViewController.xib in Resources */,
 				60AE9C92202DF97100F246CD /* CategoryOptionsTableViewCell.xib in Resources */,
 				053C46ED2291273900074761 /* ProfileViewController.xib in Resources */,
-				054B1B521FCC4101007570EF /* IRANSansMobile_Light.ttf in Resources */,
 				5247C8BA21E38A5B009E8770 /* StatisticViewController.xib in Resources */,
+				6076BDC623F57628002848DF /* IRANSansMobile_Light.ttf in Resources */,
 				6009DB9E2130931C002FD769 /* StatisticTableViewCell.xib in Resources */,
 				604A31E42291FA5900E2C5B6 /* MyWallViewController.xib in Resources */,
-				054B1B551FCC4101007570EF /* IRANSansMobile_Medium.ttf in Resources */,
 				05444E4A231B3F07006E5E09 /* ContactUsCollectionViewCell.xib in Resources */,
 				05389306231AEAC500828372 /* HomeViewController.xib in Resources */,
 				60A87B0423F4391A007A4357 /* FontLicense.txt in Resources */,
