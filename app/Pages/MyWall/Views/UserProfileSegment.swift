@@ -21,11 +21,7 @@ class UserProfileSegment: UIView {
 
     var viewModel: UserProfileViewModel? {didSet {bindToViewModel()}}
 
-    override func awakeFromNib() {
-        showCharityBtn.layer.cornerRadius = 8
-        showCharityBtn.setTitle(LanguageKeys.charity.localizedString, for: .normal)
-    }
-
+    @IBOutlet weak var charityContainer: UIView!
     func bindToViewModel() {
         viewModel?.$profile.bind = {[weak self] profile in
             self?.updateUI(profile: profile)
@@ -58,7 +54,8 @@ class UserProfileSegment: UIView {
         }
 
         let isCharity = profile?.isCharity == true
-        showCharityBtn.isHidden = !isCharity
+        charityContainer.isHidden = !isCharity
+        showCharityBtn.setTitle(profile?.charityName ?? "", for: .normal)
 
     }
 
@@ -70,5 +67,7 @@ class UserProfileSegment: UIView {
             self.profileImage.image = imagePlaceholder
         }
     }
-
+    @IBAction func showCharityAction(_ sender: Any) {
+    }
+    
 }

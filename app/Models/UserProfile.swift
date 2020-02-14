@@ -13,6 +13,7 @@ final class UserProfile: Codable {
     var image: String?
     var phoneNumber: String?
     var isCharity: Bool?
+    var charityName: String?
 
     final class Input: Codable {
         var name: String?

@@ -184,6 +184,7 @@ struct LanguageKeys {
     static let phoneNumber = "phoneNumber"
     static let user = "user"
     static let charity = "charity"
+    static let charityOf = "charityOf"
     
     static let contactsWall = "contactsWall"
 }
