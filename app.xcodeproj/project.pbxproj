@@ -168,6 +168,7 @@
 		602EA12A237B48E000130A24 /* LoginRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602EA127237B48E000130A24 /* LoginRegisterViewModel.swift */; };
 		602EA12B237B48E000130A24 /* FirebaseLoginRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602EA128237B48E000130A24 /* FirebaseLoginRegisterViewModel.swift */; };
 		602EA12C237B48E000130A24 /* LoginRegisterViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602EA129237B48E000130A24 /* LoginRegisterViewModelProtocol.swift */; };
+		602F4CA323F6C4D800569D0D /* UIButton + Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602F4CA223F6C4D800569D0D /* UIButton + Font.swift */; };
 		60302DE02068FC7E0025D397 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DDE2068FC7E0025D397 /* PopUpViewController.swift */; };
 		60302DE12068FC7E0025D397 /* PopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60302DDF2068FC7E0025D397 /* PopUpViewController.xib */; };
 		60302DE32069018C0025D397 /* PopUpMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60302DE22069018C0025D397 /* PopUpMessage.swift */; };
@@ -453,6 +454,7 @@
 		602EA14E237DD60300130A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = ../../../view_controllers/my_kindnesswall/MyKindnessWall/Base.lproj/MoreViewController.xib; sourceTree = "<group>"; };
 		602EA150237DD62E00130A24 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../../../view_controllers/my_kindnesswall/MyKindnessWall/en.lproj/MoreViewController.strings; sourceTree = "<group>"; };
 		602EA152237DD63600130A24 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = ../../../view_controllers/my_kindnesswall/MyKindnessWall/fa.lproj/MoreViewController.strings; sourceTree = "<group>"; };
+		602F4CA223F6C4D800569D0D /* UIButton + Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Font.swift"; sourceTree = "<group>"; };
 		60302DDE2068FC7E0025D397 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		60302DDF2068FC7E0025D397 /* PopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpViewController.xib; sourceTree = "<group>"; };
 		60302DE22069018C0025D397 /* PopUpMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpMessage.swift; sourceTree = "<group>"; };
@@ -1131,6 +1133,7 @@
 				05BFBBD61FE1D6FE00DBCDDF /* String+isNumber.swift */,
 				526545FB21BF2CD200C98821 /* Array+chunked.swift */,
 				522F6B5721D816DD001C67B9 /* UIColor+init.swift */,
+				602F4CA223F6C4D800569D0D /* UIButton + Font.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1802,6 +1805,7 @@
 				0593DB04239C813000C9622F /* KeychainService.swift in Sources */,
 				053C46F12291D11200074761 /* ProfileViewModel.swift in Sources */,
 				60C972ED21C9ACC700A8D1C5 /* GiftViewModel.swift in Sources */,
+				602F4CA323F6C4D800569D0D /* UIButton + Font.swift in Sources */,
 				05BFBBE01FE26ADE00DBCDDF /* User.swift in Sources */,
 				6092D633204950F700AFDA7B /* MyWallViewController.swift in Sources */,
 				054C6B992364ABF9009DF9A6 /* NavigationCoordinator.swift in Sources */,

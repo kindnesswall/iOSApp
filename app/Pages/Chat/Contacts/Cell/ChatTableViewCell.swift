@@ -13,8 +13,13 @@ class ChatTableViewCell: UITableViewCell {
     static let cellHeight: CGFloat = 80
     let userImageSize: CGFloat = 40
     private let imagePlaceholder = UIImage(named: AppImages.BlankAvatar)
+    
+    let padding: CGFloat = 8
+    let margin: CGFloat = 10
 
     var userNameLabel = UILabel()
+    var charityNameLabel = UILabel()
+    var charityNameContainer = UIView()
     var notificationLabel = UILabel()
     var userImage = UIImageView()
 
@@ -22,27 +27,47 @@ class ChatTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         self.createElements()
+        self.layoutElements()
     }
 
     func createElements() {
-        configUserNameLabel()
         configUserImage()
+        configUserNameLabel()
+        configCharityNameContainer()
+        configCharityNameLabel()
         configNotificationLabel()
+    }
+    
+    func layoutElements() {
+        self.layoutUserImage()
+        self.layoutUserNameLabel()
+        self.layoutCharityNameContainer()
+        self.layoutCharityNameLabel()
+        self.layoutNotificationLabel()
     }
 
     func configUserImage() {
         self.userImage.clipsToBounds = true
         self.userImage.layer.cornerRadius = userImageSize/2
         self.contentView.addSubview(self.userImage)
-        self.layoutUserImage()
     }
 
     func configUserNameLabel() {
         self.userNameLabel.font = AppFont.get(.iranSansRegular, size: 17)
         self.userNameLabel.textAlignment = .right
         self.contentView.addSubview(self.userNameLabel)
-        self.layoutUserNameLabel()
     }
+    func configCharityNameContainer() {
+        charityNameContainer.backgroundColor = AppColor.Tint
+        charityNameContainer.layer.cornerRadius = 8
+        self.contentView.addSubview(charityNameContainer)
+    }
+    func configCharityNameLabel() {
+        charityNameLabel.font = AppFont.get(.iranSansRegular, size: 17)
+        charityNameLabel.textColor = .white
+        charityNameContainer.addSubview(charityNameLabel)
+    }
+    
     func configNotificationLabel() {
         self.notificationLabel.backgroundColor = UIColor.blue
         self.notificationLabel.textColor = UIColor.white
@@ -51,7 +76,6 @@ class ChatTableViewCell: UITableViewCell {
         self.notificationLabel.layer.cornerRadius = 10
         self.notificationLabel.layer.masksToBounds = true
         self.contentView.addSubview(self.notificationLabel)
-        self.layoutNotificationLabel()
     }
 
     func fillUI(viewModel: MessagesViewModel) {
@@ -60,6 +84,10 @@ class ChatTableViewCell: UITableViewCell {
         defaultName += " (\(viewModel.contactProfile?.id.description ?? ""))"
         self.userNameLabel.text = viewModel.contactProfile?.name ?? defaultName
 
+        let isCharity = viewModel.contactProfile?.isCharity == true
+        self.charityNameContainer.isHidden = !isCharity
+        self.charityNameLabel.text = viewModel.contactProfile?.charityName
+        
         let numberOfNotification = viewModel.notificationCount
         self.notificationLabel.text = AppLanguage.getNumberString(number: numberOfNotification.description)
 

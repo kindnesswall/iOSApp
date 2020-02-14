@@ -11,16 +11,26 @@ import UIKit
 extension ChatTableViewCell {
     func layoutUserNameLabel() {
 
-        let theView = self.userNameLabel
-        let autoLayout = AutoLayoutHelper(view: theView)
-        autoLayout.addConstraints(firstView: theView, secondView: self.contentView, leading: 100, trailing: -(userImageSize + 20), top: nil, bottom: nil)
-        setCenterY(autoLayout: autoLayout, view: theView)
+        let autoLayout = AutoLayoutHelper(view: userNameLabel)
+        autoLayout.addConstantConstraint(firstAnchor: userNameLabel.trailingAnchor, secondAnchor: userImage.leadingAnchor, equationType: .equal, constant: -margin)
+        setCenterY(autoLayout: autoLayout, view: userNameLabel)
+    }
+    
+    func layoutCharityNameContainer() {
+        let autoLayout = AutoLayoutHelper(view: charityNameContainer)
+        autoLayout.addConstantConstraint(firstAnchor: charityNameContainer.trailingAnchor, secondAnchor: userNameLabel.leadingAnchor, equationType: .equal, constant: -margin)
+        autoLayout.addConstantConstraint(firstAnchor: charityNameContainer.leadingAnchor, secondAnchor: contentView.leadingAnchor, equationType: .greaterThan, constant: 50 + (2 * margin))
+        setCenterY(autoLayout: autoLayout, view: charityNameContainer)
+    }
+    func layoutCharityNameLabel() {
+        let autoLayout = AutoLayoutHelper(view: charityNameLabel)
+        autoLayout.addConstraints(firstView: charityNameLabel, secondView: charityNameContainer, leading: padding, trailing: -padding, top: padding, bottom: -padding)
     }
 
     func layoutUserImage() {
         let theView = self.userImage
         let autoLayout = AutoLayoutHelper(view: theView)
-        autoLayout.addConstraints(firstView: theView, secondView: self.contentView, leading: nil, trailing: -10, top: nil, bottom: nil)
+        autoLayout.addConstraints(firstView: theView, secondView: self.contentView, leading: nil, trailing: -margin, top: nil, bottom: nil)
         setCenterY(autoLayout: autoLayout, view: theView)
         autoLayout.addDimension(dimension: theView.widthAnchor, equationType: .equal, constant: self.userImageSize)
         autoLayout.addDimension(dimension: theView.heightAnchor, equationType: .equal, constant: self.userImageSize)
@@ -29,7 +39,7 @@ extension ChatTableViewCell {
     func layoutNotificationLabel() {
         let theView = self.notificationLabel
         let autoLayout = AutoLayoutHelper(view: theView)
-        autoLayout.addConstraints(firstView: theView, secondView: self.contentView, leading: 10, trailing: nil, top: nil, bottom: nil)
+        autoLayout.addConstraints(firstView: theView, secondView: self.contentView, leading: margin, trailing: nil, top: nil, bottom: nil)
         setCenterY(autoLayout: autoLayout, view: theView)
         autoLayout.addDimension(dimension: theView.heightAnchor, equationType: .equal, constant: 30)
         autoLayout.addDimension(dimension: theView.widthAnchor, equationType: .equal, constant: 50)
