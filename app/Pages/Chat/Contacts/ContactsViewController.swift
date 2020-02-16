@@ -18,7 +18,7 @@ class ContactsViewController: UIViewController {
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
 
-    var chatCoordinator: ChatCoordinator
+    weak var chatCoordinator: ChatCoordinator?
     init(chatCoordinator: ChatCoordinator, blockedChats: Bool) {
         self.chatCoordinator = chatCoordinator
         self.blockedChats = blockedChats
@@ -77,7 +77,7 @@ class ContactsViewController: UIViewController {
 extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let messagesViewModel = self.viewModel.allChats[indexPath.row]
-        chatCoordinator.showMessages(viewModel: messagesViewModel)
+        chatCoordinator?.showMessages(viewModel: messagesViewModel)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

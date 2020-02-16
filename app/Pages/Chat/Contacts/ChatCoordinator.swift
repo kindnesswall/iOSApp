@@ -15,6 +15,9 @@ class ChatCoordinator: NavigationCoordinator {
     weak var refreshChatProtocol: RefreshChatProtocol?
     var rootViewController: ContactsViewController?
     let blockedChats: Bool
+    
+    lazy var messagesCoordinator = MessagesCoordinator(navigationController: self.navigationController)
+    
     init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController(), blockedChats: Bool = false) {
         self.blockedChats = blockedChats
         self.navigationController = navigationController
@@ -41,11 +44,8 @@ class ChatCoordinator: NavigationCoordinator {
         self.refreshChatProtocol = rootViewController!
         return rootViewController!
     }
-
+    
     func showMessages(viewModel: MessagesViewModel) {
-        let controller = MessagesViewController()
-        controller.viewModel = viewModel
-        controller.hidesBottomBarWhenPushed = true
-        self.navigationController.pushViewController(controller, animated: true)
+        messagesCoordinator.showMessages(viewModel: viewModel)
     }
 }

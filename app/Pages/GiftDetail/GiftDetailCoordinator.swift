@@ -11,6 +11,8 @@ import UIKit
 
 class GiftDetailCoordinator: NavigationCoordinator {
     var navigationController: CoordinatedNavigationController
+    
+    lazy var messagesCoordinator = MessagesCoordinator(navigationController: self.navigationController)
 
     init(navigationController: CoordinatedNavigationController) {
         self.navigationController = navigationController
@@ -22,11 +24,13 @@ class GiftDetailCoordinator: NavigationCoordinator {
     }
 
     func getGiftDetailVCFor(_ gift: Gift, _ editHandler:(() -> Void)?) -> UIViewController {
-        let controller = GiftDetailViewController()
-
+        let controller = GiftDetailViewController(coordinator: self)
         controller.gift = gift
         controller.editHandler = editHandler
-
         return controller
+    }
+    
+    func showMessages(viewModel: MessagesViewModel) {
+        messagesCoordinator.showMessages(viewModel: viewModel)
     }
 }

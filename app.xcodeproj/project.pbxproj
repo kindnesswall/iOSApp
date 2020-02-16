@@ -230,6 +230,7 @@
 		609D84302386E0F700F79A0C /* UserProfileSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D842F2386E0F700F79A0C /* UserProfileSegment.swift */; };
 		609D84322386E0FF00F79A0C /* UserProfileSegment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609D84312386E0FF00F79A0C /* UserProfileSegment.xib */; };
 		60A87B0423F4391A007A4357 /* FontLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 60A87B0323F4391A007A4357 /* FontLicense.txt */; };
+		60A8E9C923F841F000BD1087 /* MessagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A8E9C823F841F000BD1087 /* MessagesCoordinator.swift */; };
 		60AE9C81202DB7F800F246CD /* OptionsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */; };
 		60AE9C86202DB9B100F246CD /* CategoryListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C85202DB9B100F246CD /* CategoryListVM.swift */; };
 		60AE9C88202DE87100F246CD /* OptionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AE9C87202DE87100F246CD /* OptionsListViewController.swift */; };
@@ -523,6 +524,7 @@
 		609D842F2386E0F700F79A0C /* UserProfileSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSegment.swift; sourceTree = "<group>"; };
 		609D84312386E0FF00F79A0C /* UserProfileSegment.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserProfileSegment.xib; sourceTree = "<group>"; };
 		60A87B0323F4391A007A4357 /* FontLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FontLicense.txt; path = app/fonts/IRANSans/FontLicense.txt; sourceTree = SOURCE_ROOT; };
+		60A8E9C823F841F000BD1087 /* MessagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCoordinator.swift; sourceTree = "<group>"; };
 		60AE9C7F202DB7F800F246CD /* OptionsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsListViewController.xib; sourceTree = "<group>"; };
 		60AE9C85202DB9B100F246CD /* CategoryListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListVM.swift; sourceTree = "<group>"; };
 		60AE9C87202DE87100F246CD /* OptionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsListViewController.swift; sourceTree = "<group>"; };
@@ -817,6 +819,7 @@
 				607E78782279E1B200FF0008 /* VM */,
 				607E787C2279E21E00FF0008 /* MessagesViewController.swift */,
 				604FB578228234AD00795CE2 /* MessagesViewController.xib */,
+				60A8E9C823F841F000BD1087 /* MessagesCoordinator.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -1945,6 +1948,7 @@
 				60DE9F52239BF83A002F3A87 /* ViewLoadingState.swift in Sources */,
 				053C46F82294A82A00074761 /* ResponseModel.swift in Sources */,
 				52D1A13D21D93577005EA2F0 /* RGVC+handleKeyboard.swift in Sources */,
+				60A8E9C923F841F000BD1087 /* MessagesCoordinator.swift in Sources */,
 				059B1F462364502C00596BD4 /* TabBarCoordinator.swift in Sources */,
 				607E78A02279E28D00FF0008 /* Chat.swift in Sources */,
 				0593D5AB239C79EE005A4F67 /* AppFont.swift in Sources */,

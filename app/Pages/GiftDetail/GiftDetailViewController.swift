@@ -17,6 +17,8 @@ class GiftDetailViewController: UIViewController {
     var profileImages: [String] = []
 //    var loadingIndicator:LoadingIndicator?
     var editBtn: UIBarButtonItem?
+    
+    weak var coordinator: GiftDetailCoordinator?
 
     var editHandler:(() -> Void)?
 
@@ -49,7 +51,16 @@ class GiftDetailViewController: UIViewController {
         case isRequested(chat: Chat)
         case isNotRequested
     }
-
+    
+    init(coordinator: GiftDetailCoordinator) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func setRequestBtnState(state: RequestBtnState) {
 
         self.requestBtnState = state
@@ -275,15 +286,7 @@ class GiftDetailViewController: UIViewController {
         }
         let messagesViewModel = startNewChatProtocol.writeMessage(text: sendRequestMessage ? giftRequestMessage : nil, chatId: chatId)
 
-        self.pushMessagesViewController(messagesViewModel: messagesViewModel)
-    }
-
-    func pushMessagesViewController(messagesViewModel: MessagesViewModel) {
-
-        let controller = MessagesViewController()
-        controller.viewModel = messagesViewModel
-        controller.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(controller, animated: true)
+        coordinator?.showMessages(viewModel: messagesViewModel)
     }
 
     @objc func didTap() {

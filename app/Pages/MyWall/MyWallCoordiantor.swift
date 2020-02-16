@@ -12,6 +12,8 @@ import UIKit
 class MyWallCoordinator: NavigationCoordinator {
     let keychainService = KeychainService()
     var navigationController: CoordinatedNavigationController
+    
+    lazy var giftDetailCoordinator = GiftDetailCoordinator(navigationController: self.navigationController)
 
     init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {
         self.navigationController = navigationController
@@ -29,11 +31,6 @@ class MyWallCoordinator: NavigationCoordinator {
     }
 
     func showGiftDetail(gift: Gift, editHandler:(() -> Void)?) {
-        let controller = GiftDetailViewController()
-
-        controller.gift = gift
-        controller.editHandler = editHandler
-
-        self.navigationController.pushViewController(controller, animated: true)
+        giftDetailCoordinator.showGiftDetailOf(gift, editHandler: editHandler)
     }
 }
