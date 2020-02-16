@@ -33,7 +33,17 @@ class MessagesViewController: UIViewController {
 
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
-
+    weak var coordinator: MessagesCoordinator?
+    
+    init(coordinator: MessagesCoordinator?) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -75,8 +85,9 @@ class MessagesViewController: UIViewController {
         self.navigationItem.rightBarButtonItems=[contactsWallBarBtn]
     }
     
-    @objc func showContactsWall(){
-        print("Show Contacts Wall!")
+    @objc func showContactsWall() {
+        guard let contactId = viewModel?.getContactId() else {return}
+        coordinator?.showContactsWall(contactId: contactId)
     }
 
     func loadBlockButtonState() {

@@ -15,19 +15,29 @@ class MyWallCoordinator: NavigationCoordinator {
     
     lazy var giftDetailCoordinator = GiftDetailCoordinator(navigationController: self.navigationController)
 
-    init(navigationController: CoordinatedNavigationController = CoordinatedNavigationController()) {
-        self.navigationController = navigationController
+    init() {
+        self.navigationController = CoordinatedNavigationController()
         navigationController.coordinator = self
+        let img = UIImage(named: AppImages.MyWall)
+        navigationController.tabBarItem = UITabBarItem(title: LanguageKeys.tabBarMyWall.localizedString, image: img, tag: 0)
+        
+    }
+    
+    init(navigationController: CoordinatedNavigationController) {
+        self.navigationController = navigationController
     }
 
     func showMyWall() {
         let viewController = MyWallViewController(myWallCoordinator: self)
-        viewController.userId = Int(keychainService.getString(.userId) ?? "")
-
-        let img = UIImage(named: AppImages.MyWall)
-        viewController.tabBarItem = UITabBarItem(title: LanguageKeys.tabBarMyWall.localizedString, image: img, tag: 0)
-
+        let myId = Int(keychainService.getString(.userId) ?? "")
+        viewController.userId = myId
         navigationController.viewControllers = [viewController]
+    }
+    
+    func pushContactWall(contactId: Int) {
+        let viewController = MyWallViewController(myWallCoordinator: self)
+        viewController.userId = contactId
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     func showGiftDetail(gift: Gift, editHandler:(() -> Void)?) {
