@@ -103,18 +103,19 @@ class HomeVM: NSObject {
         self.delegate?.lazyLoadingAnimation(isLoading: false)
         self.delegate?.refreshControlAnimation(isLoading: false)
 
-        if beforeId == nil, reply.count == 0 {
-            self.isLoadingGifts=false
-            self.delegate?.showTableView(show: false)
-            return
-        }
-
-        if beforeId==nil {
+        if beforeId == nil {
             self.gifts=[]
-            self.delegate?.showTableView(show: true)
             self.delegate?.reloadTableView()
+            
+            if reply.count == 0 {
+                self.isLoadingGifts=false
+                self.delegate?.showTableView(show: false)
+                return
+            } else {
+                self.delegate?.showTableView(show: true)
+            }
         }
-
+        
         if reply.count == self.lazyLoadingCount {
             self.isLoadingGifts=false
         }
@@ -151,7 +152,9 @@ class HomeVM: NSObject {
         input.beforeId = beforeId
         input.count = self.lazyLoadingCount
         input.provinceId = self.provinceId
-        input.categoryId = self.categoryId
+        if let categoryId = self.categoryId {
+            input.categoryIds = [categoryId]
+        }
 
         var endPoint: Endpoint
         if isReview {
@@ -168,7 +171,6 @@ class HomeVM: NSObject {
     }
 
     func handleGetGift(_ result: Result<[Gift]>, _ beforeId: Int?) {
-        self.isLoadingGifts = false
 
         switch result {
         case .failure(let error):

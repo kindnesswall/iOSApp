@@ -10,16 +10,8 @@ import Foundation
 class GiftsRequestInput: Codable {
     var beforeId: Int?
     var count: Int?
-    var categoryId: Int?
+    var categoryIds:[Int]?
     var provinceId: Int?
     var cityId: Int?
 
-    init(beforeId: Int, count: Int) {
-        self.beforeId = beforeId
-        self.count = count
-    }
-
-    init() {
-
-    }
 }
