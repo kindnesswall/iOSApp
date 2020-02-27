@@ -4,7 +4,7 @@ PODS:
   - Apollo/Core (0.11.1)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
-  - CropViewController (2.5.1)
+  - CropViewController (2.5.2)
   - CryptoSwift (1.0.0)
   - Fabric (1.9.0)
   - Firebase/Auth (6.6.0):
@@ -18,10 +18,10 @@ PODS:
   - Firebase/Performance (6.6.0):
     - Firebase/CoreOnly
     - FirebasePerformance (~> 3.1.2)
-  - FirebaseABTesting (3.1.1):
+  - FirebaseABTesting (3.1.2):
     - FirebaseAnalyticsInterop (~> 1.3)
     - FirebaseCore (~> 6.1)
-    - Protobuf (~> 3.8)
+    - Protobuf (>= 3.9.2, ~> 3.9)
   - FirebaseAnalytics (6.1.0):
     - FirebaseCore (~> 6.2)
     - FirebaseInstanceID (~> 4.2)
@@ -31,7 +31,7 @@ PODS:
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
-  - FirebaseAnalyticsInterop (1.4.0)
+  - FirebaseAnalyticsInterop (1.5.0)
   - FirebaseAuth (6.2.3):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.2)
@@ -44,13 +44,14 @@ PODS:
     - FirebaseCoreDiagnosticsInterop (~> 1.0)
     - GoogleUtilities/Environment (~> 6.2)
     - GoogleUtilities/Logger (~> 6.2)
-  - FirebaseCoreDiagnostics (1.1.0):
-    - FirebaseCoreDiagnosticsInterop (~> 1.0)
-    - GoogleDataTransportCCTSupport (~> 1.0)
-    - GoogleUtilities/Environment (~> 6.2)
-    - GoogleUtilities/Logger (~> 6.2)
-  - FirebaseCoreDiagnosticsInterop (1.0.0)
-  - FirebaseInstanceID (4.2.5):
+  - FirebaseCoreDiagnostics (1.2.0):
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleDataTransportCCTSupport (~> 1.3)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+    - nanopb (~> 0.3.901)
+  - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseInstanceID (4.2.7):
     - FirebaseCore (~> 6.0)
     - GoogleUtilities/Environment (~> 6.0)
     - GoogleUtilities/UserDefaults (~> 6.0)
@@ -65,75 +66,75 @@ PODS:
     - GoogleUtilities/MethodSwizzler (~> 6.2)
     - GTMSessionFetcher/Core (~> 1.1)
     - Protobuf (~> 3.9)
-  - FirebaseRemoteConfig (4.4.1):
+  - FirebaseRemoteConfig (4.4.7):
     - FirebaseABTesting (~> 3.1)
     - FirebaseAnalyticsInterop (~> 1.4)
     - FirebaseCore (~> 6.2)
     - FirebaseInstanceID (~> 4.2)
     - GoogleUtilities/Environment (~> 6.2)
     - "GoogleUtilities/NSData+zlib (~> 6.2)"
-    - Protobuf (~> 3.9)
+    - Protobuf (>= 3.9.2, ~> 3.9)
   - GoogleAppMeasurement (6.1.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
-  - GoogleDataTransport (2.0.0)
-  - GoogleDataTransportCCTSupport (1.1.0):
-    - GoogleDataTransport (~> 2.0)
-    - nanopb
-  - GoogleToolboxForMac/Defines (2.2.1)
-  - GoogleToolboxForMac/Logger (2.2.1):
-    - GoogleToolboxForMac/Defines (= 2.2.1)
-  - "GoogleToolboxForMac/NSData+zlib (2.2.1)":
-    - GoogleToolboxForMac/Defines (= 2.2.1)
-  - GoogleUtilities/AppDelegateSwizzler (6.3.1):
+  - GoogleDataTransport (4.0.0)
+  - GoogleDataTransportCCTSupport (1.4.0):
+    - GoogleDataTransport (~> 4.0)
+    - nanopb (~> 0.3.901)
+  - GoogleToolboxForMac/Defines (2.2.2)
+  - GoogleToolboxForMac/Logger (2.2.2):
+    - GoogleToolboxForMac/Defines (= 2.2.2)
+  - "GoogleToolboxForMac/NSData+zlib (2.2.2)":
+    - GoogleToolboxForMac/Defines (= 2.2.2)
+  - GoogleUtilities/AppDelegateSwizzler (6.5.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.3.1)
-  - GoogleUtilities/ISASwizzler (6.3.1)
-  - GoogleUtilities/Logger (6.3.1):
+  - GoogleUtilities/Environment (6.5.1)
+  - GoogleUtilities/ISASwizzler (6.5.1)
+  - GoogleUtilities/Logger (6.5.1):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.3.1):
+  - GoogleUtilities/MethodSwizzler (6.5.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.3.1):
+  - GoogleUtilities/Network (6.5.1):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.3.1)"
-  - GoogleUtilities/Reachability (6.3.1):
+  - "GoogleUtilities/NSData+zlib (6.5.1)"
+  - GoogleUtilities/Reachability (6.5.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (6.3.1):
+  - GoogleUtilities/UserDefaults (6.5.1):
     - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (1.2.2)
-  - ImageSlideshow (1.8.1):
-    - ImageSlideshow/Core (= 1.8.1)
-  - ImageSlideshow/Core (1.8.1)
-  - ImageSlideshow/Kingfisher (1.8.1):
+  - GTMSessionFetcher/Core (1.3.1)
+  - ImageSlideshow (1.8.3):
+    - ImageSlideshow/Core (= 1.8.3)
+  - ImageSlideshow/Core (1.8.3)
+  - ImageSlideshow/Kingfisher (1.8.3):
     - ImageSlideshow/Core
     - Kingfisher (> 3.0)
   - JGProgressHUD (2.0.4)
   - KeychainSwift (10.0.0)
   - Kingfisher (5.7.1)
-  - MGSwipeTableCell (1.6.9)
-  - nanopb (0.3.901):
-    - nanopb/decode (= 0.3.901)
-    - nanopb/encode (= 0.3.901)
-  - nanopb/decode (0.3.901)
-  - nanopb/encode (0.3.901)
-  - PanModal (1.2.4)
-  - Protobuf (3.9.2)
+  - MGSwipeTableCell (1.6.11)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
+  - PanModal (1.2.5)
+  - Protobuf (3.11.4)
   - Spring (1.0.6)
-  - SwiftLint (0.38.0)
+  - SwiftLint (0.38.2)
   - SwiftMessages (7.0.1):
     - SwiftMessages/App (= 7.0.1)
   - SwiftMessages/App (7.0.1)
   - SwiftyOnboard (1.3.8)
   - UICircularProgressRing (6.3.0)
-  - XLActionController/Core (5.0.1)
-  - XLActionController/Skype (5.0.1):
+  - XLActionController/Core (5.0.2)
+  - XLActionController/Skype (5.0.2):
     - XLActionController/Core
 
 DEPENDENCIES:
@@ -153,14 +154,14 @@ DEPENDENCIES:
   - MGSwipeTableCell (~> 1.6.8)
   - PanModal (~> 1.2.4)
   - Spring (from `https://github.com/MengTo/Spring.git`)
-  - SwiftLint
+  - SwiftLint (~> 0.38.0)
   - SwiftMessages (~> 7.0.0)
   - SwiftyOnboard (~> 1.3.8)
   - UICircularProgressRing (~> 6.3.0)
   - XLActionController/Skype (~> 5.0.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - Apollo
     - Crashlytics
     - CropViewController
@@ -170,6 +171,8 @@ SPEC REPOS:
     - FirebaseABTesting
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
+    - FirebaseAuth
+    - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
@@ -190,14 +193,11 @@ SPEC REPOS:
     - nanopb
     - PanModal
     - Protobuf
+    - SwiftLint
     - SwiftMessages
     - SwiftyOnboard
     - UICircularProgressRing
     - XLActionController
-  trunk:
-    - FirebaseAuth
-    - FirebaseAuthInterop
-    - SwiftLint
 
 EXTERNAL SOURCES:
   Spring:
@@ -211,42 +211,42 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Apollo: 73985134be57195be9fdeed1d8d1d74037bacd98
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
-  CropViewController: 10ba7af75e302f2db7eb913f8aa1156f95cfe88e
+  CropViewController: 1aac40093c5739e60d992b04724a55d12a689a4c
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Firebase: a2b5951f30ff38fd3b3bdae9c7d340f940fd3c51
-  FirebaseABTesting: 662e8de812ceb5d57ad66381f6402f4d28dc5c91
+  FirebaseABTesting: 0d10f3cdc3fa00f3f175b5b56c1003c8e888299f
   FirebaseAnalytics: 48414ae5cbf6976d8a2f7177e0466540e5ab33ce
-  FirebaseAnalyticsInterop: d48b6ab67bcf016a05e55b71fc39c61c0cb6b7f3
+  FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
   FirebaseAuth: e7f86c2dfc57281cd01f7da5e4b40e01e4510a4a
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: 8c9e08bce0c72a3affd83927d8184cf244918bc8
-  FirebaseCoreDiagnostics: be4f7a09d02ab305f18de59a470412caddb64c2a
-  FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
-  FirebaseInstanceID: 550df9be1f99f751d8fcde3ac342a1e21a0e6c42
+  FirebaseCoreDiagnostics: 5e78803ab276bc5b50340e3c539c06c3de35c649
+  FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseInstanceID: ebd2ea79ee38db0cb5f5167b17a0d387e1cc7b6e
   FirebasePerformance: a28490ad3b116380ff2d8300a67051626d01d09e
-  FirebaseRemoteConfig: e84fc50edebbef57e09aa5b8e43960ac3d2582c7
+  FirebaseRemoteConfig: 4890e58b0e33c8328b8c5e8b7a5a237b9d851d8e
   GoogleAppMeasurement: 47285fa897e5a125df56b9ef8750a1d81e4598a8
-  GoogleDataTransport: c8617c00e4f3eb9418e42ac0e8ac5241a9d555dd
-  GoogleDataTransportCCTSupport: 9f352523e8785a71f6754f51eeff09f49ec19268
-  GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
-  GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
-  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
-  ImageSlideshow: 634865d7d4e96f21e3830a31b51bde768cc94cea
+  GoogleDataTransport: 47fe3b8e1673e5187dfd615656a3c5034f150d69
+  GoogleDataTransportCCTSupport: 36f69887fd212db6d7ef4dd45ba44523717a434e
+  GoogleToolboxForMac: 800648f8b3127618c1b59c7f97684427630c5ea3
+  GoogleUtilities: 06eb53bb579efe7099152735900dd04bf09e7275
+  GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
+  ImageSlideshow: 4694d7d699a1549582e7cc631fb392d8f91630f3
   JGProgressHUD: 62658b14e72cccf179efc7a13bcb54d30b92fc22
   KeychainSwift: f9f7910449a0c0fd2cabc889121530dd2c477c33
   Kingfisher: 176d377ad339113c99ad4980cbae687f807e20fe
-  MGSwipeTableCell: 17349a8b56c81245bd77671251eb8aa9d486d46b
-  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  PanModal: 275f6d4d07565ddf4ed16d7be5d9cd275682d80d
-  Protobuf: 67fb42ba613def994e61854de2b3164f13790cc4
+  MGSwipeTableCell: b804e4e450dee439c42250be90bd50458bf67fce
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  PanModal: 7c5af3ad4fe22b91508040965bebffb89fb607ae
+  Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
-  SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
+  SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
   SwiftyOnboard: de60e90c2af23dd61b01ec0c6a8d0be3370f857b
   UICircularProgressRing: e700fb0505328e88ee53c4ed92bee6d1a5b8bbe3
-  XLActionController: ec9207228162569df1c90dccded2e88d0f39b2e7
+  XLActionController: f1f2226d2c6629db197d4a41f2da907085a4cb9d
 
-PODFILE CHECKSUM: 93d1238152a840c5a198d38735b7512a1c29c22b
+PODFILE CHECKSUM: 7719fe76421457fd4fc3773c68a68dab3722c66c
 
 COCOAPODS: 1.8.4
