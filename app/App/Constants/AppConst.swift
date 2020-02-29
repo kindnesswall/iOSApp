@@ -10,12 +10,6 @@ import UIKit
 
 struct AppConst {
 
-    enum Country: String, CaseIterable {
-        case iran
-        case german
-        case others
-    }
-
     struct KeyChain {
         static let Authorization: String = "Authorization"
         public static let UserID: String = "USER_ID"
@@ -35,7 +29,7 @@ struct AppConst {
         public static let WatchedSelectLanguage: String = "WATCHED_SELECT_LANGUAGE"
         public static let SelectedCountry: String = "SELECTED_COUNTRY"
 
-        public static let FirstInstall: String = "FirstInstall"
+        public static let HasInstalledBefore: String = "HasInstalledBefore"
         static let AppleLanguages: String = "AppleLanguages"
     }
 

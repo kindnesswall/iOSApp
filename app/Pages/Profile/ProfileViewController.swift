@@ -123,7 +123,7 @@ class ProfileViewController: UIViewController {
             case .success(let myProfile):
                 DispatchQueue.main.async {
                     self.username = myProfile.name
-                    self.phoneLabel.text = UserDefaultService().getString(.phoneNumber)
+                    self.phoneLabel.text = UserDefaultService().getPhoneNumber()
                     self.usernameTextField.text = myProfile.name
                     if let path = myProfile.image {
                         self.avatarImageView.kf.setImage(with: URL(string: path), placeholder: UIImage(named: AppImages.BlankAvatar))

@@ -94,7 +94,7 @@ class LanguageVM: NSObject {
     }
 
     func selectLanguage(index: Int) {
-        UserDefaultService().watchedSelectLanguage()
+        UserDefaultService().languageSelected()
         if datasource[index] == AppLanguage.getLanguage() {
 
             languageHasNotChanged()

@@ -40,9 +40,7 @@ class LoginRegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let country = AppCountry.getCurrent
-
-        if country == AppConst.Country.iran {
+        if AppCountry.isIran {
             self.viewModel = LoginRegisterViewModel()
         } else {
             self.viewModel = FirebaseLoginRegisterViewModel()
@@ -52,11 +50,11 @@ class LoginRegisterViewController: UIViewController {
 
         self.phoneNumberTextField.keyboardType = UIKeyboardType.numberPad
 
-        if let phoneNumber = userDefaultService.getString(.phoneNumber) {
+        if let phoneNumber = userDefaultService.getPhoneNumber() {
             phoneNumberTextField.text =  AppLanguage.getNumberString(number: phoneNumber)
         }
 
-        if let countryCode = AppCountry.getPhoneCode() {
+        if let countryCode = AppCountry.phoneCode {
             self.countryCodeInput.text = AppLanguage.getNumberString(number: countryCode)
         }
 

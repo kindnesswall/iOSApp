@@ -64,6 +64,12 @@ class SelectCountryVC: UIViewController {
         view.addSubview(okBtn)
 
         setViewConstraints()
+        
+        vm.$datasource.bind = { [weak self] _ in
+            self?.pickerView.reloadAllComponents()
+        }
+        
+        vm.fetch()
     }
 
     func setViewConstraints() {

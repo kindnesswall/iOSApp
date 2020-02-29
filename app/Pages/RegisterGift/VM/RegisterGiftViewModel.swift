@@ -281,7 +281,7 @@ class RegisterGiftViewModel: NSObject {
     }
 
     func readFromDraft() {
-        guard let data = userDefaultService.getData(.registerGiftDraft) else {
+        guard let data = userDefaultService.getRegisterGiftDraftData() else {
             return
         }
         guard let draft = try? JSONDecoder().decode(RegisterGiftDraft.self, from: data) else {

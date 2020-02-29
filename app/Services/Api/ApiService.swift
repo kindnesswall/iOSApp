@@ -197,10 +197,29 @@ class ApiService: ApiServiceProtocol {
             }
         }
     }
+    
+    func getCountries(completion: @escaping (Result<[Country]>) -> Void) {
+        self.httpLayer.request(at: Endpoint.getCountries) { result in
+            switch result {
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let countries = ApiUtility.convert(data: data, to: [Country].self) {
+                    completion(.success(countries))
+                } else {
+                    completion(.failure(AppError.dataDecoding))
+                }
+            }
+        }
+    }
 
     func getProvinces(completion: @escaping (Result<[Province]>) -> Void) {
 
-        self.httpLayer.request(at: Endpoint.getProvinces) {(result) in
+        guard let countryId = AppCountry.countryId else {
+            completion(.failure(AppError.countryIsNotSpecified))
+            return
+        }
+        self.httpLayer.request(at: Endpoint.getProvinces(countryId: countryId)) {(result) in
             switch result {
             case .failure(let appError):
                 completion(.failure(appError))
@@ -247,7 +266,13 @@ class ApiService: ApiServiceProtocol {
 
     func getCategories(completion: @escaping (Result<[Category]>) -> Void) {
 
-        self.httpLayer.request(at: Endpoint.getCategories) {(result) in
+        guard let countryId = AppCountry.countryId else {
+            completion(.failure(AppError.countryIsNotSpecified))
+            return
+        }
+        let input = CategoryInput(countryId: countryId)
+        
+        self.httpLayer.request(at: Endpoint.getCategories(input: input)) {(result) in
 
             switch result {
             case .failure(let appError):

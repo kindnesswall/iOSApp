@@ -41,11 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        FirebaseApp.configure()
 
-        //---- temporary -------
-        AppCountry.setCountry(current: .iran)
-        userDefaultService.languageSelected()
-        //---- end of temporary -------
-
         if userDefaultService.isItFirstTimeAppOpen() {
             appViewModel.appOpenForTheFirstTime()
         }

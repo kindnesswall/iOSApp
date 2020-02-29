@@ -10,55 +10,38 @@ import Foundation
 
 class AppCountry {
 
-    // MARK: - Default
-    private static let defaultCountry = AppConst.Country.iran
     // MARK: - Get
-    static var getCurrent: AppConst.Country {
-
-        guard let rawValue = loadCurrent(),
-              let current = AppConst.Country(rawValue: rawValue)
-        else {
-            return defaultCountry
-        }
-
-        return current
+    static var country: Country? {
+        return loadCurrent()
     }
 
     static var isNotSelectedAnyCountry: Bool {
         return loadCurrent() == nil
     }
 
-    private static func loadCurrent() -> String? {
-        return UserDefaultService().getString(.selectedCountry)
+    private static func loadCurrent() -> Country? {
+        guard let data = UserDefaultService().getSelectedContryData() else {
+            return nil
+        }
+        let country = try? JSONDecoder().decode(Country.self, from: data)
+        return country
+    }
+    
+    static var isIran: Bool {
+        return country?.isFarsi == true
+    }
+    
+    static var countryId: Int? {
+        return country?.id
+    }
+    
+    static var phoneCode: String? {
+        return country?.phoneCode
     }
 
     // MARK: - Set
-    static func setCountry(current: AppConst.Country) {
-        UserDefaultService().set(.selectedCountry, value: current.rawValue)
+    static func setCountry(_ current: Country) {
+        guard let data = try? JSONEncoder().encode(current) else { return }
+        UserDefaultService().set(.selectedCountry, value: data)
     }
-
-    // MARK: - Attributes
-
-    static func getText(country: AppConst.Country = getCurrent) -> String {
-        switch country {
-        case .iran:
-            return "Iran"
-        case .german:
-            return "German"
-        case .others:
-            return "Others"
-        }
-    }
-
-    static func getPhoneCode(country: AppConst.Country = getCurrent) -> String? {
-        switch country {
-        case .iran:
-            return "98"
-        case .german:
-            return "49"
-        case .others:
-            return nil
-        }
-    }
-
 }

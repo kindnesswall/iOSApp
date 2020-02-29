@@ -161,6 +161,8 @@
 		601F83D12036A8BE00F9118B /* DateStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D02036A8BE00F9118B /* DateStatus.swift */; };
 		601F83D32037367900F9118B /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D22037367900F9118B /* Place.swift */; };
 		601F83D520373E9E00F9118B /* PlaceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601F83D420373E9E00F9118B /* PlaceListViewModel.swift */; };
+		60246F612407F58B00A8E508 /* CategoryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60246F602407F58B00A8E508 /* CategoryInput.swift */; };
+		60246F632407F83F00A8E508 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60246F622407F83F00A8E508 /* Country.swift */; };
 		602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */; };
 		602BC8F82034B7CC00ECF6E2 /* UploadImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */; };
 		602EA123237B48C700130A24 /* AppCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602EA122237B48C700130A24 /* AppCountry.swift */; };
@@ -445,6 +447,8 @@
 		601F83D02036A8BE00F9118B /* DateStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStatus.swift; sourceTree = "<group>"; };
 		601F83D22037367900F9118B /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		601F83D420373E9E00F9118B /* PlaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewModel.swift; sourceTree = "<group>"; };
+		60246F602407F58B00A8E508 /* CategoryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryInput.swift; path = app/models/api/input/CategoryInput.swift; sourceTree = SOURCE_ROOT; };
+		60246F622407F83F00A8E508 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Country.swift; path = app/models/Country.swift; sourceTree = SOURCE_ROOT; };
 		602BC8F52034B7BE00ECF6E2 /* UploadImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageView.swift; sourceTree = "<group>"; };
 		602BC8F72034B7CC00ECF6E2 /* UploadImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageView.xib; sourceTree = "<group>"; };
 		602EA122237B48C700130A24 /* AppCountry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCountry.swift; path = app/app/Constants/AppCountry.swift; sourceTree = SOURCE_ROOT; };
@@ -777,6 +781,7 @@
 				053892D3231322BE00828372 /* SendPushInput.swift */,
 				0563277523466DE700545CAF /* ValidatePhoneNumberChangeIntput.swift */,
 				05CD3B1A236C9A10000E0209 /* RejectGiftReviewInput.swift */,
+				60246F602407F58B00A8E508 /* CategoryInput.swift */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -943,6 +948,7 @@
 				601F83D22037367900F9118B /* Place.swift */,
 				607EEA7C222C632300637A93 /* City.swift */,
 				607EEA7D222C632300637A93 /* Province.swift */,
+				60246F622407F83F00A8E508 /* Country.swift */,
 				52D1A14321DA3C30005EA2F0 /* Address.swift */,
 				607EEA80222D88C200637A93 /* Image.swift */,
 				607EEA82222EACDA00637A93 /* GiftsRequestInput.swift */,
@@ -1901,6 +1907,7 @@
 				05BEA43C20498F1900147BF5 /* UITableView+RegisterDequeueCell.swift in Sources */,
 				0523118522A4203F00A22157 /* ApiService.swift in Sources */,
 				5263D5FE21B915F400B634A8 /* LanguageVM.swift in Sources */,
+				60246F612407F58B00A8E508 /* CategoryInput.swift in Sources */,
 				5247C8AC21E388B2009E8770 /* GithubConstants.swift in Sources */,
 				60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */,
 				602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */,
@@ -1923,6 +1930,7 @@
 				054C6B972364ABA0009DF9A6 /* TabCoordinator.swift in Sources */,
 				0523117622A3DA4A00A22157 /* EmptyInput.swift in Sources */,
 				52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */,
+				60246F632407F83F00A8E508 /* Country.swift in Sources */,
 				528A2DCA21ADAA2100DECE0F /* LanguageViewController.swift in Sources */,
 				607E78862279E23600FF0008 /* ContactsViewModel.swift in Sources */,
 				05CD3B1B236C9A10000E0209 /* RejectGiftReviewInput.swift in Sources */,

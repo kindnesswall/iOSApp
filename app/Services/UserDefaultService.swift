@@ -10,24 +10,42 @@ import Foundation
 
 enum UserDefaultKey {
     case phoneNumber
-//    case watchedIntro
-//    case watchedSelectLanguage
+    case watchedIntro
+    case watchedSelectLanguage
     case selectedCountry
-//    case firstInstall
+    case hasInstalledBefore
     case appleLanguages
     case registerGiftDraft
+    
+    var key: String {
+        switch self {
+        case .phoneNumber:
+            return AppConst.UserDefaults.PhoneNumber
+        case .selectedCountry:
+            return AppConst.UserDefaults.SelectedCountry
+        case .appleLanguages:
+            return AppConst.UserDefaults.AppleLanguages
+        case .registerGiftDraft:
+            return AppConst.UserDefaults.RegisterGiftDraft
+        case .watchedIntro:
+            return AppConst.UserDefaults.WatchedIntro
+        case .watchedSelectLanguage:
+            return AppConst.UserDefaults.WatchedSelectLanguage
+        case .hasInstalledBefore:
+            return AppConst.UserDefaults.HasInstalledBefore
+        }
+    }
 }
 
 class UserDefaultService {
     let uDStandard = UserDefaults.standard
 
     func isUserWatchedIntro() -> Bool {
-        return uDStandard.bool(forKey: AppConst.UserDefaults.WatchedIntro)
+        return getBool(key: .watchedIntro)
     }
 
     func userWatchedIntro() {
-        uDStandard.set(true, forKey: AppConst.UserDefaults.WatchedIntro)
-        uDStandard.synchronize()
+        set(.watchedIntro, value: true)
     }
 
     private func clearAllUserDefaultValues() {
@@ -37,77 +55,57 @@ class UserDefaultService {
     }
 
     func isItFirstTimeAppOpen() -> Bool {
-        return uDStandard.object(forKey: AppConst.UserDefaults.FirstInstall) == nil
+        return !getBool(key: .hasInstalledBefore)
     }
 
     func appOpenForTheFirstTime() {
-        uDStandard.set(false, forKey: AppConst.UserDefaults.FirstInstall)
-        uDStandard.synchronize()
-    }
-    
-    func watchedSelectLanguage() {
-        UserDefaults.standard.set(true, forKey: AppConst.UserDefaults.WatchedSelectLanguage)
-        UserDefaults.standard.synchronize()
+        set(.hasInstalledBefore, value: true)
     }
 
     func isLanguageSelected() -> Bool {
-        return uDStandard.bool(forKey: AppConst.UserDefaults.WatchedSelectLanguage)
+        return getBool(key: .watchedSelectLanguage)
     }
     
     func languageSelected() {
-        uDStandard.set(true, forKey: AppConst.UserDefaults.WatchedSelectLanguage)
-        uDStandard.synchronize()
+        set(.watchedSelectLanguage, value: true)
     }
     
     func set(_ key: UserDefaultKey, value: Any) {
-        switch key {
-        case .phoneNumber:
-            uDStandard.set(value, forKey: AppConst.UserDefaults.PhoneNumber)
-        case .selectedCountry:
-            uDStandard.set(value, forKey: AppConst.UserDefaults.SelectedCountry)
-        case .registerGiftDraft:
-            uDStandard.set(value, forKey: AppConst.UserDefaults.RegisterGiftDraft)
-        case .appleLanguages:
-            uDStandard.set(value, forKey: AppConst.UserDefaults.AppleLanguages)
-        }
+        uDStandard.set(value, forKey: key.key)
         uDStandard.synchronize()
     }
     
-    func getString(_ key: UserDefaultKey) -> String? {
-        switch key {
-        case .phoneNumber:
-            return uDStandard.string(forKey: AppConst.UserDefaults.PhoneNumber)
-        case .selectedCountry:
-            return uDStandard.string(forKey: AppConst.UserDefaults.SelectedCountry)
-        default:
-            return nil
-        }
+    func getPhoneNumber() -> String? {
+        return getString(key: .phoneNumber)
     }
     
-    func getData(_ key: UserDefaultKey) -> Data? {
-        switch key {
-        case .registerGiftDraft:
-            return uDStandard.data(forKey: AppConst.UserDefaults.RegisterGiftDraft)
-        default:
-            return nil
-        }
+    func getRegisterGiftDraftData() -> Data? {
+        return getData(key: .registerGiftDraft)
+    }
+    
+    func getSelectedContryData() -> Data? {
+        return getData(key: .selectedCountry)
     }
     
     func getLanguages() -> [String] {
-        return (UserDefaults.standard.object(forKey: AppConst.UserDefaults.AppleLanguages) as? [String]) ?? [""]
+        return getObject(key: .appleLanguages) as? [String] ?? [""]
+    }
+    
+    private func getObject(key: UserDefaultKey) -> Any? {
+        return uDStandard.object(forKey: key.key)
+    }
+    private func getData(key: UserDefaultKey) -> Data? {
+        return uDStandard.data(forKey: key.key)
+    }
+    private func getString(key: UserDefaultKey) -> String? {
+        return uDStandard.string(forKey: key.key)
+    }
+    private func getBool(key: UserDefaultKey) -> Bool {
+        return uDStandard.bool(forKey: key.key)
     }
     
     func delete(_ key: UserDefaultKey) {
-        switch key {
-        case .registerGiftDraft:
-            uDStandard.removeObject(forKey: AppConst.UserDefaults.RegisterGiftDraft)
-        case .selectedCountry:
-            uDStandard.removeObject(forKey: AppConst.UserDefaults.SelectedCountry)
-        case .phoneNumber:
-            uDStandard.removeObject(forKey: AppConst.UserDefaults.PhoneNumber)
-        case .appleLanguages:
-            uDStandard.removeObject(forKey: AppConst.UserDefaults.AppleLanguages)
-        }
+        uDStandard.removeObject(forKey: key.key)
         uDStandard.synchronize()
     }
 }

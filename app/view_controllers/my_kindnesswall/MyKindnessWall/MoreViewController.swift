@@ -153,7 +153,7 @@ class MoreViewController: UIViewController {
             loginLogoutBtn.setTitle(
                 LanguageKeys.logout.localizedString +
                     AppLanguage.getNumberString(
-                        number: (userDefaultService.getString(.phoneNumber) ?? "")), for: .normal)
+                        number: (userDefaultService.getPhoneNumber() ?? "")), for: .normal)
         } else {
             loginLogoutBtn.setTitle(LanguageKeys.login.localizedString, for: .normal)
         }

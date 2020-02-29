@@ -15,11 +15,12 @@ protocol EndpointProtocol {
 }
 
 enum Endpoint: EndpointProtocol {
-
+    
 //        ---------------------------------------
-    case getProvinces
+    case getCountries
+    case getProvinces(countryId: Int)
     case getCitiesOfProvince(id: Int)
-    case getCategories
+    case getCategories(input: CategoryInput)
     case getRegions(_ cityId: Int)
 //        ---------------------------------------
     case registerUser(_ user: User)
@@ -98,9 +99,12 @@ enum Endpoint: EndpointProtocol {
     var httpBody: Data? {
         switch self {
 
-        case .getProfile, .getBlockContacts, .getContacts, .getUserStatistics, .unBlockChat, .blockChat, .blockUserAccess, .statistics, .rejectCharity, .charityList, .acceptCharity, .giftReviewApproved, .getProvinces, .getCategories, .getCitiesOfProvince, .getRegions, .removeGift, .requestGift, .requestGiftStatus:
+        case .getCountries, .getProfile, .getBlockContacts, .getContacts, .getUserStatistics, .unBlockChat, .blockChat, .blockUserAccess, .statistics, .rejectCharity, .charityList, .acceptCharity, .giftReviewApproved, .getProvinces, .getCitiesOfProvince, .getRegions, .removeGift, .requestGift, .requestGiftStatus:
             return nil
 
+        case .getCategories(let input):
+            return ApiUtility.convert(input: input)
+            
         case .giftReviewRejected(_, let input):
             return ApiUtility.convert(input: input)
 //        ---------------------------------------
@@ -151,10 +155,10 @@ enum Endpoint: EndpointProtocol {
 
     var httpMethod: String {
         switch self {
-        case .getProvinces, .getCitiesOfProvince, .getCategories, .getRegions, .requestGift, .requestGiftStatus, .getProfile, .charityList, .statistics, .getUserStatistics, .getContacts, .getBlockContacts:
+        case .getCountries, .getProvinces, .getCitiesOfProvince, .getRegions, .requestGift, .requestGiftStatus, .getProfile, .charityList, .statistics, .getUserStatistics, .getContacts, .getBlockContacts:
             return HttpMethod.get.rawValue
 
-        case .registerUser, .login, .firebaseLogin, .registerGift, .donateGift, .giftsToDonate, .userRegisteredGifts, .userReceivedGifts, .userDonatedGifts, .sendTextMessage, .sendAck, .fetchMessages, .registerPush, .giftsToReview, .sendPushNotif, .updateUser, .chatSendMessage, .chatAckMessage, .getGifts, .requestPhoneNumberChange, .validatePhoneNumberChange, .uploadImage:
+        case .getCategories, .registerUser, .login, .firebaseLogin, .registerGift, .donateGift, .giftsToDonate, .userRegisteredGifts, .userReceivedGifts, .userDonatedGifts, .sendTextMessage, .sendAck, .fetchMessages, .registerPush, .giftsToReview, .sendPushNotif, .updateUser, .chatSendMessage, .chatAckMessage, .getGifts, .requestPhoneNumberChange, .validatePhoneNumberChange, .uploadImage:
             return HttpMethod.post.rawValue
 
         case .editGift, .giftReviewApproved, .acceptCharity, .rejectCharity, .unBlockUserAccess, .unBlockChat, .blockChat, .giftReviewRejected:
@@ -170,8 +174,10 @@ enum Endpoint: EndpointProtocol {
         case .uploadImage:
             return basePathUrl+"/image/upload"
 //        ---------------------------------------
-        case .getProvinces:
-            return basePathUrl+"provinces"
+        case .getCountries:
+            return basePathUrl+"countries"
+        case .getProvinces(let countryId):
+            return basePathUrl+"provinces/\(countryId)"
         case .getCitiesOfProvince(let id):
             return basePathUrl+"cities/\(id)"
         case .getCategories:

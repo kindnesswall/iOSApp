@@ -19,5 +19,6 @@ public enum AppError: Error {
     case noData
     case clientSide(message: String)
     case firebaseError(error: Error?)
+    case countryIsNotSpecified
     case unknown
 }

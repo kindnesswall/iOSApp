@@ -13,13 +13,25 @@ protocol SelectCountryDelegate: class {
 }
 
 class SelectCountryVM: NSObject {
-    let datasource = AppConst.Country.allCases
+    @BindingWrapper var datasource = [Country]()
     var tabBarIsInitialized: Bool!
     weak var delegate: SelectCountryDelegate?
+    let apiService = ApiService(HTTPLayer())
+    
+    func fetch() {
+        apiService.getCountries { result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let countries):
+                self.datasource = countries
+            }
+        }
+    }
 
     func countrySelected(index: Int) {
 
-        AppCountry.setCountry(current: datasource[index])
+        AppCountry.setCountry(datasource[index])
 
         delegate?.dismissViewController()
     }
@@ -39,6 +51,6 @@ extension SelectCountryVM: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return AppCountry.getText(country: datasource[row])
+        return datasource[row].name
     }
 }
