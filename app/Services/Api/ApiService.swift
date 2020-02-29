@@ -202,12 +202,18 @@ class ApiService: ApiServiceProtocol {
         self.httpLayer.request(at: Endpoint.getCountries) { result in
             switch result {
             case .failure(let appError):
-                completion(.failure(appError))
+                DispatchQueue.main.async {
+                    completion(.failure(appError))
+                }
             case .success(let data):
                 if let countries = ApiUtility.convert(data: data, to: [Country].self) {
-                    completion(.success(countries))
+                    DispatchQueue.main.async {
+                        completion(.success(countries))
+                    }
                 } else {
-                    completion(.failure(AppError.dataDecoding))
+                    DispatchQueue.main.async {
+                        completion(.failure(AppError.dataDecoding))
+                    }
                 }
             }
         }

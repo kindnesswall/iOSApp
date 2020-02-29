@@ -43,3 +43,6 @@
 
 /* Class = "UIButton"; normalTitle = "Blocked Chats"; ObjectID = "x2V-mU-0wn"; */
 "x2V-mU-0wn.normalTitle" = "لیست گفتگو‌های مسدود شده";
+
+/* Class = "UIButton"; normalTitle = "Change Application Country"; ObjectID = "XwF-U9-0zm"; */
+"XwF-U9-0zm.normalTitle" = "تغییر کشور برنامه";

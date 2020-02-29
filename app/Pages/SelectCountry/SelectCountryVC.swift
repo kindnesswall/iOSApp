@@ -10,7 +10,12 @@ import UIKit
 
 extension SelectCountryVC: SelectCountryDelegate {
     func dismissViewController() {
-        AppDelegate.me().checkLanguageSelectedOrNot()
+        if vm.tabBarIsInitialized {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            AppDelegate.me().checkLanguageSelectedOrNot()
+        }
+        
     }
 
     func show(alert: UIAlertController) {
@@ -33,6 +38,14 @@ class SelectCountryVC: UIViewController {
         lbl.text = "Please select your country:"
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
+    }()
+    
+    let loadingIndicator: UIActivityIndicatorView = {
+        let loadingIndicator = UIActivityIndicatorView()
+        loadingIndicator.tintColor = AppColor.Tint
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return loadingIndicator
     }()
 
     lazy var okBtn: UIButton = {
@@ -62,14 +75,27 @@ class SelectCountryVC: UIViewController {
         view.addSubview(pickerView)
         view.addSubview(descriptionLbl)
         view.addSubview(okBtn)
+        view.addSubview(loadingIndicator)
 
         setViewConstraints()
         
         vm.$datasource.bind = { [weak self] _ in
             self?.pickerView.reloadAllComponents()
         }
+        vm.$loadingState.bind = {[weak self] state in
+            self?.updateLoadingState(state: state)
+        }
         
-        vm.fetch()
+        vm.fetch(loadingType: .initial)
+    }
+    
+    func updateLoadingState(state: ViewLoadingState) {
+        switch state {
+        case .loading:
+            self.loadingIndicator.startAnimating()
+        default:
+            self.loadingIndicator.stopAnimating()
+        }
     }
 
     func setViewConstraints() {
@@ -82,5 +108,8 @@ class SelectCountryVC: UIViewController {
 
         okBtn.topAnchor.constraint(equalTo: self.pickerView.bottomAnchor, constant: -16).isActive = true
         okBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 }

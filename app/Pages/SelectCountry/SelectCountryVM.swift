@@ -14,17 +14,22 @@ protocol SelectCountryDelegate: class {
 
 class SelectCountryVM: NSObject {
     @BindingWrapper var datasource = [Country]()
+    @BindingWrapper var loadingState: ViewLoadingState = .loading(.initial)
+    
     var tabBarIsInitialized: Bool!
     weak var delegate: SelectCountryDelegate?
     let apiService = ApiService(HTTPLayer())
     
-    func fetch() {
-        apiService.getCountries { result in
+    func fetch(loadingType: ViewLoadingType) {
+        loadingState = .loading(loadingType)
+        apiService.getCountries {[weak self] result in
             switch result {
             case .failure(let error):
                 print(error)
+                self?.loadingState = .failed(error)
             case .success(let countries):
-                self.datasource = countries
+                self?.datasource = countries
+                self?.loadingState = .success
             }
         }
     }

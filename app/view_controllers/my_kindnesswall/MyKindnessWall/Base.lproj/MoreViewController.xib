@@ -38,7 +38,7 @@
                     <rect key="frame" x="8" y="0.0" width="359" height="667"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="u93-sZ-58C">
-                            <rect key="frame" x="0.0" y="0.0" width="359" height="524"/>
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="564"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vee-jU-t9v">
                                     <rect key="frame" x="0.0" y="0.0" width="359" height="50"/>
@@ -143,7 +143,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="85l-zK-30T" userLabel="PublicStack">
-                                    <rect key="frame" x="0.0" y="195" width="359" height="152"/>
+                                    <rect key="frame" x="0.0" y="195" width="359" height="192"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQK-i4-MHV">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="32"/>
@@ -226,8 +226,24 @@
                                                 <action selector="switchLanguageBtnClicked:" destination="-1" eventType="touchUpInside" id="CCU-Z1-bLV"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwF-U9-0zm">
+                                            <rect key="frame" x="0.0" y="160" width="359" height="32"/>
+                                            <color key="backgroundColor" name="TintColor"/>
+                                            <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
+                                            <state key="normal" title="Change Application Country">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <integer key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="switchApplicationCountryAction:" destination="-1" eventType="touchUpInside" id="eGB-ft-1eg"/>
+                                            </connections>
+                                        </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzg-Yj-27L">
-                                            <rect key="frame" x="0.0" y="152" width="359" height="0.0"/>
+                                            <rect key="frame" x="0.0" y="192" width="359" height="0.0"/>
                                             <color key="backgroundColor" name="TintColor"/>
                                             <fontDescription key="fontDescription" name="IRANSansMobile" family="IRANSansMobile" pointSize="17"/>
                                             <state key="normal" title="Report Bugs">
@@ -245,7 +261,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ru8-zB-5OU" userLabel="AdminStack">
-                                    <rect key="frame" x="0.0" y="355" width="359" height="169"/>
+                                    <rect key="frame" x="0.0" y="395" width="359" height="169"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFk-Bu-362">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="9"/>

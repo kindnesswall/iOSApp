@@ -52,6 +52,12 @@ class MoreCoordinator: NavigationCoordinator {
         controller.languageViewModel.tabBarIsInitialized = true
         self.navigationController.present(controller, animated: true, completion: nil)
     }
+    
+    func showCountrySwitchPage() {
+        let controller = SelectCountryVC()
+        controller.vm.tabBarIsInitialized = true
+        navigationController.present(controller, animated: true, completion: nil)
+    }
 
     func showStatisticView() {
         let controller = StatisticViewController()

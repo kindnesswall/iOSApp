@@ -103,7 +103,10 @@ class MoreViewController: UIViewController {
     @IBAction func switchLanguageBtnClicked(_ sender: Any) {
         moreCoordinator.showLanguageView()
     }
-
+    @IBAction func switchApplicationCountryAction(_ sender: Any) {
+        moreCoordinator.showCountrySwitchPage()
+    }
+    
     @IBAction func logoutBtnClicked(_ sender: Any) {
 
         guard moreViewModel.isLogedin() else {
