@@ -46,9 +46,11 @@ class Gift: Codable, GiftPresenter, RegisterGiftInput {
     var categoryId: Int?
     var giftImages: [String]?
     var isNew: Bool?
+    var countryId: Int?
     var provinceId: Int?
     var cityId: Int?
     var regionId: Int?
+    var countryName: String?
     var provinceName: String?
     var cityName: String?
     var regionName: String?

@@ -151,6 +151,7 @@ class HomeVM: NSObject {
         let input = GiftsRequestInput()
         input.beforeId = beforeId
         input.count = self.lazyLoadingCount
+        input.countryId = AppCountry.countryId
         input.provinceId = self.provinceId
         if let categoryId = self.categoryId {
             input.categoryIds = [categoryId]

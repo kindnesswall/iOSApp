@@ -11,6 +11,7 @@ class GiftsRequestInput: Codable {
     var beforeId: Int?
     var count: Int?
     var categoryIds:[Int]?
+    var countryId: Int?
     var provinceId: Int?
     var cityId: Int?
 

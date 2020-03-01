@@ -121,6 +121,7 @@ struct LanguageKeys {
     static let descriptionError: String = "descriptionError"
     static let priceError: String = "priceError"
     static let addressError: String = "addressError"
+    static let countryError: String = "countryError"
     static let noImageError: String = "noImageError"
 
     static let phoneNumberIncorrectError: String = "phoneNumberIncorrectError"

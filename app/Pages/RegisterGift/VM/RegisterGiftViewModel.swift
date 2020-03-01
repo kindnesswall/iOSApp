@@ -59,6 +59,11 @@ class RegisterGiftViewModel: NSObject {
             return (nil, LanguageKeys.priceError.localizedString)
         }
         input.price=priceInt
+        
+        guard let countryId = AppCountry.countryId else {
+            return (nil, LanguageKeys.countryError.localizedString)
+        }
+        input.countryId = countryId
 
         if giftHasNewAddress {
 
@@ -89,7 +94,7 @@ class RegisterGiftViewModel: NSObject {
             input.cityId=self.editedGiftAddress?.cityId
             input.cityName=editedGiftAddress?.city
 
-            input.regionId=self.editedGiftAddress?.cityId
+            input.regionId=self.editedGiftAddress?.regionId
             input.regionName=editedGiftAddress?.region
         }
         if imagesUrl.count <= 0 {
