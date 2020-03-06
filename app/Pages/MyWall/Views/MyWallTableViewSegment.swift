@@ -36,13 +36,20 @@ class MyWallTableViewSegment: UIView {
     func setViewModel(viewModel: GiftViewModel?) {
         self.viewModel = viewModel
 
+        self.viewModel?.$hasLazyLoadingFinished.bind = {[weak self] hasFinished in
+            self?.tableView(setInset: !hasFinished)
+        }
         self.viewModel?.delegate = self
         self.tableView.dataSource = self.viewModel
     }
 
     func configTableView() {
         tableView.register(type: GiftTableViewCell.self)
-        tableView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight/2, right: 0)
+    }
+    
+    func tableView(setInset: Bool) {
+        let bottomInset = setInset ? tableViewCellHeight/2 : 0
+        tableView.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
     }
 
     func configRefreshControl() {

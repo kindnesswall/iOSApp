@@ -16,6 +16,7 @@ class HomeVM: NSObject {
 
     var isLoadingGifts=false
     var initialGiftsLoadingHasOccurred=false
+    @BindingWrapper var hasLazyLoadingFinished = false
     var lazyLoadingCount=20
 
     lazy var httpLayer = HTTPLayer()
@@ -31,8 +32,8 @@ class HomeVM: NSObject {
     func reloadPage() {
         if initialGiftsLoadingHasOccurred {
             httpLayer.cancelRequests()
-
             isLoadingGifts=false
+            hasLazyLoadingFinished = false
             getGifts(beforeId: nil)
         }
     }
@@ -118,6 +119,8 @@ class HomeVM: NSObject {
         
         if reply.count == self.lazyLoadingCount {
             self.isLoadingGifts=false
+        } else {
+            self.hasLazyLoadingFinished = true
         }
 
         var insertedIndexes=[IndexPath]()

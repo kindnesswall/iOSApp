@@ -54,6 +54,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         self.vm.delegate = self
+        vm.$hasLazyLoadingFinished.bind = {[weak self] hasFinished in
+            self?.tableView(setInset: !hasFinished)
+        }
+        
         emptyListMessageLabel.text = vm.getEmptyListMessage()
 
         registerForPreviewing(with: self, sourceView: tableview)
@@ -63,7 +67,6 @@ class HomeViewController: UIViewController {
         hud.textLabel.text = LanguageKeys.loading.localizedString
 
         self.lazyLoadingIndicator=LoadingIndicator(viewBelowTableView: self.view, cellHeight: tableViewCellHeight/2)
-        self.tableview.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: tableViewCellHeight/2, right: 0)
 
         configRefreshControl()
 
@@ -81,6 +84,11 @@ class HomeViewController: UIViewController {
         self.refreshControl.addTarget(self, action: #selector(self.refreshControlAction), for: .valueChanged)
         refreshControl.tintColor=AppColor.Tint
         self.tableview.addSubview(refreshControl)
+    }
+    
+    func tableView(setInset: Bool) {
+        let bottomInset = setInset ? tableViewCellHeight/2 : 0
+        tableview.contentInset=UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
     }
 
     @objc func refreshControlAction() {

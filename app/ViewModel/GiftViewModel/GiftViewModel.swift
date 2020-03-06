@@ -16,6 +16,7 @@ class GiftViewModel: NSObject {
     weak var delegate: GiftViewModelDelegate?
 
     var isLoadingGiftsForLazyLoading=false
+    @BindingWrapper var hasLazyLoadingFinished = false
     var initialGiftsLoadingHasOccurred=false
     var isLoadingGifts=false
 
@@ -48,6 +49,8 @@ class GiftViewModel: NSObject {
 
             if gifts.count == self.lazyLoadingCount {
                 self.isLoadingGiftsForLazyLoading=false
+            } else {
+                self.hasLazyLoadingFinished = true
             }
 
             var insertedIndexes=[IndexPath]()
@@ -108,7 +111,8 @@ class GiftViewModel: NSObject {
     func reloadGifts() {
         if self.initialGiftsLoadingHasOccurred {
             self.httpLayer.cancelRequests()
-            isLoadingGiftsForLazyLoading=false
+            isLoadingGiftsForLazyLoading = false
+            hasLazyLoadingFinished = false
             getGifts(beforeId: nil)
         }
     }
