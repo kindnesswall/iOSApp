@@ -57,9 +57,8 @@ class AppCoordinator: AppCoordinatorProtocol {
     }
 
     func showSelectCountryVC() {
-        let vc = SelectCountryVC()
-        vc.vm.tabBarIsInitialized = false
-        setWindow(rootViewContrller: vc)
+        let coordinator = SelectCountryCoordinator(presentedAtLaunch: true)
+        setWindow(rootViewContrller: coordinator.navigationController)
     }
 
     func setWindow(rootViewContrller: UIViewController?) {

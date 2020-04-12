@@ -10,10 +10,10 @@ import UIKit
 
 extension SelectCountryVC: SelectCountryDelegate {
     func dismissViewController() {
-        if vm.tabBarIsInitialized {
-            self.dismiss(animated: true, completion: nil)
-        } else {
+        if presentedAtLaunch {
             AppDelegate.me().checkLanguageSelectedOrNot()
+        } else {
+            self.dismiss(animated: true, completion: nil)
         }
         
     }
@@ -66,6 +66,18 @@ class SelectCountryVC: UIViewController {
     @objc func onSelectBtnClicked() {
         vm.countrySelected(index: pickerView.selectedRow(inComponent: 0))
     }
+    
+    var coordinator: SelectCountryCoordinator
+    let presentedAtLaunch: Bool
+    init(coordinator: SelectCountryCoordinator, presentedAtLaunch: Bool) {
+        self.coordinator = coordinator
+        self.presentedAtLaunch = presentedAtLaunch
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,16 +98,29 @@ class SelectCountryVC: UIViewController {
             self?.updateLoadingState(state: state)
         }
         
-        vm.fetch(loadingType: .initial)
+        vm.fetch()
     }
     
     func updateLoadingState(state: ViewLoadingState) {
         switch state {
-        case .loading:
-            self.loadingIndicator.startAnimating()
-        default:
+        case .success:
             self.loadingIndicator.stopAnimating()
+            elements(show: true)
+        case .failed:
+            let closeType: NetworkAlertCloseType = presentedAtLaunch ? .none : .dismissPage
+            self.coordinator.showDialogFailed(closeType: closeType) {
+                self.vm.fetch()
+            }
+        default:
+            self.loadingIndicator.startAnimating()
+            elements(show: false)
         }
+    }
+    
+    func elements(show: Bool) {
+        pickerView.isHidden = !show
+        descriptionLbl.isHidden = !show
+        okBtn.isHidden = !show
     }
 
     func setViewConstraints() {

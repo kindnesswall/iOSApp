@@ -42,9 +42,8 @@ class MoreCoordinator: NavigationCoordinator {
     }
 
     func showProfile() {
-        let controller = ProfileViewController()
-        let nc = UINavigationController.init(rootViewController: controller)
-        navigationController.present(nc, animated: true, completion: nil)
+        let coordinator = ProfileCoordinator()
+        self.present(coordinator: coordinator)
     }
 
     func showLanguageView() {
@@ -54,9 +53,8 @@ class MoreCoordinator: NavigationCoordinator {
     }
     
     func showCountrySwitchPage() {
-        let controller = SelectCountryVC()
-        controller.vm.tabBarIsInitialized = true
-        navigationController.present(controller, animated: true, completion: nil)
+        let coordinator = SelectCountryCoordinator(presentedAtLaunch: false)
+        present(coordinator: coordinator)
     }
 
     func showStatisticView() {

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class HomeCoordinator: NavigationCoordinator {
+class HomeCoordinator: NavigationCoordinator, NetworkAlertCoordinator {
     var navigationController: CoordinatedNavigationController
     var homeViewController: HomeViewController?
 
@@ -44,29 +44,6 @@ class HomeCoordinator: NavigationCoordinator {
 
     func getGiftDetailVCFor(_ gift: Gift, _ editHandler:(() -> Void)?) -> UIViewController {
         return giftDetailCoordinator.getGiftDetailVCFor(gift, editHandler)
-    }
-
-    func showDialogFailed(tryAgainHandler: @escaping () -> Void) {
-        let alert = UIAlertController(
-            title: LanguageKeys.requestfailDialogTitle.localizedString,
-            message: LanguageKeys.requestfailDialogText.localizedString,
-            preferredStyle: UIAlertController.Style.alert)
-
-        alert.addAction(
-            UIAlertAction(
-                title: LanguageKeys.tryAgain.localizedString,
-                style: UIAlertAction.Style.default, handler: { (_) in
-                    tryAgainHandler()
-            }))
-
-        alert.addAction(
-            UIAlertAction(
-                title: LanguageKeys.cancel.localizedString,
-                style: UIAlertAction.Style.default, handler: { (_) in
-                    alert.dismiss(animated: true, completion: nil)
-            }))
-
-        self.navigationController.present(alert, animated: true, completion: nil)
     }
 
     func showConfirmationDialog(actionHandler: @escaping () -> Void) {

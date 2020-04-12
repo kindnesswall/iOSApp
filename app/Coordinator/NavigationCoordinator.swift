@@ -15,4 +15,11 @@ class CoordinatedNavigationController: UINavigationController {
 
 protocol NavigationCoordinator: AnyObject {
     var navigationController: CoordinatedNavigationController { get set }
+    func present(coordinator: NavigationCoordinator)
+}
+
+extension NavigationCoordinator {
+    func present(coordinator: NavigationCoordinator) {
+        self.navigationController.present(coordinator.navigationController, animated: true, completion: nil)
+    }
 }

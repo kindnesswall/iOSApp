@@ -56,6 +56,16 @@ class ProfileViewController: UIViewController {
     func setCloseComplition(closeComplition: (() -> Void)? ) {
         self.closeComplition = closeComplition
     }
+    
+    var coordinator: ProfileCoordinator
+    init(coordinator: ProfileCoordinator) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +89,7 @@ class ProfileViewController: UIViewController {
         vm?.updateUser(name: usernameTextField.text, completion: { [weak self](result) in
             switch result {
             case .failure:
-                self?.showDialogFailed {
+                self?.coordinator.showDialogFailed(closeType: .dismissPage) {
                     self?.updateProfile(completion: completion)
                 }
             case .success:
@@ -89,35 +99,14 @@ class ProfileViewController: UIViewController {
         })
     }
 
-    func showDialogFailed(tryAgainHandler: @escaping () -> Void) {
-        let alert = UIAlertController(
-            title: LanguageKeys.requestfailDialogTitle.localizedString,
-            message: LanguageKeys.requestfailDialogText.localizedString,
-            preferredStyle: UIAlertController.Style.alert)
-
-        alert.addAction(
-            UIAlertAction(
-                title: LanguageKeys.tryAgain.localizedString,
-                style: UIAlertAction.Style.default, handler: { (_) in
-                    tryAgainHandler()
-            }))
-
-        alert.addAction(
-            UIAlertAction(
-                title: LanguageKeys.closeThisPage.localizedString,
-                style: UIAlertAction.Style.default, handler: { [weak self] (_) in
-                    self?.dismiss(animated: true, completion: nil)
-            }))
-
-        self.present(alert, animated: true, completion: nil)
-    }
+    
 
     func getProfile() {
         vm?.getProfile(completion: { [weak self](result) in
             guard let self = self else {return}
             switch result {
             case .failure:
-                self.showDialogFailed {
+                self.coordinator.showDialogFailed(closeType: .dismissPage) {
                     self.getProfile()
                 }
             case .success(let myProfile):

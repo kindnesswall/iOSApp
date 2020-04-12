@@ -35,7 +35,7 @@ extension HomeViewController: UITableViewDelegate {
         self.vm.giftApprovedAfterReview(rowNumber: rowIndex.row, completion: { [weak self] (result) in
             switch result {
             case .failure:
-                self?.homeCoordiantor?.showDialogFailed {
+                self?.homeCoordiantor?.showDialogFailed(closeType: .dismissAlert) {
                     self?.approveAction(rowIndex: rowIndex, handler: handler)
                 }
             case .success:
@@ -63,7 +63,7 @@ extension HomeViewController: UITableViewDelegate {
             switch result {
             case .failure:
                 DispatchQueue.main.async {
-                    self?.homeCoordiantor?.showDialogFailed {
+                    self?.homeCoordiantor?.showDialogFailed(closeType: .dismissAlert) {
                         self?.rejectAction(rowIndex: rowIndex, handler: handler)
                     }
                 }
