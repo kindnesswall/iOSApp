@@ -63,7 +63,7 @@ class GiftsToDonateViewController: UIViewController {
                 switch result {
                 case .failure(let error):
                     print(error)
-                case .success(let gift):
+                case .success:
                     self?.donateGiftHandler?(gift)
                     self?.closePage()
                 }

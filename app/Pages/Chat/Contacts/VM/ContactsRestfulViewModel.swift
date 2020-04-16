@@ -35,9 +35,9 @@ extension ContactsRestfulViewModel: ContactsViewModelNetwork {
     func sendTextMessage(textMessage: TextMessage) {
         apiService.sendTextMessage(textMessage: textMessage) { result in
             switch result {
-            case .success(let ackMessage):
+            case .success(let textMessage):
                 DispatchQueue.main.async {
-                    self.interface?.ackMessageIsReceived(ackMessage: ackMessage)
+                    self.interface?.ackMessageIsReceived(textMessage: textMessage)
                 }
             default:
                 break
@@ -92,7 +92,7 @@ extension ContactsRestfulViewModel: ContactsViewModelNetwork {
 
     func fetchMessagesIsCompleted(contactMessage: ContactMessage) {
         guard let textMessages = contactMessage.textMessages,
-            let chatId = contactMessage.chatContacts?.chatId
+            let chatId = contactMessage.chat?.chatId
             else { return }
 
         if textMessages.count != 0 {

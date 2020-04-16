@@ -31,7 +31,7 @@ class GiftDetailVM: NSObject {
         apiService.removeGift(id: id, completion: completion)
     }
 
-    func requestGift(id: Int, completion: @escaping (Result<Chat>) -> Void) {
+    func requestGift(id: Int, completion: @escaping (Result<ChatContacts>) -> Void) {
         apiService.requestGift(id: id, completion: completion)
     }
 

@@ -9,5 +9,5 @@ import Foundation
 
 final class GiftRequestStatus: Codable {
     var isRequested: Bool
-    var chat: Chat?
+    var chat: ChatContacts?
 }

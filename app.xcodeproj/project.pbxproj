@@ -57,7 +57,6 @@
 		0563277623466DE700545CAF /* ValidatePhoneNumberChangeIntput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563277523466DE700545CAF /* ValidatePhoneNumberChangeIntput.swift */; };
 		05644DC21FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DC11FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift */; };
 		05644DC61FFEFA2E00B7C853 /* DateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DC51FFEFA2E00B7C853 /* DateHandler.swift */; };
-		05644DC81FFF01C300B7C853 /* ChatConversationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DC71FFF01C200B7C853 /* ChatConversationResult.swift */; };
 		05644DCA1FFF02A100B7C853 /* UITableView+isCellVisible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DC91FFF02A000B7C853 /* UITableView+isCellVisible.swift */; };
 		05644DD01FFF06F900B7C853 /* NibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05644DCF1FFF06F900B7C853 /* NibLoader.swift */; };
 		0580595B2365C7F000B679C4 /* GiftDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580595A2365C7F000B679C4 /* GiftDetailCoordinator.swift */; };
@@ -211,9 +210,7 @@
 		607E78902279E25600FF0008 /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E788A2279E25500FF0008 /* MessagesTableViewCell.swift */; };
 		607E78912279E25600FF0008 /* ChatTableViewCell + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E788B2279E25500FF0008 /* ChatTableViewCell + Layout.swift */; };
 		607E78922279E25600FF0008 /* MessagesTableViewCell + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E788C2279E25500FF0008 /* MessagesTableViewCell + Layout.swift */; };
-		607E789B2279E28D00FF0008 /* ControlMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78942279E28B00FF0008 /* ControlMessage.swift */; };
 		607E789C2279E28D00FF0008 /* TextMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78952279E28B00FF0008 /* TextMessage.swift */; };
-		607E789D2279E28D00FF0008 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78962279E28C00FF0008 /* Message.swift */; };
 		607E789E2279E28D00FF0008 /* MessageSendingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78972279E28C00FF0008 /* MessageSendingState.swift */; };
 		607E78A02279E28D00FF0008 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E78992279E28D00FF0008 /* Chat.swift */; };
 		607E78A12279E28D00FF0008 /* AckMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E789A2279E28D00FF0008 /* AckMessage.swift */; };
@@ -333,7 +330,6 @@
 		0563277523466DE700545CAF /* ValidatePhoneNumberChangeIntput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePhoneNumberChangeIntput.swift; sourceTree = "<group>"; };
 		05644DC11FFEF5CB00B7C853 /* String+widthAndHeightOfLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+widthAndHeightOfLabel.swift"; sourceTree = "<group>"; };
 		05644DC51FFEFA2E00B7C853 /* DateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
-		05644DC71FFF01C200B7C853 /* ChatConversationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatConversationResult.swift; sourceTree = "<group>"; };
 		05644DC91FFF02A000B7C853 /* UITableView+isCellVisible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+isCellVisible.swift"; sourceTree = "<group>"; };
 		05644DCF1FFF06F900B7C853 /* NibLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoader.swift; sourceTree = "<group>"; };
 		0580595A2365C7F000B679C4 /* GiftDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDetailCoordinator.swift; sourceTree = "<group>"; };
@@ -506,9 +502,7 @@
 		607E788A2279E25500FF0008 /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		607E788B2279E25500FF0008 /* ChatTableViewCell + Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatTableViewCell + Layout.swift"; sourceTree = "<group>"; };
 		607E788C2279E25500FF0008 /* MessagesTableViewCell + Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessagesTableViewCell + Layout.swift"; sourceTree = "<group>"; };
-		607E78942279E28B00FF0008 /* ControlMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlMessage.swift; sourceTree = "<group>"; };
 		607E78952279E28B00FF0008 /* TextMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessage.swift; sourceTree = "<group>"; };
-		607E78962279E28C00FF0008 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		607E78972279E28C00FF0008 /* MessageSendingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSendingState.swift; sourceTree = "<group>"; };
 		607E78992279E28D00FF0008 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		607E789A2279E28D00FF0008 /* AckMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AckMessage.swift; sourceTree = "<group>"; };
@@ -1160,7 +1154,6 @@
 			isa = PBXGroup;
 			children = (
 				053C46F72294A82A00074761 /* ResponseModel.swift */,
-				05644DC71FFF01C200B7C853 /* ChatConversationResult.swift */,
 				05AE646E1FA2B43000FCCC28 /* ApiOutputs.swift */,
 			);
 			path = output;
@@ -1411,8 +1404,6 @@
 			children = (
 				607E789A2279E28D00FF0008 /* AckMessage.swift */,
 				607E78992279E28D00FF0008 /* Chat.swift */,
-				607E78942279E28B00FF0008 /* ControlMessage.swift */,
-				607E78962279E28C00FF0008 /* Message.swift */,
 				607E78972279E28C00FF0008 /* MessageSendingState.swift */,
 				607E78952279E28B00FF0008 /* TextMessage.swift */,
 				60E7E4BE22999D6E0047344D /* ContactMessage.swift */,
@@ -1855,7 +1846,6 @@
 				60E7E4BF22999D6E0047344D /* ContactMessage.swift in Sources */,
 				6009DB9D2130931C002FD769 /* StatisticTableViewCell.swift in Sources */,
 				52466DDD21DB95250086F327 /* HVC+HomeViewModelDelegate.swift in Sources */,
-				607E789B2279E28D00FF0008 /* ControlMessage.swift in Sources */,
 				05632774234665EC00545CAF /* Region.swift in Sources */,
 				60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */,
 				05041EBD23625CFA007F12E9 /* ChatCoordinator.swift in Sources */,
@@ -1875,7 +1865,6 @@
 				528A2DA921AD340200DECE0F /* LanguageKeys.swift in Sources */,
 				0580595B2365C7F000B679C4 /* GiftDetailCoordinator.swift in Sources */,
 				5247C8B821E38A52009E8770 /* StatisticViewController.swift in Sources */,
-				607E789D2279E28D00FF0008 /* Message.swift in Sources */,
 				05041EB72362552F007F12E9 /* CharitiesCoordinator.swift in Sources */,
 				604FB58522860C5700795CE2 /* GiftsToDonateViewModel.swift in Sources */,
 				053892DD2318754B00828372 /* ChatAckMessageInput.swift in Sources */,
@@ -1915,7 +1904,6 @@
 				607E78A32279E37A00FF0008 /* AutoLayoutHelper.swift in Sources */,
 				6080700D21B436590046F940 /* URLBrowser.swift in Sources */,
 				05BFBBEC1FE29F7C00DBCDDF /* IntroViewController.swift in Sources */,
-				05644DC81FFF01C300B7C853 /* ChatConversationResult.swift in Sources */,
 				52466DD921DB607D0086F327 /* RGVM+URLSessionTaskDelegate.swift in Sources */,
 				05BFBBB81FDA654D00DBCDDF /* LoginRegisterViewController.swift in Sources */,
 				609D84302386E0F700F79A0C /* UserProfileSegment.swift in Sources */,

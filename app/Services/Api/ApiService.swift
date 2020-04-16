@@ -364,7 +364,7 @@ class ApiService: ApiServiceProtocol {
         }
     }
 
-    func requestGift(id: Int, completion: @escaping (Result<Chat>) -> Void) {
+    func requestGift(id: Int, completion: @escaping (Result<ChatContacts>) -> Void) {
 
         self.httpLayer.request(at: Endpoint.requestGift(id: id)) {(result) in
 
@@ -372,7 +372,7 @@ class ApiService: ApiServiceProtocol {
             case .failure(let appError):
                 completion(.failure(appError))
             case .success(let data):
-                if let chat = ApiUtility.convert(data: data, to: Chat.self) {
+                if let chat = ApiUtility.convert(data: data, to: ChatContacts.self) {
                     completion(.success(chat))
                 } else {
                     completion(.failure(AppError.dataDecoding))
@@ -410,19 +410,15 @@ class ApiService: ApiServiceProtocol {
         }
     }
 
-    func donateGift(id: Int, toUserId: Int, completion: @escaping (Result<Gift>) -> Void) {
+    func donateGift(id: Int, toUserId: Int, completion: @escaping (Result<Void>) -> Void) {
 
         self.httpLayer.request(at: Endpoint.donateGift(id: id, toUserId: toUserId)) {(result) in
 
             switch result {
             case .failure(let appError):
                 completion(.failure(appError))
-            case .success(let data):
-                if let gift = ApiUtility.convert(data: data, to: Gift.self) {
-                    completion(.success(gift))
-                } else {
-                    completion(.failure(AppError.dataDecoding))
-                }
+            case .success:
+                completion(.success(Void()))
             }
 
         }
@@ -476,14 +472,14 @@ class ApiService: ApiServiceProtocol {
         }
     }
 
-    func sendTextMessage(textMessage: TextMessage, completion: @escaping (Result<AckMessage>) -> Void) {
+    func sendTextMessage(textMessage: TextMessage, completion: @escaping (Result<TextMessage>) -> Void) {
         self.httpLayer.request(at: Endpoint.sendTextMessage(textMessage: textMessage)) { result in
 
             switch result {
             case .failure(let appError):
                 completion(.failure(appError))
             case .success(let data):
-                if let object = ApiUtility.convert(data: data, to: AckMessage.self) {
+                if let object = ApiUtility.convert(data: data, to: TextMessage.self) {
                     completion(.success(object))
                 } else {
                     completion(.failure(AppError.dataDecoding))

@@ -72,7 +72,7 @@ extension ContactsViewModel: ContactsViewModelNetworkInterface {
 
     private func contactMessageIsReceived(contactMessage: ContactMessage) {
 
-        guard let chatId = contactMessage.chatContacts?.chatId  else {
+        guard let chatId = contactMessage.chat?.chatId  else {
             return
         }
 
@@ -99,11 +99,8 @@ extension ContactsViewModel: ContactsViewModelNetworkInterface {
 
     }
 
-    func ackMessageIsReceived(ackMessage: AckMessage) {
-        guard let textMessage = ackMessage.textMessage else {
-            return
-        }
-
+    func ackMessageIsReceived(textMessage: TextMessage) {
+        
         guard let chatModel = MessagesViewModel.find(chatId: textMessage.chatId, list: self.allChats) else {
             return
         }
@@ -187,7 +184,7 @@ protocol ContactsViewModelNetwork: class {
 protocol ContactsViewModelNetworkInterface: class {
     func allContactMessagesAreReceived(contactMessages: [ContactMessage])
     func singleContactMessageIsReceived(contactMessage: ContactMessage)
-    func ackMessageIsReceived(ackMessage: AckMessage)
+    func ackMessageIsReceived(textMessage: TextMessage)
     func noMoreOldMessagesIsReceived(chatId: Int)
     func tryAgainAllSendingMessages()
 }

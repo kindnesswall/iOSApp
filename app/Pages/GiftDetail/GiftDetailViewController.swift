@@ -48,7 +48,7 @@ class GiftDetailViewController: UIViewController {
     enum RequestBtnState {
         case hide
         case loading
-        case isRequested(chat: Chat)
+        case isRequested(chatId: Int)
         case isNotRequested
     }
     
@@ -137,7 +137,7 @@ class GiftDetailViewController: UIViewController {
             self.setRequestBtnState(state: .isNotRequested)
         case .success(let status):
             if status.isRequested, let chat = status.chat {
-                self.setRequestBtnState(state: .isRequested(chat: chat))
+                self.setRequestBtnState(state: .isRequested(chatId: chat.chatId))
             } else {
                 self.setRequestBtnState(state: .isNotRequested)
             }
@@ -181,8 +181,8 @@ class GiftDetailViewController: UIViewController {
         switch requestBtnState {
         case .isNotRequested:
             self.requestGiftPrompt()
-        case .isRequested(let chat):
-            startChat(chat: chat, sendRequestMessage: false)
+        case .isRequested(let chatId):
+            startChat(chatId: chatId, sendRequestMessage: false)
         default:
             break
         }
@@ -234,7 +234,7 @@ class GiftDetailViewController: UIViewController {
 
     }
 
-    func handleRequestGift(result: Result<Chat>) {
+    func handleRequestGift(result: Result<ChatContacts>) {
 
         switch result {
         case .failure(let error):
@@ -242,8 +242,9 @@ class GiftDetailViewController: UIViewController {
             FlashMessage.showMessage(body: LanguageKeys.operationFailed.localizedString, theme: .error)
             self.setRequestBtnState(state: .isNotRequested)
         case .success(let chat):
-            self.startChat(chat: chat, sendRequestMessage: true)
-            self.setRequestBtnState(state: .isRequested(chat: chat))
+            let chatId = chat.chatId
+            self.startChat(chatId: chatId, sendRequestMessage: true)
+            self.setRequestBtnState(state: .isRequested(chatId: chatId))
         }
     }
 
@@ -273,11 +274,7 @@ class GiftDetailViewController: UIViewController {
         }
     }
 
-    func startChat(chat: Chat, sendRequestMessage: Bool) {
-
-        guard let chatId = chat.id else {
-            return
-        }
+    func startChat(chatId: Int, sendRequestMessage: Bool) {
 
         let giftRequestMessage = "\(LanguageKeys.giftRequestChatMessage.localizedString) '\(self.gift?.title ?? "")'"
 
