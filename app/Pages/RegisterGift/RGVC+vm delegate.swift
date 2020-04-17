@@ -9,8 +9,8 @@
 import Foundation
 
 extension RegisterGiftViewController: RegisterGiftViewModelDelegate {
-    func updateUploadImage(index: Int, percent: Int) {
-        self.uploadedImageViews[index].progressLabel.text = "٪" + String(AppLanguage.getNumberString(number: String(percent)))
+    func updateUploadImage(taks: URLSessionUploadTask, percent: Int) {
+        imageView(ofTask: taks)?.setUpload(percent: percent)
     }
 
     func setUIInputProperties(uiProperties: RegisterGiftViewModel.UIInputProperties) {
@@ -38,10 +38,13 @@ extension RegisterGiftViewController: RegisterGiftViewModelDelegate {
     func setEditedGiftOriginalAddressLabel(text: String?) {
         self.editedGiftOriginalAddress.text=text
     }
+    
+    func getUploadedImagesUrls() -> [String] {
+        return uploadedImageViews.compactMap { $0.uploadURL }
+    }
 
     func addUploadedImageFromEditedGift(giftImage: String) {
-        let uploadImageView=self.addUploadImageView(imageSrc: giftImage)
-        self.imageViewUploadingHasFinished(uploadImageView: uploadImageView, imageSrc: giftImage)
+        self.addUploadImageView(imageSrc: giftImage)
     }
 
     func addGiftPlaceToUIStack(place: Place) {

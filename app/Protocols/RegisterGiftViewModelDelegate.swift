@@ -15,7 +15,8 @@ protocol RegisterGiftViewModelDelegate: class {
     func setCategoryBtnTitle(text: String?)
     func setDateStatusBtnTitle(text: String?)
     func setEditedGiftOriginalAddressLabel(text: String?)
+    func getUploadedImagesUrls() -> [String]
     func addUploadedImageFromEditedGift(giftImage: String)
     func addGiftPlaceToUIStack(place: Place)
-    func updateUploadImage(index: Int, percent: Int)
+    func updateUploadImage(taks: URLSessionUploadTask, percent: Int)
 }

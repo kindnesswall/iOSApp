@@ -225,6 +225,7 @@
 		60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */; };
 		60861156206E50CD000A42E5 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60861155206E50CD000A42E5 /* AppLanguage.swift */; };
 		6092D633204950F700AFDA7B /* MyWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6092D631204950F700AFDA7B /* MyWallViewController.swift */; };
+		609405C424490967002C1399 /* UploadImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609405C324490966002C1399 /* UploadImageViewModel.swift */; };
 		609D841D238596D600F79A0C /* MyWallSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D841C238596D600F79A0C /* MyWallSegmentControl.swift */; };
 		609D84202385984A00F79A0C /* MyWallSegmentControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609D84222385984A00F79A0C /* MyWallSegmentControl.xib */; };
 		609D842C2385AF1C00F79A0C /* MyWallTableViewSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D842B2385AF1C00F79A0C /* MyWallTableViewSegment.swift */; };
@@ -517,6 +518,7 @@
 		60861153206E3E2C000A42E5 /* UINavigationBar + config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar + config.swift"; sourceTree = "<group>"; };
 		60861155206E50CD000A42E5 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		6092D631204950F700AFDA7B /* MyWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWallViewController.swift; sourceTree = "<group>"; };
+		609405C324490966002C1399 /* UploadImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageViewModel.swift; sourceTree = "<group>"; };
 		609D841C238596D600F79A0C /* MyWallSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWallSegmentControl.swift; sourceTree = "<group>"; };
 		609D84212385984A00F79A0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyWallSegmentControl.xib; sourceTree = "<group>"; };
 		609D84242385984E00F79A0C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MyWallSegmentControl.strings; sourceTree = "<group>"; };
@@ -729,6 +731,7 @@
 			children = (
 				60749B1521D3E0E00058421A /* RegisterGiftViewModel.swift */,
 				52466DD821DB607D0086F327 /* RGVM+URLSessionTaskDelegate.swift */,
+				609405C324490966002C1399 /* UploadImageViewModel.swift */,
 			);
 			path = VM;
 			sourceTree = "<group>";
@@ -1931,6 +1934,7 @@
 				053892D723186C9C00828372 /* UnblockUserInput.swift in Sources */,
 				607E78912279E25600FF0008 /* ChatTableViewCell + Layout.swift in Sources */,
 				60FAB83920642AB80039BF61 /* UINavigationItem + config.swift in Sources */,
+				609405C424490967002C1399 /* UploadImageViewModel.swift in Sources */,
 				0593D5AD239C7A1C005A4F67 /* AppColor.swift in Sources */,
 				607E788D2279E25600FF0008 /* MessagesDateTableViewCell + Layout.swift in Sources */,
 				05BEA43A20498EF100147BF5 /* UIView+RegisterationHelp.swift in Sources */,

@@ -53,20 +53,21 @@ class ApiService: ApiServiceProtocol {
             }
         }
     }
-
-    func upload(imageInput: ImageInput, urlSessionDelegate: URLSessionDelegate, completion: @escaping (Result<String>) -> Void) {
-            self.httpLayer.upload(at: Endpoint.uploadImage(input: imageInput), urlSessionDelegate: urlSessionDelegate) { (result) in
-           switch result {
-           case .failure(let appError):
-               completion(.failure(appError))
-           case .success(let data):
-               if let imageSrc=ApiUtility.convert(data: data, to: ImageOutput.self)?.address {
-                   completion(.success(imageSrc))
-               } else {
-                   completion(.failure(AppError.dataDecoding))
-               }
-           }
-       }
+    
+    @discardableResult
+    func upload(imageInput: ImageInput, urlSessionDelegate: URLSessionDelegate, completion: @escaping (Result<String>) -> Void) -> URLSessionUploadTask? {
+        return self.httpLayer.upload(at: Endpoint.uploadImage(input: imageInput), urlSessionDelegate: urlSessionDelegate) { (result) in
+            switch result {
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let imageSrc=ApiUtility.convert(data: data, to: ImageOutput.self)?.address {
+                    completion(.success(imageSrc))
+                } else {
+                    completion(.failure(AppError.dataDecoding))
+                }
+            }
+        }
     }
 
     func giftRejectedAfterReview(giftId: Int, completion: @escaping (Result<Void>) -> Void) {

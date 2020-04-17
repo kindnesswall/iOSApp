@@ -10,7 +10,9 @@ import UIKit
 
 class RegisterGiftViewModel: NSObject {
 
-    var imagesUrl: [String] = []
+    var imagesUrl: [String] {
+        return delegate?.getUploadedImagesUrls() ?? []
+    }
     var apiService = ApiService(HTTPLayer())
     let userDefaultService = UserDefaultService()
     
@@ -132,12 +134,12 @@ class RegisterGiftViewModel: NSObject {
         apiService.registerGift(gift, completion: completion)
     }
 
-    func uploadToIranServers(image: UIImage, onSuccess:@escaping (String) -> Void, onFail:(() -> Void)?) {
+    func upload(image: UIImage, onSuccess:@escaping (String) -> Void, onFail:(() -> Void)?) -> URLSessionUploadTask? {
 
         let imageData = image.jpegData(compressionQuality: 1)
         let imageInput = ImageInput(image: imageData!, imageFormat: .jpeg)
 
-        apiService.upload(imageInput: imageInput, urlSessionDelegate: self) { [weak self] (result) in
+        return apiService.upload(imageInput: imageInput, urlSessionDelegate: self) { [weak self] (result) in
 
             switch result {
             case .failure(let error):
@@ -150,23 +152,6 @@ class RegisterGiftViewModel: NSObject {
             }
         }
 
-    }
-
-    func imageRemovedFromList(index: Int) {
-        if imagesUrl.count > index {
-            imagesUrl.remove(at: index)
-        }
-
-        apiService.cancelRequestAt(index: index)
-    }
-
-    func upload(image: UIImage, onSuccess:@escaping (String) -> Void, onFail:(() -> Void)?) {
-
-        uploadToIranServers(image: image, onSuccess: { (url) in
-            onSuccess(url)
-        }) {
-            onFail?()
-        }
     }
 
     func writeChangesToEditedGift() {
@@ -336,8 +321,4 @@ class RegisterGiftViewModel: NSObject {
         FlashMessage.showMessage(body: LanguageKeys.imageUploadingError.localizedString, theme: .warning)
     }
 
-    func clearUploadImages() {
-        apiService.cancelAllRequests()
-        imagesUrl = []
-    }
 }

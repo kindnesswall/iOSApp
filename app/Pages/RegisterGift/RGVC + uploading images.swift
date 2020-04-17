@@ -8,7 +8,6 @@
 
 import UIKit
 import CropViewController
-import Kingfisher
 
 extension RegisterGiftViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
@@ -38,83 +37,61 @@ extension RegisterGiftViewController: CropViewControllerDelegate {
     }
 
     func uploadImage(selectedImage: UIImage) {
-        _=addUploadImageView(image: selectedImage)
-        let index = uploadedImageViews.count - 1
+        let imageView = addUploadImageView(image: selectedImage)
 
-        self.vm.upload(
+        let task = self.vm.upload(
             image: selectedImage,
-            onSuccess: { [weak self] (imageUrl) in
-            self?.imageViewUploadingHasFinished(uploadImageView: self?.uploadedImageViews[index], imageSrc: imageUrl)
-            }, onFail: { [weak self] in
-                self?.removeImage(index: index)
-                self?.vm.imageRemovedFromList(index: index)
+            onSuccess: { [weak imageView] (imageUrl) in
+                imageView?.uploadFinished(url: imageUrl)
+            }, onFail: { [weak self, weak imageView] in
+                guard let imageView = imageView else {return}
+                self?.imageCanceled(imageView: imageView)
         })
+        imageView.uploadStarted(task: task)
     }
 
-    func addUploadImageView(imageSrc: String) -> UploadImageView {
-        let uploadedImageView=initUploadImageView()
-        if let url=URL(string: imageSrc) {
-            uploadedImageView.imageView.kf.setImage(with: url)
-        }
-        return uploadedImageView
+    func addUploadImageView(imageSrc: String) {
+        let imageView=initUploadImageView()
+        imageView.download(url: imageSrc)
     }
 
     func addUploadImageView(image: UIImage) -> UploadImageView {
-        let uploadedImageView=initUploadImageView()
-        uploadedImageView.imageView.image=image
-        return uploadedImageView
+        let imageView=initUploadImageView()
+        imageView.display(image: image)
+        return imageView
     }
 
     func initUploadImageView() -> UploadImageView {
-        let uploadedImageView = (NibLoader.loadViewFromNib(
-            name: UploadImageView.identifier,
-            owner: self,
-            nibType: UploadImageView.self) as? UploadImageView) ?? UploadImageView()
-        uploadedImageView.widthAnchor.constraint(equalToConstant: 100).isActive=true
+        let imageView = NibLoader.load(type: UploadImageView.self)!
+        
+        imageView.widthAnchor.constraint(equalToConstant: 100).isActive=true
+        imageView.delegate=self
 
-        uploadedImageView.delegate=self
+        self.uploadedImageViews.append(imageView)
+        self.uploadedImageStack.addArrangedSubview(imageView)
 
-        self.uploadedImageViews.append(uploadedImageView)
-        self.uploadedImageStack.addArrangedSubview(uploadedImageView)
-
-        return uploadedImageView
-    }
-
-    func imageViewUploadingHasFinished(uploadImageView: UploadImageView?, imageSrc: String) {
-        self.vm.imagesUrl.append(imageSrc)
-        uploadImageView?.uploadFinished()
+        return imageView
     }
 
     func clearUploadedImages() {
-        for uploadedImageView in uploadedImageViews {
-            uploadedImageView.removeFromSuperview()
+        for each in uploadedImageViews {
+            each.cancelUploadAndRemove()
         }
         uploadedImageViews=[]
-        vm.clearUploadImages()
     }
 }
 
 extension RegisterGiftViewController: UploadImageViewDelegate {
 
     func imageCanceled(imageView: UploadImageView) {
-        guard let index=findIndexOfUploadedImage(imageView: imageView) else {
-            return
-        }
-        removeImage(index: index)
-        vm.imageRemovedFromList(index: index)
+        imageView.cancelUploadAndRemove()
+        uploadedImageViews.removeAll { $0 === imageView }
     }
-
-    func removeImage(index: Int) {
-        self.uploadedImageViews[index].removeFromSuperview()
-        self.uploadedImageViews.remove(at: index)
-    }
-
-    func findIndexOfUploadedImage(imageView: UploadImageView) -> Int? {
-
-        for (index, view) in uploadedImageViews.enumerated() where view === imageView {            
-            return index
+    
+    func imageView(ofTask task: URLSessionUploadTask) -> UploadImageView? {
+        uploadedImageViews.first { [weak task] in
+            guard let task = task else { return false }
+            return $0.same(task: task)
         }
-        return nil
-
     }
 }
