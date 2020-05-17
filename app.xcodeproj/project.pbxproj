@@ -103,6 +103,8 @@
 		05BFBBEC1FE29F7C00DBCDDF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */; };
 		05CD3B1B236C9A10000E0209 /* RejectGiftReviewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B1A236C9A10000E0209 /* RejectGiftReviewInput.swift */; };
 		05D0A38E2368F351009D16F8 /* ContactsViewModel+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D0A38D2368F351009D16F8 /* ContactsViewModel+DataSource.swift */; };
+		2AAC65B52471880800E2925E /* GithubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC65B42471880800E2925E /* GithubConstants.swift */; };
+		2AAC65B72471886700E2925E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AAC65B62471886700E2925E /* GoogleService-Info.plist */; };
 		522F6B5821D816DD001C67B9 /* UIColor+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5721D816DD001C67B9 /* UIColor+init.swift */; };
 		522F6B5E21D81AA2001C67B9 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B5D21D81AA2001C67B9 /* FirebaseUser.swift */; };
 		522F6B6421D8B173001C67B9 /* SelectCountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F6B6321D8B173001C67B9 /* SelectCountryVC.swift */; };
@@ -120,7 +122,6 @@
 		5246724A21E342670086F327 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246724921E342660086F327 /* API.swift */; };
 		5246725321E349A40086F327 /* Users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5246725221E349A40086F327 /* Users.graphql */; };
 		5247C8A721E34D82009E8770 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8A621E34D82009E8770 /* schema.json */; };
-		5247C8AC21E388B2009E8770 /* GithubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8AB21E388B2009E8770 /* GithubConstants.swift */; };
 		5247C8B821E38A52009E8770 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8B721E38A52009E8770 /* StatisticViewController.swift */; };
 		5247C8BA21E38A5B009E8770 /* StatisticViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247C8B921E38A5B009E8770 /* StatisticViewController.xib */; };
 		5247C8BC21E38A66009E8770 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247C8BB21E38A66009E8770 /* ContactUsViewController.swift */; };
@@ -146,7 +147,6 @@
 		52D1A14421DA3C30005EA2F0 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A14321DA3C30005EA2F0 /* Address.swift */; };
 		52D1A14621DAA3BD005EA2F0 /* Public Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1A14521DAA3BD005EA2F0 /* Public Functions.swift */; };
 		52DD768321C5109B00C2E012 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768521C5109B00C2E012 /* InfoPlist.strings */; };
-		52DD768821C6428300C2E012 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DD768721C6428300C2E012 /* GoogleService-Info.plist */; };
 		52DD769021C68ECE00C2E012 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD768F21C68ECE00C2E012 /* RoundButton.swift */; };
 		52DD769621C6BFC100C2E012 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769421C6BFC100C2E012 /* LockViewController.swift */; };
 		52DD769921C6E19600C2E012 /* CircleDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD769821C6E19600C2E012 /* CircleDotView.swift */; };
@@ -377,6 +377,8 @@
 		05BFBBEB1FE29F7C00DBCDDF /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		05CD3B1A236C9A10000E0209 /* RejectGiftReviewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectGiftReviewInput.swift; sourceTree = "<group>"; };
 		05D0A38D2368F351009D16F8 /* ContactsViewModel+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactsViewModel+DataSource.swift"; sourceTree = "<group>"; };
+		2AAC65B42471880800E2925E /* GithubConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubConstants.swift; sourceTree = "<group>"; };
+		2AAC65B62471886700E2925E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		34176770A2B90CD712426CA0 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
 		522F6B5721D816DD001C67B9 /* UIColor+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+init.swift"; sourceTree = "<group>"; };
 		522F6B5D21D81AA2001C67B9 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
@@ -395,7 +397,6 @@
 		5246724921E342660086F327 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		5246725221E349A40086F327 /* Users.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Users.graphql; sourceTree = "<group>"; };
 		5247C8A621E34D82009E8770 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		5247C8AB21E388B2009E8770 /* GithubConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GithubConstants.swift; path = ../GithubConstants.swift; sourceTree = "<group>"; };
 		5247C8B721E38A52009E8770 /* StatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticViewController.swift; path = app/view_controllers/my_kindnesswall/Statistic/StatisticViewController.swift; sourceTree = SOURCE_ROOT; };
 		5247C8B921E38A5B009E8770 /* StatisticViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatisticViewController.xib; path = app/view_controllers/my_kindnesswall/Statistic/StatisticViewController.xib; sourceTree = SOURCE_ROOT; };
 		5247C8BB21E38A66009E8770 /* ContactUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactUsViewController.swift; path = app/view_controllers/my_kindnesswall/ContactUs/ContactUsViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -433,7 +434,6 @@
 		52D1A14521DAA3BD005EA2F0 /* Public Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Public Functions.swift"; sourceTree = "<group>"; };
 		52DD768421C5109B00C2E012 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		52DD768621C5109D00C2E012 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		52DD768721C6428300C2E012 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52DD768F21C68ECE00C2E012 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		52DD769421C6BFC100C2E012 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
 		52DD769821C6E19600C2E012 /* CircleDotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDotView.swift; sourceTree = "<group>"; };
@@ -602,11 +602,11 @@
 		0507C8611F8C1A920084CDF1 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				2AAC65B62471886700E2925E /* GoogleService-Info.plist */,
 				6066C3BC22C9098E00BCB50A /* app.entitlements */,
 				5247C8A621E34D82009E8770 /* schema.json */,
 				5246724921E342660086F327 /* API.swift */,
 				5246725221E349A40086F327 /* Users.graphql */,
-				52DD768721C6428300C2E012 /* GoogleService-Info.plist */,
 				0593D5AE239C802B005A4F67 /* Services */,
 				05A13838235E512800A1C277 /* Coordinator */,
 				05029ED41FE9A663004D96B1 /* CustomViews */,
@@ -971,11 +971,11 @@
 		054C6B9323649A87009DF9A6 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				2AAC65B42471880800E2925E /* GithubConstants.swift */,
 				602EA122237B48C700130A24 /* AppCountry.swift */,
 				528A2DA821AD340200DECE0F /* LanguageKeys.swift */,
 				05BFBBD81FE24C4D00DBCDDF /* AppConst.swift */,
 				0544DD63235B6C2D007AC8F3 /* AppImages.swift */,
-				5247C8AB21E388B2009E8770 /* GithubConstants.swift */,
 				0593D5AA239C79EE005A4F67 /* AppFont.swift */,
 				0593D5AC239C7A1C005A4F67 /* AppColor.swift */,
 			);
@@ -1640,8 +1640,8 @@
 				05389306231AEAC500828372 /* HomeViewController.xib in Resources */,
 				60A87B0423F4391A007A4357 /* FontLicense.txt in Resources */,
 				528A2D7A21ABD72500DECE0F /* RegisterGiftViewController.xib in Resources */,
-				52DD768821C6428300C2E012 /* GoogleService-Info.plist in Resources */,
 				5245921821AAD7420009824C /* GiftDetailViewController.xib in Resources */,
+				2AAC65B72471886700E2925E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1864,6 +1864,7 @@
 				52D1A14621DAA3BD005EA2F0 /* Public Functions.swift in Sources */,
 				522F6B5E21D81AA2001C67B9 /* FirebaseUser.swift in Sources */,
 				601F83CE2036A50600F9118B /* GenericOptionsTableViewCell.swift in Sources */,
+				2AAC65B52471880800E2925E /* GithubConstants.swift in Sources */,
 				05BFBBD01FE0703500DBCDDF /* RegisterGiftViewController.swift in Sources */,
 				528A2DA921AD340200DECE0F /* LanguageKeys.swift in Sources */,
 				0580595B2365C7F000B679C4 /* GiftDetailCoordinator.swift in Sources */,
@@ -1919,7 +1920,6 @@
 				0523118522A4203F00A22157 /* ApiService.swift in Sources */,
 				5263D5FE21B915F400B634A8 /* LanguageVM.swift in Sources */,
 				60246F612407F58B00A8E508 /* CategoryInput.swift in Sources */,
-				5247C8AC21E388B2009E8770 /* GithubConstants.swift in Sources */,
 				60861154206E3E2C000A42E5 /* UINavigationBar + config.swift in Sources */,
 				602BC8F62034B7BE00ECF6E2 /* UploadImageView.swift in Sources */,
 				52DD769621C6BFC100C2E012 /* LockViewController.swift in Sources */,
