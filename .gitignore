@@ -1,3 +1,7 @@
 GithubConstants.swift
 GoogleService-Info.plist
 app.xcodeproj/xcuserdata/ghadirianh.xcuserdatad
+Pods
+app.xcworkspace/xcuserdata
+app.xcodeproj/project.xcworkspace/xcuserdata
+app.xcodeproj/xcuserdata

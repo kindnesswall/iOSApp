@@ -31,7 +31,8 @@ class SelectCountryVM: NSObject {
         """.data(using: .utf8)
 
         if let countries = ApiUtility.convert(data: data, to: [Country].self) {
-                self.datasource = countries
+            self.datasource = countries
+            self.loadingState = .success
         }
 //        loadingState = .loading(.initial)
 //        apiService.checkYoutube { [weak self] result in
