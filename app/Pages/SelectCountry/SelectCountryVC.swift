@@ -98,7 +98,7 @@ class SelectCountryVC: UIViewController {
             self?.updateLoadingState(state: state)
         }
         
-        vm.fetch()
+        vm.getCountries()
     }
     
     func updateLoadingState(state: ViewLoadingState) {
@@ -109,7 +109,7 @@ class SelectCountryVC: UIViewController {
         case .failed:
             let closeType: NetworkAlertCloseType = presentedAtLaunch ? .none : .dismissPage
             self.coordinator.showDialogFailed(closeType: closeType) {
-                self.vm.fetch()
+                self.vm.getCountries()
             }
         default:
             self.loadingIndicator.startAnimating()

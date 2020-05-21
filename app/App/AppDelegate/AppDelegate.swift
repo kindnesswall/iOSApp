@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
 
-//        FirebaseApp.configure()
+        FirebaseApp.configure()
 
         if userDefaultService.isItFirstTimeAppOpen() {
             appViewModel.appOpenForTheFirstTime()
@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func checkLanguageSelectedOrNot() {
-        if userDefaultService.isLanguageSelected() {
+        if userDefaultService.isLanguageSelected() || AppCountry.country?.id != 103 {
             showTabbarIntro()
         } else {
             appCoordinator.showSelectLanguageVC()

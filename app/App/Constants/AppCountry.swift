@@ -28,7 +28,7 @@ class AppCountry {
     }
     
     static var isIran: Bool {
-        return country?.isFarsi == true
+        return country?.isFarsi ?? false
     }
     
     static var countryId: Int? {

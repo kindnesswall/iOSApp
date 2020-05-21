@@ -109,7 +109,7 @@
 			<key>orderHint</key>
 			<integer>15</integer>
 		</dict>
-		<key>FirebaseInstanceID.xcscheme</key>
+		<key>FirebaseInstallations.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -228,61 +228,68 @@
 			<key>orderHint</key>
 			<integer>33</integer>
 		</dict>
-		<key>Protobuf.xcscheme</key>
+		<key>PromisesObjC.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>34</integer>
 		</dict>
-		<key>Spring.xcscheme</key>
+		<key>Protobuf.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>35</integer>
 		</dict>
-		<key>SwiftLint.xcscheme</key>
+		<key>Spring.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>36</integer>
 		</dict>
-		<key>SwiftMessages-SwiftMessages.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>38</integer>
-		</dict>
-		<key>SwiftMessages.xcscheme</key>
+		<key>SwiftLint.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>37</integer>
 		</dict>
-		<key>SwiftyOnboard.xcscheme</key>
+		<key>SwiftMessages-SwiftMessages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>39</integer>
 		</dict>
-		<key>UICircularProgressRing.xcscheme</key>
+		<key>SwiftMessages.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>38</integer>
+		</dict>
+		<key>SwiftyOnboard.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>40</integer>
 		</dict>
-		<key>XLActionController.xcscheme</key>
+		<key>UICircularProgressRing.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>41</integer>
+		</dict>
+		<key>XLActionController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>42</integer>
 		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>

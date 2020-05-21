@@ -19,17 +19,30 @@ class SelectCountryVM: NSObject {
     weak var delegate: SelectCountryDelegate?
     let apiService = ApiService(HTTPLayer())
     
-    func fetch() {
-        loadingState = .loading(.initial)
-        apiService.getCountries {[weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.loadingState = .failed(error)
-            case .success(let countries):
-                self?.datasource = countries
-                self?.loadingState = .success
-            }
+    func getCountries() {
+        let data =
+        """
+        [{
+        "id":82,
+        "name":"Germany",
+        "phoneCode": "049",
+        "localization": "de"
+        }]
+        """.data(using: .utf8)
+
+        if let countries = ApiUtility.convert(data: data, to: [Country].self) {
+                self.datasource = countries
         }
+//        loadingState = .loading(.initial)
+//        apiService.checkYoutube { [weak self] result in
+//            switch result {
+//            case .failure(let error):
+//                self?.loadingState = .failed(error)
+//            case .success(let countries):
+//                self?.datasource = countries
+//                self?.loadingState = .success
+//            }
+//        }
     }
 
     func countrySelected(index: Int) {

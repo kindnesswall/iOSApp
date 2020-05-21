@@ -22,8 +22,8 @@ pod 'JGProgressHUD', '~> 2.0.4'
 pod 'Kingfisher', '~> 5.7.1'
 pod "ImageSlideshow/Kingfisher", '~> 1.8.0'
 
-pod 'Firebase/Core', '~> 6.6.0'
-pod 'Firebase/Performance', '~> 6.6.0'
+pod 'Firebase/Core'
+pod 'Firebase/Performance'
 pod 'Firebase/Auth'
 
 pod 'Fabric', '~> 1.9.0'

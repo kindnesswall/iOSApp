@@ -14,8 +14,10 @@ protocol EndpointProtocol {
     var httpBody: Data? {get}
 }
 
+// swiftlint:disable:next type_body_length
 enum Endpoint: EndpointProtocol {
-    
+
+    case getYoutube
 //        ---------------------------------------
     case getCountries
     case getProvinces(countryId: Int)
@@ -99,7 +101,11 @@ enum Endpoint: EndpointProtocol {
     var httpBody: Data? {
         switch self {
 
-        case .getCountries, .getProfile, .getBlockContacts, .getContacts, .getUserStatistics, .unBlockChat, .blockChat, .blockUserAccess, .statistics, .rejectCharity, .charityList, .acceptCharity, .giftReviewApproved, .getProvinces, .getCitiesOfProvince, .getRegions, .removeGift, .requestGift, .requestGiftStatus:
+        case .getYoutube, .getCountries, .getProfile,
+             .getBlockContacts, .getContacts, .getUserStatistics,
+             .unBlockChat, .blockChat, .blockUserAccess, .statistics,
+             .rejectCharity, .charityList, .acceptCharity, .giftReviewApproved,
+             .getProvinces, .getCitiesOfProvince, .getRegions, .removeGift, .requestGift, .requestGiftStatus:
             return nil
 
         case .getCategories(let input):
@@ -155,10 +161,20 @@ enum Endpoint: EndpointProtocol {
 
     var httpMethod: String {
         switch self {
-        case .getCountries, .getProvinces, .getCitiesOfProvince, .getRegions, .requestGift, .requestGiftStatus, .getProfile, .charityList, .statistics, .getUserStatistics, .getContacts, .getBlockContacts:
+        case .getYoutube, .getCountries, .getProvinces,
+             .getCitiesOfProvince, .getRegions, .requestGift,
+             .requestGiftStatus, .getProfile, .charityList,
+             .statistics, .getUserStatistics, .getContacts, .getBlockContacts:
             return HttpMethod.get.rawValue
 
-        case .getCategories, .registerUser, .login, .firebaseLogin, .registerGift, .donateGift, .giftsToDonate, .userRegisteredGifts, .userReceivedGifts, .userDonatedGifts, .sendTextMessage, .sendAck, .fetchMessages, .registerPush, .giftsToReview, .sendPushNotif, .updateUser, .chatSendMessage, .chatAckMessage, .getGifts, .requestPhoneNumberChange, .validatePhoneNumberChange, .uploadImage:
+        case .getCategories, .registerUser, .login,
+             .firebaseLogin, .registerGift, .donateGift,
+             .giftsToDonate, .userRegisteredGifts, .userReceivedGifts,
+             .userDonatedGifts, .sendTextMessage, .sendAck,
+             .fetchMessages, .registerPush, .giftsToReview,
+             .sendPushNotif, .updateUser, .chatSendMessage,
+             .chatAckMessage, .getGifts, .requestPhoneNumberChange,
+             .validatePhoneNumberChange, .uploadImage:
             return HttpMethod.post.rawValue
 
         case .editGift, .giftReviewApproved, .acceptCharity, .rejectCharity, .unBlockUserAccess, .unBlockChat, .blockChat, .giftReviewRejected:
@@ -171,6 +187,8 @@ enum Endpoint: EndpointProtocol {
 
     private var path: String {
         switch self {
+        case .getYoutube:
+            return "https://www.youtube.com/"
         case .uploadImage:
             return basePathUrl+"/image/upload"
 //        ---------------------------------------

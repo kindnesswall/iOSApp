@@ -1,4 +1,5 @@
-//
+//swiftlint:disable:file_length
+
 //  ApiServiceProtocol.swift
 //  app
 //
@@ -12,6 +13,7 @@ protocol ApiServiceProtocol {
 
 }
 
+// swiftlint:disable:next type_body_length
 class ApiService: ApiServiceProtocol {
     let httpLayer: HTTPLayerProtocol
     init(_ httpLayer: HTTPLayerProtocol) {
@@ -26,9 +28,9 @@ class ApiService: ApiServiceProtocol {
         httpLayer.cancelAllTasksAndSessions()
     }
 
-    func findIndexOf(task: URLSessionTask?) -> Int? {
-        return httpLayer.findIndexOf(task: task)
-    }
+//    func findIndexOf(task: URLSessionTask?) -> Int? {
+//        return httpLayer.findIndexOf(task: task)
+//    }
 
     func registerGift(
         _ gift: Gift, completion: @escaping (Result<Gift>) -> Void) {
@@ -198,7 +200,45 @@ class ApiService: ApiServiceProtocol {
             }
         }
     }
-    
+
+    func checkYoutube(completion: @escaping (Result<[Country]>) -> Void) {
+        self.httpLayer.request(at: Endpoint.getCountries) { result in
+            var data: Data?
+            switch result {
+            case .failure(let appError):
+                data =
+                """
+                [{
+                "id":103,
+                "name":"Iran",
+                "phoneCode": "098",
+                "localization": "fa"
+                }]
+                """.data(using: .utf8)
+                print(appError)
+            case .success:
+                data =
+                """
+                [{
+                "id":82,
+                "name":"Germany",
+                "phoneCode": "049",
+                "localization": "de"
+                }]
+                """.data(using: .utf8)
+            }
+            if let countries = ApiUtility.convert(data: data, to: [Country].self) {
+                DispatchQueue.main.async {
+                    completion(.success(countries))
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completion(.failure(AppError.dataDecoding))
+                }
+            }
+        }
+    }
+
     func getCountries(completion: @escaping (Result<[Country]>) -> Void) {
         self.httpLayer.request(at: Endpoint.getCountries) { result in
             switch result {

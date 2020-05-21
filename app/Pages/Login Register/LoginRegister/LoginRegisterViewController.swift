@@ -109,7 +109,7 @@ class LoginRegisterViewController: UIViewController {
 
     @IBAction func registerBtnClick(_ sender: Any) {
         mobile = phoneNumberTextField.text?.castNumberToEnglish() ?? ""
-        if !mobile.starts(with: "9") || mobile.count != 10 || !mobile.isNumber {
+        if mobile.count != 10 || !mobile.isNumber {
             FlashMessage.showMessage(body: LanguageKeys.phoneNumberIncorrectError.localizedString, theme: .error)
             self.phoneNumberTextField.shake()
             return

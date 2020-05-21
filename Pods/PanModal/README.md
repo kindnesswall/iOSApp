@@ -54,6 +54,14 @@ pod 'PanModal'
 github "slackhq/PanModal"
 ```
 
+* <a href="https://swift.org/package-manager/" target="_blank">Swift Package Manager</a>:
+
+```swift
+dependencies: [
+  .package(url: "https://github.com/slackhq/PanModal.git", .exact("1.2.6")),
+],
+```
+
 ## Usage
 
 PanModal was designed to be used effortlessly. Simply call `presentPanModal` in the same way you would expect to present a `UIViewController`
@@ -139,7 +147,7 @@ We will only be fixing critical bugs, thus, for any non-critical issues or featu
 
 ## Authors
 
-[Stephen Sowole](https://github.com/tun57) • [Tosin Afolabi](https://github.com/tosinaf)
+[Stephen Sowole](https://github.com/ste57) • [Tosin Afolabi](https://github.com/tosinaf)
 
 ## License
 
