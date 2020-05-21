@@ -28,10 +28,6 @@ class ApiService: ApiServiceProtocol {
         httpLayer.cancelAllTasksAndSessions()
     }
 
-//    func findIndexOf(task: URLSessionTask?) -> Int? {
-//        return httpLayer.findIndexOf(task: task)
-//    }
-
     func registerGift(
         _ gift: Gift, completion: @escaping (Result<Gift>) -> Void) {
         registerEditGift(endPoint: Endpoint.registerGift(gift), completion)
