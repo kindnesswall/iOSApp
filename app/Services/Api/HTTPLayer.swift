@@ -16,7 +16,6 @@ protocol HTTPLayerProtocol {
     func cancelRequests()
     func cancelAllTasksAndSessions()
     func cancelRequestAt(index: Int)
-//    func findIndexOf(task: URLSessionTask?) -> Int?
 }
 
 class HTTPLayer: HTTPLayerProtocol {
@@ -169,16 +168,4 @@ class HTTPLayer: HTTPLayerProtocol {
             tasks.remove(at: index)
         }
     }
-
-//    func findIndexOf(task: URLSessionTask?) -> Int? {
-//        guard let task = task else {
-//            return nil
-//        }
-//
-//        for (index, thisTask) in tasks.enumerated() where thisTask == task {
-//                return index
-//        }
-//
-//        return nil
-//    }
 }
