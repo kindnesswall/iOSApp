@@ -38,4 +38,6 @@ pod 'PanModal', '~> 1.2.4'
 
 pod 'SwiftLint', '~> 0.38.0'
 
+pod 'ReachabilitySwift', '~> 5.0.0'
+
 end

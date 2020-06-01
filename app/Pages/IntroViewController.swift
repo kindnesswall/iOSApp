@@ -12,23 +12,23 @@ import SwiftyOnboard
 class IntroViewController: UIViewController {
 
     var swiftyOnboard: SwiftyOnboard!
-    let colors: [UIColor] = [#colorLiteral(red: 0.9980840087, green: 0.3723873496, blue: 0.4952875376, alpha: 1), #colorLiteral(red: 0.2666860223, green: 0.5116362572, blue: 1, alpha: 1), #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)]
+    let colors: [UIColor] = [#colorLiteral(red: 0.9980840087, green: 0.3723873496, blue: 0.4952875376, alpha: 1), #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)]
     var titleArray: [String] = [
        LanguageKeys.introCulture.localizedString,
-       LanguageKeys.introDonatePlatform.localizedString,
+//       LanguageKeys.introDonatePlatform.localizedString,
        LanguageKeys.introFree.localizedString,
        LanguageKeys.introOpensource.localizedString
     ]
 
     var subTitleArray2: [String] = [
     "",
-    "",
+//    "",
     "",
     ""
         ]
     var subTitleArray: [String] = [
        LanguageKeys.introSubtitleCulture.localizedString,
-       LanguageKeys.introSubtitleDonatePlatform.localizedString,
+//       LanguageKeys.introSubtitleDonatePlatform.localizedString,
        LanguageKeys.introSubtitleFree.localizedString,
        LanguageKeys.introSubtitleOpensource.localizedString
     ]

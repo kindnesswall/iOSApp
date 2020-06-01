@@ -44,7 +44,7 @@ class HTTPLayer: HTTPLayerProtocol {
             throw AppError.apiUrlProblem
         }
 
-        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 60)
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         request.httpBody = endpoint.httpBody
         request.httpMethod = endpoint.httpMethod
         request = setRequestHeader(request: request)

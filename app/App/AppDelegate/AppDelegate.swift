@@ -9,9 +9,12 @@
 import UIKit
 import UserNotifications
 import Firebase
+import Reachability
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    let reachability = try? Reachability()
 
     let keychainService = KeychainService()
     let userDefaultService = UserDefaultService()
@@ -39,6 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print("\n\ndidFinishLaunchingWithOptions\n\n")
 
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+
+        do {
+            try reachability?.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+
         FirebaseApp.configure()
 
         if userDefaultService.isItFirstTimeAppOpen() {
@@ -60,6 +71,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appViewModel.registerForPushNotifications()
 
         return true
+    }
+
+    @objc private func reachabilityChanged(note: Notification) {
+
+        guard let reachability = note.object as? Reachability else {
+            return
+        }
+
+        switch reachability.connection {
+        case .wifi:
+            print("Reachability: Reachable via WiFi")
+        case .cellular:
+            print("Reachability: Reachable via Cellular")
+        case .unavailable:
+            print("Reachability: Network not reachable")
+        case .none:
+            print("Reachability: none")
+        }
     }
 
     func checkLanguageSelectedOrNot() {
@@ -107,7 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-        ) {
+    ) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
         appViewModel.saveDeviceIdentifierAndPushToken(pushToken: token)

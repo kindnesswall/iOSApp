@@ -296,7 +296,7 @@ enum Endpoint: EndpointProtocol {
     }
 
     private var host: String {
-        return "dev.kindnesswand.com"
+        return "kindnesswand.com"
 //        return "localhost"
     }
 

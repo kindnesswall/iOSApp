@@ -36,9 +36,10 @@ class MyWallTableViewSegment: UIView {
     func setViewModel(viewModel: GiftViewModel?) {
         self.viewModel = viewModel
 
-        self.viewModel?.$hasLazyLoadingFinished.bind = {[weak self] hasFinished in
+        self.viewModel?.setLazyLoadingFinished { [weak self] hasFinished in
             self?.tableView(setInset: !hasFinished)
         }
+
         self.viewModel?.delegate = self
         self.tableView.dataSource = self.viewModel
     }

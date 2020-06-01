@@ -29,6 +29,10 @@ class GiftViewModel: NSObject {
         self.giftListType = giftListType
     }
 
+    func setLazyLoadingFinished(handler: ((Bool) -> Void)?) {
+        _hasLazyLoadingFinished.bind = handler
+    }
+
     func handleGetGift(_ result: Result<[Gift]>, _ beforeId: Int?) {
 
         switch result {
