@@ -72,9 +72,7 @@ extension ContactsViewModel: ContactsViewModelNetworkInterface {
 
     private func contactMessageIsReceived(contactMessage: ContactMessage) {
 
-        guard let chatId = contactMessage.chat?.chatId  else {
-            return
-        }
+        let chatId = contactMessage.chat.chatId
 
         let messagesViewModel = addContact(chatId: chatId)
 

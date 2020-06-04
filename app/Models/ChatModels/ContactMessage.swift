@@ -8,7 +8,7 @@
 import Foundation
 
 class ContactMessage: Codable {
-    var chat: ChatContacts?
+    var chat: ChatContacts
     var contactProfile: UserProfile?
     var textMessages: [TextMessage]?
     var notificationCount: Int?

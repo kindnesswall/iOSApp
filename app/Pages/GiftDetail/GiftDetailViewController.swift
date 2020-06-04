@@ -137,7 +137,7 @@ class GiftDetailViewController: UIViewController {
             self.setRequestBtnState(state: .isNotRequested)
         case .success(let status):
             if status.isRequested, let chat = status.chat {
-                self.setRequestBtnState(state: .isRequested(chatId: chat.chatId))
+                self.setRequestBtnState(state: .isRequested(chatId: chat.chat.chatId))
             } else {
                 self.setRequestBtnState(state: .isNotRequested)
             }
@@ -234,7 +234,7 @@ class GiftDetailViewController: UIViewController {
 
     }
 
-    func handleRequestGift(result: Result<ChatContacts>) {
+    func handleRequestGift(result: Result<ContactMessage>) {
 
         switch result {
         case .failure(let error):
@@ -242,7 +242,7 @@ class GiftDetailViewController: UIViewController {
             FlashMessage.showMessage(body: LanguageKeys.operationFailed.localizedString, theme: .error)
             self.setRequestBtnState(state: .isNotRequested)
         case .success(let chat):
-            let chatId = chat.chatId
+            let chatId = chat.chat.chatId
             self.startChat(chatId: chatId, sendRequestMessage: true)
             self.setRequestBtnState(state: .isRequested(chatId: chatId))
         }

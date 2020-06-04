@@ -91,9 +91,8 @@ extension ContactsRestfulViewModel: ContactsViewModelNetwork {
     }
 
     func fetchMessagesIsCompleted(contactMessage: ContactMessage) {
-        guard let textMessages = contactMessage.textMessages,
-            let chatId = contactMessage.chat?.chatId
-            else { return }
+        guard let textMessages = contactMessage.textMessages else { return }
+        let chatId = contactMessage.chat.chatId
 
         if textMessages.count != 0 {
             self.interface?.singleContactMessageIsReceived(contactMessage: contactMessage)

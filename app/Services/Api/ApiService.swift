@@ -401,7 +401,7 @@ class ApiService: ApiServiceProtocol {
         }
     }
 
-    func requestGift(id: Int, completion: @escaping (Result<ChatContacts>) -> Void) {
+    func requestGift(id: Int, completion: @escaping (Result<ContactMessage>) -> Void) {
 
         self.httpLayer.request(at: Endpoint.requestGift(id: id)) {(result) in
 
@@ -409,7 +409,7 @@ class ApiService: ApiServiceProtocol {
             case .failure(let appError):
                 completion(.failure(appError))
             case .success(let data):
-                if let chat = ApiUtility.convert(data: data, to: ChatContacts.self) {
+                if let chat = ApiUtility.convert(data: data, to: ContactMessage.self) {
                     completion(.success(chat))
                 } else {
                     completion(.failure(AppError.dataDecoding))
