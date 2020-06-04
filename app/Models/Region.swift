@@ -12,7 +12,7 @@ class Region: Codable {
     var id: Int?
     var cityId: Int
     var name: String
-    var latitude: Double
-    var longitude: Double
+    var latitude: Double?
+    var longitude: Double?
     var sortIndex: Int?
 }
