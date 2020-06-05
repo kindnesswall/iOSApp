@@ -116,6 +116,12 @@ class GiftDetailViewController: UIViewController {
     }
 
     func checkRequestStatus() {
+        
+        guard vm.isUserCharity else {
+            self.setRequestBtnState(state: .hide)
+            return
+        }
+        
         guard vm.isUserLogedIn(), let giftId = gift?.id else {
             self.setRequestBtnState(state: .isNotRequested)
             return

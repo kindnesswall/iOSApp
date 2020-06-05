@@ -23,6 +23,10 @@ class GiftDetailVM: NSObject {
         return false
     }
     
+    var isUserCharity: Bool {
+        return keychainService.isCharity()
+    }
+    
     func isUserLogedIn() -> Bool {
         return keychainService.isUserLogedIn()
     }

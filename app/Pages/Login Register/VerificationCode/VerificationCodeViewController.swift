@@ -141,7 +141,7 @@ class VerificationCodeViewController: UIViewController {
 
         case .success(let authOutput):
 
-            keychainService.set(authOutput)
+            keychainService.set(authOutput: authOutput)
             AppDelegate.me().appViewModel.registerPush()
             AppDelegate.me().appCoordinator.refreshAppAfterSwitchUser()
 

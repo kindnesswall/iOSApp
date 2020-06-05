@@ -48,15 +48,15 @@ class KeychainService {
         delete(.passCode)
     }
 
-    func set(_ authOutput: AuthOutput) {
+    func set(authOutput: AuthOutput) {
         if let userID = authOutput.token.userID?.description, let token = authOutput.token.token {
-
-            keychain.set(userID, forKey: AppConst.KeyChain.UserID)
-            keychain.set(AppConst.KeyChain.BEARER + " " + token, forKey: AppConst.KeyChain.Authorization)
+            set(.userId, value: userID)
+            let authorization = AppConst.KeyChain.BEARER + " " + token
+            set(.authorization, value: authorization)
         }
 
-        keychain.set(authOutput.isAdmin, forKey: AppConst.KeyChain.IsAdmin)
-        keychain.set(authOutput.isCharity, forKey: AppConst.KeyChain.IsCharity)
+        set(.isAdmin, value: authOutput.isAdmin)
+        set(.isCharity, value: authOutput.isCharity)
     }
     
     func isUserLogedIn() -> Bool {
@@ -80,8 +80,7 @@ class KeychainService {
         case .deviceIdentifier, .pushToken, .passCode, .authorization, .userId:
             keychain.set(value, forKey: key.key)
         case .isAdmin, .isCharity:
-            print("Error: Associated value is not String!")
-            return
+            fatalError("Associated value is not String!")
         }
     }
     
@@ -90,8 +89,7 @@ class KeychainService {
         case .isAdmin, .isCharity:
             keychain.set(value, forKey: key.key)
         case .deviceIdentifier, .pushToken, .passCode, .authorization, .userId:
-            print("Error: Associated value is not Bool!")
-            return
+            fatalError("Associated value is not Boolean!")
         }
     }
     
