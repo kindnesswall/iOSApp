@@ -51,4 +51,8 @@ struct AppConst {
         static let telegramLink = "https://telegram.me/Kindness_Wall_Admin"
         static let webSiteLink = "http://www.kindnesswall.ir"
     }
+    
+    struct DemoAccount {
+        static let phoneNumber = "+499000000000"
+    }
 }

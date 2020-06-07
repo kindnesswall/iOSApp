@@ -18,6 +18,8 @@ class LoginRegisterViewController: UIViewController {
     @IBOutlet weak var loading: UIActivityIndicatorView!
 
     var viewModel: LoginRegisterViewModelProtocol?
+    private let ownViewModel = LoginRegisterViewModel()
+    private let firebaseViewModel = FirebaseLoginRegisterViewModel()
 
     var mobile = ""
     var countryCode = ""
@@ -40,12 +42,6 @@ class LoginRegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if AppCountry.isIran {
-            self.viewModel = LoginRegisterViewModel()
-        } else {
-            self.viewModel = FirebaseLoginRegisterViewModel()
-        }
-
         customizeUIElements()
 
         self.phoneNumberTextField.keyboardType = UIKeyboardType.numberPad
@@ -62,6 +58,19 @@ class LoginRegisterViewController: UIViewController {
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
 //        view.addGestureRecognizer(tap)
 
+    }
+    
+    private func viewModelFor(phoneNumber: String) -> LoginRegisterViewModelProtocol {
+        
+        if phoneNumber == AppConst.DemoAccount.phoneNumber {
+            return ownViewModel
+        }
+        
+        if AppCountry.isIran {
+            return ownViewModel
+        } else {
+            return firebaseViewModel
+        }
     }
 
     @objc func dismissKeyboard() {
@@ -129,6 +138,8 @@ class LoginRegisterViewController: UIViewController {
         registerBtn.setTitle("", for: [])
         loading.startAnimating()
 
+        viewModel = viewModelFor(phoneNumber: mobileWithCode)
+        
         viewModel?.registerUser(with: mobileWithCode, handleResult: { [weak self] result in
             self?.handleResult(result)
         })
